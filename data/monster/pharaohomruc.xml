@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="Omruc" nameDescription="Omruc" race="undead" experience="2950" speed="115" manacost="0">
+	<health now="4300" max="4300" />
+	<look type="90" head="0" body="0" legs="0" feet="0" corpse="4197" />
+	<targetchange interval="1000" chance="7" />
+	<targetstrategy nearest="70" weakest="10" mostdamage="20" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="4" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="65" skill="75" poison="65">
+		<attack name="lifedrain" min="-50" max="-350" range="1" chance="20" />
+		<attack name="poison" min="-200" max="-500" range="7" chance="5">
+			<attribute key="shootEffect" value="poisonarrow" />
+			<attribute key="areaEffect" value="greenbubble" />
+		</attack>
+		<attack name="fire" min="-50" max="-450" range="7" chance="8">
+			<attribute key="shootEffect" value="burstarrow" />
+			<attribute key="areaEffect" value="explosion" />
+		</attack>
+		<attack name="physical" min="-200" max="-400" range="7" chance="5">
+			<attribute key="shootEffect" value="arrow" />
+			<attribute key="areaEffect" value="explosion" />
+		</attack>
+		<attack name="speed" speedchange="-100" variation="10" duration="50000" range="7" chance="4">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+	</attacks>
+	<defenses armor="60" defense="65">
+		<defense name="healing" min="100" max="200" chance="6">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+		<defense name="invisible" duration="20000" chance="3">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity outfit="1" />
+		<immunity lifedrain="1" />
+		<immunity paralyze="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<summons maxSummons="4">
+		<summon name="stalker" chance="7" max="4" />
+	</summons>
+	<voices>
+		<voice sentence="Psssst, I am over chhhere." />
+		<voice sentence="Now chhhou shhhee me ... Now chhhou don't." />
+		<voice sentence="Chhhhou are marked ashhh my prey." />
+		<voice sentence="Catchhhh me if chhhou can." />
+		<voice sentence="Bullshhheye." />
+		<voice sentence="Die!" />
+	</voices>
+	<loot>
+		<item id="3447" countmax="25" chance="200" /> <!-- an arrow -->
+		<item id="3079" countmax="1" chance="1" /> <!-- boots of haste -->
+		<item id="3449" countmax="15" chance="400" /> <!-- a burst arrow -->
+		<item id="3239" countmax="1" chance="1000" /> <!-- a crystal arrow -->
+		<item id="3031" countmax="80" chance="700" /> <!-- a gold coin -->
+		<item id="3031" countmax="85" chance="500" /> <!-- a gold coin -->
+		<item id="3031" countmax="95" chance="350" /> <!-- a gold coin -->
+		<item id="3448" countmax="20" chance="600" /> <!-- a poison arrow -->
+		<item id="3450" countmax="5" chance="100" /> <!-- a power bolt -->
+		<item id="3585" countmax="2" chance="800" /> <!-- a red apple -->
+		<item id="3028" countmax="3" chance="100" /> <!-- a small diamond -->
+		<item id="3049" countmax="1" chance="50" /> <!-- a stealth ring -->
+		<item id="3037" countmax="1" chance="10" /> <!-- a yellow gem -->
+	</loot>
+</monster>

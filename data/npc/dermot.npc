@@ -1,0 +1,47 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# dermot.npc: Datenbank für den Ortsvorsteher Dermot auf der Insel Fibula
+
+Name = "Dermot"
+Outfit = (129,76-49-19-95)
+Home = [32165,32437,7]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Hello, traveller %N. How can I help you?"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Sorry, I cannot talk to two persons at the same time. You'll have to wait, %N.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "See you again."
+
+"bye"        -> "See you again.", Idle
+"farewell"   -> *
+"job"        -> "I am the magistrate of this isle."
+"equipment"  -> "I am not selling equipment. You'll have to visit Timur."
+"timur"      -> "He is the salesman in this village. "
+"name"       -> "I am Dermot, the magistrate of this isle."
+"time"       -> "Time is not important on Fibula."
+"dermot"     -> "I am the magistrate of this isle."
+"magistrate" -> "Thats me." 
+"fibula"     -> "You are at Fibula. This isle is not very dangerous. Just the wolves bother outside the village."
+"wolf"       -> "There are a lot of wolves outside the townwall. They disturb our farmers."
+"farmer"     -> "The inhabitants of Fibula live on fishing, farming, and hunting."
+
+QuestValue(231)=1,"present"  -> Type=3218, Amount=1,"You have a present for me?? Really?",Topic=2
+"present"    -> "I don't understand what you are talking about."
+Topic=2,"yes",Count(Type)>=Amount -> "Thank you very much!",Delete(Type),SetQuestValue(231,2)
+Topic=2,"yes"                   -> "What? There is no present, at least none for me! Stop this foolish jokes!",Idle
+Topic=2                         -> "Hmm, maybe next time."
+
+"dungeon"    -> "Oh, my god. In the dungeon of Fibula are a lot of monsters. That's why we have sealed it with a solid door."
+"sewer"      -> *
+"monster"    -> *
+"entrance"   -> "The entrance is near here."
+"key"        -> Type=2968, Data=3940, Amount=1, Price=2000, "Do you want to buy the dungeon key for %P gold?", Topic=1
+"door"       -> *
+
+Topic=1,"yes",CountMoney>=Price -> "Now you own the key to the dungeon.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "You've not enough money to buy the key."
+Topic=1                         -> "Hmm, maybe next time."
+}

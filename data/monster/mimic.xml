@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="mimic" nameDescription="a mimic" race="undead" experience="18" speed="40" manacost="250">
+	<health now="29" max="29" />
+	<look type="92" head="0" body="0" legs="0" feet="0" corpse="2472" />
+	<targetchange interval="1000" chance="0" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="1" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="9" skill="23">
+	</attacks>
+	<defenses armor="2" defense="3">
+	</defenses>
+	<immunities>
+		<immunity outfit="1" />
+	</immunities>
+	<loot>
+		<item id="3590" countmax="3" chance="30" /> <!-- a cherry -->
+		<item id="3031" countmax="6" chance="350" /> <!-- a gold coin -->
+	</loot>
+</monster>

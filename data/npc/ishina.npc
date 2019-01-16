@@ -1,0 +1,82 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# ishina.npc: Datenbank für die Juwelierin Ishina
+
+Name = "Ishina"
+Outfit = (138,95-9-87-95)
+Home = [33231,32423,7]
+Radius = 0
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Be greeted, %N. What do you need?"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Sorry %N, I will talk to you in a minute.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Daraman's blessings and good bye."
+
+"bye"             -> "Daraman's blessings and good bye.", Idle
+"job"             -> "I am a jeweller. Maybe you want to have a look at my wonderful offers."
+"name"            -> "My name is Ishina."
+"time"            -> "Currently it is %T."
+"caliph"          -> "The caliph buys the most precious gems and jewellery for himself."
+"kazzan"          -> *
+"daraman"         -> "Oh, I am not an expert in mythology and philosophy. Better ask the enlightened Kasmir about this."
+"kasmir"          -> "You will find Kasmir in the Muhayin. He's a philosopher and teacher in the ways of Daraman."
+"muhayin"         -> "It's the sacred tower. A place of solitude and meditation."
+"offer"           -> "I can offer you various gems, pearls, or some wonderful jewels."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"gem"             -> "You can buy and sell small diamonds, sapphires, rubies, emeralds, and amethysts."
+"pearl"           -> "There are white and black pearls you can buy or sell."
+"jewel"           -> "Currently you can purchase wedding rings, golden amulets, and ruby necklaces."
+"talon"           -> "I don't trade or work with these magic gems. It's better you ask a mage about this."
+
+"wedding","ring"   -> Type=3004, Amount=1, Price=990,  "Do you want to buy a wedding ring for %P gold?", Topic=1
+"golden","amulet"  -> Type=3013, Amount=1, Price=6600, "Do you want to buy a golden amulet for %P gold?", Topic=1
+"ruby","necklace"  -> Type=3016, Amount=1, Price=3560, "Do you want to buy a ruby necklace for %P gold?", Topic=1
+"white","pearl"    -> Type=3026, Amount=1, Price=320,  "Do you want to buy a white pearl for %P gold?", Topic=1
+"black","pearl"    -> Type=3027, Amount=1, Price=560,  "Do you want to buy a black pearl for %P gold?", Topic=1
+"small","diamond"  -> Type=3028, Amount=1, Price=600,  "Do you want to buy a small diamond for %P gold?", Topic=1
+"small","sapphire" -> Type=3029, Amount=1, Price=500,  "Do you want to buy a small sapphire for %P gold?", Topic=1
+"small","ruby"     -> Type=3030, Amount=1, Price=500,  "Do you want to buy a small ruby for %P gold?", Topic=1
+"small","emerald"  -> Type=3032, Amount=1, Price=500,  "Do you want to buy a small emerald for %P gold?", Topic=1
+"small","amethyst" -> Type=3033, Amount=1, Price=400,  "Do you want to buy a small amethyst for %P gold?", Topic=1
+
+%1,1<%1,"wedding","ring"   -> Type=3004, Amount=%1, Price=990*%1,  "Do you want to buy %A wedding rings for %P gold?", Topic=1
+%1,1<%1,"golden","amulet"  -> Type=3013, Amount=%1, Price=6600*%1, "Do you want to buy %A golden amulets for %P gold?", Topic=1
+%1,1<%1,"ruby","necklace"  -> Type=3016, Amount=%1, Price=3560*%1, "Do you want to buy %A ruby necklaces for %P gold?", Topic=1
+%1,1<%1,"white","pearl"    -> Type=3026, Amount=%1, Price=320*%1,  "Do you want to buy %A white pearls for %P gold?", Topic=1
+%1,1<%1,"black","pearl"    -> Type=3027, Amount=%1, Price=560*%1,  "Do you want to buy %A black pearls for %P gold?", Topic=1
+%1,1<%1,"small","diamond"  -> Type=3028, Amount=%1, Price=600*%1,  "Do you want to buy %A small diamonds for %P gold?", Topic=1
+%1,1<%1,"small","sapphire" -> Type=3029, Amount=%1, Price=500*%1,  "Do you want to buy %A small sapphires for %P gold?", Topic=1
+%1,1<%1,"small","rub"     -> Type=3030, Amount=%1, Price=500*%1,  "Do you want to buy %A small rubies for %P gold?", Topic=1
+%1,1<%1,"small","emerald"  -> Type=3032, Amount=%1, Price=500*%1,  "Do you want to buy %A small emeralds for %P gold?", Topic=1
+%1,1<%1,"small","amethyst" -> Type=3033, Amount=%1, Price=400*%1,  "Do you want to buy %A small amethysts for %P gold?", Topic=1
+
+"sell","white","pearl"    -> Type=3026, Amount=1, Price=160, "Do you want to sell a white pearl for %P gold?", Topic=2
+"sell","black","pearl"    -> Type=3027, Amount=1, Price=280, "Do you want to sell a black pearl for %P gold?", Topic=2
+"sell","small","diamond"  -> Type=3028, Amount=1, Price=300, "Do you want to sell a small diamond for %P gold?", Topic=2
+"sell","small","sapphire" -> Type=3029, Amount=1, Price=250, "Do you want to sell a small sapphire for %P gold?", Topic=2
+"sell","small","ruby"     -> Type=3030, Amount=1, Price=250, "Do you want to sell a small ruby for %P gold?", Topic=2
+"sell","small","emerald"  -> Type=3032, Amount=1, Price=250, "Do you want to sell a small emerald for %P gold?", Topic=2
+"sell","small","amethyst" -> Type=3033, Amount=1, Price=200, "Do you want to sell a small amethyst for %P gold?", Topic=2
+
+"sell",%1,1<%1,"white","pearl"    -> Type=3026, Amount=%1, Price=160*%1, "Do you want to sell %A white pearls for %P gold?", Topic=2
+"sell",%1,1<%1,"black","pearl"    -> Type=3027, Amount=%1, Price=280*%1, "Do you want to sell %A black pearls for %P gold?", Topic=2
+"sell",%1,1<%1,"small","diamond"  -> Type=3028, Amount=%1, Price=300*%1, "Do you want to sell %A small diamonds for %P gold?", Topic=2
+"sell",%1,1<%1,"small","sapphire" -> Type=3029, Amount=%1, Price=250*%1, "Do you want to sell %A small sapphires for %P gold?", Topic=2
+"sell",%1,1<%1,"small","rub"     -> Type=3030, Amount=%1, Price=250*%1, "Do you want to sell %A small rubies for %P gold?", Topic=2
+"sell",%1,1<%1,"small","emerald"  -> Type=3032, Amount=%1, Price=250*%1, "Do you want to sell %A small emeralds for %P gold?", Topic=2
+"sell",%1,1<%1,"small","amethyst" -> Type=3033, Amount=%1, Price=200*%1, "Do you want to sell %A small amethysts for %P gold?", Topic=2
+
+Topic=1,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Come back, when you have enough money."
+Topic=1                         -> "Hmm, but next time."
+
+Topic=2,"yes",Count(Type)>=Amount -> "Ok. Here is your money.", Delete(Type), CreateMoney
+Topic=2,"yes"                             -> "Sorry, you do not have one."
+Topic=2,"yes",Amount>1                    -> "Sorry, you do not have so many."
+Topic=2                                   -> "Maybe next time."
+}

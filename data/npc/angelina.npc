@@ -1,0 +1,69 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# angelina.npc: Datenbank für die gefangene der dunklen mönche Angelina
+Name = "Angelina"
+Outfit = (136,57-79-98-95)
+Home = [32635,32402,10]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",! -> "The gods must be praised that I am finally saved."
+ADDRESS,"hi$",!    -> *
+ADDRESS,"hiho$",!  -> *
+ADDRESS,!          -> Idle
+
+BUSY,"hello$",!    -> "Please wait.", Queue
+BUSY,"hi$",!       -> *
+BUSY,"hiho$",!     -> *
+BUSY,!             -> NOP
+VANISH,!           -> "May the gods bless you."
+
+"bye"      -> "May the gods bless you.", Idle
+"farewell" -> *
+"job"      -> "I am a priestess and I travelled here to learn about that order of the humble path I heard about. ...","But when I started my investigations, this false monk Lorbas thought that I was suspicious and so he ordered his minions to take me as prisoner."
+"prisoner" -> "I think Lorbas liked the idea to 'convert' me to their twisted cult and saw it as a test for their leaders. Now that the magic symbols are turned off, I will gather my strength within some hours and teleport to safety."  
+"humble","path" -> "There are no records about the foundation of this order, and it is unknown where its 'monks' come from. Yet, travellers told us that they are living near the remains of the dark cathedral."
+"monk"     -> "I learnt that these monks are impostors that use false promises to lure unwary ones into the arms of their strange cult which seems to have more political than religious agendas."
+"cult"    -> "The cult is secretly looking for the unsatisfied, disgrunteled and poor. Its members promise such sad individuals wealth, revenge and a cause. ...", "They lure them into the cells of their cult. Here they learn how to undermine the authorities of their cities. They are trained as thieves, spies and smugglers first. ...", "Those who prove themselves as the most promising candidates are recruited to a special hidden circle. There they learn the dark arts of poisoning and murder, or elocution and agitation to become assassins and recruiters for the cult. ...","I know nothing about their agenda but I am quite sure there has to be some higher power behind all of this."
+"power"     -> "I have no idea who is the mastermind behind all this, but it seems too big and too well organised to be the work of only a handful of false monks."
+"cathedral" -> "The cathedral was meant to be a centre of piety and believe. A prayer to the gods that had become solid. ...",
+               "The construction works started at the height of the Order of the Nightmare Knights, right after they had won a major battle near the place where the cathedral was to be built. ...",
+               "The cathedral was meant to become a monument of the victory of good over evil. ...",
+               "Sadly it was just not meant to be. ...",
+               "As the cathedral was nearly finished, most of the monks had already moved in and even a small town for all the workers and suppliers had established itself. ...",
+               "But then the structure was struck by an earthquake and the work of two generations was destroyed. ...",
+               "Later the dwarven constructors explained that this was caused by volcanic activities and a massive cave-in. ...",
+               "Since the gods did not interfere and the setting was close to the notorious Pits of Inferno, it was assumed that this was the work of secret demonic powers." 
+
+"king"     -> "The king is a wise ruler but his realm is large and we all need to work hard to make the world a better place."
+"venore"   -> "Sadly the trade barons care more about wealth than the gods."
+"thais"    -> "Many see Thais as a fallen city but it is only the loudness of an ugly minority that gives people this impression."
+"carlin"   -> "The druids have their own way to interpret the gods' will and this has to be respected."
+"edron"    -> "The downfall of some of the most noble knights there should serve us as a warning to stay on guard for the evil that wants to lure us on the wrong path."
+"gods"     -> "I would love to discuss the teachings of the gods with you but this is neither the time nor the place."
+
+"tibia"    -> "We all have to help to make this world a better place."
+
+"kazordoon" -> "The dwarves carry bitterness and pain in their souls. But it is them that have forgotten about the gods and not the other way around."
+"dwarves"   -> * 
+"dwarfs"   -> *
+"ab'dendriel" -> "The elves have lost their balance and identity. In this unstable state they can easily be misled or might draw the wrong conclusions."
+"elves"       -> *
+"elfs"        -> *
+"darama"      -> "A far away continent that will widen our view of the wonders the gods provide us with."
+"darashia"    -> "I know only little about the teachings of Daraman but as far as I heard they concentrate too much on the single individual instead on the world as a whole."
+"ankrahmun"   -> "This city is the best example where godless philosophies might lead to." 
+"ferumbras"   -> "He is only one of the many servants of the evil. Eventually he will fall but there will be others to take his place."
+"excalibug"   -> "One day this weapon will be unearthed and then it will be wielded against the servants of the evil."
+"assassin"    -> "The assassins are the eyes and the long arm of this damnable cult. They eliminate the enemies and those who found out too much about their plans. Be aware of that and always watch your back." 
+"dark","monk" -> "The dark monks are the teachers and seducers of this cult. They work covertly in the cities and train thieves and assassins in the underground base here."
+"teleport"    -> "I am still gathering my strength for a teleport home, but some power already has returned. Do you wish to be teleported out of this cell?",topic=1
+"safety"      -> *
+"help"        -> *
+"escape"      -> *
+"out"         -> *
+"door"        -> *
+Topic=1,"yes" -> "So be it!", Idle, EffectOpp(11), Teleport(32626,32402,10), EffectOpp(11)
+Topic=1       -> "As you wish."
+
+}
+

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="orc shaman" nameDescription="an orc shaman" race="blood" experience="110" speed="30" manacost="0">
+	<health now="115" max="115" />
+	<look type="6" head="0" body="0" legs="0" feet="0" corpse="4041" />
+	<targetchange interval="1000" chance="50" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="4" />
+		<flag runonhealth="15" />
+	</flags>
+	<attacks attack="13" skill="20">
+		<attack name="energy" min="-20" max="-30" range="7" chance="8">
+			<attribute key="shootEffect" value="energy" />
+			<attribute key="areaEffect" value="energy" />
+		</attack>
+		<attack name="fire" min="-5" max="-45" range="7" radius="1" target="1" chance="13">
+			<attribute key="shootEffect" value="fire" />
+			<attribute key="areaEffect" value="firearea" />
+		</attack>
+	</attacks>
+	<defenses armor="8" defense="10">
+		<defense name="healing" min="27" max="43" chance="4">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity energy="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<summons maxSummons="4">
+		<summon name="snake" chance="4" max="4" />
+	</summons>
+	<voices>
+		<voice sentence="Grak brrretz gulu." />
+		<voice sentence="Huumans stinkk!" />
+	</voices>
+	<loot>
+		<item id="2839" countmax="1" chance="45" /> <!-- a book -->
+		<item id="3358" countmax="1" chance="90" /> <!-- a chain armor -->
+		<item id="3352" countmax="1" chance="90" /> <!-- a chain helmet -->
+		<item id="2853" countmax="1" chance="110" /> <!-- a bag -->
+		<item id="3597" countmax="2" chance="110" /> <!-- a corncob -->
+		<item id="3031" countmax="5" chance="900" /> <!-- a gold coin -->
+		<item id="3277" countmax="1" chance="100" /> <!-- a spear -->
+		<item id="3289" countmax="1" chance="70" /> <!-- a staff -->
+		<item id="3072" countmax="1" chance="10" /> <!-- a wand of plague -->
+	</loot>
+</monster>

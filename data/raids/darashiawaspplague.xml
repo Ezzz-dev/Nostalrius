@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="0" type="event" message="Wasps are swarming Darashia."/>
+	<areaspawn delay="0" radius="22" centerx="33215" centery="32460" centerz="7">
+		<monster name="wasp" minamount="9" maxamount="18"/>
+	</areaspawn>
+	<areaspawn delay="0" radius="22" centerx="33254" centery="32414" centerz="7">
+		<monster name="wasp" minamount="9" maxamount="18"/>
+	</areaspawn>
+	<areaspawn delay="0" radius="22" centerx="33203" centery="32414" centerz="7">
+		<monster name="wasp" minamount="9" maxamount="18"/>
+	</areaspawn>
+</raid>

@@ -1,0 +1,44 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# blindorc.npc: Datenbank fuer den blinden Orkschmied
+
+Name = "Blind Orc"
+Outfit = (5,0-0-0-0)
+Home = [32102,32130,4]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"charach",! -> "Ikem Charach maruk."
+ADDRESS,!           -> "Buta humak!", Idle
+BUSY,"charach",!    -> "Ikem napak aluk."
+BUSY,!              -> NOP
+VANISH,!            -> "Futchi."
+
+"futchi"        -> "Futchi!", Idle
+"ikem","goshak" -> "Ikem pashak porak, bata, dora. Ba goshak maruk?"
+
+# verkauft SABRE, SHORT SWORD, SWORD, HATCHET
+"goshak","porak"        -> "Ikem pashak charcha, burka, burka bata, hakhak. Ba goshak maruk?"
+"goshak","charcha"      -> Type=3273, Amount=1, Price=25, "Maruk goshak ta?", Topic=1
+"goshak","burka"        -> Type=3294, Amount=1, Price=30, "Maruk goshak ta?", Topic=1
+"goshak","burka","bata" -> Type=3264, Amount=1, Price=85, "Maruk goshak ta?", Topic=1
+"goshak","hakhak"       -> Type=3276, Amount=1, Price=85, "Maruk goshak ta?", Topic=1
+
+# verkauft LEATHER ARMOR, STUDDED ARMOR, STUDDED HELMET
+"goshak","bata"         -> "Ikem pashak aka bora, tulak bora, grofa. Ba goshak maruk?"
+"goshak","bora"         -> Type=3361, Amount=1, Price=25, "Maruk goshak ta?", Topic=1
+"goshak","tulak","bora" -> Type=3378, Amount=1, Price=90, "Maruk goshak ta?", Topic=1
+"goshak","grofa"        -> Type=3376, Amount=1, Price=60, "Maruk goshak ta?", Topic=1
+
+# verkauft BRASS SHIELD
+"goshak","dora"         -> "Ikem pashak donga. Ba goshak maruk?"
+"goshak","donga"        -> Type=3411, Amount=1, Price=65,  "Maruk goshak ta?", Topic=1
+
+# verkauft BOGEN, PFEILE
+"goshak","batuk"        -> Type=3350, Amount=1, Price=400, "Ahhhh, maruk goshak batuk?", Topic=1
+"goshak","pixo"         -> Type=3447, Amount=10,Price=30,  "Maruk goshak tefar pixo ul batuk?", Topic=1
+
+Topic=1,"mok",CountMoney>=Price -> "Maruk rambo zambo!", DeleteMoney, Create(Type)
+Topic=1,"mok"                   -> "Maruk nixda!"
+Topic=1,"burp"                  -> "Buta maruk klamuk!"
+Topic=1                         -> *
+}

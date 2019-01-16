@@ -1,0 +1,54 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# Gamel.npc: Datenbank für den Gauner Gamel
+
+Name = "Gamel"
+Outfit = (129,79-132-115-116)
+Home = [32337,32207,8]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Pssst! Be silent. Do you wish to buy something?"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Not right now."
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Bye. Tell others about... my little shop here."
+
+"bye"      -> "Bye. Tell others about... my little shop here.", Idle
+"farewell" -> *
+"job"      -> "I am selling some... things."
+"name"     -> "Names don't matter."
+"gamel"    -> "Oh, you know my name. Please don't tell it to the others."
+
+"rebellion"       -> "Uhm... who sent you?", Topic=3
+"berfasmur"       -> "Never heard that name!"
+
+"offer"           -> "I sell maces, staffs, daggers and brass helmets."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"things"          -> *
+"help"            -> *
+
+"staff"              -> Type=3289, Amount=1,  Price=40,   "Do you want to buy it for %P gold?", Topic=1
+"dagger"             -> Type=3267, Amount=1,  Price=5,    "Do you want to buy it for %P gold?", Topic=1
+"mace"               -> Type=3286, Amount=1,  Price=90,   "Do you want to buy it for %P gold?", Topic=1
+"brass","helmet"     -> Type=3354, Amount=1,  Price=120,  "Do you want to buy it for %P gold?", Topic=1
+"throwing","knife"   -> Type=3298, Amount=1,  Price=25,   "Do you want to buy it for %P gold?", Topic=1
+
+%1,1<%1,"staff"              -> Type=3289, Amount=%1,  Price=40*%1,   "Do you want to buy %A staffs for %P gold?", Topic=1
+%1,1<%1,"dagger"             -> Type=3267, Amount=%1,  Price=5*%1,    "Do you want to buy %A daggers for %P gold?", Topic=1
+%1,1<%1,"mace"               -> Type=3286, Amount=%1,  Price=90*%1,   "Do you want to buy %A maces for %P gold?", Topic=1
+%1,1<%1,"brass","helmet"     -> Type=3354, Amount=%1,  Price=120*%1,  "Do you want to buy %A brass helmets for %P gold?", Topic=1
+%1,1<%1,"throwing","kni"     -> Type=3298, Amount=%1,  Price=25*%1,   "Do you want to buy %A throwing knives for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "And here it is.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Hey, you do not have enough gold."
+Topic=1                         -> "Maybe we will make the deal another time."
+
+"magic","crystal" -> Type=3061, Amount=1, "Did you bring me a magic crystal?", Topic=4
+Topic=3,"berfasmur"                       -> "So, you are a new recruit in the ranks of the rebellion! To proof your worthyness, go and get us a magic crystal."
+Topic=4,"yes",Count(Type)>=Amount -> "Brilliant! Bring it to the priest Lugri so that he can cast a deathcurse on the king. The password is 'death to noodles'."
+Topic=4,"yes",Count(Type)<Amount  -> "Idiot! You don't have the crystal!", Poison(2,10), EffectOpp(9), EffectMe(15)
+}

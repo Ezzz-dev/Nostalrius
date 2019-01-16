@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="dwarf soldier" nameDescription="a dwarf soldier" race="blood" experience="70" speed="48" manacost="360">
+	<health now="135" max="135" />
+	<look type="71" head="0" body="0" legs="0" feet="0" corpse="4166" />
+	<targetchange interval="1000" chance="0" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="21" skill="42">
+		<attack name="physical" min="-20" max="-40" range="7" chance="8">
+			<attribute key="shootEffect" value="bolt" />
+		</attack>
+	</attacks>
+	<defenses armor="9" defense="20">
+	</defenses>
+	<immunities>
+		<immunity poison="1" />
+	</immunities>
+	<voices>
+		<voice sentence="Hail Durin!" />
+	</voices>
+	<loot>
+		<item id="3092" countmax="1" chance="1" /> <!-- an axe ring -->
+		<item id="3266" countmax="1" chance="25" /> <!-- a battle axe -->
+		<item id="3446" countmax="4" chance="400" /> <!-- a bolt -->
+		<item id="3358" countmax="1" chance="90" /> <!-- a chain armor -->
+		<item id="3349" countmax="1" chance="40" /> <!-- a crossbow -->
+		<item id="3425" countmax="1" chance="50" /> <!-- a dwarven shield -->
+		<item id="3031" countmax="12" chance="350" /> <!-- a gold coin -->
+		<item id="3457" countmax="1" chance="100" /> <!-- a shovel -->
+		<item id="3375" countmax="1" chance="120" /> <!-- a soldier helmet -->
+		<item id="3723" countmax="2" chance="400" /> <!-- a white mushroom -->
+	</loot>
+</monster>

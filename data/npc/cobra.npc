@@ -1,0 +1,21 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# cobra.npc: Datenbank für die steincobra
+
+Name = "Cobra"
+Outfit = (0,2051)
+Home = [33366,32855,14]
+Radius = 0
+
+Behaviour = {
+ADDRESS,"hello$",QuestValue(270) > 0,Poison>500,! -> "Venture the path of decay!", Teleport(33397,32836,14), EffectOpp(11),SetQuestValue(270,0)
+ADDRESS,"hi$",QuestValue(270) > 0,Poison>500,!    -> *
+
+ADDRESS,"hello$",! -> "Begone! Hissssss! You bear not the mark of the cobra!", Idle
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Sssssilence!", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Hissssssssss."
+
+}

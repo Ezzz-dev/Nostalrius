@@ -1,0 +1,61 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# luna.npc: Datenbank für die Kräuterhändlerin Luna
+
+Name = "Luna"
+Outfit = (137,0-118-100-115)
+Home = [33254,31840,5]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Greetings, traveller."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Sorry, I'm too busy now."
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Goodbye, traveller."
+
+"bye"       -> "Goodbye, traveller.", Idle
+"name"      -> "I'm called Luna."
+"job"       -> "I sell various herbs, mushrooms, and flowers."
+"time"      -> "Sorry, I don't know."
+"king"      -> "I don't know much about the king, sorry."
+"tibianus"  -> *
+"army"      -> "I sometimes heal soldiers with my herbal mixtures."
+"heal"      -> *
+"ferumbras" -> "Mentioning his name makes me shiver."
+"excalibug" -> "I am not an expert for weapons."
+"thais"     -> "I prefer the wilderness to cities."
+"tibia"     -> *
+"carlin"    -> *
+"edron"     -> *
+"news"      -> "I fear I know nothing new that is of any importance."
+"rumors"    -> *
+
+"offer"           -> "I'm selling various herbs, mushrooms, and flowers."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"herbs"           -> "I have stone herbs, star herbs, and ferns. What do you want?"
+"mushroom"        -> "I have white, red, and brown mushrooms. Which one do you want?"
+"flowers"         -> "I have red roses and tulips. What do you want?"
+
+"white","mushroom" -> Type=3723, Amount=1, Price=6,  "Do you want to buy one of the white mushrooms for %P gold?", Topic=1
+"red","mushroom"   -> Type=3724, Amount=1, Price=12, "Do you want to buy one of the red mushrooms for %P gold?", Topic=1
+"brown","mushroom" -> Type=3725, Amount=1, Price=10, "Do you want to buy one of the brown mushrooms for %P gold?", Topic=1
+
+%1,1<%1,"white","mushroom" -> Type=3723, Amount=%1, Price=6*%1,  "Do you want to buy %A of the white mushrooms for %P gold?", Topic=1
+%1,1<%1,"red","mushroom"   -> Type=3724, Amount=%1, Price=12*%1, "Do you want to buy %A of the red mushrooms for %P gold?", Topic=1
+%1,1<%1,"brown","mushroom" -> Type=3725, Amount=%1, Price=10*%1, "Do you want to buy %A of the brown mushrooms for %P gold?", Topic=1
+
+
+"rose"             -> Type=3658, Amount=1, Price=11, "Do you want to buy a red rose for %P gold?", Topic=1
+"tulip"            -> Type=3668, Amount=1, Price=9,  "Do you want to buy a tulip for %P gold?", Topic=1
+"stone","herb"     -> Type=3735, Amount=1, Price=28, "Do you want to buy a stone herb for %P gold?", Topic=1
+"star","herb"      -> Type=3736, Amount=1, Price=21, "Do you want to buy a star herb for %P gold?", Topic=1
+"fern"             -> Type=3737, Amount=1, Price=24, "Do you want to buy a fern for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Come back, when you have enough money."
+Topic=1                         -> "Hmm, but next time."
+}

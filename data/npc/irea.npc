@@ -1,0 +1,78 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# irea.npc: Datenbank für die Bognerin Irea (Elfenstadt)
+
+Name = "Irea"
+Outfit = (64,0-0-0-0)
+Home = [32688,31610,7]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$",!       -> "Ashari %N."
+ADDRESS,"hi$",!          -> *
+ADDRESS,"ashari$",!      -> *
+ADDRESS,!                -> Idle
+BUSY,"hello$",!          -> "Wait %N.", Queue
+BUSY,"hi$",!             -> *
+BUSY,"ashari$",!         -> *
+BUSY,!                   -> NOP
+VANISH,!                 -> "Asha Thrazi."
+
+"bye"           -> "Asha Thrazi.", Idle
+"farewell"      -> *
+"asha","thrazi" -> *
+"job"           -> "I sell bows, arrows, crossbows and bolts. I also teach some spells."
+"name"          -> "I am known as Irea."
+"time"          -> "That's unimportant."
+
+"carlin"        -> "The druids of Carlin seek our guidance now and then."
+"thais"         -> "I don't understand what interest this humans form a far away land have in our town."
+"venore"        -> "Their traders are verry intrusive."
+"roderick"      -> "What is this humans use at all? I don't understabd it."
+"olrik"         -> "His trade seems to be the delivery of messages and items."
+
+"elves"         -> "Humans or dwarfs will never understand us."
+"dwarfs"        -> "Bearded, heavy, and small."
+"humans"        -> "Humans have so little time to learn." 
+"troll"         -> "I despise them." 
+
+"cenath"        -> "I often listen to their tales."
+"kuridai"       -> "They provide us with tools and metal."
+"deraisim"      -> "My people love the woods."
+"abdaisim"      -> "One day we will be reunited." 
+"teshial"       -> "They have left so long ago." 
+"ferumbras"     -> "Who is that?"
+"crunor"        -> "The master of nature. He nurtures us and is our benevolent protector."
+"excalibug"     -> "Our people have a bugfarm in the southeast of Ab'Dendriel."
+"news"          -> "My news are not for your ears."
+
+"magic"         -> "I teach spells to create enchanted arrows."
+"spell"         -> "I teach 'Conjure Arrow', 'Poison Arrow', and 'Explosive Arrow'."
+
+Paladin,"conjure","arrow"    -> String="Conjure Arrow", Price=450,  "Do you want to buy the spell 'Conjure Arrow' for %P gold?", Topic=3
+Paladin,"poison","arrow"     -> String="Poisoned Arrow", Price=700,  "Do you want to buy the spell 'Poisoned Arrow' for %P gold?", Topic=3
+Paladin,"explosive","arrow"  -> String="Explosive Arrow", Price=1000, "Do you want to buy the spell 'Explosive Arrow' for %P gold?", Topic=3
+
+"conjure","arrow"     -> "I'm sorry, but this spell is only for paladins."
+"poison","arrow"    -> *
+"explosive","arrow" -> *
+
+"bow"                -> Type=3350, Amount=1,  Price=350,  "Do you want to buy a bow for %P gold?", Topic=1
+"crossbow"           -> Type=3349, Amount=1,  Price=450,  "Do you want to buy a crossbow for %P gold?", Topic=1
+"arrow"              -> Type=3447, Amount=1, Price=2,   "Do you want to buy an arrow for %P gold?", Topic=1
+"bolt"               -> Type=3446, Amount=1, Price=3,   "Do you want to buy a bolt for %P gold?", Topic=1
+
+%1,1<%1,"bow"                -> Type=3350, Amount=%1,  Price=350*%1,  "Do you want to buy %A bows for %P gold?", Topic=1
+%1,1<%1,"crossbow"           -> Type=3349, Amount=%1,  Price=450*%1,  "Do you want to buy %A crossbows for %P gold?", Topic=1
+%1,1<%1,"arrow"           -> Type=3447, Amount=%1, Price=2*%1, "Do you want to buy %A arrows for %P gold?", Topic=1
+%1,1<%1,"bolt"            -> Type=3446, Amount=%1, Price=3*%1, "Do you want to buy %A bolts for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "And here it is.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Hey, you do not have enough gold."
+Topic=1                         -> "Maybe we will make the deal another time."
+
+Topic=3,"yes",SpellKnown(String)=1        -> "You already know that spell."
+Topic=3,"yes",Level<SpellLevel(String)    -> Amount=SpellLevel(String), "You need to advance to level %A to learn this spell."
+Topic=3,"yes",CountMoney<Price            -> "You do not have the gold to pay me."
+Topic=3,"yes"                             -> "You have learned it now.", DeleteMoney, EffectOpp(13), TeachSpell(String)
+Topic=3                                   -> "As you wish."
+}

@@ -1,0 +1,55 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# lokur.npc: Datenbank für den Postzwerg Lokur
+
+Name = "Lokur"
+Outfit = (160,57-79-98-95)
+Home = [32647,31904,8]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Hiho %N. May I help you?"
+ADDRESS,"hi$",!    -> "Hiho %N. May I help you?"
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Sorry %N, I am busy right now. One moment please.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Come back if you need my services."
+
+"bye"      -> "Come back if you need my services.", Idle
+"farewell" -> *
+"job"      -> "I am the royal postdwarf and damned proud of it."
+"office"   -> "It's not big but I like the company."
+"name"     -> "My name is Lokur Stampsmasher, son of Earth of the Dragoneaters."
+"time"     -> "Too bad, I forgot my watch at home."
+"mail"     -> "The mail system was invented by dwarfs! Do you want me to tell you about it?", Topic=1
+#"depot"    -> "Just walk towards them and you will find the items you stored in them during your last visit."
+"king"     -> "Our king has a treasure room and does not need a depot."
+"carlin"   -> "Imagine, they have a postoffice their too, jawoll."
+"thais"    -> *
+
+"kevin"                 -> "Ah, this human is persistant as a dwarf. A worthy leader indeed, jawoll."
+"postner"               -> *
+"postmasters","guild"   -> "The guild keeps things running. Organized and reliable. I appreciate that, jawoll."
+"join"                  -> "Our members are handpicked by Kevin postner in our headquarter." 
+"headquarter"           -> "Its south of kazordoon. Just follow that road, can't miss it."
+
+
+"measurements",QuestValue(235)>0  -> "Ask Kroox about that stuff."
+"measurements",QuestValue(234)>0  -> "Come on, I have no clue what they are. Better ask my armorer Kroox for such nonsense. Go and ask him for good ol' Lokurs measurements, he'll know.",SetQuestValue(235,1) 
+
+@"gen-post.ndb"
+
+#"letter" -> Amount=1, Price=5,  "So you want to buy a letter for %P gold?", Topic=2
+#"parcel" -> Amount=1, Price=10, "So you want to buy a parcel for %P gold?", Topic=3
+
+Topic=1,"yes" -> "The mail system enables you to send and receive letters and parcels. You can buy them here if you want."
+Topic=1       -> "Is there anything else, I can do for you?"
+
+#Topic=2,"yes",CountMoney>=Price -> "Here it is. Don't forget to write the name of the receiver in the first line and the address in the second one before you put the letter in a mailbox.", DeleteMoney, Create(3505)
+#Topic=2,"yes"                   -> "Oh, you have not enough gold to buy a letter."
+#Topic=2                         -> "Ok."
+
+#Topic=3,"yes",CountMoney>=Price -> "Here you are. Don't forget to write the name and the address of the receiver on the label. The label has to be in the parcel before you put the parcel in a mailbox.", DeleteMoney, Create(3503), Create(3507)
+#Topic=3,"yes"                   -> "Oh, you have not enough gold to buy a parcel."
+#Topic=3                         -> "Ok."
+}

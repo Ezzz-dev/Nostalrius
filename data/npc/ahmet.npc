@@ -1,0 +1,139 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# ahmet.npc: Datenbank für den pyramidenhändler Ahmet
+
+Name = "Ahmet"
+Outfit = (130,38-40-39-114)
+Home = [33126,32810,6]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Be mourned pilgrim in flesh."
+ADDRESS,"hi$",!    -> "Be mourned pilgrim in flesh."
+ADDRESS,"be","mourned","pilgrim","flesh",!    -> "Be mourned pilgrim in flesh."
+ADDRESS,!          -> Idle
+
+BUSY,"hello$",!    -> "Mourned %N, know that I am busy.", Queue
+BUSY,"hi$",!       -> *
+BUSY,"be","mourned","pilgrim","flesh",!    -> *
+BUSY,!             -> NOP
+VANISH,!           -> "May enlightenment be your path."
+
+"bye"      -> "May enlightenment be your path.", Idle
+"farewell" -> *
+"job"      -> "I sell equipment of all sorts."
+"name"     -> "I am the mourned Ahmet."
+"time"     -> "It were foolish of me to tell you the time, because then you won't buy a watch."
+"temple"   -> "The temple is a school for us mourned mortals. The teachings of the temple help us to find our way through our mortal days."
+"pharaoh"    -> "Blessed be the pharaoh. He is our saviour. I hope that one day I will be chosen."
+"arkhothep" -> *
+"oldpharaoh" -> "The foolish old pharaoh withheld knowledge and power from his son, knowing that he would surpass him in every aspects. But his son granted him the chance to ascend."
+"ashmunrah" -> *
+"scarab"    -> "The eternal burrowers are the keepers of all the secrets their kind has unearthed in countless aeons."
+"chosen"    -> "Only the most worthy and pious are chosen to join the armies of the pharaoh. In undeath they follow the path of ascension."
+
+"tibia"    -> "The world is nothing but a sigil of death, a monument of decay. We have to attune to death to become one with the world." 
+
+"carlin"   -> "The vain cities of the Tibian continent think they are at the centre of the universe. Little do they know about the wisdom of the pharaoh."
+"thais"    -> *
+"edron"    -> *
+"venore"   -> * 
+"kazordoon" -> "We rarely see a traveler of the small folk here."
+"dwarves"   -> *
+"dwarfes"   -> *
+"ab'dendriel" -> "Elves are a rare sight in our lands."
+"elves"       -> *
+"elfes"       -> *
+"darama"      -> "Life here is harsh, but only this way can we deny the temptations that might damage our Rah and our Uthun to our traitorous flesh."
+"darashia"    -> "The foolishness of their ways will eventually spell their doom."
+"daraman"    -> "He was close to the truth, but he lacked the wisdom and vision of our pharaoh." 
+"ankrahmun"  -> "Our city will endure the sands of the desert and the grinding teeth of time." 
+
+"pharaoh"        -> "Our pharaoh holds the key to our ascension. Praised be our pharaoh."
+"mortality"     -> "Mortality is our curse. Mourned shall we be."
+"false", "gods" -> "The great traitors are trying to doom us."
+
+"ascension"         -> "Godhood is at our disposal if only we throw of the shackles of mortal flesh."
+"Akh'rah","Uthun"   -> "The Akh'rah Uthun is what we are."
+"Akh"               -> "Your cursed bodys are called the Akh. As long as we are alive the Akh makes us weak and vulnerable."
+
+"undead"            -> "Undeath is the path to ascension which the chosen may follow."
+"undeath"           -> *
+"Rah"               -> "The Rah could be called our soul."
+"uthun"             ->  "The Uthun is that what we learn and remember."
+"mourn"             -> "We are mortals and thus miserable creatures that are to be mourned."
+
+"arena"        -> "The arena is east of here."
+"palace"       -> "The palace is the home of our beloved pharaoh."
+
+"torch"           -> Type=2920, Amount=1,  Price=2,    "Do you want to buy a torch for %P gold?", Topic=1
+"candelabr"       -> Type=2911, Amount=1,  Price=8,    "Do you want to buy a candelabrum for %P gold?", Topic=1
+"candlestick"     -> Type=2917, Amount=1,  Price=2,    "Do you want to buy a candlestick for %P gold?", Topic=1
+"bag"             -> Type=2863, Amount=1,  Price=4,    "Do you want to buy a bag for %P gold?", Topic=1
+"scroll"          -> Type=2815, Amount=1,  Price=5,    "Do you want to buy a scroll for %P gold?", Topic=1
+"document"        -> Type=2834, Amount=1,  Price=12,   "Do you want to buy a document for %P gold?", Topic=1
+"parchment"       -> Type=2835, Amount=1,  Price=8,    "Do you want to buy a parchment for %P gold?", Topic=1
+"shovel"          -> Type=3457, Amount=1,  Price=10,   "Do you want to buy a shovel for %P gold?", Topic=1
+"backpack"        -> Type=2871, Amount=1,  Price=10,   "Do you want to buy a backpack for %P gold?", Topic=1
+"scythe"          -> Type=3453, Amount=1,  Price=50,   "Do you want to buy a scythe for %P gold?", Topic=1
+"pick"            -> Type=3456, Amount=1,  Price=50,   "Do you want to buy a pick for %P gold?", Topic=1
+"watch"           -> Type=2906, Amount=1,  Price=20,   "Do you want to buy one of my high quality watches for %P gold?", Topic=1
+"rope"            -> Type=3003, Amount=1,  Price=50,   "Do you want to buy a rope for %P gold?", Topic=1
+"rod"             -> Type=3483, Amount=1,  Price=150,  "Do you want to buy a fishing rod for %P gold?", Topic=1
+"oil"             -> Type=2874, Data=7, Amount=1, Price=20, "Do you want to buy oil for %P gold?", Topic=1
+"crowbar"         -> Type=3304, Amount=1,  Price=260,  "Do you want to buy a crowbar for %P gold?", Topic=1
+"water","hose"    -> Type=2901, Amount=1,  Price=40, Data=1, "Do you want to buy a water hose for %P gold?", Topic=1
+"present"         -> Type=2856, Amount=1,  Price=10,   "Do you want to buy a present for %P gold?", Topic=1
+"bucket"          -> Type=2873, Amount=1,  Price=4,    "Do you want to buy a bucket for %P gold?", Topic=1
+"bottle"          -> Type=2875, Amount=1,  Price=3,    "Do you want to buy a bottle for %P gold?", Topic=1
+"cup"           -> Type=2881, Amount=1,  Price=2,    "Do you want to buy a cup for %P gold?", Topic=1
+"plate"         -> Type=2905, Amount=1,  Price=6,    "Do you want to buy a plate for %P gold?", Topic=1
+
+"worm"          -> "I sell worms only in sixpacks for 5 gold each, how many sixpacks of worms do you want to buy?"
+"worms"         -> *
+%1,"worms"      -> Type=3492, Amount=%1*6, Price=5*%1,   "So you want to buy some of my sixpacks with altogether %A worms for %P gold?", Topic=1
+%1,"six","pack" -> *
+
+%1,1<%1,"torch"           -> Type=2920, Amount=%1,  Price=2*%1,    "Do you want to buy %A torches for %P gold?", Topic=1
+%1,1<%1,"candelabr"       -> Type=2911, Amount=%1,  Price=8*%1,    "Do you want to buy %A candelabra for %P gold?", Topic=1
+%1,1<%1,"candlestick"     -> Type=2917, Amount=%1,  Price=2*%1,    "Do you want to buy %A candlesticks for %P gold?", Topic=1
+%1,1<%1,"bag"             -> Type=2863, Amount=%1,  Price=4*%1,    "Do you want to buy %A bags for %P gold?", Topic=1
+%1,1<%1,"scroll"          -> Type=2815, Amount=%1,  Price=5*%1,    "Do you want to buy %A scrolls for %P gold?", Topic=1
+%1,1<%1,"document"        -> Type=2834, Amount=%1,  Price=12*%1,   "Do you want to buy %A documents for %P gold?", Topic=1
+%1,1<%1,"parchment"       -> Type=2835, Amount=%1,  Price=8*%1,    "Do you want to buy %A parchments for %P gold?", Topic=1
+%1,1<%1,"shovel"          -> Type=3457, Amount=%1,  Price=10*%1,   "Do you want to buy %A shovels for %P gold?", Topic=1
+%1,1<%1,"backpack"        -> Type=2871, Amount=%1,  Price=10*%1,   "Do you want to buy %A backpacks for %P gold?", Topic=1
+%1,1<%1,"scythe"          -> Type=3453, Amount=%1,  Price=50*%1,   "Do you want to buy %A scythes for %P gold?", Topic=1
+%1,1<%1,"pick"            -> Type=3456, Amount=%1,  Price=50*%1,   "Do you want to buy %A picks for %P gold?", Topic=1
+%1,1<%1,"watch"           -> Type=2906, Amount=%1,  Price=20*%1,   "Do you want to buy %A of my high quality watches for %P gold?", Topic=1
+%1,1<%1,"rope"            -> Type=3003, Amount=%1,  Price=50*%1,   "Do you want to buy %A ropes for %P gold?", Topic=1
+%1,1<%1,"rod"             -> Type=3483, Amount=%1,  Price=150*%1,  "Do you want to buy %A fishing rods for %P gold?", Topic=1
+%1,1<%1,"oil"             -> Type=2874, Data=7, Amount=%1, Price=20*%1, "Do you want to buy %A vials of oil for %P gold?", Topic=1
+%1,1<%1,"crowbar"         -> Type=3304, Amount=%1,  Price=260*%1,  "Do you want to buy %A crowbars for %P gold?", Topic=1
+%1,1<%1,"water","hose"    -> Type=2901, Amount=%1,  Price=40*%1, Data=1, "Do you want to buy %A water hoses for %P gold?", Topic=1
+%1,1<%1,"present"         -> Type=2856, Amount=%1,  Price=10*%1,   "Do you want to buy %A presents for %P gold?", Topic=1
+%1,1<%1,"bucket"          -> Type=2873, Amount=%1,  Price=4*%1,    "Do you want to buy %A buckets for %P gold?", Topic=1
+%1,1<%1,"bottle"          -> Type=2875, Amount=%1,  Price=3*%1,    "Do you want to buy %A bottles for %P gold?", Topic=1
+%1,1<%1,"cup"           -> Type=2881, Amount=%1,  Price=2*%1,    "Do you want to buy %A cups for %P gold?", Topic=1
+%1,1<%1,"plate"         -> Type=2905, Amount=%1,  Price=6*%1,    "Do you want to buy %A plates for %P gold?", Topic=1
+
+"sell","rope"     -> Type=3003, Amount=1,   Price=8,    "Do you want to sell a rope for %P gold?", Topic=3
+"sell",%1,1<%1,"rope"     -> Type=3003, Amount=%1,   Price=8*%1,    "Do you want to sell %A ropes for %P gold?", Topic=3
+
+Topic=1,"yes",CountMoney>=Price -> "I hope it will serve you well, my prized customer.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "My twelve starving children don't allow me to sell it for less, o grandmaster of haggling."
+Topic=1                         -> "What a pity."
+
+Topic=3,"yes",Count(Type)>=Amount -> "I hardly can explain to my wife why I gave you that much money.", Delete(Type), CreateMoney
+Topic=3,"yes"                             -> "Sorry, you own none."
+Topic=3,"yes",Amount>1                    -> "Sorry, you do not have so many."
+Topic=3                                   -> "Maybe next time."
+
+"equipment"       -> "I sell shovels, picks, scythes, bags, ropes, backpacks, plates, cups, scrolls, documents, parchments, lightsources and watches. Of course, I sell fishing rods and six-packs of worms, too."
+"goods"           -> *
+"buy"             -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"offer"           -> *
+"light"          -> "I sell torches, candlesticks, candelabra, and oil."
+
+}

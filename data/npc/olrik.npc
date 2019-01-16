@@ -1,0 +1,92 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# olrik.npc: Datenbank für den Diener und Postillion Olrik (Elfenstadt)
+
+Name = "Olrik"
+Outfit = (128,115-79-117-76)
+Home = [32675,31698,7]
+Radius = 4
+
+Behaviour = {
+ADDRESS,"hello$",male,!      -> "Greetings, %N."
+ADDRESS,"hello$",female,!    -> "Greetings, %N. May I help you?"
+ADDRESS,"hi$",male,!         -> "Greetings, %N."
+ADDRESS,"hi$",female,!       -> "Greetings, %N. May I help you?"
+ADDRESS,"ashari$",!          -> "Greetings."
+ADDRESS,!                    -> Idle
+BUSY,"hello$",male,!         -> "A moment please, %N.", Queue
+BUSY,"hi$",male,!            -> *
+BUSY,"ashari$",male,!        -> *
+BUSY,"hello$",female,!       -> "%N! A moment please, my lady. I look forward to talk to you soon.", Queue
+BUSY,"hi$",female,!          -> *
+BUSY,"ashari$",female,!      -> *
+BUSY,!                       -> NOP
+VANISH,!                     -> "Farewell."
+
+"bye"           -> "Farewell.", Idle
+"farewell"      -> *
+"asha","thrazi" -> *
+
+"kevin"                 -> "He is the boss. Ther is allways some boss, so I don't bother about that."
+"postner"               -> *
+"postmasters","guild"   -> "Ah, they pay me and I do my work and thats it. Its some nice extra cash but I don't care much about that guild."
+"join"                  -> "If you realy think you have to join the postmasters guild ask Kevin Postner at the headquarter." 
+"headquarter"           -> "The postmasters guild headquarter is located south of the mountain known as the big old one, were the city of kazordoon can be found."
+
+"measurements",QuestValue(234)>0,QuestValue(240)<1  -> "My measurements? Listen, lets make that a bit more exciting ... No, no, not what you think! I mean let's gamble. I will roll a dice. If I roll a 6 you win and I'll tell you what you need to know, else I win and get 5 gold. Deal?", Amount=Random(1,6),Topic=5
+Topic=5,"no"  -> "This way you'll never get my measurements."
+
+Topic=5,"yes",CountMoney>=5,Amount=6 -> Price=5,"Ok, here we go ... 6! You have won! How lucky you are! So listen ...<tells you what you need to know>",SetQuestValue(234,QuestValue(234)+1),SetQuestValue(240,1) 
+
+Topic=5,CountMoney>=5          -> Price=5, "Ok, and its ... %A! You have lost. He he. Another game?", DeleteMoney, Topic=6
+Topic=5,CountMoney<5                         -> "I am sorry, but you don't have so much money."
+
+Topic=6,"yes" -> "Ok, no weights in the dice, no dirty tricks, are you ready?", Amount=Random(1,6),Topic=7
+Topic=6       -> "This way you'll never get my measurements."
+
+Topic=7,"yes",CountMoney>=5,Amount=6 -> Price=5,"Ok, here we go ... 6! You have won! How lucky you are! So listen ...<tells you what you need to know>",SetQuestValue(234,QuestValue(234)+1),SetQuestValue(240,1) 
+
+Topic=7,"no" -> "This way you'll never get my measurements."
+ 
+Topic=7,CountMoney>=5          -> Price=5, "Ok, and its ... %A! You have lost. He he. Another game?", DeleteMoney, Topic=6
+Topic=7,CountMoney<5                         -> "I am sorry, but you don't have so much money."
+
+"job"           -> "I am a servant of the ambassador and running the post office. Ask me if you have questions about the Royal Tibia Mail System."
+"name"          -> "My name is Olrik."
+"time"          -> "It's %T."
+
+"elves"         -> "What a noble and graceful race."
+"dwarfs"        -> "Uhm, let's say I prefer the company of elves."
+"carlin"        -> "A city full of women who surly only see whimps instead of real men like me has some appeal."
+"venore"        -> "Those generous merchants are charming people. I am always looking forward their visits."
+"humans"        -> "I feel so clumsy around those elves." 
+"troll"         -> "What nasty creatures." 
+"cenath"        -> "They are so wise and have an aura of mystic around them."
+"kuridai"       -> "They are so diligent in the things they do and such awesome fighters."
+"deraisim"      -> "They are so familiar with the woods and move with unparalleled grace."
+"abdaisim"      -> "I look forward to meet them one day." 
+"teshial"       -> "I wonder where they have gone." 
+"ferumbras"     -> "I heared he is dead, which is a good thing."
+"crunor"        -> "I honor all gods." 
+"tibianus"      -> "He is our beloved ruler."
+"roderick"      -> "The ambassador is the best choice for this position of responsibility."
+"excalibug"     -> "Pardon?"
+"news"          -> "We learn few important things about the tides of time here."
+"magic"         -> "You should talk to the elves about that."
+
+@"gen-post.ndb"
+
+#"mail"          -> "Our mail system is unique! And everyone can use it. Do you want to know more about it?", Topic=1
+#Topic=1,"yes"   -> "The Tibia Mail System enables you to send and receive letters and parcels. You can buy them here if you want."
+#Topic=1         -> "Is there anything else I can do for you?"
+
+#"letter" -> Amount=1, Price=5,  "Do you want to buy a letter for %P gold?", Topic=2
+#"parcel" -> Amount=1, Price=10, "Do you want to buy a parcel for %P gold?", Topic=3
+
+#Topic=2,"yes",CountMoney>=Price -> "Here it is. Don't forget to write the name of the receiver in the first line and the address in the second one before you put the letter in a mailbox.", DeleteMoney, Create(3505)
+#Topic=2,"yes"                   -> "Oh, you do not have enough gold to buy a letter."
+#Topic=2                         -> "Ok."
+
+#Topic=3,"yes",CountMoney>=Price -> "Here you are. Don't forget to write the name and the address of the receiver on the label. The label has to be in the parcel before you put the parcel in a mailbox.", DeleteMoney, Create(3503), Create(3507)
+#Topic=3,"yes"                   -> "Oh, you do not have enough gold to buy a parcel."
+#Topic=3                         -> "Ok."
+}

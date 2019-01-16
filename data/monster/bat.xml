@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="bat" nameDescription="a bat" race="blood" experience="10" speed="60" manacost="250">
+	<health now="30" max="30" />
+	<look type="122" head="0" body="0" legs="0" feet="0" corpse="4363" />
+	<targetchange interval="1000" chance="0" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="1" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag runonhealth="3" />
+	</flags>
+	<attacks attack="8" skill="16">
+	</attacks>
+	<defenses armor="1" defense="6">
+	</defenses>
+	<voices>
+		<voice sentence="Flap! Flap!" />
+	</voices>
+</monster>

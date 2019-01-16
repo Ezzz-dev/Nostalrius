@@ -1,0 +1,13 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# genTlegsV.ndb:  Datenbank für generischen Legsverkauf
+
+"leather","boot"   -> Type=3552, Amount=1, Price=2,  "Do you want to buy one of my wonderful leather boots for %P gold?", Topic=23
+"leather","legs"   -> Type=3559, Amount=1, Price=10, "Do you want to buy leather legs for %P gold?", Topic=23
+"studded","legs"   -> Type=3362, Amount=1, Price=60, "Do you want to buy studded legs for %P gold?", Topic=23
+"chain","legs"      -> Type=3558, Amount=1, Price=80,  "You want buy chain legs for %P gold?", Topic=23
+"brass","legs"      -> Type=3372, Amount=1, Price=195, "You want buy brass legs for %P gold?", Topic=23
+
+
+Topic=23,"yes",CountMoney>=Price -> "Thank you. Here it is.", DeleteMoney, Create(Type) 
+Topic=23,"yes"                   -> "Sorry, you do not have enough gold." 
+Topic=23                         -> "Maybe you will buy it another time." 

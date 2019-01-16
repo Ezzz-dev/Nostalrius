@@ -1,0 +1,11 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# Kulag.npc: Datenbank für die Stadtwache am Westtor
+
+Name = "Kulag, the guard"
+Outfit = (131,19-19-19-19)
+Home = [32287,32264,07]
+Radius = 2
+
+Behaviour = {
+@"guards-thais.ndb"
+}

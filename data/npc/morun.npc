@@ -1,0 +1,11 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# morun.npc: Datenbank für die Stadtwache Morun in Darashia
+
+Name = "Morun"
+Outfit = (129,95-5-26-76)
+Home = [33240,32393,6]
+Radius = 2
+
+Behaviour = {
+@"guards-darama.ndb"
+}

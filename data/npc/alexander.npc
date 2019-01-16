@@ -1,0 +1,69 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# alexander.npc: Datenbank fuer den Magiehaendler Alexander
+
+Name = "Alexander"
+Outfit = (130,96-63-71-97)
+Home = [33256,31839,3]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Hi there %N."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Just wait, %N.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "See you."
+
+"bye"       -> "See you.", Idle
+"name"      -> "I am Alexander."
+"job"       -> "I trade with runes and other magic items."
+"time"      -> "It's %T right now."
+"king"      -> "The king has not much interest in magic items as far as I know."
+"tibianus"  -> *
+"army"      -> "The army uses weapons and armor rather then items of magic."
+"ferumbras" -> "A hero has to be well prepared to face this threat."
+"excalibug" -> "Ah, I would trade a fortune for this fabulous item."
+"thais"     -> "I am glad the king founded this academy far away from the mundane troubles of Thais"
+"tibia"     -> "The world is filled with wonderous places and items."
+"carlin"    -> "I heard it's a city of druids."
+"edron"     -> "In our town, science and arts are thriving."
+"news"      -> "Ask for news and rumors in the tavern."
+"rumors"    -> *
+
+"offer"           -> "I'm selling runes, life rings, wands, rods and crystal balls."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+
+
+"rune"           -> "I sell blank runes and spell runes."
+
+"blank","rune"   -> Type=3147, Amount=1,  Price=10,    "Do you want to buy a blank rune for %P gold?", Topic=1
+%1,1<%1,"blank","rune"   -> Type=3147, Amount=%1, Price=10*%1, "Do you want to buy %A blank runes for %P gold?", Topic=1
+"life","ring"     -> Type=3052, Amount=1,  Price=900,   "Do you want to buy a life ring for %P gold?", Topic=1
+"crystal","ball"  -> Type=3076, Amount=1,  Price=530,   "Do you want to buy a crystal ball for %P gold?", Topic=1
+
+%1,1<%1,"life","ring"     -> Type=3052, Amount=%1,  Price=900*%1,   "Do you want to buy %A life rings for %P gold?", Topic=1
+%1,1<%1,"crystal","ball"  -> Type=3076, Amount=%1,  Price=530*%1,   "Do you want to buy %A crystal balls for %P gold?", Topic=1
+
+"sell","life","crystal"  -> Type=3061, Amount=1, Price=85,  "Do you want to sell a life crystal for %P gold?", Topic=2
+"sell","mind","stone"    -> Type=3062, Amount=1, Price=170, "Do you want to sell a mind stone for %P gold?", Topic=2
+"sell","crystal","ball"  -> Type=3076, Amount=1, Price=190, "Do you want to sell a crystal ball for %P gold?", Topic=2
+
+"sell",%1,1<%1,"life","crystal"  -> Type=3061, Amount=%1, Price=85*%1,  "Do you want to sell %A life crystals for %P gold?", Topic=2
+"sell",%1,1<%1,"mind","stone"    -> Type=3062, Amount=%1, Price=170*%1, "Do you want to sell %A mind stones for %P gold?", Topic=2
+"sell",%1,1<%1,"crystal","ball"  -> Type=3076, Amount=%1, Price=190*%1, "Do you want to sell %A crystal balls for %P gold?", Topic=2
+
+Topic=1,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Come back, when you have enough money."
+Topic=1                         -> "Hmm, but next time."
+
+Topic=2,"yes",Count(Type)>=Amount -> "Ok. Here is your money.", Delete(Type), CreateMoney
+Topic=2,"yes"                             -> "Sorry, you do not have one."
+Topic=2,"yes",Amount>1                    -> "Sorry, you do not have so many."
+Topic=2                                   -> "Maybe next time."
+
+@"gen-t-runes-prem-s.ndb"
+@"gen-t-wands-prem-s.ndb"
+}

@@ -1,0 +1,123 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# kawill.npc: Datenbank für den Geomancer Kawill (Zwergenstadt)
+
+Name = "Kawill"
+Outfit = (66,0-0-0-0)
+Home = [32644,31969,12]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",!      -> "Welcome %N! May earth protect you!"
+ADDRESS,"hi$",!         -> *
+ADDRESS,!               -> Idle
+BUSY,"hello$",!         -> "Please wait a minute, %N.", Queue
+BUSY,"hi$",!            -> *
+BUSY,"heal$",Burning>0 -> "You are burning. Let me help you.", Burning(0,0), EffectOpp(15)
+BUSY,"heal$",Poison>0  -> "You are poisoned. Let me help you.", Poison(0,0), EffectOpp(14)
+BUSY,"heal$",HP<40     -> "You are hurt, my child, let me heal your wounds.", HP=40, EffectOpp(13)
+BUSY,"heal$"           -> "You aren't looking really bad. Sorry, I can't help you."
+BUSY,!                  -> NOP
+VANISH,!                -> "Earth under your feet, pilgrim."
+
+"bye"            -> "Earth under your feet, %N!", Idle
+"farewell"       -> *
+
+"fire",PvPEnforced,! -> "The lifeforce of this world is wanig. There are no more blessings avaliable on this world."
+"suns",PvPEnforced,! -> *
+"fire","suns"     -> "You can get the blessing of the two suns in the suntower near Ab'Dendriel."
+
+"job"            -> "I am the great geomancer of dwarvenkind."
+"name"           -> "I am Kawill Marbleeye, Son of Earth, from the Molten Rock."
+"tibia"          -> "Nice world in general. It's a shame there is so much water ruining the general impression."
+"kazordoon"      -> "By using the powers of fire and earth we forced the river that once wound its way through the big old one in other directions, and created our home." 
+"big","old"      -> "The mountain we live in is called the big old one. It's the mountain of mountains, and it isand like a friend and protector to our race."
+"elves"          -> "Who cares for that silly people."
+"humans"         -> "We are allied with this young race, though they seldom have the wisdom to listen to us." 
+"orcs"           -> "Stupid beasts. Their savagery is only rivalled by their smell." 
+"minotaurs"      -> "They lost their way long ago. Now they are lost and doomed. It should be a warning to all of us."
+"geomancer"      -> "We investigate the will of the earth. It is our duty to make sure things to work in their natural way."
+"god"            -> "The gods are treacherous and vain. They want to use us like they did in the past. Only the elements can be trusted, because all they want is for nature to run its set course."
+"earth"          -> "The lifegiving earth protects us, feeds us and takes us home after death."
+"fire"           -> "Where earth is giving, fire is taking. That is the way of the elements."
+"life"           -> "Life is born by earth and fed by earth."
+"plant"          -> "Plants are minor messengers of earth. If you understand the soil you understand the plants."
+"citizen"        -> "Many people are living in the embracement of earth in Kazordoon."
+"kroox"          -> "He is a fine smith and his armour may save your neck one day."
+"jimbin"         -> "He is a jolly fellow and one of the oldest dwarves alive."
+"maryza"         -> "She is a fine cook, jawoll."
+"bezil"          -> "Bezil and Nezil have pawn and equpiment shop with an amazing stock."
+"nezil"          -> *
+"uzgod"          -> "Uzgod is a blacksmith and understands the ways of his element well."
+"etzel"          -> "I fear the sorcerers focus on the destructive forces of fire. They forget about the protection earth could provide."
+"motos"          -> "The scars in this dwarf's face tell the tale of many a great battle."
+"durin"          ->  "The celestial paladin, the protector of our race. The only divine being we care for and the only one who still cares for dwarfs."
+"duria"          -> "The first knight of dwarvenkind is a fine woman."
+"emperor"        -> "The emperor has rarely visited the temple district in the last years. He should care more about spirituality then about politics. Jawoll."
+"kruzak"         -> *
+"pyromancer"     -> "They are the followers of the great flame."
+"technomancer"   -> "FOOLS! FOOLS! ALL OF THEM! MAY EARTH SWALLOW THEM ALL!"
+"motos"          -> "He finally made his peace with his own heart." 
+"general"        -> *
+"army"           -> "Our fortresses are strong and easy to defend. Any aggressor will be smashed by our armies. Most intruders will not get manage to pass the colossus."
+"colossus"       -> "The big fortress that guards our realm is shaped like a dwarf."
+"ferumbras"      -> "The day will come when he finally bites the dust."
+"excalibug"      -> "Ah, a weapon to be feared by man, beast and god alike, jawoll. He who wields it will be both blessed and cursed at the same time."
+"news"           -> "There will be nothing new, but every pain and every pleasure will return to you, and all in the same order. The eternal hour glass of existence will be turned again and again, and you will be turned with it, little speck of dust."
+"Nietzsche"      -> "In his mind he might have been a giant, but in his heart he was a dwarf."
+"monster"        -> "May the earth swallow them all!"
+"stone","golem"  -> "These beings are filled with the power of earth. Therefore they, too, are sacred in a way."
+"help"           -> "I am a mere diviner of earth's will and not allowed to help you."
+"quest"          -> "There's nothing I need, better ask others."
+"task"           -> *
+"what","do"      -> *
+"gold"           -> "Gold is one of earth's treasures. To have gold is to be blessed by earth. To be rich is to be favoured by earth."
+"money"          -> *
+"equipment"      -> "You can buy equiment in Bezil's and Nezil's little shop."
+"fight"          -> "Never forget your defence when fighting."
+
+"heal$",Burning>0 -> "You are burning. Let me help you.", Burning(0,0), EffectOpp(15)
+"heal$",Poison>0  -> "You are poisoned. Let me help you.", Poison(0,0), EffectOpp(14)
+"heal$",HP<40     -> "You are hurt, my child. Let me heal your wounds.", HP=40, EffectOpp(13)
+
+"heal$",PvPEnforced -> "You aren't looking that bad."
+"heal$"               -> "You aren't looking that bad. Sorry, I can't help you. But if you are looking for additional protection you should go on the pilgrimage of ashes."
+
+"blessing",PvPEnforced,!  -> "The lifeforce of this world is waning. There are no more blessings avaliable on this world."
+"pilgrimage",PvPEnforced,! -> *
+"ashes",PvPEnforced,! -> *
+
+"spiritual",PvPEnforced,! -> *
+"shielding",PvPEnforced,! -> *
+"sacred","places",PvPEnforced,! -> *
+"spark",PvPEnforced,! -> *
+"phoenix",PvPEnforced,! -> *
+"embrace",PvPEnforced,! -> *
+"fire",PvPEnforced,! -> *
+"suns",PvPEnforced,! -> *
+"wisdom",PvPEnforced,! -> *
+"solitude",PvPEnforced,! -> *
+
+
+"pilgrimage"     -> "Whenever you recive a lethal wound your lifeforce is damaged. With every single of the five blessings you have this damage will be reduced."
+"ashes"          -> *
+"blessing"  -> "There are five different blessings available in five sacred places. These blessings are: the spiritual shielding, the spark of the phoenix, the embrace of tibia, the fire of the suns and the wisdom of solitude." 
+"sacred","places"  -> "Just ask in which of the five blessings you are interested in."
+"spiritual" -> "You can receive the spiritual shielding which in the whiteflower temple south of thais."
+"shielding" -> *
+"spark" -> "The spark of the phoenix is given by me and by the great pyromancer in the nearby firetemple. Do you wish to receive my part of the blessing of the phoenix?", topic=1
+"phoenix" -> *
+"embrace" -> "The druids north of Carlin will provide you with the embrace of tibia."
+# "fire","suns"     -> "You can get the blessing of the two suns in the suntower near Ab'Dendriel."
+# "suns"      -> *
+# nach oben gestellt wg antwort auf fire
+"wisdom" -> "Talk to the hermit Eremo on the isle of Cormaya about this blessing."
+"solitude" -> *
+
+Topic=1,"yes", QuestValue(199) > 0,!        -> "You already possess my blessing."
+Topic=1,"yes", QuestValue(102) > 0,!        -> "You already possess my blessing."
+Topic=1,"yes"                             -> "So receive the blessing of the live-giving earth, pilgrim.", EffectOpp(13),SetQuestValue(199,1)
+Topic=1                                   -> "Ok. If you don't want it ... ."
+
+
+"time"           -> "Time is not of importance."
+}

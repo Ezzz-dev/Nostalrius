@@ -1,0 +1,27 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gen-t-shield-b.ndb: Datenbank für generischen Schildkauf
+
+"sell","wooden","shield"      -> Type=3412, Amount=1, Price=5,   "Do you want to sell a wooden shield for %P gold?", Topic=52
+"sell","battle","shield"      -> Type=3413, Amount=1, Price=95,  "Do you want to sell a battle shield for %P gold?", Topic=52
+"sell","steel","shield"       -> Type=3409, Amount=1, Price=80,  "Do you want to sell a steel shield for %P gold?", Topic=52
+"sell","brass","shield"       -> Type=3411, Amount=1, Price=16,  "Do you want to sell a brass shield for %P gold?", Topic=52
+"sell","plate","shield"       -> Type=3410, Amount=1, Price=45,  "Do you want to sell a plate shield for %P gold?", Topic=52
+"sell","dwarven","shield"     -> Type=3425, Amount=1, Price=100, "You want sell a dwarven shield for %P gold?", Topic=52
+"sell","guardians","shield"   -> Type=3415, Amount=1, Price=180, "Do you want to sell this for %P gold?", Topic=52
+"sell","dragon","shield"      -> Type=3416, Amount=1, Price=360, "Do you want to sell this for %P gold?", Topic=52
+
+
+"sell",%1,1<%1,"wooden","shield"      -> Type=3412, Amount=%1, Price=5*%1,   "Do you want to sell those wooden shields for %P gold?", Topic=52
+"sell",%1,1<%1,"battle","shield"      -> Type=3413, Amount=%1, Price=95*%1,  "Do you want to sell those battle shields for %P gold?", Topic=52
+"sell",%1,1<%1,"steel","shield"       -> Type=3409, Amount=%1, Price=80*%1,  "Do you want to sell those steel shields for %P gold?", Topic=52
+"sell",%1,1<%1,"brass","shield"       -> Type=3411, Amount=%1, Price=16*%1,  "Do you want to sell those brass shields for %P gold?", Topic=52
+"sell",%1,1<%1,"plate","shield"       -> Type=3410, Amount=%1, Price=45*%1,  "Do you want to sell those plate shields for %P gold?", Topic=52
+"sell",%1,1<%1,"dwarven","shield"     -> Type=3425, Amount=%1, Price=100*%1, "Do you want sell those dwarven shields for %P gold?", Topic=52
+"sell",%1,1<%1,"guardians","shield"   -> Type=3415, Amount=%1, Price=180*%1, "Do you want to sell those guardian shields for %P gold?", Topic=52
+"sell",%1,1<%1,"dragon","shield"      -> Type=3416, Amount=%1, Price=360*%1, "Do you want to sell those dragon shields for %P gold?", Topic=52
+
+
+
+Topic=52,"yes",CountMoney>=Price -> "Thank you. Here it is.", DeleteMoney, Create(Type) 
+Topic=52,"yes"                   -> "Sorry, you do not have enough gold." 
+Topic=52                         -> "Maybe you will buy it another time." 

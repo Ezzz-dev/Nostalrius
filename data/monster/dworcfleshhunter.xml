@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="dworc fleshhunter" nameDescription="a dworc fleshhunter" race="blood" experience="35" speed="34" manacost="300">
+	<health now="85" max="85" />
+	<look type="215" head="0" body="0" legs="0" feet="0" corpse="4372" />
+	<targetchange interval="1000" chance="0" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="1" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag runonhealth="8" />
+	</flags>
+	<attacks attack="17" skill="25" poison="20">
+		<attack name="physical" min="-5" max="-15" range="7" chance="12">
+			<attribute key="shootEffect" value="throwingknife" />
+		</attack>
+	</attacks>
+	<defenses armor="3" defense="8">
+	</defenses>
+	<immunities>
+		<immunity poison="1" />
+	</immunities>
+	<voices>
+		<voice sentence="Grak brrretz!" />
+		<voice sentence="Grow truk grrrrr." />
+		<voice sentence="Prek tars, dekklep zurk." />
+	</voices>
+	<loot>
+		<item id="3441" countmax="1" chance="10" /> <!-- a bone shield -->
+		<item id="3471" countmax="1" chance="90" /> <!-- a cleaver -->
+		<item id="3031" countmax="10" chance="800" /> <!-- a gold coin -->
+		<item id="3347" countmax="1" chance="5" /> <!-- a hunting spear -->
+		<item id="3361" countmax="1" chance="110" /> <!-- a leather armor -->
+		<item id="3299" countmax="1" chance="20" /> <!-- a poison dagger -->
+		<item id="3346" countmax="1" chance="1" /> <!-- a ripper lance -->
+		<item id="3114" countmax="3" chance="30" /> <!-- a skull -->
+		<item id="2920" countmax="1" chance="55" /> <!-- a torch -->
+		<item id="3403" countmax="1" chance="5" /> <!-- a tribal mask -->
+	</loot>
+</monster>

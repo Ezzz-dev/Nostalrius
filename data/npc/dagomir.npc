@@ -1,0 +1,13 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# dagomir.npc: Datenbank für den "Bankier" Dagomir
+
+Name = "Dagomir"
+Outfit = (130,0-2-41-76)
+Home = [33018,32047,5]
+Radius = 0
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Wha... what?? HOW DARE YOU!!?? LEAVE ME ALONE ON MY TOILET AT ONCE!", Idle
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+}

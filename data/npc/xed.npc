@@ -1,0 +1,65 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# Xed.npc: Datenbank für den Bogner Xed
+
+Name = "Xed"
+Outfit = (129,78-36-57-97)
+Home = [32904,32117,6]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Greetings, %N. Welcome to the distance fighting booth of the Ironhouse."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "One moment please, %N.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Goodbye, and may the gods be with you."
+
+"bye"             -> "Goodbye, and may the gods be with you.", Idle
+"farewell"        -> *
+"job"             -> "I am the humble supplier for distance fighting weapons of the Ironhouse, owned by Abran Ironeye."
+"fletcher"        -> *
+"name"            -> "People call me Xed, but my full name is Xedem."
+"time"            -> "I don't know, maybe what you really need is a watch."
+"hurt"            -> "Go to a priest. I am sure they will fix you up." 
+"Abran","Ironeye" -> "He is the owner of this market, although - just between you and me - I'm not so sure he's honest."
+"honest"          -> "Well, I overheard the boss discussing some shady deals with a man in a black cloak." 
+"shady","deals"   -> "Something about a sword only great warlords can use and a rare distance fighting item." 
+"rare","distance" -> "Yes, but I believe this is nothing but lies seeing that there are only a few distance fighting weapons."
+"amazons"         -> "They are a band or tribe of strange women that have nothing in common with civilized men like me."
+"general"         -> "You must be talking of the great general Benjamin. He saved the kingdom from ferumbras you know."
+"army"            -> "We supply the archers of the army with distance fighting weapons."
+"ferumbras"       -> "I heard rumours somewhere that his father was called Hugo."
+"Xed"             -> "Yeah, nice name, eh?"
+"excalibug"       -> "I think that was the sword they were talking about. Said something about a man in Edron that could get it for him."
+"news"            -> "Some people say Ferumbras isn't really dead. Crazy kids!"
+"help"            -> "I sell items of the distance type."    
+"monster"         -> "Yeah, these awful beasts. They live in the swamps near the city and in dark dungeons."    
+"dungeon"         -> "Oh, they are all over. You never see more of them than in Kaz, though."    
+"Kaz"             -> "Oh, that's short for Kazordoon." 
+
+"buy"             -> "I am selling bows, crossbows, and ammunition. Do you need anything?"
+"do","you","sell" -> *
+"do","you","have" -> *
+"offer"           -> *
+"goods"           -> *
+"ammo"            -> "Do you need arrows for a bow, or bolts for a crossbow?"
+"ammunition"      -> *
+
+"sell","bow"      -> "I don't buy used bows."
+"sell","crossbow" -> "I don't buy used crossbows."
+
+"bow"             -> Type=3350, Amount=1,  Price=400,  "Do you want to buy a bow for %P gold?", Topic=1
+"crossbow"        -> Type=3349, Amount=1,  Price=500,  "Do you want to buy a crossbow for %P gold?", Topic=1
+"arrow"           -> Type=3447, Amount=1, Price=2,   "Do you want to buy an arrows for %P gold?", Topic=1
+"bolt"            -> Type=3446, Amount=1, Price=3,   "Do you want to buy a bolts for %P gold?", Topic=1
+
+%1,1<%1,"bow"          -> Type=3350, Amount=%1, Price=400*%1, "Do you want to buy %A bows for %P gold?", Topic=1
+%1,1<%1,"crossbow"     -> Type=3349, Amount=%1, Price=500*%1, "Do you want to buy %A crossbows for %P gold?", Topic=1
+%1,1<%1,"arrow"        -> Type=3447, Amount=%1, Price=2*%1,   "Do you want to buy %A arrows for %P gold?", Topic=1
+%1,1<%1,"bolt"         -> Type=3446, Amount=%1, Price=3*%1,   "Do you want to buy %A bolts for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Come back, when you have enough money."
+Topic=1                         -> "Hmm, but next time."
+}

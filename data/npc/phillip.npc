@@ -1,0 +1,52 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# phillip.npc: Datenbank für den Lehrer Phillip
+
+Name = "Phillip"
+Outfit = (128,116-54-68-76)
+Home = [32369,31764,7]
+Radius = 4
+
+Behaviour = {
+ADDRESS,"hello$",Level<4,!  -> "Hello, pupil %N. I hope I can help you on your quest for knowledge."
+ADDRESS,"hi$",Level<4,!     -> *
+ADDRESS,"hello$",Level<15,! -> "Hello, seeker of knowledge %N. How may I assist you?"
+ADDRESS,"hi$",Level<15,!    -> *
+ADDRESS,"hello$",Level<25,! -> "Hello, mighty adventurer %N. Can I teach you something you don't know?"
+ADDRESS,"hi$",Level<25,!    -> *
+ADDRESS,"hello$",!          -> "Hello, famous %N. It should be you teaching me!"
+ADDRESS,"hi$",!             -> *
+ADDRESS,!                   -> Idle
+BUSY,"hi$",!                -> "Patience, %N. Listen to my words and learn.", Queue
+BUSY,"hello$",!             -> *
+BUSY,!                      -> NOP
+VANISH,!                    -> "Did the bell ring?"
+
+"bye"            -> "Go and be careful. Remember what you have learned!", Idle
+"farewell"       -> *
+"how","are","you"-> "I am fine, thank you very much."
+"sell"           -> "My business is knowlegde and it is for free."
+"job"            -> "I am honored to be teacher in this school."
+"teacher"        -> "I run this school, there are other travelling teachers who we call Loremasters."
+"loremaster"     -> "If you are lucky you'll meet one in your journeys."
+"name"           -> "My name is Phillip."
+"time"           -> "It is %T."
+"help"           -> "I will provide you with all knowledge I have."
+"monster"        -> "Monsters come in different shape and power. It's said there is a zoo in the dwarfs' town."
+"dungeon"        -> "Dungeons are places of danger and puzzles. In some of them a bright mind will serve you more then a blade."
+"sewer",female   -> "The sewers of Carlin are a disgusting place. Better never crawl around in these stinking tunnels."
+"sewer",male     -> "An interesting place you should consider to visit."
+"thank","you"    -> "You don't have to thank me, it's only my duty."
+"god"            -> "To learn about gods, visit the temples and talk to the priests."
+"king"           -> "The southern king is called Tibianus. He and our queen Eloise are in a constant struggle."
+"queen"          -> * 
+"rumour"         -> "I don't like rumours."
+"gossip"         -> *
+"news"           -> *
+"weapon"         -> "To learn about weapons read appropriate books or talk to the smiths."
+"magic"          -> "To learn about magic talk to the guild leaders."
+"rebellion"      -> "Rebellion? What for? We are contend with our situation."
+"in","tod","we","trust" -> "Tod will come and save us all. He will bring freedom and beer to the men of Carlin."
+"lugri"          -> "This servant of evil is protected by the dark gods and can't be harmed."
+"ferumbras"      -> "He is a follower of evil. His powers were boosted by a sinister force and he is beyond human restrictions now."
+"excalibug"      -> "This weapon is said to be very powerful and unique. It was hidden in ancient times and now is thought to be lost."
+}

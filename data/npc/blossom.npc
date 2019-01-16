@@ -1,0 +1,11 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# blossom.npc: Datenbank für die Wächterin Blossom Bonecrusher
+
+Name = "Blossom Bonecrusher"
+Outfit = (139,96-19-63-95)
+Home = [32390,31787,7]
+Radius = 3
+
+Behaviour = {
+@"guards-carlin.ndb"
+}

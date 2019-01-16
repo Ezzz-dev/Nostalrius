@@ -1,0 +1,11 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# tim.npc: Datenbank für die Stadtwache am Osttor
+
+Name = "Tim, the guard"
+Outfit = (131,19-19-19-19)
+Home = [32428,32226,6]
+Radius = 4
+
+Behaviour = {
+@"guards-thais.ndb"
+}

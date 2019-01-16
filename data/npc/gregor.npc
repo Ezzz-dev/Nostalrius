@@ -1,0 +1,84 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gregor.npc: Datenbank fuer den Ritter Gregor
+
+Name = "Gregor"
+Outfit = (131,38-38-38-38)
+Home = [32407,32202,6]
+Radius = 4
+
+Behaviour = {
+ADDRESS,Knight,"hello$",! -> "Welcome home, Knight %N!"
+ADDRESS,Knight,"hi$",!    -> *
+ADDRESS,"hello$",!        -> "Greetings, %N. What do you want?"
+ADDRESS,"hi$",!           -> *
+ADDRESS,!                 -> Idle
+BUSY,"hello$",!           -> "Please wait a moment, %N.", Queue
+BUSY,"hi$",!              -> *
+BUSY,!                    -> NOP
+VANISH,!                  -> "Be careful on your journeys."
+
+"bye"            -> "Be careful on your journeys.", Idle
+"farewell"       -> *
+"job"            -> "I am the first knight. I trained some of the greatest heroes of Tibia."
+"name"           -> "You are joking, eh? Of course, you know me. I am Gregor, the first knight."
+"time"           -> "It is time to join the Knights!"
+"king"           -> "Hail to our King!"
+"tibianus"       -> *
+"quentin"        -> "I will never understand this peaceful monks and priests."
+"lynda"          -> "Before she became a priest she won the Miss Tibia contest three times in a row."
+"harkath"        -> "One of Tibia's greatest warriors and strategists." 
+"army"           -> "I teached many of the guards personally."
+"ferumbras"      -> "A fine game to hunt. But be careful, he cheats!"
+"general"        -> "General Harkath Bloodblade, a rolemodel." 
+"sam"            -> "He has the muscles, but lacks the guts."
+"gorn"           -> "Always concerned with his profit. What a loss! He was adventuring with baxter in the old days."
+"frodo"          -> "I and my students often share a cask of beer or wine at Frodo's hut."
+"elane"          -> "A bow might be a fine weapon for someone not strong enough to wield a REAL weapon."
+"muriel"         -> "Bah, go away with these sorcerer tricks. Only cowards use tricks."
+"gregor"         -> "A great name, isn't it?"
+"marvik"         -> "Old Marvik saved life and limb of many of my boys and girls."
+"bozo"           -> "Some day someone will make something happen to him..."
+"baxter"         -> "He was an adventurer once." 
+"oswald"         -> "What an idiot." 
+"sherry"         -> "Peaceful farmers." 
+"donald"         -> * 
+"mcronald"       -> * 
+"lugri"          -> "If he would have some guts he would fight for what he's talking about."
+"excalibug"      -> "Many brave warriors died on the quest to find that fabled weapon."
+"news"           -> "Times of war are at hand."
+
+"hero"           -> "Of course, you heard of them. Knights are the best fighters in Tibia."
+"tibia"          -> "Beautiful Tibia. And with our help everyone is safe."
+"knight"         -> "Knights are the warriors of Tibia. Without us, no one would be safe. Every brave and strong man or woman can join us."
+"vocation"       -> "Your vocation is your profession. There are four vocations in Tibia: Knights, paladins, sorcerers, and druids."
+"spellbook"      -> "In a spellbook, your spells are listed. There you will find the pronunciation of each spell. If you want to buy one, visit Muriel, the sorcerer."
+
+Knight,"spell"  -> "I can teach you healing spells and support spells. What kind of spell do you wish to learn? You can also tell me for which level you would like to learn a spell, if you prefer that.", Topic=2
+"spell"          -> "Sorry, I only sell spells to knights."
+
+Knight,"instant","spell"      -> "I can teach you healing spells and support spells. What kind of spell do you wish to learn?"
+Knight,"healing","spell"      -> "In this category I have 'Light Healing' and 'Antidote'."
+Knight,"support","spell"      -> "In this category I have 'Light', 'Find Person' and 'Great Light'."
+
+Topic=2,"healing","spell"      -> "In this category I have 'Light Healing' and 'Antidote'."
+Topic=2,"support","spell"      -> "In this category I have 'Light', 'Find Person' and 'Great Light'."
+Topic=2,"bye"                  -> "Be careful on your journeys.", Idle
+
+Topic=2,"8$" -> "For level 8 I have 'Find Person' and 'Light'.", Topic=2
+Topic=2,"9$" -> "For level 9 I have 'Light Healing'.", Topic=2
+Topic=2,"10$" -> "For level 10 I have 'Antidote'.", Topic=2
+Topic=2,"13$" -> "For level 13 I have 'Great Light'.", Topic=2
+Topic=2       -> "Sorry, I have only spells for level 8, 9, 10 and 13.", Topic=2
+
+Knight,"find","person"   -> String="Find Person", Price=80,  "Do you want to buy the spell 'Find Person' for %P gold?", Topic=3
+Knight,"light"           -> String="Light", Price=100, "Do you want to buy the spell 'Light' for %P gold?", Topic=3
+Knight,"light","healing" -> String="Light Healing", Price=170, "Do you want to buy the spell 'Light Healing' for %P gold?", Topic=3
+Knight,"antidote"        -> String="Antidote", Price=150, "Do you want to buy the spell 'Antidote' for %P gold?", Topic=3
+Knight,"great","light"   -> String="Great Light", Price=500, "Do you want to buy the spell 'Great Light' for %P gold?", Topic=3
+
+Topic=3,"yes",SpellKnown(String)=1        -> "You already know how to cast this spell."
+Topic=3,"yes",Level<SpellLevel(String)    -> Amount=SpellLevel(String), "You have to be level %A to learn this spell."
+Topic=3,"yes",CountMoney<Price            -> "Return when you have enough gold."
+Topic=3,"yes"                             -> "Here you are. Look in your spellbook for the pronunciation of this spell.", DeleteMoney, EffectOpp(13), TeachSpell(String)
+Topic=3                                   -> "Maybe next time."
+}

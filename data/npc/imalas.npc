@@ -1,0 +1,57 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# imalas.npc: Datenbank für den Nahrungsmittelhändler Imalas
+
+Name = "Imalas"
+Outfit = (128,115-10-39-114)
+Home = [32334,31801,7]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Hello %N! What do you need?"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Sorry %N, I am already talking to a customer. Please wait.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Good bye."
+
+"bye"       -> "Good bye.", Idle
+"farewell"  -> *
+"job"       -> "I'm a shopkeeper. You can buy food here."
+"name"      -> "My name is Imalas."
+"time"      -> "Sorry, I have no watch."
+"ghostlands" -> "Sorry I know nothing more then it has to be a horrible place and that scares me enough."
+
+"offer"           -> "Just have a look at my blackboard."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+
+"banana"        -> Type=3587, Amount=1, Price=2, "Do you want to buy a banana for %P gold?", Topic=1
+"cherry"        -> Type=3590, Amount=1, Price=1, "Do you want to buy a cherry for %P gold?", Topic=1
+"grapes"        -> Type=3592, Amount=1, Price=3, "Do you want to buy grapes for %P gold?", Topic=1
+"melon"         -> Type=3593, Amount=1, Price=8, "Do you want to buy a melon for %P gold?", Topic=1
+"pumpkin"       -> Type=3594, Amount=1, Price=10, "Do you want to buy a pumpkin for %P gold?", Topic=1
+"carrot"        -> Type=3595, Amount=1, Price=2, "Do you want to buy a carrot for %P gold?", Topic=1
+"cookie"        -> Type=3598, Amount=1, Price=2, "Do you want to buy a cookie for %P gold?", Topic=1
+"roll"          -> Type=3601, Amount=1, Price=2, "Do you want to buy a roll for %P gold?", Topic=1
+"brown","bread" -> Type=3602, Amount=1, Price=3, "Do you want to buy a brown bread for %P gold?", Topic=1
+"egg"           -> Type=3606, Amount=1, Price=2, "Do you want to buy an egg for %P gold?", Topic=1
+"cheese"        -> Type=3607, Amount=1, Price=5, "Do you want to buy cheese for %P gold?", Topic=1
+
+%1,1<%1,"banana"        -> Type=3587, Amount=%1, Price=2*%1, "Do you want to buy %A bananas for %P gold?", Topic=1
+%1,1<%1,"cherr"        -> Type=3590, Amount=%1, Price=1*%1, "Do you want to buy %A cherries for %P gold?", Topic=1
+%1,1<%1,"grapes"        -> Type=3592, Amount=%1, Price=3*%1, "Do you want to buy %A grapes for %P gold?", Topic=1
+%1,1<%1,"melon"         -> Type=3593, Amount=%1, Price=8*%1, "Do you want to buy %A melons for %P gold?", Topic=1
+%1,1<%1,"pumpkin"       -> Type=3594, Amount=%1, Price=10*%1, "Do you want to buy %A pumpkins for %P gold?", Topic=1
+%1,1<%1,"carrot"        -> Type=3595, Amount=%1, Price=2*%1, "Do you want to buy %A carrots for %P gold?", Topic=1
+%1,1<%1,"cookie"        -> Type=3598, Amount=%1, Price=2*%1, "Do you want to buy %A cookies for %P gold?", Topic=1
+%1,1<%1,"roll"          -> Type=3601, Amount=%1, Price=2*%1, "Do you want to buy %A rolls for %P gold?", Topic=1
+%1,1<%1,"brown","bread" -> Type=3602, Amount=%1, Price=3*%1, "Do you want to buy %A brown breads for %P gold?", Topic=1
+%1,1<%1,"egg"           -> Type=3606, Amount=%1, Price=2*%1, "Do you want to buy %A eggs for %P gold?", Topic=1
+%1,1<%1,"cheese"        -> Type=3607, Amount=%1, Price=5*%1, "Do you want to buy %A cheese for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Come back, when you have enough money."
+Topic=1                         -> "Hmm, but next time."
+}

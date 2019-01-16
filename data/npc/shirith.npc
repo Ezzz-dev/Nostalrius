@@ -1,0 +1,52 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# shirith.npc: Datenbank für den Minenleiter Shirith (Elfenstadt)
+
+Name = "Shirith"
+Outfit = (144,59-97-58-76)
+Home = [32646,31655,9]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$",!       -> "Ashari %N."
+ADDRESS,"hi$",!          -> *
+ADDRESS,"ashari$",!      -> *
+ADDRESS,!                -> Idle
+BUSY,"hello$",!          -> "Wait, %N.", Queue
+BUSY,"hi$",!             -> *
+BUSY,"ashari$",!         -> *
+BUSY,!                   -> NOP
+VANISH,!                 -> "Asha Thrazi."
+
+"bye"           -> "Asha Thrazi.", Idle
+"farewell"      -> *
+"asha","thrazi" -> *
+"job"           -> "I am the overseer of the mines."
+"name"          -> "I am called Shirith Blooddancer."
+"time"          -> "It is %T."
+
+"carlin"        -> "I think those humans are trespassing elven teritory far too often."
+"thais"         -> "Thais is far away as all humans should be."
+"venore"        -> "If it comes to trade, I can respect those merchants. As long as they leave as soon as they finished buisness, that is."
+"roderick"      -> "We don't need him or any other ambassador here."
+"olrik"         -> "As a post officer he has some use ... as a troll has some use for mining."
+
+"elves"     -> "We are a superior race, indeed."
+"dwarfs"    -> "They could be of ... some use."
+"human"     -> "Humans are more annoying than our trolls."
+"troll"     -> "We give these useless creatures a reason to live by serving us."
+"cenath"    -> "They think they are better then us."
+"kuridai"   -> "We keep this society running. Without our tools and work our case would be a lost one."
+"deraisim"  -> "They could do more for us if they would try more hard."
+"abdaisim"  -> "Let them go, we don't need them."
+"teshial"   -> "Who needs dreamers in these days?"
+"ferumbras" -> "He should be destroyed."
+"mines"     -> "We hardly get the ore we need. The worthless trolls are lazy workers. I keep them locked up the whole time."
+"locked"    -> "I keep the keys to the mines."
+"excalibug" -> "Nonsense."
+"news"      -> "Trolls are boring, I have no news to tell."
+
+"key"       -> Type=2969, Data=3033, Price=50, "I would sell you a key for 50 gold, ok?", Topic=1
+Topic=1,"yes",CountMoney>=Price -> "Here it is.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "You do not have enough gold."
+Topic=1                         -> "Ok, then not."
+}

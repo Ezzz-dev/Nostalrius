@@ -1,0 +1,36 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# ebenizer.npc: Datenbank für den Bankier Ebenizer
+
+Name = "Ebenizer"
+Outfit = (128,59-95-87-76)
+Home = [33175,31801,7]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Yes? What may I do for you, %N?"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "It's not your turn %N. Wait please.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Have a nice day."
+
+"bye"       -> "Have a nice day.", Idle
+"farewell"  -> *
+"name"      -> "My name? Ebenizer!"
+"job"       -> "I am running this Bank"
+"time"      -> "It is %T, precisely."
+"king"      -> "Hail to the king!"
+"tibianus"  -> *
+"army"      -> "Soldiers have not that much money that I would care about."
+"ferumbras" -> "A true threat to wealth and trade."
+"excalibug" -> "This weapon, if real, might be worth a lot."
+"thais"     -> "We are in constant contact with the city of Thais."
+"tibia"     -> "There are countless ways of profit in this world."
+"carlin"    -> "It's underdeveloped and economically insignificant."
+"edron"     -> "The riches of our isle are its mineral resources."
+"news"      -> "I only care about financial news."
+"rumors"    -> *
+
+@"gen-bank.ndb"
+}

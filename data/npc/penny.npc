@@ -1,0 +1,31 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# penny.npc: Datenbank für die GM-Gehilfin Penny
+
+Name = "Penny"
+Outfit = (137,96-79-95-96)
+Home = [32315,31936,7]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",male,!   -> "Welcome home, Sir %N."
+ADDRESS,"hi$",male,!      -> *
+ADDRESS,"hello$",female,! -> "Welcome home, Lady %N."
+ADDRESS,"hi$",female,!    -> *
+ADDRESS,!                 -> Idle
+BUSY,"hi$",male,!         -> "Just a minute, Sir %N.", Queue
+BUSY,"hello$",male,!      -> *
+BUSY,"hi$",female,!       -> "Just a minute, Lady %N.", Queue
+BUSY,"hello$",female,!    -> *
+BUSY,!                    -> NOP
+VANISH,!                  -> "May Justice be with you!"
+
+"bye"          -> "May Justice be with you!", Idle
+"farewell"     -> *
+"name"         -> "I am miss Penny, your secretary."
+"job"          -> "I'm your secretary. I'm organizing all those criminal records and your mail."
+"criminal"     -> "<Sigh> It's an evil world, isn't it?"
+"record"       -> *
+"mail"         -> "You can get a letter from me."
+"letter"       -> "Here you are.", Create(3505)
+
+}

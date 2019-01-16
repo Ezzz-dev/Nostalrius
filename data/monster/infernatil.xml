@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="Infernatil" nameDescription="Infernatil" race="fire" experience="30000" speed="210" manacost="0">
+	<health now="110000" max="110000" />
+	<look type="35" head="0" body="0" legs="0" feet="0" corpse="4097" />
+	<targetchange interval="1000" chance="15" />
+	<targetstrategy nearest="60" weakest="5" mostdamage="30" random="5" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag runonhealth="3000" />
+	</flags>
+	<attacks attack="260" skill="210">
+		<attack name="firecondition" count="1000" range="2" chance="15">
+			<attribute key="shootEffect" value="fire" />
+			<attribute key="areaEffect" value="fire" />
+		</attack>
+		<attack name="physical" min="-250" max="-750" radius="6" target="0" chance="15">
+			<attribute key="areaEffect" value="explosionarea" />
+		</attack>
+		<attack name="fire" min="-200" max="-500" radius="5" target="0" chance="2">
+			<attribute key="areaEffect" value="fire" />
+		</attack>
+		<attack name="firefield" radius="8" target="0" chance="30">
+			<attribute key="areaEffect" value="explosionarea" />
+		</attack>
+		<attack name="fire" min="-350" max="-850" range="7" radius="7" target="1" chance="3">
+			<attribute key="shootEffect" value="fire" />
+			<attribute key="areaEffect" value="firearea" />
+		</attack>
+		<attack name="fire" min="-500" max="-1000" length="8" spread="0"  chance="8">
+			<attribute key="areaEffect" value="explosionarea" />
+		</attack>
+		<attack name="fire" min="-300" max="-1500" length="8" spread="3" chance="10">
+			<attribute key="areaEffect" value="firearea" />
+		</attack>
+	</attacks>
+	<defenses armor="165" defense="150">
+		<defense name="healing" min="5000" max="10000" chance="7">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+		<defense name="healing" min="2000" max="3000" chance="4">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+		<defense name="speed" speedchange="90" variation="5" duration="4000" chance="11">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity fire="1" />
+		<immunity energy="1" />
+		<immunity outfit="1" />
+		<immunity lifedrain="1" />
+		<immunity paralyze="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<summons maxSummons="4">
+		<summon name="demon" chance="14" max="4" />
+	</summons>
+	<voices>
+		<voice sentence="BOW TO THE POWER OF THE RUTHLESS SEVEN!" yell="1" />
+		<voice sentence="THE DAY OF RECKONING IS AT HAND!" yell="1" />
+		<voice sentence="YOU ALL WILL BURN!" yell="1" />
+		<voice sentence="ASHES TO ASHES!" yell="1" />
+	</voices>
+	<loot>
+		<item id="3025" countmax="1" chance="35" /> <!-- an ancient amulet -->
+		<item id="3116" countmax="1" chance="90" /> <!-- a big bone -->
+		<item id="3027" countmax="15" chance="150" /> <!-- a black pearl -->
+		<item id="3041" countmax="1" chance="15" /> <!-- a blue gem -->
+		<item id="3079" countmax="1" chance="40" /> <!-- boots of haste -->
+		<item id="3076" countmax="1" chance="25" /> <!-- a crystal ball -->
+		<item id="3008" countmax="1" chance="15" /> <!-- a crystal necklace -->
+		<item id="3007" countmax="1" chance="55" /> <!-- a crystal ring -->
+		<item id="3420" countmax="1" chance="155" /> <!-- a demon shield -->
+		<item id="3356" countmax="1" chance="110" /> <!-- a devil helmet -->
+		<item id="3275" countmax="1" chance="200" /> <!-- a double axe -->
+		<item id="3322" countmax="1" chance="45" /> <!-- a dragon hammer -->
+		<item id="3051" countmax="1" chance="135" /> <!-- an energy ring -->
+		<item id="3320" countmax="1" chance="170" /> <!-- a fire axe -->
+		<item id="3281" countmax="1" chance="125" /> <!-- a giant sword -->
+		<item id="3031" countmax="100" chance="999" /> <!-- a gold coin -->
+		<item id="3031" countmax="100" chance="888" /> <!-- a gold coin -->
+		<item id="3031" countmax="100" chance="777" /> <!-- a gold coin -->
+		<item id="3031" countmax="100" chance="666" /> <!-- a gold coin -->
+		<item id="3063" countmax="1" chance="80" /> <!-- a gold ring -->
+		<item id="3364" countmax="1" chance="50" /> <!-- golden legs -->
+		<item id="2903" countmax="1" chance="75" /> <!-- a golden mug -->
+		<item id="3306" countmax="1" chance="45" /> <!-- a golden sickle -->
+		<item id="3038" countmax="1" chance="15" /> <!-- a green gem -->
+		<item id="3284" countmax="1" chance="75" /> <!-- an ice rapier -->
+		<item id="3061" countmax="1" chance="10" /> <!-- a life crystal -->
+		<item id="3046" countmax="1" chance="115" /> <!-- a magic light wand -->
+		<item id="3366" countmax="1" chance="30" /> <!-- a magic plate armor -->
+		<item id="3414" countmax="1" chance="75" /> <!-- a mastermind shield -->
+		<item id="3048" countmax="1" chance="50" /> <!-- a might ring -->
+		<item id="3062" countmax="1" chance="40" /> <!-- a mind stone -->
+		<item id="3070" countmax="1" chance="35" /> <!-- a moonlight rod -->
+		<item id="3060" countmax="1" chance="120" /> <!-- an orb -->
+		<item id="3055" countmax="1" chance="45" /> <!-- a platinum amulet -->
+		<item id="3084" countmax="1" chance="45" /> <!-- a protection amulet -->
+		<item id="2848" countmax="1" chance="26" /> <!-- a purple tome -->
+		<item id="3098" countmax="1" chance="130" /> <!-- a ring of healing -->
+		<item id="3006" countmax="1" chance="35" /> <!-- a ring of the sky -->
+		<item id="3054" countmax="1" chance="130" /> <!-- a silver amulet -->
+		<item id="3290" countmax="1" chance="155" /> <!-- a silver dagger -->
+		<item id="3324" countmax="1" chance="50" /> <!-- a skull staff -->
+		<item id="3033" countmax="20" chance="135" /> <!-- a small amethyst -->
+		<item id="3028" countmax="5" chance="95" /> <!-- a small diamond -->
+		<item id="3032" countmax="10" chance="155" /> <!-- a small emerald -->
+		<item id="3029" countmax="10" chance="135" /> <!-- a small sapphire -->
+		<item id="3066" countmax="1" chance="35" /> <!-- a snakebite rod -->
+		<item id="3049" countmax="1" chance="95" /> <!-- a stealth ring -->
+		<item id="3081" countmax="1" chance="40" /> <!-- a stone skin amulet -->
+		<item id="3058" countmax="1" chance="25" /> <!-- a strange symbol -->
+		<item id="3034" countmax="7" chance="140" /> <!-- a talon -->
+		<item id="2993" countmax="1" chance="145" /> <!-- a teddy bear -->
+		<item id="3309" countmax="1" chance="135" /> <!-- a thunder hammer -->
+		<item id="3265" countmax="1" chance="200" /> <!-- a two handed sword -->
+		<item id="3069" countmax="1" chance="35" /> <!-- a volcanic rod -->
+		<item id="3002" countmax="1" chance="1" /> <!-- a voodoo doll -->
+		<item id="3072" countmax="1" chance="25" /> <!-- a wand of plague -->
+		<item id="3026" countmax="15" chance="125" /> <!-- a white pearl -->
+	</loot>
+</monster>

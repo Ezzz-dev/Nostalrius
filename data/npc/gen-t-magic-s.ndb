@@ -1,0 +1,31 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gen-t-gems-s.ndb: Datenbank für generischen Edelsteinverkauf
+
+"offer"           -> "I'm selling life and mana fluids, runes, and spellbooks."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+
+"life","fluid" -> Type=2874, Data=11, Amount=1, Price=60, "Do you want to buy life fluid for %P gold?", Topic=30
+"mana","fluid" -> Type=2874, Data=10, Amount=1, Price=100, "Do you want to buy mana fluid for %P gold?", Topic=30
+"rune"         -> Type=3147, Amount=1, Price=10, "Do you want to buy a blank rune for %P gold?", Topic=31
+"spellbook"    -> Type=3059, Amount=1, Price=150, "Do you want to buy a spellbook for %P gold?", Topic=31
+%1,0<%1,"life","fluid" -> Type=2874, Data=11, Amount=%1, Price=60*%1, "Do you want to buy %A potions of life fluid for %P gold?", Topic=30
+%1,0<%1,"mana","fluid" -> Type=2874, Data=10, Amount=%1, Price=100*%1, "Do you want to buy %A potions of mana fluid for %P gold?", Topic=30
+%1,0<%1,"runes"        -> Type=3147, Amount=%1, Price=10*%1, "Do you want to buy %A blank runes for %P gold?", Topic=31
+
+"deposit"                   -> "I will pay you 5 gold for every empty vial. Ok?", Data=0, Topic=32
+"vial"                      -> *
+"flask"                     -> *
+
+Topic=31,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=31,"yes"                   -> "Come back, when you have enough money."
+Topic=31                         -> "Hmm, but next time."
+
+Topic=30,"yes",CountMoney>=Price -> "Here you are. There is a deposit of 5 gold on the vial.", DeleteMoney, Create(Type)
+Topic=30,"yes"                   -> "Come back, when you have enough money."
+Topic=30                         -> "Hmm, but next time."
+
+Topic=32,"yes",Count(2874)>0 -> Amount=Count(2874), Price=Amount*5, "Here you are ... %P gold.", Delete(2874), CreateMoney
+Topic=32,"yes"               -> "You don't have any empty vials."
+Topic=32                     -> "Hmm, but please keep Tibia litter free."

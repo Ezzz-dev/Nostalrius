@@ -1,0 +1,59 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# trimegis.npc: Datenbank fuer den Hofmagier Trimegis in Thais
+
+Name = "Trimegis"
+Outfit = (130,57-109-94-0)
+Home = [32307,32185,5]
+Radius = 1
+
+Behaviour = {
+ADDRESS,Sorcerer,male,"hello$",!   -> "<mumbles> Greetings, brother %N."
+ADDRESS,Sorcerer,male,"hi$",!      -> *
+ADDRESS,Sorcerer,female,"hello$",! -> "<mumbles> Greetings, sister %N."
+ADDRESS,Sorcerer,female,"hi$",!    -> *
+ADDRESS,"hello$",!                 -> "<mumbles> Greetings, %N."
+ADDRESS,"hi$",!                    -> *
+ADDRESS,!                          -> Idle
+BUSY,"hello$",!                    -> "Please wait, %N.", Queue
+BUSY,"hi$",!                       -> *
+BUSY,!                             -> NOP
+VANISH,!                           -> "Farewell."
+
+"bye"            -> "Farewell.", Idle
+"job"            -> "I am the kings new courtmage and advisor in arcane matters."
+"courtmage"      -> "The last courtmage was killed by Ferumbras in one of his attacks."
+"name"           -> "I am commonly known as Trimegis."
+"time"           -> "Time does not matter in the end."
+"king"           -> "Our king frequently relies on my divinations and spells of protection."
+"tibianus"       -> *
+"muriel"         -> "He's quite good in magical theories, but lacks practice in the field."
+"quentin"        -> "Mixing up magic with religion can't do any good."
+"lynda"          -> "Gods are not as reliable as something you mastered on your own."
+"harkath"        -> "The king listens to the advice of this swordsman far too often." 
+"general"        -> * 
+"army"           -> "In the long run, it would pay off to focus all resources on a magicians corps, but the king is not convinced of that. Not yet."
+"ferumbras"      -> "He failed in his quest for power since he ultimately forfeited greater powers for a quick but limited powerboost by enslaving himself to some dark entities."
+"sam"            -> "A man as mundane as a rock."
+"xodet"          -> "He made the best he could of his limited abilities."
+"frodo"          -> "A bar is fine to distract the mundanes from doing something foolish."
+"elane"          -> "Paladins are another example that diversing one's resources between goods, mundane weapons, and magic does not make a good mixture."
+"gregor"         -> "Limited in his vision as all knights are."
+"marvik"         -> "Since intelligence can't be substituted by passion, all druids are nothing but hedgemages."
+"bozo"           -> "At least one mundane who knows his proper place."
+"baxter"         -> "Brawns but no brain." 
+"oswald"         -> "A truly disgusting fellow." 
+"sherry"         -> "I have certainly no business with such persons." 
+"donald"         -> * 
+"mcronald"       -> *
+"lugri"          -> "Another bogeyman. Who's afraid of someone who is that 'powerful' that he hides in some dirthole?"
+"lungelen"       -> "She has the 'know how', but sadly does not really know how to use it efficitenly."
+"excalibug"      -> "The only weapon I need is my magic."
+"news"           -> "I don't care about mundane gossip."
+"pits","inferno" -> "Some dumb holes for adventurers seeking trouble."
+"nightmare","pit"-> *
+"wisdom"         -> "Wisdom is only an excuse for the lack of consequence."
+"sorcerer"       -> "Many call themselves a sorcerer, but only a few truly understand what that means."
+"power"          -> "Power comes to those who have the intelligence to claim it."
+"rune"           -> "I have no need for runes anymore. Runes are tools for beginners."
+"spell"          -> "My spells are my personal secret."
+}

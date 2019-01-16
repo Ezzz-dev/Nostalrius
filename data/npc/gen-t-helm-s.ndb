@@ -1,0 +1,13 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# genThelmV.ndb:  Datenbank für generischen Helmverkauf
+
+"chain","helmet"    -> Type=3352, Amount=1, Price=52, "Do you want to buy a chain helmet for %P gold?", Topic=20
+"leather","helmet"  -> Type=3355, Amount=1, Price=12, "Do you want to buy a leather helmet for %P gold?", Topic=20
+"studded","helmet"  -> Type=3376, Amount=1, Price=63, "Do you want to buy a studded helmet for %P gold?", Topic=21
+"brass","helmet"    -> Type=3354, Amount=1, Price=120, "Do you want to buy a brass helmet for %P gold?", Topic=21
+"viking","helmet"   -> Type=3367, Amount=1, Price=265, "Do you want to buy a viking helmet for %P gold?", Topic=21
+
+
+Topic=20,"yes",CountMoney>=Price -> "Thank you. Here it is.", DeleteMoney, Create(Type) 
+Topic=20,"yes"                   -> "Sorry, you do not have enough gold." 
+Topic=20                         -> "Maybe you will buy it another time." 

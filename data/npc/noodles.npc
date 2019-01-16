@@ -1,0 +1,58 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# noodles.npc: Datenbank für den Pudel Noodles
+
+Name = "Noodles"
+Outfit = (32,0-0-0-0)
+Home = [32315,32178,6]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> Type=3577, Amount=1,"<sniff> Woof! <sniff>"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> "Grrrr!", Idle
+BUSY,"hi$",!       -> "Grrr! Woof!"
+BUSY,"hello$",!    -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Woof?? <sniff> <sniff>"
+
+"bye"            -> "Woof! <wiggle>", Idle
+"farewell"       -> *
+"how","are","you"-> "Wooooof! <wiggle> <wiggle> <wiggle>"
+"king"           -> *
+"tibianus"       -> *
+"cat$"           -> "GRRRRRRR! WOOOOOOF! WOOOOOF! WOOOOOF!"
+"queen"          -> *
+"eloise"         -> *
+
+
+"pork",Count(Type)>=Amount -> "Woof! Woof! <wiggle> <drool> <sniff> <gnaw>", Delete(Type)
+
+"sniff","banana", QuestValue(233)<>7 -> "Woof!",Idle
+"sniff","banana", QuestValue(233)=7, QuestValue(251)=1 -> Type=3104, Amount=1,"<sniff> <sniff>",Topic=2
+"sniff","fur", QuestValue(233)<>7 -> "Woof!",Idle
+"sniff","fur", QuestValue(233)=7, QuestValue(251)=1 -> Type=3105, Amount=1,"<sniff> <sniff>",Topic=2
+"sniff","cheese", QuestValue(233)<>7 -> "Woof!",Idle
+"sniff","cheese", QuestValue(233)=7, QuestValue(251)=1 -> Type=3120, Amount=1,"<sniff> <sniff>",Topic=3
+
+
+"sniff","banana", QuestValue(233)=7, QuestValue(251)=2 -> Type=3104, Amount=1,"<sniff> <sniff>",Topic=2
+"sniff","fur", QuestValue(233)=7, QuestValue(251)=2 -> Type=3105, Amount=1,"<sniff> <sniff>",Topic=3
+"sniff","cheese", QuestValue(233)=7, QuestValue(251)=2 -> Type=3120, Amount=1,"<sniff> <sniff>",Topic=2
+
+"sniff","banana", QuestValue(233)=7, QuestValue(251)=3 -> Type=3104, Amount=1,"<sniff> <sniff>",Topic=3
+"sniff","fur", QuestValue(233)=7, QuestValue(251)=3 -> Type=3105, Amount=1,"<sniff> <sniff>",Topic=2
+"sniff","cheese", QuestValue(233)=7, QuestValue(251)=3 -> Type=3120, Amount=1,"<sniff> <sniff>",Topic=2
+
+
+
+topic=2,"like","that",Count(Type)>=Amount         -> "Woof!"
+topic=3,"like","that",Count(Type)>=Amount         -> "Meeep! Grrrrr! <spits>",SetQuestValue(233,8),Idle
+
+
+"ferumbras"      -> "Meeep! Meeep!",Idle
+"th"             -> "<sniff>"
+"ar"             -> "Woof!"
+"bo"             -> "<wiggle>"
+"an"             -> "Grrrr!"
+"go"             -> "Woof! Woof!"
+}

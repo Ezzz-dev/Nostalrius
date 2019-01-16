@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="smuggler" nameDescription="a smuggler" race="blood" experience="48" speed="48" manacost="390">
+	<health now="130" max="130" />
+	<look type="134" head="95" body="0" legs="113" feet="115" corpse="4240" />
+	<targetchange interval="1000" chance="50" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag runonhealth="18" />
+	</flags>
+	<attacks attack="19" skill="23">
+	</attacks>
+	<defenses armor="10" defense="13">
+	</defenses>
+	<voices>
+		<voice sentence="I will silence you forever!" />
+		<voice sentence="You saw something you shouldn't!" />
+	</voices>
+	<loot>
+		<item id="3292" countmax="1" chance="40" /> <!-- a combat knife -->
+		<item id="3031" countmax="10" chance="800" /> <!-- a gold coin -->
+		<item id="3582" countmax="1" chance="100" /> <!-- ham -->
+		<item id="3291" countmax="1" chance="100" /> <!-- a knife -->
+		<item id="3355" countmax="1" chance="100" /> <!-- a leather helmet -->
+		<item id="3559" countmax="1" chance="150" /> <!-- leather legs -->
+		<item id="3577" countmax="1" chance="500" /> <!-- meat -->
+		<item id="3294" countmax="1" chance="100" /> <!-- a short sword -->
+		<item id="3264" countmax="1" chance="50" /> <!-- a sword -->
+		<item id="2920" countmax="2" chance="300" /> <!-- a torch -->
+	</loot>
+</monster>

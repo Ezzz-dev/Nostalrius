@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="1000" type="event" message="Elven scouts from Shadowthorn have been spotted near Venore! Beware!"/>
+	<areaspawn delay="1000" radius="10" centerx="32894" centery="32020" centerz="7">
+		<monster name="elf" minamount="5" maxamount="10"/>
+	</areaspawn>
+	<areaspawn delay="1000" radius="10" centerx="32894" centery="32020" centerz="7">
+		<monster name="elf scout" minamount="1" maxamount="2"/>
+	</areaspawn>
+	<areaspawn delay="1000" radius="10" centerx="32941" centery="32170" centerz="7">
+		<monster name="elf" minamount="5" maxamount="10"/>
+	</areaspawn>
+	<areaspawn delay="1000" radius="10" centerx="32941" centery="32170" centerz="7">
+		<monster name="elf scout" minamount="1" maxamount="2"/>
+	</areaspawn>
+	<areaspawn delay="1000" radius="10" centerx="32851" centery="32126" centerz="7">
+		<monster name="elf" minamount="5" maxamount="10"/>
+	</areaspawn>
+	<areaspawn delay="1000" radius="10" centerx="32851" centery="32126" centerz="7">
+		<monster name="elf scout" minamount="1" maxamount="2"/>
+	</areaspawn>
+	<areaspawn delay="1000" radius="10" centerx="32852" centery="32029" centerz="7">
+		<monster name="elf" minamount="5" maxamount="10"/>
+	</areaspawn>
+	<areaspawn delay="1000" radius="10" centerx="32852" centery="32029" centerz="7">
+		<monster name="elf scout" minamount="1" maxamount="2"/>
+	</areaspawn>
+	<announce delay="220000" type="event" message="Venore is under attack!"/>
+	<areaspawn delay="220000" radius="10" centerx="32894" centery="32020" centerz="7">
+		<monster name="elf" minamount="10" maxamount="20"/>
+	</areaspawn>
+	<areaspawn delay="220000" radius="10" centerx="32894" centery="32020" centerz="7">
+		<monster name="elf scout" minamount="5" maxamount="10"/>
+	</areaspawn>
+	<areaspawn delay="220000" radius="10" centerx="32894" centery="32020" centerz="7">
+		<monster name="elf arcanist" minamount="2" maxamount="5"/>
+	</areaspawn>
+	<areaspawn delay="220000" radius="7" centerx="32894" centery="32020" centerz="6">
+		<monster name="elf" minamount="5" maxamount="10"/>
+	</areaspawn>
+	<areaspawn delay="220000" radius="7" centerx="32894" centery="32020" centerz="6">
+		<monster name="elf scout" minamount="1" maxamount="2"/>
+	</areaspawn>
+	<areaspawn delay="220000" radius="10" centerx="32941" centery="32170" centerz="7">
+		<monster name="elf" minamount="10" maxamount="20"/>
+	</areaspawn>
+	<areaspawn delay="220000" radius="10" centerx="32941" centery="32170" centerz="7">
+		<monster name="elf scout" minamount="5" maxamount="10"/>
+	</areaspawn>
+	<areaspawn delay="220000" radius="10" centerx="32941" centery="32170" centerz="7">
+		<monster name="elf arcanist" minamount="2" maxamount="5"/>
+	</areaspawn>
+	<areaspawn delay="220000" radius="10" centerx="32851" centery="32126" centerz="7">
+		<monster name="elf" minamount="10" maxamount="20"/>
+	</areaspawn>
+	<areaspawn delay="220000" radius="10" centerx="32851" centery="32126" centerz="7">
+		<monster name="elf scout" minamount="5" maxamount="10"/>
+	</areaspawn>
+	<areaspawn delay="220000" radius="10" centerx="32851" centery="32126" centerz="7">
+		<monster name="elf arcanist" minamount="2" maxamount="5"/>
+	</areaspawn>
+	<areaspawn delay="220000" radius="10" centerx="32852" centery="32029" centerz="7">
+		<monster name="elf" minamount="10" maxamount="20"/>
+	</areaspawn>
+	<areaspawn delay="220000" radius="10" centerx="32852" centery="32029" centerz="7">
+		<monster name="elf scout" minamount="5" maxamount="10"/>
+	</areaspawn>
+	<areaspawn delay="220000" radius="10" centerx="32852" centery="32029" centerz="7">
+		<monster name="elf arcanist" minamount="2" maxamount="5"/>
+	</areaspawn>
+	<areaspawn delay="340000" radius="10" centerx="32894" centery="32020" centerz="7">
+		<monster name="elf" minamount="8" maxamount="16"/>
+	</areaspawn>
+	<areaspawn delay="340000" radius="10" centerx="32894" centery="32020" centerz="7">
+		<monster name="elf scout" minamount="10" maxamount="20"/>
+	</areaspawn>
+	<areaspawn delay="340000" radius="10" centerx="32894" centery="32020" centerz="7">
+		<monster name="elf arcanist" minamount="5" maxamount="10"/>
+	</areaspawn>
+	<areaspawn delay="340000" radius="10" centerx="32894" centery="32020" centerz="6">
+		<monster name="elf" minamount="10" maxamount="20"/>
+	</areaspawn>
+	<areaspawn delay="340000" radius="7" centerx="32894" centery="32020" centerz="6">
+		<monster name="elf scout" minamount="5" maxamount="10"/>
+	</areaspawn>
+	<areaspawn delay="340000" radius="7" centerx="32894" centery="32020" centerz="6">
+		<monster name="elf arcanist" minamount="2" maxamount="5"/>
+	</areaspawn>
+	<areaspawn delay="340000" radius="10" centerx="32941" centery="32170" centerz="7">
+		<monster name="elf" minamount="8" maxamount="16"/>
+	</areaspawn>
+	<areaspawn delay="340000" radius="10" centerx="32941" centery="32170" centerz="7">
+		<monster name="elf scout" minamount="10" maxamount="20"/>
+	</areaspawn>
+	<areaspawn delay="340000" radius="10" centerx="32941" centery="32170" centerz="7">
+		<monster name="elf arcanist" minamount="5" maxamount="10"/>
+	</areaspawn>
+	<areaspawn delay="340000" radius="10" centerx="32851" centery="32126" centerz="7">
+		<monster name="elf" minamount="8" maxamount="16"/>
+	</areaspawn>
+	<areaspawn delay="340000" radius="10" centerx="32851" centery="32126" centerz="7">
+		<monster name="elf scout" minamount="10" maxamount="20"/>
+	</areaspawn>
+	<areaspawn delay="340000" radius="10" centerx="32851" centery="32126" centerz="7">
+		<monster name="elf arcanist" minamount="5" maxamount="10"/>
+	</areaspawn>
+	<areaspawn delay="340000" radius="10" centerx="32852" centery="32029" centerz="7">
+		<monster name="elf" minamount="8" maxamount="16"/>
+	</areaspawn>
+	<areaspawn delay="340000" radius="10" centerx="32852" centery="32029" centerz="7">
+		<monster name="elf scout" minamount="10" maxamount="20"/>
+	</areaspawn>
+	<areaspawn delay="340000" radius="10" centerx="32852" centery="32029" centerz="7">
+		<monster name="elf arcanist" minamount="5" maxamount="10"/>
+	</areaspawn>
+	<areaspawn delay="460000" radius="10" centerx="32894" centery="32020" centerz="7">
+		<monster name="elf scout" minamount="15" maxamount="30"/>
+	</areaspawn>
+	<areaspawn delay="460000" radius="10" centerx="32894" centery="32020" centerz="7">
+		<monster name="elf arcanist" minamount="9" maxamount="18"/>
+	</areaspawn>
+	<areaspawn delay="460000" radius="7" centerx="32894" centery="32020" centerz="6">
+		<monster name="elf" minamount="5" maxamount="10"/>
+	</areaspawn>
+	<areaspawn delay="460000" radius="7" centerx="32894" centery="32020" centerz="6">
+		<monster name="elf scout" minamount="10" maxamount="20"/>
+	</areaspawn>
+	<areaspawn delay="460000" radius="7" centerx="32894" centery="32020" centerz="6">
+		<monster name="elf arcanist" minamount="5" maxamount="10"/>
+	</areaspawn>
+	<areaspawn delay="460000" radius="10" centerx="32941" centery="32170" centerz="7">
+		<monster name="elf scout" minamount="15" maxamount="30"/>
+	</areaspawn>
+	<areaspawn delay="460000" radius="10" centerx="32941" centery="32170" centerz="7">
+		<monster name="elf arcanist" minamount="9" maxamount="18"/>
+	</areaspawn>
+	<areaspawn delay="460000" radius="10" centerx="32851" centery="32126" centerz="7">
+		<monster name="elf scout" minamount="15" maxamount="30"/>
+	</areaspawn>
+	<areaspawn delay="460000" radius="10" centerx="32851" centery="32126" centerz="7">
+		<monster name="elf arcanist" minamount="9" maxamount="18"/>
+	</areaspawn>
+	<areaspawn delay="460000" radius="10" centerx="32852" centery="32029" centerz="7">
+		<monster name="elf scout" minamount="15" maxamount="30"/>
+	</areaspawn>
+	<areaspawn delay="460000" radius="10" centerx="32852" centery="32029" centerz="7">
+		<monster name="elf arcanist" minamount="9" maxamount="18"/>
+	</areaspawn>
+</raid>

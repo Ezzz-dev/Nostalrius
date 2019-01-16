@@ -1,0 +1,36 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# todd.npc: Datenbank für den betrügerischen schmuggler todd
+
+Name = "Todd"
+Outfit = (128,115-0-67-114)
+Home = [32363,32210,6]
+Radius = 7
+
+Behaviour = {
+ADDRESS,"hi$",!                               -> "Uhm oh hello... not so loud please... my head..."
+ADDRESS,"hello$",!                            -> *
+ADDRESS,!                                     -> Idle
+BUSY,"hi$",!                                  -> "Please wait... in silence if possible <uuuhh>.", Queue
+BUSY,"hello$",!                               -> *
+BUSY,!                                        -> NOP
+VANISH,!                                      -> "Silence at last."
+
+
+"bye"            -> "Yes, goodbye, just leave me alone.", Idle
+
+"how","are","you"-> "Oh, this headache, one of the beers frodo served me must have been foul."
+"job"            -> "I am... a traveller."
+"karl"           -> "Uhm, never heared about him... and you can't proof otherwise.", Idle
+"name"           -> "My Name? I am To... ahm... hum... My name is Hugo."
+"Hugo"           -> "Yes, thats my name of course."
+"smuggler"       -> "I am a honest person and don't like to be insulted!", Idle
+"carlin"         -> "I never was there. Now leave me alone.", Idle
+"resistance"     -> "Resistance is futile... uhm... I wonder where I picked that saying up. Oh my head..."
+"head"           -> "Uhhh Ohhhh one of the beers yesterday must have been bad."
+
+"thais"          -> "I love that city."
+"william"        -> "Thats a common name, perhaps I met a William, not sure about that."
+"money"          -> "I don't know anything about money, missing or not."
+"todd"           -> "Uh .. I... I met a Todd on the road. He told me he was traveling to Venore, look there for your Todd."
+
+}

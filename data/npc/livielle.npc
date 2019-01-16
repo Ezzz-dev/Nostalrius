@@ -1,0 +1,59 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# Livielle.npc: Datenbank für die Nahrungsmittelhändlerin Livielle
+
+Name = "Livielle"
+Outfit = (138,114-94-132-132)
+Home = [32982,32036,6]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",male,!   -> "Ah, 'ello, %N! I can see you're longing for my delicious fruits, chéri."
+ADDRESS,"hi$",male,!      -> *
+ADDRESS,"salut$",male,!   -> *
+ADDRESS,"hello$",female,! -> "Bienvenue, %N! My fruits will complete the icing on your cake."
+ADDRESS,"hi$", female,!   -> *
+ADDRESS,"salut$",female,! -> *
+ADDRESS,!                 -> Idle
+BUSY,"hello$",!           -> "Don't push me, don't push me. One after another, %N."
+BUSY,"hi$",!              -> *
+BUSY,"salut$",!           -> *
+BUSY,!                    -> NOP
+VANISH,!                  -> "Aww, I don't even deserve a farewell?"
+
+"bye"           -> "Bon appétit, and come back soon for your daily dose of vitamins!", Idle
+"au","revoir"   -> "Bon appétit, and come back soon for your daily dose of vitamins!", Idle
+"job"           -> "Alors, guess what my job might be, standing 'ere in the middle of all these juicy exotic fruits?"
+"shop"          -> *
+"name",male     -> "Moi? Livielle for you, chéri. "
+"name",female   -> "I'm Livielle Delacroix, madame."
+"time"          -> "Time is %T now."
+"help"          -> "Oh, for sure will my fruits 'elp you driving off all these nasty diseases and strengthen your immune system!"
+"thanks"        -> "You're welcome, enjoy."
+"thank","you"   -> *
+
+"buy"             -> "What's your favorite flavour today? I offer all sorts of exotic fruits."
+"do","you","sell" -> *
+"do","you","have" -> *
+"offer"           -> *
+"fruits"          -> "I offer you bananas, melons, pumpkins, white mushrooms, oranges, strawberries, and blueberries."
+
+"banana"           -> Type=3587, Amount=1, Price=5,  "Do you want to buy a banana for %P gold?", Topic=1
+"white","mushroom" -> Type=3723, Amount=1, Price=10, "Do you want to buy one of the white mushrooms for %P gold?", Topic=1
+"orange"           -> Type=3586, Amount=1, Price=10, "Do you want to buy an orange for %P gold?", Topic=1
+"strawberr"        -> Type=3591, Amount=1, Price=2,  "Do you want to buy a strawberry for %P gold?", Topic=1
+"melon"            -> Type=3593, Amount=1, Price=10, "Do you want to buy a melon for %P gold?", Topic=1
+"pumpkin"          -> Type=3594, Amount=1, Price=10, "Do you want to buy a pumpkin for %P gold?", Topic=1
+"blueberr"         -> Type=3588, Amount=1, Price=1,  "Do you want to buy a blueberry for %P gold?", Topic=1
+
+%1,1<%1,"banana"           -> Type=3587, Amount=%1, Price=5*%1,  "Do you want to buy %A bananas for %P gold?", Topic=1
+%1,1<%1,"white","mushroom" -> Type=3723, Amount=%1, Price=10*%1, "Do you want to buy %A of the white mushrooms for %P gold?", Topic=1
+%1,1<%1,"orange"           -> Type=3586, Amount=%1, Price=10*%1, "Do you want to buy %A oranges for %P gold?", Topic=1
+%1,1<%1,"strawberr"        -> Type=3591, Amount=%1, Price=2*%1,  "Do you want to buy %A strawberries for %P gold?", Topic=1
+%1,1<%1,"melon"            -> Type=3593, Amount=%1, Price=10*%1, "Do you want to buy %A melons for %P gold?", Topic=1
+%1,1<%1,"pumpkin"          -> Type=3594, Amount=%1, Price=10*%1, "Do you want to buy %A pumpkins for %P gold?", Topic=1
+%1,1<%1,"blueberr"         -> Type=3588, Amount=%1, Price=1*%1,  "Do you want to buy %A blueberries for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Merci, 'ere you go.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Sorry, but that's not enough money, please count again."
+Topic=1                         -> "You should really prefer my fruits over all this fat meat offered elsewhere. They keep you lithe and lissom."
+}

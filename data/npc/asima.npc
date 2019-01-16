@@ -1,0 +1,59 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# asima.npc: Datenbank fuer die Magiebedarfshändlerin Asima
+
+Name = "Asima"
+Outfit = (138,97-70-94-76)
+Home = [33220,32404,7]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Daraman's blessings, %N."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Wait, %N!", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Daraman's blessings."
+
+"bye"       -> "Daraman's blessings.", Idle
+"name"      -> "I am Asima, student of arcane magic and right hand of Shalmar."
+"job"       -> "Shalmar's ears and eyesight have gotten really bad lately. I'm helping him with his magic store so he can focus on teaching spells."
+"time"      -> "It's %T right now."
+
+"offer"           -> "I'm selling life and mana fluids, runes, wands, rods and spellbooks."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+
+
+"rune"         -> "I sell blank runes and spell runes."
+"life","fluid" -> Type=2874, Data=11, Amount=1, Price=60, "Do you want to buy life fluid for %P gold?", Topic=5
+"mana","fluid" -> Type=2874, Data=10, Amount=1, Price=55, "Do you want to buy mana fluid for %P gold?", Topic=5
+"blank","rune" -> Type=3147, Amount=1, Price=10, "Do you want to buy a blank rune for %P gold?", Topic=4
+"spellbook"    -> Type=3059, Amount=1, Price=150, "In a spellbook, your spells are listed. There you will find the pronunciation of each spell. Do you want to buy one for %P gold?", Topic=4 
+
+%1,1<%1,"life","fluid"  -> Type=2874, Data=11, Amount=%1, Price=60*%1, "Do you want to buy %A potions of life fluid for %P gold?", Topic=5 
+%1,1<%1,"mana","fluid"  -> Type=2874, Data=10, Amount=%1, Price=55*%1, "Do you want to buy %A potions of mana fluid for %P gold?", Topic=5 
+%1,1<%1,"blank","rune"  -> Type=3147, Amount=%1, Price=10*%1, "Do you want to buy %A blank runes for %P gold?", Topic=4 
+%1,1<%1,"spellbook"     -> Type=3059, Amount=%1, Price=150*%1, "In a spellbook, your spells are listed. There you will find the pronunciation of each spell. Do you want to buy %A spellbooks for %P gold?", Topic=4 
+ 
+"deposit" -> "I will pay you 5 gold for every empty vial. Ok?", Data=0, Topic=6 
+"vial"    -> *
+"flask"   -> * 
+
+@"gen-t-runes-free-s.ndb"
+@"gen-t-wands-prem-s.ndb"
+ 
+Topic=4,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=4,"yes"                   -> "Come back, when you have enough money."
+Topic=4                         -> "Hmm, but next time."
+
+Topic=5,"yes",CountMoney>=Price -> "Here you are. There is a deposit of 5 gold on the vial.", DeleteMoney, Create(Type)
+Topic=5,"yes"                   -> "Come back, when you have enough money."
+Topic=5                         -> "Hmm, but next time."
+
+Topic=6,"yes",Count(2874)>0 -> Amount=Count(2874), Price=Amount*5, "Here you are ... %P gold.", Delete(2874), CreateMoney
+Topic=6,"yes"               -> "You don't have any empty vials."
+Topic=6                     -> "Hmm, but please keep Tibia litter free."
+
+}

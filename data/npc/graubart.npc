@@ -1,0 +1,37 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# graubart.npc : Kapitän Graubart von der Seahawk (Fields)
+
+Name = "Graubart"
+Outfit = (128,98-87-12-114)
+Home = [32489,31622,07]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",male,!   -> "Ahoi, young man %N. Looking for work on my ship?"
+ADDRESS,"hi$",male,!      -> *
+ADDRESS,"hello$",female,! -> "Ahoi, young lady %N. Looking for work on my ship?"
+ADDRESS,"hi$",female,!    -> *
+ADDRESS,!                 -> Idle
+BUSY,"hello$",!           -> "One moment please, %N.", Queue
+BUSY,"hi$",!              -> *
+BUSY,!                    -> NOP
+VANISH,!                  -> "Good bye and don't forget me!"
+
+"bye"          -> "Good bye and don't forget me!", Idle
+"farewell"     -> *
+"work"         -> "I'm sorry, but it is too dangerous nowadays. Too many storms out there. Come back in some months and we will see."
+"name"         -> "My name is Graubart, captain of the great Seahawk!"
+"job"          -> "I'm a merchant. I sail all over the world with my ship and trade with many different races!"
+"races"        -> "You know; elves, dwarfs, lizardmen, minotaurs and many others."
+"ship"         -> "Ah, my whole proud: My ship named Seahawk. We rode out so many stormy nights together. I think I couldn't live without it."
+"seahawk"      -> *
+"trade"        -> "I trade nearly everything, for example weapons, food, water, and even magic runes."
+"merchant"     -> "A merchant is someone who trades goods with other people and tries to make a little profit. *laughs*"
+"weapons"      -> "Sorry, sold out."
+"food"         -> "Sorry, sold out. Ask Bruno."
+"water"        -> "Sorry, sold out."
+"magic","runes"-> "Sorry, sold out."
+"bruno"        -> "Bruno is one of the best sailors I know. He is nearly as good as me. *laughs loudly*"
+"aneus"        -> "Hmm, I don't know him very well. But he has a very nice story to tell."
+"marlene"      -> "Pssst. Marlene is not near right now...? You know... she is a lovely woman, but she talks too much! So I always try to keep distance from her because she can't stop talking." 
+}

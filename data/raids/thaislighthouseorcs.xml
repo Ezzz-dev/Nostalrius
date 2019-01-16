@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="1000" type="event" message="Orc have taken over the Thais lighthouse!"/>
+	<areaspawn delay="1000" lifetime="7200000" radius="10" centerx="32228" centery="32281" centerz="7">
+		<monster name="orc" minamount="10" maxamount="20"/>
+	</areaspawn>
+	<areaspawn delay="3000" lifetime="7200000" radius="2" centerx="32225" centery="32276" centerz="6">
+		<monster name="orc warrior" minamount="1" maxamount="2"/>
+	</areaspawn>
+	<areaspawn delay="3000" lifetime="7200000" radius="2" centerx="32225" centery="32276" centerz="5">
+		<monster name="orc shaman" minamount="1" maxamount="2"/>
+	</areaspawn>
+	<areaspawn delay="3000" lifetime="7200000" radius="2" centerx="32225" centery="32276" centerz="4">
+		<monster name="orc berserker" minamount="1" maxamount="2"/>
+	</areaspawn>
+	<areaspawn delay="3000" lifetime="7200000" radius="2" centerx="32225" centery="32276" centerz="3">
+		<monster name="orc leader" minamount="1" maxamount="2"/>
+	</areaspawn>
+	<areaspawn delay="3000" lifetime="7200000" radius="2" centerx="32225" centery="32276" centerz="2">
+		<monster name="raid orc warlord" minamount="1" maxamount="2"/>
+	</areaspawn>
+</raid>

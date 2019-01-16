@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="dworc venomsniper" nameDescription="a dworc venomsniper" race="blood" experience="30" speed="36" manacost="300">
+	<health now="80" max="80" />
+	<look type="216" head="0" body="0" legs="0" feet="0" corpse="4375" />
+	<targetchange interval="1000" chance="0" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="1" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="4" />
+		<flag runonhealth="15" />
+	</flags>
+	<attacks attack="10" skill="20">
+		<attack name="poisoncondition" count="20" range="5" chance="4">
+			<attribute key="shootEffect" value="poison" />
+		</attack>
+	</attacks>
+	<defenses armor="3" defense="15">
+	</defenses>
+	<immunities>
+		<immunity poison="1" />
+	</immunities>
+	<voices>
+		<voice sentence="Grak brrretz!" />
+		<voice sentence="Grow truk grrrrr." />
+		<voice sentence="Prek tars, dekklep zurk." />
+	</voices>
+	<loot>
+		<item id="3560" countmax="1" chance="1" /> <!-- a bast skirt -->
+		<item id="3056" countmax="1" chance="1" /> <!-- a bronze amulet -->
+		<item id="3031" countmax="10" chance="800" /> <!-- a gold coin -->
+		<item id="3361" countmax="1" chance="100" /> <!-- a leather armor -->
+		<item id="3448" countmax="3" chance="50" /> <!-- a poison arrow -->
+		<item id="3299" countmax="1" chance="15" /> <!-- a poison dagger -->
+		<item id="3114" countmax="2" chance="10" /> <!-- a skull -->
+		<item id="3298" countmax="2" chance="80" /> <!-- a throwing knife -->
+		<item id="2920" countmax="1" chance="55" /> <!-- a torch -->
+		<item id="3403" countmax="1" chance="5" /> <!-- a tribal mask -->
+	</loot>
+</monster>

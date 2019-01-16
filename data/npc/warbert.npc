@@ -1,0 +1,11 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# warbert.npc: Datenbank für eine Stadtwache in Venore
+
+Name = "Warbert"
+Outfit = (131,113-113-113-115)
+Home = [32935,32141,6]
+Radius = 10
+
+Behaviour = {
+@"guards-venore.ndb"
+}

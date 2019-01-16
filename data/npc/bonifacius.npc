@@ -1,0 +1,68 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# bonifacius.npc: Datenbank für den Lebensmittelhändler Bonifacius
+
+Name = "Bonifacius"
+Outfit = (128,59-82-58-95)
+Home = [33165,31801,7]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Thousands greetings, %N. How may I help you?"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "I am deeply sorry, I am busy right now. I'll tell you when I'm done %N.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "May the gods bless your travels."
+
+"bye"       -> "May the gods bless your travels.", Idle
+"name"      -> "My name is Bonifacius."
+"job"       -> "I sell delicious food. May I be at your service?"
+"time"      -> "It is %T right now."
+"king"      -> "Our wise king, Tibianus, be praised!"
+"tibianus"  -> *
+"army"      -> "I am glad about their healthy appetite."
+"ferumbras" -> "Is that a new, exotic vegetable?"
+"excalibug" -> "Uh, I hate bugs of all kind."
+"thais"     -> "We recive food from thais with every arriving ship."
+"tibia"     -> "The world provides us with all kinds of delicious food."
+"carlin"    -> "We do not buy any wares there. Our food is of high quality, Thaian origin."
+"edron"     -> "Our climate is quite rough, so we can only grow wheat here, but no fruits."
+"news"      -> "I heard the corn prices in Thais are going to be increased."
+"rumors"    -> *
+
+"buy"             -> "I can offer you meat, salmons, fruits, cookies, rolls, eggs, and cheese."
+"do","you","sell" -> *
+"do","you","have" -> *
+"offer"           -> *
+"food"            -> *
+"fruit"           -> "I have oranges, bananas, grapes, pumpkins and melons. What do you want?"
+
+"meat"   -> Type=3577, Amount=1, Price=5, "Do you want to buy meat for %P gold?", Topic=1
+"salmon" -> Type=3579, Amount=1, Price=4, "Do you want to buy a salmon for %P gold?", Topic=1
+"orange" -> Type=3586, Amount=1, Price=5, "Do you want to buy an orange for %P gold?", Topic=1
+"banana" -> Type=3587, Amount=1, Price=2, "Do you want to buy a banana for %P gold?", Topic=1
+"grape"  -> Type=3592, Amount=1, Price=3, "Do you want to buy grapes for %P gold?", Topic=1
+"melon"  -> Type=3593, Amount=1, Price=8, "Do you want to buy a melon for %P gold?", Topic=1
+"pumpkin" -> Type=3594, Amount=1, Price=10, "Do you want to buy a pumpkin for %P gold?", Topic=1
+"cookie" -> Type=3598, Amount=1, Price=2, "Do you want to buy a cookie for %P gold?", Topic=1
+"roll"   -> Type=3601, Amount=1, Price=2, "Do you want to buy a roll for %P gold?", Topic=1
+"egg"    -> Type=3606, Amount=1, Price=2, "Do you want to buy an egg for %P gold?", Topic=1
+"cheese" -> Type=3607, Amount=1, Price=5, "Do you want to buy cheese for %P gold?", Topic=1
+
+%1,1<%1,"meat"   -> Type=3577, Amount=%1, Price=5*%1, "Do you want to buy %A meat for %P gold?", Topic=1
+%1,1<%1,"salmon" -> Type=3579, Amount=%1, Price=4*%1, "Do you want to buy %A salmon for %P gold?", Topic=1
+%1,1<%1,"orange" -> Type=3586, Amount=%1, Price=5*%1, "Do you want to buy %A oranges for %P gold?", Topic=1
+%1,1<%1,"banana" -> Type=3587, Amount=%1, Price=2*%1, "Do you want to buy %A bananas for %P gold?", Topic=1
+%1,1<%1,"grape"  -> Type=3592, Amount=%1, Price=3*%1, "Do you want to buy %A grapes for %P gold?", Topic=1
+%1,1<%1,"melon"  -> Type=3593, Amount=%1, Price=8*%1, "Do you want to buy %A melons for %P gold?", Topic=1
+%1,1<%1,"pumpkin" -> Type=3594, Amount=%1, Price=10*%1, "Do you want to buy %A pumpkins for %P gold?", Topic=1
+%1,1<%1,"cookie" -> Type=3598, Amount=%1, Price=2*%1, "Do you want to buy %A cookies for %P gold?", Topic=1
+%1,1<%1,"roll"   -> Type=3601, Amount=%1, Price=2*%1, "Do you want to buy %A rolls for %P gold?", Topic=1
+%1,1<%1,"egg"    -> Type=3606, Amount=%1, Price=2*%1, "Do you want to buy %A eggs for %P gold?", Topic=1
+%1,1<%1,"cheese" -> Type=3607, Amount=%1, Price=5*%1, "Do you want to buy %A cheeses for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Oh, I'm sorry, but I can't give you credit."
+Topic=1                         -> "Don't you like my wares?."
+}

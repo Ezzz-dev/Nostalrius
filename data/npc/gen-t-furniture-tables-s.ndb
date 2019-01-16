@@ -1,0 +1,20 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gen-t-furniture-tables-s.ndb: Datenbank für generischen Möbelverkauf - Tische
+# Verwendete Topics: 81
+
+#"offer"           -> "I sell statues, tables, chairs, flowers, pillows, pottery, instruments, decoration, tapestries and containers."
+#"furniture"       -> *
+#"goods"           -> *
+#"do","you","sell" -> *
+#"do","you","have" -> *
+
+"table"                -> "Do you want to buy a small table, a round table, a square table or a big table?"
+"small", "table"       -> Type=2782, Amount=1, Price=20, "Do you want to buy a small table for %P gold?", Topic=81
+"round", "table"       -> Type=2783, Amount=1, Price=25, "Do you want to buy a round table for %P gold?", Topic=81
+"square", "table"      -> Type=2784, Amount=1, Price=25, "Do you want to buy a square table for %P gold?", Topic=81
+"big", "table"         -> Type=2785, Amount=1, Price=30, "Do you want to buy a big table for %P gold?", Topic=81
+
+Topic=81,"yes",Premium,CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=81,"yes",CountMoney>=Price         -> "I'm sorry, but you need a premium account if you want to buy furniture."
+Topic=81,"yes"                           -> "Come back, when you have enough money."
+Topic=81                                 -> "Hmm, but I'm sure, it would fit nicely into your house."

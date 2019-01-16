@@ -1,0 +1,99 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# shiantis.npc: Datenbank für die Händlerin Shiantis in Venore
+
+Name = "Shiantis"
+Outfit = (136,0-36-13-76)
+Home = [32890,32086,6]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Welcome %N. What is your need today?"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Excuse me, %N, I am already talking to another customer. Wait just a moment.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Good bye."
+
+"bye"       -> "Good bye.", Idle
+"farewell"  -> *
+"job"       -> "I am selling several kinds of equipment and decoration. What is your need?"
+"name"      -> "I am Shiantis."
+"time"      -> "I won't tell you for free, but maybe you want to buy a watch?"
+"king"      -> "I would love to see the royal taxes lowered."
+"tibianus"  -> *
+"army"      -> "I think it's needed for protection. We pay enough taxes for this."
+"ferumbras" -> "Ferumbras dolls were not the saleshit we expected. Sold all stock to a strange guy who bought a bunch of needles, too."
+"excalibug" -> "Sorry, we run out of stock. I expect another load of wodden excalibug simulacra to arrive next week."
+"news"      -> "I heard the merchants will petition the king to lower the taxes."
+"tax"       -> *
+
+"offer"           -> "As you can see, our inventory is large, just have a look."
+"goods"           -> "At this booth we sell containers, decoration, illumination, paperware, footballs, and watches."
+"do","you","sell" -> *
+"do","you","have" -> *
+"equipment"       -> *
+"containers"      -> "In that department we offer bags, backpacks, and present boxes."
+"illumination"    -> "In that department we offer torches, candlesticks, candelabra, oil and coal basins."
+"paperware"       -> "In that department we offer scrolls, documents, parchments, and books."
+"book"            -> "I offer different kind of books: brown, black and small books. Which book do you want?"
+"magic"           -> "You will have to visit that spooky magic market for that stuff."
+"fluid"           -> *
+
+"torch"         -> Type=2920, Amount=1,  Price=2,    "Do you wanna buy a torch for %P gold?", Topic=1
+"candelabr"     -> Type=2911, Amount=1,  Price=8,    "Do you wanna buy a candelabrum for %P gold?", Topic=1
+"candlestick"   -> Type=2917, Amount=1,  Price=2,    "Do you want to buy a candlestick for %P gold?", Topic=1
+"oil"           -> Type=2874, Data=7, Amount=1, Price=20, "Do you wanna buy oil for %P gold?", Topic=2
+"coal","basin"  -> Type=2806, Amount=1, Price=25, "Do you want to buy a coal basin for %P gold?", Topic=3
+"bag"           -> Type=2859, Amount=1,  Price=5,    "Do you want to buy a bag for %P gold?", Topic=1
+"backpack"      -> Type=2867, Amount=1,  Price=20,   "Do you want to buy a backpack for %P gold?", Topic=1
+"present"       -> Type=2856, Amount=1,  Price=10,   "Do you want to buy a present for %P gold?", Topic=1
+"scroll"        -> Type=2815, Amount=1,  Price=5,    "Do you want to buy a scroll for %P gold?", Topic=1
+"document"      -> Type=2834, Amount=1,  Price=12,   "Do you want to buy a document for %P gold?", Topic=1
+"parchment"     -> Type=2835, Amount=1,  Price=8,    "Do you want to buy a parchment for %P gold?", Topic=1
+"brown","book"  -> Type=2837, Amount=1,  Price=15,   "Do you want to buy a brown book for %P gold?", Topic=1
+"black","book"  -> Type=2838, Amount=1,  Price=15,   "Do you want to buy a black book for %P gold?", Topic=1
+"small","book"  -> Type=2839, Amount=1,  Price=15,   "Do you want to buy a small book for %P gold?", Topic=1
+"watch"         -> Type=2906, Amount=1,  Price=20,   "Do you want to buy one of my high quality watches for %P gold?", Topic=1
+"football"      -> Type=2990, Amount=1,  Price=111,  "Do you want to buy a football for %P gold?", Topic=1
+
+%1,1<%1,"torch"         -> Type=2920, Amount=%1,  Price=2*%1,    "Do you wanna buy %A torches for %P gold?", Topic=1
+%1,1<%1,"candelabr"     -> Type=2911, Amount=%1,  Price=8*%1,    "Do you wanna buy %A candelabra for %P gold?", Topic=1
+%1,1<%1,"candlestick"   -> Type=2917, Amount=%1,  Price=2*%1,    "Do you want to buy %A candlesticks for %P gold?", Topic=1
+%1,1<%1,"oil"           -> Type=2874, Data=7, Amount=%1, Price=20*%1, "Do you wanna buy %A vials of oil for %P gold?", Topic=2
+%1,1<%1,"coal","basin"  -> Type=3510, Amount=%1, Price=25*%1, "Do you want to buy %A coal basins for %P gold?", Topic=3
+%1,1<%1,"bag"           -> Type=2859, Amount=%1,  Price=5*%1,    "Do you want to buy %A bags for %P gold?", Topic=1
+%1,1<%1,"backpack"      -> Type=2867, Amount=%1,  Price=20*%1,   "Do you want to buy %A backpacks for %P gold?", Topic=1
+%1,1<%1,"present"       -> Type=2856, Amount=%1,  Price=10*%1,   "Do you want to buy %A presents for %P gold?", Topic=1
+%1,1<%1,"scroll"        -> Type=2815, Amount=%1,  Price=5*%1,    "Do you want to buy %A scrolls for %P gold?", Topic=1
+%1,1<%1,"document"      -> Type=2834, Amount=%1,  Price=12*%1,   "Do you want to buy %A documents for %P gold?", Topic=1
+%1,1<%1,"parchment"     -> Type=2835, Amount=%1,  Price=8*%1,    "Do you want to buy %A parchments for %P gold?", Topic=1
+%1,1<%1,"brown","book"  -> Type=2837, Amount=%1,  Price=15*%1,   "Do you want to buy %A brown books for %P gold?", Topic=1
+%1,1<%1,"black","book"  -> Type=2838, Amount=%1,  Price=15*%1,   "Do you want to buy %A black books for %P gold?", Topic=1
+%1,1<%1,"small","book"  -> Type=2839, Amount=%1,  Price=15*%1,   "Do you want to buy %A small books for %P gold?", Topic=1
+%1,1<%1,"watch"         -> Type=2906, Amount=%1,  Price=20*%1,   "Do you want to buy %A of my high quality watches for %P gold?", Topic=1
+%1,1<%1,"football"      -> Type=2990, Amount=%1,  Price=111*%1,  "Do you want to buy %A footballs for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Come back, when you have enough money."
+Topic=1                         -> "Hmm, but next time."
+
+Topic=2,"yes",CountMoney>=Price -> "Ok, take it. There is a deposit of 5 gold on the vial.", DeleteMoney, Create(Type)
+Topic=2,"yes"                   -> "That's not funny!"
+Topic=2                         -> "Then not."
+
+Topic=3,"yes",Premium,CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=3,"yes",CountMoney>=Price         -> "I'm sorry, but you need a premium account if you want to buy furniture."
+Topic=3,"yes"                           -> "Come back, when you have enough money."
+Topic=3                                 -> "Hmm, but I'm sure, it would fit nicely into your house."
+
+"deposit" -> "I will give you 5 gold for every empty vial. Ok?", Data=0, Topic=4
+"vial"    -> *
+"flask"   -> *
+
+Topic=4,"yes",Count(2874)>0 -> Amount=Count(2874), Price=Amount*5, "Here you are ... %P gold.", Delete(2874), CreateMoney
+Topic=4,"yes"               -> "You don't have any empty vials."
+Topic=4                     -> "Hmm, but please keep our town litter free."
+
+@"gen-t-furniture-decoration-s.ndb"
+}

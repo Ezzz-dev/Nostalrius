@@ -1,0 +1,20 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# sooky.npc: Datenbank für die Gespensterfrau
+
+Name = "A Ghostly Woman"
+Outfit = (136,0-0-0-0)
+Home = [32191,31811,5]
+Radius = 7
+
+Behaviour = {
+ADDRESS,"hello$",! -> NOP
+ADDRESS,"hi$",!    -> NOP
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> NOP
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> NOP
+
+"bye"       -> Idle
+
+}

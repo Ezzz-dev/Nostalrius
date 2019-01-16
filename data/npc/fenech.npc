@@ -1,0 +1,67 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# fenech.npc: Datenbank für den pyramidenhändler Fenech
+
+Name = "Fenech"
+Outfit = (132,76-40-49-117)
+Home = [33131,32820,5]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Be mourned pilgrim in flesh."
+ADDRESS,"hi$",!    -> "Be mourned pilgrim in flesh."
+ADDRESS,"be","mourned","pilgrim","flesh",!    -> "Be mourned pilgrim in flesh."
+ADDRESS,!          -> Idle
+
+BUSY,"hello$",!    -> "Mourned %N, know that I am busy.", Queue
+BUSY,"hi$",!       -> *
+BUSY,"be","mourned","pilgrim","flesh",!    -> *
+BUSY,!             -> NOP
+VANISH,!           -> "May enlightenment be your path."
+
+"bye"      -> "May enlightenment be your path.", Idle
+"farewell" -> *
+"job"      -> "I sell runes, wands, rods and spellbooks."
+"offer"    -> *
+"name"     -> "I am the mourned Fenech."
+"time"     -> "Buy a watch on the bazar."
+"temple"   -> "Ask the guards for locations."
+"arena"    -> *
+"palace"   -> *
+
+"arkhothep"   -> "Praised may he be."
+"ashmunrah"   -> "I don't know. Read some books."
+"scarab"      -> "Scarabs are dangerous. Stay away from them like I do."
+"tibia"       -> "I know only Ankrahmun. What else could there be?" 
+"carlin"      -> "I don't know any foreign places or races."
+"thais"       -> *
+"edron"       -> *
+"venore"      -> * 
+"kazordoon"   -> *
+"dwarves"     -> *
+"dwarfes"     -> *
+"ab'dendriel" -> *
+"elves"       -> *
+"elfes"       -> *
+"darama"      -> "This is our land."
+"darashia"    -> "Its somewhere in the north as far as I know."
+"daraman"     -> "I am not a studied person. Ask someone else."
+"ankrahmun"   -> "Its my home and all I know." 
+
+"ascension"         -> "Ask the priest in the temple."
+"Akh'rah","Uthun"   -> *
+
+"rune"         -> "I sell blank runes and spell runes."
+"blank","rune" -> Type=3147, Amount=1, Price=10,  "Do you want to buy a blank rune for %P gold?", Topic=1
+"spellbook"    -> Type=3059, Amount=1, Price=150, "Do you want to buy a spellbook for %P gold?", Topic=1
+
+
+%1,1<%1,"blank","rune" -> Type=3147, Amount=%1, Price=10*%1,  "Do you want to buy %A blank runes for %P gold?", Topic=1
+%1,1<%1,"spellbook"    -> Type=3059, Amount=%1, Price=150*%1, "Do you want to buy %A spellbooks for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Come back, when you have enough money."
+Topic=1                         -> "Maybe next time."
+
+@"gen-t-runes-free-s.ndb"
+@"gen-t-wands-prem-s.ndb"
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="stone golem" nameDescription="a stone golem" race="undead" experience="160" speed="50" manacost="590">
+	<health now="270" max="270" />
+	<look type="67" head="0" body="0" legs="0" feet="0" corpse="4133" />
+	<targetchange interval="1000" chance="0" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="38" skill="52">
+	</attacks>
+	<defenses armor="30" defense="25">
+	</defenses>
+	<immunities>
+		<immunity fire="1" />
+		<immunity paralyze="1" />
+		<immunity poison="1" />
+	</immunities>
+	<loot>
+		<item id="3283" countmax="1" chance="15" /> <!-- a carlin sword -->
+		<item id="3007" countmax="1" chance="2" /> <!-- a crystal ring -->
+		<item id="3031" countmax="15" chance="160" /> <!-- a gold coin -->
+		<item id="3050" countmax="1" chance="50" /> <!-- a power ring -->
+		<item id="3039" countmax="1" chance="1" /> <!-- a red gem -->
+		<item id="3377" countmax="1" chance="50" /> <!-- a scale armor -->
+		<item id="1781" countmax="4" chance="130" /> <!-- a small stone -->
+		<item id="3409" countmax="1" chance="70" /> <!-- a steel shield -->
+		<item id="2920" countmax="1" chance="55" /> <!-- a torch -->
+	</loot>
+</monster>

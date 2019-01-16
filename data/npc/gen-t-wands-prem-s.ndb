@@ -1,0 +1,46 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gen-t-wands-prem-s.ndb: Datenbank für generischen Zauberstabverkauf - Premium Account Wands
+# Verwendete Topics: 90,91,92
+
+"wand"             -> "Wands can be wielded by sorcerers only and have a certain level requirement. There are five different wands, would you like to hear about them?", Topic=90
+"rod"              -> "Rods can be wielded by druids only and have a certain level requirement. There are five different rods, would you like to hear about them?", Topic=91
+
+Topic=90,"yes"                   -> "The names of the wands are 'Wand of Vortex', 'Wand of Dragonbreath', 'Wand of Plague', 'Wand of Cosmic Energy' and 'Wand of Inferno'. Which one would you like to buy?"
+Topic=90,"no"                    -> "Maybe another time."
+Topic=90                         -> "Maybe another time."
+
+Topic=91,"yes"                   -> "The names of the rods are 'Snakebite Rod', 'Moonlight Rod', 'Volcanic Rod', 'Quagmire Rod', and 'Tempest Rod'. Which one would you like to buy?"
+Topic=91,"no"                    -> "Maybe another time."
+Topic=91                         -> "Maybe another time."
+
+sorcerer,"wand","of","vortex",QuestValue(333)<1  -> "Oh, is this your first wand of vortex? Take this little present from me as a free sample!",SetQuestValue(333,1),Type=3074, Amount=1,Create(Type)
+druid,"snakebite","rod",QuestValue(333)<1  -> "Oh, is this your first snakebite rod? Take this little present from me as a free sample!",SetQuestValue(333,1),Type=3066, Amount=1,Create(Type)
+
+"wand","of","vortex"            -> Type=3074, Amount=1,  Price=500,   "This wand is only for sorcerers of level 7 and above. Would you like to buy a wand of vortex for %P gold?", Topic=92
+"wand","of","dragonbreath"      -> Type=3075, Amount=1,  Price=1000,  "This wand is only for sorcerers of level 13 and above. Would you like to buy a wand of dragonbreath for %P gold?", Topic=92
+"wand","of","plague"            -> Type=3072, Amount=1,  Price=5000,  "This wand is only for sorcerers of level 19 and above. Would you like to buy a wand of plague for %P gold?", Topic=92
+"wand","of","cosmic","energy"   -> Type=3073, Amount=1,  Price=10000, "This wand is only for sorcerers of level 26 and above. Would you like to buy a wand of cosmic energy for %P gold?", Topic=92
+"wand","of","inferno"           -> Type=3071, Amount=1,  Price=15000, "This wand is only for sorcerers of level 33 and above. Would you like to buy a wand of inferno for %P gold?", Topic=92
+
+"snakebite","rod"               -> Type=3066, Amount=1,  Price=500,   "This rod is only for druids of level 7 and above. Would you like to buy a snakebite rod for %P gold?", Topic=92
+"moonlight","rod"               -> Type=3070, Amount=1,  Price=1000,  "This rod is only for druids of level 13 and above. Would you like to buy a moonlight rod for %P gold?", Topic=92
+"volcanic","rod"                -> Type=3069, Amount=1,  Price=5000,  "This rod is only for druids of level 19 and above. Would you like to buy a volcanic rod for %P gold?", Topic=92
+"quagmire","rod"                -> Type=3065, Amount=1,  Price=10000, "This rod is only for druids of level 26 and above. Would you like to buy a quagmire rod for %P gold?", Topic=92
+"tempest","rod"                 -> Type=3067, Amount=1,  Price=15000, "This rod is only for druids of level 33 and above. Would you like to buy a tempest rod for %P gold?", Topic=92
+
+%1,1<%1,"wand","of","vortex"            -> Type=3074, Amount=%1,  Price=500*%1,   "This wand is only for sorcerers of level 7 and above. Would you like to buy %A wands of vortex for %P gold?", Topic=92
+%1,1<%1,"wand","of","dragonbreath"      -> Type=3075, Amount=%1,  Price=1000*%1,  "This wand is only for sorcerers of level 13 and above. Would you like to buy %A wands of dragonbreath for %P gold?", Topic=92
+%1,1<%1,"wand","of","plague"            -> Type=3072, Amount=%1,  Price=5000*%1,  "This wand is only for sorcerers of level 19 and above. Would you like to buy %A wands of plague for %P gold?", Topic=92
+%1,1<%1,"wand","of","cosmic","energy"   -> Type=3073, Amount=%1,  Price=10000*%1, "This wand is only for sorcerers of level 26 and above. Would you like to buy %A wands of cosmic energy for %P gold?", Topic=92
+%1,1<%1,"wand","of","inferno"           -> Type=3071, Amount=%1,  Price=15000*%1, "This wand is only for sorcerers of level 33 and above. Would you like to buy %A wands of inferno for %P gold?", Topic=92
+
+%1,1<%1,"snakebite","rod"               -> Type=3066, Amount=%1,  Price=500*%1,   "This rod is only for druids of level 7 and above. Would you like to buy %A snakebite rods for %P gold?", Topic=92
+%1,1<%1,"moonlight","rod"               -> Type=3070, Amount=%1,  Price=1000*%1,  "This rod is only for druids of level 13 and above. Would you like to buy %A moonlight rods for %P gold?", Topic=92
+%1,1<%1,"volcanic","rod"                -> Type=3069, Amount=%1,  Price=5000*%1,  "This rod is only for druids of level 19 and above. Would you like to buy %A volcanic rods for %P gold?", Topic=92
+%1,1<%1,"quagmire","rod"                -> Type=3065, Amount=%1,  Price=10000*%1, "This rod is only for druids of level 26 and above. Would you like to buy %A quagmire rods for %P gold?", Topic=92
+%1,1<%1,"tempest","rod"                 -> Type=3067, Amount=%1,  Price=15000*%1, "This rod is only for druids of level 33 and above. Would you like to buy %A tempest rods for %P gold?", Topic=92
+
+
+Topic=92,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=92,"yes"                   -> "Sorry, you don't have enough gold."
+Topic=92                         -> "You don't know what you're missing."

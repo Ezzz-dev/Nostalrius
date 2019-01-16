@@ -1,0 +1,172 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# nahbob.npc: Datenbank für den Maridhändler Nah'bob (Waffen und Rüstungen, Marid)
+
+Name = "Nah'bob"
+Outfit = (80,0-0-0-0)
+Home = [33104,32520,2]
+Radius = 1 
+
+Behaviour = {
+
+ADDRESS,"hello$",QuestValue(278)=2,!       -> "<Sighs> Another customer! I've only just sat down! What is it, %N?"
+ADDRESS,"hi$",QuestValue(278)=2,!          -> *
+ADDRESS,"greetings$",QuestValue(278)=2,!   -> *
+ADDRESS,"djanni'hah$",QuestValue(278)=2,!  -> *
+ADDRESS,!                                  -> Idle
+BUSY,"hello$",QuestValue(278)=2,!          -> "Whoa, %N! Easy! Old Bob is busy right now!", Queue
+BUSY,"hi$",QuestValue(278)=2,!             -> *
+ADDRESS,"greetings$",QuestValue(278)=2,!   -> *
+BUSY,"djanni'hah$",QuestValue(278)=2,!     -> *
+BUSY,!                                     -> NOP
+VANISH                                     -> "Bye then."
+
+"bye"                        -> "Bye now. Visit old Bob again one day!", Idle
+"farewell"                   -> *
+"name"                       -> "Well, my name is Nah'bob, but I don't like it. Just call me Bob."
+"Bob"                        -> "Yep, that's me."
+"nah'bob"                    -> "I don't like that name. Call me Bob."
+"job",male 	                 -> "I'm a trader, mate. You know... selling stuff, buying stuff... that kind of thing. Quite a hassle, actually. ...",
+                                "If you have the permission to trade with us, check out my latest offers."
+"job",female                 -> "I'm a trader, lady. You know... selling stuff, buying stuff... that kind of thing. Quite a hassle, actually. ...",
+                                "If you have the permission to trade with us, check out my latest offers."
+"trade",male                 -> "You want to buy something? Well, be my guest, Mister. Just ask me for my offers!"
+"trade",female               -> "You want to buy something? Well, be my guest, Lady. Just ask me for my offers!"
+"permission"                 -> "I am not allowed to trade with you unless Gabel gave you the permission to trade with us."
+
+"gabel"                      -> "He's the boss around here. You know - the big djinn. He's all right."
+"king"                       -> "King? We do not have kings. Not anymore." 
+"djinn"                      -> "Yes, I am a djinn. How long did it take you to notice?"
+"efreet"                     -> "The Efreet are a bunch of freaked out loonies, believe me. Nothing but 'war!' and 'domination!' and 'world rule!' all day long. Those people shoud chill out a bit."  
+"marid"                      -> "I guess I am one. I don't know why because I'm not really into all that Daraman stuff about ascetism, you know. ...",
+                                "But then, I don't like the Efreets' gibberish about war and world domination, either. ...",
+                                "In the end I chose the side which seemed more tolerant towards attitudes that are a bit... different. And that was clearly the Marid. ...",
+                                "Besides, Bo'ques chose to side with Gabel. And I would have hated never to eat his cooking again. Did you ever try his Chat d'Aramignon?"
+"malor"                      -> "Now THAT djnn really means stress. Too bad that doofus of an orc king freed him from his prison in the lamp. Gabel should have gotten rid of Malor for good when had the chance to do so."
+"mal'ouquah"                 -> "Mal'ouquah the Efreet's fortress. I have never seen it, and I don't feel any particular desire to do so."
+"ashta'daramai"              -> "Ashta'daramai is the name of this place - 'Daraman's gift'. It's actually a bit misleading, because it was not Daraman who built it. The name refer's to Daraman's teachings, you know."
+"human"                      -> "I have nothing against humans. ...",
+                                "Sure, there are always those who want to steal from you. ...",
+                                "Or blackmail you. ...",
+                                "Or torture you. ...",
+                                "Or just kill you for no reason. ...",
+                                "But all in all I think humans are amusing little people."
+"zathroth"                   -> "They say Zathroth created us because he wanted us to be mindless, greedy killing machines. Well, I'm not so sure about some of the Efreet, but as for me I think he's done a lousy job."
+"tibia"                      -> "It's a mad, mad world." 
+"daraman"                    ->	"Ah yes. Daraman. The old prophet. Well - he was all right, I guess. But I am not sure I agree with him on all matters. I mean - that thing about asceticism... I think he was a bit extreme there."  
+"darashia"                   -> "They say Darashia is full of relaxed people. To me that sounds like a good place to be."
+"scarab"                     -> "Yuk! I wouldn't eat that!"
+"edron"                      -> "You are talking about some human place, aren't you?"
+"thais"                      -> *
+"venore"                     -> *
+"kazordoon"                  -> *
+"carlin"                     -> *
+"ab'dendriel"                -> *
+"ankrahmun"                  -> "I know Ankrahmun - I've been there before. Lots of pyramids and stuff. Wicked."
+"pharaoh"                    -> "The pharaoh? I have heard about that guy. That man is as mad as a march hare."
+"palace"                     -> "The palace in Ankrahmun used to be a place of orgies and of all kinds of debauchery. Aah - those were the days...!"
+"ascension"                  -> "Yeah right. I don't know what it is about you humans. I have rarely met a human who did not have his head filled with some crazy religious idea."
+"kha'zeel"                   -> "I like the Kha'zeel mountains. It is true they are boring as hell, but personally I don't mind boredom. I hate excitement. Whenever somebody said 'Oh-that's-gonna-be-so-exciting' some really, really bad thing happened."
+"kha'labal"                  -> "Did you know that desert used to be fertile land? You should have seen it. It was all lush and verdant - a veritable paradise. ...",
+                                "There were flowers and birds everywhere, and more delicious food anybody could ever eat. ...",
+                                "But then that blockhead Baa'leal decided it was a good idea to burn it all down. Damn those stupid Efreet!"
+"melchior"                   -> "Of course I remember old Melchior. He used to come up here regularly. Is he dead?", Topic=1
+Topic=1,"yes"                -> "Oh. Well, I suppose that is bad. For him, anyway."
+Topic=1,"no"                 -> "So the old skinflint is still alive? Amazing! I could have sworn the Efreet knocked the stuffing out of him. No human can fool a djinn for long, you know."
+"alesar"                     -> "I know Alesar. Ran off to the Efreet, didn't he? Weird story. Always used to be such fanatic followers of Daraman, he and his brother. ...",
+                                "I guess that happens when you get all freaky about some silly idea. I'm sure that wouldn't have happened if he had taken a more relaxed approach to things. ...",
+                                "I remember how I always told him to chill out. But he was stubborn as a headstrong donkey. Just like his brother."
+"brother"                    -> "Haroun is Alesar's brother. Don't talk to him about it, though. Haroun may be a zealous fool, but he's all right. He has suffered enough."
+"fa'hradin"                  -> "I think Fa'hradin has stopped taking things too seriously long time ago. You just got to love the old cynic."
+"bo'ques"                    -> "Honestly, if I did not have any other reason for hanging out here Bo'ques's cooking would make me stay."
+"djem"                       -> "The little girl djema is bored out of her mind here so she often comes round. We've always had a barrel of laughs together, she and me - playing chess, telling stories, playing tricks on Haroun. ...",
+                                "I really like her. I will miss her lots when she's gone. <clears his throat> Hey! Don't tell her I have said that, ok?"
+"haroun"                     -> "Ah yes - Haroun. My esteemed fellow trader. Stiff like a butler and boring like a tax collector. He is a devout follower of Daraman, but I think he seriously misunderstood his teachings. ...",
+                                "I don't think it was the old prophet's intention to rid this world of laughter and of smiles."
+"baa'leal"                   -> "Baa'leal? Of course I remember old bulldog face. I wasn't surprised at all when I heard that he sided with Malor. Wasn't a great loss anyway. ...",
+                                "He may be one mean djinn, but he is thicker than a senile ox. To think Malor made him his lieutenant <laughs>!"
+
+"wares"                      -> "My job around here is to buy and sell weapons, armors, helmets, legs, and shields."
+"offer"                      -> *
+"goods"                      -> *
+"equipment"                  -> *
+"do","you","sell"            -> *
+"do","you","have"            -> *
+
+"weapon"          -> "I'm selling and buying spike swords, war hammers and obsidian lances. Furthermore I would buy fire swords, ice rapiers, dragon lances, fire axes and broadswords from you, if you have any."
+"shield"          -> "I'm just selling beholder shields. But I'm buying guardian shields, dragon shields, beholder shields, crown shields and phoenix shields."
+"armor"           -> "I'm selling and buying noble armors. Furthermore I'm buying crown armors and blue robes."
+"helmet"          -> "At this time I'm not selling any helmets. I'm only buying crown helmets, crusader helmets and royal helmets."
+"trousers"        -> "At this time I'm only buying crown legs. Oh, and I'm also looking for boots of haste!"
+"legs"            -> *
+
+"spike","sword"       			   -> Type=3271, Amount=1, Price=8000, "Do you want to buy a spike sword for %P gold?", Topic=10
+"war","hammer"       			   -> Type=3279, Amount=1, Price=10000, "Do you want to buy a war hammer for %P gold?", Topic=10
+"obsidian","lance"       		   -> Type=3313, Amount=1, Price=3000, "Do you want to buy an obsidian lance for %P gold?", Topic=10
+"beholder","shield"       		   -> Type=3418, Amount=1, Price=7000, "Do you want to buy a beholder shield for %P gold?", Topic=10
+"noble","armor"       		       -> Type=3380, Amount=1, Price=8000, "Do you want to buy a noble armor for %P gold?", Topic=10
+
+%1,1<%1,"spike","sword"       			   -> Type=3271, Amount=%1, Price=8000*%1, "Do you want to buy %A spike swords for %P gold?", Topic=10
+%1,1<%1,"war","hammer"       			   -> Type=3279, Amount=%1, Price=10000*%1, "Do you want to buy %A war hammers for %P gold?", Topic=10
+%1,1<%1,"obsidian","lance"       		   -> Type=3313, Amount=%1, Price=3000*%1, "Do you want to buy %A obsidian lances for %P gold?", Topic=10
+%1,1<%1,"beholder","shield"       		   -> Type=3418, Amount=%1, Price=7000*%1, "Do you want to buy %A beholder shields for %P gold?", Topic=10
+%1,1<%1,"noble","armor"       		       -> Type=3380, Amount=%1, Price=8000*%1, "Do you want to buy %A noble armors for %P gold?", Topic=10
+
+"sell","spike","sword"       			   -> Type=3271, Amount=1, Price=1000, "Do you want to sell a spike sword for %P gold?", Topic=11
+"sell","fire","sword"       			   -> Type=3280, Amount=1, Price=4000, "Do you want to sell a fire sword for %P gold?", Topic=11
+"sell","war","hammer"       			   -> Type=3279, Amount=1, Price=1200, "Do you want to sell a war hammer for %P gold?", Topic=11
+"sell","ice","rapier"       			   -> Type=3284, Amount=1, Price=1000, "Do you want to sell an ice rapier for %P gold?", Topic=11
+"sell","broad","sword"       			   -> Type=3301, Amount=1, Price=500, "Do you want to sell a broad sword for %P gold?", Topic=11
+"sell","dragon","lance"       		       -> Type=3302, Amount=1, Price=9000, "Do you want to sell a dragon lance for %P gold?", Topic=11
+"sell","obsidian","lance"       		   -> Type=3313, Amount=1, Price=500, "Do you want to sell an obsidian lance for %P gold?", Topic=11
+"sell","fire","axe"       		           -> Type=3320, Amount=1, Price=8000, "Do you want to sell a fire axe for %P gold?", Topic=11
+
+"sell","guardian","shield"       		   -> Type=3415, Amount=1, Price=2000, "Do you want to sell a guardian shield for %P gold?", Topic=11
+"sell","dragon","shield"       		   -> Type=3416, Amount=1, Price=4000, "Do you want to sell a dragon shield for %P gold?", Topic=11
+"sell","beholder","shield"       		   -> Type=3418, Amount=1, Price=1200, "Do you want to sell a beholder shield for %P gold?", Topic=11
+"sell","crown","shield"       		       -> Type=3419, Amount=1, Price=8000, "Do you want to sell a crown shield for %P gold?", Topic=11
+"sell","phoenix","shield"       		   -> Type=3439, Amount=1, Price=16000, "Do you want to sell a phoenix shield for %P gold?", Topic=11
+
+"sell","noble","armor"       		       -> Type=3380, Amount=1, Price=900, "Do you want to sell a noble armor for %P gold?", Topic=11
+"sell","crown","armor"       		       -> Type=3381, Amount=1, Price=12000, "Do you want to sell a crown armor for %P gold?", Topic=11
+"sell","crown","legs"       		       -> Type=3382, Amount=1, Price=12000, "Do you want to sell a pair of crown legs for %P gold?", Topic=11
+"sell","crown","helmet"       		       -> Type=3385, Amount=1, Price=2500, "Do you want to sell a crown helmet for %P gold?", Topic=11
+"sell","crusader","helmet"       	       -> Type=3391, Amount=1, Price=6000, "Do you want to sell a crusader helmet for %P gold?", Topic=11
+"sell","royal","helmet"       	           -> Type=3392, Amount=1, Price=30000, "Do you want to sell a royal helmet for %P gold?", Topic=11
+"sell","blue","robe"       	           -> Type=3567, Amount=1, Price=10000, "Do you want to sell a blue robe for %P gold?", Topic=11
+"sell","boots","of","haste"       	       -> Type=3079, Amount=1, Price=30000, "Do you want to sell a boots of haste for %P gold?", Topic=11
+
+"sell",%1,1<%1,"spike","sword"       			   -> Type=3271, Amount=%1, Price=1000*%1, "Do you want to sell %A spike swords for %P gold?", Topic=11
+"sell",%1,1<%1,"fire","sword"       			   -> Type=3280, Amount=%1, Price=4000*%1, "Do you want to sell %A fire swords for %P gold?", Topic=11
+"sell",%1,1<%1,"war","hammer"       			   -> Type=3279, Amount=%1, Price=1200*%1, "Do you want to sell %A war hammers for %P gold?", Topic=11
+"sell",%1,1<%1,"ice","rapier"       			   -> Type=3284, Amount=%1, Price=1000*%1, "Do you want to sell %A ice rapiers for %P gold?", Topic=11
+"sell",%1,1<%1,"broad","sword"       			   -> Type=3301, Amount=%1, Price=500*%1, "Do you want to sell %A broad swords for %P gold?", Topic=11
+"sell",%1,1<%1,"dragon","lance"       		       -> Type=3302, Amount=%1, Price=9000*%1, "Do you want to sell %A dragon lances for %P gold?", Topic=11
+"sell",%1,1<%1,"obsidian","lance"       		   -> Type=3313, Amount=%1, Price=500*%1, "Do you want to sell %A obsidian lances for %P gold?", Topic=11
+"sell",%1,1<%1,"fire","axe"       		           -> Type=3320, Amount=%1, Price=8000*%1, "Do you want to sell %A fire axes for %P gold?", Topic=11
+
+"sell",%1,1<%1,"guardian","shield"       		   -> Type=3415, Amount=%1, Price=2000*%1, "Do you want to sell %A guardian shields for %P gold?", Topic=11
+"sell",%1,1<%1,"dragon","shield"       		   -> Type=3416, Amount=%1, Price=4000*%1, "Do you want to sell %A dragon shields for %P gold?", Topic=11
+"sell",%1,1<%1,"beholder","shield"       		   -> Type=3418, Amount=%1, Price=1200*%1, "Do you want to sell %A beholder shields for %P gold?", Topic=11
+"sell",%1,1<%1,"crown","shield"       		       -> Type=3419, Amount=%1, Price=8000*%1, "Do you want to sell %A crown shields for %P gold?", Topic=11
+"sell",%1,1<%1,"phoenix","shield"       		   -> Type=3439, Amount=%1, Price=16000*%1, "Do you want to sell %A phoenix shields for %P gold?", Topic=11
+
+"sell",%1,1<%1,"noble","armor"       		       -> Type=3380, Amount=%1, Price=900*%1, "Do you want to sell %A noble armors for %P gold?", Topic=11
+"sell",%1,1<%1,"crown","armor"       		       -> Type=3381, Amount=%1, Price=12000*%1, "Do you want to sell %A crown armors for %P gold?", Topic=11
+"sell",%1,1<%1,"crown","legs"       		       -> Type=3382, Amount=%1, Price=12000*%1, "Do you want to sell %A pairs of crown legs for %P gold?", Topic=11
+"sell",%1,1<%1,"crown","helmet"       		       -> Type=3385, Amount=%1, Price=2500*%1, "Do you want to sell %A crown helmets for %P gold?", Topic=11
+"sell",%1,1<%1,"crusader","helmet"       	       -> Type=3391, Amount=%1, Price=6000*%1, "Do you want to sell %A crusader helmets for %P gold?", Topic=11
+"sell",%1,1<%1,"royal","helmet"       	           -> Type=3392, Amount=%1, Price=30000*%1, "Do you want to sell %A royal helmets for %P gold?", Topic=11
+"sell",%1,1<%1,"blue","robe"       	           -> Type=3567, Amount=%1, Price=10000*%1, "Do you want to sell %A blue robes for %P gold?", Topic=11
+"sell",%1,1<%1,"boots","of","haste"       	       -> Type=3079, Amount=%1, Price=30000*%1, "Do you want to sell %A boots of haste for %P gold?", Topic=11
+
+Topic=10,QuestValue(283)<3,!     -> "I'm sorry, pal. But you need Gabel's permission to trade with me."
+Topic=10,"yes",CountMoney>=Price -> "Ok. Here you are!", DeleteMoney, Create(Type)
+Topic=10,"yes"                   -> "Well, come back if you have enough gold."
+Topic=10                         -> "Well, obviously not."
+
+Topic=11,QuestValue(283)<3,!               -> "I'm sorry, pal. You don't have Gabel's permission to trade with me."
+Topic=11,"yes",Count(Type)>=Amount -> "Ok. Here is your gold.", Delete(Type), CreateMoney
+Topic=11,"yes"                             -> "You do not have one!"
+Topic=11,"yes",Amount>1					          -> "You do not have that many!"
+Topic=11                                   -> "Well, obviously not."
+}

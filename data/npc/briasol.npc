@@ -1,0 +1,105 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# briasol.npc: Datenbank fuer den Juwelier Briasol (Elfenstadt)
+
+Name = "Briasol"
+Outfit = (144,3-86-87-76)
+Home = [32635,31667,8]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",!       -> "Ashari %N."
+ADDRESS,"hi$",!          -> *
+ADDRESS,"ashari$",!      -> *
+ADDRESS,!                -> Idle
+BUSY,"hello$",!          -> "In a few heartbeats I will have time for you %N.", Queue
+BUSY,"hi$",!             -> *
+BUSY,"ashari$",!         -> *
+BUSY,!                   -> NOP
+VANISH,!                 -> "Asha Thrazi."
+
+"bye"           -> "Asha Thrazi.", Idle
+"farewell"      -> *
+"asha","thrazi" -> *
+"job"           -> "I am a jeweller and exchange money."
+"name"          -> "I am Briasol Crithanath."
+"time"          -> "I don't know the time, sorry. I do not care for this concept. Watches are your master, they tell you what to do and when."
+
+"elves"         -> "Our lifespan is longer then that of other races. We should keep that in mind everytime."
+"dwarfs"        -> "They live that long and make not much out of it."
+"humans"        -> "I mourn them. As soon as you get to know one he's dead." 
+"troll"         -> "We take care of them, give them shelter, and a reason to live." 
+
+"carlin"        -> "Carlin is a quite lovely city, given that its a city of humans."
+"thais"         -> "Thais has a high demand on the jewelry that I craft."
+"venore"        -> "The tradesmen of Venore offer high prices for my wares."
+"roderick"      -> "I have only little dealings with him."
+"olrik"         -> "I only talk to him when I send a parcel to one of my customers in a far away city. He seems friendly and is a bit eager to please."
+
+"cenath"        -> "They are the ones responsible for most of the magic and the like in this town."
+"kuridai"       -> "Our caste are workers out of passion."
+"deraisim"      -> "They hunt for us and patrol the woods."
+"abdaisim"      -> "I don't know much about them." 
+"teshial"       -> "They are lost in time." 
+"ferumbras"     -> "He will be gone sooner or later."
+"crunor"        -> "Gods are eternal. They learn so much in their existence." 
+"excalibug"     -> "It's a weapon of times long gone. It's lost for our time."
+"news"          -> "I know nothing of importance."
+
+"offer"           -> "I can sell gems, pearls, and jewels."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"gem"             -> "You can buy and sell small diamonds, sapphires, rubies, emeralds, and amethysts."
+"pearl"           -> "I have white and black pearls for sale, but you also can sell me some."
+"jewel"           -> "You can purchase our fine dwarfish wares like wedding rings, golden amulets, and ruby necklaces."
+"talon"           -> "We don't trade with them."
+
+"wedding","ring"   -> Type=3004, Amount=1, Price=990, "Do you want to buy a wedding ring for %P gold?", Topic=5
+"golden","amulet"  -> Type=3013, Amount=1, Price=6600,"Do you want to buy a golden amulet for %P gold?", Topic=5
+"ruby","necklace"  -> Type=3016, Amount=1, Price=3560,"Do you want to buy a ruby necklace for %P gold?", Topic=5
+"white","pearl"    -> Type=3026, Amount=1, Price=320, "Do you want to buy a white pearl for %P gold?", Topic=5
+"black","pearl"    -> Type=3027, Amount=1, Price=560, "Do you want to buy a black pearl for %P gold?", Topic=5
+"small","diamond"  -> Type=3028, Amount=1, Price=600, "Do you want to buy a small diamond for %P gold?", Topic=5
+"small","sapphire" -> Type=3029, Amount=1, Price=500, "Do you want to buy a small sapphire for %P gold?", Topic=5
+"small","ruby"     -> Type=3030, Amount=1, Price=500, "Do you want to buy a small ruby for %P gold?", Topic=5
+"small","emerald"  -> Type=3032, Amount=1, Price=500, "Do you want to buy a small emerald for %P gold?", Topic=5
+"small","amethyst" -> Type=3033, Amount=1, Price=400, "Do you want to buy a small amethyst for %P gold?", Topic=5
+
+%1,1<%1,"wedding","ring"   -> Type=3004, Amount=%1, Price=990*%1, "Do you want to buy %A wedding rings for %P gold?", Topic=5
+%1,1<%1,"golden","amulet"  -> Type=3013, Amount=%1, Price=6600*%1, "Do you want to buy %A golden amulets for %P gold?", Topic=5
+%1,1<%1,"ruby","necklace"  -> Type=3016, Amount=%1, Price=3560*%1,"Do you want to buy %A ruby necklaces for %P gold?", Topic=5
+%1,1<%1,"white","pearl"    -> Type=3026, Amount=%1, Price=320*%1, "Do you want to buy %A white pearls for %P gold?", Topic=5
+%1,1<%1,"black","pearl"    -> Type=3027, Amount=%1, Price=560*%1, "Do you want to buy %A black pearls for %P gold?", Topic=5
+%1,1<%1,"small","diamond"  -> Type=3028, Amount=%1, Price=600*%1, "Do you want to buy %A small diamonds for %P gold?", Topic=5
+%1,1<%1,"small","sapphire" -> Type=3029, Amount=%1, Price=500*%1, "Do you want to buy %A small sapphires for %P gold?", Topic=5
+%1,1<%1,"small","rub"     -> Type=3030, Amount=%1, Price=500*%1, "Do you want to buy %A small rubies for %P gold?", Topic=5
+%1,1<%1,"small","emerald"  -> Type=3032, Amount=%1, Price=500*%1, "Do you want to buy %A small emeralds for %P gold?", Topic=5
+%1,1<%1,"small","amethyst" -> Type=3033, Amount=%1, Price=400*%1, "Do you want to buy %A small amethysts for %P gold?", Topic=5
+
+"sell","white","pearl"    -> Type=3026, Amount=1, Price=160, "Do you want to sell a white pearl for %P gold?", Topic=6
+"sell","black","pearl"    -> Type=3027, Amount=1, Price=280, "Do you want to sell a black pearl for %P gold?", Topic=6
+"sell","small","diamond"  -> Type=3028, Amount=1, Price=300, "Do you want to sell a small diamond for %P gold?", Topic=6
+"sell","small","sapphire" -> Type=3029, Amount=1, Price=250, "Do you want to sell a small sapphire for %P gold?", Topic=6
+"sell","small","ruby"     -> Type=3030, Amount=1, Price=250, "Do you want to sell a small ruby for %P gold?", Topic=6
+"sell","small","emerald"  -> Type=3032, Amount=1, Price=250, "Do you want to sell a small emerald for %P gold?", Topic=6
+"sell","small","amethyst" -> Type=3033, Amount=1, Price=200, "Do you want to sell a small amethyst for %P gold?", Topic=6
+
+"sell",%1,1<%1,"white","pearl"    -> Type=3026, Amount=%1, Price=160*%1, "Do you want to sell %A white pearls for %P gold?", Topic=6
+"sell",%1,1<%1,"black","pearl"    -> Type=3027, Amount=%1, Price=280*%1, "Do you want to sell %A black pearls for %P gold?", Topic=6
+"sell",%1,1<%1,"small","diamond"  -> Type=3028, Amount=%1, Price=300*%1, "Do you want to sell %A small diamonds for %P gold?", Topic=6
+"sell",%1,1<%1,"small","sapphire" -> Type=3029, Amount=%1, Price=250*%1, "Do you want to sell %A small sapphires for %P gold?", Topic=6
+"sell",%1,1<%1,"small","rub"     -> Type=3030, Amount=%1, Price=250*%1, "Do you want to sell %A small rubies for %P gold?", Topic=6
+"sell",%1,1<%1,"small","emerald"  -> Type=3032, Amount=%1, Price=250*%1, "Do you want to sell %A small emeralds for %P gold?", Topic=6
+"sell",%1,1<%1,"small","amethyst" -> Type=3033, Amount=%1, Price=200*%1, "Do you want to sell %A small amethysts for %P gold?", Topic=6
+
+Topic=5,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=5,"yes"                   -> "Come back, when you have enough money."
+Topic=5                         -> "Hmm, but next time."
+
+Topic=6,"yes",Count(Type)>=Amount -> "Ok. Here is your money.", Delete(Type), CreateMoney
+Topic=6,"yes"                             -> "Sorry, you do not have one."
+Topic=6,"yes",Amount>1                    -> "Sorry, you do not have so much."
+Topic=6                                   -> "Maybe next time."
+
+@"gen-bank.ndb"
+}

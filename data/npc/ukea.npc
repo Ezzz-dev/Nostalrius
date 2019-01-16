@@ -1,0 +1,46 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# ukea.npc: Möbelverkäuferin Ukea in Ab'Dendriel
+
+Name = "Ukea"
+Outfit = (144,78-58-64-58)
+Home = [32651,31665,6]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",!  -> "Ashari %N. Welcome to Ab'Dendriel Furniture Store."
+ADDRESS,"hi$",!     -> *
+ADDRESS,"ashari$",! -> *
+ADDRESS,!           -> Idle
+BUSY,"hello$",!     -> "One moment please, %N.", Queue
+BUSY,"hi$",!        -> *
+BUSY,"ashari$",!    -> *
+BUSY,!              -> NOP
+VANISH,!            -> "Good bye."
+
+"bye"           -> "Asha Thrazi.", Idle
+"asha","thrazi" -> *
+"farewell"      -> *
+"name"          -> "My name is Ukea. I run this store."
+"job"           -> "Have you moved to a new home? I'm the specialist for equipping it."
+"time"          -> "It is %T. Do you need a clock for your house?"
+"news"          -> "You mean my specials, don't you?"
+
+"offer"           -> "I sell statues, tables, chairs, flowers, pillows, pottery, instruments, decoration, tapestries and containers."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"furniture"       -> *
+"equipment"       -> *
+"special"         -> "My offers are permanently extraordinarily cheap."
+
+@"gen-t-furniture-statues-s.ndb"
+@"gen-t-furniture-tables-s.ndb"
+@"gen-t-furniture-chairs-s.ndb"
+@"gen-t-furniture-flowers-s.ndb"
+@"gen-t-furniture-pillows-s.ndb"
+@"gen-t-furniture-pottery-s.ndb"
+@"gen-t-furniture-instruments-s.ndb"
+@"gen-t-furniture-decoration-s.ndb"
+@"gen-t-furniture-tapestries-s.ndb"
+@"gen-t-furniture-containers-s.ndb"
+}

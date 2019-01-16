@@ -1,0 +1,60 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# ishebad.npc: Datenbank für den großwesir ankrahmuns
+
+Name = "Ishebad"
+Outfit = (65,0-0-0-0)
+Home = [33158,32848,7]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello",!            -> "Be mourned, pilgrim in flesh."
+ADDRESS,"hi",!        -> *
+ADDRESS,"salutations",!      -> *
+ADDRESS,!                      -> Idle
+BUSY,!                         -> NOP
+VANISH,!                       -> "This person will never achieve ascension that way!"
+
+"bye"            -> "Good bye, %N!", Idle
+"farewell"       -> *
+"name"         -> "I am Ishebad the chosen."
+"time"         -> "Time does not matter to the undead."
+
+"temple"       -> "The temple will take care of your spiritual matters."
+"pharaoh"       -> "Our immortal ruler, may he be blessed, is the keeper of our enlightenment and our saviour."
+"ashmunrah"    -> "The fallen pharaoh did not see it was time to step back and let his son rule. So he met the fate that he deserved."
+"scarab"       -> "The scarabs are keepers of secrets. Some secrets are not ment for your mortals. Ever keep that in mind."
+
+"tibia"        -> "This world just awaits the wisdom of our pharaoh. It needs that wisdom and will soon learn to appreciate it." 
+"carlin"       -> "Other cities are of no importance. Ankrahmun will become the center of the known world anyways."
+"thais"        -> *
+"edron"        -> *
+"venore"       -> * 
+"kazordoon"    -> *
+"ab'dendriel"  -> *
+"darama"       -> "The rule of our beloved pharaoh will soon spread this continent and one day the whole known world."
+"darashia"     -> "This village is so insignificant that our wise pharaoh has choosen to ignore it."
+"daraman"      -> "Some lunatic who was driven mad by the heat of the desert and dehydration." 
+"Ankrahmun"    -> "Our city will become the capital of a worldwide empire." 
+"Arkhothep"     -> "The pharaoh wants not to be disturbed. I am his grand vizier and responsible for the daily affairs of the city and promotions of heroes."
+"pharaoh"       -> *
+"job"          -> *
+"mortality"    -> "If you please our pharaoh, he will reward you and free you from your mortality."
+"ascension"         -> "Consult a priest to learn how you could achieve ascension."
+"Akh'rah","Uthun"   -> *
+"Akh"               -> *
+"Rah"               -> *
+"uthun"             -> *
+"undead"            -> "Undeath is only for the choosen."
+"undeath"           -> *
+"mourn"             -> "You mortals are all to be mourned for your miserable existance."
+
+
+"promot"                         -> Price=20000, "Do you want to be promoted in your vocation for %P gold?", Topic=4
+Topic=4,"yes",Promoted,!         -> "You are already promoted."
+Topic=4,"yes",Level<20,!         -> "You need to be at least level 20 in order to be promoted."
+Topic=4,"yes",CountMoney<Price,! -> "You do not have enough money."
+Topic=4,"yes",Premium            -> "Congratulations! You are now promoted. Visit the sage Eremo for new spells.", Promote, DeleteMoney
+Topic=4,"yes"                    -> "You need a premium account in order to promote."
+Topic=4                          -> "Ok, then not."
+"eremo"                          -> "It is said that he lives on a small island near Edron. Maybe the people there know more about him."
+}

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="Demodras" nameDescription="Demodras" race="blood" experience="4000" speed="77" manacost="0">
+	<health now="3750" max="3750" />
+	<look type="204" head="0" body="0" legs="0" feet="0" corpse="4062" />
+	<targetchange interval="1000" chance="5" />
+	<targetstrategy nearest="70" weakest="10" mostdamage="10" random="10" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag runonhealth="300" />
+	</flags>
+	<attacks attack="80" skill="90">
+		<attack name="fire" min="-250" max="-350" range="7" radius="4" target="1" chance="5">
+			<attribute key="shootEffect" value="fire" />
+			<attribute key="areaEffect" value="firearea" />
+		</attack>
+		<attack name="firefield" range="7" radius="6" target="1" chance="10">
+			<attribute key="shootEffect" value="fire" />
+		</attack>
+		<attack name="fire" min="-250" max="-550" length="8" spread="3" chance="5">
+			<attribute key="areaEffect" value="firearea" />
+		</attack>
+	</attacks>
+	<defenses armor="45" defense="70">
+		<defense name="healing" min="400" max="700" chance="4">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity fire="1" />
+		<immunity lifedrain="1" />
+		<immunity paralyze="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<summons maxSummons="2">
+		<summon name="dragon lord" chance="6" max="2" />
+	</summons>
+	<voices>
+		<voice sentence="ZCHHHHH" yell="1" />
+		<voice sentence="I WILL SET THE WORLD IN FIRE!" yell="1" />
+		<voice sentence="I WILL PROTECT MY BROOD!" yell="1" />
+	</voices>
+	<loot>
+		<item id="2842" countmax="1" chance="90" /> <!-- a book -->
+		<item id="3583" countmax="10" chance="750" /> <!-- dragon ham -->
+		<item id="3386" countmax="1" chance="3" /> <!-- a dragon scale mail -->
+		<item id="3051" countmax="1" chance="100" /> <!-- an energy ring -->
+		<item id="3280" countmax="1" chance="6" /> <!-- a fire sword -->
+		<item id="3031" countmax="100" chance="950" /> <!-- a gold coin -->
+		<item id="3031" countmax="100" chance="800" /> <!-- a gold coin -->
+		<item id="3031" countmax="50" chance="550" /> <!-- a gold coin -->
+		<item id="2903" countmax="1" chance="60" /> <!-- a golden mug -->
+		<item id="3732" countmax="7" chance="240" /> <!-- a green mushroom -->
+		<item id="3061" countmax="1" chance="12" /> <!-- a life crystal -->
+		<item id="3450" countmax="1" chance="160" /> <!-- a power bolt -->
+		<item id="3392" countmax="1" chance="4" /> <!-- a royal helmet -->
+		<item id="3029" countmax="1" chance="100" /> <!-- a small sapphire -->
+		<item id="3373" countmax="1" chance="8" /> <!-- a strange helmet -->
+		<item id="3428" countmax="1" chance="6" /> <!-- a tower shield -->
+	</loot>
+</monster>

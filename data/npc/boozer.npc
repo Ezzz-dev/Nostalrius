@@ -1,0 +1,72 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# boozer.npc: Datenbank für den Wirt Boozer
+
+Name = "Boozer"
+Outfit = (128,76-20-116-76)
+Home = [32921,32068,5]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Welcome to the Hard Rock Racing Track, %N."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Please give me a minute, %N.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "You'll be back."
+
+"bye"         -> "You'll be back.", Idle
+"job"         -> "I am the bartender here at the racing track."
+"tavern"      -> *
+"frodo"       -> "I heard about his tiny tavern in Thais."
+"name"        -> "Just call me Boozer. Everyone does that."
+"time",male   -> "No clue, boy."
+"time",female -> "No clue, girl."
+"king"        -> "The king is far away, so who cares?"
+"tibianus"    -> *
+"army"        -> "Good customers."
+"ferumbras"   -> "Guess he'd be bad news for business."
+"excalibug"   -> "Heard about it now and then. Then again I also hear there a bogeyman somewhere in the swamps."
+"bogeyman"    -> "Just a tale to scare the kids."
+"thais"       -> "If you like that Thais that much just go there."
+"tibia"       -> "People from all over Tibia come here to buy, sell, gamble, and get drunk until they puke."
+"carlin"      -> "Heard about that women there. Must visit that wenches someday."
+"amazon"      -> "I guess they just have not met the right man yet."
+"news"        -> "The swampelves, down at Shadowthorn, are up to some trouble again."
+"rumors"      -> *
+"swampelves"  -> "Some elves gone evil so to say. They now live in a small village to the south called Shadowthorn. No big deal. Who cares about some carrot-eating musicians at all?"
+
+"bread"    -> Type=3600, Amount=1, Price=4, "Do you want to buy a bread for %P gold?", Topic=1
+"cheese"   -> Type=3607, Amount=1, Price=6, "Do you want to buy cheese for %P gold?", Topic=1
+"meat"     -> Type=3577, Amount=1, Price=5, "Do you want to buy meat for %P gold?", Topic=1
+"ham"      -> Type=3582, Amount=1, Price=8, "Do you want to buy a ham for %P gold?", Topic=1
+"cookie"   -> Type=3598, Amount=1, Price=5, "Do you want to buy a cookie for %P gold?", Topic=1
+
+%1,1<%1,"bread"         -> Type=3600, Amount=%1, Price=4*%1, "Do you wanna buy %A breads for %P gold?", Topic=1
+%1,1<%1,"cheese"        -> Type=3607, Amount=%1, Price=6*%1, "Do you wanna buy %A cheese for %P gold?", Topic=1
+%1,1<%1,"meat"          -> Type=3577, Amount=%1, Price=5*%1, "Do you wanna buy %A meat for %P gold?", Topic=1
+%1,1<%1,"ham"           -> Type=3582, Amount=%1, Price=8*%1, "Do you wanna buy %A ham for %P gold?", Topic=1
+%1,1<%1,"cookie"        -> Type=3598, Amount=%1, Price=5*%1, "Do you wanna buy %A cookies for %P gold?", Topic=1
+
+"lemonade" -> Type=2880, Data=12, Amount=1, Price=2, "Do you want to buy a mug of lemonade for %P gold?", Topic=1
+"beer"     -> Type=2880, Data=3,  Amount=1, Price=2, "Do you want to buy a mug of beer for %P gold?", Topic=1
+"wine"     -> Type=2880, Data=2,  Amount=1, Price=3, "Do you want to buy a mug of wine for %P gold?", Topic=1
+"water"    -> Type=2880, Data=1,  Amount=1, Price=1, "Do you want to buy a mug of water for %P gold?", Topic=1
+
+%1,1<%1,"lemonade" -> Type=2880, Data=12, Amount=%1, Price=2*%1, "Do you want to buy %A mugs of lemonade for %P gold?", Topic=1
+%1,1<%1,"beer"     -> Type=2880, Data=3,  Amount=%1, Price=2*%1, "Do you want to buy %A mugs of beer for %P gold?", Topic=1
+%1,1<%1,"wine"     -> Type=2880, Data=2,  Amount=%1, Price=3*%1, "Do you want to buy %A mugs of wine for %P gold?", Topic=1
+%1,1<%1,"water"    -> Type=2880, Data=1,  Amount=%1, Price=1*%1, "Do you want to buy %A mugs of water for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "And here is what you ordered.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "You don't have the gold. If we were gambling I'd call you a cheater ... and you know what happens to cheaters, don't you?"
+Topic=1                         -> "Then not, fine with me."
+
+
+"buy"             -> "I can offer you food and drinks. Get anything else somewhere else and don't bother me."
+"do","you","sell" -> *
+"do","you","have" -> *
+"food"            -> "So you are looking for food? We have cookies, bread, cheese, ham, and meat."
+"drink"           -> "I can offer you beer, wine, lemonade, and water."
+
+}

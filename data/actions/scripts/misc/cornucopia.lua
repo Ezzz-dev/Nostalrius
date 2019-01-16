@@ -1,0 +1,61 @@
+function onUse(player, item, fromPosition, target, toPosition)
+	if math.random(1, 100) <= 95 then
+		item:getPosition():sendMagicEffect(19)
+		local parent = item:getParent()
+		if parent:isContainer() or parent:isPlayer() then
+			parent:addItem(3592, 1)
+			parent:addItem(3592, 1)
+			parent:addItem(3592, 1)
+			parent:addItem(3592, 1)
+			parent:addItem(3592, 1)
+			parent:addItem(3592, 1)
+			parent:addItem(3592, 1)
+			parent:addItem(3592, 1)
+			parent:addItem(3592, 1)
+			parent:addItem(3592, 1)
+		else
+			Game.createItem(3592, 1, fromPosition)
+			Game.createItem(3592, 1, fromPosition)
+			Game.createItem(3592, 1, fromPosition)
+			Game.createItem(3592, 1, fromPosition)
+			Game.createItem(3592, 1, fromPosition)
+			Game.createItem(3592, 1, fromPosition)
+			Game.createItem(3592, 1, fromPosition)
+			Game.createItem(3592, 1, fromPosition)
+			Game.createItem(3592, 1, fromPosition)
+			Game.createItem(3592, 1, fromPosition)
+			Game.createItem(3592, 1, fromPosition)
+		end
+	else
+		item:getPosition():sendMagicEffect(19)
+		local parent = item:getParent()
+		if parent:isContainer() or parent:isPlayer() then
+			parent:addItem(3592, 1)
+			parent:addItem(3592, 1)
+			parent:addItem(3592, 1)
+			parent:addItem(3592, 1)
+			parent:addItem(3592, 1)
+			parent:addItem(3592, 1)
+			parent:addItem(3592, 1)
+			parent:addItem(3592, 1)
+			parent:addItem(3592, 1)
+			parent:addItem(3592, 1)
+			parent:addItem(3592, 1)
+		else
+			Game.createItem(3592, 1, fromPosition)
+			Game.createItem(3592, 1, fromPosition)
+			Game.createItem(3592, 1, fromPosition)
+			Game.createItem(3592, 1, fromPosition)
+			Game.createItem(3592, 1, fromPosition)
+			Game.createItem(3592, 1, fromPosition)
+			Game.createItem(3592, 1, fromPosition)
+			Game.createItem(3592, 1, fromPosition)
+			Game.createItem(3592, 1, fromPosition)
+			Game.createItem(3592, 1, fromPosition)
+			Game.createItem(3592, 1, fromPosition)
+		end
+		item:transform(3592, 1)
+		item:decay()
+	end
+	return true
+end

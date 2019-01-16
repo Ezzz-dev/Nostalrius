@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="orc warlord" nameDescription="an orc warlord" race="blood" experience="670" speed="234" manacost="0">
+	<health now="950" max="950" />
+	<look type="2" head="0" body="0" legs="0" feet="0" corpse="4148" />
+	<targetchange interval="1000" chance="5" />
+	<targetstrategy nearest="70" weakest="15" mostdamage="15" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="68" skill="72">
+		<attack name="physical" min="-100" max="-120" range="7" interval="1000" chance="4">
+			<attribute key="shootEffect" value="throwingstar" />
+		</attack>
+	</attacks>
+	<defenses armor="28" defense="55">
+		<defense name="invisible" duration="2000" interval="1000" chance="25">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity fire="1" />
+		<immunity outfit="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<voices interval="5000" chance="10">
+		<voice sentence="Ranat Ulderek!" />
+		<voice sentence="Orc buta bana!" />
+		<voice sentence="Ikem rambo zambo!" />
+		<voice sentence="Futchi maruk buta!" />
+	</voices>
+	<loot>
+		<item id="3359" countmax="1" chance="10" /> <!-- a brass armor -->
+		<item id="3372" countmax="1" chance="100" /> <!-- brass legs -->
+		<item id="3391" countmax="1" chance="2" /> <!-- a crusader helmet -->
+		<item id="3384" countmax="1" chance="15" /> <!-- a dark helmet -->
+		<item id="3322" countmax="1" chance="2" /> <!-- a dragon hammer -->
+		<item id="3578" countmax="2" chance="100" /> <!-- a fish -->
+		<item id="3031" countmax="45" chance="190" /> <!-- a gold coin -->
+		<item id="3577" countmax="2" chance="200" /> <!-- meat -->
+		<item id="3316" countmax="1" chance="150" /> <!-- an orcish axe -->
+		<item id="3357" countmax="1" chance="60" /> <!-- a plate armor -->
+		<item id="3557" countmax="1" chance="40" /> <!-- plate legs -->
+		<item id="3084" countmax="1" chance="20" /> <!-- a protection amulet -->
+		<item id="3307" countmax="1" chance="120" /> <!-- a scimitar -->
+		<item id="3049" countmax="1" chance="1" /> <!-- a stealth ring -->
+		<item id="3287" countmax="40" chance="300" /> <!-- a throwing star -->
+		<item id="3265" countmax="1" chance="20" /> <!-- a two handed sword -->
+		<item id="3393" countmax="1" chance="8" /> <!-- an amazon helmet -->
+		<item id="3394" countmax="1" chance="6" /> <!-- an amazon armor -->
+		<item id="3437" countmax="1" chance="4" /> <!-- an amazon shield -->
+	</loot>
+</monster>

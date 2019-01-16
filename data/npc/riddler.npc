@@ -1,0 +1,94 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# riddler.npc: Datenbank für den Rätselgeist Riddler
+
+#ACHTUNG TOPIC 13 und 14 mittendrin benutzt, da nachträglich!!
+#WICHTIG: Riddler MUSSS bei rätseln nach EINEM GANZEN WORT fragen, sonst geht cheat
+
+Name = "Riddler"
+Outfit = (48,0-0-0-0)
+Home = [32479,31902,2]
+Radius = 5
+
+Behaviour = {
+ADDRESS,"hello$",! -> "%N! HEHEHEHE! Another fool! Excellent!"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Wait %N, you'll die next!", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "COWARD! CHICKEN! HEHEHEHE!"
+
+"bye"      -> "HEHEHE! I knew you don't have the stomach.", Idle
+"name"     -> "I am known as the riddler. That is all you need to know."
+"job"      -> "I am the guardian of the paradox tower."
+"time"     -> "It is the age of the talon."
+"tower"    -> "This tower, of course, silly one. It holds my master's treasure."
+"paradox"  -> *
+"master"   -> "His name is none of your business."
+"guard"    -> "I am guarding the treasures of the tower. Only those who pass the test of the three sigils may pass."
+"treasure" -> *
+"test"     -> "Death awaits those who fail the test of the three seals! Do you really want me to test you?", Topic=1
+"sigil"    -> *
+"key"      -> "The key of this tower! You will never find it! A malicious plant spirit is guarding it!"
+"door"     -> *
+
+Topic=1,"yes",QuestValue(212)=0 -> "FOOL! Now you're doomed! But well ... So be it! Let's start out with the Seal of Knowledge and the first question: What name did the necromant king choose for himself?",SetQuestValue(212,1), Topic=2
+Topic=1,"yes",QuestValue(212)=1 -> "So you think you're smart! But well ... So be it! Let's start out with the Seal of Knowledge and the first question: What do I have in my pocket?", Topic=14
+Topic=1,"no"  -> "HEHEHE! I knew you wouldn't have the stomach.", Idle
+
+Topic=14,!          -> "WRONG!", Idle, EffectOpp(11),SetQuestValue(212,0), Teleport(32725,31589,12), EffectOpp(11)
+
+Topic=2,"goshnar",! -> "HOHO! You have learned your lesson well. Question number two then: Who or what is the feared Hugo?", Topic=3
+Topic=2,!          -> "WRONG!", Idle, EffectOpp(11),SetQuestValue(212,0), Teleport(32725,31589,12), EffectOpp(11)
+
+Topic=3,QuestValue(211)=4,"demonbunny",! -> "HOHO! Right again. All right. The final question of the first seal: Who was the first warrior to follow the path of the Mooh'Tah?", Topic=4
+Topic=3,QuestValue(211)<>4,"demonbunny",! -> "Hmmm, so you think cheating will get you through that test? Then your final question of the first seal is: What is the meaning of life?", Topic=13
+Topic=3,QuestValue(211)=4,"demonrabbit",! -> "HOHO! Right again. All right. The final question of the first seal: Who was the first warrior to follow the path of the Mooh'Tah?", Topic=4
+Topic=3,QuestValue(211)<>4,"demonrabbit",! -> "Hmmm, so you think cheating will get you through that test? Then your final question of the first seal is: What is the meaning of life?", Topic=13
+Topic=3,!             -> "WRONG!", Idle, EffectOpp(11),SetQuestValue(212,0), Teleport(32725,31589,12), EffectOpp(11)
+Topic=13,!             -> "WRONG! Next time get your own answers. To hell with thee, cheater!", Idle, EffectOpp(11),SetQuestValue(212,0), Teleport(32725,31589,12), EffectOpp(11)
+
+Topic=4,"Tha'kull",! -> "HOHO! Lucky you. You have passed the first seal! So ... would you like to continue with the Seal of the Mind?", Topic=5
+Topic=4,!             -> "WRONG!", Idle, EffectOpp(11),SetQuestValue(212,0), Teleport(32725,31589,12), EffectOpp(11)
+
+Topic=5,"yes" -> "As you wish, foolish one! Here is my first question: Its lighter then a feather but no living creature can hold it for ten minutes?", Topic=6
+Topic=5       -> "HEHEHE! I knew you don't have the stomach.",SetQuestValue(212,0), Idle
+
+Topic=6,"breath",! -> "That was an easy one. Let's try the second: If you name it, you break it.", Topic=7
+Topic=6,!         -> "WRONG!", Idle, EffectOpp(11),SetQuestValue(212,0), Teleport(32725,31589,12), EffectOpp(11)
+
+Topic=7,"silence",! -> "Hm. I bet you think you're smart. All right. How about this: What does everybody want to become but nobody to be?", Topic=8
+Topic=7,!          -> "WRONG!", Idle, EffectOpp(11),SetQuestValue(212,0), Teleport(32725,31589,12), EffectOpp(11)
+
+Topic=8,"old",! -> "ARGH! You did it again! Well all right. Do you wish to break the Seal of Madness?", Topic=9
+Topic=8,!       -> "WRONG!", Idle, EffectOpp(11),SetQuestValue(212,0), Teleport(32725,31589,12), EffectOpp(11)
+
+Topic=9,"yes" -> "GOOD! So I will get you at last. Answer this: What is your favourite colour?", Topic=10
+Topic=9       -> "HEHEHE! I knew you don't have the stomach.",SetQuestValue(212,0), Idle
+
+Topic=10,"red",!    -> "UHM UH OH ... How could you guess that? Are you mad??? All right. Question number two: What is the opposite?",SetQuestValue(2,1), Topic=11
+Topic=10,"blue",!   -> "UHM UH OH ... How could you guess that? Are you mad??? All right. Question number two: What is the opposite?",SetQuestValue(2,2), Topic=11
+Topic=10,"black",!  -> "UHM UH OH ... How could you guess that? Are you mad??? All right. Question number two: What is the opposite?",SetQuestValue(2,3), Topic=11
+Topic=10,"white",!  -> "UHM UH OH ... How could you guess that? Are you mad??? All right. Question number two: What is the opposite?",SetQuestValue(2,4), Topic=11
+Topic=10,"orange",! -> "UHM UH OH ... How could you guess that? Are you mad??? All right. Question number two: What is the opposite?",SetQuestValue(2,5), Topic=11
+Topic=10,"green",!  -> "UHM UH OH ... How could you guess that? Are you mad??? All right. Question number two: What is the opposite?",SetQuestValue(2,6), Topic=11
+Topic=10,"yellow",! -> "UHM UH OH ... How could you guess that? Are you mad??? All right. Question number two: What is the opposite?",SetQuestValue(2,7), Topic=11
+Topic=10,"brown",!  -> "UHM UH OH ... How could you guess that? Are you mad??? All right. Question number two: What is the opposite?",SetQuestValue(2,8), Topic=11
+Topic=10,"violet",! -> "UHM UH OH ... How could you guess that? Are you mad??? All right. Question number two: What is the opposite?",SetQuestValue(2,9), Topic=11
+Topic=10,"pink",!   -> "UHM UH OH ... How could you guess that? Are you mad??? All right. Question number two: What is the opposite?",SetQuestValue(2,10), Topic=11
+Topic=10,"silver",! -> "UHM UH OH ... How could you guess that? Are you mad??? All right. Question number two: What is the opposite?",SetQuestValue(2,11), Topic=11
+Topic=10,"gold",!   -> "UHM UH OH ... How could you guess that? Are you mad??? All right. Question number two: What is the opposite?",SetQuestValue(2,12), Topic=11
+Topic=10,"grey",!   -> "UHM UH OH ... How could you guess that? Are you mad??? All right. Question number two: What is the opposite?",SetQuestValue(2,13), Topic=11
+
+Topic=10,!        -> "WRONG!", Idle, EffectOpp(11),SetQuestValue(212,0), Teleport(32725,31589,12), EffectOpp(11)
+
+Topic=11,"nothing",! -> "NO! NO! NO! That can't be true. You're not only mad, you are a complete idiot! Ah well. Here is the last question: What is 1 plus 1?", Topic=12
+Topic=11,"none",!    -> *
+Topic=11,!           -> "SORRY I AM NOT ALLOWD TO HELP HEHEHE!", Idle, EffectOpp(11),SetQuestValue(212,0), Teleport(32725,31589,12), EffectOpp(11)
+
+Topic=12,QuestValue(1)=1,"49$",! -> "DAMN YOUUUUUUUUUUUUUUUUUUUUUU!", Idle, EffectOpp(11),SetQuestValue(212,0), Teleport(32478,31905,1), EffectOpp(11)
+Topic=12,QuestValue(1)=2,"94$",! -> "DAMN YOUUUUUUUUUUUUUUUUUUUUUU!", Idle, EffectOpp(11),SetQuestValue(212,0), Teleport(32478,31905,1), EffectOpp(11)
+Topic=12,QuestValue(1)=3,"13$",! -> "DAMN YOUUUUUUUUUUUUUUUUUUUUUU!", Idle, EffectOpp(11),SetQuestValue(212,0), Teleport(32478,31905,1), EffectOpp(11)
+Topic=12,QuestValue(1)=4,"1$",! -> "DAMN YOUUUUUUUUUUUUUUUUUUUUUU!", Idle, EffectOpp(11),SetQuestValue(212,0), Teleport(32478,31905,1), EffectOpp(11)
+Topic=12,!      -> "WRONG!", Idle, EffectOpp(11),SetQuestValue(212,0), Teleport(32725,31589,12), EffectOpp(11)
+}

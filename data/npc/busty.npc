@@ -1,0 +1,11 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# busty.npc: Datenbank für die Wächterin Busty Bonecrusher
+
+Name = "Busty Bonecrusher"
+Outfit = (139,96-19-66-95)
+Home = [32294,31791,7]
+Radius = 3
+
+Behaviour = {
+@"guards-carlin.ndb"
+}

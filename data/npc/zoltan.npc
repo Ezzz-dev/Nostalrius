@@ -1,0 +1,62 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# zoltan.npc Datenbank fuer den Zauberlehrer Zoltan
+
+Name = "Zoltan"
+Outfit = (130,95-94-95-57)
+Home = [33268,31849,4]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Welcome %N, student of the arcane arts."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Wait %N. Your time will come.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Use your knowledge wisely."
+
+"bye"       -> "Use your knowledge wisely", Idle
+"job"       -> "I am a teacher of the most powerful spells in Tibia."
+"name"      -> "I am known in this world as Zoltan."
+"time"      -> "It's %T."
+"king"      -> "King Tibianus III was the founder of our academy."
+"tibianus"  -> * 
+"army"      -> "They rely too much on their brawn instead of their brain."
+"ferumbras" -> "A fallen sorcerer, indeed. What a shame."
+"excalibug" -> "You will need no weapon if you manipulate the essence of magic."
+"thais"     -> "Thais is a place of barbary."
+"tibia"     -> "There is still much left to be explored in this world."
+"carlin"    -> "Carlin's druids waste the influence they have in enviromentalism."
+"edron"     -> "Sciences are thriving on this isle."
+"news"      -> "I have no time for chit chat."
+"rumors"    -> *
+"eremo"     -> "He is an old and wise man that has seen a lot of Tibia. He is also one of the best magicians. Visit him on his little island."
+"visit"     -> "You should visit Eremo on his little island. Just ask Pemaret on Cormaya for passage."
+
+"yenny","gentle"  -> "Ah, Yenny the Gentle was one of the founders of the druid order called Crunor's Caress, that has been originated in her hometown Carlin."
+"yenny"           -> "Yenny? Which Yenny? That is a common name."
+"crunor","caress",QuestValue(211)=1 -> "A quite undruidic order of druids they were, as far as we know. I have no more enlightening knowledge about them though.",SetQuestValue(211,2)
+"crunor","caress",QuestValue(211)>1 -> *
+"crunor","caress",QuestValue(211)=0 -> "I am quite busy, ask another time!"
+
+
+"spellbook" -> "Don't bother me with that. Ask in the shops for it."
+"spell"     -> "I have some very powerful spells: 'Energy Bomb', 'Mass Healing', 'Poison Storm', 'Paralyze', and 'Ultimate Explosion'."
+
+"energy","bomb",Sorcerer        -> String="Energybomb", Price=2300, "Are you prepared to learn the spell 'Energy Bomb' for %P gold?", Topic=1
+"energy","bomb"                 -> "No, no, no. This dangerous spell is only for sorcerers."
+"mass","healing",Druid          -> String="Mass Healing", Price=2200, "Are you prepared to learn the spell 'Mass Healing' for %P gold?", Topic=1
+"mass","healing"                -> "No, no, no. This elemental spell is only for druids."
+"poison","storm",Druid          -> String="Poison Storm", Price=3400, "Are you prepared to learn the spell 'Poison Storm' for %P gold?", Topic=1
+"poison","storm"                -> "No, no, no. This elemental spell is only for druids."
+"paralyze",Druid                -> String="Paralyze", Price=1900, "Are you prepared to learn the spell 'Paralyze' for %P gold?", Topic=1
+"paralyze"                      -> "No, no, no. This elemental spell is only for druids."
+"ultimate","explosion",Sorcerer -> String="Ultimate Explosion", Price=8000, "Are you prepared to learn the spell 'Ultimate Explosion' for %P gold?", Topic=1
+"ultimate","explosion"          -> "No, no, no. This dangerous spell is only for sorcerers."
+
+Topic=1,"yes",SpellKnown(String)=1        -> "Want to fool me? You already know this spell."
+Topic=1,"yes",Level<SpellLevel(String) -> Amount=SpellLevel(String), "Don't be in high spirits. Advance to level %A, and then come again."
+Topic=1,"yes",CountMoney<Price            -> "Want to learn one of the most powerful spells, and don't even know how much money you have?"
+Topic=1,"yes"                             -> "Congratulations. You now know one of the most powerful spells. Use it wisely.", DeleteMoney, EffectOpp(13), TeachSpell(String)
+Topic=1                                   -> "Lost your heart?"
+}

@@ -1,0 +1,59 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# puffels.npc Datenbank fuer den Zauberlehrer Puffels
+
+Name = "Puffels"
+Outfit = (21,0-0-0-0)
+Home = [33269,31850,8]
+Radius = 4
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Yeah, another fool disturbing me, what a joy."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Shut up!"
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Whatever."
+
+"bye"       -> "Whatever.", Idle
+"job"       -> "I have to teach the spells of least importance to some fools."
+"name"      -> "I am Magister Puffels, any problem with that?"
+"time"      -> "Where might I hide a watch, you fool?"
+"king"      -> "I give nothing for kings, queens... or other people at all."
+"tibianus"  -> *
+"army"      -> "Fine army that is. Half of them have already deserted."
+"ferumbras" -> "The day will come even he makes a fatal casting mistake... I know what I am talking about."
+"excalibug" -> "I have no use for such stuff."
+"thais"     -> "I was there once, almost died. The fools there mistook me for an ordinary rat, can you believe that!?"
+"tibia"     -> "Bah, the whole Tibia can &#&$*# my #$&*!"
+"carlin"    -> "I don't care about some remote cities."
+"edron"     -> "Sciences are thriving on this isle."
+"news"      -> "I heard in Thais the new brand of cheese was... uhm..."
+"rumors"    -> *
+"hugo"      -> "Hugo? I heared it was an accident that created this beast."
+"beast"     -> "I don't know more about it."
+
+"spellbook" -> "Ask a shop owner for that."
+"spell"     -> "I have 'Magic Rope', 'Levitate', 'Haste', 'Berserk', 'Force Strike', 'Energy Strike', and 'Flame Strike'."
+
+"magic","rope"             -> String="Magic Rope", Price=200,  "Do you want to learn the spell 'Magic Rope' for %P gold?", Topic=1
+"levitate"                 -> String="Levitate", Price=500,  "Do you want to learn the spell 'Levitate' for %P gold?", Topic=1
+"haste"                    -> String="Haste", Price=600,  "Do you want to learn the spell 'Haste' for %P gold?", Topic=1
+"berserk",Knight           -> String="Berserk", Price=2500, "Do you want to learn the spell 'Berserk' for %P gold?", Topic=1
+"berserk"                  -> "This spell is only for knights."
+"force","strike",Druid     -> String="Force Strike", Price=600, "Do you want to learn the spell 'Force Strike' for %P gold?", Topic=1
+"force","strike",Sorcerer  -> *
+"force","strike"           -> "This spell is only for sorcerers and druids."
+"energy","strike",Druid    -> String="Energy Strike", Price=800, "Do you want to learn the spell 'Energy Strike' for %P gold?", Topic=1
+"energy","strike",Sorcerer -> *
+"energy","strike"          -> "This spell is only for sorcerers and druids."
+"flame","strike",Druid     -> String="Flame Strike", Price=800, "Do you want to learn the spell 'Flame Strike' for %P gold?", Topic=1
+"flame","strike",Sorcerer  -> *
+"flame","strike"           -> "This spell is only for sorcerers and druids."
+
+Topic=1,"yes",SpellKnown(String)=1        -> "You already know this spell."
+Topic=1,"yes",Level<SpellLevel(String) -> Amount=SpellLevel(String), "You must have level %A to learn this spell."
+Topic=1,"yes",CountMoney<Price            -> "You do not have enough gold to pay my services."
+Topic=1,"yes"                             -> "From now on you can cast this spell.", DeleteMoney, EffectOpp(13), TeachSpell(String)
+Topic=1                                   -> "I thought so."
+}

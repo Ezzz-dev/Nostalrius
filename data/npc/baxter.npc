@@ -1,0 +1,68 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# baxter.npc: Datenbank für den Burgwächter Baxter
+
+Name = "Baxter"
+Outfit = (131,96-29-29-115)
+Home = [32322,32188,7]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$",! -> "LONG LIVE KING TIBIANUS!"
+ADDRESS,"hi$",!    -> "LONG LIVE KING TIBIANUS!"
+ADDRESS,!          -> Idle
+BUSY,"hello$"      -> "Cant you see I am busy, eh?!."
+BUSY,"hi$"         -> "Cant you see I am busy, eh?!."
+BUSY,!             -> NOP
+VANISH,!           -> "What a lack of manners!"
+
+"bye"            -> "LONG LIVE THE KING!", Idle
+"farewell"       -> *
+"news"           -> "It is rumoured that Ferumbras is planning a new attack on town."
+"how","are","you"-> "I am healthy and vigilant."
+"sell"           -> "Visit Tibia's shopkeepers to buy their fine wares."
+"king"           -> "King Tibianus III is our wise and just leader!"
+"leader"         -> *
+"job"            -> "I am a proud member of the king's army. It is my duty to guard the castle."
+"army"           -> "Our brave army, which protects our city, consists of three battlegroups."
+"guard"          -> *
+"battlegroup"    -> "There are the dogs of war, the red guards, and the silver guards."
+"castle"         -> "His Royal Highness ordered the castle to be open for all his subjects."
+"subject"        -> "We all live under the benevolent guidance of our king."
+"dogs","of","war"-> "They are our main army."
+"red","guard"    -> "They are our special forces. Some serve as cityguards, others as secret police." 
+"secret","police"-> "Ask a higher offical about that."
+"silver","guard" -> "The best sorcerers, paladins, knights, or druids of our forces are choosen to serve as silver guards. They are the bodyguards of the king."
+"city"           -> "Now that the king returned, we will clean the city from all scum."
+"scum"           -> "To much scum roams our streets in our days, the red guards will take care of them."
+"stutch"         -> "He is soldier in the silver guard."
+"harsky"         -> "He is soldier in the silver guard."
+"bozo"           -> "The royal jester. I dont think he is funny."
+"sam"            -> "He is a fine blacksmith. Almost all our weapons are made by him."
+"gorn"           -> "An old friend of mine. He was once a great warrior and adventurer, now he is running a shop."
+"benjamin"       -> "He was one of the king's best generals, now he is a bit ...uhm... forgetful."
+"excalibug"      -> "Gorn and I searched for this weapon in the darkest corners of each dungeon, but found nothing."
+"partos"         -> "He was wanted for a long time and got caught stealing some time ago.", Topic=1
+Topic=1,"fruit"  -> "I understand he was stealing some fruit, he is obsessed with, and got incautious."
+Topic=1          -> "What has this to do with this Partos guy?"
+"chester"        -> "This man is paranoid, but I guess that is useful in his job."
+"tbi"            -> "There is almost nothing known about that organization."
+"work"           -> "We have a rat problem in the sewers. In the name of our glorious king I am paying 1 blinking piece of gold for every freshly killed rat you bring to me."
+"mission"        -> *
+"quest"          -> *
+"rat"            -> Type=3994, Amount=1, Price=1, "Do you bring a freshly killed rat for a bounty of %P gold?", Topic=2
+%1,1<%1,"rat"    -> Type=3994, Amount=%1, Price=1*%1,  "Do you want to deliver me %A rats for a bounty of %P gold?", Topic=2
+
+Topic=2,"yes",Count(Type)>=Amount -> "Here is your reward. You will become a great warrior some day.", Delete(Type), CreateMoney
+Topic=2,"yes"                             -> "Look like it wasn't as dead as you thought ... it's gone."
+Topic=2                                   -> "Come on. Don't waste my time with your jests."
+
+"fuck"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"idiot"          -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"asshole"        -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"ass$"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"fag$"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"stupid"         -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"tyrant"         -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"shit"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"lunatic"        -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+}

@@ -1,0 +1,45 @@
+# GIMUD - Graphical Interface Multi User Dungeon 
+# angus: Datenbank für den Teamassitstenten der explorers society Mortimer 
+
+Name = "Mortimer" 
+Outfit = (133,57-113-95-113) 
+Home = [32499,31626,07] 
+Radius = 1 
+
+Behaviour = { 
+ADDRESS,"hello$",! -> "Greetings, what can I do for you?" 
+ADDRESS,"hi$",!    -> * 
+
+ADDRESS,!          -> Idle 
+BUSY,"hello$",!    -> "Please wait a moment.", Queue 
+BUSY,"hi$",!       -> * 
+BUSY,!             -> NOP 
+VANISH,!           -> "How rude!" 
+
+"bye"       -> "Good bye.", Idle
+"farewell"  -> *
+
+################ Später ab hier besser bd nutzen 
+
+@"explorer.ndb"
+
+################
+
+"mission",QuestValue(300)=12,QuestValue(320)<1  -> "With the objects you've provided our researchers will make steady progress. Still we are missing some test results from fellow explorers ...", "Please travel to our base in Port Hope and ask them to mail us their latest research reports. Then return here and ask about new missions.",SetQuestValue(320,2) 
+
+"research","reports",QuestValue(320)=1  -> "Oh, yes! Tell our fellow explorer that the papers are in the mail already.",SetQuestValue(320,3)
+"mission",QuestValue(320)=1             -> *
+
+#####
+"mission",QuestValue(320)=4 -> "The reports from Port Hope have already arrived here and our progress is astonishing. We think it is possible to create an astral bridge between our bases. Are you interested to assist us with this?",topic=33 
+#####
+"no",topic=33     -> "Perhaps you are interested some other time." 
+"yes",topic=33    -> "Good, just take this spectral essence and use it on the strange carving in this building as well as on the corresponding tile in our base at Port Hope ...", "As soon as you have charged the portal tiles that way, report about the spectral portals.", Create(4840),SetQuestValue(320,5)
+
+
+##### topic 34 verwendet
+
+} 
+
+
+ 

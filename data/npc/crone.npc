@@ -1,0 +1,29 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# crone.npc: Bansheevettel in Vashresamuns Grabmal
+
+Name = "The Crone"
+Outfit = (78,0-0-0-0)
+Home = [33229,32522,14]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Be greeted, %N... mortal"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Patience, mortal %N.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Good bye."
+
+"bye"      -> "Good bye.", Idle
+"farewell" -> *
+"name"     -> "I don't remember my name, neither my days as a mortal."
+"job"      -> "Once I was Vashresamun's favourite handmaiden. But I have fallen from her grace and now I am exiled from her tomb."
+"grace"    -> "Do not ask about that, mortal. Memories bring too much grief."
+"fallen"   -> *
+"exiled"   -> *
+
+"vashresamun"  -> "I mourn the dark day I was exiled from her tomb."
+"tomb"         -> "Her tomb is sealed and can only be entered by a certain melody."
+"melody"       -> "Vashresamun erased the memory of the tune from my mind, I only remember its name: the secret of the rose garden."
+}

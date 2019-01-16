@@ -1,0 +1,50 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# hofech.npc: Datenbank für den Möbelhändler Hofech in Darashia
+
+Name = "Hofech"
+Outfit = (128,95-2-2-57)
+Home = [33270,32441,7]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",!         -> "Welcome %N! Have a look at my wares, my friend."
+ADDRESS,"hi$",!            -> *
+ADDRESS,!                  -> Idle
+BUSY,"hello$",!            -> "%N, just a moment, please.", Queue
+BUSY,"hi$",!               -> *
+BUSY,!                     -> NOP
+VANISH,!                   -> "Daraman's blessings."
+
+"bye"             -> "Daraman's blessings.", Idle
+"name"            -> "I am Hofech Ibn Kalith."
+"job"             -> "I am selling furniture and equipment to grace the homes."
+"time"            -> "It's %T my friend."
+"caliph"          -> "The caliph has the finest home and interior decoration in Darashia."
+"kazzan"          -> *
+"daraman"         -> "The prophet is alive! Both in the heavens and in our our hearts."
+"ferumbras"       -> "I don't know about such a person, my friend."
+"excalibug"       -> "I think if that sword really existed, it would make a splendid decoration for any wall."
+"thais"           -> "The wood we are using to make our exquisite furniture is partly supplied by Thais."
+"tibia"           -> "One day I will take my flying carpet to see the whole world."
+"carlin"          -> "I was not there yet. But I plan to travel there one day."
+
+"offer"           -> "I sell statues, tables, chairs, flowers, pillows, pottery, instruments, decoration, tapestries and containers."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"furniture"       -> *
+"equipment"       -> *
+"special"         -> "My offers are extraordinarily cheap, given the fine quality of our stock. Just look at that table!"
+"carpet"          -> "No no, I don't sell any carpets."
+
+@"gen-t-furniture-statues-s.ndb"
+@"gen-t-furniture-tables-s.ndb"
+@"gen-t-furniture-chairs-s.ndb"
+@"gen-t-furniture-flowers-s.ndb"
+@"gen-t-furniture-pillows-s.ndb"
+@"gen-t-furniture-pottery-s.ndb"
+@"gen-t-furniture-instruments-s.ndb"
+@"gen-t-furniture-decoration-s.ndb"
+@"gen-t-furniture-tapestries-s.ndb"
+@"gen-t-furniture-containers-s.ndb"
+}

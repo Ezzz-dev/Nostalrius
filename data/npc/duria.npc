@@ -1,0 +1,62 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# duria.npc: Datenbank fuer die Ritterin Duria
+
+Name = "Duria"
+Outfit = (70,0-0-0-0)
+Home = [32617,31938,8]
+Radius = 3
+
+Behaviour = {
+ADDRESS,Knight,"hello$",! -> "Hiho, fellow knight %N!"
+ADDRESS,Knight,"hi$",!    -> *
+ADDRESS,Knight,"hiho$",!  -> *
+ADDRESS,"hello$",!        -> "Hiho, visitor %N. Whatdoyouwant?"
+ADDRESS,"hi$",!           -> *
+ADDRESS,"hiho$",!         -> *
+ADDRESS,!                 -> Idle
+BUSY,"hello$",!           -> "Waitaminute %N.", Queue
+BUSY,"hi$",!              -> *
+BUSY,!                    -> NOP
+VANISH,!                  -> "Becarefulloutthere, jawoll."
+
+"bye"            -> "Goodbye.",Idle
+"farewell"       -> *
+"job"            -> "Iam the Highknight of the dwarfs."
+"name"           -> "I am Duria Steelbender, daughter of Fire, of the Dragoneaters."
+"time"           -> "Dunno."
+"hero"           -> "Heroes are rare in this days, jawoll."
+"tibia"          -> "Bah, to much plantsandstuff, to few tunnels ifyoudaskme."
+"thais"          -> "Was there once. Can't handle the crime overthere."
+"knight"         -> "Knights are proud of being dwarfs, jawoll."
+"vocation"       -> "Vocation, vocation, wouldratherlike a vacation."
+"spellbook"      -> "Sellingno spellbooks here. Do I look like a sorc?"
+Knight,"spell"  -> "Can teach ye healing spells and support spells. What kind of spell you like? Or for which level you want a spell?", Topic=2
+"spell"          -> "Sorry, selling spells only to knights, jawoll."
+
+Knight,"instant","spell"      -> "Can teach ye healing spells and support spells. What kind of spell you like?"
+Knight,"healing","spell"      -> "In this category I have 'Light Healing' and 'Antidote'."
+Knight,"support","spell"      -> "In this category I have 'Light', 'Find Person' and 'Great Light'."
+Knight,"level"                -> "For which level you want a spell?", Topic=2
+
+Knight,"find","person"   -> String="Find Person", Price=80,  "Do you want to buy the spell 'Find Person' for %P gold?", Topic=3
+Knight,"light"           -> String="Light", Price=100, "Do you want to buy the spell 'Light' for %P gold?", Topic=3
+Knight,"light","healing" -> String="Light Healing", Price=170, "Do you want to buy the spell 'Light Healing' for %P gold?", Topic=3
+Knight,"antidote"        -> String="Antidote", Price=150, "Do you want to buy the spell 'Antidote' for %P gold?", Topic=3
+Knight,"great","light"   -> String="Great Light", Price=500, "Do you want to buy the spell 'Great Light' for %P gold?", Topic=3
+
+Topic=2,"healing","spell"      -> "In this category I have 'Light Healing' and 'Antidote'."
+Topic=2,"support","spell"      -> "In this category I have 'Light', 'Find Person' and 'Great Light'."
+Topic=2,"bye"                  -> "Goodbye.",Idle
+
+Topic=2,"8$"  -> "For level 8 I have 'Find Person' and 'Light'.", Topic=2
+Topic=2,"9$"  -> "For level 9 I have 'Light Healing'.", Topic=2
+Topic=2,"10$" -> "For level 10 I have 'Antidote'.", Topic=2
+Topic=2,"13$" -> "For level 13 I have 'Great Light'.", Topic=2
+Topic=2       -> "Sorry, I have only spells for level 8, 9, 10 and 13.", Topic=2
+
+Topic=3,"yes",SpellKnown(String)=1        -> "Youknowthatspell."
+Topic=3,"yes",Level<SpellLevel(String) -> Amount=SpellLevel(String), "Nah, you havetobe level %A to learn this one."
+Topic=3,"yes",CountMoney<Price            -> "Hey! Whereisyourgold?"
+Topic=3,"yes"                             -> "Hereyouare. It's now in your spellbook, jawoll.", DeleteMoney, EffectOpp(13), TeachSpell(String)
+Topic=3                                   -> "Maybe nexttime."
+}

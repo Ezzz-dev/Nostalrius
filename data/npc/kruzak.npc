@@ -1,0 +1,93 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# kruzak.npc: Datenbank für den Zwergenkönig
+
+Name = "Emperor Kruzak"
+Outfit = (66,0-0-0-0)
+Home = [32627,31923,3]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello","emperor",!       -> "Hiho, may Fire and Earth bless you, my child."
+ADDRESS,"hail","emperor",!        -> *
+ADDRESS,"salutations","emperor",! -> *
+ADDRESS,!                         -> Idle
+BUSY,!                            -> NOP
+VANISH,!                          -> "Gone, like swallowed from the earth!"
+
+"bye"            -> "Farewell, %N, my child!", Idle
+"farewell"       -> *
+"job"            -> "Well, I am the emperor of the dwarfs. It's my duty to protect my folk and give them justice."
+"justice"        -> "Well, justice is a difficult thing. Can one be just to all at once, and if not, to whom should he be just?"
+"name"           -> "Well, I am Emperor Kruzak Dustbeard, son of Fire and Earth, second only to the gods, jawoll."
+"news"           -> "Well, I am too old to care about gossip anymore."
+"tibia"          -> "Well, the gods handed the lands over to the younger races, but my people will leave this word in dignity."
+"land"           -> *
+
+"how","are","you"-> "Well, I'm fine, the last centuries have been good to me, jawoll."
+"castle"         -> "Well, our people need no castle, our home IS a fortress."
+"sell"           -> "Well, what do you expect kings to sell?"
+"god"            -> "Well, we honor Father Earth and Mother Fire. Some of us even follow the teachings of additional gods."
+"citizen"        -> "Well, all dwarfs could be considered citizens. We are brothers and sisters in Fire and Earth."
+"noodles"        -> "WAAAH! Don't mention that beast! It was after the bones of our ancestors, last time King Tibianus visted us!"
+"ferumbras"      -> "Well, we are prepared even for him."
+"treasure"       -> "Well, we are not poor people, but we have ways to defend our wealth."
+"monster"        -> "Well, it's up to the younger ones to slay the beasts that roam the lands and the tunnels."
+"help"           -> "Well, I am too busy to help you, but feel free to ask around."
+"quest"          -> "Well, if you wander the world with open eyes, you will see the quests without asking."
+"mission"        -> *
+"gold"           -> "Well, our people love gold; that's common knowledge."
+"money"          -> *
+"tax"            -> *
+"mines"          -> "Well, our mines have been invaded by a basilisk. We trapped him with a cave in. The hero that could bring me the body of the beast will get a great reward."
+"dungeon"        -> "Well, there are a lot of dungeons in the lands, waiting to be explored by the daring ones."
+"equipment"      -> "Well, go and buy it in the city."
+"food"           -> *
+"time"           -> "Well, after some centuries I stopped to worry about time anymore."
+"hero"           -> "Well, we dwarfs produced some of the greatest heroes of all times."
+"adventurer"     -> *
+"tax"            -> "Well, our taxes are moderate."
+"emperor"        -> "Well, I am the emperor of the dwarfs and the oldest living dwarf, jawoll!"
+"age"            -> "Well, I don't want to talk about my age." 
+"old"            -> *
+"youth"          -> * 
+"army"           -> "Well, you better ask the general."
+"enemy"          -> "Well, only a dead enemy is a good enemy." 
+"enemies"        -> * 
+"thais"          -> "Well we are at peace with Carlin and Thais."
+"carlin"         -> * 
+"city"           -> "Well, go and see the wonders of our cities yourself."
+"shop"           -> "Well, my subjects maintain many fine shops. Go and have a look at their wares."
+"merchant"       -> "Well, there are some in our city. Go and visit them."
+"craftsmen"      -> *
+"guild"          -> "Well, we have two guilds in our town, the Knights and the Sorcerers."
+"minotaur"       -> "Well, we don't fear them. They seem more occupied with the humans anyway."
+"elves"          -> "Well, they are not as bad as one might think."
+"paladin"        -> "Well, we have some crossbowmen in our army but rely more on our knights."
+"legola"         -> "Well, isn't that the leader of the Carlin Paladins?" 
+"elane"          -> "Well, the High Paladin is a woman that deserves respect. I admired most Elanes I met in my life."
+"knight"         -> "Well, dwarfish knights are feared by our enemies in the whole world."
+"trisha"         -> "Well, that's the Carlin High Knight, isn't she? Not to bad as fighter for a big one."
+"sorceror"       -> "Well, the sorcerers are followers of the elemental powers."
+
+"durin"          -> "Well, Durin is one of the celestial paladins, messenger of the gods. He is the protector of the dwarfish race." 
+"druid"          -> "Well, we have almost no druids in our town. If need arises we can call for them from Carlin."
+"padreia"        -> "Well, thats an trustworthy ally of dwarfs." 
+"good"           -> "Well, good and evil will fight each other for all eternity."
+"evil"           -> * 
+"order"          -> "Well, order is of great importance. Life has to follow rules, so do we."
+"chaos"          -> "Well, chaos is the ancient enemy. Dwarfs bring order to the world and give things shape. We are enemies of chaos."
+"excalibug"      -> "Well, well, well, the godblade. A myth? Perhaps. Even in my youth, it was only a legend."
+"reward"         -> "Well, isn't it reward enough to talk to the emperor of all dwarfs?"
+"tbi"            -> "Well, I don't think our southern allies have agents in our town."
+"t.b.i."         -> *
+"edron"          -> "Well, it is a colony of this human king."
+
+"promot"                         -> Price=20000, "Do you want to be promoted in your vocation for %P gold?", Topic=4
+Topic=4,"yes",Promoted,!         -> "You are already promoted."
+Topic=4,"yes",Level<20,!         -> "You need to be at least level 20 in order to be promoted."
+Topic=4,"yes",CountMoney<Price,! -> "You do not have enough money."
+Topic=4,"yes",Premium            -> "Congratulations! You are now promoted. Visit the sage Eremo for new spells.", Promote, DeleteMoney
+Topic=4,"yes"                    -> "You need a premium account in order to promote."
+Topic=4                          -> "Ok, then not."
+"eremo"                          -> "It is said that he lives on a small island near Edron. Maybe the people there know more about him."
+}

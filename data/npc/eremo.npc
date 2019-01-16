@@ -1,0 +1,127 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# eremo.npc: Datenbank für den Weisen Eremo
+
+Name = "Eremo"
+Outfit = (130,0-109-128-95)
+Home = [33322,31883,7]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$",!                      -> "Welcome to my little garden, adventurer %N!"
+ADDRESS,"hi$",!                         -> *
+ADDRESS,"greetings$",!                  -> *
+ADDRESS,premium,promoted,"hello$",!     -> "Welcome to my little garden, humble %N!"
+ADDRESS,premium,promoted,"hi$",!        -> *
+ADDRESS,premium,promoted,"greetings$",! -> *
+ADDRESS,!                               -> Idle
+BUSY,"hello$",!                         -> "Please wait a minute, %N.", Queue
+BUSY,"hi$",!                            -> *
+BUSY,!                                  -> NOP
+VANISH,!                                -> "Shouldn't I teleport you back to Pemaret?"
+
+"bye"       -> "Shouldn't I teleport you back to Pemaret?", Idle
+"farewell"  -> *
+"name"      -> "I am Eremo, an old man who has seen many things."
+"job"       -> "I teach some spells, provide one of the five blessings, and sell some amulets."
+"offer"     -> *
+"magic"     -> *
+"island"    -> "I have retired from my adventures to this place."
+"isle"      -> *
+"garden"    -> *
+"adventure" -> "I explored dungeons, I walked through deserts, I sailed on the seas and climbed up on many a mountain."
+"thing"     -> *
+"Tibia"     -> "A great world full of magic and wonder."
+
+"amulet",PvPEnforced -> "I've collected quite a few protection amulets. Also, I'm interested in buying broken amulets."
+"amulet"    -> "I've collected quite a few protection amulets, and some amulets of loss as well. Also, I'm interested in buying broken amulets."
+
+
+"amulet","of","loss"  -> Type=3057, Amount=1, Price=50000, "Do you want to buy an amulet of loss for %P gold?", Topic=3
+"amulet","of","loss",PvPEnforced,! -> "What a strange name for an amulet. Never heard about that one."
+
+
+"protection","amulet" -> Type=3084, Amount=1, Price=700, "Do you want to buy a protection amulet for %P gold?", Topic=3
+"broken","amulet"     -> Type=3080, Amount=1, Price=50000, "Do you want to sell a broken amulet for %P gold?", Topic=4
+"amulet","of","life"  -> *
+
+premium,promoted,"spell" -> "I can teach 'Enchant Staff' to sorcerers, 'Challenge' to knights, 'Wild Growth' to druids, and 'Power Bolt' to paladins."
+"spell"                  -> "I am sorry, but you are not promoted yet."
+
+sorcerer,premium,promoted,"enchant","staff" -> String="Enchant Staff", Price=2000, "Do you want to learn the spell 'Enchant Staff' for %P gold?", Topic=1
+"enchant","staff" -> "I am sorry but this spell is only for master sorcerers."
+
+knight,premium,promoted,"challenge"         -> String="Challenge", Price=2000, "Do you want to learn the spell 'Challenge' for %P gold?", Topic=1
+"challenge" -> "I am sorry but this spell is only for elite knights."
+
+druid,premium,promoted,"wild","growth"      -> String="Wild Growth", Price=2000, "Do you want to learn the spell 'Wild Growth' for %P gold?", Topic=1
+"wild","growth" -> "I am sorry but this spell is only for elder druids."
+
+paladin,premium,promoted,"power","bolt"     -> String="Power Bolt", Price=2000, "Do you want to learn the spell 'Power Bolt' for %P gold?", Topic=1
+"power","bolt" -> "I am sorry but this spell is only for royal paladins."
+
+"teleport"  -> "Should I teleport you back to Pemaret?",Topic=2
+"pemaret"   -> *
+"back"      -> *
+"cormaya"   -> *
+"edron"     -> *
+
+Topic=1,"yes",SpellKnown(String)=1        -> "You already know how to cast this spell."
+Topic=1,"yes",Level<SpellLevel(String) -> Amount=SpellLevel(String), "You must be have level %A  or better to learn this spell."
+Topic=1,"yes",CountMoney<Price            -> "Oh. You do not have enough money."
+Topic=1,"yes"                             -> "Here you are. Look in your spellbook for the pronounciation of this spell.", DeleteMoney, EffectOpp(13), TeachSpell(String)
+Topic=1                                   -> "Fine. Do as you please."
+
+
+Topic=2,"yes",PZBlock,! -> "Your soul is imbalanced by death and murder. Try again after you regained your balance!"
+
+Topic=2,"yes" -> "Here you go!", Idle, EffectOpp(11), Teleport(33288,31956,6), EffectOpp(11)
+Topic=2       -> "Maybe later."
+
+Topic=3,"yes",CountMoney>=Price -> "Thank you. Use it wisely.", DeleteMoney, Create(Type)
+Topic=3,"yes"                   -> "Sorry, you do not have enough gold."
+Topic=3                         -> "Maybe another time."
+
+Topic=4,"yes",Count(Type)>=Amount -> "Ok. Here is your money.", Delete(Type), CreateMoney
+Topic=4,"yes"                   -> "Sorry, you do not own one."
+Topic=4                         -> "Maybe another time."
+
+"blessing",PvPEnforced,!  -> "The lifeforce of this world is waning. There are no more blessings avaliable on this world."
+"pilgrimage",PvPEnforced,! -> *
+"ashes",PvPEnforced,! -> *
+
+"spiritual",PvPEnforced,! -> *
+"shielding",PvPEnforced,! -> *
+"sacred","places",PvPEnforced,! -> *
+"spark",PvPEnforced,! -> *
+"phoenix",PvPEnforced,! -> *
+"embrace",PvPEnforced,! -> *
+"fire",PvPEnforced,! -> *
+"suns",PvPEnforced,! -> *
+"wisdom",PvPEnforced,! -> *
+"solitude",PvPEnforced,! -> *
+
+
+"pilgrimage"     -> "Whenever you receive a lethal wound your lifeforce is damaged. With every single of the five blessings you have this damage will be reduced."
+"ashes"          -> *
+"blessing"  -> "There are five different blessings available in five sacred places. These blessings are: the spiritual shielding, the spark of the phoenix, the embrace of Tibia, the fire of the suns and the wisdom of solitude." 
+"sacred","places"  -> "Just tell me in which of the five blessings you are interested."
+
+"spiritual" -> " You can receive the spiritual shielding in the whiteflower temple south of Thais."
+"shielding" -> *
+"spark" -> "The spark of the phoenix will be given to you by the dwarven priests of earth and fire in Kazordoon."
+"phoenix" -> *
+"embrace" -> "The druids north of Carlin will provide you with the embrace of Tibia."
+
+"fire"     -> "You should ask for the blessing of the two suns in the suntower near Ab'Dendriel."
+"suns" -> *
+"wisdom" -> "I can provide you with the wisdom of solitude. But you will have to sacrifice 10.000 gold to receive it. Are you still interested?",Price=10000,Topic=5 
+"solitude" -> *
+
+Topic=5,"yes", QuestValue(101) > 0,!        -> "You already possess this blessing."
+Topic=5,"yes",CountMoney<Price,!            -> "Oh. You do not have enough money."
+Topic=5,"yes",!                             -> "So receive the wisdom of solitude, pilgrim", DeleteMoney, EffectOpp(13), SetQuestValue(101,1), Bless(4)
+Topic=5,!                             -> "Ok. As you wish."
+
+
+}
+

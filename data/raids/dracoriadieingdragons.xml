@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="0" type="event" message="Dieing Dragons are appearing on Dracoria."/>
+	<areaspawn delay="0" lifetime="14400000" radius="3" centerx="32775" centery="31596" centerz="7">
+		<monster name="dragon" minamount="0" maxamount="2"/>
+	</areaspawn>
+	<areaspawn delay="20000" lifetime="14400000" radius="3" centerx="32822" centery="31593" centerz="7">
+		<monster name="dragon" minamount="0" maxamount="2"/>
+	</areaspawn>
+	<areaspawn delay="40000" lifetime="14400000" radius="3" centerx="32803" centery="31565" centerz="7">
+		<monster name="dragon" minamount="0" maxamount="2"/>
+	</areaspawn>
+	<areaspawn delay="60000" lifetime="14400000" radius="3" centerx="32826" centery="31574" centerz="7">
+		<monster name="dragon" minamount="0" maxamount="2"/>
+	</areaspawn>
+</raid>

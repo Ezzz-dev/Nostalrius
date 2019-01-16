@@ -1,0 +1,46 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# stranger.npc: Datenbank für den säumigen schuldner david brassacres
+
+Name = "A Strange Fellow"
+Outfit = (128,76-43-38-76)
+Home = [32910,32077,9]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Uh? What do you want?!"
+ADDRESS,"hi$",!    -> *
+
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Just wait a minute!"
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Still I am better in vanishing!"
+
+
+"bye"             -> "Good riddance.", Idle
+"farewell"      -> *
+
+"name"            -> "My name is not of your concern."
+"job"             -> "That's only my business, not yours."
+QuestValue(229)>1,"david" -> "Yes, yes... Its me .. you exposed me! Stop nagging me with that."
+QuestValue(229)>1,"brassacres" -> *
+"david"            -> "I never heard that name and now get lost."
+"brassacres"     -> *
+
+QuestValue(229)=2,"bill"    -> Type=3216, Amount=1,"A bill? Oh boy so you are delivering another bill to poor me?",Topic=5
+
+Topic=5,"yes",Count(Type)>=Amount     -> "Ok, ok, I'll take it. I guess I have no other choice anyways. And now leave me alone in my misery please.",Delete(Type),SetQuestValue(229,3)
+Topic=5,"yes",Count(Type)<Amount     -> "Ha Ha! You have none!! Naanaanaanaaanaaaa!",Idle
+Topic=5           -> "Hoooraaaay! Uhm... I mean, thats fine..."
+
+
+"bill"           -> "Thats not my concern, you are probably looking for someone else and now get lost!",Idle
+
+Topic=1, "hat"   -> "Stop bugging me about that hat, do you listen?", Topic=2
+
+Topic=2, "hat"   -> "Hey! Don't touch that hat! Leave it alone!!! Don't do this!!!!", Topic=3
+Topic=3, "hat"   -> "Noooooo! Argh, ok, ok, I guess I can't deny it anymore, I am David Brassacres, the magnificent, so what do you want?",Summon("Rabbit"),Summon("Rabbit"),Summon("Rabbit"),Summon("Rabbit"),SetQuestValue(229,2)
+QuestValue(229)=1,"hat"            -> "What? My hat?? Theres... nothing special about it!", Topic=1
+
+"hat"            -> "Get lost!",Idle
+}

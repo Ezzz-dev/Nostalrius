@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="crab" nameDescription="a crab" race="blood" experience="30" speed="60" manacost="305">
+	<health now="55" max="55" />
+	<look type="112" head="0" body="0" legs="0" feet="0" corpse="4318" />
+	<targetchange interval="1000" chance="0" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="1" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="15" skill="25">
+	</attacks>
+	<defenses armor="28" defense="30">
+	</defenses>
+	<immunities>
+		<immunity poison="1" />
+	</immunities>
+	<loot>
+		<item id="3578" countmax="1" chance="200" /> <!-- a fish -->
+		<item id="3031" countmax="10" chance="800" /> <!-- a gold coin -->
+	</loot>
+</monster>

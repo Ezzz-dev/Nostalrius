@@ -1,0 +1,74 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# aruda.npc: Datenbank fuer die Diebin Aruda
+
+Name = "Aruda"
+Outfit = (140,77-83-79-95)
+Home = [32368,32215,7]
+Radius = 99
+
+Behaviour = {
+ADDRESS,"hello$",male,!   -> "Oh, hello, handsome! It's a pleasure to meet you %N."
+ADDRESS,"hi$",male,!      -> *
+ADDRESS,"hello$",female,! -> "Oh, hello %N, your hair looks great! Who did it for you?", Topic=1
+ADDRESS,"hi$",female,!    -> *
+ADDRESS,!                 -> Idle
+BUSY,"hi$",!              -> "Please be nice and wait a minute. I'll be right with you %N.", Queue
+BUSY,"hello$",!           -> *
+BUSY,!                    -> NOP
+VANISH,!                  -> "I hope to see you soon."
+
+"bye"             -> "Good bye. I really hope we'll talk again soon.", Idle
+"farewell"        -> *
+"how","are","you" -> "Thank you very much. How kind of you to care about me. I am fine, thank you.", Price=5, Topic=2
+"sell"            -> "Sorry, I have nothing to sell.",Price=5, Topic=2
+"job"             -> "I do some work now and then. Nothing unusual, though.",Price=5, Topic=2
+"news"            -> "You should ask Oswald about news. He loves them."
+"name",male       -> "I am a little sad, that you seem to have forgotten me, handsome. I am Aruda.",Price=5, Topic=2
+"name",female     -> "I am Aruda.",Price=5, Topic=2
+"aruda",male      -> "Oh, I like it, how you say my name.",Price=5, Topic=2
+"aruda",female    -> "Yes, that's me!",Price=5, Topic=2
+"time"            -> Type=2906, Amount=1, "Please don't be so rude to look for the time if you are talking to me.", Topic=3
+"help"            -> "I am deeply sorry, I can't help you.",Price=5, Topic=2
+"monster"         -> "UH! What a terrifying topic. Please let us speak about something more pleasant, I am a weak and small woman after all.", Price=5, Topic=2
+"dungeon"         -> *
+"sewer"           -> "What gives you the impression, I am the kind of women, you find in sewers?", Price=5, Topic=2
+"god"             -> "You should ask about that in one of the temples.", Price=5, Topic=2
+"king"            -> "The king, that lives in this fascinating castle? I think he does look kind of cute in his luxurious robes, doesn't he?", Price=10, Topic=2
+"sam",male        -> "He is soooo strong! What muscles! What a body! On the other hand, compared to you he looks quite puny.", Price=5, Topic=2
+"sam"             -> "He is soooo strong! What muscles! What a body! Did you ask him for a date?", Price=5, Topic=2
+"benjamin"        -> "He is a little simple minded but always nice and well dressed.", Price=5, Topic=2
+"gorn"            -> "He should really sell some stylish gowns or something like that. We Tibians never get some clothing of the latest fashion. It's a shame.", Price=5, Topic=2
+"quentin"         -> "I don't understand this lonely monks. I love company too much to become one. He, he, he!", Price=5, Topic=2
+"bozo"            -> "Oh, isn't he funny? I could listen to him the whole day.", Price=5, Topic=2
+"oswald"          -> "As far as I know, he is working in the castle."
+"rumour"          -> "I am a little shy and so don't hear many rumors", Price=5, Topic=2
+"rumor"           -> *
+"gossip"          -> *
+"fuck",male       -> "Oh, you little devil, stop talking like that! <blush>", Price=20, Topic=2
+"kiss",male       -> *
+"fuck",female     -> "Uhm, let us change the subject, please.", Price=20, Topic=2
+"weapon"          -> "I know so little about weapons, so tell me something about weapons, please.", Price=5, Topic=2
+"magic"           -> "I believe that love is stronger then all magic, don't you agree?", Price=5, Topic=2
+"thief"           -> "Oh, sorry, I have to hurry, bye!", Idle
+"theft"           -> *
+"tibia"           -> "I would like to visit the beach more often, but I guess it's too dangerous.", Price=5, Topic=2
+"castle"          -> "I love this castle! It's so beautiful.", Price=5, Topic=2
+"muriel"          -> "Powerful sorcerers frighten me a little.", Price=5, Topic=2
+"elane"           -> "I personally think it's inappropriate for a woman to become a warrior, what do you think about that?", Price=5, Topic=2
+"marvik"          -> "Druids seldom visit a town, what do you know about druids?", Price=5, Topic=2
+"gregor"          -> "I like brave fighters like him.", Price=5, Topic=2
+"noodles"         -> "Oh, he is sooooo cute!", Price=5, Topic=2
+"dog"             -> "I like dogs, the little ones at least. Do you like dogs, too?", Price=5, Topic=2
+"poodle"          -> *
+"excalibug"       -> "Oh, I am just a girl and know nothing about magic swords and such things.", Price=10, Topic=2
+"partos"          -> "I ... don't know someone named like that.", topic=4
+"yenny"           -> "Yenny? I know no Yenny, nor have I ever used that name! You have mistook me with someone else.", Idle
+
+Topic=1                             -> "I would never have guessed that."
+Topic=2,CountMoney>=Price           -> "Oh, sorry, I was distracted, what did you say?", DeleteMoney
+Topic=2,CountMoney<Price            -> "Oh, I just remember I have some work to do, sorry. Bye!", Idle
+Topic=3,Count(Type)>=Amount -> "Take some time to talk to me!", Delete(Type)
+Topic=4,"spouse"                    -> "Well ... I  might have known him a little .. but there was nothing serious.", Topic=5
+Topic=4,"girlfriend"                -> *
+Topic=5,"fruit"                     -> "I remember that grapes were his favourites. He was almost addicted to them."
+}

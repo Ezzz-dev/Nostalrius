@@ -1,0 +1,11 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# demongrd.npc: Datenbank für den Demonguard
+
+Name = "Demonguard"
+Outfit = (131,113-113-94-113)
+Home = [32854,32318,10]
+Radius = 0
+
+Behaviour = {
+-> "Die, intruder!", Burning(25,8), EffectOpp(16), EffectMe(14), Idle
+}

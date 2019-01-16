@@ -1,0 +1,64 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# markwin.npc: Datenbank für den Minokönig Markwin
+
+Name = "Markwin"
+Outfit = (23,0-0-0-0)
+Home = [32418,32147,15]
+Radius = 4
+
+Behaviour = {
+ADDRESS,"hello$",QuestValue(222)=0,! -> "No! The hornless have reached my city! BODYGUARDS TO ME!",SetQuestValue(222,1),Summon("Minotaur Guard"),Summon("Minotaur Guard"),Summon("Minotaur Mage"),Summon("Minotaur Mage"),Summon("Minotaur Archer"),Summon("Minotaur Archer"),Summon("Minotaur Archer"),Summon("Minotaur Archer"),Idle
+ADDRESS,"hi$",QuestValue(222)=0,!    -> *
+ADDRESS,"hello$",QuestValue(245)=2,! -> "Oh, it's you again. What do you want, hornless messenger?"
+ADDRESS,"hi$",QuestValue(245)=2,! -> *
+ADDRESS,"hello$",! -> "Well ... you defeated my guards! Now everything is over! I guess I will have to answer your questions now."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "One more human. I hate them."
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Yes! Leave me alone. Vanish to dust."
+
+"bye",QuestValue(245)=2           -> "Hm ... good bye.", Idle
+"farewell",QuestValue(245)=2      -> *
+"bye"          -> "Go to hell! Burn!", Burning(20,20), EffectOpp(6), Idle
+"farewell"     -> *
+
+"letter",QuestValue(245)=1   -> "A letter from my Moohmy?? Do you have a letter from my Moohmy to me?",Type=3220, Amount=1,topic=1
+Topic=1,"yes",Count(Type)>=Amount -> "Uhm, well thank you, hornless beeing.",SetQuestValue(245,2), Delete(3220)
+Topic=1,"yes"                             -> "Don't mock the king of the minotaurs or you will regret that!"
+Topic=1                                   -> "Uh? What??"
+
+"job"          -> "I am the king of all minotaurs. I have been the king for more than 320 years."
+"real"         -> "Yes, I am the real king. Palkar is the leader of the outcasts."
+"name"         -> "I am Markwin, the old and real king of this city."
+"time"         -> "Don't ask me such stupid questions. My time is over right now."
+"tibianus"     -> "I am the real king!"
+"king"         -> *
+"outcast"      -> "Those are no minos any longer. They left the city and killed their brothers. And they stole the key to my secret lab."
+"mintwallin"   -> "The former glorious city lies in the dirt. It is my home. I founded it about 180 years ago, when we found this lovely place."
+"city"         -> *
+"chronicle"    -> "I am one of the minotaurs that are able to write. So I wrote most of the history of my beloved city Mintwallin in some books."
+"books"        -> *
+"prisoner"     -> "He is totally mad. I don't know how he could find the way through the labyrinth. I arrested him in the prison."
+"human"        -> "I hate them all. Minotaurs have no own spelling, so I used the speech of the humans. Once I was a prisoner of them. Since then I hate them - and since then I can speak and write in their language."
+"labyrinth"    -> "It protected us for a long time. There are lots of traps in it. And many long tunnels. There haven't been many foes that found their way through it. Only that prisoner once arrived."
+"kaplar"       -> "I really don't know what it means. But ALL minos say it! Terrible!"
+"secret","lab" -> "Hehe - you will never find a way to enter it. The outcast stole the key. You are too weak to conquer it. HARHARHAR."
+"enter"	       -> "To enter the laboratory is pretty difficult."
+"enter","lab"  -> "First of all you will need a second fellow to help you."
+"second","fellow" -> "Yeah - he has to step on a special tile and an entrance will appear at a very poisenous place!"
+"place"        -> "Na! You will have to find it yourself!"
+"second"       -> "After you entered the first area you will need the key from the outcasts."
+"minotaurs"    -> "My fellows all are minotaurs. It is my folk. I am the king of all minos."
+"minos"        -> *
+"key"          -> "There are many keys. The outcast stole the key to our secret lab! They should burn!"
+"demon"        -> "He was the beginning of our end. He is mighty and powerful. He killed many brave minos and after his arrival we weren't able to go up to the surface."
+"light"        -> "I would like to see the light of the sun again, but you will probably kill me. Go away!"
+"sun"          -> *
+"surface"      -> *
+"palkar"       -> "He is the leader of the outcast. In former times he was my best warrior, but now he is my worst enemy."
+"riddle"       -> "Riddle? I don't know riddles!"
+"karl"         -> "The man who explored this part of the map first. Strange guy. He likes to be announced as hunter. I don't like him. He is a human."
+"milk"         -> "No! I won't tell you the powers of our milk!"
+}

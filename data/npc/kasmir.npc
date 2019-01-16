@@ -1,0 +1,138 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# Kasmir.npc: Datenbank für den Priester Kasmir
+
+Name = "Kasmir"
+Outfit = (130,76-0-38-95)
+Home = [33212,32452,1]
+Radius = 3
+
+Behaviour = {
+ADDRESS,male,"my","heart","belongs","to",!   -> "I ask thee, %N, will you honor your bride and stay at her side even in the darkest hours live could bring upon you?", Topic=9
+ADDRESS,female,"my","heart","belongs","to",! -> "I ask thee, %N, will you honor your groom and stay at his side even in the darkest hours live could bring upon you?", Topic=9
+ADDRESS,"hello$",!  -> "May Daraman enlighten you %N!"
+ADDRESS,"hi$",!     -> *
+ADDRESS,!           -> Idle
+BUSY,"hello$",!     -> "May Daraman fulfill you with patience, %N. Wait please.", Queue
+BUSY,"hi$",!        -> *
+BUSY,!              -> NOP
+VANISH,!            -> "Gone like a Djinn..."
+
+"bye"            -> "Good bye, %N. May Daraman's all-seeing eye watch your travels!", Idle
+"job"            -> "I am a chosen of Daraman."
+"news"           -> "Don't look for news when you don't know the past."
+"name"           -> "Kasmir Ibn Darasir."
+"tibia"          -> "The world is only a portal the gods created to allow our ascension to heaven."
+"ascension"      -> "Daraman had a vision that all mortals are able to ascend to heaven, becoming celestial beings."
+"heaven"         -> *
+"celestial"      -> "By enhancing one's soul a mortal can ascend to heaven. If you are not prepared to ascend, you are bound to this world by reincarnation."
+"reincarnation"  -> "If your soul is not strong and purified, you will not ascend but return to life on death, even losing strength in the process."
+"necromancer"    -> "Undeath is even worse than reincarnation. Those souls are nothing but a rotting mockery of a soul on the path of ascension."
+"daraman"        -> "Daraman travelled the world and learned the secrets of the ancients. At last he learned the secret of ascension and founded his philosophy."
+"soul"           -> "The soul was made by the gods and therefore is divine. So by enhancing its divinity it can become more like the image of its creators."
+"philosophy"     -> "Daraman led his followers to this promised land to follow his teachings. It was named Darama after him later."
+"darama"         -> "This land is harsh and challenging. It's far away from temptations and delusions. Here Daraman's people can concentrate on themselves."
+"how","are","you"-> "Thank you, I'm fine and my soul is strong."
+"sell"           -> "Go to the bazaar if you are interested in worldly wealth."
+"sin$"           -> "Do you whish to confess your sins?", Topic=3
+"sins$"          -> *
+"god$"           -> "The gods are in heaven and far away. You are here. So concentrate on your soul and take care for it on your own."
+"gods$"          -> *
+"life"           -> "Life is divine though not without flaws."
+"citizen"        -> "The people are too concerned about the illusions of the moment and care less and less about Daraman's philosophy."
+"caliph"         -> "The caliph is heavily involved in the affairs in the world, but one has to make this sacrifice for the welfare of all."
+"monster"        -> "They misuse their god given souls for evil and must be destroyed."
+"quest"          -> "Your quest should be to prepare your soul for ascension."
+"mission"        -> *
+"gold"           -> Price=15, "Do you want to make a donation?", Topic=1
+"money"          -> *
+"donation"       -> *
+"fight"          -> "Fight is unavoidable sometimes. Make sure only your body is hurt but not your soul."
+"slay"           -> *
+
+"heal$",HP<40     -> "You are hurt, pilgrim. I will heal your wounds.", HP=40, EffectOpp(13)
+"heal$",Poison>0  -> "You are poisoned, pilgrim. I will help you.", Poison(0,0), EffectOpp(14)
+"heal$",Burning>0 -> "You are burning, pilgrim. I will help you.", Burning(0,0), EffectOpp(15)
+"heal$"           -> "You aren't looking that bad. Sorry, I can't help you. But if you are looking for additional protection you should go on the pilgrimage of ashes."
+"pilgrimage"     -> "Whenever you receive a lethal wound your lifeforce is damaged. With every single of the five blessings you have this damage will be reduced."
+"ashes"          -> *
+"blessing"  -> "There are five different blessings available in five sacred places. These blessings are: the spiritual shielding, the spark of the phoenix, the embrace of tibia, the fire of the suns and the wisdom of solitude." 
+"sacred","places"  -> "Just ask in which of the five blessings you are interested in."
+
+"spiritual", QuestValue(104) > 0 -> "I see you received the spiritual shielding in the whiteflower temple south of Thais."
+"shielding", QuestValue(104) > 0 -> *
+"spiritual" -> "You can receive the spiritual shielding in the whiteflower temple south of Thais."
+"shielding" -> *
+
+"spark", QuestValue(102) > 0 -> "I an sense that the spark of the phoenix already was given to you by the dwarven priests of earth and fire in Kazordoon."
+"phoenix", QuestValue(102) > 0 -> *
+"spark" -> "The spark of the phoenix is given by the dwarven priests of earth and fire in Kazordoon."
+"phoenix" -> *
+
+"embrace", QuestValue(105) > 0 -> "I can sense the druids north of Carlin provided you with the embrace of tibia."
+"embrace" -> "The druids north of Carlin can provide you with the embrace of tibia."
+
+"fire","suns", QuestValue(103) > 0     -> "I can see you recieved the blessing of the two suns in the suntower near Ab'Dendriel ."
+"suns", QuestValue(103) > 0  -> *
+"fire","suns"     -> "Ask for the blessing of the two suns in the suntower near Ab'Dendriel ."
+"suns"  -> *
+
+
+"wisdom", QuestValue(101) > 0 -> "I can sense you already talked to the hermit Eremo on the isle of Cormaya and recieved this blessing." 
+"solitude", QuestValue(101) > 0 -> *
+"wisdom" -> "Talk to the hermit Eremo on the isle of Cormaya about this blessing." 
+"solitude" -> *
+
+"help$",HP<40     -> "You are hurt, pilgrim. I will heal your wounds.", HP=40, EffectOpp(13)
+"help$",Poison>0  -> "You are poisoned, pilgrim. I will help you.", Poison(0,0), EffectOpp(14)
+"help$",Burning>0 -> "You are burning, pilgrim. I will help you.", Burning(0,0), EffectOpp(15)
+"help$"           -> "You aren't looking so bad. Sorry, I need my powers for cases more severe than yours."
+
+"ferumbras"      -> "His soul is corrupted beyond any hope for ascension."
+"time"           -> "Now, it is %T."
+"excalibug"      -> "Your greed for such items can easily corrupt your soul."
+"fardos"         -> "Fardos is the creator. It was his work that we possess divine souls."
+"uman"           -> "Uman is the positive aspect of magic. His powers flow through each Tibian, making us his children." 
+"suon"           -> "Suon is the sun. He watches our ascension."
+"crunor"         -> "Crunor is the force of life and part of our all being."
+"nornur"         -> "Nornur is the mysterious god of fate. Daraman taught us that he is the judge who allows ascension."
+"bastesh"        -> "Bastesh is the goddess of the seas, and deep as the see is our soul, indeed."
+"kirok"          -> "Kirok is called the mad one. He gifted us with the creativity to achive our ascension." 
+"toth"           -> "Toth is the final judge. The unworthy are condemened to reincarnation."
+"banor"          -> "Banor is the very proof that ascension is possible."
+"tibiasula"      -> "Though this entity is dead, Tibiasula's energy is present in all of us." 
+"tibia"          -> "Tibia is the raw force of earth." 
+"sula"           -> "Sula is the raw force of water."
+"air"            -> "Air is without true mind and meaning."
+"fire"           -> "Fire is without true mind and meaning."
+"zathroth"       -> "Zathroth is the corruptor of souls who does not want mortals to ascend and become more like him."
+"fafnar"         -> "Fafnar is a test for our endurance and dilligence."
+"brog"           -> "Brog's hot blood is in our veins, tempting us and distracting us from improvement of our souls."
+"urgith"         -> "The bonemaster is strong in the ruins of Drefia. There you can test the braveness of your soul ... or lose it to his minions."
+"archdemons"     -> "They are soulless and therefore without true power in the end."
+"ruthless","seven" -> *
+
+Topic=1,"yes",CountMoney>=Price -> "May Daraman guide your quest for ascension.", DeleteMoney, EffectOpp(15)
+Topic=1,"yes"                   -> "Don't be ashamed, but you lack the gold."
+Topic=1,"no"                    -> "As you wish."
+
+Topic=3,"yes"    -> "So what does trouble your soul, pilgrim?", Topic=4
+Topic=3          -> "As you wish."
+Topic=4          -> "Meditate on that and try harder to improve soul."
+
+"marriage"                               -> "You want me to initiate a marriage ceremony?", Topic=5
+"ceremony"                               -> *
+Topic=5,"yes"                            -> "In the Name of the Gods of good, I ask thee, if both of you are prepared and ready!", Topic=6
+Topic=5,"i$","will$"                     -> *
+Topic=5                                  -> "Perhaps another time. Marriage isn't a step one should consider without love in the heart."
+Topic=6,"yes"                            -> "Silence please! I hereby invoke the attention of the eternal powers looking over our souls and lives. May the gods bless us!", EffectMe(13), Topic=7
+Topic=6,"i$","will$"                     -> *
+Topic=7,male,"may","gods","bless","us"   -> "I ask thee, %N, will you honor your bride and stay at her side even in the darkest hours live could bring upon you?", Topic=8
+Topic=7,female,"may","gods","bless","us" -> "I ask thee, %N, will you honor your groom and stay at his side even in the darkest hours live could bring upon you?", Topic=8
+Topic=8,male,"yes"                       -> "So by the powers of the gods your soul is now bound to your bride. Bride, step forward and tell me to whom your heart belongs!", EffectOpp(14), Idle
+Topic=8,male,"i$","will$"                -> *
+Topic=8,female,"yes"                     -> "So by the powers of the gods your soul is now bound to your groom. Groom, step forward and tell me to whom your heart belongs!", EffectOpp(14), Idle
+Topic=8,"i$","will$"                     -> *
+Topic=9,"yes"                            -> "So by the powers of the gods your souls are now bound together for eternity. May the gods watch with grace over your further live as a married couple. Go now and celebrate your marriage!", EffectOpp(14), EffectMe(13), Idle
+Topic=9,"i$","will$"                     -> *
+Topic=9,"no"                             -> "Your neglection of love hurts my heart. Leave now!", Idle
+}

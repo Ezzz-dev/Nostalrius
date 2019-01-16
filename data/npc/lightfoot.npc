@@ -1,0 +1,11 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# lightfoot.npc: Datenbank fuer den Rennhund Lightfoot
+
+Name = "Lightfoot"
+Outfit = (32,0-0-0-0)
+Home = [32914,32080,6]
+Radius = 14
+
+Behaviour = {
+ADDRESS -> Idle
+}

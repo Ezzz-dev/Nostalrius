@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="dragon lord" nameDescription="a dragon lord" race="blood" experience="2100" speed="60" manacost="0">
+	<health now="1900" max="1900" />
+	<look type="39" head="0" body="0" legs="0" feet="0" corpse="4062" />
+	<targetchange interval="1000" chance="5" />
+	<targetstrategy nearest="70" weakest="10" mostdamage="10" random="10" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag runonhealth="300" />
+	</flags>
+	<attacks attack="55" skill="65">
+		<attack name="fire" min="-120" max="-180" range="7" radius="4" target="1" chance="6">
+			<attribute key="shootEffect" value="fire" />
+			<attribute key="areaEffect" value="firearea" />
+		</attack>
+		<attack name="firefield" range="7" radius="4" target="1" chance="7">
+			<attribute key="shootEffect" value="fire" />
+		</attack>
+		<attack name="fire" min="-150" max="-250" length="8" spread="3" chance="6">
+			<attribute key="areaEffect" value="firearea" />
+		</attack>
+	</attacks>
+	<defenses armor="32" defense="48">
+		<defense name="healing" min="57" max="93" chance="4">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity fire="1" />
+		<immunity lifedrain="1" />
+		<immunity paralyze="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<voices>
+		<voice sentence="ZCHHHHH" yell="1" />
+		<voice sentence="YOU WILL BURN!" yell="1" />
+	</voices>
+	<loot>
+		<item id="2842" countmax="1" chance="90" /> <!-- a book -->
+		<item id="3583" countmax="5" chance="600" /> <!-- dragon ham -->
+		<item id="3386" countmax="1" chance="1" /> <!-- a dragon scale mail -->
+		<item id="3051" countmax="1" chance="50" /> <!-- an energy ring -->
+		<item id="3280" countmax="1" chance="3" /> <!-- a fire sword -->
+		<item id="3031" countmax="100" chance="800" /> <!-- a gold coin -->
+		<item id="3031" countmax="100" chance="600" /> <!-- a gold coin -->
+		<item id="3031" countmax="50" chance="400" /> <!-- a gold coin -->
+		<item id="2903" countmax="1" chance="30" /> <!-- a golden mug -->
+		<item id="3732" countmax="1" chance="120" /> <!-- a green mushroom -->
+		<item id="3061" countmax="1" chance="6" /> <!-- a life crystal -->
+		<item id="3450" countmax="1" chance="60" /> <!-- a power bolt -->
+		<item id="3392" countmax="1" chance="2" /> <!-- a royal helmet -->
+		<item id="3029" countmax="1" chance="50" /> <!-- a small sapphire -->
+		<item id="3373" countmax="1" chance="4" /> <!-- a strange helmet -->
+		<item id="3428" countmax="1" chance="3" /> <!-- a tower shield -->
+	</loot>
+</monster>

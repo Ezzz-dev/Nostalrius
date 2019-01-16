@@ -1,0 +1,65 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gen-t-runes-free-s.ndb: Datenbank für generischen Runenverkauf - Free Account Runen
+# Verwendete Topics: 99
+
+"spell","rune"			    -> "I sell missile runes, explosive runes, field runes, wall runes, bomb runes, healing runes, convince creature runes and chameleon runes."
+"missile","rune"			-> "I can offer you light magic missile runes, heavy magic missile runes and sudden death runes."
+"explosive","rune"		    -> "I can offer you fireball runes, great fireball runes and explosion runes."
+"field","rune"				-> "I can offer you fire field runes, energy field runes, poison field runes and destroy field runes."
+"wall","rune"				-> "I can offer you fire wall runes, energy wall runes and poison wall runes."
+"bomb","rune"				-> "I can offer you firebomb runes."
+"healing","rune"			-> "I can offer you antidote runes, intense healing runes and ultimate healing runes."
+
+"light","magic","missile","rune"	-> Type=3174, Data=5, Amount=1,  Price=40,    "Do you want to buy a light magic missile rune for %P gold?", Topic=99
+"poison","field","rune"				-> Type=3172, Data=3, Amount=1,  Price=65,    "Do you want to buy a poison field rune for %P gold?", Topic=99
+"antidote","rune"                 -> Type=3153, Data=1, Amount=1,  Price=65,    "Do you want to buy an antidote rune for %P gold?", Topic=99
+"fire","field","rune"             -> Type=3188, Data=3, Amount=1,  Price=85,    "Do you want to buy a fire field rune for %P gold?", Topic=99
+"intense","healing","rune"        -> Type=3152, Data=1, Amount=1,  Price=95,    "Do you want to buy an intense healing rune for %P gold?", Topic=99
+"fireball","rune"                 -> Type=3189, Data=2, Amount=1,  Price=95,    "Do you want to buy a fireball rune for %P gold?", Topic=99
+"destroy","field","rune"          -> Type=3148, Data=3, Amount=1,  Price=45,    "Do you want to buy a destroy field rune for %P gold?", Topic=99
+"heavy","magic","missile","rune"	-> Type=3198, Data=5, Amount=1,  Price=125,    "Do you want to buy a heavy magic missile rune for %P gold?", Topic=99
+"energy","field","rune"           -> Type=3164, Data=3, Amount=1,  Price=115,    "Do you want to buy an energy field rune for %P gold?", Topic=99
+"ultimate","healing","rune"       -> Type=3160, Data=1, Amount=1,  Price=175,    "Do you want to buy an ultimate healing rune for %P gold?", Topic=99
+"convince","creature","rune"      -> Type=3177, Data=1, Amount=1,  Price=80,    "Do you want to buy a convince creature rune for %P gold?", Topic=99
+"great","fireball","rune"         -> Type=3191, Data=2, Amount=1,  Price=180,    "Do you want to buy a great fireball rune for %P gold?", Topic=99
+"chameleon","rune"          	    -> Type=3178, Data=1, Amount=1,  Price=210,    "Do you want to buy a chameleon rune for %P gold?", Topic=99
+"fire","bomb","rune"            	-> Type=3192, Data=2, Amount=1,  Price=235,    "Do you want to buy a firebomb rune for %P gold?", Topic=99
+"poison","wall","rune"            -> Type=3176, Data=4, Amount=1,  Price=210,    "Do you want to buy a poison wall rune for %P gold?", Topic=99
+"explosion","rune"          	    -> Type=3200, Data=3, Amount=1,  Price=250,    "Do you want to buy an explosion rune for %P gold?", Topic=99
+"fire","wall","rune"            	-> Type=3190, Data=4, Amount=1,  Price=245,    "Do you want to buy a fire wall rune for %P gold?", Topic=99
+"sudden","death","rune"           -> Type=3155, Data=1, Amount=1,  Price=325,    "Do you want to buy a sudden death rune for %P gold?", Topic=99
+"energy","wall","rune"            -> Type=3166, Data=4, Amount=1,  Price=340,    "Do you want to buy an energy wall rune for %P gold?", Topic=99
+
+"envenom","rune"            	  -> "Sorry, but runes of this type can't be purchased here."
+"desintegrate","rune"          	  -> *
+"poison","bomb","rune"            -> *
+"soulfire","rune"           	  -> *
+"energy","bomb","rune"            -> *
+"magic","wall","rune"             -> *
+"animate","dead","rune"           -> *
+"paralyze","rune"			      -> *
+
+%1,1<%1,"light","magic","missile","rune"	  -> Type=3174, Data=5, Amount=%1,  Price=40*%1,    "Do you want to buy %A light magic missile runes for %P gold?", Topic=99
+%1,1<%1,"poison","field","rune"		          -> Type=3172, Data=3, Amount=%1,  Price=65*%1,    "Do you want to buy %A poison field runes for %P gold?", Topic=99
+%1,1<%1,"antidote","rune"   				        -> Type=3153, Data=1, Amount=%1, Price=65*%1, "Do you want to buy %A antidote runes for %P gold?", Topic=99
+%1,1<%1,"fire","field","rune"               -> Type=3188, Data=3, Amount=%1,  Price=85*%1,    "Do you want to buy %A fire field runes for %P gold?", Topic=99
+%1,1<%1,"intense","healing","rune"          -> Type=3152, Data=1, Amount=%1,  Price=95*%1,    "Do you want to buy %A intense healing runes for %P gold?", Topic=99
+%1,1<%1,"fireball","rune"                   -> Type=3189, Data=2, Amount=%1,  Price=95*%1,    "Do you want to buy %A fireball runes for %P gold?", Topic=99
+%1,1<%1,"destroy","field","rune"            -> Type=3148, Data=3, Amount=%1,  Price=45*%1,    "Do you want to buy %A destroy field runes for %P gold?", Topic=99
+%1,1<%1,"heavy","magic","missile","rune" 	  -> Type=3198, Data=5, Amount=%1,  Price=125*%1,    "Do you want to buy %A heavy magic missile runes for %P gold?", Topic=99
+%1,1<%1,"energy","field","rune"             -> Type=3164, Data=3, Amount=%1,  Price=115*%1,    "Do you want to buy %A energy field runes for %P gold?", Topic=99
+%1,1<%1,"ultimate","healing","rune"         -> Type=3160, Data=1, Amount=%1,  Price=175*%1,    "Do you want to buy %A ultimate healing runes for %P gold?", Topic=99
+%1,1<%1,"convince","creature","rune"        -> Type=3177, Data=1, Amount=%1,  Price=80*%1,    "Do you want to buy %A convince creature runes for %P gold?", Topic=99
+%1,1<%1,"great","fireball","rune"           -> Type=3191, Data=2, Amount=%1,  Price=180*%1,    "Do you want to buy %A great fireball runes for %P gold?", Topic=99
+%1,1<%1,"chameleon","rune"          	      -> Type=3178, Data=1, Amount=%1,  Price=210*%1,    "Do you want to buy %A chameleon runes for %P gold?", Topic=99
+%1,1<%1,"fire","bomb","rune"            	  -> Type=3192, Data=2, Amount=%1,  Price=235*%1,    "Do you want to buy %A firebomb runes for %P gold?", Topic=99
+%1,1<%1,"poison","wall","rune"            	-> Type=3176, Data=4, Amount=%1,  Price=210*%1,    "Do you want to buy %A poison wall runes for %P gold?", Topic=99
+%1,1<%1,"explosion","rune"          	      -> Type=3200, Data=3, Amount=%1,  Price=250*%1,    "Do you want to buy %A explosion runes for %P gold?", Topic=99
+%1,1<%1,"fire","wall","rune"            	  -> Type=3190, Data=4, Amount=%1,  Price=245*%1,    "Do you want to buy %A fire wall runes for %P gold?", Topic=99
+%1,1<%1,"sudden","death","rune"             -> Type=3155, Data=1, Amount=%1,  Price=325*%1,    "Do you want to buy %A sudden death runes for %P gold?", Topic=99
+%1,1<%1,"energy","wall","rune"            	-> Type=3166, Data=4, Amount=%1,  Price=340*%1,    "Do you want to buy %A energy wall runes for %P gold?", Topic=99
+
+
+Topic=99,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=99,"yes"                   -> "Sorry, you don't have enough gold."
+Topic=99                         -> "As you wish."

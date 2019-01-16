@@ -1,0 +1,161 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# yaman.npc: Datenbank für den Efreethändler Yaman (Magische Gegenstände, Efreet)
+
+Name = "Yaman"
+Outfit = (51,0-0-0-0)
+Home = [33045,32620,2]
+Radius = 1
+
+Behaviour = {
+
+ADDRESS,"hello$",QuestValue(278)=3,!      -> "Well, if it isn't a human. Greetings, %N!"
+ADDRESS,"hi$",QuestValue(278)=3,!         -> *
+ADDRESS,"greetings$",QuestValue(278)=3,!  -> *
+ADDRESS,"djanni'hah$",QuestValue(278)=3,! -> *
+ADDRESS,!                                 -> Idle
+BUSY,"hello$",QuestValue(278)=3,!         -> "One at a time, human. Wait until I have time for you, %N.", Queue
+BUSY,"hi$",QuestValue(278)=3,!            -> *
+BUSY,"greetings$",QuestValue(278)=3,!     -> *
+BUSY,"djanni'hah$",QuestValue(278)=3,!    -> *
+BUSY,!                                    -> NOP
+VANISH                                    -> "Farewell, human."
+
+"bye"                        -> "Goodbye human.", Idle
+"farewell"                   -> *
+"name"                       -> "I'm called Yaman."
+"Yaman"                      -> "That is my name."
+"job"                        -> "I am a trader. Not a popular job around here since it involves dealing with humans, but I don't mind. I rather sit here than have my brain bashed out in this childish war. ...",
+                                "If you have the permission of Malor to trade with us, I will buy all magical equipment you have to offer."
+"permission"                 -> "I am not allowed to buy anything from you unless Malor gave you the permission to trade with us."
+"malor"                      -> "Malor is our leader. He is driven by greed and by ambition. He is clever, though. Personally, I sided with him because Daraman's creed did not appeal to me. ...",
+                                "'Everybody for himself' is my motto. As an Efreet, I can do what I want. No artificial moral restraints. I take what I want."
+"efreet"                     -> "Curious how we have changed physically in the course of time, isn't it? But the fact that we have different skin colours cannot hide the fact that Efreet and Marid are still related by blood."
+"marid"                      -> "I do not hate the Marid - not more than anybody else, anyhow. I joined the Efreet because it seemed the logical thing to do." 
+
+"gabel"                      -> "Even though Malor would never admit it, Gabel is a strong and charismatic leader. We cannot win this war as long as he is alive."
+"king"                       -> "The djinns do not have kings these days. Gabel renounced his right to the title - a clever move. Malor would love to proclaim himself king, but he does not have the authority to do it. Perhaps one day he will."
+"djinn"                      -> "My race is stuck in a vicious civil war. As long as this war hasn't ended the djinn are too self-absorbed to deal with other races."
+"war"                        -> *
+
+"mal'ouquah"                 -> "Mal'ouquah is the name of this place. Malor built it - hence the name. It means 'Malor's rage'."
+"ashta'daramai"              -> "Ashta'daramai is the name of the Marids' fortress. Gabel tore his former fortress down and erected Ashta'daramai in its place. ...",
+                                "Personally I preferred the older fortress, but it does not make much difference. If our side wins the war it will be torn down anyway."
+"human"                      -> "Humans are selfish, greedy and unnecessarily cruel. In other words, they resemble us in many ways. ...",
+                                "Unlike other Efreet I would not kill a human just for the fun of it. However, I would not hesitate to do it if it seemed profitable. No offence." 
+"zathroth"                   -> "The legends say Zathroth abandoned the djinn because they were way too headstrong. I like that story - for two reasons. ...",
+                                "Firstly, it shows that we have independent minds. ...",
+                                "And secondly, it shows that we djinn are free to choose our own destinies. ...",
+                                "No gods, no ties, no rules. We can do as we please and be who we want."
+"tibia"                      -> "This world is our playground." 
+"daraman"                    ->	"Of course I know Daraman. How could I ever forget him. I was there, remember? ...",
+                                "The man was a dangerous fool. At first I laughed, but I soon realised that one by one my brothers started to believe his nonsense. 'Solidarity and brotherly love' - Yeah right."
+"darashia"                   -> "The wealth of Darashia is proverbial. I have my own little plans with it." 
+"scarab"                     -> "Some people find scarabs fascinating. Exactly why is simply beyond me."
+"edron"                      -> "That is a human city, isn't it? I'd like to see it."
+"thais"                      -> *
+"venore"                     -> *
+"kazordoon"                  -> "Isn't that a city built by dwarves?"
+"carlin"                     -> *
+"ab'dendriel"                -> "I understand that city was built by elves."
+"ankrahmun"                  -> "Ankrahmun is the oldest human settlement in Tibia. I remember how surprised we were when we found that humans were capable of building such fine cities."
+"pharaoh"                    -> "They say that pharaoh established his own religion. Amazing. We djinn are notoriously given to pride, but no djinn would ever have the arrogance to proclaim himself god." 
+"palace"                     -> "They say that palace has turned into a home for the living dead under the new pharaoh's rule."
+"ascension"                  -> "Hm. I don't know about this, human."
+"kha'zeel"                   -> "Djinns have lived in these mountains, called Kha'zeel, for as long as anyone can remember. ...",
+                                "Humans rarely come up here, and few djinn care to travel down to the Kha'labal. It is probably better this way. For both our races."
+"kha'labal"                  -> "The Kha'labal we know today was created at the height of the djinn war. Not exactly a glorious chapter in the war's history."
+"melchior"                   -> "Melchior tried to double-cross us. That worm! He paid his treachery dearly. No human messes with the Efreet and lives to tell the tale." 
+"alesar"                     -> "Ah yes - Alesar... Everybody here is really excited because of him. These fools seem to believe that winning the war will be a trifle now Malor is back and we have Alesar on our side. I am far more cautious. ...",
+                                "I don't think Alesar is trying to double-cross us, but I have a bad feeling about him. I still don't understand what made him switch sides." 
+"fa'hradin"                  -> "I feel a strange kind of respect for Fa'hradin even though he is a Marid. He is more level-headed and clear-sighted than most Efreet I know. ...",
+                                "I don't know what made him side with Gabel, but he is the only djinn I miss. ...",
+                                "In fact he was one of the few djinn I ever liked."
+"bo'ques"                    -> "Bo'ques. The fat cook. Exactly how he fits into the freaky ascetiscim of the Marid is beyond me."
+"haroun"                     -> "Haroun. That name rings a bell. Isn't he Alesar brother? They used to be inseparable."
+"baa'leal"                   -> "Baa'leal is our side's commander-in-chief. No wonder I can't be asked to join the service."
+"lamp"                       -> "Yes - djinns sleep in lamps. How long did it take you to work that one out?"
+
+"wares"                      -> "My task is to buy and sell supplies. We are dealing with magical equipment like rings, amulets, rods and some special items."
+"offer"                      -> *
+"goods"                      -> *
+"equipment"                  -> *
+"do","you","sell"            -> *
+"do","you","have"            -> *
+
+"amulets"        -> "I'm selling and buying strange talismans, silver amulets, protection amulets and dragon necklaces."
+"rings"          -> "I'm selling and buying might rings, energy rings, life rings, time rings, dwarven rings and rings of healing."
+"rods"           -> "I'm buying snakebite rods, moonlight rods, volcanic rods, quagmire rods and tempest rods."
+"wands"          -> "I'm not interested in wands."
+"special"        -> "I'm currently looking for some special items. Do you have any ankhs or a mysterious fetish?"
+
+"might","ring"     		   -> Type=3048, Amount=1, Price=5000, "Do you want to buy a might ring for %P gold?", Topic=10
+"energy","ring"     	   -> Type=3051, Amount=1, Price=2000, "Do you want to buy an energy ring for %P gold?", Topic=10
+"life","ring"     	       -> Type=3052, Amount=1, Price=900, "Do you want to buy a life ring for %P gold?", Topic=10
+"time","ring"     	       -> Type=3053, Amount=1, Price=2000, "Do you want to buy a time ring for %P gold?", Topic=10
+"silver","amulet"     	   -> Type=3054, Amount=1, Price=100, "Do you want to buy a silver amulet for %P gold?", Topic=10
+"strange","talisman"       -> Type=3045, Amount=1, Price=100, "Do you want to buy a strange talisman for %P gold?", Topic=10
+"dwarven","ring"     	   -> Type=3097, Amount=1, Price=2000, "Do you want to buy a dwarven ring for %P gold?", Topic=10
+"ring","of","healing"      -> Type=3098, Amount=1, Price=2000, "Do you want to buy a ring of healing for %P gold?", Topic=10
+"protection","amulet"      -> Type=3084, Amount=1, Price=700,   "Do you want to buy a protection amulet for %P gold?", Topic=10
+"dragon","necklace"        -> Type=3085, Amount=1, Price=1000, "Do you want to buy a dragon necklace for %P gold?", Topic=10
+
+%1,1<%1,"strange","talisman"       -> Type=3045, Amount=%1, Price=100*%1, "Do you want to buy %A strange talismans for %P gold?", Topic=10
+%1,1<%1,"might","ring"     		   -> Type=3048, Amount=%1, Price=5000*%1, "Do you want to buy %A might rings for %P gold?", Topic=10
+%1,1<%1,"energy","ring"     	   -> Type=3051, Amount=%1, Price=2000*%1, "Do you want to buy %A energy rings for %P gold?", Topic=10
+%1,1<%1,"life","ring"     	       -> Type=3052, Amount=%1, Price=900*%1, "Do you want to buy %A life rings for %P gold?", Topic=10
+%1,1<%1,"time","ring"     	       -> Type=3053, Amount=%1, Price=2000*%1, "Do you want to buy %A time rings for %P gold?", Topic=10
+%1,1<%1,"silver","amulet"     	   -> Type=3054, Amount=%1, Price=100*%1, "Do you want to buy %A silver amulets for %P gold?", Topic=10
+%1,1<%1,"dwarven","ring"     	   -> Type=3097, Amount=%1, Price=2000*%1, "Do you want to buy %A dwarven rings for %P gold?", Topic=10
+%1,1<%1,"ring","of","healing"      -> Type=3098, Amount=%1, Price=2000*%1, "Do you want to buy %A rings of healing for %P gold?", Topic=10
+%1,1<%1,"protection","amulet"      -> Type=3084, Amount=%1, Price=700*%1,   "Do you want to buy %A protection amulets for %P gold?", Topic=10
+%1,1<%1,"dragon","necklace"        -> Type=3085, Amount=%1, Price=1000*%1, "Do you want to buy %A dragon necklaces for %P gold?", Topic=10
+
+"sell","might","ring"     		   -> Type=3048, Amount=1, Price=250, "Do you want to sell a might ring for %P gold?", Topic=11
+"sell","energy","ring"       	   -> Type=3051, Amount=1, Price=100, "Do you want to sell an energy ring for %P gold?", Topic=11
+"sell","life","ring"     	       -> Type=3052, Amount=1, Price=50, "Do you want to sell a life ring for %P gold?", Topic=11
+"sell","time","ring"     	       -> Type=3053, Amount=1, Price=100, "Do you want to sell a time ring for %P gold?", Topic=11
+"sell","silver","amulet"     	   -> Type=3054, Amount=1, Price=50, "Do you want to sell a silver amulet for %P gold?", Topic=11
+"sell","strange","talisman"       -> Type=3045, Amount=1, Price=30, "Do you want to sell a strange talisman for %P gold?", Topic=11
+"sell","dwarven","ring"     	   -> Type=3097, Amount=1, Price=100, "Do you want to sell a dwarven ring for %P gold?", Topic=11
+"sell","ring","of","healing"      -> Type=3098, Amount=1, Price=100, "Do you want to sell a ring of healing for %P gold?", Topic=11
+"sell","protection","amulet"      -> Type=3084, Amount=1, Price=100, "Do you want to sell a protection amulet for %P gold?", Topic=11
+"sell","dragon","necklace"        -> Type=3085, Amount=1, Price=100, "Do you want to sell a dragon necklace for %P gold?", Topic=11
+"sell","mysterious","fetish"      -> Type=3078, Amount=1, Price=50, "Do you want to sell a mysterious fetish for %P gold?", Topic=11
+"sell","ankh"      			   -> Type=3077, Amount=1, Price=100, "Do you want to sell an ankh for %P gold?", Topic=11
+
+"sell",%1,1<%1,"strange","talisman"       -> Type=3045, Amount=%1, Price=30*%1,   "Do you want to sell %A strange talismans for %P gold?", Topic=11
+"sell",%1,1<%1,"might","ring"     		   -> Type=3048, Amount=%1, Price=250*%1, "Do you want to sell %A might rings for %P gold?", Topic=11
+"sell",%1,1<%1,"energy","ring"     	      -> Type=3051, Amount=%1, Price=100*%1, "Do you want to sell %A energy rings for %P gold?", Topic=11
+"sell",%1,1<%1,"life","ring"     	       -> Type=3052, Amount=%1, Price=50*%1, "Do you want to sell %A life rings for %P gold?", Topic=11
+"sell",%1,1<%1,"time","ring"     	       -> Type=3053, Amount=%1, Price=100*%1, "Do you want to sell %A time rings for %P gold?", Topic=11
+"sell",%1,1<%1,"silver","amulet"     	   -> Type=3054, Amount=%1, Price=50*%1, "Do you want to sell %A silver amulets for %P gold?", Topic=11
+"sell",%1,1<%1,"dwarven","ring"     	   -> Type=3097, Amount=%1, Price=100*%1, "Do you want to sell %A dwarven rings for %P gold?", Topic=11
+"sell",%1,1<%1,"ring","of","healing"      -> Type=3098, Amount=%1, Price=100*%1, "Do you want to sell %A rings of healing for %P gold?", Topic=11
+"sell",%1,1<%1,"protection","amulet"      -> Type=3084, Amount=%1, Price=100*%1, "Do you want to sell %A protection amulets for %P gold?", Topic=11
+"sell",%1,1<%1,"dragon","necklace"        -> Type=3085, Amount=%1, Price=100*%1, "Do you want to sell %A dragon necklaces for %P gold?", Topic=11
+"sell",%1,1<%1,"mysterious","fetish"      -> Type=3078, Amount=%1, Price=50*%1, "Do you want to sell %A mysterious fetishes for %P gold?", Topic=11
+"sell",%1,1<%1,"ankh"      			   -> Type=3077, Amount=%1, Price=100*%1, "Do you want to sell %A ankhs for %P gold?", Topic=11
+
+"sell","snakebite","rod"               -> Type=3066, Amount=1,  Price=100,   "Do you want to sell a snakebite rod for %P gold?", Topic=11
+"sell","moonlight","rod"               -> Type=3070, Amount=1,  Price=200,   "Do you want to sell a moonlight rod for %P gold?", Topic=11
+"sell","volcanic","rod"                -> Type=3069, Amount=1,  Price=1000,   "Do you want to sell a volcanic rod for %P gold?", Topic=11
+"sell","quagmire","rod"                -> Type=3065, Amount=1,  Price=2000,  "Do you want to sell a quagmire rod for %P gold?", Topic=11
+"sell","tempest","rod"                 -> Type=3067, Amount=1,  Price=3000,  "Do you want to sell a tempest rod for %P gold?", Topic=11
+
+"sell",%1,1<%1,"snakebite","rod"               -> Type=3066, Amount=%1,  Price=100*%1,   "Do you want to sell %A snakebite rods for %P gold?", Topic=11
+"sell",%1,1<%1,"moonlight","rod"               -> Type=3070, Amount=%1,  Price=200*%1,   "Do you want to sell %A moonlight rods for %P gold?", Topic=11
+"sell",%1,1<%1,"volcanic","rod"                -> Type=3069, Amount=%1,  Price=1000*%1,   "Do you want to sell %A volcanic rods for %P gold?", Topic=11
+"sell",%1,1<%1,"quagmire","rod"                -> Type=3065, Amount=%1,  Price=2000*%1,  "Do you want to sell %A quagmire rods for %P gold?", Topic=11
+"sell",%1,1<%1,"tempest","rod"                 -> Type=3067, Amount=%1,  Price=3000*%1,  "Do you want to sell %A tempest rods for %P gold?", Topic=11
+
+Topic=10,QuestValue(288)<3,!     -> "I'm sorry, but you don't have Malor's permission to trade with me."
+Topic=10,"yes",CountMoney>=Price -> "Good. Here you are.", DeleteMoney, Create(Type)
+Topic=10,"yes"                   -> "You do not have enough gold, human!"
+Topic=10                         -> "As you wish."
+
+Topic=11,QuestValue(288)<3,!               -> "I'm sorry, but you don't have Malor's permission to trade with me."
+Topic=11,"yes",Count(Type)>=Amount -> "Good. Here is your money.", Delete(Type), CreateMoney
+Topic=11,"yes"                             -> "You do not have one, human!"
+Topic=11,"yes",Amount>1                    -> "You do not have that many, human!"
+Topic=11                                   -> "As you wish."
+}

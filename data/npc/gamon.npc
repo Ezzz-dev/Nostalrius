@@ -1,0 +1,79 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gamon.npc: Möbelverkäufer Gamon in Thais
+
+Name = "Gamon"
+Outfit = (128,97-58-105-120)
+Home = [32408,32170,7]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",female,! -> "Well, hello there, Lady, %N welcome to Gamon's humble furniture shop!"
+ADDRESS,"hi$",female,!    -> *
+ADDRESS,"hello$",male,!   -> "Nice to meet you, Mister %N! Looking for furniture? You've come to the right place!"
+ADDRESS,"hi$",male,!      -> *
+ADDRESS,!                 -> Idle
+BUSY,"hello$",!           -> "One moment, please. I got a customer here."
+BUSY,"hi$",!              -> *
+BUSY,!                    -> NOP
+VANISH,male,!             -> "Now where's he gone? I could have sworn..."
+VANISH,!                  -> "Lady? Lady?? Hm. How strange..."
+
+"bye"            	 -> "You'll come back. They all do.", Idle
+"farewell"        -> *
+"job"                -> "I am Thais's foremost furniture salesman."
+"news"            -> "News? Of course there's news! There's a new furniture man in town, and he's here to stay!"
+"how","are","you"-> "Excellent! Never felt better in my life!"
+"name"            -> "My friends call me Gamon. My fans call me the incredible Gammy!"
+"time"              -> "Any time's a good time to buy some furniture."
+"Thais"	        -> "Thais is obsessed with its past. Everybody here is so proud of their history. Bah! Thais might have a long history, but it has no idea when it comes to interior decoration."
+"Venore"        -> "The place where it all happens. That town really rocks! Thais could learn a lot about interior decoration from Venore!" 
+"power"		    -> "There are a few rumours about a rebellion, but that is all they are."
+"rebellion"	    -> "Well - a few paranoid souls think that Venore wants to gain independence from Thais. Nothing more than rumours."
+
+"news"     -> "You mean my specials, don't you?"
+
+"quality"         -> "Our furniture is produced by the finest carpenters on the continent using the rare wood of the Venorean marsh willow!"
+"marsh","willow"   -> "You can't get any better wood in this world. And it has got a nice smell to it, too. There is nothing nicer than a marsh willow campfire."
+"king"            -> "His Royal Highness will start to appreciate the superior quality of our stock soon enough!"
+"sam"             -> "I heard rumours he has some special offers for customers who know to ask for the correct things."
+"benjamin"        -> "He's incredibly slow. Just your average postman, I guess."
+"gorn"            -> "He sells stuff of inferior quality. Nothing compared to venores high quality goods."
+"quentin"         -> "That old monk has probably never left that overcrowded town here."
+"quest"	      -> "A quest?! Who needs quests when there is interior decorating!"
+"bozo"            -> "Bozo! Damn that clown! He keeps making fake orders. It isn't funny to deliver a wardrobe to an address that doesn't even exist, you know!"
+"tibia"           -> "Tibia is a wonderful place full of business opportunities."
+"castle"          -> "I've said it a thousand times! That place needs a complete refurbishing!"
+"muriel"          -> "The sorcerers guild could realy need someone with taste to redecorate it."
+"elane"           -> "She's pretty, but I am the kind of man who enjoys a long and healthy life."
+"marvik"          -> "Druids are obsessed with trees and the bane of any carpenter."
+"gregor"          -> "Those knights know how to party. And after such partys theres allways need for new furniture."
+"guild"           -> "Now those people really talk business. There is a new era dawning."
+"merchants"       -> *
+"Topsy"           -> "Ah, those twins. Strange people they are (*sigh*). Oh, they are great to work with, of course. Excellent quality, competetive prices! But well... (whispers) they give me the creeps!"
+"Turvy"           -> * 
+"twins"	      -> *
+"creeps"	      -> "Yes! I can never figure out which is which. And they are always watching me!" 
+"watching"        -> "Look! They are doing it again! And they are always smiling!"
+"smiling"         -> "Yes! Smiling! How a professional sales artist such as myself is supposed to work in such an atmosphere is beyond me!"
+"artist"          -> "Yes! Selling is a form of art! The elaborate combination of rhetoric and acting which serves to create a sublime longing for the infinite, embodied by second class furniture."
+"rug"             -> "Oh, silly me! Rugs are out of stock at the moment! But we expect a new shipment anytime. Just watch out for the next update!... Of our inventory I mean."
+
+"offer"           -> "I sell statues, tables, chairs, flowers, pillows, pottery, instruments, decoration, tapestries and containers."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"furniture"       -> *
+"equipment"       -> *
+"special"         -> "My offers are permanently extraordinarily cheap."
+
+@"gen-t-furniture-statues-s.ndb"
+@"gen-t-furniture-tables-s.ndb"
+@"gen-t-furniture-chairs-s.ndb"
+@"gen-t-furniture-flowers-s.ndb"
+@"gen-t-furniture-pillows-s.ndb"
+@"gen-t-furniture-pottery-s.ndb"
+@"gen-t-furniture-instruments-s.ndb"
+@"gen-t-furniture-decoration-s.ndb"
+@"gen-t-furniture-tapestries-s.ndb"
+@"gen-t-furniture-containers-s.ndb"
+}

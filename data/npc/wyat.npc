@@ -1,0 +1,74 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# wyat.npc: Datenbank für den Sheriff von Thais Wyat
+
+Name = "Wyat"
+Outfit = (129,98-96-95-116)
+Home = [32325,32276,7]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hail$",!        -> "Salutations!"
+ADDRESS,"salutations$",! -> *
+ADDRESS,"hello$",!       -> *
+ADDRESS,"hi$",!          -> *
+ADDRESS,!                -> Idle
+BUSY,"hello$",!          -> "I am busy!"
+BUSY,"hi$",!             -> *
+BUSY,"hail$",!           -> *
+BUSY,"salutations$",!    -> *
+BUSY,!                   -> NOP
+VANISH,!                 -> "LONG LIVE THE KING!"
+
+"bye"            -> "LONG LIVE THE KING!", Idle
+"news"           -> "I have no news for the public."
+"king"           -> "HAIL TO KING TIBIANUS!"
+"leader"         -> *
+"job"            -> "I am the sheriff of the Thaian territory."
+"how","are","you"-> "I am fine, thanks."
+"sell"           -> "I am in the safety business."
+"army"           -> "I usually work with the townguards only."
+"guard"          -> *
+"general"        -> "Old Bloodblade does a fine job."
+"enemies"        -> "Our enemies are numerous and not all are obvious."
+"enemy"          -> *
+"criminal"       -> *
+"murderer"       -> *
+"castle"         -> "The castle should be relatively safe from criminal transgressions."
+"subject"        -> "There are certain criminal objects in the population of our town."
+"red","guard"    -> "Most of the red guards serve as cityguards, some work for the TBI though."
+"secret","police"-> "All i can tell you is, that it's known as the TBI."
+"tbi$"           -> "The Tibian Bureau of Investigation. If you want to know more, ask Chester Kahs about it, but I doubt you'll get any vital information."
+"chester"        -> "His bureau is at the northgate."
+"silver","guard" -> "They are our elite forces."
+"city"           -> "The city is not as bad as some people might claim, but we certainly have our problems here." 
+"problem"        -> "We will handle each problem with care."
+"stutch"         -> "A fine warrior, indeed. He is one of the king's bodyguards."
+"harsky"         -> *
+"bozo"           -> "He's so funny, I could listen to his jokes for hours."
+"sam"            -> "Sam, the Thaian smith, is a man of great diligence. Whenever in need of weapons or armor, just ask him."
+"weapon"         -> *
+"armor"          -> *
+"elane"          -> "A woman of great skill and courage. No one deserves the title of a Grandmaster of the Paladins more then her."
+"gorn"           -> "He was a rowdy in his youth, but now he's a fine citizen as far as I can tell."
+"benjamin"       -> "The poor fool lost his mind some years ago. It's a good thing they gave him a job in the post office."
+"ferumbras"      -> "He attacked our town at several occasions but was repelled each time."
+"quest"          -> "Look up our 'Tibia's most wanted' lists."
+"mission"        -> *
+"god"            -> "I am follower of Banor."
+"banor"          -> "He is the patron of justice and bravery."
+"zathroth"       -> "Don't mention this name!"
+"brog"           -> "The more primitive races such as orcs often worship the raging one."
+"monster"        -> "Thais should be relatively safe from direct assaults of monsters."
+"excalibug"      -> "If you have any news about the whereabouts of that blade, report it to me."
+"rebellion"      -> "Luckily that's nothing I have to care about."
+
+"fuck"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"idiot"          -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"asshole"        -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"ass$"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"fag$"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"stupid"         -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"tyrant"         -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"shit"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"lunatic"        -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+}

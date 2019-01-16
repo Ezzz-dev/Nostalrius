@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="serpent spawn" nameDescription="a serpent spawn" race="blood" experience="2000" speed="77" manacost="0">
+	<health now="3000" max="3000" />
+	<look type="220" head="0" body="0" legs="0" feet="0" corpse="4388" />
+	<targetchange interval="1000" chance="25" />
+	<targetstrategy nearest="70" weakest="30" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag runonhealth="275" />
+	</flags>
+	<attacks attack="62" skill="82">
+		<attack name="poison" min="-100" max="-300" range="7" chance="8">
+			<attribute key="shootEffect" value="poison" />
+			<attribute key="areaEffect" value="greenspark" />
+		</attack>
+		<attack name="outfit" item="3492" duration="4000" range="7" chance="120">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</attack>
+		<attack name="speed" speedchange="-65" variation="10" duration="120000" range="7" radius="4" target="1" chance="5">
+			<attribute key="shootEffect" value="poison" />
+			<attribute key="areaEffect" value="greenbubble" />
+		</attack>
+		<attack name="lifedrain" min="-150" max="-400" length="8" spread="0"  chance="7">
+			<attribute key="areaEffect" value="rednote" />
+		</attack>
+		<attack name="poison" min="-50" max="-500" length="8" spread="3" chance="6">
+			<attribute key="areaEffect" value="poison" />
+		</attack>
+	</attacks>
+	<defenses armor="38" defense="40">
+		<defense name="healing" min="300" max="400" chance="6">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+		<defense name="speed" speedchange="95" variation="5" duration="3000" chance="12">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity outfit="1" />
+		<immunity lifedrain="1" />
+		<immunity paralyze="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<voices>
+		<voice sentence="Ssssolus for the one" />
+		<voice sentence="HISSSS" yell="1" />
+		<voice sentence="Tsssse one will risssse again" />
+		<voice sentence="I bring you deathhhh, mortalssss" />
+	</voices>
+	<loot>
+		<item id="2842" countmax="1" chance="90" /> <!-- a book -->
+		<item id="3407" countmax="1" chance="20" /> <!-- a charmer's tiara -->
+		<item id="3386" countmax="1" chance="2" /> <!-- a dragon scale mail -->
+		<item id="3051" countmax="1" chance="30" /> <!-- an energy ring -->
+		<item id="3280" countmax="1" chance="3" /> <!-- a fire sword -->
+		<item id="3031" countmax="100" chance="800" /> <!-- a gold coin -->
+		<item id="3031" countmax="100" chance="600" /> <!-- a gold coin -->
+		<item id="3031" countmax="50" chance="400" /> <!-- a gold coin -->
+		<item id="2903" countmax="1" chance="30" /> <!-- a golden mug -->
+		<item id="3066" countmax="1" chance="10" /> <!-- a snakebite rod -->
+		<item id="3732" countmax="1" chance="180" /> <!-- a green mushroom -->
+		<item id="3061" countmax="1" chance="8" /> <!-- a life crystal -->
+		<item id="3052" countmax="1" chance="30" /> <!-- a life ring -->
+		<item id="4831" countmax="1" chance="5" /> <!-- an old parchment -->
+		<item id="3450" countmax="1" chance="60" /> <!-- a power bolt -->
+		<item id="3392" countmax="1" chance="1" /> <!-- a royal helmet -->
+		<item id="3029" countmax="1" chance="60" /> <!-- a small sapphire -->
+		<item id="3373" countmax="1" chance="6" /> <!-- a strange helmet -->
+		<item id="3428" countmax="1" chance="4" /> <!-- a tower shield -->
+	</loot>
+</monster>

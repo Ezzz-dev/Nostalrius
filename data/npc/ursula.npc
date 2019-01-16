@@ -1,0 +1,61 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# ursula.npc: Datenbank für die Zauberlehrerin Ursula
+
+Name = "Ursula"
+Outfit = (54,0-0-0-0)
+Home = [33268,31849,7]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Howdy %N."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Gimme one more minute %N.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Bye."
+
+"bye"       -> "Bye", Idle
+"job"       -> "I teach some basic spells."
+"name"      -> "I am Ursula."
+"time"      -> "Sorry, I don't own a watch."
+"king"      -> "The king spent a lot of money for our library."
+"tibianus"  -> *
+"army"      -> "I would prefer an army of spellcasters, but they are ok."
+"ferumbras" -> "Ah, come on, he can't be that poweful and evil as all say."
+"excalibug" -> "A myth born out of some knights' inferiority complex."
+"thais"     -> "Ah, yes, I remember my time there, old Muriel teaching me the basics."
+"tibia"     -> "Isn't it a fine world we live in."
+"carlin"    -> "They should have been more careful with this town, before they lost it."
+"edron"     -> "Sciences are thriving on this isle."
+"news"      -> "I heard about things you never would believe. Please come back when I have more time to chat."
+"rumors"    -> *
+
+"spellbook" -> "I'm sorry, but I don't have one. Ask Thomas in the west tower about that."
+"spell"     -> "I have 'Conjure Bolt', 'Animate Dead', 'Envenom', 'Heal Friend', 'Desintegrate', 'Poison Bomb', and 'Strong Haste'. Which one do you want to learn?"
+
+"conjure","bolt",Paladin  -> String="Conjure Bolt", Price=750,  "Do you want to learn the spell 'Conjure Bolt' for %P gold?", Topic=1
+"conjure","bolt"          -> "I'm sorry, but this spell is only for paladins."
+"animate","dead",Sorcerer -> String="Animate Dead", Price=1200, "Do you want to learn the spell 'Animate Dead' for %P gold?", Topic=1
+"animate","dead",Druid    -> *
+"animate","dead"          -> "I'm sorry, but this spell is only for druids and sorcerers."
+"envenom",Druid           -> String="Envenom", Price=1000, "Do you want to learn the spell 'Envenom' for %P gold?", Topic=1
+"envenom"                 -> "I'm sorry, but this spell is only for druids."
+"heal","friend",Druid     -> String="Heal Friend", Price=800,  "Do you want to learn the spell 'Heal Friend' for %P gold?", Topic=1
+"heal","friend"           -> "I'm sorry, but this spell is only for druids."
+"desintegrate",Paladin    -> String="Desintegrate", Price=900,  "Do you want to learn the spell 'Desintegrate' for %P gold?", Topic=1
+"desintegrate",Sorcerer   -> *
+"desintegrate",Druid      -> *
+"desintegrate"            -> "I'm sorry, but this spell is only for paladins, sorcerers, and druids."
+"strong","haste",Sorcerer -> String="Strong Haste", Price=1300, "Do you want to learn the spell 'Strong Haste' for %P gold?", Topic=1
+"strong","haste",Druid    -> *
+"strong","haste"          -> "I'm sorry, but this spell is only for druids and sorcerers."
+"poison","bomb",Druid     -> String="Poisonbomb", Price=1000, "Do you want to learn the spell 'Poison Bomb' for %P gold?", Topic=1
+"poison","bomb"           -> "I'm sorry, but this spell is only for druids."
+
+Topic=1,"yes",SpellKnown(String)=1        -> "I'm sorry, but you already know this spell."
+Topic=1,"yes",Level<SpellLevel(String)    -> Amount=SpellLevel(String), "I'm sorry, but you need level %A to learn this spell."
+Topic=1,"yes",CountMoney<Price            -> "I'm sorry, but you don't have enough gold to pay for it."
+Topic=1,"yes"                             -> "Congratulations. From now on you can cast this spell.", DeleteMoney, EffectOpp(13), TeachSpell(String)
+Topic=1                                   -> "As you wish."
+}

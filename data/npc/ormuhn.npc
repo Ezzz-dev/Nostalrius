@@ -1,0 +1,92 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# ormuhn.npc: Datenbank für die arenaleiter ormuhn
+
+Name = "Ormuhn"
+Outfit = (18,0-0-0-0)
+Home = [33160,32810,5]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Be mourned pilgrim in flesh."
+ADDRESS,"hi$",!    -> "Be mourned pilgrim in flesh."
+ADDRESS,"be","mourned","pilgrim","flesh",!    -> "Be mourned pilgrim in flesh."
+ADDRESS,!          -> Idle
+
+BUSY,"hello$",!    -> "Mourned %N, know that I am busy.", Queue
+BUSY,"hi$",!       -> *
+BUSY,"be","mourned","pilgrim","flesh",!    -> *
+BUSY,!             -> NOP
+VANISH,!           -> "May enlightenment be your path."
+
+"bye"      -> "May enlightenment be your path.", Idle
+"farewell" -> *
+"job"      -> "I am the arena master. I supervise all challenges that take place in this arena and train true fighters."
+"name"     -> "I am called Ormuhn."
+"time"     -> "Time only matters to you while you are mortal. Another instrument in the hands of the false gods to fool us all."
+"temple"   -> "The temple takes care of your Uthun. In this arena we challenge your Akh."
+"pharaoh"    -> "The pharaoh, our mighty leader, is an unliving god."
+"oldpharaoh" -> "The pharaoh will know why he granted him a chance to ascend."
+"scarab"    -> "Scarabs might be sacred, but they are also a challenge. If you are able to overcome one of them, its spirit will forgive you. The everlasting sand will grant him rebirth anyway."
+"chosen"    -> "I am one of the chosen. To become like me you have to serve the pharaoh and his temple faithfully."
+
+"tibia"    -> "Tibia is a place kept in the thrall of the greedy false gods. One day though our pharaoh will free Tibia and guide all of its people to ascension." 
+
+"carlin"   -> "These cities are nests of corruption and lies. For those who know the treason of the false gods is almost tangible there."
+"thais"    -> *
+"edron"    -> *
+"venore"   -> * 
+"kazordoon" -> "Dwarves are worthy warriors. Still their mortal Akh makes them prey to true death and so their lives are wasted."
+"dwarves"   -> *
+"dwarfes"   -> *
+"ab'dendriel" -> "Elves are nothing but feeble treehuggers."
+"elves"       -> *
+"elfes"       -> *
+"darama"      -> "This continent will be the first to prosper under the guidance of our pharaoh."
+"darashia"    -> "The people there are not totally lost to the false gods yet. Who knows? They may be saved yet."
+"daraman"    -> "A mere mortal prophet. As was to be expected, his mortality blurred his visions of ascension." 
+"ankrahmun" -> "This is the shelter of the mortal flock who listens to the teachings of our pharaoh." 
+
+"mortality"     -> "Your curse of mortality can be lifted if you only prove youself worthy in the eyes of our pharaoh."
+"false", "gods" -> "These greedy reapers of souls are the true scourge of poor mortals like you. Your living Akh makes you vulnerable for their attacks. Withstand them and you will get a chance to be raised to the exalted state of undeath."
+
+"ascension"         -> "Ascension is achieved in many steps. The first and most important step is unquestioning loyal service to our pharaoh."
+"Akh'rah","Uthun"   -> "You should discuss such topics with our priests. I don't care too much for these matters."
+"Akh"               -> "As far as I know this is what you would call your body. Ask a priest for further information."
+"undead"            -> "We are the chosen ones."
+"undeath"           -> *
+"Rah"               -> "That is your so-called soul. Ask a priest for further information."
+"uthun"             -> "All the things you remember form your uthun. Ask a priest for further information."
+"mourn"             -> "Living flesh is so ... pathetic."
+
+"arena"        -> "If you wish to test your mortal Akh you are at the right place."
+"palace"       -> "The palace is guarded by the elite forces of the chosen."
+Knight,"spell"  -> "I can teach you healing spells and support spells. What kind of spell do you wish to learn? You can also tell me for which level you would like to learn a spell, if you prefer that.", Topic=2
+"spell"          -> "Sorry, I only sell spells to knights."
+
+Knight,"instant","spell"      -> "I can teach you healing spells and support spells. What kind of spell do you wish to learn?"
+Knight,"healing","spell"      -> "In this category I have 'Light Healing' and 'Antidote'."
+Knight,"support","spell"      -> "In this category I have 'Light', 'Find Person' and 'Great Light'."
+
+Topic=2,"healing","spell"      -> "In this category I have 'Light Healing' and 'Antidote'."
+Topic=2,"support","spell"      -> "In this category I have 'Light', 'Find Person' and 'Great Light'."
+Topic=2,"bye"                  -> "May enlightenment be your path.", Idle
+
+Topic=2,"8$" -> "For level 8 I have 'Find Person' and 'Light'.", Topic=2
+Topic=2,"9$" -> "For level 9 I have 'Light Healing'.", Topic=2
+Topic=2,"10$" -> "For level 10 I have 'Antidote'.", Topic=2
+Topic=2,"13$" -> "For level 13 I have 'Great Light'.", Topic=2
+Topic=2       -> "Sorry, I have only spells for level 8, 9, 10 and 13.", Topic=2
+
+Knight,"find","person"   -> String="Find Person", Price=80,  "Do you want to buy the spell 'Find Person' for %P gold?", Topic=3
+Knight,"light"           -> String="Light", Price=100, "Do you want to buy the spell 'Light' for %P gold?", Topic=3
+Knight,"light","healing" -> String="Light Healing", Price=170, "Do you want to buy the spell 'Light Healing' for %P gold?", Topic=3
+Knight,"antidote"        -> String="Antidote", Price=150, "Do you want to buy the spell 'Antidote' for %P gold?", Topic=3
+Knight,"great","light"   -> String="Great Light", Price=500, "Do you want to buy the spell 'Great Light' for %P gold?", Topic=3
+
+Topic=3,"yes",SpellKnown(String)=1        -> "You already know how to cast this spell."
+Topic=3,"yes",Level<SpellLevel(String)    -> Amount=SpellLevel(String), "You have to be level %A to learn this spell."
+Topic=3,"yes",CountMoney<Price            -> "Return when you have enough gold."
+Topic=3,"yes"                             -> "Here you are. Look in your spellbook for the pronunciation of this spell.", DeleteMoney, EffectOpp(13), TeachSpell(String)
+Topic=3                                   -> "Maybe next time."
+
+}

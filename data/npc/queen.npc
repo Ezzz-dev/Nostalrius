@@ -1,0 +1,92 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# queen.npc: Datenbank für die Königin von Carlin
+
+Name = "Queen Eloise"
+Outfit = (138,96-94-79-115)
+Home = [32315,31753,7]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello","queen",!       -> "I greet thee, my loyal subject."
+ADDRESS,"hail","queen",!        -> *
+ADDRESS,"salutations","queen",! -> *
+ADDRESS,!                       -> Idle
+BUSY,!                          -> NOP
+VANISH,male,!                   -> "Typical behaviour for males!"
+VANISH,!                        -> "What a strange behaviour for a lady!"
+
+"uniform",QuestValue(233)=5  -> "I remember about those uniforms, they had a camouflage inlay so they could be worn the inside out too. I will send some colorsamples via mail to Mr. Postner.",SetQuestvalue(233,6)
+"uniform"         -> "The uniforms of our guards and soldiers are of unparraleled quality of course."
+
+
+"bye"            -> "Farewell, %N!", Idle
+"farewell"       -> *
+"job"            -> "I am Queen Eloise. It is my duty to reign over this marvellous city and the lands of the north."
+"justice"        -> "We women try to bring justice and wisdom to all, even to males."
+"name"           -> "I am Queen Eloise. For you it's 'My Queen' or 'Your Majesty', of course."
+"news"           -> "I don't care about gossip like a simpleminded male would do."
+"tibia"          -> "Soon the whole land will be ruled by women at last!"
+"land"           -> *
+"how","are","you"-> "Thank you, I'm fine."
+"castle"         -> "It's my humble domain."
+"sell",male      -> "Sell? Your question shows that you are a typical member of your gender!"
+"sell",female    -> "I beg you pardon? A queen that sells things? Be serious!"
+"god"            -> "We honor the gods of good in our fair city, especially Crunor, of course."
+"citizen"        -> "All citizens of Carlin are my subjects. I see them more as my childs, though, epecially the male population."
+"noodles"        -> "This beast scared my cat away on my last diplomatic mission in this filthy town."
+"ferumbras"      -> "He is the scourge of the whole continent!"
+"treasure"       -> "The royal treasure is hidden beyond the grasps of any thieves by magical means."
+"monster"        -> "Go and hunt them! For queen and country!"
+"help"           -> "Visit the church or the townguards for help."
+"quest"          -> "I will call for heroes as soon as the need arises again."
+"mission"        -> *
+"gold"           -> "Our city is rich and prospering."
+"money"          -> *
+"tax"            -> *
+"sewer"          -> "I don't want to talk about 'sewers'."
+"dungeon"        -> "Dungeons are places where males crawl around and look for trouble."
+"equipment"      -> "Feel free to visit our town's magnificent shops."
+"food"           -> *
+"time"           -> "Don't worry about time in the presence of your Queen."
+"hero"           -> "We need the assistance of heroes now and then. Even males prove useful now and then."
+"adventurer"     -> *
+"tax","collector"-> "The taxes in Carlin are not high, more a symbol than a sacrifice."
+"queen"          -> "I am the Queen, the only rightful ruler on the continent!"
+"army"           -> "Ask one of the soldiers about that."
+"enemy"          -> "Our enemies are numerous. We have to fight vile monsters and have to watch this silly king in the south carefully." 
+"enemies"        -> * 
+"thais"          -> "They dare to reject my reign over them!"
+"city","south"   -> *
+"carlin"         -> "Isn't our city marvellous? Have you noticed the lovely gardens on the roofs?"
+"city"           -> *
+"shop"           -> "My subjects maintain many fine shops. Go and have a look at their wares."
+"merchant"       -> "Ask around about them."
+"craftsmen"      -> *
+"guild"          -> "The four major guilds are the Knights, the Paladins, the Druids, and the Sorcerers."
+"minotaur"       -> "They havn't troubled our city lately. I guess, they fear the wrath of our druids."
+"paladin"        -> "The paladins are great hunters."
+"legola"         -> *
+"elane"          -> "It's a shame that the High Paladin does not reside in Carlin."
+"knight"         -> "The knights of Carlin are the bravest."
+"trisha"         -> *
+"sorceror"       -> "The sorcerers have a small isle for their guild. So if they blow something up it does not burn the whole city to ruins."
+"lea$"           -> *
+"druid"          -> "The druids of Carlin are our protectors and advisors. Their powers provide us with wealth and food."
+"padreia"        -> *
+"good"           -> "Carlin is a center of the forces of good, of course."
+"evil"           -> "The forces of evil have a firm grip on this puny city to the south."
+"order"          -> "The order, Crunor gives the world, is essential for survival."
+"chaos"          -> "Chaos is common in the southern regions, where they allow a man to reign over a realm."
+"excalibug"      -> "A mans tale ... that means 'nonsense', of course."
+"reward"         -> "If you want a reward, go and bring me something this silly King Tibianus wants dearly!"
+"tbi"            -> "A dusgusting organisation, which could be only created by men."
+
+"promot"                         -> Price=20000, "Do you want to be promoted in your vocation for %P gold?", Topic=4
+Topic=4,"yes",Promoted,!         -> "You are already promoted."
+Topic=4,"yes",Level<20,!         -> "You need to be at least level 20 in order to be promoted."
+Topic=4,"yes",CountMoney<Price,! -> "You do not have enough money."
+Topic=4,"yes",Premium            -> "Congratulations! You are now promoted. Visit the sage Eremo for new spells.", Promote, DeleteMoney
+Topic=4,"yes"                    -> "You need a premium account in order to promote."
+Topic=4                          -> "Ok, then not."
+"eremo"                          -> "It is said that he lives on a small island near Edron. Maybe the people there know more about him."
+}

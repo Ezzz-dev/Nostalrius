@@ -1,0 +1,43 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# edvard.npc: Möbelverkäufer Edvard in Edron
+
+Name = "Edvard"
+Outfit = (128,59-115-96-95)
+Home = [33229,31831,7]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Welcome to Edron Furniture Store, %N."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "One moment please, %N.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Good bye."
+
+"bye"      -> "Good bye.", Idle
+"farewell" -> *
+"name"     -> "My name is Edvard. I run this store."
+"job"      -> "Have you moved to a new home? I'm the specialist for equipping it."
+"time"     -> "It is %T. Do you need a clock for your house?"
+"news"     -> "You mean my specials, don't you?"
+
+"offer"           -> "I sell statues, tables, chairs, flowers, pillows, pottery, instruments, decoration, tapestries and containers."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"furniture"       -> *
+"equipment"       -> *
+"special"         -> "My offers are permanently extraordinary cheap."
+
+@"gen-t-furniture-statues-s.ndb"
+@"gen-t-furniture-tables-s.ndb"
+@"gen-t-furniture-chairs-s.ndb"
+@"gen-t-furniture-flowers-s.ndb"
+@"gen-t-furniture-pillows-s.ndb"
+@"gen-t-furniture-pottery-s.ndb"
+@"gen-t-furniture-instruments-s.ndb"
+@"gen-t-furniture-decoration-s.ndb"
+@"gen-t-furniture-tapestries-s.ndb"
+@"gen-t-furniture-containers-s.ndb"
+}

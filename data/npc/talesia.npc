@@ -1,0 +1,36 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# Talesia.npc: Datenbank für die Besitzerin des Grünzeugmarktes Talesia
+
+Name = "Talesia"
+Outfit = (138,114-78-77-116)
+Home = [32979,32035,5]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Salutation, %N!"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Come back later, I am talking."
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Fare thee well."
+
+"bye"       -> "Fare thee well.", Idle
+"name"      -> "I am Talesia De'Mir, owner of Crunor's Finest Warehouse."
+"job"       -> "I am a the owner of Crunor's Finest Warehouse of course."
+"time"      -> "It's %T right now."
+"king"      -> "We pay this man enough to live here undisturbed of major interventions."
+"tibianus"  -> *
+"army"      -> "At least they are useful, but we pay enough taxes to supply the entire Thaian army."
+"ferumbras" -> "I hope he is aware that his enemies live elsewhere."
+"excalibug" -> "I am contend with my familysword meloncutter."
+"thais"     -> "I hope they live well from our taxes..."
+"tibia"     -> "The world is a treasure chest for those of knowledge and skill."
+"warehouse" -> "My warehouse is only one of many. We merchants hold this city together and lead it to prosperity."
+"carlin"    -> "They are a bit problematic as business partners, but their independence from Thais is... interesting."
+"news"      -> "Even bad news can be good news, if you play your cards well."
+"tax"       -> "Venore is the major tax payer in the whole realm. So we more than deserve the privileges the king granted us."
+"crunor"    -> "A god worth to worship. At least he gives something useful back to the faithful."
+"privilege" -> "We are alowed to trade with anyone, Thaian subject or not, have no Thaian noble as governor, and own the exclusive gambling license."
+"gambling"  -> "I don't care much about it, though others profit greatly."
+}

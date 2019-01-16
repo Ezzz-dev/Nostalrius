@@ -1,0 +1,57 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# kazzan.npc: Datenbank für Kalif Kazzan
+
+Name = "Kazzan"
+Outfit = (130,95-13-15-76)
+Home = [33231,32389,6]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",!       -> "Feel welcome in the lands of the children of the enlightened Daraman, %N."
+ADDRESS,"hi$",!          -> *
+ADDRESS,"hail$",!        -> *
+ADDRESS,"salutations$",! -> *
+ADDRESS,!                -> Idle
+BUSY,"hello$",!          -> "I will test your patience %N, since I am already talking!", Queue
+BUSY,"hi$",!             -> *
+BUSY,"hail$",!           -> *
+BUSY,"salutations$",!    -> *
+BUSY,!                   -> NOP
+VANISH,!                 -> "May your soul flourish"
+
+"bye"            -> "May your soul flourish.", Idle
+"news"           -> "I don't give much attention to rumours."
+"king"           -> "Tibianus is the shepherd of the lost souls of the so called Thaian empire."
+"tibianus"       -> *
+"thais"          -> *
+"name"           -> "I am Kazzan Ibn Gadral, caliph of Darama."
+"job"            -> "I am the caliph of the children of Daraman."
+"caliph"         -> "A caliph is a leader of his people, just like a king."
+"how","are","you"-> "I am fine, thank you."
+"army"           -> "Our people are well prepared to fight for their land and their souls."
+"guard"          -> *
+"enemies"        -> "The necromancers of Drefia fell under the wrath of the djinns once. If they challenge us again they might lose more than a city."
+"enemy"          -> *
+"drefia"         -> "When the djinns destroyed the better part of the unholy town in their wrath, the brotherhood hid like worms in the sand."
+"brotherhood"    -> "The Brotherhood of Bones came here fleeing some war on the continent. They corrupted the settlers of the Thaian colony with ease."
+"minotaur"       -> "The minotaurs are another test we have to endure. They inhabit the pyramid which is taboo for our people, as Daraman taught us."
+"daraman"        -> "Daraman led our ancestors to the continent Darashia to live a life of simplicity and meditation."
+"taboo"          -> "Daraman knew our souls might get corupted by the things hidden there."
+"quest"          -> "I will not entrust foreigners with any quest. Live amongst us for some years and listen to Daraman's teachings and we will see."
+"mission"        -> *
+"god"            -> "The gods are powerful but it's ultimately up to us to work on our souls' ascension."
+"excalibug"      -> "Once a djinn claimed to have seen it in a dream. I guess it's just that, some dream of a supernatural creature."
+"kazordoon"      -> "We have lost contact with the dwarf people of Kazordoon."
+"dwarf"          -> *
+"carlin"         -> "We keep in touch with the queen but did not take sides in the conflict of Carlin and Thais ... yet."
+
+"fuck"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"idiot"          -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"asshole"        -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"ass$"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"fag$"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"stupid"         -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"tyrant"         -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"shit"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"lunatic"        -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+}

@@ -1,0 +1,80 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# snakeeye.npc: Datenbank für den Wirt im Kriminellencamp
+
+Name = "Snake Eye"
+Outfit = (73,0-0-0-0)
+Home = [32657,32190,8]
+Radius = 4
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Hi %N. Come in and have a drink.", Data=3303
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Hang on a second, %N. I'm talking!", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,female,!    -> "Get lost, stinky dragon."
+VANISH,!           -> "Bye"
+
+"bye",female       -> "Get lost, stinky dragon.", Idle
+"bye",male         -> "Bye.", Idle
+"job"              -> "Well, I'm the boss of this tavern."
+"name"             -> "I'm Snake Eye."
+"eye"              -> "Well, I had a dispute with a snake once. And the snake won. Bit my left eye out. Therefore, Snake Eye."
+"snake"            -> *
+"boss"             -> "Yeah. I'm the boss. So don't bother me."
+"tavern"           -> "It's a great tavern. No closing time. No problems with kings or other rulers. Best place in Tibia."
+"tibia"            -> "There's already too much order in Tibia. We don't need kings or whatever."
+"king"             -> "We don't need one."
+"ruler"            -> *
+"tibianus"         -> "We don't need him."
+"time"             -> "Go and get a watch."
+
+"god"              -> "The Gods of Tibia! What a crap! It's all superstition!"
+"crap"             -> "Crap. Crap! CRAP! It's all CRAP!"
+"superstition"     -> "Believe me! There are no gods."
+"durin"            -> "He's the worst. The so called god of the dwarfs. I don't believe it. It's all crap."
+"steve"            -> "Never heard of him."
+"guido"            -> *
+"stephan"          -> *
+"cip"              -> "Cip sux!"
+
+"thais"            -> "In the beginning, it was a nice encampment. Now it's an overcrowded, polluted city. I hate it!"
+"carlin"           -> "I've never been there. Don't know anything about it."
+"kazordoon"        -> "Kazordoon is alright. Except the dwarfs. I don't like them. But the mountains are a good place. Been there once."
+"ab'dendriel"      -> "I've never been there. I don't like the elves anyway."
+"edron"            -> "That's a place for wealthy toffs!"
+
+"wild","warrior"   -> "There are a lot of wild warriors around. They built this camp."
+"camp"             -> "Well, the real wild warriors don't live here. They hide in the woods."
+"hide"             -> "Well. I know of a small camp to the south."
+"south"            -> "It's abandoned. But I bet that something is hidden there!"
+"hidden"           -> "Go and find out yourself. You can tell me if you find something."
+"copper","key",Count(2970)>0 -> "Hmmm. A copper key. You should ask H.L. about it."
+"key", Count(2970)>0         -> *
+"h.l."             -> "He is a wild warrior. Nobody knows his real name. We just call im H.L. You can find him in the small armory shop."
+"hl"               -> *
+"wood"             -> "It's the best place to live. By the way, there's an old wild warrior building to the southwest. It might be interesting for you."
+"building"         -> "Go and ask H.L. about it."
+
+"buy"              -> "Do you want to eat or drink?"
+"eat"              -> "Ok, I have fish, meat, and bread. What do you want?"
+"drink"            -> "I can offer you beer, wine, and water. Water is for free."
+
+"fish"             -> Type=3578, Amount=1, Price=5, "Do you want to buy fish for %P gold?", Topic=1
+"meat"             -> Type=3577, Amount=1, Price=6, "Do you want to buy meat for %P gold?", Topic=1
+"bread"            -> Type=3602, Amount=1, Price=4, "Do you want to buy a bread for %P gold?", Topic=1
+"beer"             -> Type=2880, Data=3, Amount=1, Price=5, "A beer for %P gold?", Topic=1
+"wine"             -> Type=2880, Data=2, Amount=1, Price=6, "Wine for %P gold?", Topic=1
+"water"            -> Type=2880, Data=1, Amount=1, Price=0, "Water is for free. Do you want some?", Topic=1
+
+%1,1<%1,"fish"             -> Type=3578, Amount=%1, Price=5*%1, "Do you want to buy %A fish for %P gold?", Topic=1
+%1,1<%1,"meat"             -> Type=3577, Amount=%1, Price=6*%1, "Do you want to buy %A pieces of meat for %P gold?", Topic=1
+%1,1<%1,"bread"            -> Type=3602, Amount=%1, Price=4*%1, "Do you want to buy a %A breads for %P gold?", Topic=1
+%1,1<%1,"beer"             -> Type=2880, Data=3, Amount=%1, Price=5*%1, "%A beers for %P gold?", Topic=1
+%1,1<%1,"wine"             -> Type=2880, Data=2, Amount=%1, Price=6*%1, "%A Wines for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "What? You don't have the money. You crook. Get lost.", Idle
+Topic=1                         -> "OK, then not."
+}

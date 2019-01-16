@@ -1,0 +1,91 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# arito.npc: Datenbank fuer den Wirt Arito
+
+Name = "Arito"
+Outfit = (132,59-74-62-115)
+Home = [33069,32886,6]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$","frodo",! -> "Be mourned, pilgrim in flesh."
+ADDRESS,"hi$","frodo",!    -> *
+ADDRESS,"hello$",!         -> *
+ADDRESS,"hi$",!            -> *
+ADDRESS,!                  -> Idle
+BUSY,"hello$",!            -> "Please show some patience, %N.", Queue
+BUSY,"hi$",!               -> *
+BUSY,!                     -> NOP
+VANISH,!                   -> "Please visit us again."
+
+"bye"             -> "Do visit us again.", Idle
+"farewell"        -> *
+"job"             -> "I am the owner of this tavern."
+"tavern"          -> "This tavern is called the 'Old Scarab's Shell'."
+
+"name"            -> "My name is Arito."
+"time"            -> "It is exactly %T."
+"pharaoh"          -> "Blessed be our saviour."
+"tibianus"        -> "A foolish king who resides over foolish mortals."
+
+"army"            -> "Our army is strong and unyielding."
+"ferumbras"       -> "This servant of evil won't even dare to enter our city and to call the wrath of our pharaoh upon him."
+"arena"           -> "In the arena life challenges death. Death will be victorious in the end, but in the meantime there is much for the living to learn in preparation." 
+"excalibug"       -> "Our pharaoh does not have any use for such a weapon. Powerful though it may be, it is nothing compared to his divine power."
+"thais"           -> "Thais is the capital of an insolent realm. Its people embrace life without understanding the alternative."
+"tibia"           -> "Why, this is our world of course."
+"carlin"          -> "Carlin is the twin sister of Thais. Another city that has not found the true path yet."
+
+"news"           -> "I've heard some blasphemous adventurers have excavated one of the ancient burial sites in the desert."
+"rumors"         -> *
+
+"darama"      -> "This is our continent. Ankrahmun is its biggest and most marvelous city."
+"darashia"    -> "A city of the lost."
+"daraman"     -> "I know little about his heretic teachings." 
+"ankrahmun"   -> "Our city is a marvel. It is the envy of the whole world." 
+"city"        -> *
+
+"pharaoh"        -> "Our pharaoh is our father, shepherd and teacher."
+"arkhothep"     -> *
+"mortality"     -> "Mortality keeps us from finding our way to ascension."
+
+"ascension"         -> "For us mortals ascension is but a distant dream."
+"Akh'rah","Uthun"   -> "The Akh'rah Uthun is what constitutes our self."
+"Akh"               -> "The Akh is our body, both in death and in life."
+
+"undead"            -> "Undeath is a blessing."
+"undeath"           -> *
+"Rah"               -> "The Rah is our lifeforce. It is the source of our inner light."
+"uthun"             -> "The Uthun is what we learn and remember."
+"mourn"             -> "Mortality is a curse. That is why mortals have to be mourned."
+
+"arena"        -> "The arena is located close to the centre of Ankrahmun."
+"palace"       -> "The residence of our beloved pharaoh can be found to the south of the arena."
+"temple"       -> "The temple is to the east, not far from the shore."
+
+"buy"             -> "I can offer you bread, cheese, ham or meat."
+"offer"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"food"            -> "Looking for food? I have lemonade, wine, water, bread, cheese, ham, meat and fish."
+
+"bread"  -> Type=3600, Amount=1, Price=8, "Would you like to buy bread for %P gold?", Topic=1
+"cheese" -> Type=3607, Amount=1, Price=12, "Would you like to buy cheese for %P gold?", Topic=1
+"meat"   -> Type=3577, Amount=1, Price=10, "Would you like to buy meat for %P gold?", Topic=1
+"ham"    -> Type=3582, Amount=1, Price=16, "Would you like to buy a ham for %P gold?", Topic=1
+"fish"   -> Type=3578, Amount=1, Price=6, "Would you like to buy a fish for %P gold?", Topic=1
+
+%1,1<%1,"bread"  -> Type=3600, Amount=%1, Price=8*%1, "Would you like to buy %A breads for %P gold?", Topic=1
+%1,1<%1,"cheese" -> Type=3607, Amount=%1, Price=12*%1, "Would you like to buy %A cheese for %P gold?", Topic=1
+%1,1<%1,"meat"   -> Type=3577, Amount=%1, Price=10*%1, "Would you like to buy %A meat for %P gold?", Topic=1
+%1,1<%1,"ham"    -> Type=3582, Amount=%1, Price=16*%1, "Would you like to buy %A ham for %P gold?", Topic=1
+%1,1<%1,"fish"   -> Type=3578, Amount=%1, Price=6*%1, "Would you like to buy %A fishes for %P gold?", Topic=1
+
+"lemonade" -> Type=2880, Data=12, Amount=1, Price=3, "Do you want to buy a mug of lemonade for %P gold?", Topic=1
+"wine"     -> Type=2880, Data=2,  Amount=1, Price=4, "Do you want to buy a mug of wine for %P gold?", Topic=1
+"water"    -> Type=2880, Data=1,  Amount=1, Price=2, "Do you want to buy a mug of water for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here it is.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "I am sorry, but you do not have enough gold."
+Topic=1                         -> "Maybe later."
+
+}

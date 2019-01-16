@@ -1,0 +1,88 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# Lorek.npc: Datenbank für den Fährman Lorek
+
+Name = "Lorek"
+Outfit = (132,19-10-38-95)
+Home = [32679,32775,7]
+Radius = 0
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Greetings, %N."
+ADDRESS,"hi$",!    -> *
+ADDRESS,"hiho$",!    -> *
+ADDRESS,!          -> Idle
+
+BUSY,"hello$",!    -> "Just wait.", Queue
+BUSY,"hi$",!       -> *
+BUSY,"hiho$",!    -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Bye."
+
+"bye"      -> "Bye.", Idle
+"farewell" -> *
+"job"      -> "I am a ferryman. If you want me to transport you to the other end of the city, feel free to ask me for a passage."
+"name"     -> "I am Lorek."
+"time"     -> "I have no idea."
+"king"     -> "I wonder if he will inspect our colony some day."
+"venore"   -> "It seems the traders are incredibly rich."
+"thais"    -> "I left Thais for the opportunities that might be found here."
+"carlin"   -> "I am not sure if we are at war with them. I think they defy the rule of our king."
+"edron"    -> "Edron has to be very pretty and all people there are rich and such." 
+"jungle"   -> "I can only hope that the guards protect us all from those dangerous beasts out there."
+
+"tibia"    -> "The world is so big that it often scares me." 
+
+"kazordoon" -> "I overheard the dwarves talking about it. I have no idea what it is though."
+"dwarves"   -> "There are some dwarves living here." 
+"dwarfs"   -> *
+"ab'dendriel" -> "What?"
+"elves"       -> "I only heard of them, but I never saw one. It's said that they have funny ears."
+"elfs"       -> *
+"darama"      -> "If more people move to Darama, I might get a better job and earn a fortune."
+"darashia"    -> "Another human settlement on this continent. It's somewhere in the desert though."
+"ankrahmun"   -> "They say it's a city full of undead and half-dead people. What a horrible thought!" 
+"ferumbras"   -> "I heard he is some scary magician or so."
+"excalibug"   -> "What's that?"
+"apes"        -> "If only the guards could stop their constant attacks."
+"lizard"     -> "I have only heard about them. I hope they won't come here."
+"dworcs"      -> "Those little greenskins are more dangerous than a cobra." 
+
+
+"trip"         -> "I can bring you either to the centre of Port Hope or to the west end of the town, where would you like to go?"
+"route"        -> *
+"passage"      -> *
+"destination"  -> *
+"sail"         -> *
+"go"           -> *
+
+"cent"       -> Price=7, "Do you seek a passage to the centre of Port Hope for %P gold?", Topic=1
+"west"       -> Price=7, "Do you seek a passage to the west end of Port Hope for %P gold?", Topic=2
+
+
+Topic=1,"yes",PZBlock,! -> "First get rid of those blood stains! You are not going to ruin my vehicle!"
+Topic=2,"yes",PZBlock,! -> "First get rid of those blood stains! You are not going to ruin my vehicle!"
+
+Topic=1,"yes",Premium,CountMoney>=Price   -> "Here we go!", DeleteMoney, Idle, EffectOpp(11), Teleport(32628,32771,7), EffectOpp(11)
+Topic=1,"yes",CountMoney<Price            -> "Sorry, you do not have enough gold."
+Topic=2,"yes",Premium,CountMoney>=Price   -> "Here we go!", DeleteMoney, Idle, EffectOpp(11), Teleport(32558,32780,7), EffectOpp(11)
+Topic=2,"yes",CountMoney<Price            -> "Sorry, you do not have enough gold."
+Topic>0                                   -> "Maybe another time."
+
+#"trip"         -> Price=7, "Would you like to travel to the other end of Port Hope or to the centre of the town for 7 gold?", Topic=1
+#"route"        -> *
+#"passage"      -> *
+#"town"         -> *
+#"destination"  -> *
+#"sail"         -> *
+#"go"           -> *
+
+#Topic=1,"end",PZBlock,! -> "First get rid of those blood stains! You are not going to ruin my vehicle!"
+#Topic=1,"centre",PZBlock,! -> "First get rid of those blood stains! You are not going to ruin my vehicle!"
+
+#Topic=1,"end",Premium,CountMoney>=Price -> "Here we go!", DeleteMoney, Idle, EffectOpp(11), Teleport(32558,32780,7), EffectOpp(11)
+#Topic=1,"end",CountMoney<Price            -> "Sorry, you do not have enough gold."
+#Topic=1,"centre",Premium,CountMoney>=Price -> "Here we go!", DeleteMoney, Idle, EffectOpp(11), Teleport(32628,32771,7), EffectOpp(11)
+#Topic=1,"centre",CountMoney<Price            -> "Sorry, you do not have enough gold."
+#Topic=1,"yes"                              -> "HELLO? <knocks on your head> Anyone in there? I was asking you WHERE you want to travel!"
+
+}

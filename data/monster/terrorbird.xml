@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="terror bird" nameDescription="a terror bird" race="blood" experience="150" speed="66" manacost="490">
+	<health now="300" max="300" />
+	<look type="218" head="0" body="0" legs="0" feet="0" corpse="4382" />
+	<targetchange interval="1000" chance="5" />
+	<targetstrategy nearest="70" weakest="0" mostdamage="30" random="0" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="37" skill="46">
+	</attacks>
+	<defenses armor="13" defense="21">
+	</defenses>
+	<voices>
+		<voice sentence="CRAAAHHH!" />
+		<voice sentence="Gruuuh Gruuuh." />
+		<voice sentence="Carrah Carrah!" />
+	</voices>
+	<loot>
+		<item id="3406" countmax="1" chance="1" /> <!-- a feather headdress -->
+		<item id="3031" countmax="10" chance="700" /> <!-- a gold coin -->
+		<item id="3031" countmax="20" chance="400" /> <!-- a gold coin -->
+		<item id="3577" countmax="2" chance="500" /> <!-- meat -->
+		<item id="3492" countmax="3" chance="200" /> <!-- a worm -->
+	</loot>
+</monster>

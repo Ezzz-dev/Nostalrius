@@ -1,0 +1,33 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gen-t-furniture-decoration-s.ndb: Datenbank für generischen Möbelverkauf - Dekoration
+# Verwendete Topics: 81
+
+#"offer"           -> "I sell statues, tables, chairs, flowers, pillows, pottery, instruments, decoration, tapestries and containers."
+#"furniture"       -> *
+#"goods"           -> *
+#"do","you","sell" -> *
+#"do","you","have" -> *
+
+"decoration"         -> "I can offer water pipes, pendulum clock, telescopes, table lamps, rocking horses, globes and birdcages. I also sell wall hangings." 
+"water", "pipe"      -> Type=2974, Amount=1, Price=40, "You want to buy a water pipe for %P gold?", Topic=81
+"pendulum", "clock"   -> Type=2801, Amount=1, Price=75, "You want to buy a pendulum clock for %P gold?", Topic=81
+"telescope"          -> Type=2799, Amount=1, Price=70, "You want to buy a telescope for %P gold?", Topic=81
+"table","lamp"       -> Type=2798, Amount=1, Price=35, "You want to buy a table lamp for %P gold?", Topic=81
+"rocking","horse"    -> Type=2800, Amount=1, Price=30, "You want to buy a rocking horse for %P gold?", Topic=81
+"globe"              -> Type=2797, Amount=1, Price=50, "You want to buy a globe for %P gold?", Topic=81
+"birdcage"           -> Type=2796, Amount=1, Price=50, "You want to buy a birdcage for %P gold?", Topic=81
+"wall","hangings"     -> "I can offer mirrors, paintings and cuckoo clocks."
+"cuckoo"              -> Type=2664, Amount=1, Price=40, "You want to buy a cuckoo clock for %P gold?", Topic=81
+"painting"           -> "Would you like a landscape, a portrait or a still life. What is your choice?"
+"portrait"           -> Type=2641, Amount=1, Price=50, "You want to buy a portrait picture for %P gold?", Topic=81
+"landscape"          -> Type=2639, Amount=1, Price=50, "You want to buy a landscape picture for %P gold?", Topic=81
+"still", "life"      -> Type=2640, Amount=1, Price=50, "You want to buy a still life picture for %P gold?", Topic=81
+"mirror"             -> "I sell round mirrors, oval mirrors and edged mirrors. Which one might it be?"
+"round", "mirror"    -> Type=2632, Amount=1, Price=40, "You want to buy a round mirror for %P gold?", Topic=81
+"oval", "mirror"     -> Type=2638, Amount=1, Price=40, "You want to buy a oval mirror for %P gold?", Topic=81
+"edged", "mirror"    -> Type=2635, Amount=1, Price=40, "You want to buy a edged mirror for %P gold?", Topic=81
+
+Topic=81,"yes",Premium,CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=81,"yes",CountMoney>=Price         -> "I'm sorry, but you need a premium account if you want to buy furniture."
+Topic=81,"yes"                           -> "Come back, when you have enough money."
+Topic=81                                 -> "Hmm, but I'm sure, it would fit nicely into your house."

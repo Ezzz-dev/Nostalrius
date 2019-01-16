@@ -1,0 +1,54 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# hyacinth.npc: Datenbank fuer den Druiden Hyacinth
+
+Name = "Hyacinth"
+Outfit = (130,11-123-123-94)
+Home = [32137,32171,4]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Greetings, traveller %N."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Wait %N.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "May Crunor bless you."
+
+"bye"             -> "May Crunor bless you.", Idle
+"farewell"        -> *
+"how","are","you" -> "Thanks to the gods, I am fine."
+"sell"            -> "I just sell some revitalizing life fluids."
+"job"             -> "I am a druid and healer, a follower of Crunor."
+"name"            -> "I am Hyacinth."
+"time"            -> "Time does not matter to me."
+"help"            -> "I can only sell life fluids, ask Cipfried for further help."
+"monster"         -> "Most of the so called monsters of this isle are just creatures of the gods. On the mainland there are some beasts that truly are monstrous."
+"dungeon"         -> "The dungeons are dangerous for unexperienced adventurers."
+"sewer"           -> "I rarely visit the town."
+"god"             -> "As far as I know there is a library in the village. Teach yourself about the gods."
+"king"            -> "I don't care about kings, queens, and the like."
+"obi"             -> "A greedy and annoying person as most people are."
+"seymour"         -> "He has some inner devils that torture him."
+"dallheim"        -> "A man of the sword." 
+"cipfried"        -> "His healing powers equal even mine."
+"amber"           -> "I never talked to her longer." 
+"weapon"          -> "I don't care much about weapons."
+"magic"           -> "I am one of the few magic users on this isle. But I sense a follower of the dark path of magic hiding somewhere in the depths of the dungeons."
+"spell"           -> "I can't teach you magic. On the mainland you will learn your spells soon enough."
+"tibia"           -> "It is shaped by the will of the gods, so we don't have to question it."
+
+"life","fluid"    -> Type=2874, Data=11, Amount=1,  Price=60,    "Do you want to buy life fluid for %P gold?", Topic=1
+%1,"life","fluid" -> Type=2874, Data=11, Amount=%1, Price=60*%1, "Do you want to buy %A potions of life fluid for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here you are. There is a deposit of 5 gold on the vial.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Come back, when you have enough money."
+Topic=1                         -> "Hmm, but next time."
+
+"deposit"                   -> "I will pay you 5 gold for every empty vial. Ok?", Data=0, Topic=2
+"vial"                      -> *
+"flask"                     -> *
+Topic=2,"yes",Count(2874)>0 -> Amount=Count(2874), Price=Amount*5, "Here you are ... %P gold.", Delete(2874), CreateMoney
+Topic=2,"yes"               -> "You don't have any empty vials."
+Topic=2                     -> "Hmm, but please keep Tibia litter free."
+}

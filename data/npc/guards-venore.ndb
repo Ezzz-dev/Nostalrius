@@ -1,0 +1,49 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# guards-venore.ndb: Datenbank für die Stadtwachen von Venore
+
+ADDRESS,"hello$",! -> "LONG LIVE THE KING!"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$"      -> "Not now, I am busy!"
+BUSY,"hi$"         -> *
+BUSY,!             -> NOP
+VANISH             -> "LONG LIVE THE KING!"
+
+"bye"             -> "LONG LIVE THE KING!", Idle
+"news"            -> "Look for the Hard Rock Tavern to learn the latest news."
+"how","are","you" -> "That's classified information!"
+"sell"            -> "Ask the merchants of the city. There are more then enough."
+"buy"             -> *
+"tibianus"        -> "Tibianus III is our beloved king!"
+"king"            -> *
+"leader"          -> *
+"job"             -> "I am a protector of the people of Venore."
+"army"            -> "This information is confidential."
+"guard"           -> *
+"army"            -> "All guards are members of the army."
+"guard"           -> "I am a guard and proud of it."
+"battlegroups"    -> "I doubt you have the security clearance to ask that." 
+"castle"          -> "The castle is in Thais, the crown of the kingdom."
+"dogs","of","war" -> "They are our rolemodells."
+"knights","of","noodles" -> "Every guard dreams of becoming one of them one day."
+"red","guard"     -> "We of the red guard are the special forces and town guards."
+"secret","police" -> "This information is confidential."
+"silver","guard"  -> "Only the best of the best serve as silver guards."
+"city"            -> "This city, a member of the Thaian kingdom, is under the protection of the Thaian army."
+
+"venore"          -> "The harbour is to the north, the weapon market in the south, the general market to the west, and the bank to the east. You will find other shops and the Hard Rock Tavern in the center."
+"swampel"         -> "Those elves hide in the swamps and are trying to kill all humans in this area."
+"amazon"          -> "They are the best example for the results of the Carlin madness."
+"swamptroll"      -> "This hideous creatures are even more ugly than the normal trolls. They are treacherous and use several poisons."
+"swamp"           -> "The swamp is a dangerous place and full of monsters, not to mention all those swampelves living at shadowthorn, amazons, and swamptrolls."
+"monsters"        -> "The swamp is full of nasty snakes and there's a dragon breeding ground somewhere in the swamps."
+
+"fuck"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"idiot"          -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"asshole"        -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"ass$"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"fag$"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"stupid"         -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"tyrant"         -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"shit"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"lunatic"        -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)

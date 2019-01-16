@@ -1,0 +1,63 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gurbasch.npc: Datenbank für den Kapitän Gurbasch
+
+Name = "Gurbasch"
+Outfit = (66,0-0-0-0)
+Home = [33313,31989,15]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Welcome, %N!"
+ADDRESS,"hi$",!    -> *
+ADDRESS,"hiho$",!  -> *      
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Don't hurry.", Queue
+BUSY,"hi$",!       -> *
+BUSY,"hiho$",!     -> *
+BUSY,!             -> NOP
+VANISH,!           -> "No patience, these brats!"
+
+"bye"            -> "Until next time.", Idle
+"farewell"       -> *
+"fare","thee","well" -> "Thou art truly in possession of fine manners. Blessings upon you!", EffectOpp(13)
+"job"            -> "As should be quite obvious, I am operating a steamship."
+"work"           -> *
+"name"           -> "I am Gurbasch Firejuggler, son of the machine, of the Molten Rock."
+"tibia"          -> "Tibia? Just don't ask."
+"ship"           -> "It is indeed something we dwarfs may be proud of: a ship operating by steam power."
+"steamship"      -> * 
+"captain"        -> "Captain"
+"technomancer"   -> "A technomancer wields power over incredible machines, as his knowledge is his magic."
+"inventors"      -> "You know, elves may be intelligent, but they are too lazy to invent. Really."
+"inventions"     -> *
+"sell"           -> "I am not a vendor."
+"buy"            -> *
+"thais"          -> "How do you expect me to go there? Fly? Hm, wait... no, sorry."
+"ab'dendriel"    -> *
+"carlin"         -> *
+"venore"         -> *
+"senja"          -> *
+"folda"          -> *
+"vega"           -> *
+"ice","islands"  -> *
+"darashia"       -> *
+"darama"         -> *
+"cormaya"        -> "Hey, we ARE at Cormaya! Must be the cavemadness..."
+"beer"           -> "Ah, you got some? Nah, beer only tastes fine in Kazordoon. If you have brought it from there, it tastes foul now, I guess."
+"dwarf"          -> "We are an old and proud race, although we posess the best inventions."
+"brodrosch"      -> "He is my brother working the Kazordoon steamship."
+"elves"          -> "Have one elf onboard a ship, and you are doomed."
+"elf"            -> *
+
+"kazordoon" -> Price=160,  "Do you want to go to Kazordoon? And try the beer there? %P gold?", Topic=1
+"passage"   -> *
+
+"kazordoon",QuestValue(250)>2 -> Price=150,  "Do you want to go to Kazordoon? And try the beer there? %P gold?", Topic=1
+"passage",QuestValue(250)>2   -> *
+
+Topic=1,"yes",PZBlock,! -> "First get rid of those blood stains! You are not going to ruin my vehicle!"
+
+Topic=1,"yes",Premium,CountMoney>=Price -> "Full steam ahead!", DeleteMoney, Idle, EffectOpp(3), Teleport(32658,31957,15), EffectOpp(3)
+Topic=1,"yes",CountMoney>=Price         -> "I'm sorry, but you need a premium account in order to travel onboard our ships."
+Topic=1,"yes"                           -> "You don't have enough money."
+}

@@ -1,0 +1,51 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# karl.npc: Datenbank fuer den Wirt der vebotenen Kneipe in Carlin
+
+Name = "Karl"
+Outfit = (128,58-68-109-131)
+Home = [32318,31797,8]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$",!         -> "Pshhhht! Not that loud ... but welcome."
+ADDRESS,"hi$",!            -> *
+ADDRESS,!                  -> Idle
+BUSY,"hello$",!            -> "Just a moment.", Queue
+BUSY,"hi$",!               -> *
+BUSY,!                     -> NOP
+VANISH,!                   -> "Please come back, but don't tell others."
+
+"bye"             -> "Please come back, but don't tell others.", Idle
+"farewell"        -> *
+"job"             -> "I am the responsible for our ... uhm ... resistance."
+"saloon"          -> *
+"resistance"      -> "We fight the opression of the males and male needs by the women. This is our secret headquarters."
+"headquarters"     -> "Well its more a hidden tavern, so to say."
+"tavern"          -> "Our offers are limited but here a man can buy what a man needs." 
+"name"            -> "I won't tell you my name."
+"karl"            -> "Who told you that???"
+"queen"           -> "Well, shes not that bad ... but some of her laws are."
+"eloise"          -> *
+"laws"            -> "Those crazy women forbid us alcohol in the city! Imagine that!"
+"needs"           -> *
+"opression"       -> *
+"alcohol"         -> *
+"army"            -> "They are the tools of opression. Hunting down every alcohol smuggler they can get."
+"smuggler"        -> "We collected money and hired one of the best smuggler in the whole land. His name is Todd."
+"Todd"            -> "A true fighter for malehood. He will bring us all the hard stuff from Thais and even contact the king there to support us." 
+"king"            -> "I'm sure if the king learns about our tragedy, he will support us with alcohol."
+"hard", "stuff"   -> "Todd took all the money we could gather to buy us the best stuff on the whole continent."
+"hugo"            -> "I think Todd mentioned a Hugo once."
+"news"    -> "Some travelers from Edron told about a great treasure guarded by cruel demons in the dungeons there."
+"rumors"  -> *
+"beer"  -> Type=2880, Data=3, Amount=1, Price=20, "Do you want to buy a mug of beer for %P gold?", Topic=1
+Topic=1,"yes",CountMoney>=Price -> "Here. Don't take it into the city though.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Sorry, come back with more gold."
+Topic=1                         -> "Maybe later."
+
+"buy"             -> "I can offer you beer. For wine and realy hard stuff we have to wait for Todd."
+"offers"          -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+
+}

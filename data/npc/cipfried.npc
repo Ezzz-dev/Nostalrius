@@ -1,0 +1,58 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# cipfried.npc: Datenbank fuer den Moench Cipfried
+
+Name = "Cipfried"
+Outfit = (57,0-0-0-0)
+Home = [32097,32217,7]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",!      -> "Hello, %N! Feel free to ask me for help."
+ADDRESS,"hi$",!         -> *
+ADDRESS,!               -> Idle
+BUSY,"hello$",!         -> "Please wait, %N. I already talk to someone!", Queue
+BUSY,"hi$",!            -> *
+BUSY,"heal$",Burning>0 -> "You are burning, %N. I will help you.", Burning(0,0), EffectOpp(15)
+BUSY,"heal$",Poison>0  -> "You are poisoned, %N. I will help you.", Poison(0,0), EffectOpp(14)
+BUSY,"heal$",HP<65     -> "You are looking really bad, %N. Let me heal your wounds.", HP=65, EffectOpp(13)
+BUSY,"heal$"           -> "You aren't looking really bad, %N. Sorry, I can't help you."
+BUSY,!                  -> NOP
+VANISH,!                -> "Well, bye then."
+
+"bye"            -> "Farewell, %N!", Idle
+"farewell"       -> *
+"job"            -> "I am just a humble monk. Ask me if you need help or healing."
+"name"           -> "My name is Cipfried."
+"monk"           -> "I sacrifice my life to serve the good gods of Tibia."
+"tibia"          -> "That's where we are. The world of Tibia."
+"rookgaard"      -> "The gods have chosen this isle as the point of arrival for the newborn souls."
+"god"            -> "They created Tibia and all life on it. Visit our library and learn about them."
+"life"           -> "The gods decorated Tibia with various forms of life. Plants, the citizens, and even the monsters."
+"plant"          -> "Just walk around. You will see grass, trees, and bushes."
+"citizen"        -> "Only few people live here. Walk around and talk to them."
+"obi"            -> "He is a local shop owner."
+"al","dee"       -> *
+"seymour"        -> "Seymour is a loyal follower of the king and responsibe for the academy."
+"academy"        -> "You should visit Seymour in the academy and ask him about a mission."
+"willie"         -> "He is a fine farmer. The farm is located to the left of the temple."
+"monster"        -> "They are a constant threat. Learn to fight by hunting rabbits, deers and sheeps. Then try to fight rats, bugs and perhaps spiders."
+"help"           -> "First you should try to get some gold and buy better equipment."
+"hint"           -> *
+"quest"          -> *
+"task"           -> *
+"what","do"      -> *
+"gold"           -> "You have to slay monsters and take their gold. Or sell food at Willie's farm."
+"money"          -> "If you need money, you have to slay monsters and take their gold. Look for spiders and rats."
+"rat"            -> "In the north of this temple you find a sewer grate. Use it to enter the sewers if you feel prepared. Don't forget a torch; you'll need it."
+"sewer"          -> *
+"equipment"      -> "First you need some armor and perhaps a better weapon or a shield. A real adventurer needs a rope, a shovel, and a fishing pole, too."
+"fight"          -> "Take a weapon in your hand, activate your combat mode, and select a target. After a fight you should eat something to heal your wounds."
+"slay"           -> *
+"eat"            -> "If you want to heal your wounds you should eat something. Willie sells excellent meals. But if you are very weak, come to me and ask me to heal you."
+"food"           -> *
+"heal$",Burning>0 -> "You are burning. I will help you.", Burning(0,0), EffectOpp(15)
+"heal$",Poison>0  -> "You are poisoned. I will help you.", Poison(0,0), EffectOpp(14)
+"heal$",HP<65     -> "You are looking really bad. Let me heal your wounds.", HP=65, EffectOpp(13)
+"heal$"           -> "You aren't looking really bad. Sorry, I can't help you."
+"time"           -> "Now, it is %T, my child."
+}

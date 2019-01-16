@@ -1,0 +1,54 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# tokel.npc: Datenbank für den Bauern Tokel in Greenshore
+
+Name = "Tokel"
+Outfit = (128,78-96-30-114)
+Home = [32256,32056,7]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Hi there, %N."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Sorry %N, I am busy right now. Please wait a minute.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Bye."
+
+"bye"             -> "Bye.", Idle
+"how","are","you" -> "I am fine, thank you."
+"sell"            -> "I sell some food."
+"job"             -> "I am a farmer, and proud of it."
+"name"            -> "My name is Tokel."
+"time"            -> "Oh, now that you mention it: I have much left to do, please excuse me.", Idle
+"help"            -> "Sorry, I have no idea how to help you."
+"monster"         -> "It's relatively peaceful here."
+"dungeon"         -> "Here are no dungeons as far as I know."
+"god"             -> "I pray to Crunor to bless our harvests."
+"king"            -> "I wish I'd be as rich as him."
+"greenshore"      -> "The soil is a bit dry and there are a lot of stones. It's very hard to work this soil."
+"magic"           -> "I know nothing but about such stuff."
+"weapon"          -> *
+"spell"           -> *
+"tibia"           -> "I have not seen much of it yet. I am thinking about moving to Edron soon."
+"thais"           -> "The city is too lousy and crowded for my taste."
+"edron"           -> "They say life is easy there, the soil is rich, the city save. One day I might move there."
+
+"offer"  -> "I can offer you bread, cheese, ham, or meat."
+"buy"    -> *
+"food"   -> "Are you looking for food? I have bread, cheese, ham, and meat."
+
+"bread"  -> Type=3600, Amount=1, Price=3, "Do you want to buy a bread for %P gold?", Topic=1
+"cheese" -> Type=3607, Amount=1, Price=5, "Do you want to buy a cheese for %P gold?", Topic=1
+"meat"   -> Type=3577, Amount=1, Price=5, "Do you want to buy meat for %P gold?", Topic=1
+"ham"    -> Type=3582, Amount=1, Price=8, "Do you want to buy a ham for %P gold?", Topic=1
+
+%1,1<%1,"bread"  -> Type=3600, Amount=%1, Price=3*%1, "Do you want to buy %A breads for %P gold?", Topic=1
+%1,1<%1,"cheese" -> Type=3607, Amount=%1, Price=5*%1, "Do you want to buy %A cheeses for %P gold?", Topic=1
+%1,1<%1,"meat"   -> Type=3577, Amount=%1, Price=5*%1, "Do you want to buy %A meat for %P gold?", Topic=1
+%1,1<%1,"ham"    -> Type=3582, Amount=%1, Price=8*%1, "Do you want to buy %A ham for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here it is.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "I am sorry, but you do not have enough gold."
+Topic=1                         -> "Maybe later."
+}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="winter wolf" nameDescription="a winter wolf" race="blood" experience="20" speed="45" manacost="260">
+	<health now="30" max="30" />
+	<look type="52" head="0" body="0" legs="0" feet="0" corpse="4105" />
+	<targetchange interval="1000" chance="0" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="1" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="13" skill="21">
+	</attacks>
+	<defenses armor="2" defense="6">
+	</defenses>
+	<loot>
+		<item id="3577" countmax="2" chance="300" /> <!-- meat -->
+	</loot>
+</monster>

@@ -1,0 +1,59 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# jimbin.npc: Datenbank für den Wirt Jimbin
+
+Name = "Jimbin"
+Outfit = (160,97-69-58-76)
+Home = [32636,31886,9]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$","jimbin",! -> "Welcome to the Jolly Axeman, have a good time, %N!"
+ADDRESS,"hi$","jimbin",!    -> *
+ADDRESS,"hello$",!          -> "Talking to me, %N?", Idle
+ADDRESS,"hi$",!             -> *
+ADDRESS,!                   -> Idle
+BUSY,"hello$","jimbin",!    -> "Gimme a minute, %N.", Queue
+BUSY,"hi$","jimbin",!       -> *
+BUSY,"hello$",!             -> "Talking to me, %N?"
+BUSY,"hi$",!                -> *
+BUSY,!                      -> NOP
+VANISH,!                    -> "Come back if you enjoyed my tavern, if not ... well, get eaten by a dragon, jawoll."
+
+"bye"               -> "Come back if you enjoyed my tavern, if not ... well, get eaten by a dragon, jawoll.", Idle
+"farewell"          -> *
+"hello$","maryza",! -> *
+"hi$","maryza",!    -> *
+"job"               -> "I'm runing the Jolly Axeman together with my wife Maryza."
+"tavern"            -> *
+"maryza"            -> "She's a fine cook; likes it bloddy, though. Humans call her Bloody Mary, but don't mention that to her if you're smart."
+"name"              -> "I am Jimbin Luckythroat, son of Earth, from the Molten Rock."
+"time"              -> "It is about %T."
+"king"              -> "The king orders huge amounts of mushroombeer for festivities."
+"army"              -> "I supply the army with dwarfish beer to keep morals high."
+"ferumbras"         -> "Hah! He never dares to trespass our realm."
+"general"           -> "The general is a fine man. Can drink as much as he wants and still is sober."
+"excalibug"         -> "Actually I belive it's more than a taverntale."
+"thais"             -> "Bah! Humans, can't stand a drink, jawoll."
+"tibia"             -> "The Tibia our race was born into was even more fierce than the world you young ones know."
+"carlin"            -> "Silly town. Alcohol is forbidden there and elves visit this town quite often, what certainly suggests nothing good about a town, jawoll."
+"news"              -> "Oh well, many hidden places of ancient times appear seemingly out of nowhere in these times."
+"rumour"            -> *
+"rumor"             -> *
+"book"              -> "The cookbook? It belongs to maryza. I think she has a few copies for sale."
+"cookbook"          -> *
+
+"beer"  -> Type=2880, Data=3, Amount=1, Price=2, "Do you want to buy a mug of beer for %P gold?", Topic=1
+"water" -> Type=2880, Data=1, Amount=1, Price=1, "Do you want to buy a mug of water for %P gold?", Topic=1
+
+%1,1<%1,"beer"  -> Type=2880, Data=3, Amount=%1, Price=2*%1, "Do you want to buy %A mugs of beer for %P gold?", Topic=1
+%1,1<%1,"water" -> Type=2880, Data=1, Amount=%1, Price=1*%1, "Do you want to buy %A mugs of water for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here it is.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "I am sorry, but you do not have enough gold."
+Topic=1                         -> "Maybe later."
+
+"buy"             -> "I can offer you beer ... or water if you are sick."
+"do","you","sell" -> *
+"do","you","have" -> *
+"food"            -> "Ask my wife Maryza for food."
+}

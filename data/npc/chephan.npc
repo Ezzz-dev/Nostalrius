@@ -1,0 +1,80 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# chephan.npc: Datenbank für den Küchenbedarfshändler Chephan
+
+Name = "Chephan"
+Outfit = (128,2-26-115-76)
+Home = [32890,32077,6]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Ah, looking for some cooking gear today, %N?"
+ADDRESS,"hi$",!    -> *
+ADDRESS,"hail$",!  -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Please give me another minute, %N. I am talking already, but will be avaliable for you very soon.", Queue
+BUSY,"hi$",!       -> *
+BUSY,"hail$",!     -> *
+BUSY,!             -> NOP
+VANISH,!           -> "So long, %N."
+
+"bye"       -> "So long, %N.", Idle
+"name"      -> "I am Chephan, at your service."
+"job"       -> "I sell all the cooking gear you can dream of."
+"warehouse" -> "Here you can by so many things you will need one day or another. Just have a look."
+"time"      -> "Watches are sold in the south east part of this warehouse."
+"king"      -> "Even a king needs a fork now and then. To scratch his back or to poke servants for example."
+"tibianus"  -> *
+"army"      -> "They brought most of their cooking gear from thais."
+"ferumbras" -> "See this fork? Now imagine what a hero like you could do to an evil sorcerer with that fork! Care to buy one?"
+"excalibug" -> "Just an oversized kitchenknife. Better buy the real thing."
+"thais"     -> "Thaian cooking gear is of inferior quality. Make sure to upgrade yours here as soon as you can."
+"tibia"     -> "The world is flat as this plate. You should buy one as a symbol for Tibia."
+"carlin"    -> "So many women and so little intrest in cooking, horrible."
+"news"      -> "My recipies are family secrets, sorry."
+"tax"       -> "Those taxes are killing me. And they are getting worse each year!"
+"privilege" -> "I don't feel that privileged. In fact our beloved city is bleeding for the profit of Thais."
+"gambling"  -> "Thanks to that taxes I have not enough spare money to gamble much."
+
+"offer"           -> "That would be: Buckets, bottles, mugs, cups, jugs, plates, baking trays, pots, pans, forks, spoons, knifes, wooden spoons, cleavers, spatulas, and rolling pins."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+
+"bucket"         -> Type=2873, Amount=1, Price=4,  "Do you want to buy a bucket for %P gold?", Topic=1
+"bottle"         -> Type=2875, Amount=1, Price=3,  "Do you want to buy a bottle for %P gold?", Topic=1
+"mug"            -> Type=2880, Amount=1, Price=4,  "Do you want to buy a mug for %P gold?", Topic=1
+"cup"            -> Type=2881, Amount=1, Price=2,  "Do you want to buy a cup for %P gold?", Topic=1
+"jug"            -> Type=2882, Amount=1, Price=10, "Do you want to buy a jug for %P gold?", Topic=1
+"plate"          -> Type=2905, Amount=1, Price=6,  "Do you want to buy a plate for %P gold?", Topic=1
+"baking","tray"  -> Type=3464, Amount=1, Price=20, "Do you want to buy a baking tray for %P gold?", Topic=1
+"pot"            -> Type=3465, Amount=1, Price=30, "Do you want to buy a pot for %P gold?", Topic=1
+"pan"            -> Type=3466, Amount=1, Price=20, "Do you want to buy a pan for %P gold?", Topic=1
+"fork"           -> Type=3467, Amount=1, Price=10, "Do you want to buy a fork for %P gold?", Topic=1
+"spoon"          -> Type=3468, Amount=1, Price=10, "Do you want to buy a spoon for %P gold?", Topic=1
+"knife"          -> Type=3469, Amount=1, Price=10, "Do you want to buy a knife for %P gold?", Topic=1
+"wooden","spoon" -> Type=3470, Amount=1, Price=5,  "Do you want to buy a wooden spoon for %P gold?", Topic=1
+"cleaver"        -> Type=3471, Amount=1, Price=15, "Do you want to buy a cleaver for %P gold?", Topic=1
+"spatula"        -> Type=3472, Amount=1, Price=12, "Do you want to buy an oven spatula for %P gold?", Topic=1
+"rolling","pin"  -> Type=3473, Amount=1, Price=12, "Do you want to buy a rolling pin for %P gold?", Topic=1
+
+%1,1<%1,"bucket"         -> Type=2873, Amount=%1, Price=4*%1,  "Do you want to buy %A buckets for %P gold?", Topic=1
+%1,1<%1,"bottle"         -> Type=2875, Amount=%1, Price=3*%1,  "Do you want to buy %A bottles for %P gold?", Topic=1
+%1,1<%1,"mug"            -> Type=2880, Amount=%1, Price=4*%1,  "Do you want to buy %A mugs for %P gold?", Topic=1
+%1,1<%1,"cup"            -> Type=2881, Amount=%1, Price=2*%1,  "Do you want to buy %A cups for %P gold?", Topic=1
+%1,1<%1,"jug"            -> Type=2882, Amount=%1, Price=10*%1, "Do you want to buy %A jugs for %P gold?", Topic=1
+%1,1<%1,"plate"          -> Type=2905, Amount=%1, Price=6*%1,  "Do you want to buy %A plates for %P gold?", Topic=1
+%1,1<%1,"baking","tray"  -> Type=3464, Amount=%1, Price=20*%1, "Do you want to buy %A baking trays for %P gold?", Topic=1
+%1,1<%1,"pot"            -> Type=3465, Amount=%1, Price=30*%1, "Do you want to buy %A pots for %P gold?", Topic=1
+%1,1<%1,"pan"            -> Type=3466, Amount=%1, Price=20*%1, "Do you want to buy %A pans for %P gold?", Topic=1
+%1,1<%1,"fork"           -> Type=3467, Amount=%1, Price=10*%1, "Do you want to buy %A forks for %P gold?", Topic=1
+%1,1<%1,"spoon"          -> Type=3468, Amount=%1, Price=10*%1, "Do you want to buy %A spoons for %P gold?", Topic=1
+%1,1<%1,"knife"          -> Type=3469, Amount=%1, Price=10*%1, "Do you want to buy %A knives for %P gold?", Topic=1
+%1,1<%1,"wooden","spoon" -> Type=3470, Amount=%1, Price=5*%1,  "Do you want to buy %A wooden spoons for %P gold?", Topic=1
+%1,1<%1,"cleaver"        -> Type=3471, Amount=%1, Price=15*%1, "Do you want to buy %A cleavers for %P gold?", Topic=1
+%1,1<%1,"spatula"        -> Type=3472, Amount=%1, Price=12*%1, "Do you want to buy %A oven spatulas for %P gold?", Topic=1
+%1,1<%1,"rolling","pin"  -> Type=3473, Amount=%1, Price=12*%1, "Do you want to buy %A rolling pins for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Please come back with more money."
+Topic=1                         -> "I hope next time."
+}

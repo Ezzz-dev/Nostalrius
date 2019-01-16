@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="1000" type="event" message="Orshabaal's minions are working on his return to the World. LEAVE Edron at once, mortals."/>
+	<areaspawn delay="1000" lifetime="14400000" radius="5" centerx="33118" centery="31700" centerz="7">
+		<monster name="fire elemental" minamount="4" maxamount="10"/>
+	</areaspawn>
+	<areaspawn delay="200000" lifetime="14400000" radius="5" centerx="33118" centery="31700" centerz="7">
+		<monster name="demon" minamount="1" maxamount="2"/>
+	</areaspawn>
+	<announce delay="200000" type="event" message="Orshabaal is about to make his way into the mortal realm. Run for your lives!"/>
+	<areaspawn delay="200000" lifetime="14400000" radius="7" centerx="33118" centery="31700" centerz="7">
+		<monster name="fire elemental" minamount="4" maxamount="12"/>
+	</areaspawn>
+	<announce delay="400000" type="event" message="Orshabaal has been summoned from hell to plague the lands of mortals again."/>
+	<areaspawn delay="400000" lifetime="14400000" radius="2" centerx="33118" centery="31700" centerz="7">
+		<monster name="Orshabaal" minamount="1" maxamount="1"/>
+	</areaspawn>
+	<areaspawn delay="400000" lifetime="14400000" radius="5" centerx="33118" centery="31700" centerz="7">
+		<monster name="demon" minamount="1" maxamount="2"/>
+	</areaspawn>
+</raid>

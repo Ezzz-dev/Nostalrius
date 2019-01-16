@@ -1,0 +1,25 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gen-t-distance-s.ndb: Datenbank für generischen Fernwaffenverkauf
+
+
+"buy"             -> "I am selling bows, crossbows, and ammunition. Do you need anything?"
+"do","you","sell" -> *
+"do","you","have" -> *
+"offer"           -> *
+"goods"           -> *
+"ammo"            -> "Do you need arrows for a bow, or bolts for a crossbow?"
+"ammunition"      -> *
+
+"sell","bow"      -> "I don't buy used bows."
+"sell","crossbow" -> "I don't buy used crossbows."
+
+"bow"             -> Type=3350, Amount=1,  Price=400,  "Do you want to buy a bow for %P gold?", Topic=34
+"crossbow"        -> Type=3349, Amount=1,  Price=500,  "Do you want to buy a crossbow for %P gold?", Topic=34
+"arrow"           -> Type=3447, Amount=10, Price=20,   "Do you want to buy %A arrows for %P gold?", Topic=34
+"bolt"            -> Type=3446, Amount=10, Price=30,   "Do you want to buy %A bolts for %P gold?", Topic=34
+%1,0<%1,"arrow"   -> Type=3447, Amount=%1, Price=2*%1, "Do you want to buy %A arrows for %P gold?", Topic=34
+%1,0<%1,"bolt"    -> Type=3446, Amount=%1, Price=3*%1, "Do you want to buy %A bolts for %P gold?", Topic=34
+
+Topic=34,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=34,"yes"                   -> "Come back, when you have enough money."
+Topic=34                         -> "Hmm, but next time."

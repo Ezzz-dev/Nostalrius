@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="rabbit" nameDescription="a rabbit" race="blood" experience="0" speed="50" manacost="220">
+	<health now="15" max="15" />
+	<look type="74" head="0" body="0" legs="0" feet="0" corpse="4173" />
+	<targetchange interval="1000" chance="0" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="0" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="1" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag runonhealth="15" />
+	</flags>
+	<attacks attack="0" skill="0">
+	</attacks>
+	<defenses armor="1" defense="2">
+	</defenses>
+	<loot>
+		<item id="3595" countmax="1" chance="100" /> <!-- a carrot -->
+		<item id="3577" countmax="2" chance="850" /> <!-- meat -->
+	</loot>
+</monster>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="elder beholder" nameDescription="an elder beholder" race="blood" experience="280" speed="45" manacost="0">
+	<health now="500" max="500" />
+	<look type="108" head="0" body="0" legs="0" feet="0" corpse="4233" />
+	<targetchange interval="1000" chance="50" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="4" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="16" skill="45">
+		<attack name="energy" min="-45" max="-75" range="7" chance="14">
+			<attribute key="shootEffect" value="energy" />
+		</attack>
+		<attack name="fire" min="-60" max="-80" range="7" chance="15">
+			<attribute key="shootEffect" value="fire" />
+		</attack>
+		<attack name="physical" min="-70" max="-90" range="7" chance="12">
+			<attribute key="shootEffect" value="death" />
+			<attribute key="areaEffect" value="mortarea" />
+		</attack>
+		<attack name="poison" min="-30" max="-70" range="7" chance="13">
+			<attribute key="shootEffect" value="poison" />
+		</attack>
+		<attack name="lifedrain" min="-75" max="-85" range="7" chance="18">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+		<attack name="lifedrain" min="-75" max="-85" range="7" chance="18">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+		<attack name="manadrain" min="-20" max="-40" range="7" chance="19">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+		<attack name="speed" speedchange="-90" variation="20" duration="20000" range="7" chance="10">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+	</attacks>
+	<defenses armor="13" defense="26">
+	</defenses>
+	<immunities>
+		<immunity lifedrain="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<summons maxSummons="12">
+		<summon name="gazer" chance="8" max="6" />
+		<summon name="crypt shambler" chance="9" max="6" />
+	</summons>
+	<voices>
+		<voice sentence="653768764!" />
+		<voice sentence="Let me take a look at you!" />
+		<voice sentence="Inferior creatures, bow before my power!" />
+		<voice sentence="659978 54764!" />
+	</voices>
+	<loot>
+		<item id="3408" countmax="1" chance="1" /> <!-- a beholder helmet -->
+		<item id="3418" countmax="1" chance="1" /> <!-- a beholder shield -->
+		<item id="3031" countmax="24" chance="900" /> <!-- a gold coin -->
+		<item id="3031" countmax="32" chance="800" /> <!-- a gold coin -->
+		<item id="3031" countmax="35" chance="700" /> <!-- a gold coin -->
+		<item id="3285" countmax="1" chance="120" /> <!-- a longsword -->
+		<item id="3282" countmax="1" chance="100" /> <!-- a morning star -->
+		<item id="3059" countmax="1" chance="10" /> <!-- a spellbook -->
+		<item id="3409" countmax="1" chance="60" /> <!-- a steel shield -->
+		<item id="3265" countmax="1" chance="60" /> <!-- a two handed sword -->
+	</loot>
+</monster>

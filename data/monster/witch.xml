@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="witch" nameDescription="a witch" race="blood" experience="120" speed="62" manacost="0">
+	<health now="300" max="300" />
+	<look type="54" head="0" body="0" legs="0" feet="0" corpse="4247" />
+	<targetchange interval="1000" chance="50" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="4" />
+		<flag runonhealth="30" />
+	</flags>
+	<attacks attack="18" skill="18">
+		<attack name="fire" min="-25" max="-55" range="7" chance="5">
+			<attribute key="shootEffect" value="fire" />
+		</attack>
+		<attack name="firefield" range="7" radius="1" target="1" chance="8">
+			<attribute key="shootEffect" value="fire" />
+		</attack>
+	</attacks>
+	<defenses armor="8" defense="12">
+	</defenses>
+	<immunities>
+		<immunity energy="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<voices>
+		<voice sentence="Horax pokti!" />
+		<voice sentence="Hihihihi!" />
+		<voice sentence="Herba budinia ex!" />
+	</voices>
+	<loot>
+		<item id="3454" countmax="1" chance="200" /> <!-- a broom -->
+		<item id="3565" countmax="1" chance="500" /> <!-- a cape -->
+		<item id="3607" countmax="1" chance="400" /> <!-- cheese -->
+		<item id="3562" countmax="1" chance="200" /> <!-- a coat -->
+		<item id="3598" countmax="8" chance="300" /> <!-- a cookie -->
+		<item id="3083" countmax="1" chance="25" /> <!-- a garlic necklace -->
+		<item id="3031" countmax="10" chance="100" /> <!-- a gold coin -->
+		<item id="3552" countmax="1" chance="500" /> <!-- leather boots -->
+		<item id="3293" countmax="1" chance="400" /> <!-- a sickle -->
+		<item id="3290" countmax="1" chance="5" /> <!-- a silver dagger -->
+		<item id="3736" countmax="1" chance="90" /> <!-- a star herb -->
+		<item id="3069" countmax="1" chance="10" /> <!-- a volcanic rod -->
+		<item id="3012" countmax="1" chance="100" /> <!-- a wolf tooth chain -->
+	</loot>
+</monster>

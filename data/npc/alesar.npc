@@ -1,0 +1,194 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# alesar.npc: Datenbank für den Djinnschmied Alesar (Waffen und Rüstungen, Efreet)
+
+Name = "Alesar"
+Outfit = (80,0-0-0-0)
+Home = [33048,32621,5]
+Radius = 1 
+
+Behaviour = {
+
+ADDRESS,"hello$",QuestValue(278)=3,!      -> "What do you want from me, %N?"
+ADDRESS,"hi$",QuestValue(278)=3,!         -> *
+ADDRESS,"greetings$",QuestValue(278)=3,!  -> *
+ADDRESS,"djanni'hah$",QuestValue(278)=3,! -> *
+ADDRESS,!                                 -> Idle
+BUSY,"hello$",QuestValue(278)=3,!         -> "I am already talking to one of you creeps. So shut up until it is your turn, %N.", Queue
+BUSY,"hi$",QuestValue(278)=3,!            -> *
+BUSY,"greetings$",QuestValue(278)=3,!     -> *
+BUSY,"djanni'hah$",QuestValue(278)=3,!    -> *
+BUSY,!                                    -> NOP
+VANISH                                    -> "Humans..."
+
+"bye"           -> "Finally.", Idle
+"farewell"      -> *
+"name"          -> "My name is none of your business."
+"alesar"        -> "That is my name. So what!"
+"job"           -> "What does it look like, fool? I'm a smith! But I won't sell you anything until Malor orders me otherwise."
+"trade"         -> "I won't sell you anything, human. Malor doesn't want me to trade with strangers."
+"permission"    -> *
+
+"daraman"       -> "Don't you dare mention Daraman in my presence, human. I am through with his insidious lies and through with your accursed race!"
+"haroun"        -> "Haroun? What? You know ... where do you know that name from? Did he send you?", Topic=1
+Topic=1,"yes"   -> "Treacherous liar! You would not be here if you had really talked to him. Get out of my sight or I will test my latest sabre on you!", Idle
+Topic=1         -> "<sighs> Of course not. How could you ... Well, at least you are honest, human. I appreciate that."
+
+"human"         -> "I used to have illusions about you humans. I thought humans were good, noble creatures. ...",
+                   "I thought djinns and humans shared a destiny, and that we could live side by side peacefully. ...",
+                   "But now I have learnt my lesson. I have had the privilege to look deep into the human mind, much deeper than most of my brothers. ...",
+                   "And guess what! I did not like what I see. You are nothing but a race of cruel, perfidious bloodsuckers who hide their wickedness behind a thin layer of civilisation and so-called humanity. ...",
+                   "Your race is a blemish on the face of Tibia. The sooner it is gone the better!"
+"djinn"         -> "One day we will teach your race a lesson it will never forget."
+"efreet"        -> "The efreet are those djinn who never fell for Daraman's insidious propaganda. I wish I would have been as smart from the start. ...",
+                   "But errors can be corrected!"
+"marid"         -> "Those among my brothers and sisters who still do not see the truth call themselves the Marid. I used to be one of them, but I left them when the truth dawned upon me. ...",
+                   "Now I follow Malor, although I would never fight against my kind."
+"gabel"			    -> "Gabel is a kind-hearted, honest djinn. I would hate to see him die just because he believes in Daraman's lies. ...",
+                   "After all, I believed them myself. "
+"king"          -> "We need a strong king to unite us in our struggle against the humans."
+"malor"         -> "Malor is overambitious and unnecessarily cruel, but he is the only djinn who could unite our race, so I follow him. ...",
+                   "The truth is I despise him, but that is of no importance as long as you humans will be exterminated."
+"mal'ouquah"    -> "I do not like this place. But then it does not really matter where I am. I have a forge and I don't see any humans. That's all I need. ...",
+                   "Of course, now you are here. Doesn't help me to feel myself at home here."
+"ashta'daramai",QuestValue(287)=0 -> "I used to live in Ashta'daramai. That was before I realised the extent of my blindness."
+"ashta'daramai",QuestValue(287)>0 -> "Ashta'daramai is Gabel's fortress which lies to the north. ...",
+                                     "Of course you cannot enter it through the front door. ...",
+                                     "But from my time there, I know that there is also an unguarded back door in the north of the fortress."
+"zathroth"      -> "Legend has it that Zathroth was trying to make us beings of unalloyed evil, but he found us to be impure, so he abandoned us and started over. ...",
+                   "It is not flattering to think we are nothing but examples of bad workmanship, but I see it from a different perspective: Since our god left us on our own it is up to ourselves to forge our destiny. ...",
+                   "One day Zathroth will look at us in amazement."
+"tibia"         -> "One day we djinn will rid this world of evil."
+"darashia"      -> "I don't care about human cities. If I had my way, they would all be burnt to down today."
+"edron"         -> *
+"thais"         -> *
+"venore"        -> *
+"kazordoon"     -> *
+"carlin"        -> *
+"ab'dendriel"   -> *
+"ankrahmun"     -> *
+
+"pharaoh"       -> "The pharaoh in Ankrahmun is a dangerous fool. Just your typical human, in other words."
+"palace"        -> "So?"
+"ascension"     -> "What are you talking about? More human pseudo-philosophical flapdoodle?"
+"rah"	          -> *
+"uthun"		      -> *
+"akh"		        -> *
+"scarab"        -> "I like them. They are peaceful, but if they are provoked they fight ferociously. And they are know to eat humans!" 
+"kha'zeel"      -> "These mountains are our refuge from those pesky humans. Too bad there are always some who come up here anyway. You, for example."
+"kha'labal"	    -> "The desert Kha'labal was once a beautiful land, but it was devastated in the course of the war. Damn humans! This is all your fault!"
+"melchior"      -> "I remember him. He was a greedy, double-dealing hyena. As far as I know his bleached bones are now lying somewhere in the Kha'labal."
+"djema"         -> "Djema? Well - I suppose she is the only human I still like. But she has been brought up by djinns. Who knows - perhaps humans can learn."
+"baa'leal"      -> "Baa'leal is Malor's lieutenant. Unflinchingly loyal, but not quite as clever as he thinks he is."
+"bo'ques"       -> "I miss Bo'ques' cooking, but not his pompous airs and graces."
+"fa'hradin"     -> "Fa'hradin, that old cynic is way too smart to believe in Daraman's lies. He should reconsider his loyalties."
+
+"wares"           -> "I sell and buy weapons, armors, helmets, legs, and shields."
+"offer"           -> *
+"goods"           -> *
+"smith"           -> *
+"equipment"       -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+
+"weapon"          -> "At this time I'm only selling ice rapiers and serpent swords. But I would buy scimitars, giant swords, serpent swords, poison daggers, knight axes, dragon hammers and skull staffs from you."
+"shield"          -> "I am selling only ancient shields. But I buy tower shields, black shields, ancient shields and vampire shields."
+"armor"           -> "I am buying and selling dark armors. But I would also buy a knight armor from you."
+"helmet"          -> "I am buying and selling dark helmets. Furthermore I'm buying warrior helmets, strange helmets and mystic turbans."
+"trousers"        -> "At this time I'm only buying knight legs."
+"legs"            -> *
+
+"ice","rapier"       			   -> Type=3284, Amount=1, Price=5000, "Do you want to buy an ice rapier for %P gold?", Topic=10
+"serpent","sword"       		   -> Type=3297, Amount=1, Price=6000, "Do you want to buy a serpent sword for %P gold?", Topic=10
+"ancient","shield"       		   -> Type=3432, Amount=1, Price=5000, "Do you want to buy an ancient shield for %P gold?", Topic=10
+"dark","armor"       		       -> Type=3383, Amount=1, Price=1500, "Do you want to buy a dark armor for %P gold?", Topic=10
+"dark","helmet"       		       -> Type=3384, Amount=1, Price=1000, "Do you want to buy a dark helmet for %P gold?", Topic=10
+
+%1,1<%1,"ice","rapier"       			   -> Type=3284, Amount=%1, Price=5000*%1, "Do you want to buy %A ice rapiers for %P gold?", Topic=10
+%1,1<%1,"serpent","sword"       		   -> Type=3297, Amount=%1, Price=6000*%1, "Do you want to buy %A serpent swords for %P gold?", Topic=10
+%1,1<%1,"ancient","shield"       		   -> Type=3432, Amount=%1, Price=5000*%1, "Do you want to buy %A ancient shields for %P gold?", Topic=10
+%1,1<%1,"dark","armor"       		       -> Type=3383, Amount=%1, Price=1500*%1, "Do you want to buy %A dark armors for %P gold?", Topic=10
+%1,1<%1,"dark","helmet"       		       -> Type=3384, Amount=%1, Price=1000*%1, "Do you want to buy %A dark helmets for %P gold?", Topic=10
+
+"sell","serpent","sword"       		   -> Type=3297, Amount=1, Price=900, "Do you want to sell a serpent sword for %P gold?", Topic=11
+"sell","dragon","hammer"       		   -> Type=3322, Amount=1, Price=2000, "Do you want to sell a dragon hammer for %P gold?", Topic=11
+"sell","giant","sword"       			   -> Type=3281, Amount=1, Price=17000, "Do you want to sell a giant sword for %P gold?", Topic=11
+"sell","poison","dagger"       		   -> Type=3299, Amount=1, Price=50, "Do you want to sell a poison dagger for %P gold?", Topic=11
+"sell","scimitar"       		           -> Type=3307, Amount=1, Price=150, "Do you want to sell a scimitar for %P gold?", Topic=11
+"sell","skull","staff"       		       -> Type=3324, Amount=1, Price=6000, "Do you want to sell a skull staff for %P gold?", Topic=11
+"sell","knight","axe"       		       -> Type=3318, Amount=1, Price=2000, "Do you want to sell a knight axe for %P gold?", Topic=11
+
+"sell","tower","shield"       		       -> Type=3428, Amount=1, Price=8000, "Do you want to sell a tower shield for %P gold?", Topic=11
+"sell","black","shield"       		       -> Type=3429, Amount=1, Price=800, "Do you want to sell a black shield for %P gold?", Topic=11
+"sell","ancient","shield"       		   -> Type=3432, Amount=1, Price=900, "Do you want to sell an ancient shield for %P gold?", Topic=11
+"sell","vampire","shield"       		   -> Type=3434, Amount=1, Price=15000, "Do you want to sell a vampire shield for %P gold?", Topic=11
+
+"sell","warrior","helmet"       		   -> Type=3369, Amount=1, Price=5000, "Do you want to sell a warrior helmet for %P gold?", Topic=11
+"sell","knight","armor"       		       -> Type=3370, Amount=1, Price=5000, "Do you want to sell a knight armor for %P gold?", Topic=11
+"sell","knight","legs"       		       -> Type=3371, Amount=1, Price=5000, "Do you want to sell a pair of knight legs for %P gold?", Topic=11
+"sell","strange","helmet"       		   -> Type=3373, Amount=1, Price=500, "Do you want to sell a strange helmet for %P gold?", Topic=11
+"sell","dark","armor"       		       -> Type=3383, Amount=1, Price=400, "Do you want to sell a dark armor for %P gold?", Topic=11
+"sell","dark","helmet"       		       -> Type=3384, Amount=1, Price=250, "Do you want to sell a dark helmet for %P gold?", Topic=11
+"sell","mystic","turban"       	       -> Type=3574, Amount=1, Price=150, "Do you want to sell a mystic turban for %P gold?", Topic=11
+
+"sell",%1,1<%1,"serpent","sword"       		   -> Type=3297, Amount=%1, Price=900*%1, "Do you want to sell %A serpent swords for %P gold?", Topic=11
+"sell",%1,1<%1,"dragon","hammer"       		   -> Type=3322, Amount=%1, Price=2000*%1, "Do you want to sell %A dragon hammers for %P gold?", Topic=11
+"sell",%1,1<%1,"giant","sword"       			   -> Type=3281, Amount=%1, Price=17000*%1, "Do you want to sell %A giant swords for %P gold?", Topic=11
+"sell",%1,1<%1,"poison","dagger"       		   -> Type=3299, Amount=%1, Price=50*%1, "Do you want to sell %A poison daggers for %P gold?", Topic=11
+"sell",%1,1<%1,"scimitar"       		           -> Type=3307, Amount=%1, Price=150*%1, "Do you want to sell %A scimitars for %P gold?", Topic=11
+"sell",%1,1<%1,"skull","staff"       		       -> Type=3324, Amount=%1, Price=6000*%1, "Do you want to sell %A skull staffs for %P gold?", Topic=11
+"sell",%1,1<%1,"knight","axe"       		       -> Type=3318, Amount=%1, Price=2000*%1, "Do you want to sell %A knight axes for %P gold?", Topic=11
+
+"sell",%1,1<%1,"tower","shield"       		       -> Type=3428, Amount=%1, Price=8000*%1, "Do you want to sell %A tower shields for %P gold?", Topic=11
+"sell",%1,1<%1,"black","shield"       		       -> Type=3429, Amount=%1, Price=800*%1, "Do you want to sell %A black shields for %P gold?", Topic=11
+"sell",%1,1<%1,"ancient","shield"       		   -> Type=3432, Amount=%1, Price=900*%1, "Do you want to sell %A ancient shields for %P gold?", Topic=11
+"sell",%1,1<%1,"vampire","shield"       		   -> Type=3434, Amount=%1, Price=15000*%1, "Do you want to sell %A vampire shields for %P gold?", Topic=11
+
+"sell",%1,1<%1,"strange","helmet"       		   -> Type=3373, Amount=%1, Price=500*%1, "Do you want to sell %A strange helmets for %P gold?", Topic=11
+"sell",%1,1<%1,"dark","armor"       		       -> Type=3383, Amount=%1, Price=400*%1, "Do you want to sell %A dark armors for %P gold?", Topic=11
+"sell",%1,1<%1,"dark","helmet"       		       -> Type=3384, Amount=%1, Price=250*%1, "Do you want to sell %A dark helmets for %P gold?", Topic=11
+"sell",%1,1<%1,"warrior","helmet"       		   -> Type=3369, Amount=%1, Price=5000*%1, "Do you want to sell %A warrior helmets for %P gold?", Topic=11
+"sell",%1,1<%1,"knight","armor"       		       -> Type=3370, Amount=%1, Price=5000*%1, "Do you want to sell %A knight armors for %P gold?", Topic=11
+"sell",%1,1<%1,"knight","legs"       		       -> Type=3371, Amount=%1, Price=5000*%1, "Do you want to sell %A pairs of knight legs for %P gold?", Topic=11
+"sell",%1,1<%1,"mystic","turban"       	       -> Type=3574, Amount=%1, Price=150*%1, "Do you want to sell %A mystic turbans for %P gold?", Topic=11
+
+Topic=10,QuestValue(288)<3,!     -> "No chance, human. Malor doesn't want me to trade with strangers."
+Topic=10,"yes",CountMoney>=Price -> "Thank you. Here you are.", DeleteMoney, Create(Type)
+Topic=10,"yes"                   -> "You do not have enough gold."
+Topic=10                         -> "Well, obviously not."
+
+Topic=11,QuestValue(288)<3,!               -> "No chance, human. Malor doesn't want me to trade with strangers."
+Topic=11,"yes",Count(Type)>=Amount -> "Ok. Here is your gold.", Delete(Type), CreateMoney
+Topic=11,"yes"                             -> "You don't have one."
+Topic=11,"yes",Amount>1					           -> "You don't have that many."
+Topic=11                                   -> "Well, obviously not."
+
+"mission",QuestValue(286)=3,QuestValue(287)=0 -> "So Baa'leal thinks you are up to do a mission for us? ...",
+                                   "I think he is getting old, entrusting human scum such as you are with an important mission like that. ...",
+                                   "Personally, I don't understand why you haven't been slaughtered right at the gates. ...",
+                                   "Anyway. Are you prepared to embark on a dangerous mission for us?", Topic=2
+"baa'leal",QuestValue(286)=3,QuestValue(287)=0 -> *
+
+Topic=2,"yes"                   -> "All right then, human. Have you ever heard of the 'Tears of Daraman'? ...",
+                                   "They are precious gemstones made of some unknown blue mineral and possess enormous magical power. ...",
+                                   "If you want to learn more about these gemstones don't forget to visit our library. ...",
+                                   "Anyway, one of them is enough to create thousands of our mighty djinn blades. ...",
+                                   "Unfortunately my last gemstone broke and therefore I'm not able to create new blades anymore. ...",
+                                   "To my knowledge there is only one place where you can find these gemstones - I know for a fact that the Marid have at least one of them. ...",
+                                   "Well... to cut a long story short, your mission is to sneak into Ashta'daramai and to steal it. ...",
+                                   "Needless to say, the Marid won't be too eager to part with it. Try not to get killed until you have delivered the stone to me.", SetQuestValue(287,1)
+Topic=2                         -> "Then not."
+
+"mission",QuestValue(287)>0,QuestValue(287)<3 -> "Did you find the tear of Daraman?", Topic=3
+"gem",QuestValue(287)>0,QuestValue(287)<3     -> *
+"tear",QuestValue(287)>0,QuestValue(287)<3    -> *
+
+Topic=3,"yes",QuestValue(287)=2,Count(3233)>0 -> "So you have made it? You have really managed to steal a Tear of Daraman? ...",
+                                  "Amazing how you humans are just impossible to get rid of. Incidentally, you have this character trait in common with many insects and with other vermin. ...",
+                                  "Nevermind. I hate to say it, but it you have done us a favour, human. That gemstone will serve us well. ...",
+                                  "Baa'leal, wants you to talk to Malor concerning some new mission. ...",
+                                  "Looks like you have managed to extended your life expectancy - for just a bit longer.", Amount=1, Delete(3233), SetQuestValue(287,3)
+Topic=3                        -> "As I expected. You haven't got the stone. Shall I explain your mission again?", Topic=2
+
+"mission",QuestValue(287)=3    -> "Don't forget to talk to Malor concerning your next mission."
+"work",QuestValue(287)=3       -> *
+}

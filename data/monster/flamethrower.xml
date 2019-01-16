@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="flamethrower" nameDescription="a flamethrower" race="undead" experience="18" speed="0" manacost="0">
+	<health now="100" max="100" />
+	<look typeex="0" />
+	<targetchange interval="1000" chance="0" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag runonhealth="100" />
+	</flags>
+	<attacks attack="1" skill="1">
+		<attack name="fire" min="-50" max="-100" range="7" chance="1">
+			<attribute key="shootEffect" value="fire" />
+			<attribute key="areaEffect" value="fire" />
+		</attack>
+	</attacks>
+	<defenses armor="1" defense="1">
+	</defenses>
+	<immunities>
+		<immunity fire="1" />
+		<immunity energy="1" />
+		<immunity physical="1" />
+		<immunity outfit="1" />
+		<immunity lifedrain="1" />
+		<immunity paralyze="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+</monster>

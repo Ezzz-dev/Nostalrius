@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="kongra" nameDescription="a kongra" race="blood" experience="110" speed="52" manacost="0">
+	<health now="340" max="340" />
+	<look type="116" head="0" body="0" legs="0" feet="0" corpse="4333" />
+	<targetchange interval="1000" chance="0" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag runonhealth="10" />
+	</flags>
+	<attacks attack="30" skill="40">
+	</attacks>
+	<defenses armor="18" defense="14">
+		<defense name="speed" speedchange="50" variation="5" duration="3000" chance="15">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+	<voices>
+		<voice sentence="Hugah!" />
+		<voice sentence="Ungh! Ungh!" />
+		<voice sentence="Huaauaauaauaa!" />
+	</voices>
+	<loot>
+		<item id="3587" countmax="2" chance="300" /> <!-- a banana -->
+		<item id="3587" countmax="10" chance="50" /> <!-- a banana -->
+		<item id="3093" countmax="1" chance="2" /> <!-- a club ring -->
+		<item id="3031" countmax="25" chance="800" /> <!-- a gold coin -->
+		<item id="3031" countmax="30" chance="100" /> <!-- a gold coin -->
+		<item id="3357" countmax="1" chance="10" /> <!-- a plate armor -->
+		<item id="3050" countmax="1" chance="5" /> <!-- a power ring -->
+		<item id="3084" countmax="1" chance="10" /> <!-- a protection amulet -->
+	</loot>
+</monster>

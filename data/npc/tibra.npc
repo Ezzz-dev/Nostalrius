@@ -1,0 +1,112 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# tibra.npc: Datenbank für die Priesterin Tibra
+
+Name = "Tibra"
+Outfit = (138,60-92-90-95)
+Home = [32318,31783,7]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$","tibra",! -> "Welcome in the name of the gods, pilgrim %N!"
+ADDRESS,"hi$","tibra",!    -> *
+ADDRESS,"hello$",!         -> *
+ADDRESS,"hi$",!            -> *
+ADDRESS,!                  -> Idle
+
+ADDRESS,male,"my$","heart$","belongs","to",!   -> "I ask thee, %N, will you honor your bride and stay at her side even in the darkest hours live could bring upon you?", Topic=9
+ADDRESS,female,"my$","heart$","belongs","to",! -> "I ask thee, %N, will you honor your groom and stay at his side even in the darkest hours live could bring upon you?", Topic=9
+
+BUSY,"hello$",!            -> "%N, please be patient and wait a moment, my child.", Queue
+BUSY,"hi$",!               -> *
+BUSY,!                     -> NOP
+VANISH,!                   -> "May the gods guard you!"
+
+"bye"            -> "Good bye, %N. May the gods be with you to guard and guide you, my child!", Idle
+"farewell"       -> *
+"job"            -> "I am a priest of the great pantheon."
+"news"           -> "Sorry, worldly matters are of no concern to me."
+"name"           -> "My name is Tibra. Your soul tells me that you are %N"
+"tibia"          -> "The world of Tibia is the creation of the gods."
+"how","are","you"-> "Thank you, I'm fine, the gods give me hope and comfort."
+"sell"           -> "The grace of the gods must be earned, it cannot be bought!"
+"sin$"           -> "Do you wish to confess your sins, my chilid?", Topic=3
+"sins$"          -> *
+
+"marriage","ceremony" -> "So you want me to initate a marriage ceremony?", Topic=5 
+Topic=5,"yes"         -> "In the name of the Gods of good, I ask thee, if both of you are prepared and ready!", Topic=6
+Topic=5,"i$","will$"  -> *
+Topic=5               -> "Perhaps another time, marriage isn't a step one should consider without love in the heart." 
+Topic=6,"yes"         -> "Silence, please! I hereby invoke the attention of the eternal Powers looking over our souls and lives. May the gods bless us!", EffectMe(2), Topic=7
+Topic=6,"i$","will$"  -> *
+Topic=7,male,"may","gods","bless","us" -> "I ask thee %N, will you honor your bride and stay at her side even in the darkest hours live could bring upon you?", Topic=8
+Topic=7,female,"may","gods","bless","us" -> "I ask thee %N, will you honor your groom and stay at his side even in the darkest hours live could bring upon you?", Topic=8
+Topic=8,male,"yes"    -> "So by the powers of the gods your soul is now bound to your bride. Bride, step forward and tell me to whom your heart belongs!", EffectOpp(1), idle
+Topic=8,"i$","will$"  -> *
+Topic=8,female,"yes"  -> "So by the powers of the gods your soul is now bound to your groom. Groom, step forward and tell me to whom your heart belongs!", EffectOpp(1), idle
+Topic=8,"i$","will$"  -> *
+Topic=9,"yes"         -> "So by the powers of the gods your souls are now bound together for eternity. May the gods watch with grace over your further life as married couple! Go now and celebrate your marriage!", EffectOpp(1), EffectMe(7), Idle
+Topic=9,"i$","will$"  -> *
+Topic=9,"no"          -> "Your neglection of love hurts my heart. Leave now!", idle
+
+"god$"           -> "The gods of good guard us and guide us, the gods of evil want to destroy us and steal our souls!", Topic=2
+"gods$"          -> *
+"life"           -> "The teachings of Crunor tell us to honor life and not to harm it."
+"citizen"        -> "The things we priests know about the citizens are confidential."
+"lugri"          -> "Only a man can fall as low as he did. His soul rotted away already."
+"queen"          -> "Queen Eloise is wise to listen to the proposals of the druidic followers of Crunor."
+"monster"        -> "Remind: Not everything you call monster is evil to the core!"
+"quest"          -> "It is my mission to bring the teachings of the gods to everyone."
+"mission"        -> *
+"gold"           -> Price=15, "Do you want to make a donation?", Topic=1
+"money"          -> *
+"donation"       -> *
+"fight"          -> "It is MY mission to teach, it is YOUR mission to fight!"
+"slay"           -> *
+"mission"        -> *
+"heal$",HP<40     -> "You are hurt, my child. I will heal your wounds.", HP=40, EffectOpp(13)
+"heal$",Poison>0  -> "You are poisoned, my child. I will help you.", Poison(0,0), EffectOpp(14)
+"heal$",Burning>0 -> "You are burning, my child. I will help you.", Burning(0,0), EffectOpp(15)
+"heal$"           -> "You aren't looking that bad. Sorry, I need my powers for cases more severe than yours."
+"help",HP<40     -> "You are hurt, my child. I will heal your wounds.", HP=40, EffectOpp(13)
+"help",Poison>0  -> "You are poisoned, my child. I will help you.", Poison(0,0), EffectOpp(14)
+"help",Burning>0 -> "You are burning, my child. I will help you.", Burning(0,0), EffectOpp(15)
+"help"           -> "You aren't looking that bad. Sorry, I need my powers for cases more severe than yours."
+"ferumbras"      -> "The fallen one should be mourned, not feared."
+"time"           -> "Now, it is %T."
+"excalibug"      -> "The mythical blade was hidden in ancient times. Its said that powerful wards protect it."
+"graveyard"      -> "There's something strange in its neighbourhood. But whom we gonna call for help if not the gods?"
+"crypt"          -> *
+"mausoleum"      -> *
+
+Topic=2,"good"   -> "The gods we call the good ones are Fardos, Uman, the Elements, Suon, Crunor, Nornur, Bastesh, Kirok, Toth, and Banor."
+"fardos"         -> "Fardos is the creator. The great obsever. He is our caretaker."
+"uman"           -> "Uman is the positive aspect of magic. He brings us the secrets of the arcane arts." 
+"suon"           -> "Suon is the lifebringing sun. He observes the creation with love."
+"crunor"         -> "Crunor, the great tree, is the father of all plantlife. He is a prominent god for many druids."
+"nornur"         -> "Nornur is the mysterious god of fate. Who knows if he is its creator or just a chronist?"
+"bastesh"        -> "Bastesh, the deep one, is the goddess of the sea and its creatures."
+"kirok"          -> "Kirok, the mad one, is the god of scientists and jesters." 
+"toth"           -> "Toth, Lord of Death, is the keeper of the souls, the guardian of the afterlife."
+"banor"          -> "Banor, the heavenly warrior, is the patron of all fighters against evil. He is the gift of the gods to inspire humanity."
+"tibiasula"      -> "Tibiasula lost her life, but out of her essence the world was created." 
+Topic=2,"tibia"  -> "Tibia is the essence of the elemental power of earth." 
+"sula"           -> "Sula is the essence of the elemental power of water."
+"air"            -> "Air is one of the primal elemental forces, sometimes worshipped by tribal shamans."
+"fire"           -> "Fire is one of the primal elemental forces, sometimes worshipped by tribal shamans."
+
+Topic=2,"evil"   -> "The gods we call the evil ones are Zathroth, Fafnar, Brog, Urgith, and the Archdemons!"
+"zathroth"       -> "Zathroth is the destructive aspect of magic. He is the deciver and the thief of souls."
+"fafnar"         -> "Fafnar is the scorching sun. She observes the creation with hate and jealousy."
+"brog"           -> "Brog, the raging one, is the great destroyer. The berserk of darkness."
+"urgith"         -> "The bonemaster Urgith is the lord of the undead and keeper of the damned souls."
+"archdemons"     -> "The demons are followers of Zathroth. The cruelest are known as the ruthless seven."
+"ruthless","seven" -> "I dont want to talk about that subject!"
+
+Topic=1,"no"                    -> "As you wish."
+Topic=1,"yes",CountMoney>=Price -> "May the gods bless you!", DeleteMoney, EffectOpp(15)
+Topic=1,"yes",CountMoney<Price  -> "Don't be ashamed, but you lack the gold."
+
+Topic=3,"yes"    -> "So tell me, what shadows your soul, my child.", Topic=4
+Topic=3          -> "As you wish."
+Topic=4          -> "Meditate on that and pray for your soul."
+}

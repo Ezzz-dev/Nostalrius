@@ -1,0 +1,46 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# dane.npc: Datenbank für die Wirtin Dane
+
+Name = "Dane"
+Outfit = (136,79-58-86-96)
+Home = [32308,31838,8]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Welcome to the wave cellar, %N."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Just a minute, %N.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Please come back from time to time."
+
+"bye"      -> "Please come back from time to time.", Idle
+"farewell" -> *
+"job"      -> "I am the owner of this place of relaxation."
+"saloon"   -> *
+"cellar"   -> "It's pretty, isn't it?"
+"name"     -> "I am Dane."
+"time"     -> "It is exactly %T."
+"news"     -> "I heard nothing interesting lately."
+
+"offer"           -> "I can offer you milk, water, and lemonade."
+"do","you","sell" -> *
+"do","you","have" -> *
+"food"            -> "Sorry, we just sell drinks."
+"alcohol"         -> "Alcohol makes people too aggressive. We don't need such stuff in Carlin."
+"wine"            -> *
+"beer"            -> *
+
+"lemonade"  -> Type=2875, Data=12, Amount=1, Price=5, "Do you want to buy a bottle of refreshing lemonade for %P gold?", Topic=1
+"milk"      -> Type=2875, Data=9,  Amount=1, Price=4, "Do you want to buy a bottle of our revitalizing milk for %P gold?", Topic=1
+"water"     -> Type=2875, Data=1,  Amount=1, Price=2, "Do you want to buy a bottle of crystal clear water for %P gold?", Topic=1
+
+%1,1<%1,"lemonade"  -> Type=2875, Data=12, Amount=%1, Price=5*%1, "Do you want to buy %A bottles of refreshing lemonade for %P gold?", Topic=1
+%1,1<%1,"milk"      -> Type=2875, Data=9,  Amount=%1, Price=4*%1, "Do you want to buy %A bottles of our revitalizing milk for %P gold?", Topic=1
+%1,1<%1,"water"     -> Type=2875, Data=1,  Amount=%1, Price=2*%1, "Do you want to buy %A bottles of crystal clear water for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here it is.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "I am sorry, but you do not have enough gold."
+Topic=1                         -> "Maybe later."
+}

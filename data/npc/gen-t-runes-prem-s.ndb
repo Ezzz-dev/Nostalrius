@@ -1,0 +1,50 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gen-t-runes-prem-s.ndb: Datenbank für generischen Runenverkauf - Premium Account Runen
+# Verwendete Topics: 99
+
+"spell","rune"						-> "I sell envenom runes, desintegrate runes, poison bomb runes, energy bomb runes, soulfire runes, magic wall runes, animate dead runes and paralyze runes."
+
+"envenom","rune"       			-> Type=3179, Data=3, Amount=1,  Price=130,    "Do you want to buy an envenom rune for %P gold?", Topic=99
+"desintegrate","rune"           -> Type=3197, Data=3, Amount=1,  Price=80,    "Do you want to buy a desintegrate rune for %P gold?", Topic=99
+"poison","bomb","rune"          -> Type=3173, Data=2, Amount=1,  Price=170,    "Do you want to buy a poison bomb rune for %P gold?", Topic=99
+"soulfire","rune"           	-> Type=3195, Data=2, Amount=1,  Price=210,    "Do you want to buy a soulfire rune for %P gold?", Topic=99
+"energy","bomb","rune"          -> Type=3149, Data=2, Amount=1,  Price=325,    "Do you want to buy an energybomb rune for %P gold?", Topic=99
+"magic","wall","rune"           -> Type=3180, Data=3, Amount=1,  Price=350,    "Do you want to buy a magic wall rune for %P gold?", Topic=99
+"animate","dead","rune"         -> Type=3203, Data=1, Amount=1,  Price=375,    "Do you want to buy an animate dead rune for %P gold?", Topic=99
+"paralyze","rune"           	-> Type=3165, Data=1, Amount=1,  Price=700,    "Do you want to buy a paralyze rune for %P gold?", Topic=99
+
+
+%1,1<%1,"envenom","rune"           	    -> Type=3179, Data=3, Amount=%1,  Price=130*%1,    "Do you want to buy %A envenom runes for %P gold?", Topic=99
+%1,1<%1,"desintegrate","rune"           -> Type=3197, Data=3, Amount=%1,  Price=80*%1,    "Do you want to buy %A desintegrate runes for %P gold?", Topic=99
+%1,1<%1,"poison","bomb","rune"          -> Type=3173, Data=2, Amount=%1,  Price=170*%1,    "Do you want to buy %A poison bomb runes for %P gold?", Topic=99
+%1,1<%1,"soulfire","rune"           	-> Type=3195, Data=2, Amount=%1,  Price=210*%1,    "Do you want to buy %A soulfire runes for %P gold?", Topic=99
+%1,1<%1,"energy","bomb","rune"          -> Type=3149, Data=2, Amount=%1,  Price=325*%1,    "Do you want to buy %A energybomb runes for %P gold?", Topic=99
+%1,1<%1,"magic","wall","rune"           -> Type=3180, Data=3, Amount=%1,  Price=350*%1,    "Do you want to buy %A magic wall runes for %P gold?", Topic=99
+%1,1<%1,"animate","dead","rune"         -> Type=3203, Data=1, Amount=%1,  Price=375*%1,    "Do you want to buy %A animate dead runes for %P gold?", Topic=99
+%1,1<%1,"paralyze","rune"           	-> Type=3165, Data=1, Amount=%1,  Price=700*%1,    "Do you want to buy %A paralyze runes for %P gold?", Topic=99
+
+
+"light","magic","missile","rune"    -> "Sorry, but runes of this type can't be purchased here."
+"poison","field","rune"				-> *
+"antidote","rune"                   -> *
+"fire","field","rune"               -> *
+"intense","healing","rune"          -> *
+"fireball","rune"                   -> *
+"destroy","field","rune"            -> *
+"heavy","magic","missile","rune"	-> *
+"energy","field","rune"             -> *
+"ultimate","healing","rune"         -> *
+"convince","creature","rune"        -> *
+"great","fireball","rune"           -> *
+"chameleon","rune"          	    -> *
+"fire","bomb","rune"            	-> *
+"poison","wall","rune"            	-> *
+"explosion","rune"          	    -> *
+"fire","wall","rune"            	-> *
+"sudden","death","rune"             -> *
+"energy","wall","rune"              -> *
+
+
+Topic=99,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=99,"yes"                   -> "Sorry, you don't have enough gold."
+Topic=99                         -> "As you wish."

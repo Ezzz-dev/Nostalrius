@@ -1,0 +1,66 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# brodrosch.npc: Datenbank für den Kapitän Brodrosch
+
+Name = "Brodrosch"
+Outfit = (66,0-0-0-0)
+Home = [32661,31957,15]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Welcome, %N! May Earth protect you, even whilst sailing!"
+ADDRESS,"hi$",!    -> *
+ADDRESS,"hiho$",!  -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Shut up and wait like the rest, jawoll!", Queue
+BUSY,"hi$",!       -> *
+BUSY,"hiho$",!     -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Yeah, yeah, walk, it's cheaper."
+
+"bye"            -> "Earth under your feet ... it's still better than lava.", Idle
+"farewell"       -> *
+"job"            -> "Look at my blackened beard? I'm the steamship captain!"
+"work"           -> *
+"name"           -> "I am Brodrosch Steamtrousers, son of the machine, of the Molten Rock."
+"tibia"          -> "Tibia? Just don't ask."
+"ship"           -> "This is a great ship. Ha! It works without wind but with fire, and it travels not on the ocean but beneath the earth!"
+"steamship"      -> *  
+"captain"        -> "Of course, I am the captain. But I am also a technomancer."
+"technomancer"   -> "Being a technomancer is a privilege few dwarfs have. We form earth and fire through powerful technology into tools. Also, we are great inventors."
+"inventors"      -> "Yes. There could have been thousands of our inventions, if they wouldn't explode all the time..."
+"inventions"     -> *
+"sell"           -> "This is not a shop, damn it!"
+"buy"            -> *
+"thais"          -> "This is a steamship that travels only subterreneanly. No way to get on that risky ocean. Kazordoon - Cormaya only."
+"ab'dendriel"    -> *
+"carlin"         -> *
+"venore"         -> *
+"senja"          -> *
+"folda"          -> *
+"vega"           -> *
+"ice","islands"  -> *
+"darashia"       -> *
+"darama"         -> *
+"kazordoon"      -> "Hey, we ARE at Kazordoon! Must be the cavemadness..."
+"beer"           -> "Sometimes being drunk means seeing two rivers. I survive by steering right between them."
+"dwarf"          -> "Deep inside, we're all dwarfs."
+"gurbasch"       -> "Ah, my brother in Cormaya. He can take you back."
+
+"cormaya"        -> Price=160, "So you want to go to Cormaya? %P gold?", Topic=1
+"passage"        -> *
+
+"cormaya",QuestValue(250)>2        -> Price=150, "So you want to go to Cormaya? %P gold?", Topic=1
+"passage",QuestValue(250)>2        -> *
+
+
+
+Topic=1,"yes",PZBlock,! -> "First get rid of those blood stains! You are not going to ruin my vehicle!"
+
+# für post-quest
+
+Topic=1,"yes",Premium,QuestValue(227)=4,CountMoney>=Price -> "Full steam ahead!", DeleteMoney, Idle, EffectOpp(3), Teleport(33309,31989,15), EffectOpp(3),SetQuestValue(227,5)
+
+Topic=1,"yes",Premium,CountMoney>=Price -> "Full steam ahead!", DeleteMoney, Idle, EffectOpp(3), Teleport(33309,31989,15), EffectOpp(3)
+Topic=1,"yes",CountMoney>=Price         -> "I'm sorry, but you need a premium account in order to travel onboard our ships."
+Topic=1,"yes"                           -> "You don't have enough money."
+}

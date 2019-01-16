@@ -1,0 +1,109 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# frodo.npc: Datenbank fuer den Wirt Frodo
+
+Name = "Frodo"
+Outfit = (128,58-68-109-131)
+Home = [32356,32209,7]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$","frodo",! -> "Hello, hello, %N. You heard about the news?"
+ADDRESS,"hi$","frodo",!    -> *
+ADDRESS,"hello$",!         -> "Welcome to Frodo's Hut. You heard about the news?"
+ADDRESS,"hi$",!            -> *
+ADDRESS,!                  -> Idle
+BUSY,"hello$",!            -> "Just a minute, %N. I'll be with you in no time.", Queue
+BUSY,"hi$",!               -> *
+BUSY,!                     -> NOP
+VANISH,!                   -> "Please come back from time to time."
+
+"bye"             -> "Please come back from time to time.", Idle
+"farewell"        -> *
+"job"             -> "I am the owner of this saloon. I call it Frodo's Hut. I am also selling food."
+"saloon"          -> *
+"hut"             -> "I hope you like it."
+"name"            -> "Just call me Frodo."
+"time"            -> "It is exactly %T."
+"king"            -> "Oh, our beloved king! Thanks to him, alcohol is so cheap."
+"tibianus"        -> *
+"quentin"         -> "He hardly visits my humble tavern."
+"lynda",female    -> "A very noble lady."
+"lynda",male      -> "Just between you and me: What a babe!"
+"harkath"         -> "Too disciplined to enjoy life." 
+"army"            -> "Hehe. Great customers."
+"ferumbras"       -> "Uhm, do not mention him. It may scare customers away."
+"general"         -> "Harkath Bloodblade is the royal general." 
+"sam"             -> "A loud neighbour, I get a lot of complaints about him."
+"xodet"           -> "I don't know where he gets these fluids. If I could sell them here, the hut would be crowded."
+"gorn"            -> "Many of his customers visit my Hut, too."
+"elane"           -> "Can you believe that she actually told her guildfellows that alcohol is a bad thing?"
+"muriel"          -> "Muriel has never visited this place."
+"lungelen"        -> "A sorceress, you can find her in their guild sitting befor a book - always!"
+"gregor"          -> "The knights have sometimes parties here after some arena fights."
+"marvik"          -> "Marvik seldom leaves his guildhall at all."
+"bozo"            -> "I am trying to hire him for an evening or two."
+"baxter"          -> "He's able to drink a bottle or two."
+"oswald"          -> "I hate him. Each of his visits here ends with a bar brawl."
+"sherry"          -> "The McRonalds are a nice couple. Donald is a dear friend of mine."
+"mcronald"        -> * 
+"donald"          -> "He is a little shy. In his youth he dreamed to become a druid."
+"lugri"           -> "I overheared some conversations about his evilness. That's enough to hope, that I never ever meet him."
+"excalibug"       -> "Nothing more than a tale for warriors."
+"thais"           -> "Here in Thais is the center of Tibia."
+"tibia"           -> "Come on! You know that our world is called Tibia."
+"carlin"          -> "Many travellers tell funny stories about all the emancipated women in this northern town."
+"rain","castle"   -> "The king's residence has been renovated lately."
+"galuna"          -> "She makes excellent arrows and bows."
+"hugo"            -> "I think some time ago a stranger from Fibula with that name stayed here for some nights."
+"todd"            -> "That fellow is filthy rich. He rented a room upstairs for months in advance and always orders the best beer and wine i serve."
+
+"news"    -> "Some travelers from Edron told about a great treasure guarded by cruel demons in the dungeons there."
+"rumors"  -> *
+
+"buy"             -> "I can offer you bread, cheese, ham, or meat."
+"do","you","sell" -> *
+"do","you","have" -> *
+"food"            -> "Are you looking for food? I have bread, cheese, ham, and meat."
+
+"bread"  -> Type=3600, Amount=1, Price=4, "Do you want to buy a bread for %P gold?", Topic=1
+"cheese" -> Type=3607, Amount=1, Price=6, "Do you want to buy cheese for %P gold?", Topic=1
+"meat"   -> Type=3577, Amount=1, Price=5, "Do you want to buy meat for %P gold?", Topic=1
+"ham"    -> Type=3582, Amount=1, Price=8, "Do you want to buy a ham for %P gold?", Topic=1
+
+%1,1<%1,"bread"  -> Type=3600, Amount=%1, Price=4*%1, "Do you want to buy %A breads for %P gold?", Topic=1
+%1,1<%1,"cheese" -> Type=3607, Amount=%1, Price=6*%1, "Do you want to buy %A cheese for %P gold?", Topic=1
+%1,1<%1,"meat"   -> Type=3577, Amount=%1, Price=5*%1, "Do you want to buy %A meat for %P gold?", Topic=1
+%1,1<%1,"ham"    -> Type=3582, Amount=%1, Price=8*%1, "Do you want to buy %A ham for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here it is.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "I am sorry, but you do not have enough gold."
+Topic=1                         -> "Maybe later."
+
+"satanic"               -> "Hmm, I have heard of a 'satanic influence' theory by someone called Newton or something like that... Maybe there's more in the Royal Archives."
+"cropwell"              -> "No idea who that is, but maybe you'll find something in the Royal Archives..."
+"alistair"              -> *
+"archives"              -> "Oh, the Royal Archives are in Rain Castle!"
+"dungeon"               -> "Ah yes, the graveyard dungeon. All I know is this riddle: His Grave to the south, the tree above, his soul in the shade. No idea what that means, though!"
+"graveyard"             -> *
+"riddle"                -> "I heard it when I was a child."
+"sunset","homes"        -> "The sunset homes are a block of flats south of the harbour."
+"one","eyed","stranger" -> "Yes, I remember him. His name was Berfasmur."
+"berfasmur"             -> "Sorry, he spoke only very little. I know nothing more about him."
+
+"hengis","wulfson"         -> "He is a great bard. He often graced my hut with his presence, songs, and rhymes. I wonder what happened to him lately.", Topic=2
+Topic=2,"died"             -> "Oh, by the gods! What do you say happened to him?", Topic=3
+Topic=2,"killed"           -> *
+Topic=2,"dead"             -> *
+Topic=2,"death"            -> *
+Topic=2,"slain"            -> *
+Topic=3,"killed","cyclops" -> "That's horrible! I am in grief. I will never hear his songs again. I will even miss that strange rhyme he was obsessed with.", Topic=4
+Topic=3,"slain","cyclops"  -> *
+Topic=3,"cyclops","slay"   -> *
+Topic=3,"cyclops","kill"   -> *
+Topic=4,"rhyme"            -> "He recitated it that often that I learned it by heart myself. I would recitate it, but I am not skilled in that kind of things.", Topic=5
+Topic=5,"recitate"         -> "Uhm. If you insist, but I am so awful. I will stop now and then and wait, so you can tell if I should proceed, ok?", Topic=6
+Topic=6,"yes"              -> "Well ok, but don't blame me. Chhrrr... chhrrrr,... it goes like this... chhrrr: and when the dead feast at midnight...", Topic=7
+Topic=7,"proceed"          -> "... the ancient enemy will no longer guard the place of his unlucky heir and the living will walk the paths of the old way...", Topic=8
+Topic=8,"proceed"          -> "... Death awaits the greedy and the brave alike and many will be mourned until the long lost treasure is unearthed.", Topic=9
+Topic=9,"proceed"          -> "That's all. He recitated it when he was in one of his melancholy moods."
+}

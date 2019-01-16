@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="orc" nameDescription="an orc" race="blood" experience="25" speed="35" manacost="300">
+	<health now="70" max="70" />
+	<look type="5" head="0" body="0" legs="0" feet="0" corpse="4001" />
+	<targetchange interval="1000" chance="0" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="1" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag runonhealth="15" />
+	</flags>
+	<attacks attack="13" skill="22">
+	</attacks>
+	<defenses armor="4" defense="8">
+	</defenses>
+	<voices>
+		<voice sentence="Grak brrretz!" />
+		<voice sentence="Grow truk grrrrr." />
+		<voice sentence="Prek tars, dekklep zurk." />
+	</voices>
+	<loot>
+		<item id="3274" countmax="1" chance="80" /> <!-- an axe -->
+		<item id="3031" countmax="8" chance="850" /> <!-- a gold coin -->
+		<item id="3577" countmax="1" chance="200" /> <!-- meat -->
+		<item id="3273" countmax="1" chance="60" /> <!-- a sabre -->
+		<item id="3378" countmax="1" chance="120" /> <!-- a studded armor -->
+		<item id="3376" countmax="1" chance="90" /> <!-- a studded helmet -->
+		<item id="3426" countmax="1" chance="100" /> <!-- a studded shield -->
+	</loot>
+</monster>

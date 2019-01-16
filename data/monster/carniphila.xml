@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="carniphila" nameDescription="a carniphila" race="venom" experience="150" speed="15" manacost="490">
+	<health now="255" max="255" />
+	<look type="120" head="0" body="0" legs="0" feet="0" corpse="4345" />
+	<targetchange interval="1000" chance="5" />
+	<targetstrategy nearest="70" weakest="0" mostdamage="30" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="40" skill="40" poison="95">
+		<attack name="poison" min="-60" max="-90" range="7" chance="4">
+			<attribute key="shootEffect" value="poison" />
+			<attribute key="areaEffect" value="greenspark" />
+		</attack>
+		<attack name="speed" speedchange="-135" variation="25" duration="30000" range="7" chance="3">
+			<attribute key="shootEffect" value="poison" />
+			<attribute key="areaEffect" value="greenspark" />
+		</attack>
+		<attack name="poison" min="-40" max="-130" radius="3" target="0" chance="9">
+			<attribute key="areaEffect" value="poison" />
+		</attack>
+	</attacks>
+	<defenses armor="26" defense="20">
+	</defenses>
+	<immunities>
+		<immunity outfit="1" />
+		<immunity lifedrain="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<loot>
+		<item id="3728" countmax="1" chance="80" /> <!-- a dark mushroom -->
+		<item id="3031" countmax="30" chance="800" /> <!-- a gold coin -->
+		<item id="3031" countmax="10" chance="400" /> <!-- a gold coin -->
+		<item id="3661" countmax="1" chance="5" /> <!-- a grave flower -->
+		<item id="3582" countmax="1" chance="400" /> <!-- ham -->
+		<item id="3577" countmax="2" chance="700" /> <!-- meat -->
+		<item id="3740" countmax="1" chance="10" /> <!-- a shadow herb -->
+		<item id="3738" countmax="1" chance="5" /> <!-- a sling herb -->
+		<item id="3738" countmax="1" chance="5" /> <!-- a sling herb -->
+	</loot>
+</monster>

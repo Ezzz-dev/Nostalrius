@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raids>
+	<raid name="abdendrielbadgers" repeat="true" margin="60" interval2="600" file="abdendrielbadgers.xml"/>
+	<raid name="abdendrielwolfattack" repeat="true" margin="60" interval2="600" file="abdendrielwolfattack.xml"/>
+	<raid name="ankrahmunscarabinvasion" repeat="false" margin="60" interval2="600" file="ankrahmunscarabinvasion.xml"/>
+	<raid name="carlintowerorcs" repeat="true" margin="60" interval2="600" file="carlintowerorcs.xml"/>
+	<raid name="cavesgrorlam0" repeat="true" margin="60" interval2="600" file="cavesgrorlam0.xml"/>
+	<raid name="cavesgrorlam1" repeat="true" margin="60" interval2="600" file="cavesgrorlam1.xml"/>
+	<raid name="cavesgrorlam2" repeat="true" margin="60" interval2="600" file="cavesgrorlam2.xml"/>
+	<raid name="cavesgrorlam3" repeat="true" margin="60" interval2="600" file="cavesgrorlam3.xml"/>
+	<raid name="cavesgrorlam4" repeat="true" margin="60" interval2="600" file="cavesgrorlam4.xml"/>
+	<raid name="cavesgrorlam5" repeat="true" margin="60" interval2="600" file="cavesgrorlam5.xml"/>
+	<raid name="cormayadwarfattack" repeat="true" margin="60" interval2="600" file="cormayadwarfattack.xml"/>
+	<raid name="darashiaundeadinvasion" repeat="false" margin="60" interval2="600" file="darashiaundeadinvasion.xml"/>
+	<raid name="darashiawaspplague" repeat="true" margin="60" interval2="600" file="darashiawaspplague.xml"/>
+	<raid name="dracoriadieingdragons" repeat="true" margin="60" interval2="600" file="dracoriadieingdragons.xml"/>
+	<raid name="drefianecromancer" repeat="true" margin="60" interval2="600" file="drefianecromancer.xml"/>
+	<raid name="edronorshabaal" repeat="false" margin="60" interval2="600" file="edronorshabaal.xml"/>
+	<raid name="edronskunks" repeat="true" margin="60" interval2="600" file="edronskunks.xml"/>
+	<raid name="foldayetis" repeat="true" margin="60" interval2="600" file="foldayetis.xml"/>
+	<raid name="halloweenhare" repeat="true" margin="60" interval2="600" file="halloweenhare.xml"/>
+	<raid name="kazordoonhornedfox" repeat="true" margin="60" interval2="600" file="kazordoonhornedfox.xml"/>
+	<raid name="kazordoonspiderplague" repeat="true" margin="60" interval2="600" file="kazordoonspiderplague.xml"/>
+	<raid name="mintwalinminogeneral" repeat="true" margin="60" interval2="600" file="mintwalinminogeneral.xml"/>
+	<raid name="mistisledruid" repeat="true" margin="60" interval2="600" file="mistisledruid.xml"/>
+	<raid name="necropolisbeholder" repeat="true" margin="60" interval2="600" file="necropolisbeholder.xml"/>
+	<raid name="northroadoutlaws" repeat="true" margin="60" interval2="600" file="northroadoutlaws.xml"/>
+	<raid name="orclandorc" repeat="true" margin="60" interval2="600" file="orclandorc.xml"/>
+	<raid name="pohdemodras" repeat="true" margin="60" interval2="600" file="pohdemodras.xml"/>
+	<raid name="pohwidow" repeat="true" margin="60" interval2="600" file="pohwidow.xml"/>
+	<raid name="rookgaardrats" repeat="true" margin="60" interval2="600" file="rookgaardrats.xml"/>
+	<raid name="shadowthorndharalion" repeat="true" margin="60" interval2="600" file="shadowthorndharalion.xml"/>
+	<raid name="stonehomeghoulattack" repeat="true" margin="60" interval2="600" file="stonehomeghoulattack.xml"/>
+	<raid name="thaiscaverats" repeat="true" margin="60" interval2="600" file="thaiscaverats.xml"/>
+	<raid name="thaislighthouseorcs" repeat="true" margin="60" interval2="600" file="thaislighthouseorcs.xml"/>
+	<raid name="thaisorcinvasion" repeat="false" margin="60" interval2="600" file="thaisorcinvasion.xml"/>
+	<raid name="venoreelfinvasion" repeat="false" margin="60" interval2="600" file="venoreelfinvasion.xml"/>
+	<raid name="venoreswampelves" repeat="true" margin="60" interval2="600" file="venoreswampelves.xml"/>
+</raids>

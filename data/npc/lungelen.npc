@@ -1,0 +1,17 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# lungelen.npc: Datenbank für die Erzmagierin Lungelen
+
+Name = "Lungelen"
+Outfit = (138,77-19-95-115)
+Home = [32303,32267,6]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Please don't disturb me, I am very busy in my recent researches. Have a nice day!", Idle
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> NOP
+BUSY,"hi$",!       -> NOP
+BUSY,!             -> NOP
+VANISH,!           -> NOP
+}

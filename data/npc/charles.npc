@@ -1,0 +1,92 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# charles.npc: Datenbank für den Kapitän Charles
+
+Name = "Charles"
+Outfit = (134,57-29-95-98)
+Home = [32529,32785,6]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Ahoi."
+ADDRESS,"hi$",!    -> *
+ADDRESS,"hiho$",!    -> *
+ADDRESS,!          -> Idle
+
+BUSY,"hello$",!    -> "Just wait.", Queue
+BUSY,"hi$",!       -> *
+BUSY,"hiho$",!    -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Bye."
+
+"bye"      -> "Bye.", Idle
+"farewell" -> *
+"job"      -> "I am the captain of the Poodle, the proudest ship on all oceans."
+"name"     -> "It's Charles."
+"time"     -> "It is precisely %T."
+"king"     -> "His majesty himself was present at the day the Poodle was launched."
+
+"jungle"   -> "It's a fascinating forest, full of exotic life. If it weren't for my duties, I would spend some time just exploring this jungle."
+
+"tibia"    -> "We live in a fascinating world with even more fascinating oceans. And all its major harbours are known to me." 
+"major","harbour" -> "Well the harbours of thais, venore, carlin, edron, darashia and ankrahmun. Do you have any questions about one of those harbours?", Topic=20
+Topic=20,"venore"   -> "The Venorans build fine ships. Enough said about them."
+Topic=20,"thais"    -> "Thais is the proud capital of the largest kingdom in the known world."
+Topic=20,"carlin"   -> "Rebellious women might be amusing for a while, but it is time for them to stop this nonsense and return to the kingdom."
+Topic=20,"edron"    -> "The coastline of Edron is treacherous and it takes some skills to sail a ship safely into the harbour." 
+Topic=20,"darashia"    -> "An unremarkable little town with a small harbour and quiet people."
+Topic=20,"ankrahmun"   -> "The city is surely worth a look although its inhabitants are somewhat strange and their customs oddish." 
+
+"kazordoon" -> "An inland town of dwarves, somewhere in the middle of nowhere."
+"dwarves"   -> "It's fun to see a seasoned dwarven fighter turnining into a shivering green something as soon as we get a mild breeze on sea." 
+"dwarfs"   -> *
+"ab'dendriel" -> "My visits there were interesting and I learnt a lot about the elves and their city. I can only recommend a visit there and if it is only to admire the amazing architectural style in which the city was built."
+"elves"       -> "Elves are very special creatures. They keep in touch with nature almost like druids. Although I don't really understand their way of life, I think we could learn one or two things of them."
+"elfs"       -> *
+"darama"      -> "I sailed around the whole continent once and I have seen many of its wonders. For sure there are more waiting to be discovered."
+
+"ferumbras"   -> "He is that for the land what giant sea serpents are for the sea."
+"excalibug"   -> "You better ask some knight about it."
+"apes"        -> "I would love to catch a living exemplar and bring it to Thais so the king could see it."
+"lizard"     -> "They have a small settlement in the southeast of the jungle next to the coast. It looks somewhat primitive but there is evidence it was erected only recently."
+"dworcs"      -> "They attacked us when we set our feet on the south shore of the continent. They are poison using savages, nothing more." 
+
+"thais"       -> Price=160, "Do you seek a passage to Thais for %P gold?", Topic=1
+"darashia"    -> Price=180, "Do you seek a passage to Darashia for %P gold?", Topic=2
+"edron"       -> Price=150,  "Do you seek a passage to Edron for %P gold?", Topic=4
+"venore"      -> Price=160, "Do you seek a passage to Venore for %P gold?", Topic=5
+"ankrahmun"   -> Price=110, "Do you seek a passage to Ankrahmun for %P gold?", Topic=6
+
+"thais",QuestValue(250)>2       -> Price=150, "Do you seek a passage to Thais for %P gold?", Topic=1
+"darashia",QuestValue(250)>2    -> Price=170, "Do you seek a passage to Darashia for %P gold?", Topic=2
+"edron",QuestValue(250)>2       -> Price=140,  "Do you seek a passage to Edron for %P gold?", Topic=4
+"venore",QuestValue(250)>2      -> Price=150, "Do you seek a passage to Venore for %P gold?", Topic=5
+"ankrahmun",QuestValue(250)>2   -> Price=100, "Do you seek a passage to Ankrahmun for %P gold?", Topic=6
+
+Topic>0,Topic<8,"yes",PZBlock,! -> "First get rid of those blood stains! You are not going to ruin my vehicle!"
+
+#Topic=2,"yes",PZBlock,! -> "First get rid of those blood stains! You are not going to ruin my vehicle!"
+#Topic=4,"yes",PZBlock,! -> *
+#Topic=5,"yes",PZBlock,! -> *
+#Topic=6,"yes",PZBlock,! -> *
+#Topic=1,"yes",PZBlock,! -> *
+
+
+Topic=1,"yes",Premium,CountMoney>=Price -> "Set the sails!", DeleteMoney, Idle, EffectOpp(11), Teleport(32312,32211,6), EffectOpp(11)
+Topic=2,"yes",Premium,CountMoney>=Price -> "Set the sails!", DeleteMoney, Idle, EffectOpp(11), Teleport(33290,32481,6), EffectOpp(11)
+Topic=4,"yes",Premium,CountMoney>=Price -> "Set the sails!", DeleteMoney, Idle, EffectOpp(11), Teleport(33175,31764,6), EffectOpp(11)
+Topic=5,"yes",Premium,CountMoney>=Price -> "Set the sails!", DeleteMoney, Idle, EffectOpp(11), Teleport(32954,32023,6), EffectOpp(11)
+Topic=6,"yes",Premium,CountMoney>=Price -> "Set the sails!", DeleteMoney, Idle, EffectOpp(11), Teleport(33091,32883,6), EffectOpp(11)
+Topic>0,"yes",CountMoney>=Price         -> "I'm sorry, but you need a premium account in order to travel on board of our ships."
+Topic>0,"yes"                           -> "You don't have enough money."
+Topic>0                                 -> "We would like to serve you some time."
+
+"passenger"    -> "We would like to welcome you on board."
+"trip"         -> "Where do you want to go? To Thais, Darashia, Venore, Ankrahmun or Edron?"
+"route"        -> *
+"passage"      -> *
+"town"         -> *
+"destination"  -> *
+"sail"         -> *
+"go"           -> *
+
+}

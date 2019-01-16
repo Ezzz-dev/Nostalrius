@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="1000" type="event" message="Badgers in Ab'Dendriel!"/>
+	<areaspawn delay="1000" radius="6" centerx="32681" centery="31598" centerz="7">
+		<monster name="badger" minamount="9" maxamount="18"/>
+	</areaspawn>
+	<areaspawn delay="1000" radius="6" centerx="32671" centery="31623" centerz="7">
+		<monster name="badger" minamount="9" maxamount="18"/>
+	</areaspawn>
+	<areaspawn delay="1000" radius="6" centerx="32644" centery="31647" centerz="7">
+		<monster name="badger" minamount="9" maxamount="18"/>
+	</areaspawn>
+	<areaspawn delay="1000" radius="6" centerx="32680" centery="31650" centerz="7">
+		<monster name="badger" minamount="9" maxamount="18"/>
+	</areaspawn>
+	<areaspawn delay="1000" radius="6" centerx="32648" centery="31685" centerz="7">
+		<monster name="badger" minamount="9" maxamount="18"/>
+	</areaspawn>
+	<areaspawn delay="1000" radius="6" centerx="32684" centery="31700" centerz="7">
+		<monster name="badger" minamount="9" maxamount="18"/>
+	</areaspawn>
+	<areaspawn delay="1000" radius="6" centerx="32696" centery="31652" centerz="7">
+		<monster name="badger" minamount="9" maxamount="18"/>
+	</areaspawn>
+</raid>

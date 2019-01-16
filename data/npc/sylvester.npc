@@ -1,0 +1,11 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# sylvester.npc: Datenbank für eine Stadtwache in Venore
+
+Name = "Sylvester"
+Outfit = (131,113-113-113-115)
+Home = [32897,32145,4]
+Radius = 3
+
+Behaviour = {
+@"guards-venore.ndb"
+}

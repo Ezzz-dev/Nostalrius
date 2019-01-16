@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="fire devil" nameDescription="a fire devil" race="blood" experience="110" speed="50" manacost="530">
+	<health now="200" max="200" />
+	<look type="40" head="0" body="0" legs="0" feet="0" corpse="4067" />
+	<targetchange interval="1000" chance="50" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="4" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="22" skill="30">
+		<attack name="fire" min="-60" max="-90" range="7" radius="4" target="1" chance="9">
+			<attribute key="shootEffect" value="fire" />
+			<attribute key="areaEffect" value="firearea" />
+		</attack>
+		<attack name="fire" min="-20" max="-50" range="7" radius="2" target="1" chance="4">
+			<attribute key="shootEffect" value="fire" />
+			<attribute key="areaEffect" value="firearea" />
+		</attack>
+	</attacks>
+	<defenses armor="13" defense="15">
+	</defenses>
+	<immunities>
+		<immunity fire="1" />
+	</immunities>
+	<voices>
+		<voice sentence="Hot, eh?" />
+		<voice sentence="Hell, oh hell!" />
+	</voices>
+	<loot>
+		<item id="3147" countmax="1" chance="110" /> <!-- a blank rune -->
+		<item id="3471" countmax="1" chance="90" /> <!-- a cleaver -->
+		<item id="3275" countmax="1" chance="15" /> <!-- a double axe -->
+		<item id="3415" countmax="1" chance="2" /> <!-- a guardian shield -->
+		<item id="3451" countmax="1" chance="500" /> <!-- a pitchfork -->
+		<item id="3307" countmax="1" chance="60" /> <!-- a scimitar -->
+		<item id="3033" countmax="1" chance="3" /> <!-- a small amethyst -->
+		<item id="2920" countmax="2" chance="150" /> <!-- a torch -->
+		<item id="3069" countmax="1" chance="5" /> <!-- a volcanic rod -->
+	</loot>
+</monster>

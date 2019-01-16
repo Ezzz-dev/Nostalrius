@@ -1,0 +1,134 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# maealil.npc: Datenbank für die Mystikerin Maealil (Elfenstadt)
+
+Name = "Maealil"
+Outfit = (63,0-0-0-0)
+Home = [32732,31631,7]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$",!       -> "Ashari, %N."
+ADDRESS,"hi$",!          -> *
+ADDRESS,"ashari$",!      -> *
+ADDRESS,!                -> Idle
+BUSY,"hello$",!          -> "Sorry, please wait a moment %N.", Queue
+BUSY,"hi$",!             -> *
+BUSY,"ashari$",!         -> *
+BUSY,!                   -> NOP
+VANISH,!                 -> "Asha Thrazi, traveller."
+
+"bye"           -> "Asha Thrazi, traveller.", Idle
+"asha","thrazi" -> *
+"farewell"      -> *
+"job"           -> "I am a mystic."
+"name"          -> "I am known as Maealil."
+"time"          -> "I don't own one of those little machines."
+"mystic"        -> "I am a philosopher and healer."
+
+"elves"         -> "We are an ancient race, abandoned by the gods and doomed to find our way alone."
+"dwarfs"        -> "They cultivate earth but don't understand it."
+"humans"        -> "They are somewhat orcish in their nature." 
+"troll"         -> "I don't think it's a good idea to keep servants." 
+
+"cenath"        -> "My parents were Deraisim but joined the Cenath caste before my birth."
+"kuridai"       -> "I hope they don't do something foolish one day."
+"deraisim"      -> "Unfortunately they are to busy to care for the finer things in life."
+"abdaisim"      -> "They should join our town for their and our own safety." 
+"teshial"       -> "I would love to learn more about the Teshial." 
+"dream"         -> *
+"ferumbras"     -> "Only another servant of evil."
+"crunor"        -> "The great tree is the beginning for all things living and Priyla helps us to understand that." 
+"priyla"        -> "The daughter of the stars gives us knowledge and teaches us magic."
+
+"excalibug"     -> "Is that a new kind of bug the Deraisim found?"
+"news"          -> "I don't know anything of importance."
+
+"magic"         -> "I can heal you or even teach you some spells of healing."
+"druid"         -> "Druids are great healers."
+"sorcerer"      -> "They understand so few..."
+"spellbook"     -> "I have none here."
+"spell"         -> "I teach the spells 'Light Healing', 'Antidote', 'Antidote Rune', 'Intense Healing', 'Intense Healing Rune, 'Ultimate Healing', and 'Ultimate Healing Rune'."
+
+Druid,"light","healing"           -> String="Light Healing", Price=170,  "Do you want to buy the spell 'Light Healing' for %P gold?", Topic=3
+Druid,"antidote"                  -> String="Antidote", Price=150,  "Do you want to buy the spell 'Antidote' for %P gold?", Topic=3
+Druid,"intense","healing"         -> String="Intense Healing", Price=350,  "Do you want to buy the spell 'Intense Healing' for %P gold?", Topic=3
+Druid,"intense","healing","rune"  -> String="Intense Healing Rune", Price=600,  "Do you want to buy the spell 'Intense Healing Rune' for %P gold?", Topic=3
+Druid,"antidote","rune"           -> String="Antidote Rune", Price=600,  "Do you want to buy the spell 'Antidote Rune' for %P gold?", Topic=3
+Druid,"ultimate","healing"        -> String="Ultimate Healing", Price=1000, "Do you want to buy the spell 'Ultimate Healing' for %P gold?", Topic=3
+Druid,"ultimate","healing","rune" -> String="Ultimate Healing Rune", Price=1500, "Do you want to buy the spell 'Ultimate Healing Rune' for %P gold?", Topic=3
+
+Paladin,"light","healing"    -> String="Light Healing", Price=170,  "Do you want to buy the spell 'Light Healing' for %P gold?", Topic=3
+Paladin,"antidote"           -> String="Antidote", Price=150,  "Do you want to buy the spell 'Antidote' for %P gold?", Topic=3
+Paladin,"intense","healing"  -> String="Intense Healing", Price=350,  "Do you want to buy the spell 'Intense Healing' for %P gold?", Topic=3
+Paladin,"ultimate","healing" -> String="Ultimate Healing", Price=1000, "Do you want to buy the spell 'Ultimate Healing' for %P gold?", Topic=3
+
+"light","healing"           -> "I'm sorry, but this spell is only for druids and paladins."
+"antidote"                  -> *
+"intense","healing"         -> *
+"ultimate","healing"        -> *
+"intense","healing","rune"  -> "I'm sorry, but this spell is only for druids."
+"antidote","rune"           -> *
+"ultimate","healing","rune" -> *
+
+Topic=3,"yes",SpellKnown(String)=1        -> "You already know that spell."
+Topic=3,"yes",Level<SpellLevel(String)    -> Amount=SpellLevel(String), "You need to advance to level %A to learn this spell."
+Topic=3,"yes",CountMoney<Price            -> "You do not have enough gold to pay my services."
+Topic=3,"yes"                             -> "From now on you can cast this spell.", DeleteMoney, EffectOpp(13), TeachSpell(String)
+Topic=3                                   -> "As you wish."
+
+"heal$",Burning>0 -> "You are burning. I will help you.", Burning(0,0), EffectOpp(15)
+"heal$",Poison>0  -> "You are poisoned. I will help you.", Poison(0,0), EffectOpp(14)
+"heal$",HP<40     -> "You are looking really bad. Let me heal your wounds.", HP=40, EffectOpp(13)
+
+
+"blessing",PvPEnforced,!  -> "The lifeforce of this world is waning. There are no more blessings avaliable on this world."
+"pilgrimage",PvPEnforced,! -> *
+"ashes",PvPEnforced,! -> *
+
+"spiritual",PvPEnforced,! -> *
+"shielding",PvPEnforced,! -> *
+"sacred","places",PvPEnforced,! -> *
+"spark",PvPEnforced,! -> *
+"phoenix",PvPEnforced,! -> *
+"embrace",PvPEnforced,! -> *
+"fire",PvPEnforced,! -> *
+"suns",PvPEnforced,! -> *
+"wisdom",PvPEnforced,! -> *
+"solitude",PvPEnforced,! -> *
+
+
+"pilgrimage"     -> "Whenever you receive a lethal wound your lifeforce is damaged. With every single of the five blessings you have this damage will be reduced."
+"ashes"          -> *
+
+
+"blessing",PvPEnforced  -> "The lifforce of this world is wannig. There are no more blessings avaliable on this world."
+
+"blessing"  -> "There are five different blessings available in five sacred places. These blessings are: the spiritual shielding, the spark of the phoenix, the embrace of tibia, the fire of the suns and the wisdom of solitude." 
+"sacred","places"  -> "Just ask in which of the five blessings you are interested in."
+
+"spiritual", QuestValue(104) > 0 -> "I see you received the spiritual shielding in the whiteflower temple south of Thais."
+"shielding", QuestValue(104) > 0 -> *
+"spiritual" -> "You can receive the spiritual shielding in the whiteflower temple south of Thais."
+"shielding" -> *
+
+"spark", QuestValue(102) > 0 -> "I an sense that the spark of the phoenix already was given to you by the dwarven priests of earth and fire in Kazordoon."
+"phoenix", QuestValue(102) > 0 -> *
+"spark" -> "The spark of the phoenix is given by the dwarven priests of earth and fire in Kazordoon."
+"phoenix" -> *
+
+"embrace", QuestValue(105) > 0 -> "I can sense the druids north of Carlin provided you with the embrace of tibia."
+"embrace" -> "The druids north of Carlin can provide you with the embrace of tibia."
+
+"fire","suns", QuestValue(103) > 0     -> "I can see you recieved the blessing of the two suns in the suntower near Ab'Dendriel ."
+"suns", QuestValue(103) > 0  -> *
+"fire","suns"     -> "Ask for the blessing of the two suns in the suntower near Ab'Dendriel ."
+"suns"  -> *
+
+
+"wisdom", QuestValue(101) > 0 -> "I can sense you already talked to the hermit Eremo on the isle of Cormaya and recieved this blessing." 
+"solitude", QuestValue(101) > 0 -> *
+"wisdom" -> "Talk to the hermit Eremo on the isle of Cormaya about this blessing." 
+"solitude" -> *
+
+
+}

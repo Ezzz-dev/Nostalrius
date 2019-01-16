@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="4000" type="event" message="Yetis on Folda!"/>
+	<areaspawn delay="4000" lifetime="3600000" radius="10" centerx="32006" centery="31596" centerz="7">
+		<monster name="yeti" minamount="1" maxamount="3"/>
+	</areaspawn>
+</raid>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="gargoyle" nameDescription="a gargoyle" race="undead" experience="150" speed="60" manacost="0">
+	<health now="250" max="250" />
+	<look type="95" head="0" body="0" legs="0" feet="0" corpse="4203" />
+	<targetchange interval="1000" chance="5" />
+	<targetstrategy nearest="70" weakest="0" mostdamage="30" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag runonhealth="30" />
+	</flags>
+	<attacks attack="24" skill="45">
+	</attacks>
+	<defenses armor="26" defense="30">
+		<defense name="healing" min="5" max="15" chance="10">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity fire="1" />
+		<immunity lifedrain="1" />
+		<immunity poison="1" />
+	</immunities>
+	<voices>
+		<voice sentence="Harrrr Harrrr!" />
+		<voice sentence="Stone sweet stone." />
+		<voice sentence="Feel my claws, softskin." />
+		<voice sentence="Chhhhhrrrrk!" />
+		<voice sentence="There is a stone in your shoe!" />
+	</voices>
+	<loot>
+		<item id="3413" countmax="1" chance="15" /> <!-- a battle shield -->
+		<item id="3093" countmax="1" chance="1" /> <!-- a club ring -->
+		<item id="3383" countmax="1" chance="2" /> <!-- a dark armor -->
+		<item id="3031" countmax="10" chance="700" /> <!-- a gold coin -->
+		<item id="3031" countmax="20" chance="400" /> <!-- a gold coin -->
+		<item id="3582" countmax="2" chance="200" /> <!-- ham -->
+		<item id="3577" countmax="1" chance="500" /> <!-- meat -->
+		<item id="3282" countmax="1" chance="10" /> <!-- a morning star -->
+		<item id="1781" countmax="10" chance="100" /> <!-- a small stone -->
+		<item id="3351" countmax="1" chance="2" /> <!-- a steel helmet -->
+		<item id="3336" countmax="1" chance="80" /> <!-- a studded club -->
+		<item id="3012" countmax="1" chance="2" /> <!-- a wolf tooth chain -->
+	</loot>
+</monster>

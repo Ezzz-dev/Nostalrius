@@ -1,0 +1,53 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# ferrymanJack.npc: Fährmann Jack auf der Mönchsinsel
+
+Name = "Captain Jack"
+Outfit = (132,19-70-95-115)
+Home = [32189,31957,6]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",QuestValue(220)>0,!   -> "By the gods! You must be that intruder the good brothers were talking about! Begone!",Idle
+BUSY,"hello$",QuestValue(220)>0,!      -> *
+ADDRESS,"hi$",QuestValue(220)>0,!      -> *
+BUSY,"hi$",QuestValue(220)>0,!         -> *
+
+ADDRESS,"hello$",!   -> "Ahoy, matey. You are lucky to catch me here. I was preparing to set sail."
+ADDRESS,"hi$",!      -> *
+ADDRESS,!                 -> Idle
+BUSY,"hello$",!           -> "One moment please, %N.", Queue
+BUSY,"hi$",!              -> *
+BUSY,!                    -> NOP
+VANISH,!                  -> "Good bye. You are welcome."
+
+"bye"          -> "Good bye. You are welcome.", Idle
+"farewell"     -> *
+"name"         -> "I'm m ol' Captain Jack."
+"job"          -> "I work as a kind of ferryman. I transport wares and travellers for the monks."
+"sail"         -> *
+"captain"      -> *
+"ship"         -> "All right she's small. But she's a real beauty, don't you think?"
+"ferry"        -> *
+"wares"        -> "They always need provisions from the cities, and they sell their wine there."
+"traveller"     -> "Sometimes pilgrims come to this place. And now and then a monk leaves the monastery for some time."
+"trip"         -> "Where do you want to go today?"
+"passage"      -> "If you have the abbot's permission, I can take you to the home of a local fisherman on the continent Tibia. We can't sail to Carlin though."
+"carlin"       -> "For some obscure political reason the monks never sail to Carlin or Thais directly."
+"island"       -> "This is the isle of the kings. All the great Tibian leaders have found their final rest here under the monastery."
+"monastery"    -> "The white raven monastery is a place of wisdom and contemplation, or so the monks say. Sounds like a pretty boring place to me! HAR HAR!"
+"monk"         -> "The order of the white raven."
+"white","raven" -> "I prefer parrots. And monkeys! And snakes! HAR! HAR!"
+"continent",QuestValue(62)=2 -> Price=20, "Friends of Dalbrect are my friends too! So you are looking for a passage to the continent for %P gold?", Topic=1
+"tibia",QuestValue(62)=2 -> *
+"continent",QuestValue(62)=1 -> Price=20, "Do you want a passage to the continent for %P gold?", Topic=1
+"continent",QuestValue(62)<1 -> "Without the abbots permission I won't take sail you anywhere! Go and ask him for a passage first."
+"tibia",QuestValue(62)=1 -> Price=20, "Tibia is the main continent. Do you want a passage to the continent for %P gold?", Topic=1
+"tibia",QuestValue(62)<1 -> "Without the abbots permission I won't take you anywhere! Go and ask him for a passage first."
+
+Topic=1,"yes",PZBlock,! -> "First get rid of those blood stains! You are not going to ruin my vehicle!"
+
+Topic=1,"yes",CountMoney>=Price -> "Have a nice trip!", DeleteMoney, Idle, EffectOpp(11), Teleport(32205,31756,6), EffectOpp(11)
+Topic=1,"yes"                   -> "You don't have enough money."
+Topic=1                         -> "Well, I'll be here if you change your mind."
+
+}

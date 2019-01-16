@@ -1,0 +1,84 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# eroth.npc: Datenbank für den Cenath-Anführer Eroth (Elfenstadt)
+
+Name = "Eroth"
+Outfit = (63,0-0-0-0)
+Home = [32661,31685,6]
+Radius = 4
+
+Behaviour = {
+ADDRESS,"hello$",!       -> "I greet thee, outsider."
+ADDRESS,"hi$",!          -> *
+ADDRESS,"ashari$",!      -> *
+ADDRESS,!                -> Idle
+BUSY,"hello$",!          -> "Silence!"
+BUSY,"hi$",!             -> *
+BUSY,"ashari$",!         -> *
+BUSY,!                   -> NOP
+VANISH,!                 -> "Asha Thrazi."
+
+"bye"           -> "Asha Thrazi. Go, where you have to go.", Idle
+"farewell"      -> *
+"asha","thrazi" -> *
+"job"           -> "I am the leader of the Cenath caste."
+"name"          -> "My name is Eroth Ramathi."
+"time"          -> "That is a inferior concept invented by the minor races."
+
+"carlin"        -> "Their druids seek my counsel quite often. I provide them with as many insights their little minds can keep up with and I feel appropriate."
+"thais"         -> "A city of filth and dirt. Any elf should visit this city at least once to see what a society without good guidance can become."
+"venore"        -> "The merchants of venore have prooven usefull and are therefore tolerated."
+"roderick"      -> "A stupid human who won't comprehend our complex society."
+"olrik"         -> "A human who dreams to become an elf. It would be funny if it were not that pathetic."
+
+"king"          -> "Our people have no use for kings or queens."
+"tibianus"      -> *
+"elves"         -> "Our people are the children of light and darkness, the heirs of dusk and dawn."
+"dwarfs"        -> "The diggers are not welcome in our realm."
+"humans"        -> "We tolerate them and allow them to be used by us." 
+"troll"         -> "The Kuridai have the distasteful habit to keep some trolls for inferior work."
+"army"          -> "Stop this Kuridai nonsense."
+"cenath"        -> "We are the shepherds of our people. The other castes need our guidance."
+"kuridai"       -> "The Kuridai are aggressive and victims of their instincts. Without our help they would surely die in a foolish war."
+"deraisim"      -> "They lack the understanding of unity. We are keeping them together and prevent them from being slaughtered one by one."
+"abdaisim"      -> "They are fools and almost deserve the extinction that awaits them. Though we will take it upon us to rescue even them by leading them home." 
+"teshial"       -> "They are gone. They alone were almost equal to us Cenath among elvenkind."
+"dreamer"       -> "The Teshial were masters of the so called dream magic." 
+"dream","master"-> "The dream masters, though overestimated, wielded some impressive power without much practical use."
+"dreammaster"   -> *
+"ferumbras"     -> "A human born evil. Another evidence of the destructive potential of that race."
+"crunor"        -> "Gods are for the weak. We will master the world on our own. We need no gods." 
+"excalibug"     -> "Just another human myth."
+"news"          -> "I heared the new human settlement in the west became independent from the human empire."
+
+"magic"         -> "Magic comes almost naturally to the Cenath. We keep the secrets of ages."
+"druid"         -> "Druids master spells of defence, healing, and nature."
+"sorcerer"      -> "Sorcerers are not attuned to nature and therefore can't master it."
+"vocation"      -> "You are narrow minded to think in such boundaries."
+"spellbook"     -> "Cenath rarely use spellbooks. The minor castes rely on them though."
+"spell"         -> "I can teach the spells 'Magic Shield', 'Invisible', 'Destroy Field', 'Creature Illusion', 'Chameleon', 'Convince Creature', and 'Summon Creature'."
+
+Paladin,"magic","shield"          -> String="Magic Shield", Price=450,  "Do you want to buy the spell 'Magic Shield' for %P gold?", Topic=3
+Paladin,"destroy","field"         -> String="Destroy Field", Price=700,  "Do you want to buy the spell 'Destroy Field' for %P gold?", Topic=3
+Paladin,"invisible"               -> String="Invisible", Price=2000, "Do you want to buy the spell 'Invisible' for %P gold?", Topic=3
+
+Druid,"magic","shield"            -> String="Magic Shield", Price=450,  "Do you want to buy the spell 'Magic Shield' for %P gold?", Topic=3
+Druid,"destroy","field"           -> String="Destroy Field", Price=700,  "Do you want to buy the spell 'Destroy Field' for %P gold?", Topic=3
+Druid,"chameleon"                 -> String="Chameleon", Price=1300, "Do you want to buy the spell 'Chameleon' for %P gold?", Topic=3
+Druid,"creature","illusion"       -> String="Creature Illusion", Price=1000, "Do you want to buy the spell 'Creature Illusion' for %P gold?", Topic=3
+Druid,"convince","creature"       -> String="Convince Creature", Price=800, "Do you want to buy the spell 'Convince Creature' for %P gold?", Topic=3
+Druid,"summon","creature"         -> String="Summon Creature", Price=2000, "Do you want to buy the spell 'Summon Creature' for %P gold?", Topic=3
+Druid,"invisible"                 -> String="Invisible", Price=2000, "Do you want to buy the spell 'Invisible' for %P gold?", Topic=3
+
+"magic","shield"      -> "I'm sorry, but this spell is only for druids and paladins."
+"destroy","field"     -> *
+"chameleon"           -> "I'm sorry, but this spell is only for druids." 
+"creature","illusion" -> *
+"convince","creature" -> *
+"summon","creature"   -> *
+
+Topic=3,"yes",SpellKnown(String)=1        -> "You already know that spell."
+Topic=3,"yes",Level<SpellLevel(String)    -> Amount=SpellLevel(String), "You need to advance to level %A to learn this spell."
+Topic=3,"yes",CountMoney<Price            -> "You do not have enough gold to pay my services."
+Topic=3,"yes"                             -> "From now on you can cast this spell.", DeleteMoney, EffectOpp(13), TeachSpell(String)
+Topic=3                                   -> "I thought so."
+}

@@ -1,0 +1,141 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# perod.npc: Datenbank für den Händler Perod
+
+Name = "Perod"
+Outfit = (128,58-68-12-114)
+Home = [32635,32739,5]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Greetings, dear %N. What do you need?"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Please wait a moment, %N. I am already talking to someone.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Good bye."
+
+"bye"       -> "Good bye.", Idle
+"farewell"  -> *
+"job"      -> "I sell general goods which are, if I am allowed to say that, crucial when you explore the jungle."
+"name"     -> "I am Perod, how could you forget that, %N? We fought back-to-back in those troll caves on Rookgard a long time ago."
+"time"     -> "I won't tell you, but you can buy one of my quality watches to find out."
+"king"     -> "The king is far away and yet we are still his subjects. Strange, isn't it?"
+"venore"   -> "After I had left Thais I found a new home in Venore and I never regreted it."
+"thais"    -> "Thais lacked any prospect for a change. I quickly figured out that Venore is the place to be."
+"carlin"   -> "Carlin is a dull city with strange habits."
+"edron"    -> "I lived in Edron as a treasure hunter for a while, but then the place became too crowded." 
+"jungle"   -> "The jungle is full of adventures and secrets that wait to be explored. Some years ago I would have surely enjoyed that. ...",
+              "But now that I setteled down here, I don't feel excited anymore by the thought of exploring an inhospitable forest full of animals that want to kill me."
+
+"tibia"    -> "I have travelled a lot and still I have not seen everything. So I abandoned my life as an explorer and became an employee of a trading company domiciled in Venore." 
+
+"kazordoon" -> "The hidden city of the dwarves can be quite confusing for a newcomer. I got lost there a dozen times before I became familiar with that city."
+"dwarves"   -> "Some dwarves live in the city, you'll find them in the tavern." 
+"dwarfs"    -> *
+"ab'dendriel" -> "The elves of Ab'Dendriel built a city seemingly out of trees. I wonder how they can stand the winter in those odd houses."
+"elves"       -> *
+"elfs"       -> *
+"darama"      -> "A new continent means new chances. But my days as an adventurer are over. My new chances lie in trade and commerce."
+"darashia"    -> "My trips there were very short, I don't like the desert and I did not like that town."
+"ankrahmun"   -> "It's one of the few cities I have never visited and no one will ever get me even close to that city of undeads and mummies." 
+"ferumbras"   -> "During my days as an adventurer, I was thrilled by the thought to fight him. Looking back I must say it is better that I have never met him."
+"excalibug"   -> "Oh boy, how long have we searched for that weapon. I still wonder sometimes where it might be hidden, but I have no clue."
+"apes"        -> "Their occasional raids give me a chance to train my fighting skills."
+"lizard"    -> "I bet those lizards hide some ancient treasures in their settlements."
+"dworcs"     -> "It's the jungle variant of the orcs. I guess no matter where you go, there is always some orc waiting behind some bush, ready to thrust his blade in your body." 
+
+
+"offer"           -> "I offer fishing rods, sixpacks of worms, shovels, picks, scythes, bags, ropes, backpacks, plates, jugs, mugs, cups, bottles, buckets, scrolls, documents, parchments, footballs, watches, books, torches, machetes, presents and ammunition."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"equipment"       -> *
+
+
+"magic"      -> "Ask somwhere else in the market."
+"fluid"      -> *
+
+"book"       -> "I offer different kind of books: brown, black and small books. Which book do you want?"
+
+"torch"         -> Type=2920, Amount=1,  Price=2,    "Do you want to buy a torch for %P gold?", Topic=1
+"bag"           -> Type=2864, Amount=1,  Price=5,    "Do you want to buy a bag for %P gold?", Topic=1
+"backpack"      -> Type=2872, Amount=1,  Price=20,   "Do you want to buy a backpack for %P gold?", Topic=1
+"present"       -> Type=2856, Amount=1,  Price=10,   "Do you want to buy a present for %P gold?", Topic=1
+"scroll"        -> Type=2815, Amount=1,  Price=5,    "Do you want to buy a scroll for %P gold?", Topic=1
+"document"      -> Type=2834, Amount=1,  Price=12,   "Do you want to buy a document for %P gold?", Topic=1
+"parchment"     -> Type=2835, Amount=1,  Price=8,    "Do you want to buy a parchment for %P gold?", Topic=1
+"brown","book"  -> Type=2837, Amount=1,  Price=15,   "Do you want to buy a brown book for %P gold?", Topic=1
+"black","book"  -> Type=2838, Amount=1,  Price=15,   "Do you want to buy a black book for %P gold?", Topic=1
+"small","book"  -> Type=2839, Amount=1,  Price=15,   "Do you want to buy a small book for %P gold?", Topic=1
+"bucket"        -> Type=2873, Amount=1,  Price=4,    "Do you want to buy a bucket for %P gold?", Topic=1
+"bottle"        -> Type=2875, Amount=1,  Price=3,    "Do you want to buy a bottle for %P gold?", Topic=1
+"mug"           -> Type=2880, Amount=1,  Price=4,    "Do you want to buy a mug for %P gold?", Topic=1
+"cup"           -> Type=2881, Amount=1,  Price=2,    "Do you want to buy a cup for %P gold?", Topic=1
+"jug"           -> Type=2882, Amount=1,  Price=10,   "Do you want to buy a jug for %P gold?", Topic=1
+"plate"         -> Type=2905, Amount=1,  Price=6,    "Do you want to buy a plate for %P gold?", Topic=1
+"watch"         -> Type=2906, Amount=1,  Price=20,   "Do you want to buy one of my high quality watches for %P gold?", Topic=1
+"football"      -> Type=2990, Amount=1,  Price=111,  "Do you want to buy a football for %P gold?", Topic=1
+"rope"          -> Type=3003, Amount=1,  Price=50,   "Do you want to buy a rope for %P gold?", Topic=1
+"machete"       -> Type=3308, Amount=1,  Price=40,   "Do you want to buy a machete for %P gold?", Topic=1
+"scythe"        -> Type=3453, Amount=1,  Price=50,   "Do you want to buy a scythe for %P gold?", Topic=1
+"pick"          -> Type=3456, Amount=1,  Price=50,   "Do you want to buy a pick for %P gold?", Topic=1
+"shovel"        -> Type=3457, Amount=1,  Price=50,   "Do you want to buy a shovel for %P gold?", Topic=1
+"rod"           -> Type=3483, Amount=1,  Price=150,  "Do you want to buy a fishing rod for %P gold?", Topic=1
+
+%1,1<%1,"torch"         -> Type=2920, Amount=%1,  Price=2*%1,    "Do you want to buy %A torches for %P gold?", Topic=1
+%1,1<%1,"bag"           -> Type=2864, Amount=%1,  Price=5*%1,    "Do you want to buy %A bags for %P gold?", Topic=1
+%1,1<%1,"backpack"      -> Type=2872, Amount=%1,  Price=20*%1,   "Do you want to buy %A backpacks for %P gold?", Topic=1
+%1,1<%1,"present"       -> Type=2856, Amount=%1,  Price=10*%1,   "Do you want to buy %A presents for %P gold?", Topic=1
+%1,1<%1,"scroll"        -> Type=2815, Amount=%1,  Price=5*%1,    "Do you want to buy %A scrolls for %P gold?", Topic=1
+%1,1<%1,"document"      -> Type=2834, Amount=%1,  Price=12*%1,   "Do you want to buy %A documents for %P gold?", Topic=1
+%1,1<%1,"parchment"     -> Type=2835, Amount=%1,  Price=8*%1,    "Do you want to buy %A parchments for %P gold?", Topic=1
+%1,1<%1,"brown","book"  -> Type=2837, Amount=%1,  Price=15*%1,   "Do you want to buy %A brown books for %P gold?", Topic=1
+%1,1<%1,"black","book"  -> Type=2838, Amount=%1,  Price=15*%1,   "Do you want to buy %A black books for %P gold?", Topic=1
+%1,1<%1,"small","book"  -> Type=2839, Amount=%1,  Price=15*%1,   "Do you want to buy %A small books for %P gold?", Topic=1
+%1,1<%1,"bucket"        -> Type=2873, Amount=%1,  Price=4*%1,    "Do you want to buy %A buckets for %P gold?", Topic=1
+%1,1<%1,"bottle"        -> Type=2875, Amount=%1,  Price=3*%1,    "Do you want to buy %A bottles for %P gold?", Topic=1
+%1,1<%1,"mug"           -> Type=2880, Amount=%1,  Price=4*%1,    "Do you want to buy %A mugs for %P gold?", Topic=1
+%1,1<%1,"cup"           -> Type=2881, Amount=%1,  Price=2*%1,    "Do you want to buy %A cups for %P gold?", Topic=1
+%1,1<%1,"jug"           -> Type=2882, Amount=%1,  Price=10*%1,   "Do you want to buy %A jugs for %P gold?", Topic=1
+%1,1<%1,"plate"         -> Type=2905, Amount=%1,  Price=6*%1,    "Do you want to buy %A plates for %P gold?", Topic=1
+%1,1<%1,"watch"         -> Type=2906, Amount=%1,  Price=20*%1,   "Do you want to buy %A of my high quality watches for %P gold?", Topic=1
+%1,1<%1,"football"      -> Type=2990, Amount=%1,  Price=111*%1,  "Do you want to buy %A footballs for %P gold?", Topic=1
+%1,1<%1,"rope"          -> Type=3003, Amount=%1,  Price=50*%1,   "Do you want to buy %A ropes for %P gold?", Topic=1
+%1,1<%1,"machete"       -> Type=3308, Amount=%1,  Price=40*%1,   "Do you want to buy %A machetes for %P gold?", Topic=1
+%1,1<%1,"scythe"        -> Type=3453, Amount=%1,  Price=50*%1,   "Do you want to buy %A scythes for %P gold?", Topic=1
+%1,1<%1,"pick"          -> Type=3456, Amount=%1,  Price=50*%1,   "Do you want to buy %A picks for %P gold?", Topic=1
+%1,1<%1,"shovel"        -> Type=3457, Amount=%1,  Price=50*%1,   "Do you want to buy %A shovels for %P gold?", Topic=1
+%1,1<%1,"rod"           -> Type=3483, Amount=%1,  Price=150*%1,  "Do you want to buy %A fishing rods for %P gold?", Topic=1
+
+"worm"          -> "I sell worms only in sixpacks for 5 gold each, how many sixpacks of worms would you like to buy?"
+"worms"         -> *
+%1,"worms"      -> Type=3492, Amount=%1*6, Price=5*%1,   "So you want to buy some of my sixpacks with altogether %A worms for %P gold?", Topic=1
+%1,"six","pack" -> *
+
+Topic=1,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Come back, when you have enough money."
+Topic=1                         -> "Hmm, but next time."
+
+
+"ammo"            -> "Do you need arrows for a bow, or bolts for a crossbow?"
+"ammunition"      -> *
+
+"sell","bow"      -> "I don't buy used bows."
+"sell","crossbow" -> "I don't buy used crossbows."
+
+"bow"             -> Type=3350, Amount=1,  Price=400,  "Do you want to buy a bow for %P gold?", Topic=2
+"crossbow"        -> Type=3349, Amount=1,  Price=500,  "Do you want to buy a crossbow for %P gold?", Topic=2
+"arrow"           -> Type=3447, Amount=1, Price=2,   "Do you want to buy an arrow for %P gold?", Topic=2
+"bolt"            -> Type=3446, Amount=1, Price=3,   "Do you want to buy a bolt for %P gold?", Topic=2
+
+%1,1<%1,"bow"          -> Type=3350, Amount=%1, Price=400*%1, "Do you want to buy %A bows for %P gold?", Topic=2
+%1,1<%1,"crossbow"     -> Type=3349, Amount=%1, Price=500*%1, "Do you want to buy %A crossbows for %P gold?", Topic=2
+%1,1<%1,"arrow"        -> Type=3447, Amount=%1, Price=2*%1,   "Do you want to buy %A arrows for %P gold?", Topic=2
+%1,1<%1,"bolt"         -> Type=3446, Amount=%1, Price=3*%1,   "Do you want to buy %A bolts for %P gold?", Topic=2
+
+Topic=2,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=2,"yes"                   -> "Come back when you have enough money."
+Topic=2                         -> "Hmm, but next time."
+
+}

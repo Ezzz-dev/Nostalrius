@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="demon" nameDescription="a demon" race="fire" experience="6000" speed="80" manacost="0">
+	<health now="8200" max="8200" />
+	<look type="35" head="0" body="0" legs="0" feet="0" corpse="4097" />
+	<targetchange interval="1000" chance="10" />
+	<targetstrategy nearest="70" weakest="10" mostdamage="10" random="10" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="80" skill="120">
+		<attack name="manadrain" min="-40" max="-100" range="7" chance="8" />
+		<attack name="fire" min="-110" max="-200" range="7" radius="7" target="1" chance="3">
+			<attribute key="shootEffect" value="fire" />
+			<attribute key="areaEffect" value="firearea" />
+		</attack>
+		<attack name="firefield" range="7" radius="1" target="1" chance="7">
+			<attribute key="shootEffect" value="fire" />
+		</attack>
+		<attack name="energy" min="-300" max="-420" length="8" spread="0"  chance="10">
+			<attribute key="areaEffect" value="energy" />
+		</attack>
+	</attacks>
+	<defenses armor="40" defense="65">
+		<defense name="healing" min="90" max="150" chance="7">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity fire="1" />
+		<immunity energy="1" />
+		<immunity outfit="1" />
+		<immunity lifedrain="1" />
+		<immunity paralyze="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<summons maxSummons="1">
+		<summon name="fire elemental" chance="12" max="1" />
+	</summons>
+	<voices>
+		<voice sentence="MUHAHAHAHA!" yell="1" />
+		<voice sentence="I SMELL FEEEEEAAAR!" yell="1" />
+		<voice sentence="CHAMEK ATH UTHUL ARAK!" yell="1" />
+		<voice sentence="Your resistance is futile!" />
+		<voice sentence="Your soul will be mine!" yell="1" />
+	</voices>
+	<loot>
+		<item id="3420" countmax="1" chance="7" /> <!-- a demon shield -->
+		<item id="3356" countmax="1" chance="12" /> <!-- a devil helmet -->
+		<item id="3275" countmax="1" chance="200" /> <!-- a double axe -->
+		<item id="3320" countmax="1" chance="40" /> <!-- a fire axe -->
+		<item id="3731" countmax="6" chance="200" /> <!-- a fire mushroom -->
+		<item id="3281" countmax="1" chance="20" /> <!-- a giant sword -->
+		<item id="3031" countmax="100" chance="700" /> <!-- a gold coin -->
+		<item id="3031" countmax="100" chance="600" /> <!-- a gold coin -->
+		<item id="3031" countmax="100" chance="500" /> <!-- a gold coin -->
+		<item id="3031" countmax="100" chance="400" /> <!-- a gold coin -->
+		<item id="3063" countmax="1" chance="11" /> <!-- a gold ring -->
+		<item id="3364" countmax="1" chance="4" /> <!-- golden legs -->
+		<item id="3306" countmax="1" chance="15" /> <!-- a golden sickle -->
+		<item id="3284" countmax="1" chance="6" /> <!-- an ice rapier -->
+		<item id="3366" countmax="1" chance="1" /> <!-- a magic plate armor -->
+		<item id="3414" countmax="1" chance="5" /> <!-- a mastermind shield -->
+		<item id="3048" countmax="1" chance="2" /> <!-- a might ring -->
+		<item id="3060" countmax="1" chance="30" /> <!-- an orb -->
+		<item id="3055" countmax="1" chance="7" /> <!-- a platinum amulet -->
+		<item id="2848" countmax="1" chance="13" /> <!-- a purple tome -->
+		<item id="3098" countmax="1" chance="5" /> <!-- a ring of healing -->
+		<item id="3032" countmax="1" chance="110" /> <!-- a small emerald -->
+		<item id="3049" countmax="1" chance="14" /> <!-- a stealth ring -->
+		<item id="3034" countmax="1" chance="35" /> <!-- a talon -->
+	</loot>
+</monster>

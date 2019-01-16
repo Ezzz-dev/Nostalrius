@@ -1,0 +1,61 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# thomas.npc: Datenbank für den Schreibwarenhändler Thomas
+
+Name = "Thomas"
+Outfit = (128,116-11-101-76)
+Home = [33256,31838,4]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Feel welcome, %N."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Don't be that impatient, %N. Wait a moment!", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Bye."
+
+"bye"       -> "Bye.", Idle
+"name"      -> "Thomas."
+"job"       -> "Selling spellbooks, notebooks, scrolls, documents, parchments, inkwells, and the like."
+"time"      -> "No idea."
+"king"      -> "Know nothing interesting about him."
+"tibianus"  -> *
+"army"      -> "Ask in the castle."
+"ferumbras" -> "Only heard of him."
+"excalibug" -> "No idea."
+"thais"     -> "Never been there."
+"tibia"     -> "Like it here best."
+"carlin"    -> "Never been there."
+"edron"     -> "This town."
+"news"      -> "Nothing interesting."
+"rumors"    -> *
+
+"offer"           -> "Selling scrolls, documents, parchments, spellbooks, books, and inkwells."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"book"          -> "I offer different kind of books: brown, black and small books. Which book do you want?"
+
+"scroll"        -> Type=2815, Amount=1, Price=5,   "Do you want to buy a scroll for %P gold?", Topic=1
+"document"      -> Type=2834, Amount=1,  Price=12,   "Do you want to buy a document for %P gold?", Topic=1
+"parchment"     -> Type=2835, Amount=1,  Price=8,    "Do you want to buy a parchment for %P gold?", Topic=1
+"spellbook"     -> Type=3059, Amount=1, Price=150, "Do you want to buy a spellbook for %P gold?", Topic=1
+"brown","book"  -> Type=2837, Amount=1,  Price=15,   "Do you want to buy a brown book for %P gold?", Topic=1
+"black","book"  -> Type=2838, Amount=1,  Price=15,   "Do you want to buy a black book for %P gold?", Topic=1
+"small","book"  -> Type=2839, Amount=1,  Price=15,   "Do you want to buy a small book for %P gold?", Topic=1
+"inkwell"       -> Type=3509, Amount=1, Price=8,   "Do you want to buy an inkwell for %P gold?", Topic=1
+
+%1,1<%1,"scroll"        -> Type=2815, Amount=%1, Price=5*%1,   "Do you want to buy %A scrolls for %P gold?", Topic=1
+%1,1<%1,"document"      -> Type=2834, Amount=%1,  Price=12*%1,   "Do you want to buy %A documents for %P gold?", Topic=1
+%1,1<%1,"parchment"     -> Type=2835, Amount=%1,  Price=8*%1,    "Do you want to buy %A parchments for %P gold?", Topic=1
+%1,1<%1,"spellbook"     -> Type=3059, Amount=%1, Price=150*%1, "Do you want to buy %A spellbooks for %P gold?", Topic=1
+%1,1<%1,"brown","book"  -> Type=2837, Amount=%1,  Price=15*%1,   "Do you want to buy %A brown books for %P gold?", Topic=1
+%1,1<%1,"black","book"  -> Type=2838, Amount=%1,  Price=15*%1,   "Do you want to buy %A black books for %P gold?", Topic=1
+%1,1<%1,"small","book"  -> Type=2839, Amount=%1,  Price=15*%1,   "Do you want to buy %A small books for %P gold?", Topic=1
+%1,1<%1,"inkwell"       -> Type=3509, Amount=%1, Price=8*%1,   "Do you want to buy %A inkwells for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Come back, when you have enough money."
+Topic=1                         -> "Hmm, but next time."
+}

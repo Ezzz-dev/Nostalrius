@@ -1,0 +1,105 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# romella.npc: Datenbank fuer die Waffenhändlerin Romella
+
+Name = "Romella"
+Outfit = (139,79-39-77-115)
+Home = [32913,32117,6]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",! -> "I welcome thee, %N!"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Just one more moment please, %N.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Goodbye and please bring more gold next time <chuckles>. I mean, it would be nice to see you again."
+
+"bye"           -> "Goodbye and please bring more gold next time <chuckles>. I mean, it would be nice to see you again.", Idle
+"farewell"      -> *
+"job"           -> "I am Romella, and I will be serving you today."
+"shop"          -> *
+"name"          -> *
+"time"          -> "It is %T."
+"king"          -> "The only royal thing we feel here is the royal tax."
+"tibianus"      -> *
+"army"          -> "Our warehouse is the main supplier of the local garrison."
+"ferumbras"     -> "Make sure to buy some extra weapons before facing that one."
+"excalibug"     -> "I heard the amazons are after it."
+"news"          -> "It says the amazons are looking for a certain magical weapon in this area."
+"amazon"        -> "I wonder how they finance themselves. I bet they are secretly trading in some strange stuff." 
+"help"          -> "The weapons we sell are all help you need."
+"monster"       -> "Just buy enough weapons and you don't have to fear them."
+"swamp"         -> "Don't go exploring without weapons. Especially you'll need a machete."
+"thanks"        -> "You are welcome."
+"thank","you"   -> *
+
+"offer"           -> "I sell several weapons."
+"do","you","sell" -> *
+"do","you","have" -> *
+"weapon"          -> "I have hand axes, axes, spears, maces, battle hammers, swords, rapiers, daggers, sabres, and machetes. What's your choice?"
+
+"dagger"               -> Type=3267, Amount=1, Price=5,    "Do you want to buy a dagger for %P gold?", Topic=1
+"hand","axe"           -> Type=3268, Amount=1, Price=8,    "Do you want to buy a hand axe for %P gold?", Topic=1
+"spear"                -> Type=3277, Amount=1, Price=10,   "Do you want to buy a spear for %P gold?", Topic=1
+"rapier"               -> Type=3272, Amount=1, Price=15,   "Do you want to buy a rapier for %P gold?", Topic=1
+"axe"                  -> Type=3274, Amount=1, Price=20,   "Do you want to buy an axe for %P gold?", Topic=1
+"sabre"                -> Type=3273, Amount=1, Price=35,   "Do you want to buy a sabre for %P gold?", Topic=1
+"sword"                -> Type=3264, Amount=1, Price=85,   "Do you want to buy a sword for %P gold?", Topic=1
+"mace"                 -> Type=3286, Amount=1, Price=90,   "Do you want to buy a mace for %P gold?", Topic=1
+"battle","hammer"      -> Type=3305, Amount=1, Price=350,  "Do you want to buy a battle hammer for %P gold?", Topic=1
+"machete"              -> Type=3308, Amount=1, Price=35,   "Do you want to buy a machete for %P gold?", Topic=1
+"throwing","knife"     -> Type=3298, Amount=1, Price=25,   "Do you want to buy a throwing knife for %P gold?", Topic=1
+
+
+%1,1<%1,"dagger"               -> Type=3267, Amount=%1, Price=5*%1,    "Do you want to buy %A daggers for %P gold?", Topic=1
+%1,1<%1,"hand","axe"           -> Type=3268, Amount=%1, Price=8*%1,    "Do you want to buy %A hand axes for %P gold?", Topic=1
+%1,1<%1,"spear"                -> Type=3277, Amount=%1, Price=10*%1,   "Do you want to buy %A spears for %P gold?", Topic=1
+%1,1<%1,"rapier"               -> Type=3272, Amount=%1, Price=15*%1,   "Do you want to buy %A rapiers for %P gold?", Topic=1
+%1,1<%1,"axe"                  -> Type=3274, Amount=%1, Price=20*%1,   "Do you want to buy %A axes for %P gold?", Topic=1
+%1,1<%1,"sabre"                -> Type=3273, Amount=%1, Price=35*%1,   "Do you want to buy %A sabres for %P gold?", Topic=1
+%1,1<%1,"sword"                -> Type=3264, Amount=%1, Price=85*%1,   "Do you want to buy %A swords for %P gold?", Topic=1
+%1,1<%1,"mace"                 -> Type=3286, Amount=%1, Price=90*%1,   "Do you want to buy %A maces for %P gold?", Topic=1
+%1,1<%1,"battle","hammer"      -> Type=3305, Amount=%1, Price=350*%1,  "Do you want to buy %A battle hammers for %P gold?", Topic=1
+%1,1<%1,"machete"              -> Type=3308, Amount=%1, Price=35*%1,   "Do you want to buy %A machetes for %P gold?", Topic=1
+%1,1<%1,"throwing","kni"       -> Type=3298, Amount=%1, Price=25*%1,   "Do you want to buy %A throwing knives for %P gold?", Topic=1
+
+"sell","two","handed","sword" -> Type=3265, Amount=1, Price=450, "Do you want to sell a two handed sword for %P gold?", Topic=2
+"sell","battle","axe"         -> Type=3266, Amount=1, Price=80,  "Do you want to sell a battle axe for %P gold?", Topic=2
+"sell","dagger"               -> Type=3267, Amount=1, Price=2,   "Do you want to sell this garbage? I give you %P gold, ok?", Topic=2
+"sell","hand","axe"           -> Type=3268, Amount=1, Price=4,   "Do you want to sell a hand axe for %P gold?", Topic=2
+"sell","halberd"              -> Type=3269, Amount=1, Price=400, "Do you want to sell a halberd for %P gold?", Topic=2
+"sell","rapier"               -> Type=3272, Amount=1, Price=5,   "Do you want to sell a rapier for %P gold?", Topic=2
+"sell","sabre"                -> Type=3273, Amount=1, Price=12,  "Do you want to sell a sabre for %P gold?", Topic=2
+"sell","axe"                  -> Type=3274, Amount=1, Price=7,   "Do you want to sell an axe for %P gold?", Topic=2
+"sell","spear"                -> Type=3277, Amount=1, Price=3,   "Do you want to sell this garbage? I give you %P gold, ok?", Topic=2
+"sell","morning","star"       -> Type=3282, Amount=1, Price=90,  "Do you want to sell a morning star for %P gold?", Topic=2
+"sell","mace"                 -> Type=3286, Amount=1, Price=30,  "Do you want to sell a mace for %P gold?", Topic=2
+"sell","short","sword"        -> Type=3294, Amount=1, Price=10,  "Do you want to sell a short sword for %P gold?", Topic=2
+"sell","battle","hammer"      -> Type=3305, Amount=1, Price=120, "Do you want to sell a battle hammer for %P gold?", Topic=2
+"sell","sword"                -> Type=3264, Amount=1, Price=25,  "Do you want to sell a sword for %P gold?", Topic=2
+
+"sell",%1,1<%1,"two","handed","sword" -> Type=3265, Amount=%1, Price=450*%1, "Do you want to sell %A two handed swords for %P gold?", Topic=2
+"sell",%1,1<%1,"battle","axe"         -> Type=3266, Amount=%1, Price=80*%1,  "Do you want to sell %A battle axes for %P gold?", Topic=2
+"sell",%1,1<%1,"dagger"               -> Type=3267, Amount=%1, Price=2*%1,   "Do you want to sell this garbage? I give you %P gold, ok?", Topic=2
+"sell",%1,1<%1,"hand","axe"           -> Type=3268, Amount=%1, Price=4*%1,   "Do you want to sell %A hand axes for %P gold?", Topic=2
+"sell",%1,1<%1,"halberd"              -> Type=3269, Amount=%1, Price=400*%1, "Do you want to sell %A halberds for %P gold?", Topic=2
+"sell",%1,1<%1,"rapier"               -> Type=3272, Amount=%1, Price=5*%1,   "Do you want to sell %A rapiers for %P gold?", Topic=2
+"sell",%1,1<%1,"sabre"                -> Type=3273, Amount=%1, Price=12*%1,  "Do you want to sell %A sabres for %P gold?", Topic=2
+"sell",%1,1<%1,"axe"                  -> Type=3274, Amount=%1, Price=7*%1,   "Do you want to sell %A axes for %P gold?", Topic=2
+"sell",%1,1<%1,"spear"                -> Type=3277, Amount=%1, Price=3*%1,   "Do you want to sell this garbage? I give you %P gold, ok?", Topic=2
+"sell",%1,1<%1,"morning","star"       -> Type=3282, Amount=%1, Price=90*%1,  "Do you want to sell %A morning stars for %P gold?", Topic=2
+"sell",%1,1<%1,"mace"                 -> Type=3286, Amount=%1, Price=30*%1,  "Do you want to sell %A maces for %P gold?", Topic=2
+"sell",%1,1<%1,"short","sword"        -> Type=3294, Amount=%1, Price=10*%1,  "Do you want to sell %A short swords for %P gold?", Topic=2
+"sell",%1,1<%1,"battle","hammer"      -> Type=3305, Amount=%1, Price=120*%1, "Do you want to sell %A battle hammers for %P gold?", Topic=2
+"sell",%1,1<%1,"sword"                -> Type=3264, Amount=%1, Price=25*%1,  "Do you want to sell %A swords for %P gold?", Topic=2
+
+Topic=1,"yes",CountMoney>=Price -> "Thank you. Here it is.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Sorry, you do not have enough gold."
+Topic=1                         -> "Maybe you will buy it another time."
+
+Topic=2,"yes",Count(Type)>=Amount -> "Ok. Here is your money.", Delete(Type), CreateMoney
+Topic=2,"yes"                             -> "Sorry, you do not have one."
+Topic=2,"yes",Amount>1                    -> "Sorry, you do not have so many."
+Topic=2                                   -> "Maybe next time."
+}

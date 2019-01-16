@@ -1,0 +1,37 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# beholder.npc: Datenbank für den Bibliotheksbeholder (Elfenstadt)
+
+Name = "A Wrinkled Beholder"
+Outfit = (17,0-0-0-0)
+Home = [32788,31690,13]
+Radius = 10
+
+Behaviour = {
+ADDRESS,"hello$",! -> "What is this? An optically challenged entity called %N. How fascinating!"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Wait. I will eat you later, %N.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Strange entity. I will record this encounter."
+
+"bye"            -> "Wait right there. I will eat you after writing down what I found out.", Idle
+"farewell"       -> *
+"job"            -> "I am the great librarian."
+"name"           -> "I am 486486 and NOT 'Blinky' as some people called me ... before they died."
+"blinky"         -> "How interesting you are that stupid. Let me apply this on you and see how long you last", Burning(10,25), EffectOpp(5), EffectMe(8)
+"tibia"          -> "It's 1, not 'Tibia', silly."
+"ab'dendriel"    -> "I heard that elves moved in upstairs." 
+"elves"          -> "These fools and their superstitious life cult don't understand anything of importance."
+"humans"         -> "Good tools to work with ... After their death, that is." 
+"orcs"           -> "Noisy pests." 
+"minotaurs"      -> "Their mages are so close to the truth. Closer then they know and closer then it's good for them."
+"god"            -> "They will mourn the day they abandoned us."
+"death"          -> "Yes, yes, I will kill you soon enough, now let me continue my investigation on you." 
+"numbers"        -> "Numbers are essential. They are the secret behind the scenes. If you are a master of mathematics you are a master over life and death."
+"library"        -> "It's a fine library, isn't it?"
+"books"          -> "Our books are written in 469, of course you can't understand them."
+"469"            -> "The language of my kind. Superior to any other language and only to be spoken by entities with enough eyes to blink it."
+"cyclops"        -> "Uglyness incarnate. One eye! Imagine that! Horrible!"
+"excalibug"      -> "Only inferior species need weapons."
+}

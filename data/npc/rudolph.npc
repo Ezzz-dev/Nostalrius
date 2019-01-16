@@ -1,0 +1,60 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# rudolph.npc: Datenbank für den Schneider Rudolph
+
+Name = "Rudolph"
+Outfit = (128,41-29-78-76)
+Home = [33212,31812,6]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Oh, a customer. Hello %N."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Oh, so wait a little, %N.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Oh, good bye."
+
+"bye"       -> "Oh, good bye.", Idle
+"name"      -> "I'm Rudolph, you know."
+"job"       -> "Oh, I am a tailor, can't you see?"
+"time"      -> "Oh, now it's %T."
+"king"      -> "Oh, the king. What a well dressed man he is."
+"tibianus"  -> *
+"army"      -> "Oh, such handsome guys and such ugly uniforms."
+"ferumbras" -> "Oh, dear."
+"excalibug" -> "Oh, that thing must be dangerous. One could hurt himself quite badly with it I guess."
+"thais"     -> "Oh, what a lovely city it was once."
+"tibia"     -> "Oh, there is not much sense for fashion in this world."
+"carlin"    -> "Oh, these women ... oh, go away."
+"edron"     -> "Oh, what a lovely city it is."
+"news"      -> "Oh, we tailors learn much, but don't talk about it. It's the tailors' code of honor, you know."
+"rumors"    -> *
+
+"offer"           -> "Oh, I have wonderful clothes and shoes."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"clothes"         -> "Oh, I have wonderful jackets, capes, tunics, leather legs, and scarfs."
+"shoes"           -> "Oh, I have wonderful leather boots and sandals."
+
+"jacket"         -> Type=3561, Amount=1, Price=12, "Oh, do you want to buy one of my wonderful jackets for %P gold?", Topic=1
+"tunic"          -> Type=3563, Amount=1, Price=10, "Oh, do you want to buy one of my wonderful green tunics for %P gold?", Topic=1
+"cape"           -> Type=3565, Amount=1, Price=9,  "Oh, do you want to buy one of my wonderful capes for %P gold?", Topic=1
+"leather","legs" -> Type=3559, Amount=1, Price=10, "Oh, do you want to buy one of my wonderful leather legs for %P gold?", Topic=1
+"scarf"          -> Type=3572, Amount=1, Price=15, "Oh, do you want to buy one of my wonderful silky scarfs for %P gold?", Topic=1
+"sandals"        -> Type=3551, Amount=1, Price=2,  "Oh, do you want to buy one of my wonderful sandals for %P gold?", Topic=1
+"leather","boot" -> Type=3552, Amount=1, Price=2,  "Oh, do you want to buy one of my wonderful leather boots for %P gold?", Topic=1
+
+%1,1<%1,"jacket"         -> Type=3561, Amount=%1, Price=12*%1, "Oh, do you want to buy %A of my wonderful jackets for %P gold?", Topic=1
+%1,1<%1,"tunic"          -> Type=3563, Amount=%1, Price=10*%1, "Oh, do you want to buy %A of my wonderful green tunics for %P gold?", Topic=1
+%1,1<%1,"cape"           -> Type=3565, Amount=%1, Price=9*%1,  "Oh, do you want to buy %A of my wonderful capes for %P gold?", Topic=1
+%1,1<%1,"leather","legs" -> Type=3559, Amount=%1, Price=10*%1, "Oh, do you want to buy %A of my wonderful leather legs for %P gold?", Topic=1
+%1,1<%1,"scar"          -> Type=3572, Amount=%1, Price=15*%1, "Oh, do you want to buy %A of my wonderful silky scarves for %P gold?", Topic=1
+%1,1<%1,"sandals"        -> Type=3551, Amount=%1, Price=2*%1,  "Oh, do you want to buy %A of my wonderful sandals for %P gold?", Topic=1
+%1,1<%1,"leather","boot" -> Type=3552, Amount=%1, Price=2*%1,  "Oh, do you want to buy %A of my wonderful leather boots for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Oh, here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Oh, you do not have enough money."
+Topic=1                         -> "Oh, but next time."
+}

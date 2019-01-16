@@ -1,0 +1,112 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# prisoner.npc: Datenbank für den Prisoner alias Mad Mage
+
+Name = "A Prisoner"
+Outfit = (130,81-40-55-94)
+Home = [32393,32137,13] 
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Huh? What? I can see! Wow! A non-mino. Did they capture you as well?"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Not much space right here. Hehe. I haven´t had a visitor for some time and right now there are two! Hehehe! Great!"
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,QuestValue(1)>0,!           -> "Good bye! Don't forget about the secrets of mathemagics."
+VANISH,QuestValue(1)=0,!           -> "Wait! Don't leave! I want to tell you about my surreal numbers."
+
+
+"bye"         	-> "Next time we should talk about my surreal numbers.", Idle
+"farewell"      -> *
+"job"         	-> "Job? JOB? Hey man - I am in prison! But you know - once upon a time - I was a powerful mage! A mage ... come to think of it .., what is that - a mage?"
+"name"          -> "My name is - uhm - hang on? I knew it yesterday, didn't I? Doesn't matter!"
+"time"          -> "Better save time than comitting a crime. I am a poet and I know it!"
+"sorcerer"      -> "I am the mightiest sorcerer from here to there! Yeah!"
+"power"         -> "Power. Hmmm. Once while we were crossing the mountains together a man named Aureus said to me that parcels are equal to power. Any idea what that meant?"
+"books"		-> "I have many books in my home. But only powerful people can read them. I bet you will only see three dots after the headline! Hehehe! Hahaha! Excellent!"
+"mad","mage"    -> "Hey! That's me! You got it! Thanks mate - now I remember my name!"
+"riddle"	-> "Great riddle, isn´t it? If you can tell me the correct answer, I will give you something. Hehehe!"
+"something"	-> "No! I won´t tell you. Shame coz it would be useful for you - hehehe."
+"apple"		-> Type=3585, Amount=1, "Apples! Real apples! Man I love them! Can I have one? Oh please say yes!", Topic=1
+"escape"	-> "How could I escape? They only give me rotten food here. I can´t regain my powers because I have no mana!"
+"key"		-> "Sure I have the key! Hehehe! Perhaps I will give it to you. IF you can solve my riddle."
+"mino"		-> "They are trying to capture me! Or hang on! Haven't they already captured me? Hmmm - I will have to think about this."
+"markwin"	-> "He is the worst of them all! He is the king of the minos! May he burn in hell!"
+"labyrinth"	-> "It´s easy to find your way through it! Just follow the pools of mud. Hehe - useful hint, isn´t it?"
+"way"		-> *
+"palkar"	-> "He is the leader of the outcasts. I hope he will never conquer the city of Mintwallin. That would be the end of me!"
+"karl"          -> "Tataah!"
+"demon"		-> "The only monster I cannot conjure. But soon I will be powerful enough!"
+"monster"	-> "Yeah! There are many monsters guarding my home. Only the bravest hero will be able to slay them!"
+"conjure"	-> *
+"home"		-> *
+
+"number", QuestValue(1) < 1 -> "My surreal numbers are based on astonishing facts. Are you interested in learning the secret of mathemagics?", Topic=7, Amount=Random(1,4)
+"math", QuestValue(1) < 1 -> *
+"1+1$", QuestValue(1) < 1 -> *
+"1$","+$","1$", QuestValue(1) < 1 -> *
+"1$","plus","1$", QuestValue(1) < 1 -> *
+"one","plus","one", QuestValue(1) < 1 -> *
+
+"number", QuestValue(1) > 0 -> "You already know the secrets of mathemagics! Now go and use them to learn."
+"math", QuestValue(1) > 0 -> *
+"1+1$", QuestValue(1) > 0 -> *
+"1$","+$","1$", QuestValue(1) > 0 -> *
+"1$","plus","1$", QuestValue(1) > 0 -> *
+"one","plus","one", QuestValue(1) > 0 -> *
+Topic=7, "yes" -> "But first tell me your favourite colour please!", Topic=8
+Topic=8,QuestValue(2)=1,"red",!    -> "Very interesting. So are you ready to proceed in you lesson in mathemagics?",Topic=9
+Topic=8,QuestValue(2)=2,"blue",!   -> *
+Topic=8,QuestValue(2)=3,"black",!  -> *
+Topic=8,QuestValue(2)=4,"white",!  -> *
+Topic=8,QuestValue(2)=5,"orange",! -> *
+Topic=8,QuestValue(2)=6,"green",!  -> *
+Topic=8,QuestValue(2)=7,"yellow",! -> *
+Topic=8,QuestValue(2)=8,"brown",!  -> *
+Topic=8,QuestValue(2)=9,"violet",! -> *
+Topic=8,QuestValue(2)=10,"pink",!   -> *
+Topic=8,QuestValue(2)=11,"silver",! -> *
+Topic=8,QuestValue(2)=12,"gold",!   -> *
+Topic=8,QuestValue(2)=13,"grey",!   -> *
+
+Topic=8,!          -> "I think you are not in touch with yourself, come back if you have tuned in on your own feelings."
+
+Topic=9, "yes", Amount=1 -> "So know that everthing is based on the simple fact that 1 + 1 = 49!", SetQuestValue(1,1) 
+Topic=9, "yes", Amount=2 -> "So know that everthing is based on the simple fact that 1 + 1 = 94!", SetQuestValue(1,2) 
+Topic=9, "yes", Amount=3 -> "So know that everthing is based on the simple fact that 1 + 1 = 13!", SetQuestValue(1,3) 
+Topic=9, "yes", Amount=4 -> "So know that everthing is based on the simple fact that 1 + 1 = 1!", SetQuestValue(1,4) 
+
+
+"sell","rune"        -> Type=3147, Amount=1, Price=10, "You want to sell me blank runes! I will give you 50000 gold for each rune! Interested?", Topic=2
+
+"dp-d-ks-p-dp" -> Type=3585, Amount=7, "Hurray! For that I will give you my key for - hmm - let´s say ... some apples. Interested?", Topic=3
+"dp-d-sk-p-dp" -> Type=3585, Amount=7, "Hurray! For that I will give you my key for - hmm - let´s say ... some apples. Interested?", Topic=3
+"pd-d-ks-p-pd" -> Type=3585, Amount=7, "Hurray! For that I will give you my key for - hmm - let´s say ... some apples. Interested?", Topic=3
+"pd-d-sk-p-pd" -> Type=3585, Amount=7, "Hurray! For that I will give you my key for - hmm - let´s say ... some apples. Interested?", Topic=3
+"dp-p-ks-d-dp" -> Type=3585, Amount=7, "Hurray! For that I will give you my key for - hmm - let´s say ... some apples. Interested?", Topic=3
+"dp-p-sk-d-dp" -> Type=3585, Amount=7, "Hurray! For that I will give you my key for - hmm - let´s say ... some apples. Interested?", Topic=3
+"pd-p-ks-d-pd" -> Type=3585, Amount=7, "Hurray! For that I will give you my key for - hmm - let´s say ... some apples. Interested?", Topic=3
+"pd-p-sk-d-pd" -> Type=3585, Amount=7, "Hurray! For that I will give you my key for - hmm - let´s say ... some apples. Interested?", Topic=3
+
+Topic=1,"yes",Count(Type)>=Amount -> "Mnjam. Excellent! Thanks, man!", Delete(Type)
+Topic=1,"yes"                             -> "Do you want to trick me? You don´t have one lousy apple!"
+Topic=1                                   -> "Ooooooooooo.<sniff>"
+
+Topic=2,"yes",Count(Type)>=Amount -> "Ok. Take my money. I can summon new money anytime - hehehe.", Delete(Type), CreateMoney
+Topic=2,"yes"                             -> "You do not have one."
+Topic=2                                   -> "Hmmmmm."
+
+Topic=3,"yes",Count(Type)>=Amount -> "Mnjam - excellent apples. Now - about that key. You are sure want it?", Delete(Type), Topic=4
+Topic=3,"yes"                             -> "Get some more apples first!"
+Topic=3                                   -> "Then go away!", Idle
+
+Topic=4,"yes"	-> "Really, really?", Topic=5 
+Topic=4		-> "Then go away!", Idle
+
+Topic=5,"yes"	-> "Really, really, really, really?", Topic=6
+Topic=5	 	-> "Then go away!", Idle
+
+Topic=6,"yes"	-> Type=2969, Data=3666, Amount=1, "Then take it and get happy - or die, hehe.", Create(Type)
+Topic=6   	-> "Then go away!", Idle
+}

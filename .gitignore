@@ -1,0 +1,16 @@
+vc14/.vs/theforgottenserver/v15/Browse.VC.db
+vc14/.vs/theforgottenserver/v15/ipch/ba8106b03bee8153.ipch
+<<<<<<< HEAD
+*.lastbuildstate
+*.tlog
+*.ipch
+=======
+vc14/.vs/theforgottenserver/v15/Browse.VC.opendb
+*.ipch
+vc14/x64/
+>>>>>>> stored_players
+*.exe
+vc14/theforgottenserver.vcxproj.user
+vc14/.vs/
+*.pdb
+*.dll

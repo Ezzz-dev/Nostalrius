@@ -1,0 +1,44 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# albert.npc: Datenbank für den Heiler Albert
+
+Name = "Albert"
+Outfit = (130,78-0-49-95)
+Home = [33312,31762,7]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$",!      -> "Welcome in my humble hut, %N."
+ADDRESS,"hi$",!         -> *
+ADDRESS,!               -> Idle
+BUSY,"hello$",!         -> "Please wait a moment, %N.", Queue
+BUSY,"hi$",!            -> *
+BUSY,"heal$",Burning>0 -> "You are burning. I will help you.", Burning(0,0), EffectOpp(15)
+BUSY,"heal$",Poison>0  -> "You are poisoned. I will help you.", Poison(0,0), EffectOpp(14)
+BUSY,"heal$",HP<40     -> "You are looking really bad. Let me heal your wounds.", HP=40, EffectOpp(13)
+BUSY,"heal$"           -> "You aren't looking really bad. Sorry, I can't help you."
+BUSY,!                  -> NOP
+VANISH,!                -> "If you are heavily wounded or poisoned, feel free to return for a healing."
+
+"bye"            -> "Good bye, %N!", Idle
+"job"            -> "I am a healer."
+"name"           -> "My Name is Albert Fibulanian."
+"tibia"          -> "Tibia is a world big enough for everyone. I wish people would realize that."
+"thais"          -> "The sinful city of Thais is a monument of corruption and murder. I am glad I left for Edron and thank the gods every day for this isle."
+"edron"          -> *
+"god"            -> "The gods of good take care of us."
+"king"           -> "The king does much to enhance the life of his people, but he could do more."
+"tibianus"       -> *
+"army"           -> "I dream of times which see no need for armies or warriors."
+"banor"          -> *
+"ferumbras"      -> "The fallen one is a perfect example where evil leads us to."
+"excalibug"      -> "It's only another instrument of pain and destruction."
+"news"           -> "I have only news about weather, taxes, and harvests. I heared nothing that might interest a traveller like you."
+"daniel"         -> "I healed his wounds, but nothing can heal his soul after the betrayal of some of his knightly brethren."
+"kaine"          -> "Another victim of his own ambitions. I mourn for his soul."
+
+"heal$",Burning>0 -> "You are burning. I will help you.", Burning(0,0), EffectOpp(15)
+"heal$",Poison>0  -> "You are poisoned. I will help you.", Poison(0,0), EffectOpp(14)
+"heal$",HP<40     -> "You are looking really bad. Let me heal your wounds.", HP=40, EffectOpp(13)
+"heal$"           -> "You aren't looking really bad. Sorry, I can't help you."
+"time"           -> "Now, it is %T."
+}

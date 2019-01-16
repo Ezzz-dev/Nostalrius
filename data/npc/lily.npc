@@ -1,0 +1,51 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# lily.npc: Datenbank fuer die Druidin Lily
+
+Name = "Lily"
+Outfit = (138,78-101-86-115)
+Home = [32068,32225,7]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Welcome, %N."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "One moment, %N. I'll be with you in no time.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Take care."
+
+"bye"             -> "Take care.", Idle
+"farewell"        -> *
+"how","are","you" -> "Very well. Thank you."
+"offer"           -> "I only sell my antidote runes and I'll be happy to buy some blueberries from you."
+"job"             -> "I am a druid, bound to the spirit of nature. I'm selling antidote runes that help against poison. Oh, and I buy blueberries, of course."
+"name"            -> "My name is Lily."
+
+"hyacinth"        -> "Hyacinth lives in the forest. He's never in town so I don't know him very well."
+"time"            -> "It is about %T."
+"help"            -> "I can sell you an antidote rune. It's against the poison of so many dangerous creatures."
+
+"monster"         -> "Many monsters are poisonous. Don't let them bite you or you will need one of my antidote runes."
+"creature"        -> *
+"poison"          -> *
+"life","fluid"    -> "I'm sorry, but Hyacinth is the only one on Rookgaard who knows how to brew life fluids."
+
+"antidote"        -> Type=3153, Data=1, Amount=1,  Price=40,    "Do you want to buy an antidote rune for %P gold?", Topic=1
+"rune"            -> *
+%1,1<%1,"antidote"     -> Type=3153, Data=1, Amount=%1, Price=40*%1, "Do you want to buy %A antidote runes for %P gold?", Topic=1
+%1,1<%1,"rune"         -> *
+
+Topic=1,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Sorry, you don't have enough gold."
+Topic=1                         -> "As you wish."
+
+"sell","blueberry" -> Type=3588, Amount=5, Price=1, "Do you want to sell 5 blueberries for %P gold?", Topic=2
+"sell","berry"     -> *
+"sell","blueberries" -> *
+"sell","berries"     -> *
+
+Topic=2,"yes",Count(Type)>=Amount -> "Fine! Here's your gold.", Delete(Type), CreateMoney
+Topic=2,"yes"                             -> "Oh, I'm sorry. I'm not buying less than 5 blueberries."
+Topic=2                                   -> "As you wish."
+}

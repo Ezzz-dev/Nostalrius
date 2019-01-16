@@ -1,0 +1,48 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# julian.npc: Datenbank für den Musikhändler Julian
+
+Name = "Julian"
+Outfit = (128,55-30-23-115)
+Home = [32883,32076,6]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Be greeted, %N! May I help you?"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Sorry, I am busy right now, %N.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Good bye."
+
+"bye"         -> "Good bye.", Idle
+"farewell"    -> *
+"job"         -> "I make instruments and sometimes I'm wandering through the lands of Tibia as a bard."
+"name",male   -> "My name is Julian, sire."
+"name",female -> "My name is Julian, my lady."
+"time"        -> "Sorry, I don't know what time it is."
+"music"       -> "Music is the food of love."
+"bard"        -> "Bards from all over the world come here to buy their instruments."
+
+"offer"           -> "Here you can buy lyres, lutes, drums, and simple fanfares. I also have a piano and a harp."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"instrument"      -> *
+
+"lyre"             -> Type=2949, Amount=1, Price=120, "Do you want to buy a lyre for %P gold?", Topic=1
+"lute"             -> Type=2950, Amount=1, Price=195, "Do you want to buy a lute for %P gold?", Topic=1
+"drum"             -> Type=2952, Amount=1, Price=140, "Do you want to buy a drum for %P gold?", Topic=1
+"simple","fanfare" -> Type=2954, Amount=1, Price=150, "Do you want to buy a simple fanfare for %P gold?", Topic=1
+
+%1,1<%1,"lyre"             -> Type=2949, Amount=%1, Price=120*%1, "Do you want to buy %A lyres for %P gold?", Topic=1
+%1,1<%1,"lute"             -> Type=2950, Amount=%1, Price=195*%1, "Do you want to buy %A lutes for %P gold?", Topic=1
+%1,1<%1,"drum"             -> Type=2952, Amount=%1, Price=140*%1, "Do you want to buy %A drums for %P gold?", Topic=1
+%1,1<%1,"simple","fanfare" -> Type=2954, Amount=%1, Price=150*%1, "Do you want to buy %A simple fanfares for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "You need some more money."
+Topic=1                         -> "Oh well, next time perhaps."
+
+@"gen-t-furniture-instruments-s.ndb"
+}

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="black knight" nameDescription="a black knight" race="blood" experience="1600" speed="155" manacost="0">
+	<health now="1800" max="1800" />
+	<look type="131" head="95" body="95" legs="95" feet="95" corpse="4240" />
+	<targetchange interval="1000" chance="3" />
+	<targetstrategy nearest="80" weakest="10" mostdamage="10" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="60" skill="88">
+		<attack name="physical" min="-145" max="-185" range="7" chance="7">
+			<attribute key="shootEffect" value="spear" />
+		</attack>
+	</attacks>
+	<defenses armor="42" defense="60">
+	</defenses>
+	<immunities>
+		<immunity fire="1" />
+		<immunity energy="1" />
+		<immunity outfit="1" />
+		<immunity paralyze="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<voices>
+		<voice sentence="MINE!" yell="1" />
+		<voice sentence="NO PRISONERS!" yell="1" />
+		<voice sentence="NO MERCY!" yell="1" />
+		<voice sentence="By Bolg's Blood!" />
+		<voice sentence="You're no match for me!" />
+	</voices>
+	<loot>
+		<item id="3305" countmax="1" chance="70" /> <!-- a battle hammer -->
+		<item id="3079" countmax="1" chance="5" /> <!-- boots of haste -->
+		<item id="3372" countmax="1" chance="130" /> <!-- brass legs -->
+		<item id="3602" countmax="2" chance="200" /> <!-- a brown bread -->
+		<item id="3383" countmax="1" chance="20" /> <!-- a dark armor -->
+		<item id="3384" countmax="1" chance="20" /> <!-- a dark helmet -->
+		<item id="3302" countmax="1" chance="3" /> <!-- a dragon lance -->
+		<item id="3031" countmax="60" chance="333" /> <!-- a gold coin -->
+		<item id="3031" countmax="90" chance="222" /> <!-- a gold coin -->
+		<item id="3269" countmax="1" chance="130" /> <!-- a halberd -->
+		<item id="3370" countmax="1" chance="10" /> <!-- a knight armor -->
+		<item id="3318" countmax="1" chance="25" /> <!-- a knight axe -->
+		<item id="3371" countmax="1" chance="10" /> <!-- knight legs -->
+		<item id="3357" countmax="1" chance="100" /> <!-- a plate armor -->
+		<item id="3003" countmax="1" chance="150" /> <!-- a rope -->
+		<item id="3016" countmax="1" chance="8" /> <!-- a ruby necklace -->
+		<item id="3277" countmax="3" chance="300" /> <!-- a spear -->
+		<item id="3351" countmax="1" chance="100" /> <!-- a steel helmet -->
+		<item id="3265" countmax="1" chance="100" /> <!-- a two handed sword -->
+		<item id="3369" countmax="1" chance="50" /> <!-- a warrior helmet -->
+	</loot>
+</monster>

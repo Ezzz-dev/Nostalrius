@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="priestess" nameDescription="a priestess" race="blood" experience="420" speed="45" manacost="0">
+	<health now="390" max="390" />
+	<look type="58" head="0" body="0" legs="0" feet="0" corpse="4247" />
+	<targetchange interval="1000" chance="50" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="4" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="20" skill="25" poison="250">
+		<attack name="physical" min="-55" max="-95" range="7" chance="4">
+			<attribute key="shootEffect" value="death" />
+		</attack>
+		<attack name="manadrain" min="-60" max="-120" range="7" chance="4" />
+	</attacks>
+	<defenses armor="30" defense="50">
+		<defense name="healing" min="34" max="56" chance="7">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity fire="1" />
+		<immunity energy="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<summons maxSummons="2">
+		<summon name="ghoul" chance="13" max="2" />
+	</summons>
+	<voices>
+		<voice sentence="Your energy is mine." />
+		<voice sentence="Now, your life has come to an end, hahahha!" />
+		<voice sentence="Throw the soul on the altar!" />
+	</voices>
+	<loot>
+		<item id="3429" countmax="1" chance="2" /> <!-- a black shield -->
+		<item id="2843" countmax="1" chance="70" /> <!-- a book -->
+		<item id="2902" countmax="1" chance="200" /> <!-- a bowl -->
+		<item id="3311" countmax="1" chance="15" /> <!-- a clerical mace -->
+		<item id="3076" countmax="1" chance="12" /> <!-- a crystal ball -->
+		<item id="3008" countmax="1" chance="6" /> <!-- a crystal necklace -->
+		<item id="3267" countmax="1" chance="230" /> <!-- a dagger -->
+		<item id="3674" countmax="1" chance="120" /> <!-- a goat grass -->
+		<item id="3739" countmax="1" chance="60" /> <!-- a powder herb -->
+		<item id="3585" countmax="2" chance="75" /> <!-- a red apple -->
+		<item id="3738" countmax="1" chance="140" /> <!-- a sling herb -->
+		<item id="3034" countmax="1" chance="7" /> <!-- a talon -->
+		<item id="3067" countmax="1" chance="10" /> <!-- a tempest rod -->
+		<item id="3727" countmax="1" chance="35" /> <!-- a wood mushroom -->
+		<item id="2948" countmax="1" chance="14" /> <!-- a wooden flute -->
+	</loot>
+</monster>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="slime" nameDescription="a slime" race="venom" experience="55" speed="20" manacost="0">
+	<health now="150" max="150" />
+	<look type="19" head="0" body="0" legs="0" feet="0" corpse="2121" />
+	<targetchange interval="1000" chance="0" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="42" skill="22">
+	</attacks>
+	<defenses armor="3" defense="10">
+	</defenses>
+	<immunities>
+		<immunity outfit="1" />
+		<immunity poison="1" />
+	</immunities>
+	<voices>
+		<voice sentence="Blubb" />
+	</voices>
+</monster>

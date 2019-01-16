@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="1000" type="event" message="Orc attack on the tower of whitewatch!"/>
+	<areaspawn delay="1000" lifetime="18000000" radius="5" centerx="32533" centery="31797" centerz="7">
+		<monster name="orc" minamount="10" maxamount="15"/>
+	</areaspawn>
+	<areaspawn delay="1000" lifetime="18000000" radius="5" centerx="32537" centery="31820" centerz="6">
+		<monster name="orc warrior" minamount="10" maxamount="15"/>
+	</areaspawn>
+	<areaspawn delay="1000" lifetime="18000000" radius="4" centerx="32539" centery="31797" centerz="6">
+		<monster name="orc warrior" minamount="10" maxamount="15"/>
+	</areaspawn>
+	<areaspawn delay="1000" lifetime="18000000" radius="5" centerx="32559" centery="31771" centerz="6">
+		<monster name="orc warrior" minamount="10" maxamount="15"/>
+	</areaspawn>
+	<areaspawn delay="1000" lifetime="18000000" radius="10" centerx="32538" centery="31782" centerz="6">
+		<monster name="orc shaman" minamount="10" maxamount="15"/>
+	</areaspawn>
+	<areaspawn delay="1000" lifetime="18000000" radius="8" centerx="32521" centery="31783" centerz="6">
+		<monster name="orc rider" minamount="10" maxamount="15"/>
+	</areaspawn>
+	<areaspawn delay="1000" lifetime="18000000" radius="10" centerx="32535" centery="31773" centerz="5">
+		<monster name="orc berserker" minamount="15" maxamount="20"/>
+	</areaspawn>
+	<areaspawn delay="1000" lifetime="18000000" radius="10" centerx="32535" centery="31772" centerz="5">
+		<monster name="orc shaman" minamount="15" maxamount="20"/>
+	</areaspawn>
+	<areaspawn delay="1000" lifetime="18000000" radius="10" centerx="32542" centery="31773" centerz="5">
+		<monster name="orc leader" minamount="1" maxamount="2"/>
+	</areaspawn>
+	<areaspawn delay="1000" lifetime="18000000" radius="2" centerx="32535" centery="31773" centerz="4">
+		<monster name="orc leader" minamount="2" maxamount="4"/>
+	</areaspawn>
+	<areaspawn delay="1000" lifetime="18000000" radius="2" centerx="32535" centery="31773" centerz="3">
+		<monster name="orc leader" minamount="2" maxamount="4"/>
+	</areaspawn>
+	<areaspawn delay="1000" lifetime="18000000" radius="2" centerx="32535" centery="31773" centerz="2">
+		<monster name="orc leader" minamount="2" maxamount="4"/>
+	</areaspawn>
+	<areaspawn delay="1000" lifetime="18000000" radius="2" centerx="32535" centery="31773" centerz="2">
+		<monster name="raid orc warlord" minamount="4" maxamount="4"/>
+	</areaspawn>
+</raid>

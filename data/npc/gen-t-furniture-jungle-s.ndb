@@ -1,0 +1,29 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gen-t-furniture-jungle-s.ndb: Datenbank für generischen Möbelverkauf - Bambusmöbel
+# Verwendete Topics: 81
+
+#"offer"           -> "I sell statues, tables, chairs, flowers, pillows, pottery, instruments, decoration, tapestries and containers."
+#"furniture"       -> *
+#"equipment"       -> *
+#"goods"           -> *
+#"do","you","sell" -> *
+#"do","you","have" -> *
+
+"chair"                -> "I can offer you tusk chairs, ivory chairs and trunk chairs."
+"tusk", "chair"        -> Type=2780, Amount=1, Price=25, "You want to buy a tusk chair for %P gold?", Topic=81
+"ivory", "chair"       -> Type=2781, Amount=1, Price=25, "You want to buy an ivory chair for %P gold?", Topic=81
+"trunk", "chair"       -> Type=2809, Amount=1, Price=20, "You want to buy a trunk chair for %P gold?", Topic=81
+
+"table"               -> "I can offer you stone tables, tusk tables, bamboo tables and trunk tables."
+"stone", "table"      -> Type=2786, Amount=1, Price=30, "You want to buy a stone table for %P gold?", Topic=81
+"tusk", "table"       -> Type=2787, Amount=1, Price=25, "You want to buy a tusk table for %P gold?", Topic=81
+"bamboo", "table"       -> Type=2788, Amount=1, Price=25, "You want to buy a bamboo table for %P gold?", Topic=81
+"trunk", "table"       -> Type=2810, Amount=1, Price=20, "You want to buy a trunk table for %P gold?", Topic=81
+
+"drawer"             -> "I can offer you bamboo drawers."
+"bamboo", "drawer"      -> Type=2795, Amount=1, Price=20, "You want to buy a bamboo drawer for %P gold?", Topic=81
+
+Topic=81,"yes",Premium,CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=81,"yes",CountMoney>=Price         -> "I'm sorry, but you need a premium account if you want to buy furniture."
+Topic=81,"yes"                           -> "Come back, when you have enough money."
+Topic=81                                 -> "Hmm, but I'm sure, it would fit nicely into your house."

@@ -1,0 +1,54 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# nemal.npc: Datenbank für den Blinden Nemal (Desert)
+
+Name = "Nemal"
+Outfit = (129,57-97-45-115)
+Home = [32615,32108,10]
+Radius = 4
+
+Behaviour = {
+ADDRESS,"hello$",!       -> "Hello. How are you? Maybe you can help me: Do my shoes have the same colour?"
+ADDRESS,"hi$",!          -> *
+ADDRESS,!                -> Idle
+BUSY,"hello$",!          -> "Is there someone else? Step closer!"
+BUSY,"hi$",!             -> *
+BUSY,!                   -> NOP
+VANISH,!                 -> "Where are you? Are you gone?"
+
+"bye"                    -> "Farewell!", Idle
+"farewell"               -> "May the light be with you!", Idle
+"name"                   -> "My name is Nemal."
+"job"                    -> "I have no job. I'm a wanderer."
+"thais"                  -> "Yes, I used to live there a while ago. Nice town."
+"carlin"                 -> "Aaaahh, Carlin, yes. I know this town. Strange graveyard there, isn't it?"
+"king"                   -> "King...king...yes, there is one. I still can remember the time when we had an other king. What was his name again?"
+"weapon"                 -> "I always have weapons with me. You never know what's behind the next corner."
+"help"                   -> "Hmm.. help? How can I help you?"
+"time"                   -> "I had a watch. It was nice, but I can't see the hands anymore."
+"sword"                  -> "I have a sword. It's very sharp. But I don't give it away, you never know."
+"desert"                 -> "Desert? Where is one?"
+"excalibug"              -> "I heard the name, but I don't trust rumours."
+"fight"                  -> "Better know how to fight!"
+"guild"                  -> "Hmmm.. I wouldn't ever join a guild, but i know of the existance of some."
+"god"                    -> "I don't believe in gods, but a lot of people do. I never saw a god, why should I trust in someone I never met?"
+"way"                    -> "There are many ways. I don't know all of them."
+"door"                   -> "Closed doors need keys. What a pity keys are not lying around like rubbish!"
+"library"                -> "I can't read or write. What use would I have of a library?"
+"secret"                 -> "Secrets should remain secret. No need of making them public."
+"treasure"               -> "You can find some treasures here - some are bigger, some are smaller, some are of true value, some are of materialistic value."
+"book"                   -> "I can't read. I've never learned it."
+"gharonk"                -> "My father knew this language." 
+"offer"                  -> "I don't sell things. If you really need something, better walk straight to one of the towns or ask another adventurer."
+"blind"                  -> "Yes, I seem to be blind. But I am not sure - maybe the dungeons are too dark!"
+
+"potion","regain","vision" -> "I heard of a potion of regained vision ... but I can't remember how to make it! Maybe you can help me. Do you know something about it?", Topic=2
+Topic=2,"yes"              -> "So, did you bring the ingredients with you, stranger?", Topic=3
+Topic=2                    -> "Oh. Maybe someone else could do it, then."
+Topic=3,"yes",Count(3601)>0,Count(3603)>0,Count(3604)>0,Count(3658)>0,Count(3590)>0 -> "You seem to have them with you. Can you tell me, how many minutes I have to cook them?", Amount=1, Delete(3601), Delete(3603), Delete(3604), Delete(3658), Delete(3590), Topic=4
+Topic=3,"yes"              -> "It doesn't seem to me as if you have the correct ingredients with you, stranger!"
+Topic=3                    -> "Maybe you can find them!"
+Topic=4,"31"               -> "Ah. It seems to work. But what are the words I have to speak?", Topic=5
+Topic=4                    -> "Oh no, I don't think this is right."
+Topic=5,"nalus","murtu"    -> "Thank you! NALUS MURTUUU! ... I can see again! To show you, how grateful I am, I'll give you a key. Be wise when using it. I can't tell you, where it matches, but ... take good care, it is useless without mental powers!", Data=4037, Create(2969)
+Topic=5                    -> "Oh no, I don't think these are the right words."
+}

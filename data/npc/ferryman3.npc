@@ -1,0 +1,62 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# ferryman3.npc: Fährmann Svenson auf Folda (Ice)
+
+Name = "Svenson"
+Outfit = (129,77-113-68-67)
+Home = [32044,31582,7]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",male,!   -> "Ahoi, young man %N and welcome to the Nordic Tibia Ferries."
+ADDRESS,"hi$",male,!      -> *
+ADDRESS,"hello$",female,! -> "Ahoi, young lady %N and welcome to the Nordic Tibia Ferries."
+ADDRESS,"hi$",female,!    -> *
+ADDRESS,!                 -> Idle
+BUSY,"hello$",!           -> "One moment please, %N.", Queue
+BUSY,"hi$",!              -> *
+BUSY,!                    -> NOP
+VANISH,!                  -> "Good bye. You are welcome."
+
+"bye"          -> "Good bye. You are welcome.", Idle
+"farewell"     -> *
+"name"         -> "My name is Svenson from the Nordic Tibia Ferries."
+"anderson"     -> "The four of us are the captains of the Nordic Tibia Ferries."
+"svenson"      -> *
+"carlson"      -> *
+"nielson"      -> *
+"job"          -> "We are ferrymen. We transport goods and passengers to the Ice Islands."
+"captain"      -> *
+"ship"         -> "Our ferries are strong enough to stand the high waves of the Nordic Ocean."
+"ferry"        -> *
+"ferries"      -> *
+"water"        -> *
+"good"         -> "We can transport everything you want."
+"passenger"    -> "We would like to welcome you on board our ferries."
+"trip"         -> "Where do you want to go today? We serve the routes to Senja, Folda, and Vega, and back to Tibia."
+"passage"      -> *
+"round","trip" -> "The fee for the trip back to Tibia is included."
+"island"       -> "We serve the routes to Senja, Folda, and Vega, and back to Tibia."
+"route"        -> *
+
+"senja" -> Price=10, "Do you want a passage to Senja for %P gold?", Topic=1
+"folda" -> "This island is Folda."
+"vega"  -> Price=10, "Do you want a passage to Vega for %P gold?", Topic=2
+"tibia" -> Price=0,  "Do you want a free passage back to Tibia?", Topic=3
+
+Topic=1,"yes",PZBlock,! -> "First get rid of those blood stains! You are not going to ruin my vehicle!"
+Topic=2,"yes",PZBlock,! -> *
+Topic=3,"yes",PZBlock,! -> *
+
+
+Topic=1,"yes",CountMoney>=Price -> "Have a nice trip!", DeleteMoney, Idle, EffectOpp(11), Teleport(32126,31667,7), EffectOpp(11)
+Topic=1,"yes"                   -> "You don't have enough money."
+Topic=1                         -> "You shouldn't miss the experience."
+
+Topic=2,"yes",CountMoney>=Price -> "Have a nice trip!", DeleteMoney, Idle, EffectOpp(11), Teleport(32025,31692,7), EffectOpp(11)
+Topic=2,"yes"                   -> "You don't have enough money."
+Topic=2                         -> "You shouldn't miss the experience."
+
+Topic=3,"yes",CountMoney>=Price -> "Have a nice trip!", DeleteMoney, Idle, EffectOpp(11), Teleport(32236,31677,7), EffectOpp(11)
+Topic=3,"yes"                   -> "You don't have enough money."
+Topic=3                         -> "You shouldn't miss the experience."
+}

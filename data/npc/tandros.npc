@@ -1,0 +1,87 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# tandros.npc: Datenbank für den magierhändler Tandros
+
+Name = "Tandros"
+Outfit = (132,78-79-113-95)
+Home = [32621,32739,5]
+Radius = 0
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Be greeted, student of the arcane."
+ADDRESS,"hi$",!    -> *
+ADDRESS,"hiho$",!    -> *
+ADDRESS,!          -> Idle
+
+BUSY,"hello$",!    -> "Show some patience please.", Queue
+BUSY,"hi$",!       -> *
+BUSY,"hiho$",!    -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Farewell."
+
+"bye"      -> "Farewell.", Idle
+"farewell" -> *
+"job"      -> "I am selling items of magic power such as runes, wands, rods, life fluids and mana fluids."
+"name"     -> "I am Tandros the magnificent."
+"time"     -> "It is a crime against the order of things to try measuring time. The very thought of squeezing the majesty of centuries and centuries into a puny mechanical device is blasphemy."
+"king"     -> "Our king is a worldly one. But if you buy enough of my fluids and runes you might become the king of magic one day."
+"venore"   -> "Technically I am an employee of those trade barons of Venore but of course no one can control my magnificent mind."
+"thais"    -> "It is so crowded and people there are always busy. I dare to say that this is a city that has lost its magic at some point."
+"carlin"   -> "I heard there are many druids that are quite influential. They should know how to keep the magic of a place alive. I am looking forward to travel there one day."
+"edron"    -> "Edron is rumoured to be a place of ancient mysteries and powerful magic." 
+"jungle"   -> "The magic is out there somewhere."
+
+"tibia"    -> "The world is full of magic that is waiting to be used ... perhaps by you! Take the first step by buying my wares to gather even more magic power for yourself." 
+
+"kazordoon" -> "Dwarves have little love for magic. That makes them quite suspicious, doesn't it?"
+"dwarves"   -> * 
+"dwarfs"    -> *
+"ab'dendriel" -> "Elves are such marvelous, mythic creatures. They are full of magic."
+"elves"       -> *
+"elfs"        -> *
+"darama"      -> "Although our people, spoken in cosmological terms, have setteled here just recently, there is already much history hidden here. ...",
+                 "Not only mysteries and magical secrets but also many treasures are here to be explored by that person that is equipped with enough runes and fluids to master all dangers."
+"darashia"    -> "An unremarkable little town, but riding there by carpet is pure magic."
+"ankrahmun"   -> "A city that breathes evil and dark magic. Stay away or be at least well prepared if you intend to visit the city of the dead." 
+"ferumbras"   -> "He might be evil, but his powers are unimaginable! To stand a chance against evil overlords like him, you have to buy loads of my runes and fluids."
+"excalibug"   -> "A weapon of unparalleled magic. Don't listen to people that tell you that this is only a myth. It might be a dream but remember, dreams can come true."
+"apes"       -> "They are attacking travellers and even our settlement now and then. What can be a better way for you to survive than by preparing yourself well and to buy enough fluids and runes?"
+"lizard"    -> "The lizards live far away on the other side of the dangerous jungle. If you want to go there to learn more about their secrets, I strongly advise you to supply yourself with runes and fluids."
+"dworcs"     -> "The dworcs are fierce enemies and the poison they use is lethal. If you don't have some fluids and runes with you, you are easy prey to them." 
+
+"offer"           -> "I'm selling life and mana fluids, runes, wands, rods and spellbooks."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+
+"rune"         -> "I sell blank runes and spell runes."
+"life","fluid" -> Type=2874, Data=11, Amount=1, Price=60, "Do you want to buy life fluid for %P gold?", Topic=2
+"mana","fluid" -> Type=2874, Data=10, Amount=1, Price=55, "Do you want to buy mana fluid for %P gold?", Topic=2
+"blank","rune" -> Type=3147, Amount=1, Price=10, "Do you want to buy a blank rune for %P gold?", Topic=1
+"spellbook"    -> Type=3059, Amount=1, Price=150, "Do you want to buy a spellbook for %P gold?", Topic=1
+
+
+%1,1<%1,"life","fluid" -> Type=2874, Data=11, Amount=%1, Price=60*%1, "Do you want to buy %A potions of life fluid for %P gold?", Topic=2
+%1,1<%1,"mana","fluid" -> Type=2874, Data=10, Amount=%1, Price=55*%1, "Do you want to buy %A potions of mana fluid for %P gold?", Topic=2
+%1,1<%1,"blank","rune" -> Type=3147, Amount=%1, Price=10*%1,   "Do you want to buy %A blank runes for %P gold?", Topic=1
+%1,1<%1,"spellbook"    -> Type=3059, Amount=%1, Price=150*%1, "Do you want to buy %A spellbooks for %P gold?", Topic=1
+
+"deposit"                   -> "I will pay you 5 gold for every empty vial. Ok?", Data=0, Topic=3
+"vial"                      -> *
+"flask"                     -> *
+
+Topic=1,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Come back when you have enough money."
+Topic=1                         -> "Hmm, but next time."
+
+Topic=2,"yes",CountMoney>=Price -> "Here you are. There is a deposit of 5 gold on every vial.", DeleteMoney, Create(Type)
+Topic=2,"yes"                   -> "Come back when you have enough money."
+Topic=2                         -> "Hmm, but next time."
+
+Topic=3,"yes",Count(2874)>0 -> Amount=Count(2874), Price=Amount*5, "Here you are ... %P gold.", Delete(2874), CreateMoney
+Topic=3,"yes"               -> "You don't have any empty vials."
+Topic=3                     -> "Hmm, but please keep Tibia litter free."
+
+
+@"gen-t-runes-free-s.ndb"
+@"gen-t-wands-prem-s.ndb"
+}

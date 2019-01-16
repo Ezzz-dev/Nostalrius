@@ -1,0 +1,36 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# yulas.npc: Möbelverkäufer Yulas in Venore
+
+Name = "Yulas"
+Outfit = (128,58-43-38-76)
+Home = [33000,32065,6]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Welcome to the Plank and Treasurechest Market, %N!"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Just a moment please, %N.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Good bye."
+
+"bye"         -> "Good bye.", Idle
+"farewell"    -> *
+"name"        -> "I am Yulas. I will be your salesperson today."
+"job"         -> "We are into home improvement."
+"time",male   -> "It's %T, sire."
+"time",female -> "It's %T, my lady."
+"news"        -> "Sorry, we are not allowed to chat."
+"allen"       -> "To think just because he is around here to watch what we do, he want to be considered one of us..."
+"richardson"  -> *
+
+"offer"           -> "We sell furniture and equipment. At this counter you can buy tables."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"furniture"       -> *
+"equipment"       -> *
+
+@"gen-t-furniture-tables-s.ndb"
+}

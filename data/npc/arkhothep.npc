@@ -1,0 +1,20 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# Arkhothep.npc: Datenbank für den Pharao von Ankrahmun
+
+Name = "Arkhothep"
+Outfit = (91,0-0-0-0)
+Home = [33150,32842,4]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> Idle
+ADDRESS,"hi$",!    -> Idle
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> NOP
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> NOP
+
+"bye"       -> Idle
+
+}

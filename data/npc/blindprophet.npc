@@ -1,0 +1,46 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# blindprophet.npc: Datenbank für den blinden affenpropheten
+
+Name = "The Blind Prophet"
+Outfit = (117,0-0-0-0)
+Home = [33022,32604,7]
+Radius = 4
+
+Behaviour = {
+ADDRESS,"hello$",QuestValue(293)>14,! -> "Be greeted, friend of the apes."
+ADDRESS,"hi$",QuestValue(293)>14,!    -> *
+
+ADDRESS,"hello$",! -> "You not should be here! You go! You go!", Idle
+ADDRESS,"hi$",!    -> *
+
+ADDRESS,"hello$",! -> "Be greeted, friend of the apes."
+ADDRESS,"hi$",!    -> *
+
+ADDRESS,!          -> Idle
+
+BUSY,"hello$",!    -> "Sorry, I am busy."
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Good bye."
+
+"bye"       -> "Good bye.", Idle
+"name"      -> "Me put name away name long ago. Now only blind prophet of ape people are."
+"job"       -> "Me prophet and guardian is."
+"prophet"   -> "Me is who in dreams speak to holy banana. Me divine the will of banana."
+"guardian"  -> "Me guard the forbidden land behind the great palisade. If any want to enter, he must ask me for transport."
+"forbidden" -> *
+
+"transport",QuestValue(293)>14   -> "You want me to transport you to forbidden land?", topic=1
+"transport",QuestValue(293)<15   -> "No!"
+"yes",topic=1,PZBlock,! -> "Anger of battle is burning in you! First calm down."
+"yes",topic=1           -> "Take care!", Teleport(33026,32580,6), EffectOpp(11)
+"no" ,topic=1           -> "Wise decision maybe."
+
+"Hairycles" -> "Good ape he is. Has to work hard to make other apes listen but you helped a lot."
+"excalibug" -> "Me not know. Me seldom have visions of not banana related objects."
+"bong"      -> "Our holy ancestor he is. Big as mountain. Lizards say they built palisade to keep him but we not believe ...", "We think Bong palisade built to have peace from pesky lizards. We respect peace of Bong, keep people away from forbidden land."
+"ape"       -> "Our people a lot to learn have. One day we might live in peace with you hairless apes, who knows."
+"port", "hope" -> "Hairless apes strange people are. "
+"lizard"    -> "The lizards evil and vengeful are. Ape people on guard must be."
+"hair"      -> "Me visions show hair in the far north west of forbidden land. Near coast look for signs of Bongs presence."
+}

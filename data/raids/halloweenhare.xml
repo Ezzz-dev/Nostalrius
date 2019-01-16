@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="0" type="event" message="Beware, beware the halloween hare."/>
+	<areaspawn delay="0" radius="1" centerx="32624" centery="32017" centerz="7">
+		<monster name="The Halloween Hare" minamount="1" maxamount="1"/>
+	</areaspawn>
+	<areaspawn delay="0" radius="1" centerx="32071" centery="32215" centerz="7">
+		<monster name="The Halloween Hare" minamount="1" maxamount="1"/>
+	</areaspawn>
+</raid>

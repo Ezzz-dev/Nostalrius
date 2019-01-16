@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="0" type="event" message="Its full moon again and Fernfang is out for new prey."/>
+	<areaspawn delay="0" lifetime="14400000" radius="0" centerx="32851" centery="32340" centerz="6">
+		<monster name="Fernfang" minamount="1" maxamount="1"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="14400000" radius="3" centerx="32851" centery="32340" centerz="6">
+		<monster name="war wolf" minamount="2" maxamount="4"/>
+	</areaspawn>
+	<announce delay="0" type="event" message="Its full moon again and Fernfang is out for new prey."/>
+	<areaspawn delay="0" lifetime="14400000" radius="3" centerx="32855" centery="32333" centerz="7">
+		<monster name="war wolf" minamount="4" maxamount="6"/>
+	</areaspawn>
+</raid>

@@ -1,0 +1,50 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# mugluf.npc: Datenbank für den Fleischhändler Mugluf
+
+Name = "Mugluf"
+Outfit = (128,95-0-0-96)
+Home = [33220,32416,7]
+Radius = 0
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Greetings %N, seeker of delicacies."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "I will talk to you as soon as I finished this deal, %N.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "May Daraman's wisdom enlighten your soul."
+
+"bye"       -> "May Daraman's wisdom enlighten your soul.", Idle
+"name"      -> "I am known as Mugluf the younger." 
+"job"       -> "I sell meat, ham and salmon."
+"time"      -> "Time is nothing but another illusion."
+"caliph"    -> "Caliph Kazzan is our worldly leader."
+"kazzan"    -> *
+"ferumbras" -> "Who might that be?"
+"noodles"   -> "That must be an important Thaian noble. Regulary Darashian delicacies are sent for him to Thais."
+"excalibug" -> "O seeker of artifacts, I have no need for other weapons then a fork, a spoon, and a knife."
+"thais"     -> "I think we have some kind of trade agreements with them."
+"tibia"     -> "The world is an illusion, don't get trapped in it."
+"carlin"    -> "This town must be far away, we rarely even hear about it here."
+"news"      -> "People say there is a dark cloud gathering in the west."
+"rumour"    -> *
+"desert"    -> "It's a challenge to body and soul. Praised be Daraman to have brought us here to grow on this constant test."
+
+"offer"           -> "I can offer you meat, ham, and salmon."
+"do","you","sell" -> *
+"do","you","have" -> *
+"food"            -> "Are you looking for food? I have meat, ham, and salmon."
+
+"meat"   -> Type=3577, Amount=1, Price=7,  "Do you want to buy meat for %P gold?", Topic=1
+"ham"    -> Type=3582, Amount=1, Price=10, "Do you want to buy a ham for %P gold?", Topic=1
+"salmon" -> Type=3579, Amount=1, Price=6,  "Do you want to buy a salmon for %P gold?", Topic=1
+
+%1,1<%1,"meat"      -> Type=3577, Amount=%1, Price=7*%1,  "Do you want to buy %A meat for %P gold?", Topic=1
+%1,1<%1,"ham"       -> Type=3582, Amount=%1, Price=10*%1, "Do you want to buy %A ham for %P gold?", Topic=1
+%1,1<%1,"salmon"    -> Type=3579, Amount=%1, Price=6*%1,  "Do you want to buy %A salmon for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here it is.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "I am sorry, but you do not have enough gold."
+Topic=1                         -> "Maybe later."
+}

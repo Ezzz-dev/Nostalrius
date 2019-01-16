@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<areaspawn delay="0" lifetime="14400000" radius="1" centerx="32778" centery="32297" centerz="7">
+		<monster name="The Old Widow" minamount="1" maxamount="1"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="14400000" radius="3" centerx="32778" centery="32297" centerz="7">
+		<monster name="giant spider" minamount="2" maxamount="2"/>
+	</areaspawn>
+</raid>

@@ -1,0 +1,33 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# allen.npc: Möbelverkäufer Allen in Venore
+
+Name = "Allen"
+Outfit = (128,76-43-38-76)
+Home = [32991,32062,6]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Welcome to the Plank and Treasurechest Market, %N!"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Just a moment please, %N.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Good bye."
+
+"bye"      -> "Good bye.", Idle
+"farewell" -> *
+"name"     -> "My name is Allen Richardson. I am the owner of this market."
+"job"      -> "I run this market and sell furniture."
+"time"     -> "It is %T. Too bad we run out of cuckoo clocks."
+"news"     -> "Sorry, no time to chat, let's trade."
+
+"offer"           -> "At this counter you can buy chairs. What do you need?"
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"furniture"       -> *
+"equipment"       -> *
+
+@"gen-t-furniture-chairs-s.ndb"
+}

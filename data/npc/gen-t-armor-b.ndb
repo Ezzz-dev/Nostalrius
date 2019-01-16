@@ -1,0 +1,27 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gen-t-armor-b.ndb: Datenbank für generischen Rüstungskauf
+
+"sell","coat"               -> Type=3562, Amount=1, Price=1,    "Do you want to sell this coat for %P gold?", Topic=51
+"sell","jacket"             -> Type=3561, Amount=1, Price=1,    "Do you want to sell this jacket for %P gold?", Topic=51
+"sell","leather","armor"    -> Type=3361, Amount=1, Price=12,  "Do you want to sell a leather armor for %P gold?", Topic=51
+"sell","chain","armor"      -> Type=3358, Amount=1, Price=70,  "Do you want to sell a chain armor for %P gold?", Topic=51
+"sell","brass","armor"      -> Type=3359, Amount=1, Price=150, "Do you want to sell a brass armor for %P gold?", Topic=51
+"sell","plate","armor"      -> Type=3357, Amount=1, Price=400, "Do you want to sell a plate armor for %P gold?", Topic=51
+"sell","knight","armor"     -> Type=3370, Amount=1, Price=875,  "Do you want to sell this knights armor for %P gold?", Topic=51
+"sell","golden","armor"     -> Type=3360, Amount=1, Price=1500, "Do you want to sell this golden armor for %P gold?", Topic=51
+
+"sell",%1,1<%1,"coat"               -> Type=3562, Amount=%1, Price=1*%1,    "Do you want to sell this coats for %P gold?", Topic=51
+"sell",%1,1<%1,"jacket"             -> Type=3561, Amount=%1, Price=1*%1,    "Do you want to sell this jackets for %P gold?", Topic=51
+"sell",%1,1<%1,"leather","armor"    -> Type=3361, Amount=%1, Price=12*%1,  "Do you want to sell a leather armors for %P gold?", Topic=51
+"sell",%1,1<%1,"chain","armor"      -> Type=3358, Amount=%1, Price=70*%1,  "Do you want to sell a chain armors for %P gold?", Topic=51
+"sell",%1,1<%1,"brass","armor"      -> Type=3359, Amount=%1, Price=150*%1, "Do you want to sell a brass armors for %P gold?", Topic=51
+"sell",%1,1<%1,"plate","armor"      -> Type=3357, Amount=%1, Price=400*%1, "Do you want to sell a plate armors for %P gold?", Topic=51
+"sell",%1,1<%1,"knight","armor"     -> Type=3370, Amount=%1, Price=875*%1,  "Do you want to sell this knights armors for %P gold?", Topic=51
+"sell",%1,1<%1,"golden","armor"     -> Type=3360, Amount=%1, Price=1500*%1, "Do you want to sell this golden armors for %P gold?", Topic=51
+
+
+Topic=51,"yes",Count(Type)>=Amount -> "Ok. Here is your money.", Delete(Type), CreateMoney
+Topic=51,"yes"                             -> "Sorry, you do not have one."
+Topic=51,"yes",Amount>1                    -> "Sorry, you do not have so much."
+Topic=51                                   -> "Maybe next time."
+

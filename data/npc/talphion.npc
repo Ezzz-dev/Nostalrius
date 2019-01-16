@@ -1,0 +1,102 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# talphion.npc: Datenbank fuer den Technomancer Talphion (Zwergenstadt)
+
+Name = "Talphion"
+Outfit = (160,11-86-87-106)
+Home = [32563,31894,12]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "HIHOOOO %N! <waves his hands>"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "NOT NOW! TALKING! STAND IN LINE!.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "HEY! CAREFUL WHERE YOU STEP!"
+
+"bye"               -> "YEAH, GO AWAY!", Idle
+"farewell"          -> *
+"job"               -> "WHERE SHOULD I HOP?", topic=1 
+topic=1,"job"       -> "OH, JOB? I AM THE CHIEF TECHNOMANCER!"
+"name"              -> "I HAVE NO TIME FOR A GAME!", topic=2
+topic=2,"name"      -> "I AM TALPHION SPARKBENDER, SON OF THE MACHINE, FROM THE SAVAGE AXES."
+"hall","ancients"   -> "JUST A BUNCH OF BONES." 
+"tibia"             -> "CAN'T TELL MUCH ABOUT IT. SELDOM GET OUT HERE, I AM A BUSY DWARF."
+"kazordoon"         -> "WHAT?", topic=3 
+topic=3,"kazordoon" -> "WHOS DOOMED?", topic=4 
+topic=4,"kazordoon" -> "OH, THE CITY? NICE, ISN'T IT?"
+
+"big","old"    -> "THIS IS THE NAME OF THIS MOUNTAIN!"
+"elves"        -> "NO. I DON'T NEED ANY SHELVES!"
+"humans"       -> "A PROMISING RACE, SOME OF THEM ACTUALLY ADMIRE MECHANICS." 
+"orcs"         -> "LET THEM COME, I AM WORKING ON A LITTLE SURPRISE FOR THEM! <chukles madly>" 
+"minotaurs"    -> * 
+"pyromancer"   -> "OLD FOOLS, TO MUCH CONCERNED ABOUT TRADITION." 
+"geomancer"    -> * 
+"technomancer" -> "WE ARE THE FUTURE. WE WILL BECOME A MAJOR POWER IN DWARFEN SOCIETY SOON! THEY WILL SEE, THEY WILL ALL SEE! <chuckles and rolls his eyes>"
+"god"          -> "GODS, WHO NEEDS GODS, WHEN WE CAN BUILD THE CORRECT MACHINE FOR EVERY OCCASION?"
+"fire"         -> "NICE RESOURCE FOR OUR MACHINES, BUT NO NEED TO MAKE A BIG DEAL ABOUT IT, JAWOLL!"
+"flame"        -> *
+"earth"        -> "SORRY, BUT JUST DUST AND MUD TO ME."
+"durin"        -> "I AM SURE HE WOULD BE SMART ENOUGH TO SEE THE CHANCES WE PROVIDE FOR DWARFENHOOD." 
+"life"         -> "WHAT HIVE?"
+"plant"        -> "HEY! HOW DID YOU LEARN ABOUT OUR SECRET PLANT?"
+"citizen"      -> "YOU CAN BECOME CITIZEN IN THE HALL OF ANCIENTS."
+"kroox"        -> "WE COULD TEACH HIM MUCH IF HE LISTENED."
+"jimbin"       -> "HIS BREWERY SAVED OUR DAY MORE THEN ONCE IN MANY WAYS."
+"maryza"       -> "LOVELY, BUT PREDJUDICED AS MOST DWARFS ARE."
+"bezil"        -> "BEZIL AND NEZIL ARE RUNNING A SHOP."
+"nezil"        -> *
+"uzgod"        -> "WE COULD MAKE FOR HIM MACHINES TO DO HIS WORK IN HALF THE TIME I BET."
+"etzel"        -> "WHO NEEDS MAGIC? PAH!"
+"duria"        -> "KNIGHTS DO NOT HAVE THE BRAIN TO EVEN UNDERSTAND WHAT WE ARE OFFERING THEM."
+"offering"     -> "YES, THE MOST SOPHISTICATED ITEMS THEY BUY ARE CROSSBOWS."
+
+"crossbow" -> Type=3349, Amount=1,  Price=1150, "DO YOU WANT TO BUY A CROSSBOW FOR %P GOLD?", Topic=5
+"bolt"     -> Type=3446, Amount=1, Price=5,   "DO YOU WANT TO BUY A BOLT FOR %P GOLD?", Topic=5
+
+%1,1<%1,"bolt"     -> Type=3446, Amount=%1, Price=5*%1, "DO YOU WANT TO BUY %A BOLTS FOR %P GOLD?", Topic=5
+%1,1<%1,"crossbow" -> Type=3349, Amount=%1, Price=1150*%1, "DO YOU WANT TO BUY %A CROSSBOWS FOR %P GOLD?", Topic=5
+
+Topic=5,"yes",CountMoney>=Price -> "HERE YOU ARE.", DeleteMoney, Create(Type)
+Topic=5,"yes"                   -> "NOT ENOUGH MONEY. SORRY."
+Topic=5                         -> "PERHAPS NEXT TIME."
+
+"emperor"      -> "AT LEAST HES SMART ENOUGH TO LEAVE US ALONE, SO THERES HOPE FOR HIM."
+"kruzak"       -> *
+"motos"        -> "STUPID IDIOT, WITH SOME MORE RESOURCES I COULD BUILD FOR HIM WARMACHINES BEYOND HIS WILDEST DREAMS! <insane laughter>"
+"general"      -> *
+"army"         -> "ONE DAY OUR MACHINES WILL CHANGE THE ARMY STRUCTURES DRASTICALLY, JAWOLL!"
+"ferumbras"    -> "I BET I COULD BUILD A MACHINE TO SHRED HIM INTO PIECES!"
+"excalibug"    -> "OLD FASHIONED BUTTERKNIFE! IF THEY LET ME, I WOULD CREATE WEAPONS THAT LEVEL ENTIRE CITIES!"
+"news"         -> "ASK JIMBIN ABOUT HIS BREWS, NOT ME!"
+"monster"      -> "I COULDN'T CARE LESS ABOUT THEM."
+"help"         -> "WHOM YOU ARE CALLING A WHELP, YOU &$(&*#!", idle
+"quest"        -> "BRING ME THE SCREWDRIVER OF KURIK AND I WILL REWARD YOU WITH A STEAMPOWERED SPIKESWORD!"
+"task"         -> *
+"what","do"    -> *
+"gold"         -> "DONATIONS ARE ALWAYS WELCOME!"
+"money"        -> *
+"equipment"    -> "YOU ARE TOO STUPID FOR MOST OF OUR STUFF, BUT I COULD SELL YOU SOME CROSSBOWS."
+"fight"        -> "NO, DONT SWITCH OUT THE LIGHT."
+
+Topic=6,"dress","pattern"           -> "A PRESS LANTERN? NEVER HEARD ABOUT IT!",Topic=7
+Topic=7,"dress","pattern"           -> "CHESS? I DONT PLAY CHESS!",Topic=8
+Topic=8,"dress","pattern"           -> "A PATTERN IN THIS MESS?? HEY DON'T INSULT MY MACHINEHALL!",Topic=9
+
+Topic=9,"dress","pattern"           -> "AH YES! I WORKED ON THE DRESS PATTERN FOR THOSE UNIFORMS. STAINLESS TROUSERS, STEAM DRIVEN BOOTS! ANOTHER MARVEL TO BEHOLD! I'LL SEND A COPY TO KEVIN IMEDIATELY!",SetQuestValue(233,4)
+Topic=9,"uniform"           -> *
+
+"technical","details" -> "TECH DETAILS ABOUT WHAT???"
+"dress","pattern",QuestValue(233)=3   -> "DRESS FLATTEN? WHO WANTS ME TO FLATTEN A DRESS?",Topic=6
+
+"dress","pattern",QuestValue(233)<>3    -> "DRESS FLATTEN? WHO WANTS ME TO FLATTEN A DRESS?"
+"uniform"       -> "NO, HERE IS NO UNICORN!"
+
+"heal",Burning>0 -> "YOU ARE BURNING! THAT'S FUN, HOW DO YOU DO THAT?"
+"heal",Poison>0  -> "YOU ARE POISONED! HAVE YOU DRUNK THE STUFF IN A GREEN BOTTLE? THAT'S SUPERGLUE, NOT SUPPER-GLUE, STUPID!"
+"heal"           -> "I AM AN ENGINEER, NOT A DOCTOR!"
+"time"           -> "ONE DAY I WILL CREATE A CLOCK FOR THE COLOSSUS"
+"colossus"       -> "NICE PIECE OF WORK. WOULD BE MORE FUN IF IT COULD MOVE AROUND... WE HAVE PLANS..."
+}

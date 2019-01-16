@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="1000" type="event" message="Rats in rookgaard!"/>
+	<areaspawn delay="1000" lifetime="7200000" radius="4" centerx="32068" centery="32226" centerz="6">
+		<monster name="rat" minamount="10" maxamount="15"/>
+	</areaspawn>
+	<areaspawn delay="3000" lifetime="7200000" radius="5" centerx="32093" centery="32229" centerz="6">
+		<monster name="rat" minamount="10" maxamount="15"/>
+	</areaspawn>
+	<areaspawn delay="3000" lifetime="7200000" radius="4" centerx="32081" centery="32214" centerz="6">
+		<monster name="rat" minamount="10" maxamount="15"/>
+	</areaspawn>
+	<areaspawn delay="3000" lifetime="7200000" radius="4" centerx="32060" centery="32177" centerz="6">
+		<monster name="rat" minamount="10" maxamount="15"/>
+	</areaspawn>
+	<areaspawn delay="3000" lifetime="7200000" radius="4" centerx="32082" centery="32184" centerz="6">
+		<monster name="rat" minamount="10" maxamount="15"/>
+	</areaspawn>
+	<areaspawn delay="3000" lifetime="7200000" radius="4" centerx="32082" centery="32184" centerz="5">
+		<monster name="rat" minamount="10" maxamount="15"/>
+	</areaspawn>
+	<areaspawn delay="3000" lifetime="7200000" radius="4" centerx="32099" centery="32183" centerz="6">
+		<monster name="rat" minamount="10" maxamount="15"/>
+	</areaspawn>
+	<areaspawn delay="3000" lifetime="7200000" radius="4" centerx="32103" centery="32192" centerz="5">
+		<monster name="rat" minamount="10" maxamount="15"/>
+	</areaspawn>
+	<areaspawn delay="3000" lifetime="7200000" radius="4" centerx="32026" centery="32195" centerz="6">
+		<monster name="rat" minamount="10" maxamount="15"/>
+	</areaspawn>
+</raid>

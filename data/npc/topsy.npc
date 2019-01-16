@@ -1,0 +1,97 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# topsy.npc: Datenbank für shopkeeper Topsy (magic)
+
+Name = "Topsy"
+Outfit = (139,78-52-64-115)
+Home = [32415,32170,7]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hi$",!      -> "Hello, dear %N. How can I help you?"
+ADDRESS,"hello$",!   -> *
+ADDRESS,!            -> Idle
+BUSY,"hi$",!         -> "My apologies, but I really must talk to this customer first. Sugar, I am busy with a customer at the moment. Please have some patience.", Queue
+BUSY,"hello$",!      -> *
+BUSY,!               -> NOP
+VANISH,!             -> "Good bye. Do come again!"
+
+"bye"	   	           -> "Good bye. Do come again!", Idle
+"farewell" 		       -> *
+"how","are","you"    -> "I'm just wonderful - thank you for asking."
+"job"                -> "I sell runes, life and mana fluids - your best friends in any dungeon!"
+"name"               -> "My name is Topsy."
+"time"               -> "Time waits for no one! Not even you, sweetheart, so please do hurry up."
+"help"               -> "I'd love to help, but I have a business to run - I am busy busy busy!."
+"monster"            -> "Better buy and charge a lot of runes before facing any monster."
+"dungeon"            -> "Dungeons - dank cold places if you ask me. They lead to rusty armour, severe colds and death ... on the other hand you use a lot of runes there ... so just think about the treasures you'll surely find there."
+"sewer"              -> "The Thais sewerage system is a model of modern rat breeding and for some reason is very popular with young adventurers such as yourself."
+"boss"               -> "I had one once. He should have bought better armour. Actually - he's upstairs."
+"thank","you"        -> "Oh, such a sweetie ... and so polite. I thought politeness was out of fashion, these days."
+"god"                -> "Gods - if we didn't have them, we would have invented them."
+"king"               -> "<mutters> Here we go again  ... Hail to King Tibianus! ... Don't make me do that again!"
+"sam"                -> "Ah, such a sweetie.  A simple man, with simple tastes and a simple mind."
+"benjamin"           -> "Bless him, he stood, he fought, and then left his sanity on the battlefield."
+"gorn"               -> "Ah yes ... Gorn ... the used-cart salesman of scrolls." 
+"quentin"            -> "I can't tell much about that old monk."
+"bozo"               -> "He wanted to be the court jester but got upset when people laughed at him" 
+"rumour"             -> "I'm all ears", Topic=4
+"gossip"             -> *
+"news"               -> *
+"Gamon"	             -> "I think he is a spy ... so I smile at him the whole day. He won't get anything out of me!"
+"carlin"	           -> "I went there on holiday once. Just goes to show that women are much better at running a place than men. King Tibianus could learn a thing or two from Queen Eloise."
+"weapon"             -> "Wrong shop - go to my sister, silly!"
+"magic"              -> "Magic will only protect you - a rune and some magic fluids."
+"power"              -> "There is a power struggle between Venore and Thais."
+"rebellion"          -> "There is talk of a rebellion in Venore to gain independence from the Oppressor - I mean - King of Thais - it can only help business."
+"quest"	             -> "I sell magic stuff, my dear. If you want a quest, you've come to the wrong shop."
+"spells"             -> "You never know when you run out of mana. All the more reason to buy some good runes or fluids."
+"muriel"             -> "You should ask this guy Oswald about him ... or other pointless rumors." 
+"elane"              -> "Some call her the preying mantis - apparently she has killed over a dozen husbands already."
+"venore"	           -> "A marvellous city! Modern! Prosperous! Thais could learn a thing or two from Venore" 
+"marvik"             -> "Who knows what the old man is up to in his hideout when no one is watching?" 
+"gregor"             -> "Ah Knight ... can't expect much from those guys."
+"lugri"              -> "I only heared rumours about him, isn't he a hermit somewhere in the north?"
+"excalibug"          -> "If you want to find out about excalibug you should ask the more sinister characters in Thais not a respectable woman like myself!"
+"chester"            -> "I have never seen him at all. I only heared hes kind of the townsguards chief or such."
+"ardua"              -> "What a strange woman. She lingers in our shop now and then ... I wonder what shes up to."
+"partos"             -> "I heared he was a thief. Good thing he was caught."
+"gamel"              -> "He hung around with that partos a lot. I wouldn't be suprised if he's a thief too. He is not allowed to enter our markethall."
+"quest"	             -> "Sure. Just ask my sister Turvy."
+Topic=4              -> "Really? Tststs."
+
+"offer"           -> "I'm selling life and mana fluids, runes, wands, rods and spellbooks."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+
+"rune"         -> "I sell blank runes and spell runes."
+"life","fluid" -> Type=2874, Data=11, Amount=1, Price=60, "Do you want to buy life fluid for %P gold?", Topic=2
+"mana","fluid" -> Type=2874, Data=10, Amount=1, Price=55, "Do you want to buy mana fluid for %P gold?", Topic=2
+"blank","rune" -> Type=3147, Amount=1, Price=10, "Do you want to buy a blank rune for %P gold?", Topic=1
+"spellbook"    -> Type=3059, Amount=1, Price=150, "Do you want to buy a spellbook for %P gold?", Topic=1
+
+
+%1,1<%1,"life","fluid" -> Type=2874, Data=11, Amount=%1, Price=60*%1, "Do you want to buy %A potions of life fluid for %P gold?", Topic=2
+%1,1<%1,"mana","fluid" -> Type=2874, Data=10, Amount=%1, Price=55*%1, "Do you want to buy %A potions of mana fluid for %P gold?", Topic=2
+%1,1<%1,"blank","rune" -> Type=3147, Amount=%1, Price=10*%1, "Do you want to buy %A blank runes for %P gold?", Topic=1
+%1,1<%1,"spellbook"    -> Type=3059, Amount=%1, Price=150*%1, "Do you want to buy %A spellbooks for %P gold?", Topic=1
+
+"deposit"                   -> "I will pay you 5 gold for every empty vial. Ok?", Data=0, Topic=3
+"vial"                      -> *
+"flask"                     -> *
+
+Topic=1,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Come back, when you have enough money."
+Topic=1                         -> "Hmm, but next time."
+
+Topic=2,"yes",CountMoney>=Price -> "Here you are. There is a deposit of 5 gold on the vial.", DeleteMoney, Create(Type)
+Topic=2,"yes"                   -> "Come back, when you have enough money."
+Topic=2                         -> "Hmm, but next time."
+
+Topic=3,"yes",Count(2874)>0 -> Amount=Count(2874), Price=Amount*5, "Here you are ... %P gold.", Delete(2874), CreateMoney
+Topic=3,"yes"               -> "You don't have any empty vials."
+Topic=3                     -> "Hmm, but please keep Tibia litter free."
+
+@"gen-t-runes-free-s.ndb"
+@"gen-t-wands-free-s.ndb"
+}

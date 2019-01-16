@@ -1,0 +1,14 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# genTarmorV.ndb: Datenbank für generischen Rüstungsverkauf
+
+"jacket"            -> Type=3561, Amount=1, Price=10, "Do you want to buy a jacket for %P gold?", Topic=21
+"coat"              -> Type=3562, Amount=1, Price=8, "Do you want to buy a coat for %P gold?", Topic=21
+"doublet"           -> Type=3379, Amount=1, Price=16, "Do you want to buy a dublet for %P gold?", Topic=21 
+"leather","armor"   -> Type=3361, Amount=1, Price=35, "Do you want to buy a leather armor for %P gold?", Topic=21
+"chain","armor"     -> Type=3358, Amount=1, Price=200, "Do you want to buy a chain armor for %P gold?", Topic=21
+"brass","armor"     -> Type=3359, Amount=1, Price=450, "Do you want to buy a brass armor for %P gold?", Topic=21
+"plate","armor"     -> Type=3357, Amount=1, Price=1200,"Do you want to buy a plate armor for %P gold?", Topic=21
+
+Topic=21,"yes",CountMoney>=Price -> "Thank you. Here it is.", DeleteMoney, Create(Type) 
+Topic=21,"yes"                   -> "Sorry, you do not have enough gold." 
+Topic=21                         -> "Maybe you will buy it another time." 

@@ -1,0 +1,324 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gen-expl.ndb:  Datenbank für die Explorers Society
+
+"job"                 -> "I am the local representative of the explorer society." 
+
+"explorer", "society" -> "Our noble society is dedicated to explore the unknown. No location is too remote for our members to travel there ...", "No beast is too wild to be hunted. No treasure buried too deep to be unearthed ...", "Only the most dedicated and fearless adventurers may join our ranks." 
+"base"                -> "Currently we maintain public bases in Port Hope and Northport." 
+"join",QuestValue(300)>0 -> "But you are already a member, %N" 
+"join",QuestValue(300)<1 -> "Do you want to join the explorer society?",topic=1 
+"no", topic=1   -> "I see. Not everyone has the guts it takes to become a professional explorer." 
+"yes", topic=1  -> "Fine, though it takes more than a mere lip service to join our ranks. To prove your dedication to the cause you will have to acquire an item for us ...", "The mission should be simple to fulfil. For our excavations we have ordered a sturdy pickaxe in Kazordoon. You would have to seek out this trader Uzgod and get the pickaxe for us ...", "Simple enough? Are you interested in this task?", topic=2 
+
+"no", topic=2   -> "I see. Not everyone has the guts it takes to become a professional explorer." 
+"yes", topic=2  -> "We will see if you can handle this simple task. Get the pickaxe from Uzgod in Kazordoon and bring it to one of our bases. Report there about the pickaxe.", SetQuestValue(325,1) 
+
+"pickaxe",QuestValue(300)<1 -> Type=4845,Amount=1,"Did you get the requested pickaxe from Uzgod in Kazordoon?",topic=9 
+#################  
+"no", topic=9      -> "Get that special pickaxe from Uzgod in Kazordoon." 
+"yes", topic=9,Count(Type)<Amount       -> "Get that special pickaxe from Uzgod in Kazordoon." 
+"yes", topic=9,Count(Type)>=Amount      -> "Excellent, you brought just the tool we need! Of course it was only a simple task. However ...", "I officially welcome you to the explorer society. From now on you can ask for missions to improve your rank.",Delete(Type), SetQuestValue(300,1) 
+
+"rank",QuestValue(300)>0,QuestValue(300)<4 -> "You are a novice of the explorer society." 
+"rank",QuestValue(300)>3,QuestValue(300)<7 -> "You are a journeyman of the explorer society." 
+"rank",QuestValue(300)>6,QuestValue(300)<9 -> "You are a relic hunter of the explorer society." 
+"rank",QuestValue(300)>8                   -> "You are an explorer of the explorer society."
+################## Allgemeine Missionen 
+"ratha",QuestValue(302)=0 -> "Ratha was a great explorer and even greater ladies' man. Sadly he never returned from a visit to the amazons. Probably he is dead ...", "The society offers a substantial reward for the retrieval of Ratha or his remains. Do you have any news about Ratha?",Type=3207,Amount=1,Price=250, topic=3 
+"ratha",QuestValue(302)=1 -> "Ratha was a great explorer and even greater ladies' man. Thank you for returning his remains." 
+
+"no",topic=3    -> "If you ever stumble across some information about Ratha, let us know." 
+"yes",topic=3,QuestValue(302)=0,Count(Type)<Amount    -> "What are you talking about? You have nothing to clarify Ratha's whereabouts." 
+"yes",topic=3,QuestValue(302)=0,Count(Type)>=Amount    -> "Poor Ratha. Thank you for returning this skull to the society. We will see to a honourable burial of Ratha.", Delete(Type), CreateMoney, SetQuestValue(302,1) 
+
+
+"brooch" -> "Our members travel to far away places and cross dangerous areas, many fall prey to enemies or the land ...", "Sometimes the personal explorer brooches can be recovered. That way we learn about the fate of our members ...", "We offer a reward for each brooch returned to us. Have you found an explorer brooch?",Type=3005,Amount=1,Price=50, topic=53 
+
+"no", topic=53   -> "Sometimes no news is good news." 
+"yes", topic=53,Count(Type)>=Amount -> "It's always a sad day when we learn about the death of a member. But at least we learnt about his fate. Thank you, here is your reward.", Delete(Type), CreateMoney 
+"yes", topic=53,Count(Type)<Amount -> "You don't have any lost brooch with you. This is not a topic to make fun of." 
+
+"smith", "hammer"  -> "The explorer society is looking for a genuine giant smith hammer for our collection. It is rumoured the cyclopses of the Plains of Havoc might be using one. Did you by chance obtain such a hammer?",Type=3208,Amount=1,Price=250, topic=4 
+"smith", "hammer" ,QuestValue(303)=1 -> "The explorer society was looking for a genuine giant smith hammer until you brought us one. Thank you again." 
+
+"yes", topic=4,Count(Type)>=Amount -> "Marvellous! You brought a giant smith hammer for the explorer society!", Delete(Type), CreateMoney, SetQuestValue(303,1) 
+"yes", topic=4,Count(Type)<Amount -> "This is no giant smith hammer." 
+"no", topic=4  -> "Just as you like. But think about the reward!" 
+
+#######
+
+"hydra","egg" -> "The examination of hydra eggs is a valuable source of information. We buy hydra eggs for 500 gold. Are you interested in selling one?",Type=4839,Amount=1,Price=500, topic=40 
+
+"sell",%1,1<%1,"hydra","egg"    -> Type=4839, Amount=%1, Price=500*%1, "The examination of hydra eggs is a valuable source of information. We buy hydra eggs for 500 gold each. Do you want to sell %A hydra eggs for %P gold?", Topic=40
+
+"no",topic=40    -> "If you ever aquire a hydra egg, bring it here." 
+"yes",topic=40,Count(Type)<Amount    -> "What are you talking about? You don't own that many hydra eggs." 
+"yes",topic=40,Count(Type)>=Amount    -> "Thank you in the name of science.", Delete(Type), CreateMoney 
+####
+"scroll","lizard" -> "The examination of scrolls with lizard writings is a valuable source of information. We buy such scrolls for 500 gold. Are you interested to sell one?",Type=4831,Amount=1,Price=500, topic=41 
+"parchment" -> *
+
+"no",topic=41    -> "If you ever aquire a parchment with lizard writings, bring it here." 
+"yes",topic=41,Count(Type)<Amount    -> "What are you talking about? You own no parchment with lizard writings at all." 
+"yes",topic=41,Count(Type)>=Amount    -> "Thank you in the name of science.", Delete(Type), CreateMoney 
+
+######
+
+
+######################## Missionen 
+
+"mission",QuestValue(300)>0,QuestValue(300)<4 -> "The missions available for your rank are the butterfly hunt, plant collection and ice delivery." 
+
+"butterfly", "hunt",QuestValue(300)>0,QuestValue(304)=0 -> "The mission asks you to collect some species of butterflies, are you interested?", topic=5 
+"no", topic=5 -> "Perhaps another mission suits you more." 
+"yes", topic=5 -> "This preparation kit will allow you to collect a purple butterfly you have killed ...", "Just use it on the fresh corpse of a purple butterfly, return the prepared butterfly to me and give me a report of your butterfly hunt.", Create(4863), SetQuestValue(304,1) 
+
+"butterfly", "hunt",QuestValue(304)=1 -> "Did you acquire the purple butterfly we are looking for?",Type=4865,Amount=1, topic=6 
+"no", topic=6             -> "Then go and look for one." 
+"yes", topic=6,Count(Type)<Amount   -> "I can't see a purple butterfly. Perhaps you lost it somewhere." 
+"yes", topic=6,Count(Type)>=Amount  -> "A little bit battered but it will do. Thank you! If you think you are ready, ask for another butterfly hunt.", Delete(Type), SetQuestValue(304,2) 
+
+
+"butterfly", "hunt",QuestValue(304)=2 -> "This preparation kit will allow you to collect a blue butterfly you have killed ...", "Just use it on the fresh corpse of a blue butterfly, return the prepared butterfly to me and give me a report of your butterfly hunt.", Create(4863), SetQuestValue(304,3) 
+
+"butterfly", "hunt",QuestValue(304)=3 -> "Did you acquire the blue butterfly we are looking for?",Type=4866,Amount=1,topic=7 
+"no",topic=7              -> "Then go and look for one." 
+"yes",topic=7,Count(Type)<Amount   -> "I can't see a blue butterfly. Perhaps you lost it somewhere." 
+"yes",topic=7,Count(Type)>=Amount  -> "Again I think it will do. Thank you! If you think you are ready, ask for another butterfly hunt.", Delete(Type), SetQuestValue(304,4) 
+
+
+"butterfly", "hunt",QuestValue(304)=4 -> "This preparation kit will allow you to collect a red butterfly you have killed ...", "Just use it on the fresh corpse of a red butterfly, return the prepared butterfly to me and give me a report of your butterfly hunt.", Create(4863), SetQuestValue(304,5) 
+
+"butterfly", "hunt",QuestValue(304)=5 -> "Did you acquire the red butterfly we are looking for?",Type=4864,Amount=1, topic=8 
+"no", topic=8             -> "Then go and look for one." 
+"yes", topic=8,Count(Type)<Amount    -> "I can't see a red butterfly. Perhaps you lost it somewhere." 
+"yes", topic=8,Count(Type)>=Amount   -> "That is an extraordinary species you have brought. Thank you! That was the last butterfly we needed.", Delete(Type), SetQuestValue(304,6),SetQuestValue(300,QuestValue(300)+1) 
+"butterfly", "hunt",QuestValue(304)=6 -> "You have already finished the butterfly hunt. Of course you can always ask me what missions are available." 
+
+#### topic 9 ist verwendet 
+
+"plant", "collection",QuestValue(300)>0,QuestValue(305)=0 -> "In this mission we require you to get us some plant samples from Tiquandan plants. Would you like to fulfil this mission?", topic=10 
+"no", topic=10 -> "Perhaps another mission suits you more." 
+"yes", topic=10 -> "Fine! Here take this botanist's container. Use it on a jungle bells plant to collect a sample for us. Report about your plant collection when you have been successful.", Create(4867),SetQuestValue(305,1) 
+
+"plant", "collection",QuestValue(305)=1 -> "Did you acquire the sample of the jungle bells plant we are looking for?",Type=4868,Amount=1, topic=11 
+"no", topic=11                               -> "Then go and look for one." 
+"yes", topic=11,Count(Type)<Amount   -> "Sorry, you don't have a useful sample." 
+"yes", topic=11,Count(Type)>=Amount  -> "I see. It seems you've got some quite useful sample by sheer luck. Thank you! Just tell me when you are ready to continue with the plant collection.", Delete(Type),SetQuestValue(305,2) 
+
+"plant", "collection",QuestValue(305)=2 -> "Use this botanist's container on a witches cauldron to collect a sample for us. Bring it here and report about your plant collection.", Create(4867),SetQuestValue(305,3) 
+
+"plant", "collection",QuestValue(305)=3 -> "Did you acquire the sample of the witches cauldron we are looking for?",Type=4870,Amount=1, topic=12 
+"no", topic=12              -> "Then go and look for one." 
+"yes", topic=12,Count(Type)<Amount    -> "Sorry, you don't have any useful sample." 
+"yes", topic=12,Count(Type)>=Amount   -> "Ah, finally. I started to wonder what took you so long. But thank you! Another fine sample, indeed. Just tell me when you are ready to continue with the plant collection.", Delete(Type),SetQuestValue(305,4) 
+
+"plant", "collection",QuestValue(305)=4 -> "Use this botanist's container on a giant jungle rose to obtain a sample for us. Bring it here and report about your plant collection.", Create(4867),SetQuestValue(305,5) 
+
+"plant", "collection",QuestValue(305)=5 -> "Did you acquire the sample of the giant jungle rose we are looking for?",Type=4869,Amount=1, topic=13 
+"no", topic=13           -> "Then go and look for one. Keep in mind we need samples of the giant jungle rose, not the small one." 
+"yes", topic=13,Count(Type)<Amount     -> "Sorry you don't have any useful sample. Perhaps you did not use the botanist's container on a giant jungle rose as requested, but on a small one." 
+"yes", topic=13,Count(Type)>=Amount    -> "What a lovely sample! With that you have finished your plant collection missions.", Delete(Type),SetQuestValue(305,6),SetQuestValue(300,QuestValue(300)+1) 
+
+
+"plant", "collection",QuestValue(305)=6 -> "You have already finished the plant collection missions. Of course you can always ask me what missions are available." 
+
+"ice", "delivery",QuestValue(300)>0,QuestValue(306)=0 -> "Our finest minds came up with the theory that deep beneath the ice island of Folda ice can be found that is ancient. To prove this theory we would need a sample of the aforesaid ice ...", "Of course the ice melts away quickly so you would need to hurry to bring it here ...", "Would you like to accept this mission?",topic=14 
+
+"no",topic=14 -> "Perhaps another mission suits you more." 
+"yes",topic=14 -> "So listen please: Take this ice pick and use it on a block of ice in the caves beneath Folda. Get some ice and bring it here as fast as you can ...", "Should the ice melt away, report on your ice delivery mission anyway. I will then tell you if the time is right to start another mission.", Create(4872),SetQuestValue(306,1)
+"ice", "delivery",QuestValue(306)=1 -> "Did you get the ice we are looking for?",Type=4837,Amount=1,topic=15
+"no",topic=15           -> "Did it melt away?",topic=16 
+  "no",topic=16  ->  "Then don't waste your time and go to the caves on Folda to get some ice." 
+  "yes",topic=16,QuestValue(307)=0 ->  "I think you are wrong, just try to get that ice as you were told." 
+  "yes",topic=16,QuestValue(307)=1,Count(Type)>Amount -> "What are you talking about, I can see you still have some ice on you." 
+  "yes",topic=16,QuestValue(307)=1,Count(Type)<Amount -> "*Sigh* I think the time is right to grant you another chance to get that ice. Hurry up this time.",SetQuestValue(307,0), EffectOpp(13) 
+
+"yes",topic=15,Count(Type)<Amount     -> "Sorry, you don't have any ice on you." 
+"yes",topic=15,Count(Type)>=Amount,QuestValue(307)=0      -> "This ice looks odd. I don't think it's from Folda. Make sure to travel there to get the ice we are looking for." 
+"yes",topic=15,Count(Type)>=Amount,QuestValue(307)=1      -> "Just in time. Sadly not much ice is left over but it will do. Thank you again.",SetQuestValue(306,2),SetQuestValue(300,QuestValue(300)+1), Delete(Type)
+
+"ice", "delivery",QuestValue(306)=2 -> "You already brought us the ice sample that we needed. Of course you can always ask me what missions are available."
+
+#########
+# Debug #
+#########
+
+#"advancement", QuestValue(300)>0, QuestValue(304)<6  -> "You have not even finished your butterfly hunt. Perform some missions and ask again."
+#"advancement", QuestValue(300)>0, QuestValue(304)=6  -> "So you think you are worthy of an advancement?",topic=55
+#"no",topic=55 -> "Then stop bothering me with it."
+#"yes",topic=55, QuestValue(305)<6 -> "You have not even finished your plant collection. Perform some missions and ask again."
+#"yes",topic=55, QuestValue(305)=6 -> "Well, you performed some simple tasks at least but do you realy think you deserve an advancement?",Topic=56
+#"no",topic=56 -> "Then stop bothering me with it."
+#"yes",topic=56, QuestValue(306)<2 -> "First finish the ice delivery mission. Then we might talk about advancement."
+#"yes",topic=56, QuestValue(306)=2, QuestValue(300)>3 -> "Sorry but your rank mirrors your performance perfectly."
+#"yes",topic=56, QuestValue(306)=2, QuestValue(300)<4 -> "This is odd indeed. I must have confused something in my papers, sorry. I grant you the rank of a journeyman.",SetQuestValue(300,4)
+
+
+########################
+# NEUE MISSIONEN (4-6) #
+########################
+
+
+"mission",QuestValue(300)>3,QuestValue(300)<7 -> "The missions available for your rank are lizard urn, beholder secrets and orc powder." 
+
+"lizard", "urn",QuestValue(308)=0,QuestValue(300)>3 -> "The explorer society would like to acquire an ancient urn which is some sort of relic to the lizard people of Tiquanda. Would you like to accept this mission?",topic=17 
+
+"no",topic=17 -> "Perhaps another mission suits you more." 
+"yes",topic=17 -> "You have indeed the spirit of an adventurer! In the south-east of Tiquanda is a small settlement of the lizard people ...", "Beneath the newly constructed temple there, the lizards hide the said urn. Our attempts to acquire this item were without success ...", "Perhaps you are more successful.",SetQuestValue(308,1)
+
+"lizard", "urn",QuestValue(308)=1 -> "Did you manage to get the ancient urn?",Type=4847,Amount=1,topic=18 
+
+"no",topic=18     -> "It must be somewhere beneath the newly constructed lizard temple in the south-east of Tiquanda." 
+"yes",topic=18,Count(Type)<Amount     -> "Sorry, you don't have the urn. It has to be somewhere beneath the newly constructed lizard temple in the south-east of Tiquanda." 
+"yes",topic=18,Count(Type)>=Amount    -> "Yes, that is the prized relic we have been looking for so long. You did a great job, thank you.", Delete(Type),SetQuestValue(308,2),SetQuestValue(300,QuestValue(300)+1) 
+
+"lizard", "urn",QuestValue(308)=2 -> "You already retrieved the urn for us. Of course you can always ask me what missions are available." 
+
+######################
+
+"beholder", "secret",QuestValue(309)=0,QuestValue(300)>3 -> "We want to learn more about the ancient race of beholders. We believe the black pyramid north east of Darashia was originally built by them ...", "We ask you to explore the ruins of the black pyramid and look for any signs that prove our theory. You might probably find some document with the numeric beholder language ...", "That would be sufficient proof. Would you like to accept this mission?",topic=19
+
+"no",topic=19 -> "Perhaps another mission suits you more." 
+"yes",topic=19 -> "Excellent! So travel to the city of Darashia and then head north-east for the pyramid ...", "If any documents are left, you probably find them in the catacombs beneath. Good luck!",SetQuestValue(309,1)
+
+"beholder", "secret",QuestValue(309)=1 -> "Have you found any proof that the pyramid was built by beholders?",Type=4846,Amount=1,topic=20 
+"no",topic=20   -> "We are sure there is some document left. Probably in the deepest catacombs beneath the black pyramid." 
+"yes",topic=20,Count(Type)<Amount  -> "Sorry, whatever you have found is no true proof for our theory. Please return to the black pyramid and explore it carefully." 
+"yes",topic=20,Count(Type)>=Amount -> "You did it! Excellent! The scientific world will be shaken by this discovery!", Delete(Type),SetQuestValue(309,2),SetQuestValue(300,QuestValue(300)+1)
+ 
+
+"beholder", "secret",QuestValue(309)=2 -> "You already recovered the scroll. Of course you can always ask me what missions are available." 
+
+#####################
+
+"orc", "powder",QuestValue(310)=0,QuestValue(300)>3 -> "It is commonly known that orcs of Uldereks Rock use some sort of powder to increase the fierceness of their war wolves and berserkers ...", "What we do not know are the ingredients of this powder and its effect on humans ...", "So we would like you to get a sample of the aforesaid powder. Do you want to accept this mission?", topic=21 
+
+"no",topic=21  -> "Perhaps another mission suits you more." 
+"yes",topic=21 -> "You are a brave soul. As far as we can tell, the orcs maintain some sort of training facility in some hill in the north-east of their city ...", "There you should find lots of their war wolves and hopefully also some of the orcish powder. Good luck!",SetQuestValue(310,1) 
+
+"orc", "powder",QuestValue(310)=1 -> "Did you acquire some of the orcish powder?",Type=4838,Amount=1,topic=34 
+"no",topic=34                              -> "Make sure to search in the hill they use to raise and train their war wolves." 
+"yes",topic=34,Count(Type)<Amount  -> "Sorry, you have nothing with you that would fit the descriptions we got of the powder." 
+"yes",topic=34,Count(Type)>=Amount -> "You really got it? Amazing! Thank you for your efforts.", Delete(Type),SetQuestValue(310,2),SetQuestValue(300,QuestValue(300)+1)
+"orc", "powder",QuestValue(310)=2          -> "You already brought us some orcish powder. Of course you can always ask me what missions are available." 
+
+##########################
+#  NEUE MISSIONEN (7-9)  #
+##########################
+
+"mission",QuestValue(300)>6,QuestValue(300)<10 -> "The missions available for your rank are elven poetry, memory stone and rune writings." 
+
+"elven", "poetry",QuestValue(311)=0,QuestValue(300)>6 -> "Some high ranking members would like to study elven poetry. They want the rare book 'Songs of the Forest' ...", "For sure someone in Ab'Dendriel will own a copy. So you would just have to ask around there. Are you willing to accept this mission?",topic=22
+"no",topic=22  -> "Perhaps another mission suits you more." 
+"yes",topic=22 -> "Excellent. This mission is easy but nonetheless vital. Travel to Ab'Dendriel and get the book.",SetQuestValue(311,1)
+
+
+"song", "forest",QuestValue(311)=1   -> "Did you acquire a copy of 'Songs of the Forest' for us?",Type=4844,Amount=1,topic=23 
+"elven", "poetry",QuestValue(311)=1  -> *
+"book",QuestValue(311)=1             -> * 
+"no",topic=23 -> "Then try harder. Someone might own it. If you lost a copy, ask around again." 
+"yes",topic=23,Count(Type)<Amount -> "Whatever you thought you acquired, it's not the book we are looking for! If you lost the copy, ask around again." 
+"yes",topic=23,Count(Type)>=Amount,QuestValue(312)=0 -> "It can easily be seen that this book was forged by a dwarf. Try to get a real copy somewhere."
+"yes",topic=23,Count(Type)>=Amount,QuestValue(312)=1 -> "Let me have a look! Yes, that's what we wanted. A copy of 'Songs of the Forest'. I won't ask any questions about those bloodstains.", Delete(Type),SetQuestValue(311,2),SetQuestValue(300,QuestValue(300)+1)
+
+"elven", "poetry",QuestValue(311)=2 -> "You already pleased our leadership by acquiring a copy of that book. Of course you can always ask me what missions are available." 
+
+##########################
+
+"memory", "stone",QuestValue(313)=0,QuestValue(300)>6 -> "We acquired some knowledge about special magic stones. Some lost civilisations used it to store knowledge and lore, just like we use books ...", "The wisdom in such stones must be immense, but so are the dangers faced by every person who tries to obtain one...", "As far as we know the ruins found in the north-west of Edron were once inhabited by beings who used such stones. Do you have the heart to go there and to get us such a stone?",topic=24
+"no",topic=24  -> "Perhaps another mission suits you more."
+"yes",topic=24 -> "In the ruins of north-western Edron you should be able to find a memory stone. Good luck.",SetQuestValue(313,1) 
+
+
+"memory", "stone",QuestValue(313)=1  -> "Were you able to acquire a memory stone for our society?",Type=4841,Amount=1,topic=25 
+"no",topic=25 -> "Try harder. We are sure there are memory stones left in the north-western dungeons of Edron." 
+"yes",topic=25,Count(Type)<Amount -> "You don't have any memory stone!" 
+"yes",topic=25,Count(Type)>=Amount,QuestValue(314)=0 -> "This memory stone looks damaged. Probably you bought it from some suspicious individual. Travel to Edron and get one on your own." 
+"yes",topic=25,Count(Type)>=Amount,QuestValue(314)=1 -> "A flawless memory stone! Incredible! It will take years even to figure out how it works but what an opportunity for science, thank you!", Delete(Type),SetQuestValue(313,2),SetQuestValue(300,QuestValue(300)+1)
+ 
+
+"memory", "stone",QuestValue(313)=2 -> "You already brought us a memory stone. It will take years to make it work and probably decades to decipher and understand the knowledge the stone contains." 
+
+#########################
+
+"rune", "writing",QuestValue(315)=0,QuestValue(300)>6 -> "We would like to study some ancient runes that were used by the lizard race. We suspect some relation of the lizards to the founders of Ankrahmun ...", "Somewhere under the ape infested city of Banuta, one can find dungeons that were once inhabited by lizards ...", "Look there for an atypical structure that would rather fit to Ankrahmun and its tombs. Copy the runes you will find on this structure ...", "Are you up to that challenge?",topic=26 
+"no",topic=26  -> "Perhaps you are interested at another time." 
+"yes",topic=26 -> "Excellent! Here, take this tracing paper and use it on the object you will find there to create a copy of the ancient runes.", Create(4842),SetQuestValue(315,1) 
+
+"rune", "writing",QuestValue(315)=1 -> "Did you create a copy of the ancient runes as requested?",Type=4843,Amount=1,topic=27 
+"no",topic=27 -> "Please remember, somewhere in the dungeons beneath Banuta has to be some structure that seemingly does not belong there. Use the copy paper on it." 
+"yes",topic=27,Count(Type)<Amount -> "You don't have any copy of the runes that we need!" 
+"yes",topic=27,Count(Type)>=Amount,QuestValue(316)=0 -> "This copy is ruined by sweat and blood, sorry. Travel to Banuta and make sure to make a clean copy." 
+"yes",topic=27,Count(Type)>=Amount,QuestValue(316)=1 -> "It's a bit wrinkled but it will do. Thanks again.", Delete(Type),SetQuestValue(315,2),SetQuestValue(300,QuestValue(300)+1)
+
+"rune", "writing",QuestValue(315)=2 -> "You already brought us a copy of those runes which gave us some interesting insights." 
+
+########################
+
+"mission",QuestValue(300)=10,QuestValue(317)=0 -> "The explorer society needs a great deal of help in the research of astral travel. Are you willing to help?", topic=28 
+"no", topic=28   -> "Perhaps you are interested at another time" 
+"yes" , topic=28 -> "Fine. The society is looking for new means to travel. Some of our most brilliant minds have some theories about astral travel that they want to research further ...", "Therefore we need you to collect some ectoplasm from the corpse of a ghost. We will supply you with a collector that you can use on the body of a slain ghost ...", "Do you think you are ready for that mission?", topic=29 
+"no", topic=29    -> "Perhaps you are interested some other time." 
+"yes", topic=29   -> "Good! Take this container and use it on a ghost that was recently slain. Return with the collected ectoplasm and hand me that container ...", "Don't lose the container. They are expensive!", Create(4852),SetQuestValue(317,1)
+
+"ectoplasm",QuestValue(317)=1 -> "Do you have some collected ectoplasm with you?",Type=4853,Amount=1,topic=30 
+"container",QuestValue(317)=1 -> *
+"mission",QuestValue(317)=1 -> *
+"no",topic=30 -> "Just use the container on a slain ghost. Make sure it lost its unholy mockery of life before you fulfil your task. Be quick, a partly decomposed corpse will not contain enough ectoplasm." 
+"yes",topic=30,Count(Type)<Amount  -> "Sorry, but you have no ectoplasm at all!" 
+"yes",topic=30,Count(Type)>=Amount -> "Phew, I had no idea that ectoplasm would smell that ... oh, it's you, well, sorry. Thank you for the ectoplasm.", Delete(Type),SetQuestValue(317,2),SetQuestValue(300,11)
+
+"ectoplasm",QuestValue(317)=2 -> "You already brought us enough ectoplasm for our research."
+
+#########################
+
+"mission",QuestValue(300)=11,QuestValue(318)=0  -> "The research on ectoplasm makes good progress. Now we need some spectral article. Our scientists think a spectral dress would be a perfect object for their studies ...", "The bad news is that the only source to got such a dress is the queen of the banshees. Do you dare to seek her out?",topic=31 
+
+"no",topic=31    -> "Perhaps you are interested in it some other time." 
+"yes",topic=31   -> "That is quite courageous. We know, it's much we are asking for. The queen of the banshees lives in the so called Ghostlands, south west of Carlin. It is rumoured that her lair is located in the deepest dungeons beneath that cursed place ...", "Any violence will probably be futile, you will have to negotiate with her. Try to get a spectral dress from her. Good luck.",SetQuestValue(318,1)
+
+"spectral", "dress",QuestValue(318)=1 -> "Have you acquired the spectral dress we need?",Type=4836,Amount=1,topic=32 
+"mission",QuestValue(318)=1 -> *
+
+"no", topic=32 -> "Remember, the queen of the banshees lives in the so called Ghostlands, south west of Carlin. Her lair is rumoured to be in the deepest dungeons beneath that cursed place ...", "Any violence will probably be futile and you will have to negotiate with her. Try to get a spectral dress from her."
+"yes", topic=32,Count(Type)<Amount -> "Sorry, you don't have a spectral dress!"
+"yes", topic=32,Count(Type)>=Amount,QuestValue(319)=0 -> "Sorry, this dress is infested with spectral moths. Get a spectral dress from the banshee queen."
+"yes", topic=32,Count(Type)>=Amount,QuestValue(319)=1 -> "Just in time! With this spectral article we can start the final phase of our research.", Delete(Type),SetQuestValue(318,2),SetQuestValue(300,12) 
+
+"spectral",QuestValue(318)=2 -> "You provided us with a spectral dress and we are ready for the final stages of our research project."
+
+
+#####################
+
+"portals",QuestValue(320)=5 -> "Sorry, you did not charge both floor tiles as requested." 
+"mission",QuestValue(320)=5 -> *
+
+"portals",QuestValue(320)=5,QuestValue(321)=1,QuestValue(322)=1,QuestValue(323)=0 -> Amount=6, Type=5021,"Both carvings are now charged and harmonised. In theory you should be able to travel in zero time from one base to the other ...", "However, you will need to have an orichalcum pearl in your possession to use it as power source. It will be destroyed during the process. I will give you 6 of such pearls and you can buy new ones in our bases ...", "In addition, you need to be a premium explorer to use the astral travel ...", "And remember: it's a small teleport for you, but a big teleport for all Tibians.",SetQuestValue(323,1), Create(Type) 
+"mission",QuestValue(320)=5,QuestValue(321)=1,QuestValue(322)=1,QuestValue(323)=0 -> *
+
+"portals",QuestValue(320)=5,QuestValue(321)=1,QuestValue(322)=1,QuestValue(323)=1 -> "The portals should be ready to be used now. If you have an orichalcum pearl with you, enter the portal."
+"mission",QuestValue(320)=5,QuestValue(321)=1,QuestValue(322)=1,QuestValue(323)=1 -> "There are no new missions avaliable right now."
+######################
+"orichalcum" -> Amount=1, Type=5021, Price=80, "Do you want to buy an orichalcum pearl for %P gold?", Topic=51
+
+Topic=51,"yes",CountMoney>=Price -> "Here, use it wisely.", DeleteMoney, Create(Type)
+Topic=51,"yes"                   -> "Sorry, you don't have the money for this transaction."
+Topic=51       -> "Is there anything else I can do for you?"
+
+%1,1<%1,"orichalcum" -> Amount=%1, Type=5021, Price=80*%1,  "Do you want to buy %A orichalcum pearls for %P gold?", Topic=52
+
+Topic=52,"yes",CountMoney>=Price -> "Here, use them wisely.", DeleteMoney, Create(Type)
+Topic=52,"yes"                   -> "Sorry, you don't have the money for this transaction."
+Topic=52       -> "Is there anything else I can do for you?"
+
+######################
+
+"botanist", "container" -> Amount=1, Type=4867, Price=500, "Do you want to buy a botanist container for %P gold?", Topic=56
+"preparation", "kit" -> Amount=1, Type=4863, Price=250, "Do you want to buy a preparation kit for %P gold?", Topic=56
+"ectoplasm", "container" -> Amount=1, Type=4852, Price=750, "Do you want to buy an ectoplasm container for %P gold?", Topic=56
+
+Topic=56,"yes",CountMoney>=Price -> "Here, better don't lose it.", DeleteMoney, Create(Type)
+Topic=56,"yes"                   -> "Sorry, you don't have the money for this transaction."
+Topic=56       -> "Is there anything else I can do for you?"
+

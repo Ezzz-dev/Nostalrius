@@ -1,0 +1,37 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# barbara.npc: Datenbank für die Wachfrau Barbara
+
+Name = "Barbara"
+Outfit = (139,78-52-64-115)
+Home = [32320,31752,7]
+Radius = 0
+
+Behaviour = {
+ADDRESS,"hello$","queen",!       -> "HAIL TO THE QUEEN!"       
+ADDRESS,"hail$","queen",!        -> "HAIL TO THE QUEEN!"       
+ADDRESS,"salutations$","queen",! -> "HAIL TO THE QUEEN!"       
+ADDRESS,"hi$",!                  -> "MIND YOUR MANNERS COMMONER! To address the queen greet with her title!", Idle
+ADDRESS,"hello$",!               -> *
+ADDRESS,"hi$",!                  -> "MIND YOUR MANNERS COMMONER! To address the queen greet with her title!", Idle
+ADDRESS,"hello$",!               -> *
+ADDRESS,!                        -> Idle
+BUSY,"hello$","queen",!          -> "Wait for your audience %N!"
+BUSY,"hail$","queen",!           -> "Wait for your audience %N!"      
+BUSY,"salutations$","queen",!    -> "Wait for your audience %N!"       
+BUSY,"hi$","queen",!             -> "Wait for your audience %N!"       
+BUSY,!                           -> NOP
+VANISH,!                         -> "LONG LIVE THE QUEEN!"
+
+"bye"            -> "LONG LIVE THE QUEEN! You may leave now!", Idle
+"farewell"       -> *
+
+"fuck"           -> "Take this!", HP=1, EffectMe(8), EffectOpp(5)
+"idiot"          -> "Take this!", HP=1, EffectMe(8), EffectOpp(5)
+"asshole"        -> "Take this!", HP=1, EffectMe(8), EffectOpp(5)
+"ass$"           -> "Take this!", HP=1, EffectMe(8), EffectOpp(5)
+"fag$"           -> "Take this!", HP=1, EffectMe(8), EffectOpp(5)
+"stupid"         -> "Take this!", HP=1, EffectMe(8), EffectOpp(5)
+"tyrant"         -> "Take this!", HP=1, EffectMe(8), EffectOpp(5)
+"shit"           -> "Take this!", HP=1, EffectMe(8), EffectOpp(5)
+"lunatic"        -> "Take this!", HP=1, EffectMe(8), EffectOpp(5)
+}

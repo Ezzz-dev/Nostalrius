@@ -1,0 +1,78 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# faluae.npc: Datenbank für die Deraisim-Anführerin Faluae (Elfenstadt)
+
+Name = "Faluae"
+Outfit = (62,0-0-0-0)
+Home = [32660,31673,7]
+Radius = 5
+
+Behaviour = {
+ADDRESS,"hello$",!       -> "Greetings, traveller."
+ADDRESS,"hi$",!          -> *
+ADDRESS,"ashari$",!      -> *
+ADDRESS,!                -> Idle
+BUSY,"hello$",!          -> "Sorry, I am busy now."
+BUSY,"hi$",!             -> *
+BUSY,"ashari$",!         -> *
+BUSY,!                   -> NOP
+VANISH,!                 -> "Asha Thrazi, traveller."
+
+"bye"           -> "Asha Thrazi, traveller.", Idle
+"farewell"      -> *
+"asha","thrazi" -> *
+"job"           -> "I am the spokesperson of the Deraisim caste."
+"name"          -> "I am known as Faluae Ethrathil."
+"time"          -> "Sorry, I don't know."
+
+"carlin"        -> "For a human city Carlin is not that bad. Its still a scar in the natural enviroment of course."
+"thais"         -> "Thais is fa away and that is a good thing."
+"venore"        -> "I don't appreciate that my people buy that much human wares but there is little I can do about it."
+"roderick"      -> "He is the thaian ambassador."
+"olrik"         -> "He is the assistant of the thaian ambassador."
+
+"king"          -> "I know nothing about kings."
+"elves"         -> "The elves are split in three castes: the Deraisim, the Kuridai, and the Cenath."
+"dwarfs"        -> "Funny little people sometimes. But their tunnels are harmful to the enviroment."
+"humans"        -> "I don't like their stone cities and their stench." 
+"troll"         -> "I still can't stand the thought of the Kuridai keeping these disgusting creatures in our settlement."
+"army"          -> "I don't understand what you mean."
+"cenath"        -> "They think they are so wise but they lost the ability to adore the simple things."
+"kuridai"       -> "They are paranoid, what makes them so aggressive."
+"deraisim"      -> "We only stay here to keep our people together. We hunt for them, provide them with food, and scout the area."
+"abdaisim"      -> "Our lost brothers and sisters. Oh, we miss them so much." 
+"teshial"       -> "I can only hope they will return one day."
+"ferumbras"     -> "I hope this fallen servant of evil will never find us."
+"crunor"        -> "I praise the Great Tree and Mother Earth, who gave birth to all life, and Nera, the celestial paladin."
+"nera"          -> "The lady of spring, helper of Crunor and Earth itself."
+"excalibug"     -> "What is that?"
+"news"          -> "Sorry, the only news I have concern the growth of plants and the coming and going of animal herds."
+
+druid,"rod",QuestValue(333)<1  -> "Oh, you did not purchase your first magical rod yet? Please take this little present from me as your magic teacher!",SetQuestValue(333,1),Type=3066, Amount=1,Create(Type)
+
+"magic"         -> "I learned a little about some minor spells."
+"druid"         -> "Druids are very close to Crunor."
+"sorcerer"      -> "They are so ... destructive."
+"spellbook"     -> "Sorry, I have none on me."
+"spell"         -> "I could teach you the spells of 'Light', 'Great Light', 'Food', and 'Find Person'."
+
+Druid,"find","person"        -> String="Find Person", Price=80,   "Do you want to buy the spell 'Find Person' for %P gold?", Topic=3
+Druid,"light"                -> String="Light", Price=100,  "Do you want to buy the spell 'Light' for %P gold?", Topic=3
+Druid,"food"                 -> String="Food", Price=300,  "Do you want to buy the spell 'Food' for %P gold?", Topic=3
+Druid,"great","light"        -> String="Great Light", Price=500,  "Do you want to buy the spell 'Great Light' for %P gold?", Topic=3
+
+Paladin,"find","person"      -> String="Find Person", Price=80,   "Do you want to buy the spell 'Find Person' for %P gold?", Topic=3
+Paladin,"light"              -> String="Light", Price=100,  "Do you want to buy the spell 'Light' for %P gold?", Topic=3
+Paladin,"food"               -> String="Food", Price=300,  "Do you want to buy the spell 'Food' for %P gold?", Topic=3
+Paladin,"great","light"      -> String="Great Light", Price=500,  "Do you want to buy the spell 'Great Light' for %P gold?", Topic=3
+
+"find","person" -> "I'm sorry, but this spell is only for druids and paladins."
+"light"         -> *
+"food"          -> *
+"great","light" -> *
+
+Topic=3,"yes",SpellKnown(String)=1        -> "You already know that spell."
+Topic=3,"yes",Level<SpellLevel(String)    -> Amount=SpellLevel(String), "You need to advance to level %A to learn this spell."
+Topic=3,"yes",CountMoney<Price            -> "You do not have enough gold to pay my services."
+Topic=3,"yes"                             -> "From now on you can cast this spell.", DeleteMoney, EffectOpp(13), TeachSpell(String)
+Topic=3                                   -> "I thought so."
+}

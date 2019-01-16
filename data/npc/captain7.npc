@@ -1,0 +1,69 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# sinbeard.npc: Kapitän Sinbeard in Ankrahmun
+
+Name = "Captain Sinbeard"
+Outfit = (134,95-10-56-77)
+Home = [33094,32884,6]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",male,!   -> "Welcome on board, Sir %N."
+ADDRESS,"hi$",male,!      -> *
+ADDRESS,"hello$",female,! -> "Welcome on board, Madam %N."
+ADDRESS,"hi$",female,!    -> *
+ADDRESS,!                 -> Idle
+BUSY,"hello$",!           -> "One moment please %N. You're next in line.", Queue
+BUSY,"hi$",!              -> *
+BUSY,!                    -> NOP
+VANISH,!                  -> "Good bye. Recommend us, if you were satisfied with our service."
+
+"bye"          -> "Good bye. Recommend us, if you were satisfied with our service.", Idle
+"farewell"     -> *
+"name"         -> "I am known all over the world as Captain Sinbeard."
+"job"          -> "I am the captain of this sailing-ship."
+"captain"      -> *
+"ship"         -> "My ship is the fastest in the whole world."
+"line"         -> *
+"company"      -> *
+"tibia"        -> *
+"good"         -> "We can transport everything you want."
+"passenger"    -> "We would like to welcome you on board."
+"trip"         -> "Where do you want to go? To Darashia, Venore, Port Hope or Edron?"
+"route"        -> *
+"passage"      -> *
+"town"         -> *
+"destination"  -> *
+"sail"         -> *
+"go"           -> *
+"thais"        -> "I'm sorry but my ship does not currently service that port."
+"carlin"       -> *
+"ab'dendriel"  -> *
+
+"darashia"    -> Price=100, "Do you seek a passage to Darashia for %P gold?", Topic=2
+"edron"       -> Price=160,  "Do you seek a passage to Edron for %P gold?", Topic=4
+"venore"      -> Price=150, "Do you seek a passage to Venore for %P gold?", Topic=5
+"port","hope"  -> Price=80, "Do you seek a passage to Port Hope for %P gold?", Topic=8
+
+
+"darashia",QuestValue(250)>2    -> Price=90, "Do you seek a passage to Darashia for %P gold?", Topic=2
+"edron",QuestValue(250)>2       -> Price=150,  "Do you seek a passage to Edron for %P gold?", Topic=4
+"venore",QuestValue(250)>2      -> Price=140, "Do you seek a passage to Venore for %P gold?", Topic=5
+"port","hope",QuestValue(250)>2  -> Price=70, "Do you seek a passage to Port Hope for %P gold?", Topic=8
+
+Topic>0,Topic<9,"yes",PZBlock,! -> "First get rid of those blood stains! You are not going to ruin my vehicle!"
+
+#Topic=2,"yes",PZBlock,! -> "First get rid of those blood stains! You are not going to ruin my vehicle!"
+#Topic=4,"yes",PZBlock,! -> *
+#Topic=5,"yes",PZBlock,! -> *
+
+
+Topic=2,"yes",Premium,CountMoney>=Price -> "Set the sails!", DeleteMoney, Idle, EffectOpp(11), Teleport(33290,32481,6), EffectOpp(11)
+Topic=4,"yes",Premium,CountMoney>=Price -> "Set the sails!", DeleteMoney, Idle, EffectOpp(11), Teleport(33175,31764,6), EffectOpp(11)
+Topic=5,"yes",Premium,CountMoney>=Price -> "Set the sails!", DeleteMoney, Idle, EffectOpp(11), Teleport(32954,32023,6), EffectOpp(11)
+Topic=8,"yes",Premium,CountMoney>=Price -> "Set the sails!", DeleteMoney, Idle, EffectOpp(11), Teleport(32530,32784,6), EffectOpp(11)
+
+Topic>0,"yes",CountMoney>=Price         -> "I'm sorry, but you need a premium account in order to travel onboard our ships."
+Topic>0,"yes"                           -> "You don't have enough money."
+Topic>0                                 -> "We would like to serve you some time."
+}
+

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="Dipthrah" nameDescription="Dipthrah" race="undead" experience="2900" speed="120" manacost="0">
+	<health now="4200" max="4200" />
+	<look type="87" head="0" body="0" legs="0" feet="0" corpse="4215" />
+	<targetchange interval="1000" chance="5" />
+	<targetstrategy nearest="70" weakest="0" mostdamage="30" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="65" skill="70" poison="65">
+		<attack name="lifedrain" min="-400" max="-800" range="1" chance="5" />
+		<attack name="manadrain" min="-200" max="-500" range="7" chance="7">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+		<attack name="speed" speedchange="-90" variation="20" duration="50000" range="7" chance="7">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+		<attack name="drunk" duration="60000" radius="4" target="0" chance="9">
+			<attribute key="areaEffect" value="bluebubble" />
+		</attack>
+	</attacks>
+	<defenses armor="65" defense="75">
+		<defense name="healing" min="100" max="200" chance="4">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity physical="1" />
+		<immunity outfit="1" />
+		<immunity lifedrain="1" />
+		<immunity paralyze="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<summons maxSummons="4">
+		<summon name="priestess" chance="7" max="4" />
+	</summons>
+	<voices>
+		<voice sentence="Come closer to learn the final lesson." />
+		<voice sentence="I sense the weakness of your akh." />
+		<voice sentence="Mortality and fear are your fate and your doom." />
+		<voice sentence="Undeath will shatter my shackles." />
+		<voice sentence="You can't escape death forever." />
+		<voice sentence="You don't need this magic anymore." />
+		<voice sentence="Feel the powers of my mind." />
+	</voices>
+	<loot>
+		<item id="3077" countmax="1" chance="5" /> <!-- an ankh -->
+		<item id="3041" countmax="1" chance="10" /> <!-- a blue gem -->
+		<item id="3051" countmax="1" chance="50" /> <!-- an energy ring -->
+		<item id="3031" countmax="80" chance="700" /> <!-- a gold coin -->
+		<item id="3031" countmax="85" chance="500" /> <!-- a gold coin -->
+		<item id="3031" countmax="95" chance="350" /> <!-- a gold coin -->
+		<item id="3062" countmax="1" chance="10" /> <!-- a mind stone -->
+		<item id="3241" countmax="1" chance="1000" /> <!-- an ornamented ankh -->
+		<item id="3334" countmax="1" chance="1" /> <!-- a pharaoh sword -->
+		<item id="3324" countmax="1" chance="5" /> <!-- a skull staff -->
+		<item id="3029" countmax="3" chance="100" /> <!-- a small sapphire -->
+	</loot>
+</monster>

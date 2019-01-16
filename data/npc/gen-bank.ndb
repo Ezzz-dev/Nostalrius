@@ -1,0 +1,84 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gen-post.ndb:  Datenbank für generischen Banker
+# Verwendete Topics: 91 bis 99
+# Topic 91(96): Gold -> Platinum
+# Topic 92(97):         Platinum <- Crystal
+# Topic 93(98): Gold <- Platinum
+# Topic 94(99):         Platinum -> Crystal
+
+"bank"            -> "We can change money for you."
+"offer"           -> "We exchange gold, platinum and crystal coins."
+"sell"            -> *
+"do","you","have" -> *
+"buy"             -> *
+"money"           -> *
+"change"          -> *
+"exchange"        -> *
+
+"change","gold",!       -> "How many platinum coins do you want to get?", Topic=91
+"exchange","gold",!     -> *
+"change","platinum",!   -> "Do you want to change your platinum coins to gold or crystal?", Topic=95
+"exchange","platinum",! -> *
+"change","crystal",!    -> "How many crystal coins do you want to change to platinum?", Topic=92
+"exchange","crystal",!  -> *
+"change"                -> "Do you want to exchange gold, platinum or crystal coins?"
+
+Topic=95,"gold",!      -> "How many platinum coins do you want to change to gold?", Topic=93
+Topic=95,"crystal",!   -> "How many crystal coins do you want to get?", Topic=94
+Topic=95               -> "Well, can I help you with something else?"
+
+Topic=91,%1,0<%1 -> Amount=%1*100, Price=%1, "So I should change %A of your gold coins to %P platinum coins for you?", Topic=96
+Topic=91         -> "Hmm, can I help you with something else?"
+
+Topic=92,%1,0<%1 -> Amount=%1, Price=%1*100, "So I should change %A of your crystal coins to %P platinum coins for you?", Topic=97
+Topic=92         -> "Well, can I help you with something else?"
+
+Topic=93,%1,0<%1 -> Amount=%1, Price=%1*100, "So I should change %A of your platinum coins to %P gold coins for you?", Topic=98
+Topic=93         -> "Well, can I help you with something else?"
+
+Topic=94,%1,0<%1 -> Amount=%1*100, Price=%1, "So I should change %A of your platinum coins to %P crystal coins for you?", Topic=99
+Topic=94         -> "Well, can I help you with something else?"
+
+Topic=96,"yes",Count(3031)>=Amount  -> "Here you are.", Delete(3031), Amount=Price, Create(3035)
+Topic=96,"yes"                      -> "Sorry, you don't have enough gold coins."
+Topic=96                            -> "Well, can I help you with something else?"
+
+Topic=97,"yes",Count(3043)>=Amount -> "Here you are.", Delete(3043), Amount=Price, Create(3035)
+Topic=97,"yes"                      -> "Sorry, you don't have so many crystal coins."
+Topic=97                            -> "Well, can I help you with something else?"
+
+Topic=98,"yes",Count(3035)>=Amount  -> "Here you are.", Delete(3035), Amount=Price, Create(3031)
+Topic=98,"yes"                      -> "Sorry, you don't have so many platinum coins."
+Topic=98                            -> "Well, can I help you with something else?"
+
+Topic=99,"yes",Count(3035)>=Amount  -> "Here you are.", Delete(3035), Amount=Price, Create(3043)
+Topic=99,"yes"                      -> "Sorry, you don't have so many platinum coins."
+Topic=99                            -> "Well, can I help you with something else?"
+
+#Topic=91,%1,0<%1 -> Amount=%1, Price=100*%1, "So I should change %P gold coins to %A platinum coins for you?", Topic=96
+#Topic=91         -> "Hmm, can I help you with something else?"
+
+#Topic=92,%1,0<%1 -> Amount=%1*100, Price=%1, "So I should change %P crystal coins to %A platinum coins for you?", Topic=97
+#Topic=92         -> "Well, can I help you with something else?"
+
+#Topic=93,%1,0<%1 -> Amount=%1*100, Price=%1, "So I should change %P platinum coins to %A gold coins for you?", Topic=98
+#Topic=93         -> "Well, can I help you with something else?"
+
+#Topic=94,%1,0<%1 -> Amount=%1, Price=%1*100, "So I should change %P platinum coins to %A crystal coins for you?", Topic=99
+#Topic=94         -> "Well, can I help you with something else?"
+
+#Topic=96,"yes",Count(3031)>=Price  -> "Here you are.", Create(3035), Amount=Price, Delete(3031)
+#Topic=96,"yes"                     -> "Sorry, you don't have enough gold coins."
+#Topic=96                           -> "Well, can I help you with something else?"
+
+#Topic=97,"yes",Count(3043)>=Price -> "Here you are.", Create(3035), Amount=Price, Delete(3043)
+#Topic=97,"yes"                     -> "Sorry, you don't have so many crystal coins."
+#Topic=97                           -> "Well, can I help you with something else?"
+
+#Topic=98,"yes",Count(3035)>=Price  -> "Here you are.", Create(3031), Amount=Price, Delete(3035)
+#Topic=98,"yes"                     -> "Sorry, you don't have so many platinum coins."
+#Topic=98                           -> "Well, can I help you with something else?"
+
+#Topic=99,"yes",Count(3035)>=Price  -> "Here you are.", Create(3043), Amount=Price, Delete(3035)
+#Topic=99,"yes"                     -> "Sorry, you don't have so many platinum coins."
+#Topic=99                           -> "Well, can I help you with something else?"

@@ -1,0 +1,91 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# elvith.npc: Datenbank für den Musiker Elvith
+
+Name = "Elvith"
+Outfit = (144,76-3-0-76)
+Home = [32669,31607,7]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",!       -> "Ashari %N."
+ADDRESS,"hi$",!          -> *
+ADDRESS,"Ashari$",!      -> *
+ADDRESS,!                -> Idle
+BUSY,"hello$",!          -> "Wait %N.", Queue
+BUSY,"hi$",!             -> *
+BUSY,!                   -> NOP
+VANISH,!                 -> "Asha Thrazi."
+
+"bye"       -> "Asha Thrazi.", Idle
+"farewell"  -> *
+"name"      -> "I am Elvith Rollingstone."
+"job"       -> "I sell musical instruments of many kinds."
+"time"      -> "Time has its own song. Close your eyes and listen to the symphony of the seasons."
+
+"carlin"        -> "Carlin is a city that thrives for a harmony it can never achive."
+"thais"         -> "I heared about Thais and id did not sound like a place I'd want to visit."
+"venore"        -> "By all what I heared this city is not only built into a swamp but its a swamp of intrigue and corruption itself."
+"roderick"      -> "This man trys too hard not to offend someone."
+"olrik"         -> "He appreciates my music and allthough he is loud and clumsy as all humans it seems not everything is lost."
+
+"music"     -> "Music is an attempt to condensate emotions in harmonies and save them for the times to come."
+"harmonies" -> "Everything is a song. Life, death, history ... everything. To listen to the song of something is the first step to understand it."
+"melodies"  -> *
+"harmony"   -> *
+"melody"    -> *
+"song"      -> *
+"sing"      -> "Sorry, but there is a melody in my heart that wants to be born. I would loose it before by singing right now."
+"elf"       -> "We are the most graceful of all races. We feel the music of the universe in our hearts and souls."
+"elves"     -> *
+"dwarf"     -> "They could at least use their picks and hammers with more rythm."
+"human"     -> "They are too loud and don't even understand the concept of a melody." 
+"troll"     -> "I went down to the mines and tried to lighten up their spirit, the foolish creatures did not listen to my songs, though." 
+"cenath"    -> "The Cenath think they know the 'art' but the only true art is the music."
+"kuridai"   -> "They could dig some halls for a big musical event, but they won't listen to me about that matter."
+"deraisim"  -> "The other deraisim are too much concerned with mastering the nature so they don't listen to its music anymore."
+"abdaisim"  -> "The wanderers have no patience. You need patience and passion to create and to enjoy music." 
+"teshial"   -> "I bet they were great musicians." 
+"ferumbras" -> "Only humans made songs about him and his evil deeds."
+"crunor"    -> "That is some god the humans worship. Our pople are not interested in this gods anymore." 
+"excalibug" -> "There are too many songs about that weapon to retell them all. Most of them are human and therefore quite crude anyways."
+"spell"     -> "Sorry, I don't feel like teaching magic today."
+"magic"     -> *
+
+"elven", "poetry",QuestValue(311)=1,QuestValue(312)=0 -> "The last issue I had was bought by Randor Swiftfinger. He was banished through the hellgate and probably took the book with him ...", "I would not recommend to seek him or the book there but of course its possible." 
+"song", "forest",QuestValue(311)=1  -> * 
+
+"elven", "poetry",QuestValue(311)=1,QuestValue(312)=1 -> Type=4844, Amount=1, Price=500,"By luck I aquired another copy of the book you are looking for. Do you want to buy a copy of 'songs of the forest' for 500 gold?.",topic=2 
+"song", "forest",QuestValue(311)=1  -> * 
+Topic=2,"yes",CountMoney>=Price -> "Thank you. Here it is.", DeleteMoney, Create(Type)
+Topic=2,"yes"                   -> "Sorry, you do not have enough gold."
+Topic=2                         -> "Maybe you will buy it another time."
+
+
+
+"elven", "poetry" -> "Sorry, I have no issue of this book left." 
+"song", "forest"  -> * 
+
+"hellsgate"      -> "For the worst of crimes the criminals are cast into hellgate. Its said noone can return from there. Since it is not forbidden to enter hellgate you might convince Elathriel to grant you entrance."
+"elathriel"      -> "He is a kuridai and the local Az'irel. Something like the head of the human townsguards."
+
+"offer"           -> "I sell lyres, lutes, drums, and simple fanfares."
+"goods"           -> *
+"buy"             -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"instrument"      -> *
+
+"lyre"             -> Type=2949, Amount=1, Price=120, "Do you want to buy a lyre for %P gold?", Topic=1
+"lute"             -> Type=2950, Amount=1, Price=195, "Do you want to buy a lute for %P gold?", Topic=1
+"drum"             -> Type=2952, Amount=1, Price=140, "Do you want to buy a drum for %P gold?", Topic=1
+"simple","fanfare" -> Type=2954, Amount=1, Price=150, "Do you want to buy a simple fanfare for %P gold?", Topic=1
+
+%1,1<%1,"lyre"             -> Type=2949, Amount=%1, Price=120*%1, "Do you want to buy %A lyre for %P gold?", Topic=1
+%1,1<%1,"lute"             -> Type=2950, Amount=%1, Price=195*%1, "Do you want to buy %A lute for %P gold?", Topic=1
+%1,1<%1,"drum"             -> Type=2952, Amount=%1, Price=140*%1, "Do you want to buy %A drum for %P gold?", Topic=1
+%1,1<%1,"simple","fanfare" -> Type=2954, Amount=%1, Price=150*%1, "Do you want to buy %A simple fanfare for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Thank you. Here it is.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Sorry, you do not have enough gold."
+Topic=1                         -> "Maybe you will buy it another time."
+}

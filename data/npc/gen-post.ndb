@@ -1,0 +1,34 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gen-post.ndb:  Datenbank für generischen Postler
+
+"mail"      -> "Our mail system is unique! And everyone can use it. Do you want to know more about it?", Topic=35
+"depot"     -> "The depots are very easy to use. Just step in front of them and you will find your items in them. They are free for all tibian citizens."
+"offer"     -> "I'm selling letters and parcels."
+
+"letter",QuestValue(250)>0 -> Amount=1, Price=5,  "Do you want to buy a letter for %P gold?", Topic=36
+"parcel",QuestValue(250)>0 -> Amount=1, Price=10, "Do you want to buy a parcel for %P gold?", Topic=37
+
+"letter" -> Amount=1, Price=8,  "Do you want to buy a letter for %P gold?", Topic=36
+"parcel" -> Amount=1, Price=15, "Do you want to buy a parcel for %P gold?", Topic=37
+
+%1,1<%1,"letter",QuestValue(250)>0 -> Amount=%1, Price=5*%1,  "Do you want to buy %A letters for %P gold?", Topic=36
+
+%1,1<%1,100<%1,"parcel",QuestValue(250)>0 -> Amount=100, Price=10*100, "Do you want to buy %A parcels for %P gold?", Topic=37
+%1,1<%1,"parcel",QuestValue(250)>0 -> Amount=%1, Price=10*%1, "Do you want to buy %A parcels for %P gold?", Topic=37
+
+%1,1<%1,"letter" -> Amount=%1, Price=8*%1,  "Do you want to buy %A letters for %P gold?", Topic=36
+
+%1,1<%1,100<%1,"parcel" -> Amount=100, Price=15*100, "Do you want to buy %A parcels for %P gold?", Topic=37
+%1,1<%1,"parcel" -> Amount=%1, Price=15*%1, "Do you want to buy %A parcels for %P gold?", Topic=37
+
+
+Topic=35,"yes" -> "The Tibia Mail System enables you to send and receive letters and parcels. You can buy them here if you want."
+Topic=35       -> "Is there anything else I can do for you?"
+
+Topic=36,"yes",CountMoney>=Price -> "Here it is. Don't forget to write the name of the receiver in the first line and the address in the second one before you put the letter in a mailbox.", DeleteMoney, Create(3505)
+Topic=36,"yes"                   -> "Oh, you have not enough gold to buy a letter."
+Topic=36                         -> "Ok."
+
+Topic=37,"yes",CountMoney>=Price -> "Here you are. Don't forget to write the name and the address of the receiver on the label. The label has to be in the parcel before you put the parcel in a mailbox.", DeleteMoney, Create(3503), Create(3507)
+Topic=37,"yes"                   -> "I am sorry, you have not enough gold to buy a parcel."
+Topic=37                         -> "Ok."

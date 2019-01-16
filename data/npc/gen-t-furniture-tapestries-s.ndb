@@ -1,0 +1,26 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gen-t-furniture-tapestries-s.ndb: Datenbank für generischen Möbelverkauf - Vorhänge
+# Verwendete Topics: 81, 85
+
+#"offer"           -> "I sell statues, tables, chairs, flowers, pillows, pottery, instruments, decoration, tapestries and containers."
+#"furniture"       -> *
+#"goods"           -> *
+#"do","you","sell" -> *
+#"do","you","have" -> *
+
+"curtain"            -> "Well, actually it's better to call them tapestries."
+"tapestr"           -> "Please tell me what color you would prefer: purple, green, yellow, orange, red, blue or white?", Topic=85
+Topic=85, "purple"   -> Type=2644, Amount=1, Price=25, "You want to buy a purple tapestry for %P gold?", Topic=81
+Topic=85, "green"    -> Type=2647, Amount=1, Price=25, "You want to buy a green tapestry for %P gold?", Topic=81
+Topic=85, "yellow"   -> Type=2650, Amount=1, Price=25, "You want to buy a yellow tapestry for %P gold?", Topic=81
+Topic=85, "orange"   -> Type=2653, Amount=1, Price=25, "You want to buy a orange tapestry for %P gold?", Topic=81
+Topic=85, "red"      -> Type=2656, Amount=1, Price=25, "You want to buy a red tapestry for %P gold?", Topic=81
+Topic=85, "orange"   -> Type=2653, Amount=1, Price=25, "You want to buy a orange tapestry for %P gold?", Topic=81
+Topic=85, "red"      -> Type=2656, Amount=1, Price=25, "You want to buy a red tapestry for %P gold?", Topic=81
+Topic=85, "blue"     -> Type=2659, Amount=1, Price=25, "You want to buy a blue tapestry for %P gold?", Topic=81
+Topic=85, "white"    -> Type=2667, Amount=1, Price=25, "You want to buy a white tapestry for %P gold?", Topic=81
+
+Topic=81,"yes",Premium,CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=81,"yes",CountMoney>=Price         -> "I'm sorry, but you need a premium account if you want to buy furniture."
+Topic=81,"yes"                           -> "Come back, when you have enough money."
+Topic=81                                 -> "Hmm, but I'm sure, it would fit nicely into your house."

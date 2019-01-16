@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="cobra" nameDescription="a cobra" race="blood" experience="30" speed="20" manacost="275">
+	<health now="65" max="65" />
+	<look type="81" head="0" body="0" legs="0" feet="0" corpse="4188" />
+	<targetchange interval="1000" chance="0" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="1" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="15" skill="23" poison="100">
+		<attack name="poisoncondition" count="20" range="5" chance="4">
+			<attribute key="shootEffect" value="poison" />
+		</attack>
+	</attacks>
+	<defenses armor="1" defense="6">
+	</defenses>
+	<immunities>
+		<immunity poison="1" />
+	</immunities>
+	<voices>
+		<voice sentence="Zzzzzz" />
+	</voices>
+</monster>

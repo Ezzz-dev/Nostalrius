@@ -1,0 +1,63 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# miraia.npc: Datenbank für die Wirtin Miraia
+
+Name = "Miraia"
+Outfit = (136,95-0-7-115)
+Home = [33238,32483,7]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",!         -> "Daraman's blessings, %N. Welcome to the Enlightened Oasis."
+ADDRESS,"hi$",!            -> *
+ADDRESS,!                  -> Idle
+BUSY,"hello$",!            -> "I will serve you in a minute, %N.", Queue
+BUSY,"hi$",!               -> *
+BUSY,!                     -> NOP
+VANISH,!                   -> "Daraman's blessings. Come back soon."
+
+"bye"             -> "Daraman's blessings. Come back soon.", Idle
+"job"             -> "I am the owner of this tavern, this oasis for the thirst, home of shadow and relaxation."
+"tavern"          -> *
+"frodo"           -> "He's my cousin and lives in Thais."
+"name"            -> "My name is Miraia."
+"time"            -> "Don't worry about time right now."
+"caliph"          -> "Sadly the caliph does not visit this humble place."
+"kazzan"          -> * 
+"ferumbras"       -> "Travellers talked to me about his evilness. Thrice damned be his name."
+"excalibug"       -> "Some foolish adventurers seek for it in the haunted ruins of Drefia."
+"thais"           -> "Thais is a place of evil and corruption."
+"tibia"           -> "Here we are far away from the temptations of the world."
+"carlin"          -> "At least they shun alcohol over there."
+"news"            -> "Oh, just listen to the tales told by the other visitors."
+"rumour"          -> *
+"rumor"           -> *
+
+"buy"             -> "I can offer you food and drinks."
+"do","you","sell" -> *
+"do","you","have" -> *
+"offer"           -> *
+"food"            -> "Are you looking for food? I have bread, cheese, ham, and meat."
+"drink"           -> "I can offer you lemonade, milk, and water."
+
+"bread"    -> Type=3600, Amount=1, Price=4, "Do you want to buy a bread for %P gold?", Topic=1
+"cheese"   -> Type=3607, Amount=1, Price=6, "Do you want to buy cheese for %P gold?", Topic=1
+"meat"     -> Type=3577, Amount=1, Price=5, "Do you want to buy meat for %P gold?", Topic=1
+"ham"      -> Type=3582, Amount=1, Price=8, "Do you want to buy a ham for %P gold?", Topic=1
+
+%1,1<%1,"bread"         -> Type=3600, Amount=%1, Price=4*%1, "Do you wanna buy %A breads for %P gold?", Topic=1
+%1,1<%1,"cheese"        -> Type=3607, Amount=%1, Price=6*%1, "Do you wanna buy %A cheese for %P gold?", Topic=1
+%1,1<%1,"meat"          -> Type=3577, Amount=%1, Price=5*%1, "Do you wanna buy %A meat for %P gold?", Topic=1
+%1,1<%1,"ham"           -> Type=3582, Amount=%1, Price=8*%1, "Do you wanna buy %A ham for %P gold?", Topic=1
+
+"lemonade" -> Type=2880, Data=12, Amount=1, Price=3, "Do you want to buy a mug of lemonade for %P gold?", Topic=1
+"water"    -> Type=2880, Data=1,  Amount=1, Price=2, "Do you want to buy a mug of water for %P gold?", Topic=1
+"milk"     -> Type=2880, Data=9,  Amount=1, Price=5, "Do you want to buy a mug of camel milk for %P gold?", Topic=1
+
+%1,1<%1,"lemonade" -> Type=2880, Data=12, Amount=%1, Price=3*%1, "Do you want to buy %A mugs of lemonade for %P gold?", Topic=1
+%1,1<%1,"water"    -> Type=2880, Data=1,  Amount=%1, Price=2*%1, "Do you want to buy %A mugs of water for %P gold?", Topic=1
+%1,1<%1,"milk"     -> Type=2880, Data=9,  Amount=%1, Price=5*%1, "Do you want to buy %A mugs of camel milk for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here it is.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "I am sorry, but you do not have enough gold."
+Topic=1                         -> "Maybe later."
+}

@@ -1,0 +1,67 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# zaildal.npc: Datenbank für den Bambusmöbelhändler Zaidal
+
+Name = "Zaidal"
+Outfit = (128,76-43-77-76)
+Home = [32621,32747,5]
+Radius = 0
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Hello."
+ADDRESS,"hi$",!    -> *
+ADDRESS,"hiho$",!    -> *
+ADDRESS,!          -> Idle
+
+BUSY,"hello$",!    -> "Please wait.", Queue
+BUSY,"hi$",!       -> *
+BUSY,"hiho$",!    -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Bye."
+
+"bye"      -> "Good bye.", Idle
+"farewell" -> *
+"job"      -> "I am selling furniture, especially bamboo made furniture. I also buy elephant tusks to create my famous tusk tables and ivory chairs."
+"name"     -> "I am known as Zaidal."
+"time"     -> "Sorry, I have no idea."
+"king"     -> "Perhaps one day even the king will use our furniture."
+"venore"   -> "Well, Venore is the centre of commerce."
+"thais"    -> "One day I might visit Thais."
+"carlin"   -> "Carlin is very far to the north. I have never been there."
+"edron"    -> "An isle with interesting forests. With the right organisation the furniture and shipbuilding business could prosper enormously." 
+"jungle"   -> "You call it a jungle, I call it furniture in the making."
+
+"offer"           -> "I sell tables, chairs and drawers, all handmade with the material that the jungle has to offer."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"furniture"       -> *
+"equipment"       -> *
+"special"         -> "My offers are permanently extraordinarily cheap."
+
+"tibia"    -> "The world is a big treasure chest for those who know to turn resources into profit." 
+
+"kazordoon" -> "The dwarves of Kazordoon are experts in mining resources like gems and ore."
+"dwarvs"   -> * 
+"dwarfes"   -> *
+"ab'dendriel" -> "Those elves are a bit complicated when it comes to trees and environmental matters. They must learn that you have to crush an egg to bake a cake."
+"elves"       -> *
+"elfs"       -> *
+"darama"      -> "The jungle is rich in resources and who knows what profit lies hidden in the desert? Of course not for a carpenter, but there are other resources."
+"darashia"    -> "People there seem to know little about the world of economy. Perhaps someone might teach them a lesson one day."
+"ankrahmun"   -> "I was there only once, but I left it with the certainty that I never want to return there ever again." 
+"ferumbras"   -> "If we could guide his attention in useful directions, he wouldn't be the problem he poses nowadays."
+"excalibug"   -> "Even if it would exist, which I doubt, it would be only an extremely expensive weapon and nothing more."
+"apes"       -> "They live in the depth of the jungle, and their only visits here are annoying raids to steal and plunder."
+"lizard"    -> "I did not see much of the lizzards yet."
+"dworcs"     -> "If we could get rid of them, a whole new area which is rich in bamboo would be ours." 
+
+"sell","tusk"            -> Type=3044, Amount=1, Price=100, "Do you want to sell a tusk for %P gold?", Topic=2
+"sell",%1,1<%1,"tusk"    -> Type=3044, Amount=%1, Price=100*%1, "Do you want to sell %A tusks for %P gold?", Topic=2
+
+Topic=2,"yes",Count(Type)>=Amount -> "Ok. Here is your money.", Delete(Type), CreateMoney
+Topic=2,"yes"                             -> "Sorry, you do not have one."
+Topic=2,"yes",Amount>1                    -> "Sorry, you do not have so many."
+Topic=2                                   -> "Maybe next time."
+
+@"gen-t-furniture-jungle-s.ndb"
+}

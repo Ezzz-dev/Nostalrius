@@ -1,0 +1,37 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# leeland.npc: Datenbank für den Besitzer des allgemeinen Markts Leeland Slim
+
+Name = "Leeland"
+Outfit = (130,19-36-96-76)
+Home = [32883,32082,5]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Greetings, %N!"
+ADDRESS,"hi$",!    -> *
+ADDRESS,"hail$",!  -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Please give me another minute, %N. I am talking already, but will be avaliable for you very soon.", Queue
+BUSY,"hi$",!       -> *
+BUSY,"hail$",!     -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Good bye, %N. Make sure to visit my shop."
+
+"bye"       -> "Good bye, %N. Make sure to visit my shop.", Idle
+"name"      -> "My name is Slim, Leeland Slim."
+"job"       -> "I am the owner of the Useful Things Warehouse."
+"warehouse" -> "I offer many things. Actually I am sure you will find something you have desired for a long time."
+"time"      -> "So it is a watch you need? Make sure to buy one downstairs."
+"king"      -> "Do I hear envy in your voice? Is it that you realy want? To be ... king? Well, one never knows ... perhaps you find something royal in my warehouse."
+"tibianus"  -> *
+"army"      -> "Your question suggests you are interested in military? I am sure you will find something interesting in my warehouse."
+"ferumbras" -> "Ah, Ferumbras. I remember selling him torches for his first adventures as if it was yesterday."
+"excalibug" -> "That's one of the few things even I can't aquire for you."
+"thais"     -> "Perhaps one day I will settle in thais again. I love the city's potential."
+"tibia"     -> "I have seen most of it. And I like it. <chuckles>"
+"carlin"    -> "I was there some time ago. I exchanged ideas with some important people there and even could sell them something that furthered their cause."
+"news"      -> "I would love to have the time to chat and exchange gossip, but sadly business always comes first, you know?"
+"tax"       -> "Taxes are a necessary evil, people say. I like that."
+"privilege" -> "Privileges have to be paid for. The one way ... or the other."
+"gambling"  -> "I just love bets and gambling. It inspires people doing such interesting things."
+}

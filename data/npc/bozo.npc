@@ -1,0 +1,112 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# bozo.npc: Datenbank für den Hofnarren Bozo
+
+Name = "Bozo"
+Outfit = (128,86-93-82-79)
+Home = [32313,32183,7]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$",female,! -> "Hello, hello, hello, little lady %N!"
+ADDRESS,"hi$",female,!    -> "Hello, hello, hello, little lady %N!"
+ADDRESS,"hello$",male,!   -> "Hi there, how's it hanging, %N!"
+ADDRESS,"hi$",male,!      -> "Hi there, how's it hanging, %N!"
+ADDRESS,!                 -> Idle
+BUSY,"hello$",!           -> "Wait and listen to my jokes, I am sooooo funny!"
+BUSY,"hi$",!              -> "Wait and listen to my jokes, I am sooooo funny!"
+BUSY,!                    -> NOP
+VANISH,male,!             -> "How did he do that??"
+VANISH,!                  -> "Women! They all do that to me!"
+
+"bye"            -> "Remember: A joke a day keeps the ghouls away!", Idle
+"farewell"       -> *
+"job"            -> Price=50, "I am the royal jes ... uhm ... the royal tax-collector! Do you want to pay your taxes?", Topic=1
+"news"           -> "I know the newest jokes in tibia."
+"how","are","you"-> "Thank you, I'm fine, the gods are with me."
+"sell"           -> "Sell? Hmm, I know a little about magic and by chance I can sell you a truly unusual weapon."
+"durin"          -> "Isn't he the author of the book 'fun with demons'?"
+"stephan"        -> "He is kind of a father figure to me. Of course he denies all kinship to me."
+"steve"          -> "He's a smart one. I heared he hid in a foreign country as the first bugs showed up."
+"name"           -> "My name is Bozo. But it's more than a name, it's a lifestyle to me!"
+"time"           -> "Since you met me it is happy hour for you."
+"help"           -> "I am a jester, not a doctor!"
+"jester"         -> "Do you wish to join the fools' guild?", Topic=6
+"fool"           -> "Do you wish to join the fools' guild?", Topic=6
+"joke"           -> "I know some 'monstrous' jokes!"
+"idiot"          -> "To me it's just a profession, but for you it's a state of mind!"
+"wish"           -> "If you have a wish to CIP just write a letter and place it in a dustbin of your choice."
+"excalibug"      -> "I am not foolish enough to believe in the existence of this weapon."
+"wallcarving"    -> "Oh, I saw some demoncarvings in the dungeons as I hid there after a little joke on old Stutch."
+"demoncarving"   -> "Yes, they showed demons, seven actually, dancing around a sword! In a flaming pit of some kind."
+"flaming","pit"  -> "Ah, don't ask me! Usually mages and mystics know more about such stuff."
+
+"monster"        -> "I know a lot of monster jokes. Just tell me a monster's name, come on."
+"demon"          -> "Why are the experienced heroes quicker than others? ... The demons love fast food!"
+"ghoul"          -> "Where do the ghouls buy their robes? ... In a Boooohtique!"
+"dragon"         -> "Why do dragons breathe fire? ... They ate too many sorcerers in chili sauce!"
+"skeleton"       -> "Why do skeletons flee if wounded? ... They are so spineless!"
+"orc"            -> "Why do orcs have green skin? ... They ate at Frodo's!"
+"cyclops"        -> "How many eyes does a cyclops have? ... One for each IQ point of their opponents!"
+"beholder"       -> "Why are beholders so ugly? ... Because their mom and dad were beholders, too!"
+"rat"            -> "Why does the rat have a wooden leg? ... Because it is a former pirate!"
+"spider"         -> "Why did the spider cross the road? ... Because it ... oh you already know this one!?"
+"troll"          -> "Why do trolls live underground? ... Because on the ground there are so many PKs!"
+"wolf"           -> "Why do the wolves howl? ... Hey, if you're online that long you can't help but behave that way!"
+"mino"           -> "What do all little minotaurs want to become when they are grown-ups? ... Cowboys, of course!"
+"dungeon"        -> "If you are a bad jester you get a chance to visit them now and then."
+"sewer"          -> "Good place for picking up apples and women."
+"oswald"         -> "If you believe half the rumours he's spreading, you are going to get in a lot of trouble."
+"update"         -> "Hey! I am supposed to make the jokes here!"
+"god"            -> "I better make no jokes about THIS matter."
+"king"           -> "Nah, no jests about His Royal Highness."
+"sam"            -> "Did you know that he now sells a 'power axe of doom'? Run and buy it, he has only three in store."
+"benjamin"       -> "He would make a fine jester, too."
+"gorn"           -> "He sells spell scrolls each day at midnight, but you have to address him that very second."
+"quentin"        -> "He's my baby brother. If you tell him I sent you, he will grant you an extra spell or two."
+"bozo"           -> "Thats me: Bozo, the jester!"
+"weapon"         -> Type=3473, Amount=1, Price=250, "Do you want to buy a 'mace of the fury' for 250 gold?", Topic=3
+"magic"          -> Price=200, "I actually know some spells! Do you want to learn how to 'lessen your load' for %P gold?", Topic=2
+"spell"          -> Price=200, "I actually know some spells! Do you want to learn how to 'lessen your load' for %P gold?", Topic=2
+"tibia"          -> "I rarely leave the castle. It's a real stress to be popular like me."
+"castle"         -> "The castle is my home. A place fit for a jester and all other fools. Feel welcome."
+"muriel"         -> "Better don't mess with sorcerers!"
+"elane"          -> "She's pretty but has a kind of too burning affection for my taste."
+"marvik"         -> "Humourless old guy! Once turned me into a frog for painting his distasteful cave in pink."
+"gregor"         -> "A man of steel, with a stomach of wax. Never offer him a beer!"
+"paladin",Paladin-> "I wanted to become a paladin, too, but I was overqualified!"
+"paladin"        -> "They are the king's favourites, because they know how to 'bow'."
+"sorcerer",Sorcerer-> "I wanted to become a sorcerer, too, but I was overqualified!"
+"sorcerer"       -> "The good thing about them is that they can't be at two places at the same time."
+"druid",Druid    -> "I wanted to become a Druid, too, but I was overqualified!" 
+"druid"          -> "If you are in Druidville, do as the rabbits do."
+"knight",Knight  -> "I wanted to become a knight, too, but I was overqualified!"
+"knight"         -> "Did you notice that old knights have their scars just on their backs?"
+"noodles"        -> "Hey, the little one is almost as funny as me!" 
+"dog"            -> "Are we talking about Noodles?"
+"poodle"         -> "Are we talking about Noodles?"
+"guild"          -> "Since the first guild showed up there's a great demand for jesters and fools to join them."
+"necromant","nectar" -> "Peeew! That sounds disgusting! Are you a cook at Frodo's?"
+"necromant"      -> "Don't feed the necromants."
+"lady",male      -> "Well, you don't behave ladylike just because you dress like one!"
+"lady",female    -> "Has any man said to you that you're not only beautiful but also intelligent?", Topic=5
+"kiss",male      -> "Uh, go away!", Idle
+"kiss",female    -> "Do you want to kiss me?", Topic=4
+"hugo"           -> "I had a cousin named like that."
+"cousin"         -> "He died some years ago."
+
+Topic=1,"yes",CountMoney>=Price -> "Thank you very much. I will have a drink or two on your health!", DeleteMoney
+Topic=1,"yes"                   -> "Come back, when you have enough money."
+Topic=1                         -> "Well, perhaps later."
+Topic=2,"yes",CountMoney>=Price -> "Here you are, I already lessened your load.", DeleteMoney
+Topic=2,"yes"                   -> "Come back, when you have enough money."
+Topic=2                         -> "You don't know what offer you have passed!"
+Topic=3,"yes",CountMoney>=Price -> "And here it is, it suits you well!", DeleteMoney, Create(Type)
+Topic=3,"yes"                   -> "Come back, when you have enough money."
+Topic=3                         -> "You dont know what offer you have passed!"
+Topic=4,"yes"                   -> "Uh, oh! ... I am seeing stars!", EffectMe(13)
+Topic=4                         -> "Pah, I didn't want to kiss you anyway!"
+Topic=5,"yes"                   -> "This is a world of fantasy and full of surprises!"
+Topic=5                         -> "Well, think about it!"
+Topic=6,"yes"                   -> "Sorry, you already are a member."
+Topic=6                         -> "Well, you are already a member anyway."
+}

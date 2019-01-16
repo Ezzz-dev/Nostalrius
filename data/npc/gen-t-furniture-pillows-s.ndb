@@ -1,0 +1,35 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gen-t-furniture-pillows-s.ndb: Datenbank für generischen Möbelverkauf - Kissen
+# Verwendete Topics: 81 bis 84
+
+#"offer"           -> "I sell statues, tables, chairs, flowers, pillows, pottery, instruments, decoration, tapestries and containers."
+#"furniture"       -> *
+#"goods"           -> *
+#"do","you","sell" -> *
+#"do","you","have" -> *
+
+"pillow"          -> "I can offer small pillows, round pillows, square pillows and heart pillows. Which one might it be?"
+"small", "pillow"    -> "What color would you prefer? Purple, green, red, blue, orange, turquoise or white?", Topic=82
+Topic=82, "purple"   -> Type=2386, Amount=1, Price=20, "You want to buy a small, purple pillow for %P gold?", Topic=81
+Topic=82, "green"    -> Type=2387, Amount=1, Price=20, "You want to buy a small, green pillow for %P gold?", Topic=81
+Topic=82, "red"      -> Type=2388, Amount=1, Price=20, "You want to buy a small, red pillow for %P gold?", Topic=81
+Topic=82, "blue"     -> Type=2389, Amount=1, Price=20, "You want to buy a small, blue pillow for %P gold?", Topic=81
+Topic=82, "orange"   -> Type=2390, Amount=1, Price=20, "You want to buy a small, orange pillow for %P gold?", Topic=81
+Topic=82, "turquoise" -> Type=2391, Amount=1, Price=20, "You want to buy a small, turquoise pillow for %P gold?", Topic=81
+Topic=82, "white"    -> Type=2392, Amount=1, Price=20, "You want to buy a small, white pillow for %P gold?", Topic=81
+"round", "pillow"      -> "What color would you prefer? Purple, red, blue or turquoise?", Topic=83
+Topic=83, "blue"       -> Type=2398, Amount=1, Price=25, "You want to buy a blue, round pillow for %P gold?", Topic=81
+Topic=83, "purple"     -> Type=2400, Amount=1, Price=25, "You want to buy a purple, round pillow for %P gold?", Topic=81
+Topic=83, "red"        -> Type=2399, Amount=1, Price=25, "You want to buy a red, round pillow for %P gold?", Topic=81
+Topic=83, "turquoise"   -> Type=2401, Amount=1, Price=25, "You want to buy a turquoise, round pillow for %P gold?", Topic=81
+"square", "pillow"     -> "What color would you prefer? Red, green, blue or yellow?", Topic=84
+Topic=84, "blue"       -> Type=2394, Amount=1, Price=25, "You want to buy a blue, square pillow for %P gold?", Topic=81
+Topic=84, "red"        -> Type=2395, Amount=1, Price=25, "You want to buy a red, square pillow for %P gold?", Topic=81
+Topic=84, "green"      -> Type=2396, Amount=1, Price=25, "You want to buy a green, square pillow for %P gold?", Topic=81
+Topic=84, "yellow"     -> Type=2397, Amount=1, Price=25, "You want to buy a yellow, square pillow for %P gold?", Topic=81
+"heart", "pillow"      -> Type=2393, Amount=1, Price=30, "You want to buy a heart pillow for %P gold?", Topic=81
+
+Topic=81,"yes",Premium,CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=81,"yes",CountMoney>=Price         -> "I'm sorry, but you need a premium account if you want to buy furniture."
+Topic=81,"yes"                           -> "Come back, when you have enough money."
+Topic=81                                 -> "Hmm, but I'm sure, it would fit nicely into your house."

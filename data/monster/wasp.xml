@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="wasp" nameDescription="a wasp" race="venom" experience="24" speed="120" manacost="280">
+	<health now="35" max="35" />
+	<look type="44" head="0" body="0" legs="0" feet="0" corpse="4080" />
+	<targetchange interval="1000" chance="10" />
+	<targetstrategy nearest="60" weakest="0" mostdamage="0" random="40" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="1" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="12" skill="23" poison="25">
+	</attacks>
+	<defenses armor="4" defense="8">
+	</defenses>
+	<immunities>
+		<immunity poison="1" />
+	</immunities>
+	<voices>
+		<voice sentence="Bsssssss" />
+	</voices>
+</monster>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="lizard templar" nameDescription="a lizard templar" race="blood" experience="145" speed="47" manacost="0">
+	<health now="410" max="410" />
+	<look type="113" head="0" body="0" legs="0" feet="0" corpse="4321" />
+	<targetchange interval="1000" chance="0" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="30" skill="44">
+	</attacks>
+	<defenses armor="26" defense="20">
+	</defenses>
+	<immunities>
+		<immunity poison="1" />
+	</immunities>
+	<voices>
+		<voice sentence="Hissss!" />
+	</voices>
+	<loot>
+		<item id="3031" countmax="20" chance="800" /> <!-- a gold coin -->
+		<item id="3282" countmax="1" chance="7" /> <!-- a morning star -->
+		<item id="3357" countmax="1" chance="10" /> <!-- a plate armor -->
+		<item id="3445" countmax="1" chance="1" /> <!-- a salamander shield -->
+		<item id="3294" countmax="1" chance="100" /> <!-- a short sword -->
+		<item id="3032" countmax="1" chance="3" /> <!-- a small emerald -->
+		<item id="3351" countmax="1" chance="20" /> <!-- a steel helmet -->
+		<item id="3264" countmax="1" chance="50" /> <!-- a sword -->
+		<item id="3345" countmax="1" chance="5" /> <!-- a templar scytheblade -->
+	</loot>
+</monster>

@@ -1,0 +1,76 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# windtrouser.npc: Fischer Dalbrect Windtrouser nahe Mönchsinsel
+
+Name = "Dalbrect"
+Outfit = (129,76-97-105-76)
+Home = [32211,31756,7]
+Radius = 5
+
+
+Behaviour = {
+ADDRESS,"hello$",QuestValue(220)>0,QuestValue(62)=2,!   -> "Sorry my friend, the monks don't allow me to talk to you because of your intrusion in their chambers. Unless you plea to the abbot for absolution I can do nothing for you.",Idle
+ADDRESS,"hi$",QuestValue(220)>0,QuestValue(62)=2,!      -> *
+
+ADDRESS,"hello$",QuestValue(220)>0,!   -> "The monks forbid me to talk to you for you evil deeds.",Idle
+ADDRESS,"hi$",QuestValue(220)>0,!      -> *
+
+ADDRESS,"hello$",!   -> "Be greeted, traveler."
+ADDRESS,"hi$",!      -> *
+ADDRESS,!                 -> Idle
+
+BUSY,"hello$",QuestValue(220)>0,QuestValue(62)=2,!   -> "Sorry %N, the monks don't allow me to talk to you because of your intrusion in their chambers. Unless you plea to the abbot for absolution I can do nothing for you.",Idle
+BUSY,"hi$",QuestValue(220)>0,QuestValue(62)=2,!      -> *
+
+BUSY,"hello$",QuestValue(220)>0,!   -> "Sorry %N, the monks forbid me to talk to you for you evil deeds.",Idle
+BUSY,"hi$",QuestValue(220)>0,!      -> *
+
+BUSY,"hello$",!           -> "One moment please.", Queue
+BUSY,"hi$",!              -> *
+BUSY,!                    -> NOP
+
+VANISH,!                  -> "Good bye. You are welcome."
+
+"bye"          -> "Good bye. You are welcome.", Idle
+"farewell"     -> *
+"name"         -> "My name is Dalbrect Windtrouser, of the once proud windtrouser family."
+"job"          -> "I am merely a humble fisher now that nothing is left of my noble legacy."
+"captain"      -> *
+"ship"         -> "My ship is my only pride and joy."
+"ferry"        -> *
+"legacy"       -> "Once my family was once noble and wealthy, but fate turned against us and threw us into poverty."
+"family"       -> *
+"nobility"     -> *
+"fate"         -> "When Carlin tried to colonize the region now known as the ghostlands, my ancestors put their fortune in that project."
+"poverty"      -> *
+"project"      -> "Our family fortune was lost when the colonization of those cursed lands failed. Now nothing is left of our fame or our fortune. If I only had something as a reminder of those better times. <sigh>"
+"ghostlands"   -> *
+
+
+"brooch",QuestValue(62)=2,!   -> "You have recovered my brooch! I shall forever be in your debt, my friend!" 
+"brooch"       -> "What? You want me to examine a brooch?", Type=3205, Amount=1, topic=3
+topic=3, "yes", Count(Type)<Amount  -> "What are you talking about? I am too poor to be interested in jewelry."
+topic=3, "yes", Count(Type)>=Amount -> "Can it be? I recognize my family's arms! You have found a treasure indeed! I am poor and all I can offer you is my friendship, but ... please ... give that brooch to me?", topic=2
+topic=3        -> "Then stop being a fool. I am poor and I have to work the whole day through!"
+
+Topic=2,"yes",Count(Type)>=Amount -> "Thank you! I shall consider you my friend from now on! Just let me know if you need something!", Delete(Type), SetQuestValue(62,2)
+Topic=2,"yes"                             -> "I should have known better then to ask for an act of kindness in this cruel, selfish, world!"
+Topic=2                                   -> *
+
+
+"trip"         -> "I have only sailed to the isle of the kings once or twice. I dare not anger the monks by bringing travellers there without their permission."
+"passage"      -> *
+"carlin"       -> "To think my family used to belong to the local nobility! And now those arrogant women are in charge!"
+"island"       -> "The only isle I visit regularly is the isle of the kings. I bring food and the occasional visitor to the monastery."
+"monastery"    -> "The monks are not exactly fond of visitors, so I rarely take somebody there without their permission."
+"white","raven" -> "I think that is the name both of the monastery and of the monks' order."
+"passage",QuestValue(62)=1 -> Price=20, "Since you have the abbot's permission I can sail you to the isle of the kings for %P gold. Is that ok for you?", Topic=1
+"passage",QuestValue(62)=2 -> Price=10, "Since you are my friend now I will sail you to the isle of the kings for %P gold. Is that okay for you?", Topic=1
+"passage" -> "You do not have the abbot's permission, and I won't risk angering the monks because of some guy I do not even know."
+
+Topic=1,"yes",PZBlock,! -> "First get rid of those blood stains! You are not going to ruin my vehicle!"
+
+Topic=1,"yes",CountMoney>=Price -> "Have a nice trip!", DeleteMoney, Idle, EffectOpp(11), Teleport(32190,31957,6), EffectOpp(11)
+Topic=1,"yes"                   -> "You don't have enough money."
+Topic=1                         -> "Well, I'll be here if you change your mind."
+
+}

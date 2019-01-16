@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="dragon" nameDescription="a dragon" race="blood" experience="700" speed="45" manacost="0">
+	<health now="1000" max="1000" />
+	<look type="34" head="0" body="0" legs="0" feet="0" corpse="4025" />
+	<targetchange interval="1000" chance="5" />
+	<targetstrategy nearest="70" weakest="10" mostdamage="10" random="10" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag runonhealth="300" />
+	</flags>
+	<attacks attack="42" skill="55">
+		<attack name="fire" min="-55" max="-105" range="7" radius="4" target="1" chance="7">
+			<attribute key="shootEffect" value="fire" />
+			<attribute key="areaEffect" value="firearea" />
+		</attack>
+		<attack name="fire" min="-100" max="-160" length="8" spread="3" chance="9">
+			<attribute key="areaEffect" value="firearea" />
+		</attack>
+	</attacks>
+	<defenses armor="25" defense="38">
+		<defense name="healing" min="34" max="56" chance="8">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity fire="1" />
+		<immunity paralyze="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<voices>
+		<voice sentence="GROOAAARRR" yell="1" />
+		<voice sentence="FCHHHHH" yell="1" />
+	</voices>
+	<loot>
+		<item id="3301" countmax="1" chance="20" /> <!-- a broadsword -->
+		<item id="3449" countmax="10" chance="80" /> <!-- a burst arrow -->
+		<item id="3349" countmax="1" chance="100" /> <!-- a crossbow -->
+		<item id="3275" countmax="1" chance="10" /> <!-- a double axe -->
+		<item id="3583" countmax="3" chance="450" /> <!-- dragon ham -->
+		<item id="3322" countmax="1" chance="5" /> <!-- a dragon hammer -->
+		<item id="3416" countmax="1" chance="3" /> <!-- a dragon shield -->
+		<item id="3031" countmax="45" chance="800" /> <!-- a gold coin -->
+		<item id="3031" countmax="60" chance="500" /> <!-- a gold coin -->
+		<item id="3061" countmax="1" chance="1" /> <!-- a life crystal -->
+		<item id="3285" countmax="1" chance="40" /> <!-- a longsword -->
+		<item id="3286" countmax="1" chance="200" /> <!-- a mace -->
+		<item id="3557" countmax="1" chance="20" /> <!-- plate legs -->
+		<item id="3297" countmax="1" chance="5" /> <!-- a serpent sword -->
+		<item id="3294" countmax="1" chance="250" /> <!-- a short sword -->
+		<item id="3028" countmax="1" chance="4" /> <!-- a small diamond -->
+		<item id="3351" countmax="1" chance="30" /> <!-- a steel helmet -->
+		<item id="3409" countmax="1" chance="150" /> <!-- a steel shield -->
+		<item id="3071" countmax="1" chance="10" /> <!-- a wand of inferno -->
+	</loot>
+</monster>

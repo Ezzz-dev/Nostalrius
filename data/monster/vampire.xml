@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="vampire" nameDescription="a vampire" race="undead" experience="290" speed="70" manacost="0">
+	<health now="450" max="450" />
+	<look type="68" head="0" body="0" legs="0" feet="0" corpse="4137" />
+	<targetchange interval="1000" chance="5" />
+	<targetstrategy nearest="70" weakest="30" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="42" skill="65">
+		<attack name="lifedrain" min="-55" max="-105" range="1" chance="5" />
+		<attack name="speed" speedchange="-70" variation="20" duration="30000" range="7" chance="9">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+	</attacks>
+	<defenses armor="27" defense="38">
+		<defense name="outfit" monster="bat" duration="6000" chance="120">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity lifedrain="1" />
+		<immunity paralyze="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<voices>
+		<voice sentence="BLOOD!" yell="1" />
+		<voice sentence="Let me kiss your neck." />
+		<voice sentence="I smell warm blood." />
+		<voice sentence="I call you, my bats! Come!" />
+	</voices>
+	<loot>
+		<item id="3027" countmax="1" chance="15" /> <!-- a black pearl -->
+		<item id="2902" countmax="1" chance="110" /> <!-- a bowl -->
+		<item id="3056" countmax="1" chance="2" /> <!-- a bronze amulet -->
+		<item id="3010" countmax="1" chance="2" /> <!-- an emerald bangle -->
+		<item id="3031" countmax="20" chance="150" /> <!-- a gold coin -->
+		<item id="3661" countmax="1" chance="180" /> <!-- a grave flower -->
+		<item id="3284" countmax="1" chance="3" /> <!-- an ice rapier -->
+		<item id="3300" countmax="1" chance="150" /> <!-- a katana -->
+		<item id="3559" countmax="1" chance="80" /> <!-- leather legs -->
+		<item id="3114" countmax="1" chance="100" /> <!-- a skull -->
+		<item id="3271" countmax="1" chance="10" /> <!-- a spike sword -->
+		<item id="3373" countmax="1" chance="4" /> <!-- a strange helmet -->
+		<item id="3434" countmax="1" chance="1" /> <!-- a vampire shield -->
+	</loot>
+</monster>

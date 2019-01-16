@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<areaspawn delay="0" lifetime="28800000" radius="1" centerx="33034" centery="32175" centerz="9">
+		<monster name="Dharalion" minamount="1" maxamount="1"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="28800000" radius="3" centerx="33034" centery="32175" centerz="9">
+		<monster name="elf arcanist" minamount="2" maxamount="2"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="28800000" radius="3" centerx="33034" centery="32175" centerz="9">
+		<monster name="elf scout" minamount="2" maxamount="4"/>
+	</areaspawn>
+</raid>

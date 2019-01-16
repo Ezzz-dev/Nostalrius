@@ -1,0 +1,75 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# jakahr.npc: Datenbank für den Postmann Jakahr
+
+Name = "Jakahr"
+Outfit = (133,95-37-32-40)
+Home = [33066,32876,7]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Hello, mourned pilgrim. How may I help you %N?"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "I am already talking to a customer, %N. Please wait a moment.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "It was an honour to serve you, %N."
+
+"bye"       -> "It was an honour to serve you.", Idle
+"farewell"  -> *
+
+
+"kevin"                 -> "Even in our lands the name of the guildmaster is held in great respect."
+"postner"               -> *
+"postmasters","guild"   -> "The guild plays a vital role in the economy of the known world."
+"join"                  -> "Please travel to our headquarters if you wish to join our guild." 
+"headquarters"           -> "You can find them to the south of the dwarven city of Kazordoon." 
+
+"job"       -> "I am a member of the Postmasters Guild. If you have questions about the Royal Tibia Mail System or the depots, ask me."
+"office"    -> "I am always here in my office. You are welcome to visit me anytime."
+"name"      -> "My name is Jakahr."
+"time"      -> "The time is %T, pilgrim."
+#"mail"      -> "Our mail system is perfectly unique, and everybody is free to use it. Would you like to know more about it?", Topic=1
+"depot"     -> "The depots are easy to use. Just open a locker to find your items there."
+
+"excalibug" -> "A weapon of legend. We rarely hear stories about it around here, however."
+"news"      -> "It does not befit a member of my position to spread rumours and stories, pilgrim."
+"thais"     -> "Thais is the capital of a kingdom on a far-off continent."
+"carlin"    -> "Carlin is a city far, far away from here. They say it is run by women and druids."
+
+@"gen-post.ndb"
+
+"darama"      -> "On this continent, the only place of real importance is our city."
+"darashia"    -> "A minor settlement to the north."
+"daraman"     -> "As far as I can tell he was some philosopher." 
+"ankrahmun"   -> "This city is a safe haven that protects its citizens from the dangers of the desert." 
+"city"        -> *
+
+"pharaoh"        -> "The pharaoh keeps this city safe. He is both our political and our spiritual leader."
+"arkhothep"     -> *
+
+"ascension"         -> "Sorry, but you should discuss religous issues like these in the temple. I am not a priest, and there is little I can tell you about it."
+"Akh'rah","Uthun"   -> *
+"Akh"               -> *
+"Rah"               -> *
+"uthun"             -> *
+
+"arena"        -> "Fights are frequently staged in the arena to entertain the people."
+"palace"       -> "You can't miss the palace. It is probably the biggest pyramid in the whole world."
+"temple"       -> "The temple is to the east of the city."
+
+
+#"letter" -> Amount=1, Price=5,  "Would you like to buy a letter for %P gold?", Topic=2
+#"parcel" -> Amount=1, Price=10, "Would you like to buy a parcel for %P gold?", Topic=3
+
+#Topic=1,"yes" -> "The Tibia Mail System allows you to send and receive letters and parcels. You can buy them here if you want."
+#Topic=1       -> "Is there anything else I can do for you?"
+
+#Topic=2,"yes",CountMoney>=Price -> "Here it is. Don't forget to write the name of the receiver in the first line and the address in the second one before you put the letter in a mailbox.", DeleteMoney, Create(3505)
+#Topic=2,"yes"                   -> "Oh, you do not have enough gold to buy a letter."
+#Topic=2                         -> "Ok."
+
+#Topic=3,"yes",CountMoney>=Price -> "Here you are. Don't forget to write the name and the address of the receiver on the label. The label has to be in the parcel before you put the parcel in a mailbox.", DeleteMoney, Create(3503), Create(3507)
+#Topic=3,"yes"                   -> "Oh, you do not have enough gold to buy a parcel."
+#Topic=3                         -> "Ok."
+}

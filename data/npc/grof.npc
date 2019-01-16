@@ -1,0 +1,11 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# grof.npc: Datenbank für die Stadtwache am Nordtor
+
+Name = "Grof, the guard"
+Outfit = (131,19-19-19-19)
+Home = [32373,32184,7]
+Radius = 3
+
+Behaviour = {
+@"guards-thais.ndb"
+}

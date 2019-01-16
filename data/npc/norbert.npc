@@ -1,0 +1,60 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# norbert.npc: Datenbank für den Schneider Norbert
+
+Name = "Norbert"
+Outfit = (128,6-79-93-14)
+Home = [32953,32103,6]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",Level>40,! -> "Wow! The great %N visiting our shop! LOOK PEOPLE, LOOK HERE!."
+ADDRESS,"hi$",Level>40,!    -> *
+ADDRESS,"hello$",!          -> "Welcome, %N."
+ADDRESS,"hi$",!             -> *
+ADDRESS,!                   -> Idle
+BUSY,"hello$",!             -> "Please give me another minute with this customer here, dear %N.", Queue
+BUSY,"hi$",!                -> *
+BUSY,!                      -> NOP
+VANISH,!                    -> "Bye, bye."
+
+"bye"       -> "Bye, bye.", Idle
+"name"      -> "I am Norbert."
+"job"       -> "I am a salesperson here, but one day I might become a tailor, or a supermodel perhaps!"
+"time"      -> "Now it's %T. Did you notice this is a xelor watch I am wearing?"
+"xelor"     -> "Xelor, the dwarf of the chromancers guild, makes the most stylish watches in all the land."
+"king"      -> "Even the king of Thais, blessed be his name, can't buy a better wardrobe then ours."
+"tibianus"  -> *
+"army"      -> "I don't think they dress that well."
+"ferumbras" -> "Those evil mages dress so ugly."
+"excalibug" -> "I fear such a weapon will ruin a silk shirt with one blow."
+"thais"     -> "Thaian wear is not that stylish anymore."
+"tibia"     -> "Our tailors are influenced by styles of the whole known world."
+"carlin"    -> "Women could do better then to wear armor. Women in leather scare my in particular."
+"hugo"      -> "He's our boss, a great tailor and designer."
+"chief"     -> *
+"news"      -> "I heared the colour of the next season will be orange."
+"rumour"    -> *
+"rumor"     -> *
+
+"offer"           -> "I sell very stylish clothes indeed."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"clothes"         -> "I have wonderful jackets, coats, lovely doublets, even warlike leather armor, and impressive studded armor."
+
+"coat"            -> Type=3562, Amount=1, Price=8,  "Do you want to buy a coat for %P gold?", Topic=1
+"jacket"          -> Type=3561, Amount=1, Price=12, "Oh, do you want to buy one of my wonderful jackets for %P gold?", Topic=1
+"doublet"         -> Type=3379, Amount=1, Price=16, "Do you want to buy a doublet for %P gold?", Topic=1 
+"leather","armor" -> Type=3361, Amount=1, Price=25, "Do you want to buy a leather armor for %P gold?", Topic=1
+"studded","armor" -> Type=3378, Amount=1, Price=90, "Do you want to buy a studded armor for %P gold?", Topic=1
+
+%1,1<%1,"coat"            -> Type=3562, Amount=%1, Price=8*%1,  "Do you want to buy %A coats for %P gold?", Topic=1
+%1,1<%1,"jacket"          -> Type=3561, Amount=%1, Price=12*%1, "Oh, do you want to buy %A of my wonderful jackets for %P gold?", Topic=1
+%1,1<%1,"doublet"         -> Type=3379, Amount=%1, Price=16*%1, "Do you want to buy %A doublets for %P gold?", Topic=1 
+%1,1<%1,"leather","armor" -> Type=3361, Amount=%1, Price=25*%1, "Do you want to buy %A leather armors for %P gold?", Topic=1
+%1,1<%1,"studded","armor" -> Type=3378, Amount=%1, Price=90*%1, "Do you want to buy %A studded armors for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "And here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Sorry, you do not have enough money."
+Topic=1                         -> "What a pity, perhaps next time."
+}

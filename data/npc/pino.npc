@@ -1,0 +1,51 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# pino: Datenbank für den Teppichpiloten Pino in Edron
+
+Name = "Pino"
+Outfit = (128,115-0-67-114)
+Home = [33192,31783,3]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",!         -> "Greetings, traveller %N."
+ADDRESS,"hi$",!            -> *
+ADDRESS,!                  -> Idle
+BUSY,"hello$",!            -> "Please wait, %N.", Queue
+BUSY,"hi$",!               -> *
+BUSY,!                     -> NOP
+VANISH,!                   -> "Good bye!"
+
+"bye"             -> "Good bye!", Idle
+"name"            -> "Pino at your service."
+"job"             -> "I am a carpetpilot. I can fly you to the Femor Hills or Darashia."
+"service"         -> *
+"time"            -> "It's %T right now."
+"tibia"           -> "What a wonderful world. Especially if you look down on it."
+
+"passage"   -> "I can fly you to Darashia on Darama or to the Femor Hills if you like. Where do you want to go?"
+"transport" -> *
+"ride"      -> *
+"trip"      -> *
+
+"darashia"  -> Price=40, "Do you want to get a ride to Darashia on Darama for %P gold?", Topic=1
+"darama"    -> *
+"hill"      -> Price=60, "Do you want to get a ride to the Femor Hills for %P gold?", Topic=2
+"femor"     -> *
+"femur"     -> "You are probably talking about the FEMOR hills."
+
+"darashia",QuestValue(250)>2  -> Price=30, "Do you want to get a ride to Darashia on Darama for %P gold?", Topic=1
+"darama",QuestValue(250)>2    -> *
+"hill",QuestValue(250)>2      -> Price=50, "Do you want to get a ride to the Femor Hills for %P gold?", Topic=2
+"femor",QuestValue(250)>2     -> *
+
+Topic=1,"yes",PZBlock,! -> "First get rid of those blood stains! You are not going to ruin my vehicle!"
+Topic=2,"yes",PZBlock,! -> *
+
+Topic=1,"yes",CountMoney>=Price         -> "Hold on!", DeleteMoney, Idle, EffectOpp(11), Teleport(33269,32441,6), EffectOpp(11)
+Topic=1,"yes"                           -> "You don't have enough money."
+Topic=1                                 -> "You shouldn't miss the experience."
+
+Topic=2,"yes",CountMoney>=Price         -> "Hold on!", DeleteMoney, Idle, EffectOpp(11), Teleport(32535,31837,4), EffectOpp(11)
+Topic=2,"yes"                           -> "You don't have enough money."
+Topic=2                                 -> "You shouldn't miss the experience."
+}

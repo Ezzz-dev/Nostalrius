@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="yeti" nameDescription="a yeti" race="blood" experience="460" speed="85" manacost="0">
+	<health now="950" max="950" />
+	<look type="110" head="0" body="0" legs="0" feet="0" corpse="4236" />
+	<targetchange interval="1000" chance="5" />
+	<targetstrategy nearest="70" weakest="0" mostdamage="30" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="53" skill="79">
+		<attack name="physical" min="-170" max="-200" range="7" chance="7">
+			<attribute key="shootEffect" value="snowball" />
+			<attribute key="areaEffect" value="poff" />
+		</attack>
+		<attack name="energy" min="-120" max="-210" length="3" spread="3" chance="9">
+			<attribute key="areaEffect" value="poff" />
+		</attack>
+	</attacks>
+	<defenses armor="28" defense="43">
+	</defenses>
+	<immunities>
+		<immunity energy="1" />
+		<immunity outfit="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<voices>
+		<voice sentence="Yooodelaaahooohooo!" />
+		<voice sentence="Yooodelaaaheeeheee!" />
+	</voices>
+	<loot>
+		<item id="3553" countmax="1" chance="1" /> <!-- bunnyslippers -->
+		<item id="3031" countmax="10" chance="600" /> <!-- a gold coin -->
+		<item id="3031" countmax="20" chance="300" /> <!-- a gold coin -->
+		<item id="3582" countmax="6" chance="350" /> <!-- ham -->
+		<item id="3577" countmax="4" chance="750" /> <!-- meat -->
+		<item id="2992" countmax="22" chance="500" /> <!-- a snowball -->
+		<item id="3012" countmax="1" chance="5" /> <!-- a wolf tooth chain -->
+	</loot>
+</monster>

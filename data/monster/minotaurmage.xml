@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="minotaur mage" nameDescription="a minotaur mage" race="blood" experience="150" speed="45" manacost="0">
+	<health now="155" max="155" />
+	<look type="23" head="0" body="0" legs="0" feet="0" corpse="4047" />
+	<targetchange interval="1000" chance="50" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="4" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="15" skill="18">
+		<attack name="energy" min="-15" max="-45" range="7" chance="6">
+			<attribute key="shootEffect" value="energy" />
+			<attribute key="areaEffect" value="energy" />
+		</attack>
+		<attack name="fire" min="-35" max="-95" range="7" radius="1" target="1" chance="11">
+			<attribute key="shootEffect" value="fire" />
+			<attribute key="areaEffect" value="firearea" />
+		</attack>
+		<attack name="energyfield" range="7" radius="1" target="1" chance="9">
+			<attribute key="shootEffect" value="energy" />
+		</attack>
+	</attacks>
+	<defenses armor="18" defense="40">
+	</defenses>
+	<immunities>
+		<immunity energy="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<voices>
+		<voice sentence="Learrn tha secrret uf deathhh!" yell="1" />
+		<voice sentence="Kaplar!" />
+	</voices>
+	<loot>
+		<item id="3359" countmax="1" chance="40" /> <!-- a brass armor -->
+		<item id="3595" countmax="7" chance="100" /> <!-- a carrot -->
+		<item id="3558" countmax="1" chance="20" /> <!-- chain legs -->
+		<item id="3292" countmax="1" chance="40" /> <!-- a combat knife -->
+		<item id="3998" countmax="1" chance="700" /> <!-- a dead snake -->
+		<item id="3031" countmax="10" chance="800" /> <!-- a gold coin -->
+		<item id="3291" countmax="1" chance="100" /> <!-- a knife -->
+		<item id="3355" countmax="1" chance="100" /> <!-- a leather helmet -->
+		<item id="3559" countmax="1" chance="150" /> <!-- leather legs -->
+		<item id="2920" countmax="2" chance="300" /> <!-- a torch -->
+		<item id="3073" countmax="1" chance="5" /> <!-- a wand of cosmic energy -->
+	</loot>
+</monster>

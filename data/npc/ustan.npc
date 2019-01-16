@@ -1,0 +1,143 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# ustan.npc: Datenbank für den Druidenlehrer Ustan
+
+Name = "Ustan"
+Outfit = (132,0-24-13-76)
+Home = [32580,32757,6]
+Radius = 0
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Crunor's blessing, traveller."
+ADDRESS,"hi$",!    -> *
+ADDRESS,"hiho$",!    -> *
+ADDRESS,!          -> Idle
+
+BUSY,"hello$",!    -> "Just some patience please.", Queue
+BUSY,"hi$",!       -> *
+BUSY,"hiho$",!    -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Good bye."
+
+"bye"      -> "Good bye, traveller.", Idle
+"farewell" -> *
+"job"      -> "I am a druid, an explorer and a part-time teacher."
+"teacher"  -> "Well, my studies of the local plants and animals are not cheap and I have to earn money somehow. Therefore I teach spells to other druids for a small fee."
+"name"     -> "I am Ustan."
+"time"     -> "Those modern watches never caught my interest."
+"king"     -> "As a commoner I know little about our nobility."
+"venore"   -> "A rich city with mighty trade barons that have their hands in almost every business from the furthest north to the deepest south."
+"thais"    -> "I usually shun big cities and Thais is the biggest one of them."
+"carlin"   -> "I studied in Carlin for a while and found its inhabitants most pleasant."
+"edron"    -> "I was never there. Perhaps after finishing my studies here I might travel there." 
+"jungle"   -> "The jungle is fascinating and vibrant of life. There is so much to see, to learn and to discover, it's just overwhelming."
+
+"tibia"    -> "It's a world full of wonders, isn't it?" 
+
+"kazordoon" -> "A city of stone, deep in the interior of the earth."
+"dwarves"   -> "Dwarves are of a different physique than humans. Actually, this is worth to become an own field of research. I wish I'd find the time for such studies, but the jungle has priority." 
+"dwarfs"   -> *
+"ab'dendriel" -> "A marvellous city. I travelled there often while I was studying in Carlin."
+"elves"       -> "Elves have a different view of the world. The wars of the past hurt their collective soul, but time might heal their pain, and maybe one day they will find their way back to the gods."
+"elfe"       -> *
+"darama"      -> "The continent is of fascinating diversity. The jungle, the mountains and the desert are seperate regions but united in one marvellous continent. To understand the unity in this, is to understand the world."
+"darashia"    -> "It's an unremarkable settlement with people following a strange philosophy which I know little about."
+"ankrahmun"   -> "Those mad cultists mock life and Crunor's blessing, and their undead leaders are even worse. If I'd be a warrior instead of a scientist, I would fight the evil." 
+"ferumbras"   -> "I heard he is some powerful sorcerer"
+"excalibug"   -> "I think the best weapon anyone could wield is the own mind."
+"apes"       -> "I am sure we could reach an agreement of some kind with the ape people. They are for sure intelligent and might listen to reasonable arguments."
+"lizard"    -> "They are fascinating and alien creatures. I wonder what kind of secrets they know about and what could be discovered about them."
+"dworcs"     -> "Given that the orcish race is able to reproduce itself with all kinds of different humanoid creatures, it is indeed a probability that the dworcs are some crossbreed as one could assume from their name." 
+
+"cough", "syrup"   -> "I had some cough syrup a while ago. It was stolen in an ape raid. I fear if you want more cough syrup you will have to buy it in the druids guild in carlin."
+
+druid,"rod",QuestValue(333)<1  -> "Oh, you did not purchase your first magical rod yet? Please take this little present from me as your magic teacher!",SetQuestValue(333,1),Type=3066, Amount=1,Create(Type)
+
+"spell",Druid   -> "I can teach you rune spells and instant spells. What kind of spell do you wish to learn? You can also tell me for which level you would like to learn a spell, if you prefer that.", Topic=2
+"spell"         -> "Sorry, I only sell spells to druids."
+
+Topic=2,"rune","spell"        -> "I sell attack rune spells, healing rune spells, support rune spells and summon rune spells. Which of these interests you most?"
+Topic=2,"instant","spell"     -> "I sell healing spells, supply spells, support spells and summon spells. Which of these interests you most?"
+Topic=2,"level"               -> "For which level would you like to learn a spell?", Topic=2
+Topic=2,"bye"                 -> "Good bye, traveller.", Idle
+
+Druid,"level"               -> "For which level would you like to learn a spell?", Topic=2
+Druid,"rune","spell"        -> "I sell attack rune spells, healing rune spells, support rune spells and summon rune spells. Which of these interests you most?"
+Druid,"instant","spell"     -> "I sell healing spells, supply spells, support spells and summon spells. Which of these interests you most?"
+
+Druid,"attack","rune","spell"  ->  "I sell missile rune spells, explosive rune spells, field rune spells, wall rune spells and bomb rune spells."
+Druid,"healing","rune","spell" ->  "In this category I have 'Intense Healing Rune', 'Antidote Rune' and 'Ultimate Healing Rune'."
+Druid,"support","rune","spell" ->  "In this category I have 'Destroy Field' and 'Chameleon'."
+Druid,"summon","rune","spell"  ->  "In this category I have 'Convince Creature'."
+
+Druid,"missile","rune","spell"   -> "In this category I have 'Light Magic Missile' and 'Heavy Magic Missile'."
+Druid,"explosive","rune","spell" -> "In this category I have 'Fireball', 'Great Fireball' and 'Explosion'."
+Druid,"field","rune","spell"     -> "In this category I have 'Poison Field', 'Fire Field' and 'Energy Field'."
+Druid,"wall","rune","spell"      -> "In this category I have 'Fire Wall', 'Poison Wall' and 'Energy Wall'."
+Druid,"bomb","rune","spell"      -> "In this category I have 'Firebomb'."
+
+Druid,"healing","spell"          -> "In this category I have 'Light Healing', 'Intense Healing', 'Ultimate Healing' and 'Antidote'."
+Druid,"supply","spell"           -> "In this category I have 'Food'."
+Druid,"support","spell"          -> "In this category I have 'Find Person', 'Light', 'Great Light', 'Magic Shield', 'Creature Illusion' and 'Invisible'."
+Druid,"summon","spell"           -> "In this category I have 'Summon Creature'."
+
+Druid,"find","person"             -> String="Find Person", Price=80,   "Do you want to buy the spell 'Find Person' for %P gold?", Topic=3
+Druid,"light"                     -> String="Light", Price=100,  "Do you want to buy the spell 'Light' for %P gold?", Topic=3
+Druid,"food"                      -> String="Food", Price=300,  "Do you want to buy the spell 'Food' for %P gold?", Topic=3
+Druid,"light","healing"           -> String="Light Healing", Price=170,  "Do you want to buy the spell 'Light Healing' for %P gold?", Topic=3
+Druid,"light","missile"           -> String="Light Magic Missile", Price=500,  "Do you want to buy the spell 'Light Magic Missile' for %P gold?", Topic=3
+Druid,"antidote"                  -> String="Antidote", Price=150,  "Do you want to buy the spell 'Antidote' for %P gold?", Topic=3
+Druid,"intense","healing"         -> String="Intense Healing", Price=350,  "Do you want to buy the spell 'Intense Healing' for %P gold?", Topic=3
+Druid,"poison","field"            -> String="Poison Field", Price=300,  "Do you want to buy the spell 'Poison Field' for %P gold?", Topic=3
+Druid,"great","light"             -> String="Great Light", Price=500,  "Do you want to buy the spell 'Great Light' for %P gold?", Topic=3
+Druid,"fire","field"              -> String="Fire Field", Price=500,  "Do you want to buy the spell 'Fire Field' for %P gold?", Topic=3
+Druid,"heavy","missile"           -> String="Heavy Magic Missile", Price=1500,  "Do you want to buy the spell 'Heavy Magic Missile' for %P gold?", Topic=3
+Druid,"magic","shield"            -> String="Magic Shield", Price=450,  "Do you want to buy the spell 'Magic Shield' for %P gold?", Topic=3
+Druid,"intense","healing","rune"  -> String="Intense Healing Rune", Price=600,  "Do you want to buy the spell 'Intense Healing Rune' for %P gold?", Topic=3
+Druid,"antidote","rune"           -> String="Antidote Rune", Price=600,  "Do you want to buy the spell 'Antidote Rune' for %P gold?", Topic=3
+Druid,"fireball"                  -> String="Fireball", Price=800,  "Do you want to buy the spell 'Fireball' for %P gold?", Topic=3
+Druid,"energy","field"            -> String="Energy Field", Price=700,  "Do you want to buy the spell 'Energy Field' for %P gold?", Topic=3
+Druid,"destroy","field"           -> String="Destroy Field", Price=700,  "Do you want to buy the spell 'Destroy Field' for %P gold?", Topic=3
+Druid,"ultimate","healing"        -> String="Ultimate Healing", Price=1000, "Do you want to buy the spell 'Ultimate Healing' for %P gold?", Topic=3
+Druid,"great","fireball"          -> String="Great Fireball", Price=1200, "Do you want to buy the spell 'Great Fireball' for %P gold?", Topic=3
+Druid,"fire","bomb"               -> String="Firebomb", Price=1500, "Do you want to buy the spell 'Fire Bomb' for %P gold?", Topic=3
+Druid,"creature","illusion"       -> String="Creature Illusion", Price=1000, "Do you want to buy the spell 'Creature Illusion' for %P gold?", Topic=3
+Druid,"convince","creature"       -> String="Convince Creature", Price=800, "Do you want to buy the spell 'Convince Creature' for %P gold?", Topic=3
+Druid,"ultimate","healing","rune" -> String="Ultimate Healing Rune", Price=1500, "Do you want to buy the spell 'Ultimate Healing Rune' for %P gold?", Topic=3
+Druid,"chameleon"                 -> String="Chameleon", Price=1300, "Do you want to buy the spell 'Chameleon' for %P gold?", Topic=3
+Druid,"poison","wall"             -> String="Poison Wall", Price=1600, "Do you want to buy the spell 'Poison Wall' for %P gold?", Topic=3
+Druid,"explosion"                 -> String="Explosion", Price=1800, "Do you want to buy the spell 'Explosion' for %P gold?", Topic=3
+Druid,"fire","wall"               -> String="Fire Wall", Price=2000, "Do you want to buy the spell 'Fire Wall' for %P gold?", Topic=3
+Druid,"Invisible"                 -> String="Invisible", Price=2000, "Do you want to buy the spell 'Invisible' for %P gold?", Topic=3
+Druid,"summon","creature"         -> String="Summon Creature", Price=2000, "Do you want to buy the spell 'Summon Creature' for %P gold?", Topic=3
+Druid,"energy","wall"             -> String="Energy Wall", Price=2500, "Do you want to buy the spell 'Energy Wall' for %P gold?", Topic=3
+
+Topic=2,"8$"  -> "For level 8 I have 'Find Person' and 'Light'.", Topic=2
+Topic=2,"9$"  -> "For level 9 I have 'Light Healing'.", Topic=2
+Topic=2,"10$" -> "For level 10 I have 'Antidote'.", Topic=2
+Topic=2,"11$" -> "For level 11 I have 'Intense Healing'.", Topic=2
+Topic=2,"13$" -> "For level 13 I have 'Great Light'.", Topic=2
+Topic=2,"14$" -> "For level 14 I have 'Food', 'Poison Field' and 'Magic Shield'.", Topic=2
+Topic=2,"15$" -> "For level 15 I have 'Fire Field', 'Intense Healing Rune', 'Antidote Rune' and 'Light Magic Missile'.", Topic=2
+Topic=2,"16$" -> "For level 16 I have 'Convince Creature'.", Topic=2
+Topic=2,"17$" -> "For level 17 I have 'Fireball' and 'Destroy Field'.", Topic=2
+Topic=2,"18$" -> "For level 18 I have 'Energy Field'.", Topic=2
+Topic=2,"20$" -> "For level 20 I have 'Ultimate Healing'.", Topic=2
+Topic=2,"23$" -> "For level 23 I have 'Great Fireball' and 'Creature Illusion'.", Topic=2
+Topic=2,"24$" -> "For level 24 I have 'Ultimate Healing Rune'.", Topic=2
+Topic=2,"25$" -> "For level 25 I have 'Summon Creature' and 'Heavy Magic Missile'.", Topic=2
+Topic=2,"27$" -> "For level 27 I have 'Firebomb' and 'Chameleon'.", Topic=2
+Topic=2,"29$" -> "For level 29 I have 'Poison Wall'.", Topic=2
+Topic=2,"31$" -> "For level 31 I have 'Explosion'.", Topic=2
+Topic=2,"33$" -> "For level 33 I have 'Fire Wall'.", Topic=2
+Topic=2,"35$" -> "For level 35 I have 'Invisible'.", Topic=2
+Topic=2,"41$" -> "For level 41 I have 'Energy Wall'.", Topic=2
+
+Topic=2       -> "Sorry, I have only spells for level 8 to 11, 13 to 18, 20, 23 to 25 as well as for the levels 27, 29, 31, 33, 35 and 41.", Topic=2
+
+
+Topic=3,"yes",SpellKnown(String)=1        -> "You already know how to cast this spell."
+Topic=3,"yes",Level<SpellLevel(String) -> Amount=SpellLevel(String), "You have to be level %A to learn this spell."
+Topic=3,"yes",CountMoney<Price            -> "Sorry, you do not have enough gold."
+Topic=3,"yes"                             -> "Here you are. Look in your spellbook for the pronunciation of this spell.", DeleteMoney, EffectOpp(13), TeachSpell(String)
+Topic=3                                   -> "Maybe next time."
+}

@@ -1,0 +1,70 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# amber.npc: Datenbank für die Abenteurerin Amber
+
+Name = "Amber"
+Outfit = (137,59-113-132-76)
+Home = [32103,32182,8]
+Radius = 4
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Oh hello, nice to see you %N."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Sorry, I'm already talking to someone."
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "See you later."
+
+"bye"             -> "See you later.", Idle
+"farewell"        -> *
+"how","are","you" -> "I am recovering from a sea journey."
+"job"             -> "I explore and seek adventure."
+"explore"         -> "I have been almost everywhere in Tibia."
+"adventure"       -> "I fought fierce monsters, climbed the highest mountains, and crossed the sea on a raft."
+"sea"             -> "My trip over the sea was horrible. The weather was bad, the waves high and my raft quite simple."
+"time"            -> "Sorry, I lost my watch in a storm."
+"help"            -> "I can't help you much beyond information."
+"information"     -> "Just ask and I'll try to answer."
+"dungeon"         -> "I have not had the time to explore the dungeons of this isle, but I have seen two big caves in the east, and there is a ruined tower in the northwest."
+"sewer"           -> "I like sewers. I made my very first battle experience in the Thais sewers. The small sewersystem of Rookgaard has some nasty rats to fight."
+"assistant"       -> "I have a job of great responsibility. Mostly I keep annoying persons away from my boss."
+"monster"         -> "Oh, I fought orcs, cyclopses, minotaurs, and even green dragons."
+"cyclops"         -> "Horrible monsters they are."
+"minotaur"        -> *
+"dragon"          -> *
+"raft"            -> "I left my raft at the south eastern shore. I forgot my private notebook on it. If you could return it to me I would be very grateful."
+"quest"           -> *
+"mission"         -> *
+"seymour"         -> "I think this poor guy was a bad choice as the head of the academy."
+"academy"         -> "A fine institution, but it needs definitely more funds from the king."
+"king"            -> "King Tibianus is the ruler of Thais."
+"thais"           -> "A fine city, but the king has some problems enforcing the law."
+"cipfried"        -> "A gentle person. You should visit him, if you have problems."
+"dallheim"        -> "An extraordinary warrior. He's the first and last line of defense of Rookgaard." 
+"hyacinth"        -> "Hyacinth is a great healer. He lives somewhere hidden on this isle."
+"willie"          -> "He's funny in his own, gruffy way." 
+"obi"             -> "He's a funny little man."
+"weapon"          -> "The best weapons on this isle are just toothpicks, compared with the weapons warriors of the mainland wield."
+"magic"           -> "You can learn spells only in the guildhalls of the mainland."
+"tibia"           -> "I try to explore each spot of Tibia, and one day I will succeed."
+"castle"          -> "If you travel to Thais, you really should visit the marvelous castle."
+
+"book"            -> Type=2821, Amount=1, "Do you bring me my notebook?", Topic=1
+"notebook"        -> *
+Topic=1,"yes",Count(Type)>=Amount -> "Excellent. Here, take this short sword, that might serve you well.", Delete(Type), Create(3294)
+Topic=1,"yes"                             -> "Hm, you don't have it."
+Topic=1                                   -> "Too bad."
+
+"orcish"      -> "I speak some orcish words, not much though, just 'yes' and 'no' and such basic.", Topic=2
+"language"    -> *
+"prisoner"    -> *
+"orc"         -> "Not the nicest guys you can encounter. I had some clashes with them and was prisoner of the orcs for some months." 
+Topic=2,"yes" -> "It's 'mok' in orcish. I help you more about that if you have some food."
+Topic=2,"no"  -> "In orcish that's 'burp'. I help you more about that if you have some food."
+
+"food"        -> "My favorite dish is salmon. Oh please, bring me some of it."
+"salmon"      -> Type=3579, Amount=1, "Yeah! If you give me some salmon I will tell you more about the orcish language.", Topic=3
+Topic=3,"yes",Count(Type)>=Amount -> "Thank you. Orcs call arrows 'pixo'.", Delete(Type)
+Topic=3,"yes" -> "You don't have one!"
+Topic=3       -> "Ok, then I don't tell you more about the orcish language."
+}

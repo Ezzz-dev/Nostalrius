@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="1000" type="event" message="Outlaws were sighted on the road from Kazordoon to Ab'Dendriel!"/>
+	<areaspawn delay="1000" radius="6" centerx="32618" centery="31825" centerz="7">
+		<monster name="hunter" minamount="0" maxamount="1"/>
+	</areaspawn>
+	<areaspawn delay="1000" radius="6" centerx="32619" centery="31826" centerz="7">
+		<monster name="wild warrior" minamount="4" maxamount="8"/>
+	</areaspawn>
+</raid>

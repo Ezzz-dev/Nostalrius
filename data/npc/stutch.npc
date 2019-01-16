@@ -1,0 +1,35 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# stutch.npc: Datenbank für den Wachmann Stutch
+
+Name = "Stutch"
+Outfit = (131,79-79-79-79)
+Home = [32310,32170,6]
+Radius = 0
+
+Behaviour = {
+ADDRESS,"hello$","king",!       -> "HAIL TO THE KING!"       
+ADDRESS,"hail$","king",!        -> "HAIL TO THE KING!"       
+ADDRESS,"salutations$","king",! -> "HAIL TO THE KING!"       
+ADDRESS,"hi$",!                 -> "MIND YOUR MANNERS COMMONER! To address the king greet with his title!", Idle
+ADDRESS,"hello$",!              -> *
+ADDRESS,!                       -> Idle
+BUSY,"hello$","king",!          -> "Wait for your audience!"       
+BUSY,"hail$","king",!           -> "Wait for your audience!"      
+BUSY,"salutations$","king",!    -> "Wait for your audience!"       
+BUSY,"hi$","king",!             -> "Wait for your audience!"       
+BUSY,!                          -> NOP
+VANISH,!                        -> "LONG LIVE THE KING!"
+
+"bye"            -> "LONG LIVE THE KING! You may leave now!", Idle
+"farewell"       -> *
+
+"fuck"           -> "Take this!", HP=1, EffectMe(8), EffectOpp(5)
+"idiot"          -> "Take this!", HP=1, EffectMe(8), EffectOpp(5)
+"asshole"        -> "Take this!", HP=1, EffectMe(8), EffectOpp(5)
+"ass$"           -> "Take this!", HP=1, EffectMe(8), EffectOpp(5)
+"fag$"           -> "Take this!", HP=1, EffectMe(8), EffectOpp(5)
+"stupid"         -> "Take this!", HP=1, EffectMe(8), EffectOpp(5)
+"tyrant"         -> "Take this!", HP=1, EffectMe(8), EffectOpp(5)
+"shit"           -> "Take this!", HP=1, EffectMe(8), EffectOpp(5)
+"lunatic"        -> "Take this!", HP=1, EffectMe(8), EffectOpp(5)
+}

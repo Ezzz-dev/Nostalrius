@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="ghoul" nameDescription="a ghoul" race="blood" experience="85" speed="32" manacost="450">
+	<health now="100" max="100" />
+	<look type="18" head="0" body="0" legs="0" feet="0" corpse="4034" />
+	<targetchange interval="1000" chance="0" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="26" skill="37">
+		<attack name="lifedrain" min="-15" max="-25" range="1" chance="9" />
+	</attacks>
+	<defenses armor="8" defense="17">
+		<defense name="healing" min="9" max="15" chance="8">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity lifedrain="1" />
+		<immunity paralyze="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<loot>
+		<item id="3354" countmax="1" chance="200" /> <!-- a brass helmet -->
+		<item id="3031" countmax="30" chance="750" /> <!-- a gold coin -->
+		<item id="3291" countmax="1" chance="150" /> <!-- a knife -->
+		<item id="3052" countmax="1" chance="2" /> <!-- a life ring -->
+		<item id="3377" countmax="1" chance="40" /> <!-- a scale armor -->
+		<item id="3114" countmax="1" chance="30" /> <!-- a skull -->
+		<item id="2920" countmax="1" chance="600" /> <!-- a torch -->
+		<item id="3367" countmax="1" chance="50" /> <!-- a viking helmet -->
+		<item id="3492" countmax="6" chance="800" /> <!-- a worm -->
+	</loot>
+</monster>

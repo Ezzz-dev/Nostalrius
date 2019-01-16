@@ -1,0 +1,33 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# budrik.npc: Datenbank für den Minenvorsteher Budrik 
+
+Name = "Budrik"
+Outfit = (160,94-76-58-95)
+Home = [32524,31906,8]
+Radius = 4
+
+Behaviour = {
+ADDRESS,"hello$",!       -> "Hiho, Hiho %N."
+ADDRESS,"hi$",!          -> *
+ADDRESS,"hiho$",!        -> *
+ADDRESS,!                -> Idle
+BUSY,"hello$",!          -> "Just a minute %N!", Queue
+BUSY,"hi$",!             -> *
+BUSY,"hiho$",!           -> *
+BUSY,!                   -> NOP
+VANISH,!                 -> "Bye, bye."
+
+"bye"           -> "Bye, bye.", Idle
+"job"           -> "I am the foreman of this mine."
+"shop"          -> *
+"name"          -> "My name is Budrik Deepdigger, son of Earth, from the Molten Rock."
+"time"          -> "Precisely %T, young one."
+"help"          -> "I am a miner, ask someone else."
+"dwarfs"        -> "We understand the ways of the earth like nobody else does."
+"monster"       -> "In the deeper mines we discover some nasty beasts now and then."
+"dungeon"       -> "This is no funhouse. Leave the miners and their drilling-worms alone and get out! We have already enough trouble without you."
+"mines"         -> *
+"trouble"       -> "The Horned Fox is leading his bandits in sneak attacks and raids on us."
+"horned","fox"  -> "A minotaur they threw out at Mintwallin. He must have some kind of hideout nearby."
+"hideout"       -> "The hideout of the Horned Fox is probably a dangerous if not lethal place for the unexperienced ones."
+}

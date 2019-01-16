@@ -1,0 +1,73 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# humphrey.npc: Datenbank für den druiden humphrey
+
+Name = "Humphrey"
+Outfit = (133,0-96-101-76)
+Home = [32359,31683,6]
+Radius = 4
+
+Behaviour = {
+ADDRESS,"hello$",!      -> "Welcome, child of nature."
+ADDRESS,"hi$",!         -> *
+ADDRESS,!               -> Idle
+BUSY,"hello$",!         -> "Please wait a minute, %N.", Queue
+BUSY,"hi$",!            -> *
+BUSY,"heal$",Burning>0 -> "You are burning, %N. I will help you.", Burning(0,0), EffectOpp(15)
+BUSY,"heal$",Poison>0  -> "You are poisoned, %N. I will help you.", Poison(0,0), EffectOpp(14)
+BUSY,"heal$",HP<40     -> "You are looking really bad, %N. Let me heal your wounds.", HP=40, EffectOpp(13)
+BUSY,"heal$"           -> "You aren't looking really bad, %N. Sorry, I can't help you."
+BUSY,!                  -> NOP
+VANISH,!                -> "Remember: If you are heavily wounded or poisoned, I will heal you."
+
+"bye"            -> "Good bye, %N!", Idle
+"farewell"       -> *
+"job"            -> "I am a guardian of nature. Also I am the keeper of the embrace of tibia, one of the five blessings."
+"name"           -> "My name is Humphrey."
+"heal$",Burning>0 -> "You are burning. I will help you.", Burning(0,0), EffectOpp(15)
+"heal$",Poison>0  -> "You are poisoned. I will help you.", Poison(0,0), EffectOpp(14)
+"heal$",HP<40     -> "You are looking that bad. Let me heal your wounds.", HP=40, EffectOpp(13)
+
+"heal$",PvPEnforced -> "You aren't looking that bad."
+"heal$"               -> "You aren't looking that bad. Sorry, I can't help you. But if you are looking for additional protection you should go on the pilgrimage of ashes."
+
+"blessing",PvPEnforced,!  -> "The lifeforce of this world is waning. There are no more blessings avaliable on this world."
+"pilgrimage",PvPEnforced,! -> *
+"ashes",PvPEnforced,! -> *
+
+"spiritual",PvPEnforced,! -> *
+"shielding",PvPEnforced,! -> *
+"sacred","places",PvPEnforced,! -> *
+"spark",PvPEnforced,! -> *
+"phoenix",PvPEnforced,! -> *
+"embrace",PvPEnforced,! -> *
+"fire",PvPEnforced,! -> *
+"suns",PvPEnforced,! -> *
+"wisdom",PvPEnforced,! -> *
+"solitude",PvPEnforced,! -> *
+
+
+"pilgrimage"     -> "Whenever you recrive a lethal wound your lifeforce is damaged. With every single of the five blessings you have this damage will be reduced."
+"ashes"          -> *
+"blessing"  -> "There are five different blessings available in five sacred places. They are: the spiritual shielding, the spark of the phoenix, the embrace of tibia, the fire of the suns and the wisdom of solitude." 
+"sacred","places"  -> "Just ask in which of the five blessings you are interested in."
+"spiritual" -> "You can ask for the blessing of spiritual shielding the whiteflower temple south of Thais."
+"shielding" -> *
+"spark" -> "The spark of the phoenix will be given to you by the dwarfen priests of earth and fire in Kazordoon."
+"phoenix" -> *
+"embrace" -> "I will give to you the embrace of tibia, but you will have to make a sacrifice. Are you prepared to pay 10.000 gold for the blessing?.",Price=10000, Topic=5
+
+"fire"     -> "You can ask for the blessing of the two suns in the suntower near Ab'Dendriel ."
+"suns"     -> *
+"wisdom" -> "Talk to the hermit Eremo on the isle of Cormaya about this blessing." 
+"solitude" -> *
+
+Topic=5,"yes", QuestValue(105) > 0        -> "You already possess this blessing."
+Topic=5,"yes",CountMoney<Price            -> "Oh. You do not have enough money."
+Topic=5,"yes"                             -> "So receive the embrace of tibia, pilgrim", DeleteMoney, EffectOpp(13),SetQuestValue(105,1), Bless(2)
+Topic=5                                   -> "Fine. You are free to decline my offer."
+
+
+"time"           -> "Now, it is %T. Ask Gorn for a watch, if you need one."
+
+}
+

@@ -1,0 +1,65 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# skjaar.npc: Datenbank für Skjaar, Wächter der Krypta im Berg und Meistermagier
+
+Name = "Skjaar"
+Outfit = (9,0-0-0-0)
+Home = [32450,32038,8]
+Radius = 2
+
+Behaviour = {
+BUSY,"hello$",Level<15,!    -> "I don't talk to little children!!", Idle
+BUSY,"hi$",Level<15,!       -> *
+ADDRESS,"hello$",Druid,!    -> "Hail, friend of nature! How may I help you?"
+ADDRESS,"hi$",Druid,!       -> *
+ADDRESS,"hello$",Knight,!   -> "Another creature who believes thinks physical strength is more important than wisdom! Why are you disturbing me?"
+ADDRESS,"hi$",Knight,!      -> *
+ADDRESS,"hello$",Sorcerer,! -> "It's good to see somebody who has chosen the path of wisdom. What do you want?"
+ADDRESS,"hi$",Sorcerer,!    -> *
+ADDRESS,"hello$",Paladin,!  -> "Neither strong enough to be a knight nor wise enough to be a real mage. You like it easy, don't you? Why are you disturbing me?"
+ADDRESS,"hi$",Paladin,!     -> *
+ADDRESS,!                   -> Idle
+BUSY,"hello$",!             -> "Silence, unworthy creature!"
+BUSY,"hi$",!                -> *
+BUSY,!                      -> NOP
+VANISH,!                    -> "Run away, unworthy %N!"
+
+"bye"            -> "Farewell, %N!", Idle
+"farewell"       -> *
+"job"            -> "Once I was the master of all mages, but now I only protect this crypt."
+"name"           -> "I am Skjaar the Mage, master of all spells."
+"door"           -> "This door seals a crypt."
+"crypt"          -> "Here lies my master. Only his closest followers may enter."
+"help"           -> "I'm not here to help anybody. I only protect my master's crypt."
+"mountain"       -> "Hundreds of years my master's castle stood on the top of this mountain. Now there is a volcano."
+"volcano"        -> "I can still feel the magical energy in the volcano."
+"castle"         -> "The castle was destroyed when my master tried to summon a nameless creature. All that is left is this volcano."
+"time"           -> "To those who have lived for a thousand years time holds no more terror."
+"master"         -> "If you are one of his followers, you need not ask about him, for you will know. And if you aren't, you are not worthy anyway!"
+"key"            -> "I will give the key to the crypt only to the closest followers of my master. Would you like me to test you?", Topic=1
+
+"idiot"          -> "Take this for your words!", HP=1, EffectOpp(14), Idle
+"fuck"           -> "Take this for your words!", HP=1, EffectOpp(14), Idle
+"asshole"        -> "Take this for your words!", HP=1, EffectOpp(14), Idle
+
+Topic=1,"yes" -> Price=1000, "Before we start I must ask you for a small donation of 1000 gold coins. Are you willing to pay 1000 gold coins for the test?", Topic=2
+Topic=1,"no"  -> "Then leave, unworthy worm!", Idle
+Topic=1       -> "You're not worthy if you cannot make up your mind. Leave!", Idle
+
+Topic=2,"yes",CountMoney>=Price -> "All right then. Here comes the first question. What was the name of Dago's favourite pet?", DeleteMoney, Topic=3
+Topic=2,"yes",CountMoney<Price  -> "You don't even have the money to make a donation? Then go!", Idle
+Topic=2,"no"  -> "You're not worthy then. Now leave!", Idle
+Topic=2       -> "You're not worthy if you cannot make up your mind. Leave!", Idle
+
+Topic=3,"redips",! -> "Perhaps you knew him after all. Tell me - how many fingers did he have when he died?", Topic=4
+Topic=3,!          -> "You are wrong. Get lost!", Idle
+
+Topic=4,"7",!     -> "Also true. But can you also tell me the colour of the deamons in which master specialized?", Topic=5
+Topic=4,"seven",! -> "Also true. But can you also tell me the colour of the deamons in which my master specialized?", Topic=5
+Topic=4,!         -> "You are wrong. Get lost!", Idle
+
+Topic=5,"black",! -> "It seems you are worthy after all. Do you want the key to the crypt?", Topic=6
+Topic=5,!         -> "You are wrong. Get lost!", Idle
+
+Topic=6,"yes" -> Type=2970, Data=3142, Amount=1, "Here you are.", Create(Type)
+Topic=6       -> "It is always a wise decision to leave the dead alone."
+}

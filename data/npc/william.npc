@@ -1,0 +1,32 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# william.npc: Datenbank für den carlin trunkenbold William
+
+Name = "William"
+Outfit = (128,115-0-67-114)
+Home = [32314,31802,8]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hi$",!                               -> "Oh, hello! <hicks>"
+ADDRESS,"hello$",!                            -> *
+ADDRESS,!                                     -> Idle
+BUSY,"hi$",!                                  -> "<hicks> Not right now...", Queue
+BUSY,"hello$",!                               -> *
+BUSY,!                                        -> NOP
+VANISH,!                                      -> "<hicks> Damn, I am starting to imagine things... again."
+
+"bye"            -> "Bye bye <hicks>.", Idle
+"how","are","you"-> "Thanks I am <hicks> drunk <giggles>."
+"sell"           -> "Hey! Thats my drink, buy your own!"
+"job"            -> "I forgot <hicks> what a job I have."
+"karl"           -> "A good guy with <hicks> good beer."
+"name"           -> "My Name? Uh... Wait! 'Bring down the trash, William you...' William, my name is William!"
+"time"           -> "Its precisely <hicks> after <hicks>."
+"help"           -> "I need another drink, then I'll help you. Promise."
+"carlin"         -> "I whish I'd live in Thais, the city of alcohol."
+"thais"          -> *
+"sewer"          -> "The sewers are our last refuge."
+"refuge"         -> "Yes, refuge from <hicks> womanhood."
+"todd"           -> "In Todd we trust! TODD! TODD! TODD!"
+
+}

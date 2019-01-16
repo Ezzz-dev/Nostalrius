@@ -1,0 +1,77 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# anerui.npc: Datenbank für die Jägerin Anerui
+
+Name = "Anerui"
+Outfit = (63,0-0-0-0)
+Home = [32669,31659,7]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",!       -> "Ashari %N."
+ADDRESS,"hi$",!          -> *
+ADDRESS,"Ashari$",!      -> *
+ADDRESS,!                -> Idle
+BUSY,"hello$",!          -> "Wait, %N.", Queue
+BUSY,"hi$",!             -> *
+BUSY,!                   -> NOP
+VANISH,!                 -> "Asha Thrazi."
+
+"bye"           -> "Asha Thrazi.", Idle
+"farewell"      -> *
+"asha","thrazi" -> *
+"name"      -> "I am Anerui Mourningleaf."
+"job"       -> "I am the mistress of the hunt. At this place you may buy the food our hunts provide."
+"time"      -> "Watch the sky, it will tell you."
+
+"carlin"        -> "Carlin needs our protection and resources. Of course they will turn on us as soon as they feel strong enough."
+"thais"         -> "Thais is to far away to prove a threat but also is of little help if problems should occur."
+"venore"        -> "Venore profits greatly from the trade with Ab'Denriel. I see those traders as leeches that suck away our resources."
+"roderick"      -> "He is our contact person to the thaian kingdom and a necessary evil."
+"olrik"         -> "He would love to be an elf but still is more kind of a pale orc."
+
+"hunter"    -> "Hunters live a life of freedom and closeness to nature, unlike a simple farmer or bugherder."
+"hunt"      -> "Hunting is an art, practiced too often by diletantes. Every fool with a bow or a spear considers himself a hunter."
+"game"      -> *
+"prey"      -> *
+"forest"    -> "The forests are the gardens of life. Nature provides enough for everyone's need, but not enough for everyone's greed."
+"nature"    -> "Nature is not a friend but an unforgiving teacher, and the lessons we have to learn are endless."
+"teacher"   -> "Most lessons nature teaches are about life and death."
+"life"      -> "Life and death are significant parts of the balance." 
+"death"     -> *
+"balance"   -> "The balance of nature, of course. It's everywhere, so don't ask but observe and learn."
+"bugherder" -> "Well, a person who herds bugs of course."
+"bugs"      -> "The bugs provide us with chitin for equipment, bugmilk, and bugmeat."
+"bugmilk"   -> "It's delicious. Brasith sells it in his store."
+"bow"       -> "Bow, arrow, and spear are the hunters' best friends. In the northeast of the town one of us may sell such tools."
+"arrow"     -> *
+"spear"     -> *
+"elf"       -> "That is the race to which I belong."
+"elves"     -> *
+"dwarf"     -> "I will never understand these little people of the mountains."
+"human"     -> "The humans are a loud and ugly race. They lack any grace and are more kin to the orcs then to us." 
+"troll"     -> "I despise their presence in our town, but it may be a necessary evil." 
+"cenath"    -> "The magic they wield is all that matters to them."
+"kuridai"   -> "The Kuridai are too agressive not only to people but also to the enviroment. They lack any understanding of the balance that we know as nature."
+"deraisim"  -> "We try to live in harmony with the forces of nature, may they be living or unliving."
+"abdaisim"  -> "The Abdaisim are our brothers and sisters in spirit. We stay in contact with them, exchanging news and items." 
+"teshial"   -> "If they ever existed they are gone now." 
+"ferumbras" -> "The defiler. I will not talk about him."
+"crunor"    -> "I guess it's a human god for the human sight of nature. I have not much knowledge of this entity." 
+
+"offer"           -> "I sell meat and ham."
+"goods"           -> *
+"buy"             -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"food"            -> *
+
+"meat"            -> Type=3577, Amount=1, Price=4, "Do you want to buy meat for %P gold?", Topic=1
+"ham"             -> Type=3582, Amount=1, Price=6, "Do you want to buy ham for %P gold?", Topic=1
+
+%1,1<%1,"meat"          -> Type=3577, Amount=%1, Price=4*%1, "Do you wanna buy %A meat for %P gold?", Topic=1
+%1,1<%1,"ham"           -> Type=3582, Amount=%1, Price=6*%1, "Do you wanna buy %A ham for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Thank you. Here it is.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Sorry, you do not have enough gold."
+Topic=1                         -> "Maybe you will buy it another time."
+}

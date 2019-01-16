@@ -1,0 +1,43 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# genTgearV.ndb:  Datenbank für generischen Ausrüstungsverkauf
+
+"torch"        -> Type=2920, Amount=1,  Price=2,    "Do you want to buy a torch for %P gold?", Topic=25
+"candelab"     -> Type=2911, Amount=1,  Price=8,    "Do you want to buy a candelabrum for %P gold?", Topic=25
+"candlestick"  -> Type=2917, Amount=1,  Price=2,    "Do you want to buy a candlestick for %P gold?", Topic=25
+"bag"          -> Type=2862, Amount=1,  Price=4,    "Do you want to buy a bag for %P gold?", Topic=25
+"scroll"       -> Type=2815, Amount=1,  Price=5,    "Do you want to buy a scroll for %P gold?", Topic=25
+"document"     -> Type=2834, Amount=1,  Price=12,   "Do you want to buy a document for %P gold?", Topic=25
+"parchment"   -> Type=2835, Amount=1,  Price=8,    "Do you want to buy a parchment for %P gold?", Topic=25
+"shovel"       -> Type=3457, Amount=1,  Price=10,   "Do you want to buy a shovel for %P gold?", Topic=25
+"backpack"     -> Type=2870, Amount=1,  Price=10,   "Do you want to buy a backpack for %P gold?", Topic=25
+"scythe"       -> Type=3453, Amount=1,  Price=12,   "Do you want to buy a scythe for %P gold?", Topic=25
+"pick"         -> Type=3456, Amount=1,  Price=50,   "Do you want to buy a pick for %P gold?", Topic=25
+"watch"        -> Type=2906, Amount=1,  Price=20,   "Do you want to buy one of my high quality watches for %P gold?", Topic=25
+"rope"         -> Type=3003, Amount=1,  Price=50,   "Do you want to buy a rope for %P gold?", Topic=25
+"rod"          -> Type=3483, Amount=1,  Price=150,  "Do you want to buy a fishing rod for %P gold?", Topic=25
+"crowbar"      -> Type=3304, Amount=1,  Price=260,  "Do you want to buy a dwarfish steel crowbar for %P gold?", Topic=25
+"water","hose" -> Type=2901, Amount=1,  Price=10, Data=1, "Do you want to' buy a water hose for %P gold?", Topic=25
+"present"      -> Type=2856, Amount=1,  Price=10,   "Do you want to buy a present for %P gold?", Topic=25
+"bucket"       -> Type=2873, Amount=1,  Price=4, Data=0, "Do you want to buy a bucket for %P gold?", Topic=25
+"bottle"       -> Type=2875, Amount=1,  Price=3, Data=0, "Do you want to buy a bottle for %P gold?", Topic=25
+%1,0<%1,"torches" -> Type=2920, Amount=%1, Price=2*%1, "Do you want to buy %A torches for %P gold?", Topic=25
+
+"oil"          -> Type=2874, Data=7, Amount=1, Price=20, "Do you want to buy oil for %P gold?", Topic=26
+
+"deposit" -> "I will give you 5 gold for every empty vial. Ok?", Data=0, Topic=27
+"vial"    -> *
+"flask"   -> *
+
+Topic=25,"yes",CountMoney>=Price -> "Here it is!", DeleteMoney, Create(Type)
+Topic=25,"yes"                   -> "Sorry, you have no money!"
+Topic=25                         -> "Perhaps another time."
+
+Topic=26,"yes",CountMoney>=Price -> "Ok, take it. There is a deposit of 5 gold on the vial.", DeleteMoney, Create(Type)
+Topic=26,"yes"                   -> "Sorry, you have no money!"
+Topic=26                         -> "Perhaps another time."
+
+
+Topic=27,"yes",Count(2874)>0 -> Amount=Count(2874), Price=Amount*5, "Here you are ... %P gold.", Delete(2874), CreateMoney
+Topic=27,"yes"               -> "You don't have any empty vials."
+Topic=27                     -> "Hmm, but please keep this place litter free."
+

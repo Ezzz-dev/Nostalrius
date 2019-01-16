@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="orc spearman" nameDescription="an orc spearman" race="blood" experience="38" speed="48" manacost="310">
+	<health now="105" max="105" />
+	<look type="50" head="0" body="0" legs="0" feet="0" corpse="4101" />
+	<targetchange interval="1000" chance="50" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="1" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="4" />
+		<flag runonhealth="10" />
+	</flags>
+	<attacks attack="17" skill="19">
+		<attack name="physical" min="-16" max="-40" range="7" chance="15">
+			<attribute key="shootEffect" value="spear" />
+		</attack>
+	</attacks>
+	<defenses armor="6" defense="12">
+	</defenses>
+	<voices>
+		<voice sentence="Ugaar!" />
+	</voices>
+	<loot>
+		<item id="3105" countmax="1" chance="77" /> <!-- a dirty fur -->
+		<item id="3031" countmax="7" chance="220" /> <!-- a gold coin -->
+		<item id="3308" countmax="1" chance="100" /> <!-- a machete -->
+		<item id="3577" countmax="1" chance="300" /> <!-- meat -->
+		<item id="3277" countmax="1" chance="230" /> <!-- a spear -->
+		<item id="3376" countmax="1" chance="90" /> <!-- a studded helmet -->
+		<item id="3362" countmax="1" chance="100" /> <!-- studded legs -->
+	</loot>
+</monster>

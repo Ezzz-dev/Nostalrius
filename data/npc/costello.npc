@@ -1,0 +1,102 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# costello.npc: Datenbank für den Abt Costello
+
+Name = "Costello"
+Outfit = (57,0-0-0-0)
+Home = [32180,31936,7]
+Radius = 3
+
+Behaviour = {
+
+ADDRESS,"hello$",QuestValue(220)>0,!  -> "WHAT? You have to be that trespasser my brothers told me about! Entering the restricted area is a horrible crime!",Topic=3
+ADDRESS,"hi$",QuestValue(220)>0,!         -> *
+
+
+ADDRESS,"hello$",!      -> "Welcome, %N! Feel free to tell me what has brought you here."
+ADDRESS,"hi$",!         -> *
+ADDRESS,!               -> Idle
+
+BUSY,"hello$",QuestValue(220)>0,!  -> "WHAT? You have to be that trespasser my brothers told me about! Entering the restricted area is a horrible crime!",Idle
+BUSY,"hi$",QuestValue(220)>0,!         -> *
+
+BUSY,"hello$",!         -> "Please wait a minute, %N.", Queue
+BUSY,"hi$",!            -> *
+BUSY,"heal$",QuestValue(220)>0 -> "I won't waste my healing powers on you, spawn of evil!", Idle
+BUSY,"heal$",Burning>0 -> "You are burning, %N. I will help you.", Burning(0,0), EffectOpp(15)
+BUSY,"heal$",Poison>0  -> "You are poisoned, %N. I will help you.", Poison(0,0), EffectOpp(14)
+BUSY,"heal$",HP<40     -> "You are looking really bad, %N. Let me heal your wounds.", HP=40, EffectOpp(13)
+BUSY,"heal$"           -> "You aren't looking that bad, %N. Sorry, I can't help you."
+BUSY,!                  -> NOP
+VANISH,!                -> "Remember: If you are heavily wounded or poisoned, I will heal you."
+
+topic=3,"crime",Level<20,!      -> "The only way to redeem such an offense is the sacrifice of 500 gold pieces! Are you willing to pay that sum?",Price=500,Topic=4
+topic=3,"absolution",Level<20,! -> *
+topic=3,"crime",Level<40,!      -> "The only way to redeem such an offense is the sacrifice of 1.000 gold pieces! Are you willing to pay that sum?",Price=1000,Topic=4
+topic=3,"absolution",Level<40,! -> *
+topic=3,"crime",Level<60,!      -> "The only way to redeem such an offense is the sacrifice of 5.000 gold pieces! Are you willing to pay that sum?",Price=5000,Topic=4
+topic=3,"absolution",Level<60,! -> *
+topic=3,"crime",Level>59,!      -> "The only way to redeem such an offense is the sacrifice of 10.000 gold pieces! Are you willing to pay that sum?",Price=10000,Topic=4
+topic=3,"absolution",Level>59,! -> *
+topic=3,!    -> "Be gone!", Idle
+
+Topic=4,"yes",CountMoney<Price,!            -> "Begone! You do not have enough money!", Idle
+Topic=4,"yes",!                             -> "So receive your absolution! And never do such a thing again!", DeleteMoney, EffectOpp(13),SetQuestValue(220,0)
+Topic=4,!                             -> "Then be gone!", Idle
+
+"bye"            -> "Good bye, %N!", Idle
+"farewell"       -> *
+"job"            -> "I am the abbot of the white raven monastery on the isle of the kings."
+"name"           -> "My name is Costello."
+"tibia"          -> "That is the name of our world and its major continent."
+"god"            -> "They created Tibia and all life on it."
+"life"           -> "On Tibia there are many forms of life. Plants, the citizens, and monsters."
+"plant"          -> "Just walk around, you will see grass, trees, and bushes."
+"white","raven"  -> "The legends tell us of a white raven which lead the ship of the first monk of our order here. He discovered this isle and the caves beneath it."
+"caves"          -> "Anselm, the first of our order, discovered them while looking for a suitable burial place for his king."
+"anselm"         -> "He was a humble and pious man, and he was chosen by the royal family of thais to find a resting place for their dead."
+"isle"           -> "We founded our monastery to guard the royal tombs and to gather wisdom and knowledge."
+"order"          -> *
+"wisdom"         -> "You are allowed to enter the library upstairs. Stay there and don't go upstairs, because that area is reserved for members of our order."
+"knowledge"      -> *
+"tibianus"       -> "One day every Tibianus ends up here."
+"king"          -> "The bygone leaders of the Thaian empire rest beneath this monastery in tombs and crypts."
+"tomb",QuestValue(63)<1           -> "The tombs and crypts of the Thaian lineage are well protected deep beneath our abbey, although ... but surely this will not interest you."
+"crypts",QuestValue(63)<1         -> *
+"although",QuestValue(63)<1       -> "In my dreams the dead are talking to me about torment and disturbance. But I might be imagining things." 
+"interest",QuestValue(63)<1       -> * 
+"imagining",QuestValue(63)<1      -> "Brother Fugio, the only one of our order who is allowed to enter the crypts, assures me everything is all right."
+"torment",QuestValue(63)<1        -> *
+"disturbance",QuestValue(63)<1    -> *
+
+"fugio",QuestValue(63)<1          -> "To be honest, I fear the omen in my dreams may be true. Perhaps Fugio is unable to see the danger down there. Perhaps ... you are willing to investigate this matter?", topic=1
+"alright",QuestValue(63)<1        -> *
+Topic=1,"yes"    -> "Thank you very much! From now on you may open the warded doors to the catacombs", SetQuestValue(63,1), SetQuestValue(64,1)
+
+# 63=forschen 64=questtür wg. eingang von unten
+
+Topic=1,"no"     -> "Please forgive an old man, I shouldn't have asked a stranger anyways."
+Topic=1          -> *
+
+
+"diary",QuestValue(219)=0       -> "Do you want me to inspect a diary?",Type=3212, Amount=1,topic=2
+"diary",QuestValue(219)>0       -> "Thank you again for handing me that diary."
+
+Topic=2,"yes",Count(Type)>=Amount  -> "By the gods! This is brother Fugio's handwriting and what I read is horrible indeed! You have done our order a great favour by giving this diary to me! Take this blessed Ankh. May it protect you in even your darkest hours.", Delete(Type), Create(3214),SetQuestValue(219,2)
+Topic=2,"no"     -> "Uhm, as you wish."
+Topic=2          -> *
+
+"passage",QuestValue(63)=1,QuestValue(64)=1  -> "Oh of course, I will order Jack and the fisher Windtrouser to give you transportation if needed.", SetQuestValue(62,1)
+"passage"        -> "You should not be here at all and I won't allow anyone to transport you from or to this isle."
+
+"ferumbras"      -> "Don't mention this servant of evil here."
+"excalibug"      -> "Sadly we have only little knowledge on this topic."
+"news"           -> "Sorry, we rarely hear anything new here."
+"monster"        -> "There are really too many of them in Tibia. But who are we to question the wisdom of the gods?"
+
+"heal$",QuestValue(220)>0 -> "I won't waste my healing powers on you, spawn of evil!", Idle
+"heal$",Burning>0 -> "You are burning. I will help you.", Burning(0,0), EffectOpp(15)
+"heal$",Poison>0  -> "You are poisoned. I will help you.", Poison(0,0), EffectOpp(14)
+"heal$",HP<40     -> "You are looking really bad. Let me heal your wounds.", HP=40, EffectOpp(13)
+"heal$"           -> "You aren't looking that bad. Sorry, I can't help you."
+
+}

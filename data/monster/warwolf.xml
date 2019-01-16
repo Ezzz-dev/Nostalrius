@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="war wolf" nameDescription="a war wolf" race="blood" experience="55" speed="92" manacost="420">
+	<health now="140" max="140" />
+	<look type="3" head="0" body="0" legs="0" feet="0" corpse="4150" />
+	<targetchange interval="1000" chance="0" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="24" skill="39">
+	</attacks>
+	<defenses armor="8" defense="16">
+	</defenses>
+	<voices>
+		<voice sentence="Grrrrrrr" />
+		<voice sentence="Yoooohhuuuu!" yell="1" />
+	</voices>
+	<loot>
+		<item id="3582" countmax="2" chance="400" /> <!-- ham -->
+		<item id="3577" countmax="4" chance="700" /> <!-- meat -->
+	</loot>
+</monster>

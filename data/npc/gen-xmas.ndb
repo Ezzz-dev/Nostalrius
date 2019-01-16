@@ -1,0 +1,34 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gen-xmas.ndb: Datenbank für generische Weihnachtsmänner
+
+ADDRESS,"hello$",!  -> "Merry Christmas, little %N!", Amount=Random(1,10000)
+ADDRESS,"hi$",!     -> *
+ADDRESS,!                   -> Idle
+BUSY,"hello$",!             -> "Please wait! I am ready for you soon!"
+BUSY,"hi$",!                -> *
+BUSY,!                      -> NOP
+VANISH,!                    -> "Good bye, little %N!"
+
+"bye"            -> "Farewell, %N!", Idle
+"farewell"       -> *
+"job"            -> "Ho ho ho! You don't know Santa Claus? Never mind. You may ask me for a present."
+"name"           -> "Sorry, I don't have time to chat. Please ask for your present."
+
+#verteilt orange
+"present",QuestValue(217)<3,amount<1000,!   -> "Here is your present! Enjoy!",SetQuestValue(217,3),Type=3586, Amount=10,Create(Type),Idle
+#verteilt candy canes
+"present",QuestValue(217)<3,amount<3500,amount>999,!   -> "Here is your present! Enjoy!",SetQuestValue(217,3),Type=3599, Amount=8,Create(Type),Idle
+#verteilt apfel
+"present",QuestValue(217)<3,amount<5000,amount>3499,!   -> "Here is your present! Enjoy!",SetQuestValue(217,3),Type=3585, Amount=15,Create(Type),Idle
+#verteilt kekse
+"present",QuestValue(217)<3,amount<6000,amount>4999,!   -> "Here is your present! Enjoy!",SetQuestValue(217,3),Type=3598, Amount=8,Create(Type),Idle
+#verteilt schneeball
+"present",QuestValue(217)<3,amount<9950,amount>5999,!   -> "Here is your present! Enjoy!",SetQuestValue(217,3),Type=2992, Amount=5,Create(Type),Idle
+#verteilt doll
+"present",QuestValue(217)<3,amount<9999,amount>9949,!   -> "Here is your present! Enjoy!",SetQuestValue(217,3),Type=2991, Amount=1,Create(Type),Idle
+#verteilt teddy
+"present",QuestValue(217)<3,amount=10000,!   -> "Here is your present! Enjoy!",SetQuestValue(217,3),Type=2993, Amount=1,Create(Type),Idle
+
+
+"present",QuestValue(217)=3        -> "You already got your present! Next please!", Idle
+

@@ -1,0 +1,57 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# rodney.npc: Datenbank für den Lebensmittelhändler Rodney
+
+Name = "Rodney"
+Outfit = (128,95-100-116-76)
+Home = [32971,32041,6]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Greetings, %N. Can I help you?"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Just a moment, %N.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Good bye, %N."
+
+"bye"       -> "Good bye, %N.", Idle
+"name"      -> "My name is Rodney."
+"job"       -> "I sell some local fruits."
+"time"      -> "It is %T right now."
+"king"      -> "King Tibianus! May the gods bless him!"
+"tibianus"  -> *
+"army"      -> "I am glad that the Thaian garrison is here to protect us."
+"ferumbras" -> "Sounds like the name of a foreign soup to me."
+"excalibug" -> "What is that? Is it tasty?"
+"thais"     -> "The Thaian protectorate serves our beloved Venore well."
+"tibia"     -> "I have seen only little of it."
+"carlin"    -> "We have little contact with far Carlin, but I heared some renegade Amazons are terrorizing the area."
+"edron"     -> "Our climate is quite rough, so we can only grow wheat here, but no fruits."
+"news"      -> "Rumour goes that some amazons, who where banished from Carlin, took refuge near the swamps."
+"rumour"    -> *
+"rumor"     -> *
+"amazon"    -> *
+
+"buy"             -> "I can offer some of the local fruits."
+"do","you","sell" -> *
+"do","you","have" -> *
+"offer"           -> *
+"food"            -> *
+"fruit"           -> "I have apples, cherries, grapes, and pears. What would you like?"
+
+"grape"  -> Type=3592, Amount=1, Price=3, "Do you want to buy grapes for %P gold?", Topic=1
+"cherry" -> Type=3590, Amount=1, Price=1, "Do you want to buy a cherry for %P gold?", Topic=1
+"apple"  -> Type=3585, Amount=1, Price=3, "Do you want to buy an apple for %P gold?", Topic=1
+"pear"   -> Type=3584, Amount=1, Price=4, "Do you want to buy a pear for %P gold?", Topic=1
+
+%1,1<%1,"grape"    -> Type=3592, Amount=%1, Price=3*%1, "Do you want to buy %A grapes for %P gold?", Topic=1
+%1,1<%1,"cherry"   -> Type=3590, Amount=%1, Price=1*%1, "Do you want to buy %A cherries for %P gold?", Topic=1
+%1,1<%1,"cherries" -> Type=3590, Amount=%1, Price=1*%1, "Do you want to buy %A cherries for %P gold?", Topic=1
+%1,1<%1,"apple"    -> Type=3585, Amount=%1, Price=3*%1, "Do you want to buy %A apples for %P gold?", Topic=1
+%1,1<%1,"pear"     -> Type=3584, Amount=%1, Price=4*%1, "Do you want to buy %A pears for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "I'm sorry, you are out of funds."
+Topic=1                         -> "Too bad."
+}

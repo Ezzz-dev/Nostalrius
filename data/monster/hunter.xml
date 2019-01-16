@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="hunter" nameDescription="a hunter" race="blood" experience="150" speed="65" manacost="530">
+	<health now="150" max="150" />
+	<look type="129" head="95" body="116" legs="120" feet="115" corpse="4240" />
+	<targetchange interval="1000" chance="50" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="4" />
+		<flag runonhealth="10" />
+	</flags>
+	<attacks attack="13" skill="18">
+		<attack name="physical" min="-50" max="-100" range="7" chance="2">
+			<attribute key="shootEffect" value="arrow" />
+		</attack>
+	</attacks>
+	<defenses armor="8" defense="10">
+	</defenses>
+	<voices>
+		<voice sentence="Guess who we are hunting, hahaha!" />
+	</voices>
+	<loot>
+		<item id="3447" countmax="10" chance="700" /> <!-- an arrow -->
+		<item id="3447" countmax="12" chance="400" /> <!-- an arrow -->
+		<item id="3350" countmax="1" chance="300" /> <!-- a bow -->
+		<item id="3359" countmax="1" chance="50" /> <!-- a brass armor -->
+		<item id="3354" countmax="1" chance="50" /> <!-- a brass helmet -->
+		<item id="3449" countmax="3" chance="50" /> <!-- a burst arrow -->
+		<item id="3085" countmax="1" chance="30" /> <!-- a dragon necklace -->
+		<item id="3355" countmax="1" chance="100" /> <!-- a leather helmet -->
+		<item id="3559" countmax="1" chance="140" /> <!-- leather legs -->
+		<item id="3586" countmax="2" chance="200" /> <!-- an orange -->
+		<item id="3601" countmax="2" chance="110" /> <!-- a roll -->
+		<item id="3030" countmax="1" chance="2" /> <!-- a small ruby -->
+		<item id="2920" countmax="1" chance="50" /> <!-- a torch -->
+	</loot>
+</monster>

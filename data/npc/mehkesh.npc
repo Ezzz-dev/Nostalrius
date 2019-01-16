@@ -1,0 +1,85 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# mehkesh.npc: Datenbank für den pyramidenhändler mehkesh
+
+Name = "Mehkesh"
+Outfit = (130,19-92-113-40)
+Home = [33130,32811,5]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Be mourned pilgrim in flesh."
+ADDRESS,"hi$",!    -> "Be mourned pilgrim in flesh."
+ADDRESS,"be","mourned","pilgrim","flesh",!    -> "Be mourned pilgrim in flesh."
+ADDRESS,!          -> Idle
+
+BUSY,"hello$",!    -> "Mourned %N, know that I am busy.", Queue
+BUSY,"hi$",!       -> *
+BUSY,"be","mourned","pilgrim","flesh",!    -> *
+BUSY,!             -> NOP
+VANISH,!           -> "May enlightenment be your path."
+
+"bye"      -> "May enlightenment be your path.", Idle
+"farewell" -> *
+"job"      -> "I am a trader. I sell potions brewed by the foremost alchemists of the land."
+"name"     -> "I am the mourned Mehkesh."
+"time"     -> "Time is but one of the hardships our mortal flesh has to endure."
+"temple"   -> "The temple spreads the word of our wise pharaoh."
+"pharaoh"    -> "The pharaoh alone has achieved godhood. But in his infinite mercy he chose to stay with his people to offer them guidance."
+"arkhothep"  -> *
+"ashmunrah" -> "Even though his merciful son offered him undeath I doubt the old pharaoh will ever find his way to ascension."
+"scarab"    -> "The scarabs are more then just enormous insects. They are keepers of ancient secrets."
+"chosen"    -> "If we serve the pharaoh during our life time he might allow us to serve him in undeath. Only then can truly start our search for ascension."
+"tibia"    -> "One day our world will be freed from the false gods and accept the guidance of our pharaoh." 
+"carlin"   -> "Those citys are only pawns of the false gods and their misguided priests."
+"thais"    -> *
+"edron"    -> *
+"venore"   -> * 
+"kazordoon" -> "The dwarves should know better then to praise the mortal essence of the elements."
+"dwarves"   -> *
+"dwarfes"   -> *
+"ab'dendriel" -> "Elves are foolish and their obsession with life damns them to eternal death."
+"elves"       -> *
+"elfes"       -> *
+"darama"      -> "These are the lands of old secrets where the mortals will be shown the true revelations."
+"darashia"    -> "A city of misguided fools."
+"daraman"    -> "The prophet caught a glimpse of ascension, but he did not understand it."
+"ankrahmun" -> "This city will remain as an eternal testament of our immortal pharaoh's power." 
+
+"mortality"     -> "Only if we leave our mortality behind can we achieve salvation and ascension."
+"false", "gods" -> "The false gods use our mortal flesh to enslave us."
+
+"ascension"         -> "Ascension is a difficult process. As long as we are mortal we are too distracted to even think about it."
+"Akh'rah","Uthun"   -> "The Akh'rah Uthun is the union of that which once was separate."
+"Akh"               -> "Our Akh is our mortal flesh until it is replaced with something better - with an undead body."
+
+"undead"            -> "Undeath is the victory over the weaknesses of mortal flesh."
+"undeath"           -> *
+"Rah"               -> "The Rah is our essence. The divine part in all of us."
+"uthun"             -> "The Uthun is the knowledge we gather in the course of time."
+"mourn"             -> "We are so pathetic in our mortality."
+
+"arena"        -> "The arena is a challenge for every skilled fighter."
+"palace"       -> "You can find the palace to the east of this market hall."
+
+"offer"           -> "I'm selling life and mana fluids."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+
+"life","fluid" -> Type=2874, Data=11, Amount=1, Price=60, "Do you want to buy life fluid for %P gold?", Topic=2
+"mana","fluid" -> Type=2874, Data=10, Amount=1, Price=55, "Do you want to buy mana fluid for %P gold?", Topic=2
+%1,1<%1,"life","fluid" -> Type=2874, Data=11, Amount=%1, Price=60*%1, "Do you want to buy %A potions of life fluid for %P gold?", Topic=2
+%1,1<%1,"mana","fluid" -> Type=2874, Data=10, Amount=%1, Price=55*%1, "Do you want to buy %A potions of mana fluid for %P gold?", Topic=2
+
+"deposit"                   -> "I will pay you 5 gold for every empty vial. Ok?", Data=0, Topic=3
+"vial"                      -> *
+"flask"                     -> *
+
+Topic=2,"yes",CountMoney>=Price -> "Here you are. There is a deposit of 5 gold on the vial.", DeleteMoney, Create(Type)
+Topic=2,"yes"                   -> "Come back, when you have enough money."
+Topic=2                         -> "Hmm, but next time."
+
+Topic=3,"yes",Count(2874)>0 -> Amount=Count(2874), Price=Amount*5, "Here you are ... %P gold.", Delete(2874), CreateMoney
+Topic=3,"yes"               -> "You don't have any empty vials."
+Topic=3                     -> "Hmm, but please keep Tibia litter free."
+}

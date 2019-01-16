@@ -1,0 +1,59 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# Omur.npc: Datenbank für den Gemüsehändler Omur
+
+Name = "Omur"
+Outfit = (128,95-0-6-116)
+Home = [33228,32416,7]
+Radius = 0
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Welcome at the humble booth of Omur, %N."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Please give me a minute to finish this deal, %N.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "May your soul flourish like dunegrass after a rainfall."
+
+"bye"       -> "May your soul flourish like dunegrass after a rainfall.", Idle
+"name"      -> "I am called Omur." ### Ibn ??? ###
+"job"       -> "I sell rare fruits and vegatables from our lands and distant places."
+"time"      -> "Don't become a slave of a watch."
+"caliph"    -> "Ah, Caliph Kazzan; thrice praised be his name. May his life be as long as the beard of the king of all djinns."
+"kazzan"    -> *
+"ferumbras" -> "I think I have heard a traveller from the west mention that name."
+"excalibug" -> "Is that the name of a djinn?"
+"thais"     -> "We import some goods from there in exchange for ours."
+"tibia"     -> "The world is nothing but a vain seduction."
+"carlin"    -> "I know almost nothing about that town. It must be exotic and entertaining. A place of distractions from the true path."
+"news"      -> "Sometimes the desertwind carries the crys and mourning of the tortured souls from Drefia far into the desert."
+"rumour"    -> *
+"desert"    -> "It's not called the Devourer for nothing."
+
+"do","you","sell" -> "I can offer you fruits and vegetables."
+"do","you","have" -> *
+"offer"           -> *
+"food"            -> *
+"fruit"           -> "I have oranges, bananas, grapes, and melons. What do you want?"
+"vegetable"       -> "I have carrots, pumpkins and tomatoes. What do you want?"
+
+"orange" -> Type=3586, Amount=1, Price=7,  "Do you want to buy an orange for %P gold?", Topic=1
+"banana" -> Type=3587, Amount=1, Price=3,  "Do you want to buy a banana for %P gold?", Topic=1
+"grape"  -> Type=3592, Amount=1, Price=5,  "Do you want to buy grapes for %P gold?", Topic=1
+"melon"  -> Type=3593, Amount=1, Price=10, "Do you want to buy a melon for %P gold?", Topic=1
+"carrot" -> Type=3595, Amount=1, Price=4,  "Do you want to buy a carrot for %P gold?", Topic=1
+"tomato" -> Type=3596, Amount=1, Price=5,  "Do you want to buy a tomato for %P gold?", Topic=1
+"pumpkin" -> Type=3594, Amount=1, Price=10, "Do you want to buy a pumpkin for %P gold?", Topic=1
+
+%1,1<%1,"orange" -> Type=3586, Amount=%1, Price=7*%1,  "Do you want to buy %A oranges for %P gold?", Topic=1
+%1,1<%1,"banana" -> Type=3587, Amount=%1, Price=3*%1,  "Do you want to buy %A bananas for %P gold?", Topic=1
+%1,1<%1,"grape"  -> Type=3592, Amount=%1, Price=5*%1,  "Do you want to buy %A grapes for %P gold?", Topic=1
+%1,1<%1,"melon"  -> Type=3593, Amount=%1, Price=10*%1, "Do you want to buy %A melons for %P gold?", Topic=1
+%1,1<%1,"carrot" -> Type=3595, Amount=%1, Price=4*%1,  "Do you want to buy %A carrots for %P gold?", Topic=1
+%1,1<%1,"tomato" -> Type=3596, Amount=%1, Price=5*%1,  "Do you want to buy %A tomatos for %P gold?", Topic=1
+%1,1<%1,"pumpkin" -> Type=3594, Amount=%1, Price=10*%1, "Do you want to buy %A pumpkins for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Oh, I'm sorry, but I can't give you credit."
+Topic=1                         -> "Don't you like my wares?"
+}

@@ -1,0 +1,80 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# aneus.npc: Datenbank für den Geschichtenerzähler Aneus (Fields)
+
+Name = "Aneus"
+Outfit = (129,0-50-58-116)
+Home = [32426,31666,7]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",!         -> "Greetings adventurer %N. What leads you to me?"
+ADDRESS,"hi$",!            -> *
+ADDRESS,!                  -> Idle
+BUSY,"hello$",!            -> "One moment please, %N.", Queue
+BUSY,"hi$",!               -> *
+BUSY,!                     -> NOP
+VANISH,!                   -> "Good bye and take care!"
+
+"bye"           -> "Good bye and take care of you!", Idle
+"farewell"      -> *
+"name"          -> "My name is Aneus, the storyteller."
+"bruno"         -> "I don't know much about him. I only know that he is selling fish in the village."
+"marlene"       -> "A lovely woman. But I give you a hint: Better keep away from her. *grin*"
+"graubart"      -> "I don't know much about him. But he sails much and has seen nearly the whole world."
+"job"           -> "I'm a storyteller."
+"storyteller",! -> "Well, if you wish I can tell you the story about this place here. The story about the Fields of Glory!"
+
+"story",!                 -> "Ok, sit down and listen. Back in the early days, one of the ancestors of our king Tibianus III wanted to build the best city in whole of Tibia.", Topic=2
+"fields","of","glory",!    -> "Ok, sit down and listen. Back in the early days, one of the ancestors of our king Tibianus III wanted to build the best city in whole of Tibia.", Topic=2
+
+Topic=2,"ancestor",!  -> "Please forgive me. I forgot his name. I'm not that young anymore.", Topic=2
+Topic=2,"city",!      -> "The works on this new city began and the king sent his best soldiers to protect the workers from orcs and to make them work harder.", Topic=3
+
+Topic=3,"soldier",!   -> "It was the elite of the whole army. They were called the Red Legion (also known as the Bloody Legion).", Topic=3
+Topic=3,"orc"         -> "The orcs attacked the workers from time to time and so they disturbed the works on the city.", Topic=4
+Topic=3,"work","harder",! -> "The soldiers treated them like slaves.", Topic=4
+
+Topic=4,"slave",!     -> "You dont know what a slave is? I really hope that you will never have to make this experience.", Topic=3
+Topic=4,"works",!     -> "The development of the city was fine. Also a giant castle was build northeast of the city. ...",
+                         "But more and more workers started to rebel because of the bad conditions.", Topic=5
+
+Topic=5,"rebel",! -> "All rebels were brought to the giant castle. Guarded by the Red Legion, they had to work and live in even worse conditions. ...",
+                     "Also some friends of the king's sister were brought there.", Topic=6
+
+Topic=6,"friends",! -> "The king's sister was pretty upset about the situation there but her brother didn't want to do anything about this matter. ...",
+                       "So she made a plan to destroy the Red Legion for their cruelty forever.", Topic=7
+
+Topic=7,"cruelty",! -> "The soldiers treated the workers like slaves.", Topic=7
+Topic=7,"plan",!    -> "She ordered her loyal druids and hunters to disguise themselves as orcs from the near island and to attack the Red Legion by night over and over again.", Topic=8
+
+Topic=8,"island",! -> "The General of the Red Legion became very angry about these attacks and after some months he stroke back!", Topic=9
+Topic=8,"attack",! -> *
+
+Topic=9,"stroke",! -> "Most of the Red Legion went to the island by night. The orcs were not prepared and the Red Legion killed hundreds of orcs with nearly no loss. ...",
+                      "After they were satisfied they walked back to the castle.", Topic=10
+ 
+Topic=10,"back",! -> "It is said that the orcish shamans cursed the Red Legion. ...",
+                     "Nobody knows. But one third of the soldiers died by a disease on the way back. ...",
+                     "And the orcs wanted to take revenge, and after some days they stroke back! ...", 
+                     "The orcs and many allied cyclopses and minotaurs from all over Tibia came to avenge their friends, and they killed nearly all workers and soldiers in the castle. ...",
+                     "The help of the king's sister came too late.", Topic=11
+
+Topic=10,"walk",! -> "It is said that the orcish shamans cursed the Red Legion. ...",
+                     "Nobody knows. But one third of the soldiers died by a disease on the way back. ...",
+                     "And the orcs wanted to take revenge, and after some days they stroke back! ...", 
+                     "The orcs and many allied cyclopses and minotaurs from all over Tibia came to avenge their friends, and they killed nearly all workers and soldiers in the castle. ...",
+                     "The help of the king's sister came too late.", Topic=11
+
+Topic=11,"help",! -> "She tried to rescue the workers but it was too late. The orcs started immediately to attack her troops, too. ...",
+                     "Her royal troops went back to the city. A trick saved the city from destruction.", Topic=12
+
+Topic=12,"trick"       -> "They used the same trick as against the Red Legion and the orcs started to fight their non-orcish-allies. ...",
+                         "After a bloody long fight the orcs went back to their cities. The city of Carlin was rescued. ...",
+                         "Since then, a woman has always been ruling over Carlin and this statue was made to remind us of their great tactics against the orcs and the Red Legion. ...",
+                         "So that was the story of Carlin and these Fields of Glory. I hope you liked it. *smiles*"
+
+Topic=12,"destruction"  -> "They used the same trick as against the Red Legion and the orcs started to fight their non-orcish-allies. ...",
+                         "After a bloody long fight the orcs went back to their cities. The city of Carlin was rescued. ...",
+                         "Since then, a woman has always been ruling over Carlin and this statue was made to remind us of their great tactics against the orcs and the Red Legion. ...",
+                         "So that was the story of Carlin and these Fields of Glory. I hope you liked it. *smiles*"
+}

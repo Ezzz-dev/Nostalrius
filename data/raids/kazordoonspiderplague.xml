@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<areaspawn delay="0" radius="10" centerx="32577" centery="31895" centerz="8">
+		<monster name="spider" minamount="6" maxamount="12"/>
+	</areaspawn>
+	<areaspawn delay="0" radius="10" centerx="32577" centery="31895" centerz="9">
+		<monster name="spider" minamount="6" maxamount="12"/>
+	</areaspawn>
+	<areaspawn delay="0" radius="10" centerx="32581" centery="31976" centerz="9">
+		<monster name="spider" minamount="6" maxamount="12"/>
+	</areaspawn>
+	<areaspawn delay="0" radius="10" centerx="32609" centery="31921" centerz="9">
+		<monster name="spider" minamount="6" maxamount="12"/>
+	</areaspawn>
+	<areaspawn delay="0" radius="20" centerx="32636" centery="31902" centerz="9">
+		<monster name="spider" minamount="10" maxamount="20"/>
+	</areaspawn>
+	<areaspawn delay="0" radius="10" centerx="32590" centery="31951" centerz="10">
+		<monster name="spider" minamount="6" maxamount="12"/>
+	</areaspawn>
+	<areaspawn delay="0" radius="10" centerx="32632" centery="31910" centerz="8">
+		<monster name="spider" minamount="6" maxamount="12"/>
+	</areaspawn>
+	<areaspawn delay="0" radius="10" centerx="32619" centery="31947" centerz="8">
+		<monster name="spider" minamount="6" maxamount="12"/>
+	</areaspawn>
+	<areaspawn delay="0" radius="7" centerx="32615" centery="31929" centerz="6">
+		<monster name="spider" minamount="6" maxamount="12"/>
+	</areaspawn>
+	<areaspawn delay="0" radius="10" centerx="32609" centery="31929" centerz="5">
+		<monster name="spider" minamount="6" maxamount="12"/>
+	</areaspawn>
+	<areaspawn delay="0" radius="10" centerx="32600" centery="31930" centerz="4">
+		<monster name="spider" minamount="6" maxamount="12"/>
+	</areaspawn>
+	<areaspawn delay="0" radius="10" centerx="32598" centery="31928" centerz="3">
+		<monster name="spider" minamount="6" maxamount="12"/>
+	</areaspawn>
+	<areaspawn delay="0" radius="15" centerx="32620" centery="31912" centerz="2">
+		<monster name="spider" minamount="10" maxamount="20"/>
+	</areaspawn>
+</raid>

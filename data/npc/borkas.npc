@@ -1,0 +1,39 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# borkas.npc: Möbelverkäufer Borkas in Venore
+
+Name = "Borkas"
+Outfit = (128,77-43-38-76)
+Home = [32992,32068,6]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",!     -> "Hey %N, what'cha want?"
+ADDRESS,"hi$",!        -> *
+ADDRESS,"greetings$",! -> *
+ADDRESS,!              -> Idle
+BUSY,"hello$",!        -> "Hey, %N. Would ya mind not interruptin'? Thanks.", Queue
+BUSY,"hi$",!           -> *
+BUSY,"greetings$",!    -> *
+BUSY,!                 -> NOP
+VANISH,!               -> "Yeah, sod off..."
+
+"bye"           -> "Thanks and see ya.", Idle
+"farewell"      -> *
+"job"           -> "I'm into sellin' furniture. My grandfather was in that business, then my father, and so am I."
+"shop"          -> *
+"name"          -> "I'm Borkas Flersson, but let's not waste precious tradin' time with smalltalk."
+"time"          -> "Time is %T now."
+"thanks"        -> "No prob."
+"thank","you"   -> *
+"allen"         -> "Hes my boss but he likes to be one of us and sells some of his wares personally."
+"richardson"    -> *
+
+"offer"           -> "I'm selling containers here."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"furniture"       -> *
+"equipment"       -> *
+
+@"gen-t-furniture-containers-s.ndb"
+}

@@ -1,0 +1,92 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# chester.npc: Datenbank für Chester, den Chef des TBI
+
+Name = "Chester Kahs"
+Outfit = (131,10-28-47-95)
+Home = [32348,32184,6]
+Radius =2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Salutations, stranger."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Sorry, I am very busy %N."
+BUSY,"hi$",!       -> "Sorry, I am very busy %N."
+BUSY,!             -> NOP
+VANISH,!           -> "Take care out there!"
+
+"bye"            -> "Take care out there!", Idle
+"farewell"       -> *
+"news"           -> "Sorry, almost news that are a little interesting are confidential."
+"how","are","you"-> "I am troubled by all the mysteries out there."
+"sell"           -> "I am no tradesman, sorry."
+"king"           -> "King Tibianus III is our leader and my direct superior."
+"superior"       -> "I report directly to the king himself."
+"report"         -> "My reports are confidential and for the ears and eyes of the king only."
+"job"            -> "I am the head of the TBI."
+"tbi$"            -> "The Tibian Bureau of Investigation, the secret service of His Royal Highness."
+"investigation"  -> "We collect information about people and incidents."
+"bureau"         -> *
+"people"         -> "We know much about the citizens and some other people."
+"citizen"        -> "I only can give you some official information about our citizens. About whom do you wish to talk?"
+"incident"       -> "There are things that must be kept secret."
+"secret"         -> "Certain information is not for the eyes and ears of everyone. Please understand that."
+"army"           -> "Our army might be infested with spies already."
+"spies"          -> "Polymorphed Minotaurs, shapechanging demons, possessed innocents ... who can tell for sure."
+"guard"          -> "I think we can't trust the guards anymore."
+"trust"          -> "Too many possibilities to become a servant of darkness to trust ANYONE!"
+"castle"         -> "The castle isn't safe! I warned them of the entrance to the dungeons, but no one is litstening. How many people have to die before they do something about that?"
+"dogs","of","war"-> "Even they can't stop a handful of demons."
+"red","guard"    -> "They are at my command now and then ... but it's a mistake to rely on anyone except yourself."
+"secret","police"-> "Are you joking? What's secret in Tibia at all?"
+"silver","guard" -> "The king's best. But is the best good enough to fight what stalks the nights?"
+"city"           -> "The city is open to almost everyone. That literally opens doors for all kinds of criminals and fiends."
+"criminal"       -> "There are so many murderers and thiefs out there that I wonder if there is some greater force of evil subtly encouraging that."
+"fiend"          -> "Not everything that walks our streets is human ... or even living."
+"stutch"         -> "He is one of the few people I can trust."
+"harsky"         -> *
+"bozo"           -> "He isn't the fool he pretends to be. So to what is he up to?"
+"sam"            -> "I say it was a mistake to rely on a single person for such vital services but having those venoreans here is even worse."
+"gorn"           -> "A man too concerned about profit to be trustworthy. This kind of man sells his soul to the highest bidder. It's just a question if he has done it already or will do it soon."
+"frodo"          -> "Have you noticed how easy it would be to poison his supplies and kill a great deal of people with ease?"
+"benjamin"       -> "Something happened to him that snapped his mind. Can we be sure what more might have happened to him unnoticed?"
+"lugri"          -> "At least you KNOW that you have to expect only evilness from this guy and that's the best one can say about him."
+"gods"           -> "We are just the pawns of the gods. The best we can expect is that our play amuses them enough to keep their interest in us so we might live a day or two longer."
+"lynda"          -> "She puts her trust in the help of beings she can't comprehend. Think by yourself if that's clever."
+"quentin"        -> "A peaceful man. But in our days peace is just an illusion. We are surrounded by enemies and dangers."
+"enemy"          -> "The people of the northern city, the minotaurs, the followers of Zathroth, the demons, and countless others!"
+"enemies"        -> *
+"danger"         -> "Danger is common like day and night for a Tibian, who keeps his eyes open."
+"dungeon"        -> "Monsters lurk in each corner of the dungeons, which spread beneath us, breeding in the shadows and plotting to destroy us all."
+"ferumbras"      -> "Some say he's the avatar of Zathroth himself, but perhaps the truth about him is even darker then the worst rumours can imagine."
+"demon"          -> "They say there are just two of them in the underground ruins! These damned fools! There are dozens of them! And the two they already saw are only some of the weakest of demonkind!"
+"underground","ruin"-> "We have no clue what happened to the civilization that once dwelled underground, but their complete extinction should be a warning for us!"
+"mcronald"       -> "Have you ever wondered what these caves under their farm are good for? And have you noticed how many adventurers go down there and never return? Well, think about it!"
+"sorcerer"       -> "I don't know where they got their secret spells in the first place, nor did most of them know ... If I were a sorcerer that would be a fact to give me nightmares."
+"knight"         -> "It's too easy to become a knight. They take almost everyone. And if you look in the streets you can see what happens if you give training and a flashy title to almost everyone."
+"paladin"        -> "They should be noble warriors, but does it take bravery to shoot someone from a certain distance? The former paladins were virtuous heroes, the ones you meet today are just simple treasure hunters."
+"druid"          -> "It is said that druids are preservers of life and good aligned, but let me ask you if it's so 'good' to sell runes to the highest bidder, no matter who that might be? I think you get the point!"
+"truth"          -> "The dungeons are full of hideous monsters, unnamed terrors, unsolved riddles ... and maybe some answers. Believe me! The truth is down there ... somewhere!"
+"ruthless","seven"-> "We know little about them. But even that gives me nightmares! But it's your lucky day, since this information is confidential, and so it can't bother you."
+"aruda"          -> "This woman is a clever thief, so watch out when you are talking to her."
+"partos"         -> "This criminal was wanted for many crimes. At last he got caught and put to jail." 
+"excalibug"      -> "We are surrounded by myths, living and dead. How can someone doubt that there IS something like Excalibug somewhere?"
+"necromant","nectar" -> "Followers of evil are investigating about that, though I guess even they don't know what it's good for. Perhaps just a myth of evil."
+
+"rebellion"                  -> "I have far too few information about the rebellion, but we suspect the followers of Zathroth behind it."
+"berfasmur","is","ferumbras" -> "Yes, thats what I figured out, too. Just one of his disguises."
+"berfasmur"                  -> "Strange name, isn't it? Play around with the letters and you are in for a surprise."
+"gamel","rebel"              -> "Are you saying that Gamel is a member of the rebellion?", Topic=1
+
+Topic=1,"no"                 -> "Then don't bother me with that. I am a busy man."
+Topic=1,"yes"                -> "Do you know what his plans are about?", Topic=2
+Topic=2,"magic","crystal","lugri","deathcurse" -> Type=3061, Amount=1, "That is terrible! Will you give me the crystal?", Topic=3
+Topic=2                      -> "Tell me precisely what he asked you to do! What, to whom, and what for! It's important!", Topic=2
+Topic=3,"no"                 -> "Traitor!", Burning(25,25), EffectOpp(6), EffectMe(14), Delete(Type), Idle
+Topic=3,"yes",Count(Type)>=Amount -> "Thank you! Take this ring. If you ever need a healing, come, bring the scroll, and ask me to 'heal'.", Delete(Type), Type=3052, Amount=1, Create(Type)
+Topic=3,"yes",Count(Type)<Amount  -> "Sorry, you have none."
+"heal"                       -> Type=3052, Amount=1, "Do you need the healing now?", Topic=4
+Topic=4,"no"                 -> "As you whish."
+Topic=4,"yes",Count(Type)>=Amount -> "So be healed!", Delete(Type), HP=1000, EffectOpp(13)
+Topic=4,"yes",Count(Type)<Amount  -> "Sorry, you are not worthy!"
+}

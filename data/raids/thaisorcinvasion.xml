@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="0" type="event" message="Orc activity near Thais reported! Beware!"/>
+	<areaspawn delay="0" lifetime="7200000" radius="7" centerx="32333" centery="32298" centerz="7">
+		<monster name="orc" minamount="12" maxamount="24"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="7200000" radius="8" centerx="32330" centery="32297" centerz="7">
+		<monster name="orc spearman" minamount="7" maxamount="14"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="7200000" radius="9" centerx="32334" centery="32299" centerz="7">
+		<monster name="orc rider" minamount="2" maxamount="4"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="7200000" radius="9" centerx="32334" centery="32300" centerz="7">
+		<monster name="war wolf" minamount="2" maxamount="4"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="7200000" radius="7" centerx="32361" centery="32161" centerz="7">
+		<monster name="orc" minamount="12" maxamount="24"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="7200000" radius="8" centerx="32365" centery="32163" centerz="7">
+		<monster name="orc spearman" minamount="7" maxamount="14"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="7200000" radius="9" centerx="32362" centery="32157" centerz="7">
+		<monster name="orc rider" minamount="2" maxamount="4"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="7200000" radius="9" centerx="32360" centery="32157" centerz="7">
+		<monster name="war wolf" minamount="2" maxamount="4"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="7200000" radius="7" centerx="32450" centery="32223" centerz="7">
+		<monster name="orc" minamount="12" maxamount="24"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="7200000" radius="8" centerx="32454" centery="32222" centerz="7">
+		<monster name="orc spearman" minamount="7" maxamount="14"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="7200000" radius="9" centerx="32449" centery="32226" centerz="7">
+		<monster name="orc rider" minamount="2" maxamount="4"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="7200000" radius="9" centerx="32446" centery="32221" centerz="7">
+		<monster name="war wolf" minamount="2" maxamount="4"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="7200000" radius="7" centerx="32268" centery="32271" centerz="7">
+		<monster name="orc" minamount="12" maxamount="24"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="7200000" radius="8" centerx="32266" centery="32273" centerz="7">
+		<monster name="orc spearman" minamount="7" maxamount="14"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="7200000" radius="9" centerx="32270" centery="32275" centerz="7">
+		<monster name="orc rider" minamount="2" maxamount="4"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="7200000" radius="9" centerx="32267" centery="32278" centerz="7">
+		<monster name="war wolf" minamount="2" maxamount="4"/>
+	</areaspawn>
+	<areaspawn delay="240000" lifetime="7200000" radius="8" centerx="32333" centery="32302" centerz="7">
+		<monster name="orc warrior" minamount="15" maxamount="30"/>
+	</areaspawn>
+	<areaspawn delay="240000" lifetime="7200000" radius="8" centerx="32327" centery="32302" centerz="7">
+		<monster name="orc spearman" minamount="15" maxamount="30"/>
+	</areaspawn>
+	<areaspawn delay="240000" lifetime="7200000" radius="8" centerx="32324" centery="32301" centerz="7">
+		<monster name="orc rider" minamount="8" maxamount="16"/>
+	</areaspawn>
+	<areaspawn delay="240000" lifetime="7200000" radius="8" centerx="32324" centery="32301" centerz="7">
+		<monster name="war wolf" minamount="8" maxamount="16"/>
+	</areaspawn>
+	<areaspawn delay="240000" lifetime="7200000" radius="8" centerx="32328" centery="32300" centerz="7">
+		<monster name="orc shaman" minamount="7" maxamount="14"/>
+	</areaspawn>
+	<areaspawn delay="240000" lifetime="7200000" radius="8" centerx="32358" centery="32152" centerz="7">
+		<monster name="orc warrior" minamount="15" maxamount="30"/>
+	</areaspawn>
+	<areaspawn delay="240000" lifetime="7200000" radius="8" centerx="32360" centery="32154" centerz="7">
+		<monster name="orc spearman" minamount="15" maxamount="30"/>
+	</areaspawn>
+	<areaspawn delay="240000" lifetime="7200000" radius="8" centerx="32362" centery="32155" centerz="7">
+		<monster name="orc rider" minamount="8" maxamount="16"/>
+	</areaspawn>
+	<areaspawn delay="240000" lifetime="7200000" radius="8" centerx="32359" centery="32155" centerz="7">
+		<monster name="war wolf" minamount="8" maxamount="16"/>
+	</areaspawn>
+	<areaspawn delay="240000" lifetime="7200000" radius="8" centerx="32361" centery="32156" centerz="7">
+		<monster name="orc shaman" minamount="7" maxamount="14"/>
+	</areaspawn>
+	<areaspawn delay="240000" lifetime="7200000" radius="8" centerx="32445" centery="32225" centerz="7">
+		<monster name="orc warrior" minamount="15" maxamount="30"/>
+	</areaspawn>
+	<areaspawn delay="240000" lifetime="7200000" radius="8" centerx="32452" centery="32219" centerz="7">
+		<monster name="orc spearman" minamount="15" maxamount="30"/>
+	</areaspawn>
+	<areaspawn delay="240000" lifetime="7200000" radius="8" centerx="32450" centery="32226" centerz="7">
+		<monster name="orc rider" minamount="8" maxamount="16"/>
+	</areaspawn>
+	<areaspawn delay="240000" lifetime="7200000" radius="8" centerx="32456" centery="32232" centerz="7">
+		<monster name="war wolf" minamount="8" maxamount="16"/>
+	</areaspawn>
+	<areaspawn delay="240000" lifetime="7200000" radius="8" centerx="32453" centery="32226" centerz="7">
+		<monster name="orc shaman" minamount="7" maxamount="14"/>
+	</areaspawn>
+	<areaspawn delay="240000" lifetime="7200000" radius="8" centerx="32268" centery="32271" centerz="7">
+		<monster name="orc warrior" minamount="15" maxamount="30"/>
+	</areaspawn>
+	<areaspawn delay="240000" lifetime="7200000" radius="8" centerx="32266" centery="32273" centerz="7">
+		<monster name="orc spearman" minamount="15" maxamount="30"/>
+	</areaspawn>
+	<areaspawn delay="240000" lifetime="7200000" radius="8" centerx="32270" centery="32275" centerz="7">
+		<monster name="orc rider" minamount="8" maxamount="16"/>
+	</areaspawn>
+	<areaspawn delay="240000" lifetime="7200000" radius="8" centerx="32267" centery="32278" centerz="7">
+		<monster name="war wolf" minamount="8" maxamount="16"/>
+	</areaspawn>
+	<areaspawn delay="240000" lifetime="7200000" radius="8" centerx="32267" centery="32274" centerz="7">
+		<monster name="orc shaman" minamount="7" maxamount="14"/>
+	</areaspawn>
+	<announce delay="420000" type="event" message="Thais is under attack!"/>
+	<areaspawn delay="420000" lifetime="7200000" radius="8" centerx="32333" centery="32302" centerz="7">
+		<monster name="orc warrior" minamount="20" maxamount="40"/>
+	</areaspawn>
+	<areaspawn delay="420000" lifetime="7200000" radius="9" centerx="32324" centery="32301" centerz="7">
+		<monster name="orc rider" minamount="16" maxamount="32"/>
+	</areaspawn>
+	<areaspawn delay="420000" lifetime="7200000" radius="9" centerx="32328" centery="32300" centerz="7">
+		<monster name="orc shaman" minamount="14" maxamount="28"/>
+	</areaspawn>
+	<areaspawn delay="420000" lifetime="7200000" radius="9" centerx="32330" centery="32300" centerz="7">
+		<monster name="orc berserker" minamount="14" maxamount="28"/>
+	</areaspawn>
+	<areaspawn delay="420000" lifetime="7200000" radius="9" centerx="32330" centery="32300" centerz="7">
+		<monster name="orc leader" minamount="5" maxamount="10"/>
+	</areaspawn>
+	<areaspawn delay="420000" lifetime="7200000" radius="8" centerx="32358" centery="32152" centerz="7">
+		<monster name="orc warrior" minamount="20" maxamount="40"/>
+	</areaspawn>
+	<areaspawn delay="420000" lifetime="7200000" radius="9" centerx="32360" centery="32154" centerz="7">
+		<monster name="orc rider" minamount="16" maxamount="32"/>
+	</areaspawn>
+	<areaspawn delay="420000" lifetime="7200000" radius="9" centerx="32362" centery="32155" centerz="7">
+		<monster name="orc shaman" minamount="14" maxamount="28"/>
+	</areaspawn>
+	<areaspawn delay="420000" lifetime="7200000" radius="9" centerx="32359" centery="32155" centerz="7">
+		<monster name="orc berserker" minamount="14" maxamount="28"/>
+	</areaspawn>
+	<areaspawn delay="420000" lifetime="7200000" radius="9" centerx="32361" centery="32156" centerz="7">
+		<monster name="orc leader" minamount="5" maxamount="10"/>
+	</areaspawn>
+	<areaspawn delay="420000" lifetime="7200000" radius="8" centerx="32450" centery="32223" centerz="7">
+		<monster name="orc warrior" minamount="20" maxamount="40"/>
+	</areaspawn>
+	<areaspawn delay="420000" lifetime="7200000" radius="9" centerx="32454" centery="32222" centerz="7">
+		<monster name="orc rider" minamount="16" maxamount="32"/>
+	</areaspawn>
+	<areaspawn delay="420000" lifetime="7200000" radius="9" centerx="32449" centery="32226" centerz="7">
+		<monster name="orc shaman" minamount="14" maxamount="28"/>
+	</areaspawn>
+	<areaspawn delay="420000" lifetime="7200000" radius="9" centerx="32446" centery="32221" centerz="7">
+		<monster name="orc berserker" minamount="14" maxamount="28"/>
+	</areaspawn>
+	<areaspawn delay="420000" lifetime="7200000" radius="9" centerx="32450" centery="32224" centerz="7">
+		<monster name="orc leader" minamount="5" maxamount="10"/>
+	</areaspawn>
+	<areaspawn delay="420000" lifetime="7200000" radius="8" centerx="32268" centery="32274" centerz="7">
+		<monster name="orc warrior" minamount="20" maxamount="40"/>
+	</areaspawn>
+	<areaspawn delay="420000" lifetime="7200000" radius="9" centerx="32269" centery="32278" centerz="7">
+		<monster name="orc rider" minamount="16" maxamount="32"/>
+	</areaspawn>
+	<areaspawn delay="420000" lifetime="7200000" radius="9" centerx="32266" centery="32280" centerz="7">
+		<monster name="orc shaman" minamount="14" maxamount="28"/>
+	</areaspawn>
+	<areaspawn delay="420000" lifetime="7200000" radius="9" centerx="32268" centery="32281" centerz="7">
+		<monster name="orc berserker" minamount="14" maxamount="28"/>
+	</areaspawn>
+	<areaspawn delay="420000" lifetime="7200000" radius="9" centerx="32265" centery="32278" centerz="7">
+		<monster name="orc leader" minamount="5" maxamount="10"/>
+	</areaspawn>
+	<areaspawn delay="540000" lifetime="7200000" radius="10" centerx="32324" centery="32301" centerz="7">
+		<monster name="orc rider" minamount="20" maxamount="40"/>
+	</areaspawn>
+	<areaspawn delay="540000" lifetime="7200000" radius="10" centerx="32328" centery="32300" centerz="7">
+		<monster name="orc shaman" minamount="15" maxamount="30"/>
+	</areaspawn>
+	<areaspawn delay="540000" lifetime="7200000" radius="10" centerx="32330" centery="32300" centerz="7">
+		<monster name="orc berserker" minamount="20" maxamount="40"/>
+	</areaspawn>
+	<areaspawn delay="540000" lifetime="7200000" radius="10" centerx="32330" centery="32300" centerz="7">
+		<monster name="orc leader" minamount="10" maxamount="20"/>
+	</areaspawn>
+	<areaspawn delay="540000" lifetime="7200000" radius="10" centerx="32333" centery="32302" centerz="7">
+		<monster name="orc warlord" minamount="5" maxamount="10"/>
+	</areaspawn>
+	<areaspawn delay="540000" lifetime="7200000" radius="10" centerx="32361" centery="32157" centerz="7">
+		<monster name="orc rider" minamount="20" maxamount="40"/>
+	</areaspawn>
+	<areaspawn delay="540000" lifetime="7200000" radius="10" centerx="32365" centery="32159" centerz="7">
+		<monster name="orc shaman" minamount="15" maxamount="30"/>
+	</areaspawn>
+	<areaspawn delay="540000" lifetime="7200000" radius="10" centerx="32361" centery="32162" centerz="7">
+		<monster name="orc berserker" minamount="20" maxamount="40"/>
+	</areaspawn>
+	<areaspawn delay="540000" lifetime="7200000" radius="10" centerx="32362" centery="32157" centerz="7">
+		<monster name="orc leader" minamount="10" maxamount="20"/>
+	</areaspawn>
+	<areaspawn delay="540000" lifetime="7200000" radius="10" centerx="32358" centery="32152" centerz="7">
+		<monster name="orc warlord" minamount="5" maxamount="10"/>
+	</areaspawn>
+	<areaspawn delay="540000" lifetime="7200000" radius="10" centerx="32448" centery="32223" centerz="7">
+		<monster name="orc rider" minamount="20" maxamount="40"/>
+	</areaspawn>
+	<areaspawn delay="540000" lifetime="7200000" radius="10" centerx="32454" centery="32221" centerz="7">
+		<monster name="orc shaman" minamount="15" maxamount="30"/>
+	</areaspawn>
+	<areaspawn delay="540000" lifetime="7200000" radius="10" centerx="32458" centery="32220" centerz="7">
+		<monster name="orc berserker" minamount="20" maxamount="40"/>
+	</areaspawn>
+	<areaspawn delay="540000" lifetime="7200000" radius="10" centerx="32459" centery="32223" centerz="7">
+		<monster name="orc leader" minamount="10" maxamount="20"/>
+	</areaspawn>
+	<areaspawn delay="540000" lifetime="7200000" radius="10" centerx="32457" centery="32220" centerz="7">
+		<monster name="orc warlord" minamount="5" maxamount="10"/>
+	</areaspawn>
+	<areaspawn delay="540000" lifetime="7200000" radius="10" centerx="32268" centery="32274" centerz="7">
+		<monster name="orc rider" minamount="20" maxamount="40"/>
+	</areaspawn>
+	<areaspawn delay="540000" lifetime="7200000" radius="10" centerx="32269" centery="32278" centerz="7">
+		<monster name="orc shaman" minamount="15" maxamount="30"/>
+	</areaspawn>
+	<areaspawn delay="540000" lifetime="7200000" radius="10" centerx="32266" centery="32280" centerz="7">
+		<monster name="orc berserker" minamount="20" maxamount="40"/>
+	</areaspawn>
+	<areaspawn delay="540000" lifetime="7200000" radius="10" centerx="32268" centery="32281" centerz="7">
+		<monster name="orc leader" minamount="10" maxamount="20"/>
+	</areaspawn>
+	<areaspawn delay="540000" lifetime="7200000" radius="10" centerx="32265" centery="32278" centerz="7">
+		<monster name="orc warlord" minamount="5" maxamount="10"/>
+	</areaspawn>
+</raid>

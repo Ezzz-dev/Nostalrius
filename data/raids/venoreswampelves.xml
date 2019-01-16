@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="1000" type="event" message="A swampelf raiding party has been sighted in the venore swamps!"/>
+	<areaspawn delay="1000" radius="10" centerx="32991" centery="32212" centerz="7">
+		<monster name="elf" minamount="10" maxamount="20"/>
+	</areaspawn>
+	<areaspawn delay="1000" radius="10" centerx="32991" centery="32212" centerz="7">
+		<monster name="elf scout" minamount="5" maxamount="10"/>
+	</areaspawn>
+	<areaspawn delay="1000" radius="10" centerx="32991" centery="32212" centerz="7">
+		<monster name="elf arcanist" minamount="1" maxamount="5"/>
+	</areaspawn>
+</raid>

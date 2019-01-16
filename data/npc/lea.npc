@@ -1,0 +1,120 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# lea.npc: Datenbank für die Magierin Lea
+
+Name = "Lea"
+Outfit = (138,59-95-94-113)
+Home = [32348,31828,6]
+Radius = 3
+
+Behaviour = {
+ADDRESS,Sorcerer,"hello$",! -> "Welcome back, %N!"
+ADDRESS,Sorcerer,"hi$",!    -> "Welcome back, %N!"
+ADDRESS,"hello$",!          -> "Greetings, %N."
+ADDRESS,"hi$",!             -> *
+ADDRESS,!                   -> Idle
+BUSY,"hello$",!             -> "Be patient %N, please.", Queue
+BUSY,"hi$",!                -> *
+BUSY,!                      -> NOP
+VANISH,!                    -> "Take care on your journeys."
+
+"bye"            -> "Take care on your journeys.", Idle
+"farewell"       -> *
+"job"            -> "I am the archsorcerer of Carlin. I keep the secrets of our order."
+"name"           -> "My name is Lea."
+"time"           -> "Time is a force we sorcerers will master one day."
+"wisdom"         -> "You need great wisdom to cast spells of power."
+"male"           -> "Some tricks of sorcery are easy enough to be mastered even by males, but they'd better stick to cardtricks."
+"sorcerer"       -> "Any sorcerer dedicates his whole life to the study of the arcane arts."
+"power"          -> "We sorcerers wield arcane powers beyond comprehension of men."
+"arcane"         -> *
+"vocation"       -> "Your vocation is your profession. There are four vocations in this world: Sorcerers, paladins, knights, and druids."
+"spellbook"      -> "A spellbook lists all your spells. There you can find the pronunciation of each spell. You can buy one at the magicians' shop."
+"spell",Sorcerer -> "I can teach you rune spells and instant spells. What kind of spell do you wish to learn? You can also tell me for which level you would like to learn a spell, if you prefer that.", Topic=2
+"spell"         -> "Sorry, I only sell spells to Sorcerers."
+
+sorcerer,"wand",QuestValue(333)<1  -> "Oh, you did not purchase your first magical wand yet? Please take this little present from me as your magic teacher!",SetQuestValue(333,1),Type=3074, Amount=1,Create(Type)
+
+
+Topic=2,"rune","spell"        -> "I sell attack rune spells and support rune spells. Which of these interests you most?"
+Topic=2,"instant","spell"     -> "I sell attack spells, healing spells, support spells and summon spells. Which of these interests you most?"
+Topic=2,"level"               -> "For which level would you like to learn a spell?", Topic=2
+Topic=2,"bye"                 -> "Take care on your journeys.", Idle
+
+Sorcerer,"level"               -> "For which level would you like to learn a spell?", Topic=2
+Sorcerer,"rune","spell"        -> "I sell attack rune spells and support rune spells. Which of these interests you most?"
+Sorcerer,"instant","spell"     -> "I sell attack spells, healing spells, support spells and summon spells. Which of these interests you most?"
+
+Sorcerer,"attack","rune","spell"  ->  "I sell missile rune spells, explosive rune spells, field rune spells, wall rune spells and bomb rune spells."
+Sorcerer,"support","rune","spell" ->  "In this category I have 'Destroy Field'."
+
+Sorcerer,"missile","rune","spell"   -> "In this category I have 'Light Magic Missile', 'Heavy Magic Missile' and 'Sudden Death'."
+Sorcerer,"explosive","rune","spell" -> "In this category I have 'Fireball', 'Great Fireball' and 'Explosion'."
+Sorcerer,"field","rune","spell"     -> "In this category I have 'Poison Field', 'Fire Field' and 'Energy Field'."
+Sorcerer,"wall","rune","spell"      -> "In this category I have 'Fire Wall', 'Poison Wall' and 'Energy Wall'."
+Sorcerer,"bomb","rune","spell"      -> "In this category I have 'Firebomb'."
+
+Sorcerer,"attack","spell"           -> "In this category I have 'Fire Wave', 'Energy Wave', 'Energy Beam' and 'Great Energy Beam'."
+Sorcerer,"healing","spell"          -> "In this category I have 'Light Healing', 'Intense Healing', 'Ultimate Healing' and 'Antidote'."
+Sorcerer,"support","spell"          -> "In this category I have 'Find Person', 'Light', 'Great Light', 'Magic Shield', 'Creature Illusion' and 'Invisible'."
+Sorcerer,"summon","spell"           -> "In this category I have 'Summon Creature'."
+
+Sorcerer,"find","person"         -> String="Find Person", Price=80,   "Do you want to buy the spell 'Find Person' for %P gold?", Topic=3
+Sorcerer,"light"                 -> String="Light", Price=100,  "Do you want to buy the spell 'Light' for %P gold?", Topic=3
+Sorcerer,"light","healing"       -> String="Light Healing", Price=170,  "Do you want to buy the spell 'Light Healing' for %P gold?", Topic=3
+Sorcerer,"light","missile"       -> String="Light Magic Missile", Price=500,  "Do you want to buy the spell 'Light Magic Missile' for %P gold?", Topic=3
+Sorcerer,"antidote"              -> String="Antidote", Price=150,  "Do you want to buy the spell 'Antidote' for %P gold?", Topic=3
+Sorcerer,"intense","healing"     -> String="Intense Healing", Price=350,  "Do you want to buy the spell 'Intense Healing' for %P gold?", Topic=3
+Sorcerer,"poison","field"        -> String="Poison Field", Price=300,  "Do you want to buy the spell 'Poison Field' for %P gold?", Topic=3
+Sorcerer,"great","light"         -> String="Great Light", Price=500,  "Do you want to buy the spell 'Great Light' for %P gold?", Topic=3
+Sorcerer,"fire","field"          -> String="Fire Field", Price=500,  "Do you want to buy the spell 'Fire Field' for %P gold?", Topic=3
+Sorcerer,"heavy","missile"       -> String="Heavy Magic Missile", Price=1500,  "Do you want to buy the spell 'Heavy Magic Missile' for %P gold?", Topic=3
+Sorcerer,"magic","shield"        -> String="Magic Shield", Price=450,  "Do you want to buy the spell 'Magic Shield' for %P gold?", Topic=3
+Sorcerer,"fireball"              -> String="Fireball", Price=800,  "Do you want to buy the spell 'Fireball' for %P gold?", Topic=3
+Sorcerer,"energy","field"        -> String="Energy Field", Price=700,  "Do you want to buy the spell 'Energy Field' for %P gold?", Topic=3
+Sorcerer,"destroy","field"       -> String="Destroy Field", Price=700,  "Do you want to buy the spell 'Destroy Field' for %P gold?", Topic=3
+Sorcerer,"fire","wave"           -> String="Fire Wave", Price=850,  "Do you want to buy the spell 'Fire Wave' for %P gold?", Topic=3
+Sorcerer,"ultimate","healing"    -> String="Ultimate Healing", Price=1000, "Do you want to buy the spell 'Ultimate Healing' for %P gold?", Topic=3
+Sorcerer,"great","fireball"      -> String="Great Fireball", Price=1200, "Do you want to buy the spell 'Great Fireball' for %P gold?", Topic=3
+Sorcerer,"fire","bomb"           -> String="Firebomb", Price=1500, "Do you want to buy the spell 'Fire Bomb' for %P gold?", Topic=3
+Sorcerer,"energy","beam"         -> String="Energy Beam", Price=1000, "Do you want to buy the spell 'Energy Beam' for %P gold?", Topic=3
+Sorcerer,"creature","illusion"   -> String="Creature Illusion", Price=1000, "Do you want to buy the spell 'Creature Illusion' for %P gold?", Topic=3
+Sorcerer,"poison","wall"         -> String="Poison Wall", Price=1600, "Do you want to buy the spell 'Poison Wall' for %P gold?", Topic=3
+Sorcerer,"explosion"             -> String="Explosion", Price=1800, "Do you want to buy the spell 'Explosion' for %P gold?", Topic=3
+Sorcerer,"fire","wall"           -> String="Fire Wall", Price=2000, "Do you want to buy the spell 'Fire Wall' for %P gold?", Topic=3
+Sorcerer,"great","energy","beam" -> String="Great Energy Beam", Price=1800, "Do you want to buy the spell 'Great Energy Beam' for %P gold?", Topic=3
+Sorcerer,"invisible"             -> String="Invisible", Price=2000, "Do you want to buy the spell 'Invisible' for %P gold?", Topic=3
+Sorcerer,"summon","creature"     -> String="Summon Creature", Price=2000, "Do you want to buy the spell 'Summon Creature' for %P gold?", Topic=3
+Sorcerer,"energy","wall"         -> String="Energy Wall", Price=2500, "Do you want to buy the spell 'Energy Wall' for %P gold?", Topic=3
+Sorcerer,"energy","wave"         -> String="Energy Wave", Price=2500, "Do you want to buy the spell 'Energy Wave' for %P gold?", Topic=3
+Sorcerer,"sudden","death"        -> String="Sudden Death", Price=3000, "Do you want to buy the spell 'Sudden Death' for %P gold?", Topic=3
+
+
+Topic=2,"8$"  -> "For level 8 I have 'Find Person' and 'Light'.", Topic=2
+Topic=2,"9$"  -> "For level 9 I have 'Light Healing'.", Topic=2
+Topic=2,"10$" -> "For level 10 I have 'Antidote'.", Topic=2
+Topic=2,"11$" -> "For level 11 I have 'Intense Healing'.", Topic=2
+Topic=2,"13$" -> "For level 13 I have 'Great Light'.", Topic=2
+Topic=2,"14$" -> "For level 14 I have 'Poison Field' and 'Magic Shield'.", Topic=2
+Topic=2,"15$" -> "For level 15 I have 'Fire Field' and 'Light Magic Missile'.", Topic=2
+Topic=2,"17$" -> "For level 17 I have 'Fireball' and 'Destroy Field'.", Topic=2
+Topic=2,"18$" -> "For level 18 I have 'Energy Field' and 'Fire Wave'.", Topic=2
+Topic=2,"20$" -> "For level 20 I have 'Ultimate Healing'.", Topic=2
+Topic=2,"23$" -> "For level 23 I have 'Great Fireball', 'Energy Beam' and 'Creature Illusion'.", Topic=2
+Topic=2,"25$" -> "For level 25 I have 'Summon Creature' and 'Heavy Magic Missile'.", Topic=2
+Topic=2,"27$" -> "For level 27 I have 'Firebomb'.", Topic=2
+Topic=2,"29$" -> "For level 29 I have 'Poison Wall' and 'Great Energy Beam'.", Topic=2
+Topic=2,"31$" -> "For level 31 I have 'Explosion'.", Topic=2
+Topic=2,"33$" -> "For level 33 I have 'Fire Wall'.", Topic=2
+Topic=2,"35$" -> "For level 35 I have 'Invisible'.", Topic=2
+Topic=2,"38$" -> "For level 38 I have 'Energy Wave'.", Topic=2
+Topic=2,"41$" -> "For level 41 I have 'Energy Wall'.", Topic=2
+Topic=2,"45$" -> "For level 45 I have 'Sudden Death'.", Topic=2
+
+Topic=2       -> "Hmm, I have no spells for this level, but for many levels from 8 to 45.", Topic=2
+
+Topic=3,"yes",SpellKnown(String)=1        -> "You already know how to cast this spell."
+Topic=3,"yes",Level<SpellLevel(String)    -> Amount=SpellLevel(String), "You have to be level %A to learn this spell."
+Topic=3,"yes",CountMoney<Price            -> "You need more money."
+Topic=3,"yes"                             -> "Here you are. Look in your spellbook for the pronunciation of this spell.", DeleteMoney, EffectOpp(13), TeachSpell(String)
+Topic=3                                   -> "Then not."
+}

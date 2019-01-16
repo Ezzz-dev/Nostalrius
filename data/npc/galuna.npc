@@ -1,0 +1,57 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# galuna.npc: Datenbank für die Bogenmacherin Galuna
+
+Name = "Galuna"
+Outfit = (137,40-96-95-96)
+Home = [32342,32246,6]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Oh, please come in, %N. What do you need?"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Sorry %N, I am already talking to a customer. Please wait", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Good bye."
+
+"bye"       -> "Good bye.", Idle
+"farewell"  -> *
+"job"       -> "I am the local fletcher. I am selling bows, crossbows, and ammunition. Do you need anything?"
+"fletcher"  -> *
+"name"      -> "I am Galuna, paladin and fletcher."
+"paladin"   -> "We are feared warriors and good marksmen. Ask Elane if want to know more about the guild."
+"elane"     -> "She is the leader of all paladins."
+"gorn"      -> "I supplied him with my goods in the past, now I sell them myself."
+"time"      -> "Don't bother me. Go and buy a watch."
+"tibia"     -> "Tibia, a green island. Here it is wunderful to walk into the forests and to hunt with a bow."
+"forest"    -> *
+"thais"     -> "We have visitors of all kind in Thais, only elves show up seldom."
+"elf"       -> "It is rumored that they live in the northeast of Tibia. They are the best in archery."
+"elves"     -> *
+
+"buy"             -> "I am selling bows, crossbows, and ammunition. Do you need anything?"
+"do","you","sell" -> *
+"do","you","have" -> *
+"offer"           -> *
+"goods"           -> *
+"ammo"            -> "Do you need arrows for a bow, or bolts for a crossbow?"
+"ammunition"      -> *
+
+"sell","bow"      -> "I don't buy used bows."
+"sell","crossbow" -> "I don't buy used crossbows."
+
+"bow"             -> Type=3350, Amount=1,  Price=400,  "Do you want to buy a bow for %P gold?", Topic=1
+"crossbow"        -> Type=3349, Amount=1,  Price=500,  "Do you want to buy a crossbow for %P gold?", Topic=1
+"arrow"           -> Type=3447, Amount=1,  Price=2,   "Do you want to buy an arrow for %P gold?", Topic=1
+"bolt"            -> Type=3446, Amount=1,  Price=3,   "Do you want to buy a bolt for %P gold?", Topic=1
+
+%1,1<%1,"bow"          -> Type=3350, Amount=%1, Price=400*%1, "Do you want to buy %A bows for %P gold?", Topic=1
+%1,1<%1,"crossbow"     -> Type=3349, Amount=%1, Price=500*%1, "Do you want to buy %A crossbows for %P gold?", Topic=1
+%1,1<%1,"arrow"        -> Type=3447, Amount=%1, Price=2*%1,   "Do you want to buy %A arrows for %P gold?", Topic=1
+%1,1<%1,"bolt"         -> Type=3446, Amount=%1, Price=3*%1,   "Do you want to buy %A bolts for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Come back, when you have enough money."
+Topic=1                         -> "Hmm, but next time."
+}

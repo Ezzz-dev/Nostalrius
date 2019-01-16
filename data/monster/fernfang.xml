@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="Fernfang" nameDescription="Fernfang" race="blood" experience="400" speed="95" manacost="0">
+	<health now="400" max="400" />
+	<look type="206" head="0" body="0" legs="0" feet="0" corpse="4240" />
+	<targetchange interval="1000" chance="7" />
+	<targetstrategy nearest="70" weakest="10" mostdamage="20" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="4" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="40" skill="50">
+		<attack name="manadrain" min="-25" max="-45" range="7" chance="9" />
+		<attack name="energy" min="-70" max="-90" range="7" chance="8">
+			<attribute key="shootEffect" value="energy" />
+			<attribute key="areaEffect" value="energy" />
+		</attack>
+		<attack name="physical" min="-140" max="-180" range="7" chance="10">
+			<attribute key="shootEffect" value="death" />
+		</attack>
+	</attacks>
+	<defenses armor="25" defense="50">
+		<defense name="healing" min="90" max="120" chance="7">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+		<defense name="speed" speedchange="85" variation="5" duration="10000" chance="15">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+		<defense name="outfit" monster="war wolf" duration="14000" chance="21">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity outfit="1" />
+		<immunity lifedrain="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<summons maxSummons="4">
+		<summon name="war wolf" chance="8" max="4" />
+	</summons>
+	<voices>
+		<voice sentence="You desecrated this place!" />
+		<voice sentence="I will cleanse this isle!" />
+		<voice sentence="Grrrrrrr" />
+		<voice sentence="Yoooohhuuuu!" yell="1" />
+	</voices>
+	<loot>
+		<item id="3147" countmax="1" chance="180" /> <!-- a blank rune -->
+		<item id="2902" countmax="1" chance="65" /> <!-- a bowl -->
+		<item id="3600" countmax="1" chance="140" /> <!-- a bread -->
+		<item id="2885" countmax="1" chance="90" /> <!-- a brown flask -->
+		<item id="3105" countmax="1" chance="77" /> <!-- a dirty fur -->
+		<item id="3031" countmax="18" chance="150" /> <!-- a gold coin -->
+		<item id="3661" countmax="1" chance="90" /> <!-- a grave flower -->
+		<item id="3563" countmax="1" chance="90" /> <!-- a green tunic -->
+		<item id="3061" countmax="1" chance="20" /> <!-- a life crystal -->
+		<item id="2914" countmax="1" chance="100" /> <!-- a lamp -->
+		<item id="3050" countmax="1" chance="5" /> <!-- a power ring -->
+		<item id="3551" countmax="1" chance="90" /> <!-- sandals -->
+		<item id="3738" countmax="1" chance="70" /> <!-- a sling herb -->
+		<item id="3289" countmax="1" chance="110" /> <!-- a staff -->
+		<item id="3289" countmax="1" chance="110" /> <!-- a staff -->
+		<item id="3736" countmax="1" chance="90" /> <!-- a star herb -->
+		<item id="3012" countmax="1" chance="100" /> <!-- a wolf tooth chain -->
+		<item id="3037" countmax="1" chance="4" /> <!-- a yellow gem -->
+	</loot>
+</monster>

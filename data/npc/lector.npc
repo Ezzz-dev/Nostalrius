@@ -1,0 +1,45 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# lector.npc: Datenbank für den Metzger Lector
+
+Name = "Lector"
+Outfit = (128,79-38-0-124)
+Home = [32351,31795,7]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Welcome to my humble shop, %N."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Just a minute, %N.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Please come and buy again."
+
+"bye"       -> "Please come and buy again.", Idle
+"farewell"  -> *
+"job"       -> "I am the butcher. I am selling delicious meat."
+"butcher"   -> *
+"name"      -> "My father named me Lector."
+"father"    -> "My father, Hannibal, was the royal cook. He died some years ago in an attack of the evil Ferumbras."
+"time"      -> "It is exactly %T."
+"graveyard" -> "I heared, the mausoleum is haunted!"
+"mausoleum" -> * 
+"dragon","steak"   -> "Dragon steak was the favourite meal of Tark Trueblade."
+"tark","trueblade" -> "Tark Trueblade was the greatest dragonslayer of all. I heared, he died in a battle with an ancient dragon lord."
+"ghostlands"       -> "A bloody place with a bloody history. I wonder if it realy drove people mad or if it just attracted those already disbalanced in their minds."
+
+"buy"               -> "I can offer you ham or meat. Dragon steaks are out. <giggle>"
+"do","you","sell"   -> *
+"do","you","have"   -> *
+"food"              -> "Are you looking for food? I can offer you ham or meat."
+
+"meat"   -> Type=3577, Amount=1, Price=3, "Do you want to buy meat for %P gold?", Topic=1
+"ham"    -> Type=3582, Amount=1, Price=6, "Do you want to buy a ham for %P gold?", Topic=1
+
+%1,1<%1,"meat"          -> Type=3577, Amount=%1, Price=3*%1, "Do you wanna buy %A meat for %P gold?", Topic=1
+%1,1<%1,"ham"           -> Type=3582, Amount=%1, Price=6*%1, "Do you wanna buy %A ham for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here it is.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "I am sorry, but you do not have enough gold."
+Topic=1                         -> "Maybe later."
+}

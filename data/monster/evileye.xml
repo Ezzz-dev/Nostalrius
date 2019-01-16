@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="The Evil Eye" nameDescription="The Evil Eye" race="blood" experience="500" speed="55" manacost="0">
+	<health now="1100" max="1100" />
+	<look type="210" head="0" body="0" legs="0" feet="0" corpse="4233" />
+	<targetchange interval="1000" chance="30" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="4" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="24" skill="65">
+		<attack name="energy" min="-60" max="-130" range="7" chance="7">
+			<attribute key="shootEffect" value="energy" />
+		</attack>
+		<attack name="fire" min="-85" max="-115" range="7" chance="8">
+			<attribute key="shootEffect" value="fire" />
+		</attack>
+		<attack name="physical" min="-135" max="-175" range="7" chance="6">
+			<attribute key="shootEffect" value="death" />
+			<attribute key="areaEffect" value="mortarea" />
+		</attack>
+		<attack name="poison" min="-40" max="-120" range="7" chance="7">
+			<attribute key="shootEffect" value="poison" />
+		</attack>
+		<attack name="lifedrain" min="-110" max="-130" range="7" chance="9">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+		<attack name="speed" speedchange="-95" variation="15" duration="20000" range="7" chance="10">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+		<attack name="poison" min="-35" max="-85" length="8" spread="3" chance="13">
+			<attribute key="areaEffect" value="greenbubble" />
+		</attack>
+		<attack name="lifedrain" min="-75" max="-85" length="8" spread="3" chance="18">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+		<attack name="manadrain" min="-150" max="-250" length="8" spread="3" chance="12">
+			<attribute key="areaEffect" value="bluebubble" />
+		</attack>
+	</attacks>
+	<defenses armor="19" defense="35">
+		<defense name="healing" min="1" max="219" chance="12">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity outfit="1" />
+		<immunity lifedrain="1" />
+		<immunity paralyze="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<summons maxSummons="12">
+		<summon name="demon skeleton" chance="8" max="6" />
+		<summon name="ghost" chance="9" max="6" />
+	</summons>
+	<voices>
+		<voice sentence="653768764!" />
+		<voice sentence="Let me take a look at you!" />
+		<voice sentence="Inferior creatures, bow before my power!" />
+		<voice sentence="659978 54764!" />
+	</voices>
+	<loot>
+		<item id="3418" countmax="1" chance="2" /> <!-- a beholder shield -->
+		<item id="3031" countmax="24" chance="900" /> <!-- a gold coin -->
+		<item id="3031" countmax="32" chance="800" /> <!-- a gold coin -->
+		<item id="3031" countmax="40" chance="700" /> <!-- a gold coin -->
+		<item id="3285" countmax="1" chance="90" /> <!-- a longsword -->
+		<item id="3282" countmax="1" chance="70" /> <!-- a morning star -->
+		<item id="3059" countmax="1" chance="50" /> <!-- a spellbook -->
+		<item id="3409" countmax="1" chance="40" /> <!-- a steel shield -->
+		<item id="3265" countmax="1" chance="40" /> <!-- a two handed sword -->
+		<item id="3412" countmax="1" chance="15" /> <!-- a wooden shield -->
+	</loot>
+</monster>

@@ -1,0 +1,59 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# trisha.npc: Datenbank fuer die Ritterin Trisha
+
+Name = "Trisha"
+Outfit = (139,94-67-38-95)
+Home = [32348,31748,7]
+Radius = 3
+
+Behaviour = {
+ADDRESS,Knight,"hello$",! -> "Welcome back, knight %N!"
+ADDRESS,Knight,"hi$",!    -> *
+ADDRESS,"hello$",!        -> "Salutations, %N. What can I do for you?"
+ADDRESS,"hi$",!           -> *
+ADDRESS,!                 -> Idle
+BUSY,"hello$",!           -> "Please wait a moment, %N.", Queue
+BUSY,"hi$",!              -> *
+BUSY,!                    -> NOP
+VANISH,!                  -> "Be careful on your journeys."
+
+"bye",male     -> "Don't hurt yourself with that weapon, little one.", Idle
+"farewell",male -> *
+"bye",female   -> "Take care, sister.", Idle
+"farewell",female -> *
+"job"          -> "I am the high knight of Carlin. I trained the the greatest heroines and even some males."
+"name"         -> "I am Trisha Ironfist."
+"time"         -> "It is time for a fight!"
+"hero"         -> "Heroes are knights and knights are heroes, of course."
+"knight"       -> "Knights are the true heroes of Tibia. Fame can only be earned by hand to hand combat. Brave women can join us, and we even accept suitable males now and then."
+"vocation"     -> "Your vocation is your profession. There are four vocations in Tibia: Knights, paladins, sorcerers, and druids."
+"spellbook"    -> "In a spellbook, all your spells are listed. There you will find the pronunciation of each spell. If you want to buy one, visit the magicians shop in the south of Carlin."
+Knight,"spell"  -> "I can teach you healing spells and support spells. What kind of spell do you wish to learn? You can also tell me for which level you would like to learn a spell, if you prefer that.", Topic=2
+"spell"          -> "Sorry, I only sell spells to knights."
+
+Knight,"instant","spell"      -> "I can teach you healing spells and support spells. What kind of spell do you wish to learn?"
+Knight,"healing","spell"      -> "In this category I have 'Light Healing' and 'Antidote'."
+Knight,"support","spell"      -> "In this category I have 'Light', 'Find Person' and 'Great Light'."
+
+Topic=2,"healing","spell"      -> "In this category I have 'Light Healing' and 'Antidote'."
+Topic=2,"support","spell"      -> "In this category I have 'Light', 'Find Person' and 'Great Light'."
+Topic=2,"bye"                  -> "Be careful on your journeys."
+
+Topic=2,"8$" -> "For level 8 I have 'Find Person' and 'Light'.", Topic=2
+Topic=2,"9$" -> "For level 9 I have 'Light Healing'.", Topic=2
+Topic=2,"10$" -> "For level 10 I have 'Antidote'.", Topic=2
+Topic=2,"13$" -> "For level 13 I have 'Great Light'.", Topic=2
+Topic=2       -> "Sorry, I have only spells for level 8, 9, 10 and 13.", Topic=2
+
+Knight,"find","person"   -> String="Find Person", Price=80,  "Do you want to buy the spell 'Find Person' for %P gold?", Topic=3
+Knight,"light"           -> String="Light", Price=100, "Do you want to buy the spell 'Light' for %P gold?", Topic=3
+Knight,"light","healing" -> String="Light Healing", Price=170, "Do you want to buy the spell 'Light Healing' for %P gold?", Topic=3
+Knight,"antidote"        -> String="Antidote", Price=150, "Do you want to buy the spell 'Antidote' for %P gold?", Topic=3
+Knight,"great","light"   -> String="Great Light", Price=500, "Do you want to buy the spell 'Great Light' for %P gold?", Topic=3
+
+Topic=3,"yes",SpellKnown(String)=1        -> "You already know how to cast this spell."
+Topic=3,"yes",Level<SpellLevel(String)    -> Amount=SpellLevel(String), "You have to be level %A to learn this spell."
+Topic=3,"yes",CountMoney<Price            -> "Return when you have enough gold."
+Topic=3,"yes"                             -> "Here you are. Look in your spellbook for the pronunciation of this spell.", DeleteMoney, EffectOpp(13), TeachSpell(String)
+Topic=3                                   -> "Maybe next time."
+}

@@ -1,0 +1,75 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# maryza.npc: Datenbank für die Wirtin Maryza
+
+Name = "Maryza"
+Outfit = (160,60-110-58-76)
+Home = [32634,31889,9]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$","maryza",! -> "Welcome to the Jolly Axeman, %N. Have a good time!"
+ADDRESS,"hi$","maryza",!    -> *
+ADDRESS,"hello$",!          -> "Talking to me?", Idle
+ADDRESS,"hi$",!             -> *
+ADDRESS,!                   -> Idle
+BUSY,"hello$","maryza",!    -> "Shut up %N. Busy. You wait!", Queue
+BUSY,"hi$","maryza",!       -> *
+BUSY,"hello$",!             -> "Talking to me, %N?"
+BUSY,"hi$",!                -> *
+BUSY,!                      -> NOP
+VANISH,!                    -> "HEY! You lousy....!"
+
+"bye"               -> "Yeah, bye", Idle
+"farewell"          -> "Yeah, farewell", Idle
+"hello$","jimbin",! -> "Yeah, bye", Idle
+"hi$","jimbin",!    -> "Yeah, bye", Idle
+"job"               -> "I'm the cook of the Jolly Axeman."
+"tavern"            -> *
+"jimbin"            -> "I am so proud of him. In drinking, he's second only to our mighty general."
+"name"              -> "I am Maryza Firehand, daughter of Earth, from the Molten Rock."
+"time"              -> "To busy, ask my husband."
+"king"              -> "Don't like these upper cave guys."
+"army"              -> "We could better feed some dragons instead of these fools."
+"ferumbras"         -> "Heard that's what the humans call one of their boggiemen."
+"general"           -> "A fine drinker and strategist. Wastes his skill with these idiots of the army. What a shame."
+"excalibug"         -> "Would slice a dragon or two for steaks if i'd get it."
+"tark"              -> "He loved my dragonsteaks. Heard he died by a cave in while fighting drags in the Plains of Havoc."
+"thais"             -> "Puny town for puny guys."
+"tibia"             -> "We don't care much about outsiders anymore."
+"carlin"            -> "Don't like it, has an elfish touch, ye know?"
+"news"              -> "The boys of the Savage Axe at the bridge are running wild in these days."
+"rumors"            -> *
+"bloody","mary"     -> Type=3113, Amount=1, "YOU &/$#@!", Poison(15,1), EffectOpp(1), EffectMe(3), Create(Type)
+"buy"               -> "I can offer you some food if ye like."
+"do","you","sell"   -> *
+"do","you","have"   -> *
+"food"              -> "I sell normal and brown bread, meat, ham, cookies, rolls, and cheese made of mushrooms."
+"book"              -> Type=3234, Amount=1, Price=150, "The cookbook of the famous dwarfish kitchen. You're lucky. I have a few copies on sale. Do you like one for %P gold?", Topic=2
+"cookbook"          -> *
+"book",QuestValue(279)>0,! -> "I'm sorry but I sell only one copy to each customer. Otherwise they would have been sold out a long time ago."
+"cookbook",QuestValue(279)>0,! -> *
+
+"bread"         -> Type=3600, Amount=1, Price=4, "Do you wanna buy a bread for %P gold?", Topic=1
+"cheese"        -> Type=3607, Amount=1, Price=6, "Do you wanna buy cheese for %P gold?", Topic=1
+"meat"          -> Type=3577, Amount=1, Price=5, "Do you wanna buy meat for %P gold?", Topic=1
+"ham"           -> Type=3582, Amount=1, Price=8, "Do you wanna buy a ham for %P gold?", Topic=1
+"cookie"        -> Type=3598, Amount=1, Price=2, "Do you wanna buy a cookie for %P gold?", Topic=1
+"roll"          -> Type=3601, Amount=1, Price=2, "Do you wanna buy a roll for %P gold?", Topic=1
+"brown","bread" -> Type=3602, Amount=1, Price=3, "Do you wanna buy a brown bread for %P gold?", Topic=1
+
+%1,1<%1,"bread"         -> Type=3600, Amount=%1, Price=4*%1, "Do you wanna buy %A breads for %P gold?", Topic=1
+%1,1<%1,"cheese"        -> Type=3607, Amount=%1, Price=6*%1, "Do you wanna buy %A cheese for %P gold?", Topic=1
+%1,1<%1,"meat"          -> Type=3577, Amount=%1, Price=5*%1, "Do you wanna buy %A meat for %P gold?", Topic=1
+%1,1<%1,"ham"           -> Type=3582, Amount=%1, Price=8*%1, "Do you wanna buy %A ham for %P gold?", Topic=1
+%1,1<%1,"cookie"        -> Type=3598, Amount=%1, Price=2*%1, "Do you wanna buy %A cookies for %P gold?", Topic=1
+%1,1<%1,"roll"          -> Type=3601, Amount=%1, Price=2*%1, "Do you wanna buy %A rolls for %P gold?", Topic=1
+%1,1<%1,"brown","bread" -> Type=3602, Amount=%1, Price=3*%1, "Do you wanna buy %A brown breads for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here it is.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "No gold, no sale, that's it."
+Topic=1                         -> "You &/$#@!"
+
+Topic=2,"yes",CountMoney>=Price -> "Here you are. Happy cooking!", DeleteMoney, Create(Type), SetQuestValue(279,1)
+Topic=2,"yes"                   -> "No gold, no sale, that's it."
+Topic=2                         -> "I have but a few copies, anyway."
+}

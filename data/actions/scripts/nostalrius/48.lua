@@ -1,0 +1,40 @@
+function onUse(player, item, fromPosition, target, toPosition)
+	if item:getId() == 2772 and Game.isItemThere({x = 32594, y = 32214, z = 09},3050) then 
+		item:transform(2773, 1)
+		item:decay()
+		Game.removeItemOnMap({x = 32603, y = 32216, z = 09}, 1626)
+		Game.removeItemOnMap({x = 32604, y = 32216, z = 09}, 1627)
+		doRelocate({x = 32603, y = 32216, z = 09},{x = 32603, y = 32217, z = 09})
+		doRelocate({x = 32604, y = 32216, z = 09},{x = 32604, y = 32217, z = 09})
+		doRelocate({x = 32593, y = 32216, z = 09},{x = 32592, y = 32216, z = 09})
+		doRelocate({x = 32594, y = 32216, z = 09},{x = 32592, y = 32216, z = 09})
+		Game.removeItemOnMap({x = 32606, y = 32216, z = 09}, 1271)
+		Game.removeItemOnMap({x = 32607, y = 32216, z = 09}, 1271)
+		Game.transformItemOnMap({x = 32601, y = 32216, z = 09}, 1271, 1626)
+		Game.transformItemOnMap({x = 32602, y = 32216, z = 09}, 1271, 1627)
+		Game.createItem(1271, 1, {x = 32594, y = 32216, z = 09})
+		Game.createItem(1271, 1, {x = 32593, y = 32216, z = 09})
+		Game.createItem(1271, 1, {x = 32603, y = 32216, z = 09})
+		Game.createItem(1271, 1, {x = 32604, y = 32216, z = 09})
+		Game.removeItemOnMap({x = 32594, y = 32214, z = 09}, 3050)
+		Game.sendMagicEffect({x = 32594, y = 32214, z = 09}, 9)
+	elseif item:getId() == 2772 then 
+		Game.sendMagicEffect({x = 32594, y = 32214, z = 09}, 3)
+	elseif item:getId() == 2773 and Game.isItemThere({x = 32594, y = 32214, z = 09},3050) then
+		item:transform(2772, 1)
+		item:decay()
+		Game.removeItemOnMap({x = 32593, y = 32216, z = 09}, 1271)
+		Game.removeItemOnMap({x = 32594, y = 32216, z = 09}, 1271)
+		Game.transformItemOnMap({x = 32601, y = 32216, z = 09}, 1626, 1271)
+		Game.transformItemOnMap({x = 32602, y = 32216, z = 09}, 1627, 1271)
+		Game.transformItemOnMap({x = 32603, y = 32216, z = 09}, 1271, 1626)
+		Game.transformItemOnMap({x = 32604, y = 32216, z = 09}, 1271, 1627)
+		Game.createItem(1271, 1, {x = 32606, y = 32216, z = 09})
+		Game.createItem(1271, 1, {x = 32607, y = 32216, z = 09})
+		Game.removeItemOnMap({x = 32594, y = 32214, z = 09}, 3050)
+		Game.sendMagicEffect({x = 32594, y = 32214, z = 09}, 9)
+	elseif item:getId() == 2773 then
+		Game.sendMagicEffect({x = 32594, y = 32214, z = 09}, 3)
+	end
+	return true
+end

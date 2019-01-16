@@ -1,0 +1,55 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gundralph.npc: Datenbank für den Zauberlehrer Gundralph
+
+Name = "Gundralph"
+Outfit = (9,0-0-0-0)
+Home = [33268,31849,5]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Oh, be welcome %N."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Wait %N, please.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Goodbye."
+
+"bye"       -> "Goodbye", Idle
+"job"       -> "I am a teacher for some powerful Spells."
+"name"      -> "They call me Gundralph."
+"time"      -> "Let me see, it's %T."
+"king"      -> "Unfortunately, I never met King Tibianus III in person."
+"tibianus"  -> *
+"army"      -> "They live in the castle to the west."
+"ferumbras" -> "How low can a sorceror sink."
+"excalibug" -> "An awesome weapon if it exists."
+"thais"     -> "I see Thais as a lost course."
+"tibia"     -> "The world is so big and we have only so little time to travel."
+"carlin"    -> "Carlin is a fine place for druids."
+"edron"     -> "Sciences are thriving on this isle."
+"news"      -> "I have heard nothing of intrest lately, sorry."
+"rumors"    -> *
+
+"spellbook" -> "Please ask the stationer in the west tower for that."
+"spell"     -> "I have 'Ultimate Light', 'Soulfire', 'Magic Wall', 'Cancel Invisibility', and 'Undead Legion'. Are you interested?"
+
+"ultimate","light",Sorcerer      -> String="Ultimate Light", Price=1600, "Do you want to learn the spell 'Ultimate Light' for %P gold?", Topic=1
+"ultimate","light",Druid         -> *
+"ultimate","light"               -> "I'm sorry, but this spell is only for druids and sorcerers."
+"soulfire",Sorcerer              -> String="Soulfire", Price=1800, "Do you want to learn the spell 'Soulfire' for %P gold?", Topic=1
+"soulfire",Druid                 -> *
+"soulfire"                       -> "I'm sorry, but this spell is only for druids and sorcerers."
+"magic","wall",Sorcerer          -> String="Magic Wall", Price=2100, "Do you want to learn the spell 'Magic Wall' for %P gold?", Topic=1
+"magic","wall"                   -> "I'm sorry, but this spell is only for sorcerers."
+"undead","legion",Druid          -> String="Undead Legion", Price=2000, "Do you want to learn the spell 'Undead Legion' for %P gold?", Topic=1
+"undead","legion"                -> "I'm sorry, but this spell is only for druids."
+"cancel","invisibility",Sorcerer -> String="Cancel Invisibility", Price=1600, "Do you want to learn the spell 'Cancel Invisibility' for %P gold?", Topic=1
+"cancel","invisibility"          -> "I'm sorry, but this spell is only for sorcerers."
+
+Topic=1,"yes",SpellKnown(String)=1        -> "Hmm, you already know this spell."
+Topic=1,"yes",Level<SpellLevel(String) -> Amount=SpellLevel(String), "Hmm, you need to advance to level %A to learn this spell."
+Topic=1,"yes",CountMoney<Price            -> "Hmm, you don't have enough money to pay my service."
+Topic=1,"yes"                             -> "Voila, from now on you can cast this spell. Use your knowledge wisely.", DeleteMoney, EffectOpp(13), TeachSpell(String)
+Topic=1                                   -> "Hmm, but next time."
+}

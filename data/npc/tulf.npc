@@ -1,0 +1,34 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# tulf.npc: Datenbank für den Wachoffizier Tulf 
+
+Name = "Tulf"
+Outfit = (71,0-0-0-0)
+Home = [32586,31928,3]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Hiho! <mumbles>"
+ADDRESS,"hi$",!    -> *
+ADDRESS,"hiho$",!  -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Silence youngster!"
+BUSY,"hi$",!       -> *
+BUSY,"hiho$",!     -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Yeah, bye."
+
+"bye"           -> "Yeah, bye.", Idle
+"job"           -> "I am the captain of the emperor's personal bodyguards."
+"shop"          -> *
+"name"          -> "My name is Tulf Beardweaver, son of Earth, from the Dragoneaters."
+"time"          -> "It's %T right now."
+"help"          -> "Sorry, I am on duty!"
+"dwarfs"        -> "If you go to a dwarfs' city, do as the dwarfs do."
+"monster"       -> "I doubt anyone can make it through our lines of defense."
+"dungeon"       -> "I despise the habit to challenge the prisoners of Dwarcatra or provoke the boys in the mines."
+"mines"         -> "The mines aren't meant for foreigners. The miners there have enough troubles."
+"bodyguard"     -> "We keep up law and order here, though the boys would rather need some practice like taking care for the trouble in the mines."
+"trouble"       -> "The mines are raided again and again by the bandits of the Horned Fox."
+"horned","fox"  -> "It's a renegade minotaur who has a hidden lair somewhere near our mines."
+"lair"          -> "The lair of the Horned Fox is surely well guarded and even better hidden."
+}

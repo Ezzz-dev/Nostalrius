@@ -1,0 +1,92 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# humgolf.npc: Datenbank für den Rotwormzähmer Humgolf (Zwergenstadt)
+
+Name = "Humgolf"
+Outfit = (69,0-0-0-0)
+Home = [32598,31880,9]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "%N, good day .. or night, whatever."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Wait %N. We talk later if you insist.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Bye."
+
+"bye"           -> "Bye", Idle
+"farewell"      -> *
+"job"           -> "I am chief rotwormtamer of Kazordoon. I sell rotworms and buy meat and tasty, fresh rats for my worms."
+"name"          -> "I am Humgolf Molesight, Son of Earth, from the Molten Rock."
+"tibia"         -> "More nice beneath this noisy green surface."
+"kazordoon"     -> "I like the mines best." 
+"big","old"     -> "The mountain seems tasty as far as my worms are concerned."
+"worms"         -> "They are so cute and so intelligent."
+"humans"        -> "They are not cute and not intelligent." 
+"orcs"          -> "They are even more stupid and ugly than minotaurs."  
+"minotaurs"     -> "They are stupid and ugly."
+"elves"         -> "They are not worth to be mentioned."
+"geomancer"     -> "They have an understanding of worms." 
+"god"           -> "The worm does not care about gods, why should I?"
+"earth"         -> "Home of the worms, home of my people, too."
+"fire"          -> "Where earth is giving, fire is taking. That's the way of the elements."
+"buy","rotworm" -> "Do you want to buy a rotworm?", topic=1
+
+Topic=1,"yes" -> "Hey, you don't own a drilling licence. No deal!"
+Topic=1       -> "You will regret that."
+
+"drilling","licence" -> "I am not allowed to sell worms to people without a formular 007 licence to drill or a 0815 artist licence."
+"007"                -> *
+"0815"               -> "It's a special licence for artists. It was only used once as I sold a white worm to Frietsiek and Yor."
+"artist","licence"   -> *
+
+"life"           -> "Can't say I like it much."
+"plant"          -> "Only a rotting plant is a good plant."
+"citizen"        -> "Many noisy pepole down here are scaring my worms."
+"kroox"          -> "Poor guy, has lost his drilling licence for drinking."
+"jimbin"         -> "His tavern is too crowded and too bright for a dwarf with taste like me."
+"maryza"         -> "Don't like the way she looks at my worms."
+"bezil"          -> "Always chatting. How can someone talk that much?"
+"nezil"          -> *
+"uzgod"          -> "We are trading now and then. Fine dwarf he is."
+"etzel"          -> "Does a worm need spells to work his kind of magic? I do neither."
+"motos"          -> "That guy is a monster! I despise rotwormkillers."
+"general"        -> *
+"durin"          -> "If he'd live today he'd be a rotwormtamer like me." 
+"duria"          -> "Thinks she's to good to talk to rotwormtamers."
+"emperor"        -> "The emperor should spend more money on rotworm husbandry."
+"kruzak"         -> *
+"pyromancer"     -> "Hotheads."
+"technomancer"   -> "GO AWAY! I heard they think of replacing worms with machines. That is an OUTRAGE!"
+"army"           -> "They should remember old dwarfish rotworm tactics. Think like a worm and the battle is almost won."
+"colossus"       -> "Never was up there to look at it."
+"ferumbras"      -> "A true enemy of the worms."
+"excalibug"      -> "Silly fairy tale."
+"news"           -> "Who needs news if the old things are still good enough?"
+"monster"        -> "Unwormish creatures they are."
+"stone","golem"  -> "Too hard to be gnawed away by even the finest worm."
+"help"           -> "I am here to help the worms, not the fools."
+"quest"          -> "What by the worm are you talking about?"
+"task"           -> *
+"what","do"      -> *
+"gold"           -> "Gold is one of the things my worms can unearth."
+"money"          -> *
+"equipment"      -> "If you own a good worm you need nothing else."
+"time"           -> "Time does not matter to a dwarf who understands the ways of the worm."
+
+"sell","meat" -> Type=3577, Amount=1, Price=2, "So, you want to sell meat? Hmm, I give you %P gold, ok?", Topic=2
+"sell","ham"  -> Type=3582, Amount=1, Price=4, "So, you want to sell a ham? Hmm, I give you %P gold, ok?", Topic=2
+"sell","fish" -> "Go away with that waterthing!"
+"sell","rat"  -> Type=3994, Amount=1, Price=2, "Do you have a fresh rat for sale?", Topic=2
+
+
+"sell",%1,1<%1,"meat" -> Type=3577, Amount=%1, Price=2*%1, "So, you want to sell %A pieces of meat? Hmm, I give you %P gold, ok?", Topic=2
+"sell",%1,1<%1,"ham"  -> Type=3582, Amount=%1, Price=4*%1, "So, you want to sell %A pieces of ham? Hmm, I give you %P gold, ok?", Topic=2
+"sell",%1,1<%1,"rat"  -> Type=3994, Amount=%1, Price=2*%1, "Do you have %A fresh rats for sale?", Topic=2
+
+
+Topic=2,"yes",Count(Type)>=Amount -> "Here you are.", Delete(Type), CreateMoney
+Topic=2,"yes"                             -> "You don't have one."
+Topic=2,"no"                              -> "Then not."
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<areaspawn delay="1000" radius="12" centerx="32635" centery="31724" centerz="7">
+		<monster name="wolf" minamount="9" maxamount="18"/>
+	</areaspawn>
+	<announce delay="60000" type="event" message="Many agressive beasts are roaming south of Ab'Dendriel! Take care!"/>
+	<areaspawn delay="60000" radius="12" centerx="32635" centery="31724" centerz="7">
+		<monster name="wolf" minamount="12" maxamount="24"/>
+	</areaspawn>
+	<areaspawn delay="120000" radius="12" centerx="32635" centery="31724" centerz="7">
+		<monster name="wolf" minamount="12" maxamount="24"/>
+	</areaspawn>
+	<areaspawn delay="120000" radius="12" centerx="32635" centery="31724" centerz="7">
+		<monster name="war wolf" minamount="3" maxamount="6"/>
+	</areaspawn>
+	<areaspawn delay="180000" radius="12" centerx="32635" centery="31724" centerz="7">
+		<monster name="wolf" minamount="9" maxamount="18"/>
+	</areaspawn>
+	<areaspawn delay="180000" radius="12" centerx="32635" centery="31724" centerz="7">
+		<monster name="war wolf" minamount="6" maxamount="12"/>
+	</areaspawn>
+	<areaspawn delay="240000" radius="12" centerx="32635" centery="31724" centerz="7">
+		<monster name="wolf" minamount="5" maxamount="10"/>
+	</areaspawn>
+	<areaspawn delay="240000" radius="12" centerx="32635" centery="31724" centerz="7">
+		<monster name="war wolf" minamount="10" maxamount="20"/>
+	</areaspawn>
+</raid>

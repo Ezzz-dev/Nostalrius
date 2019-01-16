@@ -1,0 +1,82 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# uso.npc: Datenbank für den Zwerg Uso der auch Knights trainiert
+
+Name = "Uso"
+Outfit = (160,79-39-77-115)
+Home = [32580,32756,8]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Hiho."
+ADDRESS,"hi$",!    -> *
+ADDRESS,"hiho$",!    -> *
+ADDRESS,!          -> Idle
+
+BUSY,"hello$",!    -> "Hey, just wait, ok?", Queue
+BUSY,"hi$",!       -> *
+BUSY,"hiho$",!    -> *
+BUSY,!             -> NOP
+VANISH,!           -> "So long."
+
+"bye"      -> "So long.", Idle
+"farewell" -> *
+"job"      -> "I am the head of a little mining operation here and I train knights in my spare time to prevent my old body from rusting."
+"name"     -> "I am called Uso Oredigger, son of the flame from the dragoneater fellowship."
+"time"     -> "Time is of little importance at this forsaken place."
+"temple"   -> "There is a somewhat provisional temple of the humans here."
+"king"     -> "Human kings are not of my concern."
+"venore"   -> "To me one human is like the other. I don't care what city they are from."
+"thais"    -> *
+"carlin"   -> *
+"edron"    -> *
+"jungle"   -> "All those trees and the heat are horrible. If it wasn't for the gold, we wouldn't be here, jawoll."
+"gold"     -> "There IS gold out there. And a lot of it. I can feel it in my old bones."
+
+"tibia"    -> "The world is big but the random places where gold and treasures can be found are the ones that are of importance, jawoll." 
+
+"kazordoon" -> "We dwarves call it our home since the dawn of time. I miss Kazordoon a lot, but gold is of more importance. After I have made a fortune here I will return home and might settle down."
+"dwarves"   -> "We are a proud race. Dwarves are strong and fearless. Even in this forsaken jungle we can survive, jawoll."
+"dwarfs"   -> *
+"ab'dendriel" -> "That is no city but just a bunch of trees."
+"elves"       -> "I wonder why we see so few elves over here. Those tree people should love this cursed jungle. But even they stay away from here. It makes me wonder why."
+"elfs"       -> *
+"darama"      -> "I wonder which part of Darama is worst, that jungle or that desert. This whole continent is a dwarf's nightmare."
+"ankrahmun"   -> "Another monument of the madness of the human race. Worship of death or undeath or whatever ... I wonder how often I must be slammed on my head to think of such a crazy idea." 
+"ferumbras"  -> "He would be at least a diversion from all those crawling and flying insects."
+"excalibug"  -> "If it ever had been in this area, it surely would be rusted through by now."
+
+"apes"       -> "It wouldn't surprise me if they were only elves disguised with furs."
+"lizard"    -> "They say the lizards had a lot of gold in their ancient cities. Perhaps one day we will go there and look for it."
+"dworcs"     -> "I recently broke the nose of a guy who dared to claim that those headhunters are related to dwarves." 
+
+
+Knight,"spell"  -> "I can teach you healing spells and support spells. What kind of spell do you wish to learn? You can also tell me for which level you would like to learn a spell, if you prefer that.", Topic=2
+"spell"          -> "Sorry, I only sell spells to knights."
+
+Knight,"instant","spell"      -> "I can teach you healing spells and support spells. What kind of spell do you wish to learn?"
+Knight,"healing","spell"      -> "In this category I have 'Light Healing' and 'Antidote'."
+Knight,"support","spell"      -> "In this category I have 'Light', 'Find Person' and 'Great Light'."
+
+Topic=2,"healing","spell"      -> "In this category I have 'Light Healing' and 'Antidote'."
+Topic=2,"support","spell"      -> "In this category I have 'Light', 'Find Person' and 'Great Light'."
+Topic=2,"bye"                  -> "So long.", Idle
+
+Topic=2,"8$" -> "For level 8 I have 'Find Person' and 'Light'.", Topic=2
+Topic=2,"9$" -> "For level 9 I have 'Light Healing'.", Topic=2
+Topic=2,"10$" -> "For level 10 I have 'Antidote'.", Topic=2
+Topic=2,"13$" -> "For level 13 I have 'Great Light'.", Topic=2
+Topic=2       -> "Sorry, I have only spells for level 8, 9, 10 and 13.", Topic=2
+
+Knight,"find","person"   -> String="Find Person", Price=80,  "Do you want to buy the spell 'Find Person' for %P gold?", Topic=3
+Knight,"light"           -> String="Light", Price=100, "Do you want to buy the spell 'Light' for %P gold?", Topic=3
+Knight,"light","healing" -> String="Light Healing", Price=170, "Do you want to buy the spell 'Light Healing' for %P gold?", Topic=3
+Knight,"antidote"        -> String="Antidote", Price=150, "Do you want to buy the spell 'Antidote' for %P gold?", Topic=3
+Knight,"great","light"   -> String="Great Light", Price=500, "Do you want to buy the spell 'Great Light' for %P gold?", Topic=3
+
+Topic=3,"yes",SpellKnown(String)=1        -> "You already know how to cast this spell."
+Topic=3,"yes",Level<SpellLevel(String)    -> Amount=SpellLevel(String), "You have to be level %A to learn this spell."
+Topic=3,"yes",CountMoney<Price            -> "Return when you have enough gold."
+Topic=3,"yes"                             -> "Here you are. Look in your spellbook for the pronunciation of this spell.", DeleteMoney, EffectOpp(13), TeachSpell(String)
+Topic=3                                   -> "Maybe next time."
+
+}

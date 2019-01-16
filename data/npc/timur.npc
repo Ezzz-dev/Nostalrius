@@ -1,0 +1,91 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# timur.npc: Datenbank für den Händler Timur auf der Insel Fibula
+
+Name = "Timur"
+Outfit = (128,0-116-102-95)
+Home = [32191,32443,7]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$","timur",! -> "Hello, %N. Come in and buy."
+ADDRESS,"hi$","timur",!    -> *
+ADDRESS,"hello$",!         -> "Welcome to my little shop, adventurer! First read my blackboards."
+ADDRESS,"hi$",!            -> *
+ADDRESS,!                  -> Idle
+BUSY,"hello$",!            -> "Sorry, I am already talking to a customer, %N. Wait, please.", Queue
+BUSY,"hi$",!               -> *
+BUSY,!                     -> NOP
+VANISH,!                   -> "Bye, bye."
+
+"bye"       -> "Bye, bye.", Idle
+"farewell"  -> *
+"job"       -> "I am selling equipment. Do you want something?"
+"name"      -> "I am Timur. Sorry, I have not much equipment for sale. The business is running low."
+"timur"     -> *
+"time"      -> "I am sorry, I have no watch."
+"fibula"    -> "It's a very nice isle. But we don't have enough weapons to defeat the many wolves." 
+"wolf"      -> "They are everywhere around the village."
+"wolves"    -> *
+"helmet"    -> "I can sell you a viking helmet in a very good quality."
+"food"      -> "If you are looking for food, buy a rod and go fishing."
+"weapon"    -> "At the moment I have no weapons to offer. Weapons are very rare on this isle, so I have to buy a few."
+"bow"       -> "We have too few bows on this isle for our hunters."
+"crossbow"  -> "We have too few crossbows on this isle for our hunters."
+"fluid"     -> "The magic shops have a monopole on fluids now... argl!"
+"magic"     -> *
+
+"equipment"       -> "I sell torches, scrolls, documents, parchments, ropes, fishing rods, sixpacks of worms, arrows, bolts, and a nice helmet."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"offer"           -> *
+"ammo"            -> "I have arrows and bolts in this shop."
+"ammunition"      -> *
+
+"torch"           -> Type=2920, Amount=1,  Price=3,    "Do you want to buy a torch for %P gold?", Topic=1
+"scroll"          -> Type=2815, Amount=1,  Price=10,   "Do you want to buy a scroll for %P gold?", Topic=1
+"document"        -> Type=2834, Amount=1,  Price=12,   "Do you want to buy a document for %P gold?", Topic=1
+"parchment"       -> Type=2835, Amount=1,  Price=8,    "Do you want to buy a parchment for %P gold?", Topic=1
+"rope"            -> Type=3003, Amount=1,  Price=65,   "Do you want to buy a rope for %P gold?", Topic=1
+"rod"             -> Type=3483, Amount=1,  Price=170,  "Do you want to buy a fishing rod for %P gold?", Topic=1
+"arrow"           -> Type=3447, Amount=1, Price=3,   "Do you want to buy an arrow for %P gold?", Topic=1
+"bolt"            -> Type=3446, Amount=1, Price=4,   "Do you want to buy a bolt for %P gold?", Topic=1
+"viking","helmet" -> Type=3367, Amount=1,  Price=265,  "Do you want to buy a viking helmet for %P gold?", Topic=1
+
+%1,1<%1,"torch"           -> Type=2920, Amount=%1,  Price=3*%1,    "Do you want to buy %A torches for %P gold?", Topic=1
+%1,1<%1,"scroll"          -> Type=2815, Amount=%1,  Price=10*%1,   "Do you want to buy %A scrolls for %P gold?", Topic=1
+%1,1<%1,"document"        -> Type=2834, Amount=%1,  Price=12*%1,   "Do you want to buy %A documents for %P gold?", Topic=1
+%1,1<%1,"parchment"       -> Type=2835, Amount=%1,  Price=8*%1,    "Do you want to buy %A parchments for %P gold?", Topic=1
+%1,1<%1,"rope"            -> Type=3003, Amount=%1,  Price=65*%1,   "Do you want to buy %A ropes for %P gold?", Topic=1
+%1,1<%1,"rod"             -> Type=3483, Amount=%1,  Price=170*%1,  "Do you want to buy %A fishing rods for %P gold?", Topic=1
+%1,1<%1,"arrow"           -> Type=3447, Amount=%1, Price=3*%1,   "Do you want to buy %A arrows for %P gold?", Topic=1
+%1,1<%1,"bolt"            -> Type=3446, Amount=%1, Price=4*%1,   "Do you want to buy %A bolts for %P gold?", Topic=1
+%1,1<%1,"viking","helmet" -> Type=3367, Amount=%1,  Price=265*%1,  "Do you want to buy %A viking helmets for %P gold?", Topic=1
+
+"worm"          -> "I sell worms only in sixpacks for 5 gold each, how many sixpacks of worms do you want to buy?"
+"worms"         -> *
+%1,"worms"      -> Type=3492, Amount=%1*6, Price=5*%1,   "So you want to buy some of my sixpacks with altogether %A worms for %P gold?", Topic=1
+%1,"six","pack" -> *
+
+
+"sell","bow"             -> Type=3350, Amount=1, Price=130, "Do you want to sell a bow for %P gold?", Topic=2
+"sell","crossbow"        -> Type=3349, Amount=1, Price=160, "Do you want to sell a crossbow for %P gold?", Topic=2
+"sell","viking","helmet" -> Type=3367, Amount=1, Price=66,  "Do you want to sell a viking helmet for %P gold?", Topic=2
+"sell","mace"            -> Type=3286, Amount=1, Price=30,  "Do you want to sell a mace for %P gold?", Topic=2
+"sell","hatchet"         -> Type=3276, Amount=1, Price=25,  "Do you want to sell a hatchet for %P gold?", Topic=2
+
+"sell",%1,1<%1,"bow"             -> Type=3350, Amount=%1, Price=130*%1, "Do you want to sell %A bows for %P gold?", Topic=2
+"sell",%1,1<%1,"crossbow"        -> Type=3349, Amount=%1, Price=160*%1, "Do you want to sell %A crossbows for %P gold?", Topic=2
+"sell",%1,1<%1,"viking","helmet" -> Type=3367, Amount=%1, Price=66*%1,  "Do you want to sell %A viking helmets for %P gold?", Topic=2
+"sell",%1,1<%1,"mace"            -> Type=3286, Amount=%1, Price=30*%1,  "Do you want to sell %A maces for %P gold?", Topic=2
+"sell",%1,1<%1,"hatchet"         -> Type=3276, Amount=%1, Price=25*%1,  "Do you want to sell %A hatchets for %P gold?", Topic=2
+
+Topic=1,"yes",CountMoney>=Price -> "Thank you. Nice to do business with you.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "You've not enough money."
+Topic=1                         -> "Hmm, maybe next time."
+
+Topic=2,"yes",Count(Type)>=Amount -> "Ok. Here is your money.", Delete(Type), CreateMoney
+Topic=2,"yes"                             -> "Hey, you do not have one."
+Topic=2,"yes",Amount>1                    -> "Sorry, you do not have so many."
+Topic=2                                   -> "Maybe next time."
+}

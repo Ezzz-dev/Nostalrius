@@ -1,0 +1,11 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# dustrunner.npc: Datenbank fuer den Rennhund Dustrunner
+
+Name = "Dustrunner"
+Outfit = (32,0-0-0-0)
+Home = [32914,32076,6]
+Radius = 14
+
+Behaviour = {
+ADDRESS -> Idle
+}

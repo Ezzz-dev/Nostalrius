@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="centipede" nameDescription="a centipede" race="blood" experience="30" speed="43" manacost="335">
+	<health now="70" max="70" />
+	<look type="124" head="0" body="0" legs="0" feet="0" corpse="4354" />
+	<targetchange interval="1000" chance="6" />
+	<targetstrategy nearest="70" weakest="0" mostdamage="30" random="0" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="1" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="24" skill="30" poison="22">
+	</attacks>
+	<defenses armor="8" defense="9">
+	</defenses>
+	<immunities>
+		<immunity poison="1" />
+	</immunities>
+	<loot>
+		<item id="3031" countmax="15" chance="800" /> <!-- a gold coin -->
+		<item id="3286" countmax="1" chance="45" /> <!-- a mace -->
+		<item id="3264" countmax="1" chance="30" /> <!-- a sword -->
+	</loot>
+</monster>

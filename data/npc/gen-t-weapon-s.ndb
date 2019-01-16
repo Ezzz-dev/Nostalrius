@@ -1,0 +1,27 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gen-t-weapon-s.ndb: Datenbank für generischen Waffenverkauf
+
+"weapon"      -> "I have hand axes, axes, spears, maces, battle hammers, battle axes, sickles, short swords, swords, carlin swords, two handed swords, rapiers, daggers, clubs, morning stars and sabres. What's your choice?"
+
+"sickle"      -> Type=3293, Amount=1, Price=8,   "Do you want to buy a sickle for %P gold?", Topic=33               
+"short","sword"      -> Type=3294, Amount=1, Price=30,  "Do you want to buy a short sword for %P gold?", Topic=33
+"dagger"      -> Type=3267, Amount=1, Price=5,    "Do you want to buy a dagger for %P gold?", Topic=33
+"hand","axe"  -> Type=3268, Amount=1, Price=8,    "Do you want to buy a hand axe for %P gold?", Topic=33
+"spear"       -> Type=3277, Amount=1, Price=10,   "Do you want to buy a spear for %P gold?", Topic=33
+"rapier"      -> Type=3272, Amount=1, Price=15,   "Do you want to buy a rapier for %P gold?", Topic=33
+"axe"         -> Type=3274, Amount=1, Price=20,   "Do you want to buy an axe for %P gold?", Topic=33
+"sabre"       -> Type=3273, Amount=1, Price=35,   "Do you want to buy a sabre for %P gold?", Topic=33
+"sword"       -> Type=3264, Amount=1, Price=85,   "Do you want to buy a sword for %P gold?", Topic=33
+"mace"        -> Type=3286, Amount=1, Price=90,   "Do you want to buy a mace for %P gold?", Topic=33
+"club"        -> Type=3270, Amount=1, Price=5,    "Do you want to buy a club for %P gold?", Topic=33
+"battle","hammer"  -> Type=3305, Amount=1, Price=350,  "Do you want to buy a battle hammer for %P gold?", Topic=33
+"battle","axe"     -> Type=3266, Amount=1, Price=235,  "Do you want to buy a battle axe for %P gold?", Topic=33
+"morning","star"   -> Type=3282, Amount=1, Price=430,  "Do you want to buy a morning star for %P gold?", Topic=33
+"two","handed","sword" -> Type=3265, Amount=1, Price=950,  "Do you want to buy a two handed sword for %P gold?", Topic=33
+"carlin","sword"   -> Type=3283, Amount=1, Price=473,  "Do you want to buy one of the excellent carlin swords for %P gold?", Topic=33
+
+
+Topic=33,"yes",CountMoney>=Price -> "Thank you. Here it is.", DeleteMoney, Create(Type)
+Topic=33,"yes"                   -> "Sorry, you do not have enough gold."
+Topic=33                         -> "Maybe you will buy it another time."
+

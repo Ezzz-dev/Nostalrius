@@ -1,0 +1,56 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# pemaret.npc: Fischer Pemaret auf Cormaya
+
+Name = "Pemaret"
+Outfit = (128,79-10-127-127)
+Home = [33287,31956,6]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",male,!   -> "Greetings, young man. Looking for a passage or some fish, %N?"
+ADDRESS,"hi$",male,!      -> *
+ADDRESS,"hello$",female,! -> "Greetings, young lady. Looking for a passage or some fish, %N?"
+ADDRESS,"hi$",female,!    -> *
+ADDRESS,!                 -> Idle
+BUSY,"hello$",!           -> "One moment please, %N.", Queue
+BUSY,"hi$",!              -> *
+BUSY,!                    -> NOP
+VANISH,!                  -> "Good bye. You are welcome."
+
+"bye"          -> "Good bye. You are welcome.", Idle
+"farewell"     -> *
+"name"         -> "My name is Pemaret, the fisherman."
+"job"          -> "I'm a fisherman and I take along people to Edron. You can also buy some fresh fish."
+"tibia"        -> "I love to sail on the seas of Tibia."
+"sea"          -> *
+"cormaya"      -> "It's a lovely and peaceful isle. Did you already visit the nice sandy beach?"
+"isle"         -> *
+"beach"        -> "There is a nice sandy beach in the west of Cormaya."
+
+"ship"         -> "My boat is ready to bring you to Edron."
+"boat"         -> *
+"passage"      -> *
+
+"edron"        -> Price=20, "Do you want to get to Edron for %P gold?", Topic=1
+"edron",QuestValue(250)>2        -> Price=10, "Do you want to get to Edron for %P gold?", Topic=1
+
+"fish"         -> Type=3578, Amount=1,  Price=5,    "Do you want to buy a fresh fish for %P gold?", Topic=2
+%1,1<%1,"fish" -> Type=3578, Amount=%1, Price=5*%1, "Do you want to buy %A fresh fishes for %P gold?", Topic=2
+
+"eremo"        -> "Oh, you know the good old sage Eremo. I can bring you to his little island. Do you want me to do that?", Topic=3
+"sage"         -> *
+
+Topic=1,"yes",PZBlock,! -> "First get rid of those blood stains! You are not going to ruin my vehicle!"
+Topic=3,"yes",PZBlock,! -> *
+
+Topic=1,"yes",CountMoney>=Price -> "Here we go!", DeleteMoney, Idle, EffectOpp(11), Teleport(33175,31764,6), EffectOpp(11)
+Topic=1,"yes"                   -> "You don't have enough money."
+Topic=1                         -> "Maybe later."
+
+Topic=2,"yes",CountMoney>=Price -> "Here it is.", DeleteMoney, Create(Type)
+Topic=2,"yes"                   -> "I am sorry, but you do not have enough gold."
+Topic=2                         -> "Maybe later."
+
+Topic=3,"yes" -> "Here we go!", Idle, EffectOpp(11), Teleport(33315,31882,7), EffectOpp(11)
+Topic=3       -> "Maybe later."
+}

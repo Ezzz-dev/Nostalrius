@@ -1,0 +1,53 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# digger.npc: Datenbank für den Magieladen-Verkäufer Digger
+
+Name = "Digger"
+Outfit = (9,0-0-0-0)
+Home = [32970,32087,6]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Oh, %N is that you? You look inconveniently healthy."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Wait %N, your time will finally come.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Bye."
+
+"bye"       -> "Bye.", Idle
+"farewell"  -> *
+"name"      -> "They call me Digger, that fine with me."
+"frans"     -> "I think the FRANS is bugged."
+"digger"    -> "So what?"
+"job"       -> "I am selling some potions."
+"sorcerer"  -> "The way of the magicwielder is the only way to true power."
+"druid"     -> *
+"magic"     -> "This is the magic market. Just have a look around."
+"market"    -> *
+"vladruc"   -> "Better don't cross the master!" 
+"urghain"   -> * 
+"ferumbras" -> "An upstart of minor skills and great ambitions."
+"excalibug" -> "Just a knights' legend."
+
+"offer"           -> "You may be interested in my life and mana fluids."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"potion"          -> *
+
+"life","fluid" -> Type=2874, Data=11, Amount=1, Price=60, "Do you want to buy life fluid for %P gold?", Topic=2
+"mana","fluid" -> Type=2874, Data=10, Amount=1, Price=55, "Do you want to buy mana fluid for %P gold?", Topic=2
+%1,1<%1,"life","fluid" -> Type=2874, Data=11, Amount=%1, Price=60*%1, "Do you want to buy %A potions of life fluid for %P gold?", Topic=2
+%1,1<%1,"mana","fluid" -> Type=2874, Data=10, Amount=%1, Price=55*%1, "Do you want to buy %A potions of mana fluid for %P gold?", Topic=2
+
+"deposit" -> "I will pay you 5 gold for every empty vial. Ok?", Data=0, Topic=3
+"vial"    -> *
+"flask"   -> *
+
+Topic=2,"yes",CountMoney>=Price -> "Here you are. There is a deposit of 5 gold on the vial.", DeleteMoney, Create(Type)
+Topic=2                         -> "Don't overestimate my patience."
+
+Topic=3,"yes",Count(2874)>0 -> Amount=Count(2874), Price=Amount*5, "Here you are ... %P gold.", Delete(2874), CreateMoney
+Topic=3                     -> "Don't overestimate my patience."
+}

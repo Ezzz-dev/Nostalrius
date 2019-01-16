@@ -1,0 +1,20 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# apparition.npc: Datenbank für einen Geist
+
+Name = "A Tortured Soul"
+Outfit = (48,0-0-0-0)
+Home = [32207,31928,12]
+Radius = 7
+
+Behaviour = {
+ADDRESS,"hello$",! -> NOP
+ADDRESS,"hi$",!    -> NOP
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> NOP
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> NOP
+
+"bye"       -> Idle
+
+}

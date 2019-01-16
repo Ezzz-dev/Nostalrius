@@ -1,0 +1,56 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# ashtamor.npc: Krematoriumsbesitzer Ashtamor
+
+Name = "Ashtamor"
+Outfit = (130,19-114-76-114)
+Home = [32958,32088,6]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",!     -> "Welcome, %N, wanderer between the worlds."
+ADDRESS,"hi$",!        -> *
+ADDRESS,"greetings$",! -> *
+ADDRESS,!              -> Idle
+BUSY,"hello$",!        -> "The time comes for everyone, %N.", Queue
+BUSY,"hi$",!           -> *
+BUSY,"greetings$",!    -> *
+BUSY,!                 -> NOP
+VANISH,!               -> "See you again ... sooner or later, more or less alive."
+
+"bye"         -> "See you again ... sooner or later, more or less alive.", Idle
+"job"         -> "I consider myself as a guide, a guardian over the souls who transcend the border to another world." 
+"crematory"   -> "Such an ugly word for this wonderful place. It is a door, a portal to a better world than this one is."
+"name"        -> "What is a name worth in your eyes? And more important: Does the choice of your name decide your further fate? Perhaps we will never know."
+"time"        -> "It's %T now, but the true question is: How much time is left?"
+"fire"        -> "The purging force of the fire ... after having been purified, the freed souls will depart with the smoke."
+"soul"        -> "The essence of life. Source of your very self. While the body is in space and time, the soul exists in time only."
+"body"        -> "Is the mind an emination of body, or the body an invention by the mind?"
+"death"       -> "What else does it mean than the loss of your weak physical shell? And isn't the true power in the universe rather mental than physical?"
+"venore"      -> "You come to this world naked, and leave it this way, so there's no need to hold back your money, especially not in a place like Venore."
+"king"        -> "Kings, queens ... I've seen them come and go. Everything fades, even the glory and wealth of the richest."
+"monster"     -> "Oh yes, monsters can grant you a passage to the afterlife also, but it's not a comfortable trip. <chuckles>"
+"thanks"      -> "'Thank you' ... Words I rarely here these days. Tell me when I might be of service again, %N."
+"thank","you" -> *
+"help"        -> "What help might I offer you except guidance? Would you like me to help you transcend the border to the afterlife?", Topic=1
+
+Topic=1,"yes" -> "Are you sure? You might not be able to come back, consider that.", Topic=2
+Topic=1,"no"  -> "Come to me when you have changed your mind, wanderer."
+Topic=2,"yes" -> EffectOpp(16), EffectMe(14), "Hmm... seems you are not ready yet to let go."
+Topic=2,"no"  -> "Come to me when you have changed your mind, wanderer."
+
+"buy"             -> "I am offering vases and amphoras, the perfect vessel for dusty remains of whatever sort."
+"do","you","sell" -> *
+"do","you","have" -> *
+"offer"           -> *
+
+"vase"    -> Type=2876, Amount=1, Price=3, "Do you want to buy a vase for %P gold?", Topic=3
+"amphora" -> Type=2893, Amount=1, Price=4, "Do you want to buy an amphora for %P gold?", Topic=3
+
+%1,1<%1,"vase"    -> Type=2876, Amount=%1, Price=3*%1, "Do you want to buy %A vases for %P gold?", Topic=3
+%1,1<%1,"amphora" -> Type=2893, Amount=%1, Price=4*%1, "Do you want to buy %A amphoras for %P gold?", Topic=3
+
+
+Topic=3,"yes",CountMoney>=Price -> "May it be of good use to you. ", DeleteMoney, Create(Type)
+Topic=3,"yes"                   -> "Sorry, that's not even enough for a shard of my quality wares."
+Topic=3                         -> "Do you really want to leave the choice of your future vessel to chance?"
+}

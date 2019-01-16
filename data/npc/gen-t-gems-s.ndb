@@ -1,0 +1,28 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gen-t-gems-s.ndb: Datenbank für generischen Edelsteinverkauf
+
+
+
+"offer"           -> "I can offer you various gems, pearls or some wonderful jewels."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"gem"             -> "You can buy and sell small diamonds, sapphires, rubies, emeralds, and amethysts."
+"pearl"           -> "There are white and black pearls you can buy or sell."
+"jewel"           -> "Currently you can purchase wedding rings, golden amulets, and ruby necklaces."
+
+"wedding","ring"   -> Type=3004, Amount=1, Price=990,  "Do you want to buy a wedding ring for %P gold?", Topic=29
+"golden","amulet"  -> Type=3013, Amount=1, Price=6600, "Do you want to buy a golden amulet for %P gold?", Topic=29
+"ruby","necklace"  -> Type=3016, Amount=1, Price=3560, "Do you want to buy a ruby necklace for %P gold?", Topic=29
+"white","pearl"    -> Type=3026, Amount=1, Price=320,  "Do you want to buy a white pearl for %P gold?", Topic=29
+"black","pearl"    -> Type=3027, Amount=1, Price=560,  "Do you want to buy a black pearl for %P gold?", Topic=29
+"small","diamond"  -> Type=3028, Amount=1, Price=600,  "Do you want to buy a small diamond for %P gold?", Topic=29
+"small","sapphire" -> Type=3029, Amount=1, Price=500,  "Do you want to buy a small sapphire for %P gold?", Topic=29
+"small","ruby"     -> Type=3030, Amount=1, Price=500,  "Do you want to buy a small ruby for %P gold?", Topic=29
+"small","emerald"  -> Type=3032, Amount=1, Price=500,  "Do you want to buy a small emerald for %P gold?", Topic=29
+"small","amethyst" -> Type=3033, Amount=1, Price=400,  "Do you want to buy a small amethyst for %P gold?", Topic=29
+
+Topic=29,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=29,"yes"                   -> "Come back, when you have enough money."
+Topic=29                         -> "Hmm, but next time."
+

@@ -1,0 +1,11 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# arnold.npc: Datenbank für eine Stadtwache in Venore
+
+Name = "Arnold"
+Outfit = (131,113-113-113-115)
+Home = [32945,32070,6]
+Radius = 6
+
+Behaviour = {
+@"guards-venore.ndb"
+}

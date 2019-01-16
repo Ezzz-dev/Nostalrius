@@ -1,0 +1,65 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# tom.npc: Datenbank fuer den Gerber Tom
+
+Name = "Tom"
+Outfit = (129,113-115-58-115)
+Home = [32085,32199,7]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",! -> "I'm Tom the Tanner. How can I help you %N?"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Please wait, %N. I'll call you in a minute.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Doh?"
+
+"bye",male         -> "Good hunting, son.", Idle
+"farewell",male    -> *
+"bye",female       -> "Good hunting, child.", Idle
+"farewell",female  -> *
+"how","are","you" -> "Much to do, these days."
+"job"             -> "I'm the local tanner. I buy fresh animal corpses, tan them, and convert them into fine leather clothes ...","I'm only selling to major customers. But I'm buying fresh corpses of rats, rabbits and wolves from you."
+"name"            -> "My name is Tom the tanner."
+
+"tanner"          -> "That's my job. I buy fresh animal corpses, tan them, and convert them into fine leather clothes."
+"corpse"          -> "I'm buying fresh corpses of rats, rabbits and wolves. What do you want to sell?"
+"animal"          -> *
+"monster"         -> *
+"wares"           -> *
+"major"           -> "Yes. Obi, Norma and good old Al. Go ask them for leather clothes."
+"customer"        -> *
+
+"time"            -> "Sorry, I haven't been outside for a while, so I don't know."
+"help"            -> "Help? I will give you a few gold coins if you have some dead animals for me."
+
+"troll"           -> "Troll leather stinks. Can't use it."
+"orc"             -> "I don't buy Orcs. Their skin is too scratchy."
+"human"           -> "Are you crazy?!", Idle
+
+"rat",Questvalue(224)=0     -> Type=3994, Amount=1, Price=2,  "I'll give you %P gold for a dead rat. Do you accept?", Topic=2
+"rabbit",Questvalue(224)=0  -> Type=4173, Amount=1, Price=2,  "I'll give you %P gold for a dead rabbit. Do you accept?", Topic=2
+"rat"     -> Type=3994, Amount=1, Price=2,  "I'll give you %P gold for a dead rat. Do you accept?", Topic=1
+"rabbit"  -> Type=4173, Amount=1, Price=2,  "I'll give you %P gold for a dead rabbit. Do you accept?", Topic=1
+"wolf"    -> Type=4007, Amount=1, Price=5,  "Do you want to sell a dead wolf for %P gold?", Topic=1
+
+%1,1<%1,"rat",Questvalue(224)=0     -> Type=3994, Amount=%1, Price=2*%1,  "I'll give you %P gold for %A dead rats. Do you accept?", Topic=2
+%1,1<%1,"rabbit",Questvalue(224)=0  -> Type=4173, Amount=%1, Price=2*%1,  "I'll give you %P gold for %A dead rabbits. Do you accept?", Topic=2
+%1,1<%1,"rat"     -> Type=3994, Amount=%1, Price=2*%1,  "I'll give you %P gold for %A dead rats. Do you accept?", Topic=1
+%1,1<%1,"rabbit"  -> Type=4173, Amount=%1, Price=2*%1,  "I'll give you %P gold for %A dead rabbits. Do you accept?", Topic=1
+%1,1<%1,"wolf"    -> Type=4007, Amount=%1, Price=5*%1,  "Do you want to sell %A dead wolves for %P gold?", Topic=1
+%1,1<%1,"wolves"    -> Type=4007, Amount=%1, Price=5*%1,  "Do you want to sell %A dead wolves for %P gold?", Topic=1
+
+Topic=1,"yes",Count(Type)>=Amount -> "Ok. Corpse for me, gold for you.", Delete(Type), CreateMoney
+Topic=1,"yes"                             -> "Sorry, you do not have a fresh one."
+Topic=1,"yes",Amount>1                    -> "Sorry, you do not have so many."
+Topic=1                                   -> "Maybe another time."
+
+Topic=2,"yes",Count(Type)>=Amount -> "Deal. By the way: If you'd like to hunt something bigger, check the cellar of the stables to the north. Some adventurer used to store his loot under a loose board beneath a barrel. He might have forgotten something when he left the isle.", Delete(Type), CreateMoney
+Topic=2,"yes"                             -> "Sorry, you do not have a fresh one."
+Topic=2,"yes",Amount>1                    -> "Sorry, you do not have so many."
+Topic=2                                   -> "Maybe another time."
+
+"sell"            -> "Sorry. I'm only selling to major customers. But I'm buying fresh corpses of rats, rabbits and wolves from you."
+}

@@ -1,0 +1,41 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# guards-darama.ndb: Datenbank für die Stadtwachen von Darama
+
+ADDRESS,"hello$",! -> "Daraman's blessings!"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$"      -> "I am busy!"
+BUSY,"hi$"         -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Daraman's blessings!"
+
+"bye"            -> "Daraman's blessings!", Idle
+"news"           -> "The evil of Drefia is strong in these days."
+"how","are","you"-> "I am on guard and my soul is strong."
+"sell"           -> "Go to the bazaar in the middle of the town."
+"buy"            -> *
+"caliph"         -> "Our leader is enlightened by Daraman, thrice praised be his name!"
+"leader"         -> *
+"job"            -> "I am a protector of the people of Darashia."
+"army"           -> "This information is confidential."
+"guard"          -> *
+"daraman"        -> "The ancient prophet brought our people here from a place long forgotten." 
+"pilgrim"        -> "Darama led his people on a pilgrimage to the holy lands of Darama to escape temptations and distractions."
+"necromancer"    -> "It's said they fled from the corrupted continent of the thaian empire after losing some battles."
+"city"           -> "This city is lovely Darashia, pearl of Darama."
+"darashia"       -> *
+"darama"         -> "Darashia is the heart of Darama. In the northeast, across the Devourer, there is the dark pyramid. In the west, across the Plague Spike, are the cursed ruins of Drefia."
+"plague","spike" -> "Mountain of Poison, Scorpions Rock, it's known by many names. It's to the west of Darashia."
+"devourer"       -> "The great desert devoured many of the first pilgrims. We learned the ways of the devourer and thus conquered it."
+"pyramid"        -> "The minotaurs took shelter in the ancient pyramid, which our people avoid for the dark powers that might be present there."
+"drefia"         -> "The ruins of Drefia in the far west are the hideout of the vile necromancer cult that once corrupted this city."
+
+"fuck"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"idiot"          -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"asshole"        -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"ass$"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"fag$"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"stupid"         -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"tyrant"         -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"shit"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"lunatic"        -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)

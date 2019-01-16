@@ -1,0 +1,35 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# genTfruitV.ndb:  Datenbank für generischen Früchteverkauf
+
+
+"corncob"    -> Type=3597, Amount=1, Price=3, "Do you want to buy a corncob for %P gold?", Topic=24
+"cherry"     -> Type=3590, Amount=1, Price=1, "Do you want to buy a cherry for %P gold?", Topic=24
+"grapes"     -> Type=3592, Amount=1, Price=3, "Do you want to buy grapes for %P gold?", Topic=24
+"melon"      -> Type=3593, Amount=1, Price=8, "Do you want to buy a melon for %P gold?", Topic=24
+"banana"     -> Type=3587, Amount=1, Price=2, "Do you want to buy a banana for %P gold?", Topic=24
+"strawberry" -> Type=3591, Amount=1, Price=1, "Do you want to buy a strawberry for %P gold?", Topic=24
+"carrot"     -> Type=3595, Amount=1, Price=3, "Do you want to buy a carrot for %P gold?", Topic=24
+"apple"      -> Type=3585, Amount=1, Price=3, "Do you want to buy an apple for %P gold?", Topic=24
+"pear"       -> Type=3584, Amount=1, Price=4, "Do you want to buy a pear for %P gold?", Topic=24
+"blueberry"        -> Type=3588, Amount=1, Price=1,  "Do you want to buy a blueberry for %P gold?", Topic=24
+
+"white","mushroom" -> Type=3723, Amount=1, Price=10, "Do you want to buy one of the white mushrooms for %P gold?", Topic=24
+
+
+%1,1<%1,"corncob"    -> Type=3597, Amount=%1, Price=3*%1, "Do you want to buy %A corncobs for %P gold?", Topic=24
+%1,1<%1,"cherry"     -> Type=3590, Amount=%1, Price=1*%1, "Do you want to buy %A cherrys for %P gold?", Topic=24
+%1,1<%1,"grapes"     -> Type=3592, Amount=%1, Price=3*%1, "Do you want to buy %A grapes for %P gold?", Topic=24
+%1,1<%1,"melon"      -> Type=3593, Amount=%1, Price=8*%1, "Do you want to buy %A melons for %P gold?", Topic=24
+%1,1<%1,"banana"     -> Type=3587, Amount=%1, Price=2*%1, "Do you want to buy %A bananas for %P gold?", Topic=24
+%1,1<%1,"strawberries" -> Type=3591, Amount=%1, Price=1*%1, "Do you want to buy %A strawberries for %P gold?", Topic=24
+%1,1<%1,"carrot"     -> Type=3595, Amount=%1, Price=3*%1, "Do you want to buy %A carrots for %P gold?", Topic=24
+%1,1<%1,"apple"      -> Type=3585, Amount=%1, Price=3*%1, "Do you want to buy %A apples for %P gold?", Topic=24
+%1,1<%1,"pear"       -> Type=3584, Amount=%1, Price=4*%1, "Do you want to buy %A pears for %P gold?", Topic=24
+%1,1<%1,"blueberries"        -> Type=3588, Amount=%1, Price=1*%1,  "Do you want to buy %A blueberries for %P gold?", Topic=24
+
+
+%1,1<%1,"white","mushroom" -> Type=3723, Amount=%1, Price=10*%1, "Do you want to buy %A of the white mushrooms for %P gold?", Topic=24
+
+Topic=24,"yes",CountMoney>=Price -> "Thank you. Here it is.", DeleteMoney, Create(Type) 
+Topic=24,"yes"                   -> "Sorry, you do not have enough gold." 
+Topic=24                         -> "Maybe you will buy it another time." 

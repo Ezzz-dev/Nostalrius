@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="sibang" nameDescription="a sibang" race="blood" experience="100" speed="67" manacost="0">
+	<health now="225" max="225" />
+	<look type="118" head="0" body="0" legs="0" feet="0" corpse="4339" />
+	<targetchange interval="1000" chance="50" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="4" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="20" skill="33">
+		<attack name="physical" min="-35" max="-55" range="7" chance="4">
+			<attribute key="shootEffect" value="smallstone" />
+		</attack>
+	</attacks>
+	<defenses armor="15" defense="32">
+		<defense name="speed" speedchange="75" variation="5" duration="3000" chance="9">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity invisible="1" />
+	</immunities>
+	<voices>
+		<voice sentence="Eeeeek! Eeeeek" />
+		<voice sentence="Huh! Huh! Huh!" />
+		<voice sentence="Ahhuuaaa!" />
+	</voices>
+	<loot>
+		<item id="3587" countmax="2" chance="300" /> <!-- a banana -->
+		<item id="3587" countmax="10" chance="50" /> <!-- a banana -->
+		<item id="3352" countmax="1" chance="40" /> <!-- a chain helmet -->
+		<item id="3589" countmax="5" chance="200" /> <!-- a coconut -->
+		<item id="3031" countmax="25" chance="800" /> <!-- a gold coin -->
+		<item id="3593" countmax="1" chance="100" /> <!-- a melon -->
+		<item id="3586" countmax="5" chance="200" /> <!-- an orange -->
+		<item id="1781" countmax="3" chance="300" /> <!-- a small stone -->
+	</loot>
+</monster>

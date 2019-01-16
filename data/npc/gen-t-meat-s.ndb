@@ -1,0 +1,14 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gen-tmeat-s.ndb:  Datenbank für generischen Fleischverkauf
+
+
+"meat"   -> Type=3577, Amount=1, Price=5, "Do you want to buy meat for %P gold?", Topic=39
+"ham"    -> Type=3582, Amount=1, Price=8, "Do you want to buy a ham for %P gold?", Topic=39
+
+
+%1,1<%1,"meat"   -> Type=3577, Amount=%1, Price=5*%1, "Do you want to buy %A meat for %P gold?", Topic=39
+%1,1<%1,"ham"    -> Type=3582, Amount=%1, Price=8*%1, "Do you want to buy %A ham for %P gold?", Topic=39
+
+Topic=39,"yes",CountMoney>=Price -> "Here it is.", DeleteMoney, Create(Type)
+Topic=39,"yes"                   -> "I am sorry, but you do not have enough gold."
+Topic=39                         -> "Maybe later."

@@ -1,0 +1,25 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gen-t-furniture-containers-s.ndb: Datenbank für generischen Möbelverkauf - Container
+# Verwendete Topics: 81
+
+#"offer"           -> "I sell statues, tables, chairs, flowers, pillows, pottery, instruments, decoration, tapestries and containers."
+#"furniture"       -> *
+#"goods"           -> *
+#"do","you","sell" -> *
+#"do","you","have" -> *
+
+"containers"      -> "I offer drawers, dressers, lockers, crates, chests, boxes, barrels, trunks and troughs."
+"drawer"          -> Type=2789, Amount=1, Price=18, "You want to buy drawers for %P gold?", Topic=81
+"dresser"         -> Type=2790, Amount=1, Price=25, "You want to buy a dresser for %P gold?", Topic=81
+"locker"          -> Type=2791, Amount=1, Price=30, "You want to buy a locker for %P gold?", Topic=81
+"crate"           -> Type=2471, Amount=1, Price=10, "Do you want to buy a crate for %P gold?", Topic=81
+"chest"           -> Type=2472, Amount=1, Price=10, "Do you want to buy a chest for %P gold?", Topic=81
+"box"             -> Type=2469, Amount=1, Price=10, "Do you want to buy a box for %P gold?", Topic=81
+"barrel"          -> Type=2793, Amount=1, Price=12, "Do you want to buy a barrel for %P gold?", Topic=81
+"trough"          -> Type=2792, Amount=1, Price=7,  "Do you want to buy a trough for %P gold?", Topic=81
+"trunk"           -> Type=2794, Amount=1, Price=10, "Do you want to buy a trunk for %P gold?", Topic=81
+
+Topic=81,"yes",Premium,CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=81,"yes",CountMoney>=Price         -> "I'm sorry, but you need a premium account if you want to buy furniture."
+Topic=81,"yes"                           -> "Come back, when you have enough money."
+Topic=81                                 -> "Hmm, but I'm sure, it would fit nicely into your house."

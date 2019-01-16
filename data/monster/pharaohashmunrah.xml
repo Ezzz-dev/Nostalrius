@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="Ashmunrah" nameDescription="Ashmunrah" race="undead" experience="3100" speed="175" manacost="0">
+	<health now="5000" max="5000" />
+	<look type="91" head="0" body="0" legs="0" feet="0" corpse="4215" />
+	<targetchange interval="1000" chance="5" />
+	<targetstrategy nearest="70" weakest="0" mostdamage="30" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="74" skill="150" poison="165">
+		<attack name="lifedrain" min="-400" max="-700" range="1" chance="15" />
+		<attack name="poison" min="-300" max="-500" range="7" chance="9">
+			<attribute key="shootEffect" value="poison" />
+			<attribute key="areaEffect" value="poison" />
+		</attack>
+		<attack name="physical" min="-250" max="-750" range="7" chance="6">
+			<attribute key="shootEffect" value="energy" />
+			<attribute key="areaEffect" value="mortarea" />
+		</attack>
+		<attack name="speed" speedchange="-100" variation="10" duration="50000" range="7" chance="4">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+		<attack name="lifedrain" min="-150" max="-550" length="8" spread="3" chance="8">
+			<attribute key="areaEffect" value="yellowbubble" />
+		</attack>
+	</attacks>
+	<defenses armor="74" defense="74">
+		<defense name="healing" min="200" max="400" chance="5">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+		<defense name="invisible" duration="2000" chance="15">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+		<defense name="outfit" monster="ancient scarab" duration="6000" chance="35">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity outfit="1" />
+		<immunity lifedrain="1" />
+		<immunity paralyze="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<summons maxSummons="6">
+		<summon name="ancient scarab" chance="7" max="2" />
+		<summon name="green djinn" chance="9" max="4" />
+	</summons>
+	<voices>
+		<voice sentence="I might be trapped but not without power." />
+		<voice sentence="Ahhhh all those long years." />
+		<voice sentence="Ages come, ages go. Asmumrah remains." />
+		<voice sentence="My traitorous son has sent thee." />
+		<voice sentence="No mortal or undead will steal my secrets." />
+		<voice sentence="You will be history soon." />
+		<voice sentence="Come to me, my allys and underlings." />
+	</voices>
+	<loot>
+		<item id="3381" countmax="1" chance="5" /> <!-- a crown armor -->
+		<item id="3031" countmax="90" chance="400" /> <!-- a gold coin -->
+		<item id="3031" countmax="80" chance="700" /> <!-- a gold coin -->
+		<item id="3031" countmax="85" chance="500" /> <!-- a gold coin -->
+		<item id="3031" countmax="95" chance="350" /> <!-- a gold coin -->
+		<item id="3332" countmax="1" chance="1" /> <!-- a hammer of wrath -->
+		<item id="3023" countmax="1" chance="1" /> <!-- a holy scarab -->
+		<item id="3048" countmax="1" chance="50" /> <!-- a might ring -->
+		<item id="3017" countmax="1" chance="40" /> <!-- a silver brooch -->
+	</loot>
+</monster>

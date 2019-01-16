@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="goblin" nameDescription="a goblin" race="blood" experience="25" speed="20" manacost="290">
+	<health now="50" max="50" />
+	<look type="61" head="0" body="0" legs="0" feet="0" corpse="4121" />
+	<targetchange interval="1000" chance="0" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="1" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag runonhealth="15" />
+	</flags>
+	<attacks attack="10" skill="15">
+		<attack name="physical" min="-15" max="-25" range="7" chance="12">
+			<attribute key="shootEffect" value="smallstone" />
+		</attack>
+	</attacks>
+	<defenses armor="6" defense="8">
+	</defenses>
+	<voices>
+		<voice sentence="Me have him!" />
+		<voice sentence="Zig Zag! Gobo attack!" />
+		<voice sentence="Help! Goblinkiller!" />
+		<voice sentence="Bugga! Bugga!" />
+		<voice sentence="Me green, me mean!" />
+	</voices>
+	<loot>
+		<item id="3115" countmax="1" chance="120" /> <!-- a bone -->
+		<item id="3337" countmax="1" chance="50" /> <!-- a bone club -->
+		<item id="3267" countmax="1" chance="180" /> <!-- a dagger -->
+		<item id="3578" countmax="1" chance="130" /> <!-- a fish -->
+		<item id="3031" countmax="9" chance="500" /> <!-- a gold coin -->
+		<item id="3361" countmax="1" chance="75" /> <!-- a leather armor -->
+		<item id="3355" countmax="1" chance="100" /> <!-- a leather helmet -->
+		<item id="3120" countmax="1" chance="70" /> <!-- a moldy cheese -->
+		<item id="3294" countmax="1" chance="90" /> <!-- a short sword -->
+		<item id="3462" countmax="1" chance="100" /> <!-- a small axe -->
+		<item id="1781" countmax="3" chance="300" /> <!-- a small stone -->
+	</loot>
+</monster>

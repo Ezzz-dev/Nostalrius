@@ -1,0 +1,88 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# amanda.npc: Datenbank für die Nonne Amanda
+
+Name = "Amanda"
+Outfit = (138,96-95-0-95)
+Home = [33222,31814,8]
+Radius = 5
+
+Behaviour = {
+ADDRESS,"hello$",!      -> "Welcome to the temple of Banor's blood %N."
+ADDRESS,"hi$",!         -> *
+ADDRESS,!               -> Idle
+BUSY,"hello$",!         -> "Please wait a moment, %N.", Queue
+BUSY,"hi$",!            -> *
+BUSY,"heal$",Burning>0 -> "You are burning. I will help you.", Burning(0,0), EffectOpp(15)
+BUSY,"heal$",Poison>0  -> "You are poisoned. I will help you.", Poison(0,0), EffectOpp(14)
+BUSY,"heal$",HP<40     -> "You are looking really bad. Let me heal your wounds.", HP=40, EffectOpp(13)
+BUSY,"heal$"           -> "You aren't looking really bad. Sorry, I can't help you."
+BUSY,!                  -> NOP
+VANISH,!                -> "If you are heavily wounded or poisoned, feel free to return for a healing."
+
+"bye"       -> "Farewell, %N!", Idle
+"job"       -> "I am a humble nun."
+"name"      -> "I am sister Amanda."
+"tibia"     -> "That's our world."
+"god"       -> "They created the world and all life on it."
+"king"      -> "Our king is a religious man. A shining example."
+"tibianus"  -> *
+"army"      -> "Our army lives to the ideals of Banor."
+"banor"     -> *
+"ferumbras" -> "He is a pawn of evil."
+"excalibug" -> "Only a being loyal to Banor will wield this blade."
+"news"      -> "Sorry, I rarely have time to chat."
+"time"      -> "Now, it is %T."
+
+"heal$",Burning>0 -> "You are burning. I will help you.", Burning(0,0), EffectOpp(15)
+"heal$",Poison>0  -> "You are poisoned. I will help you.", Poison(0,0), EffectOpp(14)
+"heal$",HP<40     -> "You are looking really bad. Let me heal your wounds.", HP=40, EffectOpp(13)
+
+"heal$",PvPEnforced -> "You aren't looking that bad."
+"heal$"               -> "You aren't looking that bad. Sorry, I can't help you. But if you are looking for additional protection you should go on the pilgrimage of ashes."
+
+"blessing",PvPEnforced,!  -> "The lifeforce of this world is waning. There are no more blessings avaliable on this world."
+"pilgrimage",PvPEnforced,! -> *
+"ashes",PvPEnforced,! -> *
+
+"spiritual",PvPEnforced,! -> *
+"shielding",PvPEnforced,! -> *
+"sacred","places",PvPEnforced,! -> *
+"spark",PvPEnforced,! -> *
+"phoenix",PvPEnforced,! -> *
+"embrace",PvPEnforced,! -> *
+"fire",PvPEnforced,! -> *
+"suns",PvPEnforced,! -> *
+"wisdom",PvPEnforced,! -> *
+"solitude",PvPEnforced,! -> *
+
+
+"pilgrimage"     -> "Whenever you receive a lethal wound your lifeforce is damaged. With every single of the five blessings you have this damage will be reduced."
+"ashes"          -> *
+"blessing"  -> "There are five different blessings available in five sacred places. These blessings are: the spiritual shielding, the spark of the phoenix, the embrace of tibia, the fire of the suns and the wisdom of solitude." 
+"sacred","places"  -> "Just ask in which of the five blessings you are interested in."
+
+"spiritual", QuestValue(104) > 0 -> "I see you received the spiritual shielding in the whiteflower temple south of Thais."
+"shielding", QuestValue(104) > 0 -> *
+"spiritual" -> "You can receive the spiritual shielding in the whiteflower temple south of Thais."
+"shielding" -> *
+
+"spark", QuestValue(102) > 0 -> "I an sense that the spark of the phoenix already was given to you by the dwarven priests of earth and fire in Kazordoon."
+"phoenix", QuestValue(102) > 0 -> *
+"spark" -> "The spark of the phoenix is given by the dwarven priests of earth and fire in Kazordoon."
+"phoenix" -> *
+
+"embrace", QuestValue(105) > 0 -> "I can sense the druids north of Carlin provided you with the embrace of tibia."
+"embrace" -> "The druids north of Carlin can provide you with the embrace of tibia."
+
+"fire","suns", QuestValue(103) > 0     -> "I can see you recieved the blessing of the two suns in the suntower near Ab'Dendriel ."
+"suns", QuestValue(103) > 0  -> *
+"fire","suns"     -> "Ask for the blessing of the two suns in the suntower near Ab'Dendriel ."
+"suns"  -> *
+
+
+"wisdom", QuestValue(101) > 0 -> "I can sense you already talked to the hermit Eremo on the isle of Cormaya and recieved this blessing." 
+"solitude", QuestValue(101) > 0 -> *
+"wisdom" -> "Talk to the hermit Eremo on the isle of Cormaya about this blessing." 
+"solitude" -> *
+
+}

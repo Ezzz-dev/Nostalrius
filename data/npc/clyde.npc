@@ -1,0 +1,79 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# clyde.npc: Datenbank für den Tavernenbesitzer Clyde
+
+Name = "Clyde"
+Outfit = (128,98-40-48-95)
+Home = [32573,32753,7]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Greetings, dear customer."
+ADDRESS,"hi$",!    -> *
+ADDRESS,"hiho$",!    -> *
+ADDRESS,!          -> Idle
+
+BUSY,"hello$",!    -> "Please wait a moment.", Queue
+BUSY,"hi$",!       -> *
+BUSY,"hiho$",!    -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Good bye."
+
+"bye"      -> "Good bye, visit us again.", Idle
+"farewell" -> *
+"job"      -> "I am your host. I run this tavern."
+"name"     -> "I am Clyde, your host."
+"time"     -> "Don't worry about the time. Take a seat, have a drink. Time runs differently in Port Hope."
+"king"     -> "I wish the king would be a bit more concerned about this colony. I am convinced with a few more resources, we could improve Port Hope a lot."
+"venore"   -> "It's not always easy to deal with those Venoran tradesmen. I must admit they don't show any interest in my area of business. Just between you and me, my friend, sometimes they give me shivers."
+"thais"    -> "Sadly, Thais is far away and you will notice that in many places. You'll find out about this yourself, so lets talk about something else please."
+"carlin"   -> "I know only little about Carlin and here nobody cares about it for sure."
+"edron"    -> "As I started business here, I was hoping for a second Edron. I have not abandoned my hope though. Afer all, this place is called Port Hope, isn't it?" 
+"jungle"   -> "This forest is not an ordinary forest. It's more like a force of nature, like a river or even a storm."
+"tibia"    -> "I have seen only little of this world. Probably it should be you telling me about the world, and not the other way around." 
+"kazordoon" -> "If you want to learn something about Kazordoon you should talk to our local dwarves."
+"dwarves"   -> "There was a handful of dwarves that came here when the colony was founded. They were looking for treasures and gold as far as I know. After some argument a bunch of them left, they headed into the jungle and were never seen again." 
+"dwarfs"   -> *
+"ab'dendriel" -> "Sadly it is next to nothing that I know about the elves and their city."
+"elves"       -> *
+"elfs"       -> *
+"darama"      -> "It's a continent full of extremes. The jungle in the humid east, the desert in the dry west."
+"darashia"    -> "I was there quite often, using the flying carpet. It's quite different from the other towns I have seen, but surely worth a trip."
+"ankrahmun"   -> "If I were you I'd stay as far away from this town as I could. It is ruled by an undead abomination and its inhabitants worship death." 
+"ferumbras"   -> "This incarnation of evil seems to concentrate his efforts on Thais and its surroundings, but who knows what comes next into the mind of this madman?"
+"excalibug"   -> "The rumours I overheard did not mention this continent as one of its hiding places."
+"apes"       -> "They seem to live in the depth of the jungle in ruins that show the markings of the lizard folk. I wonder if they now try to conquer our city too."
+"lizard"    -> "The lizards are hostile to us. They probably see no big difference between us and the ape people."
+"dworcs"     -> "The dworcs live in the south in an underground network consisting of caves. They use poisoned weapons and love to build all kind of traps. You don't want to know the fate of those that have been trapped, believe me." 
+
+"buy"             -> "I can offer you bread, cheese, ham, or meat as well as several drinks."
+"offer"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"food"            -> "Are you looking for food? I have bread, cheese, ham, and meat."
+"drink"           -> "I can offer you beer, wine, lemonade, and water."
+
+"bread"  -> Type=3600, Amount=1, Price=4, "Do you want to buy a bread for %P gold?", Topic=1
+"cheese" -> Type=3607, Amount=1, Price=6, "Do you want to buy cheese for %P gold?", Topic=1
+"meat"   -> Type=3577, Amount=1, Price=5, "Do you want to buy meat for %P gold?", Topic=1
+"ham"    -> Type=3582, Amount=1, Price=8, "Do you want to buy a ham for %P gold?", Topic=1
+
+%1,1<%1,"bread"  -> Type=3600, Amount=%1, Price=4*%1, "Do you want to buy %A breads for %P gold?", Topic=1
+%1,1<%1,"cheese" -> Type=3607, Amount=%1, Price=6*%1, "Do you want to buy %A cheese for %P gold?", Topic=1
+%1,1<%1,"meat"   -> Type=3577, Amount=%1, Price=5*%1, "Do you want to buy %A meat for %P gold?", Topic=1
+%1,1<%1,"ham"    -> Type=3582, Amount=%1, Price=8*%1, "Do you want to buy %A ham for %P gold?", Topic=1
+
+"lemonade" -> Type=2880, Data=12, Amount=1, Price=2, "Do you want to buy a mug of lemonade for %P gold?", Topic=1
+"beer"     -> Type=2880, Data=3,  Amount=1, Price=2, "Do you want to buy a mug of beer for %P gold?", Topic=1
+"wine"     -> Type=2880, Data=2,  Amount=1, Price=3, "Do you want to buy a mug of wine for %P gold?", Topic=1
+"water"    -> Type=2880, Data=1,  Amount=1, Price=1, "Do you want to buy a mug of water for %P gold?", Topic=1
+
+%1,1<%1,"lemonade" -> Type=2880, Data=12, Amount=%1, Price=2*%1, "Do you want to buy %A mugs of lemonade for %P gold?", Topic=1
+%1,1<%1,"beer"     -> Type=2880, Data=3,  Amount=%1, Price=2*%1, "Do you want to buy %A mugs of beer for %P gold?", Topic=1
+%1,1<%1,"wine"     -> Type=2880, Data=2,  Amount=%1, Price=3*%1, "Do you want to buy %A mugs of wine for %P gold?", Topic=1
+%1,1<%1,"water"    -> Type=2880, Data=1,  Amount=%1, Price=1*%1, "Do you want to buy %A mugs of water for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here it is.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "I am sorry, but you do not have enough gold."
+Topic=1                         -> "Maybe later."
+
+}

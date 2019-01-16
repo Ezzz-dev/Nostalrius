@@ -1,0 +1,84 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# chemar.npc: Datenbank für den Teppichpiloten Chemar in Darashia
+
+Name = "Chemar"
+Outfit = (130,95-3-14-76)
+Home = [33270,32439,6]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",!         -> "Ah, the wind brings in another visitor. Feel welcome %N."
+ADDRESS,"hi$",!            -> *
+ADDRESS,!                  -> Idle
+BUSY,"hello$",!            -> "%N! Be calm as the eye of the storm, and your patience will be rewarded.", Queue
+BUSY,"hi$",!               -> *
+BUSY,!                     -> NOP
+VANISH,!                   -> "Daraman's blessings!"
+
+"bye"             -> "Daraman's blessings!", Idle
+"name"            -> "My name is Chemar Ibn Kalith."
+"job"             -> "I am a licensed carpetpilot and responsible for the Darashian airmail. I can bring you to the Femor Hills, Edron, or you can buy letters and parcels."
+"time"            -> "It's %T, precisely."
+"caliph"          -> "The caliph depends heavily on his carpetfleet for commerce and for war alike."
+"kazzan"          -> *
+"daraman"         -> "The prophet of our people; praised be his name."
+"ferumbras"       -> "This scourge of the west may have connections to the evil soils in Drefia."
+"drefia"          -> "In the west a big city existed. Its people were corrupted and drew the wrath of the djinn upon them and Drefia was destroyed." 
+"excalibug"       -> "I have been almost everywhere in the world and think it's only a myth."
+"thais"           -> "I think it's a rolemodel for what befalls people if they forget the teachings of Daraman."
+"carlin"          -> "That city is getting noisier and more crowded each month."
+"news"            -> "Our carpetpilots bring in too many news to recall them all."
+"rumour"          -> *
+"rumor"           -> *
+"flying","carpet" -> "Do you want to buy a flying carpet for 5000 platinum coins?", Price=500000, Topic=7
+#"mail"            -> "Our mail system is unique! And everyone can use it. Do you want to know more about it?", Topic=1
+
+"passage"   -> "I can fly you to Femor Hills or Edron if you like. Where do you want to go?"
+"fly"       -> *
+"go"        -> *
+"transport" -> *
+"ride"      -> *
+"trip"      -> *
+"tibia"     -> *
+
+"femur"     -> "Are you sure that you are not talking about the FEMOR Hills?"
+"hill"      -> Price=60, "Do you want to get a ride to the Femor Hills for %P gold?", Topic=4
+"femor"     -> *
+"edron"     -> Price=40, "Do you want to get a ride to Edron for %P gold?", Topic=5
+
+"hill",QuestValue(250)>2      -> Price=50, "Do you want to get a ride to the Femor Hills for %P gold?", Topic=4
+"femor",QuestValue(250)>2     -> *
+"edron",QuestValue(250)>2     -> Price=30, "Do you want to get a ride to Edron for %P gold?", Topic=5
+
+@"gen-post.ndb"
+
+#"letter" -> Amount=1, Price=5,  "Do you want to buy a letter for %P gold?", Topic=2
+#"parcel" -> Amount=1, Price=10, "Do you want to buy a parcel for %P gold?", Topic=3
+
+#Topic=1,"yes" -> "The Darashian Airmail System enables you to send and receive letters and parcels. You can buy them here if you want."
+#Topic=1       -> "Is there anything else I can do for you?"
+
+#Topic=2,"yes",CountMoney>=Price -> "Here it is. Don't forget to write the name of the receiver in the first line and the address in the second one before you put the letter in a mailbox.", DeleteMoney, Create(3505)
+#Topic=2,"yes"                   -> "Oh, you have not enough gold to buy a letter."
+#Topic=2                         -> "Ok."
+
+#Topic=3,"yes",CountMoney>=Price -> "Here you are. Don't forget to write the name and the address of the receiver on the label. The label has to be in the parcel before you put the parcel in a mailbox.", DeleteMoney, Create(3503), Create(3507)
+#Topic=3,"yes"                   -> "Oh, you have not enough gold to buy a parcel."
+#Topic=3                         -> "Ok."
+
+
+Topic=4,"yes",PZBlock,! -> "First get rid of those blood stains! You are not going to ruin my vehicle!"
+Topic=5,"yes",PZBlock,! -> *
+
+Topic=4,"yes",CountMoney>=Price -> "Hold on!", DeleteMoney, Idle, EffectOpp(11), Teleport(32535,31837,4), EffectOpp(11)
+Topic=4,"yes"                   -> "You don't have enough money."
+Topic=4                         -> "You shouldn't miss the experience."
+
+Topic=5,"yes",CountMoney>=Price -> "Hold on!", DeleteMoney, Idle, EffectOpp(11), Teleport(33193,31784,3), EffectOpp(11)
+Topic=5,"yes"                   -> "You don't have enough money."
+Topic=5                         -> "You shouldn't miss the experience."
+
+Topic=7,"yes",CountMoney>=Price -> "Oh, I am sorry, but you have no pilot licence."
+Topic=7,"yes"                   -> "You don't own enough worldly wealth to afford this item."
+Topic=7                         -> "Maybe another day then, my friend."
+}

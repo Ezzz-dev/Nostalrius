@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="valkyrie" nameDescription="a valkyrie" race="blood" experience="85" speed="48" manacost="450">
+	<health now="190" max="190" />
+	<look type="139" head="113" body="38" legs="76" feet="96" corpse="4247" />
+	<targetchange interval="1000" chance="0" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag runonhealth="10" />
+	</flags>
+	<attacks attack="20" skill="35">
+		<attack name="physical" min="-28" max="-42" range="7" chance="7">
+			<attribute key="shootEffect" value="spear" />
+		</attack>
+	</attacks>
+	<defenses armor="12" defense="14">
+	</defenses>
+	<voices>
+		<voice sentence="Stand still!" />
+		<voice sentence="One more head for me!" />
+		<voice sentence="Head off!" />
+	</voices>
+	<loot>
+		<item id="3358" countmax="1" chance="100" /> <!-- a chain armor -->
+		<item id="3352" countmax="1" chance="40" /> <!-- a chain helmet -->
+		<item id="3267" countmax="1" chance="250" /> <!-- a dagger -->
+		<item id="3275" countmax="1" chance="4" /> <!-- a double axe -->
+		<item id="3031" countmax="12" chance="320" /> <!-- a gold coin -->
+		<item id="3577" countmax="3" chance="300" /> <!-- meat -->
+		<item id="3357" countmax="1" chance="8" /> <!-- a plate armor -->
+		<item id="3084" countmax="1" chance="11" /> <!-- a protection amulet -->
+		<item id="3585" countmax="2" chance="75" /> <!-- a red apple -->
+		<item id="3114" countmax="2" chance="800" /> <!-- a skull -->
+		<item id="3028" countmax="1" chance="1" /> <!-- a small diamond -->
+		<item id="3277" countmax="3" chance="600" /> <!-- a spear -->
+	</loot>
+</monster>

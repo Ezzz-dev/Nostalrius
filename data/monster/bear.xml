@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="bear" nameDescription="a bear" race="blood" experience="23" speed="38" manacost="300">
+	<health now="80" max="80" />
+	<look type="16" head="0" body="0" legs="0" feet="0" corpse="4030" />
+	<targetchange interval="1000" chance="0" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="0" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag runonhealth="15" />
+	</flags>
+	<attacks attack="17" skill="15">
+	</attacks>
+	<defenses armor="6" defense="6">
+	</defenses>
+	<voices>
+		<voice sentence="Grrrr" />
+		<voice sentence="Groar" />
+	</voices>
+	<loot>
+		<item id="3582" countmax="2" chance="400" /> <!-- ham -->
+		<item id="3577" countmax="4" chance="700" /> <!-- meat -->
+		<item id="3492" countmax="1" chance="50" /> <!-- a worm -->
+	</loot>
+</monster>

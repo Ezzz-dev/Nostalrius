@@ -1,0 +1,17 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# genTshieldV.ndb: Datenbank für generischen Instrumentenverkauf
+
+"offer"           -> "You can buy a lyre, lute, drum, and simple fanfare."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"instrument"      -> *
+
+"lyre"             -> Type=2949, Amount=1, Price=120, "Do you want to buy a lyre for %P gold?", Topic=38
+"lute"             -> Type=2950, Amount=1, Price=195, "Do you want to buy a lute for %P gold?", Topic=38
+"drum"             -> Type=2952, Amount=1, Price=140, "Do you want to buy a drum for %P gold?", Topic=38
+"simple","fanfare" -> Type=2954, Amount=1, Price=150, "Do you want to buy a simple fanfare for %P gold?", Topic=38
+
+Topic=38,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=38,"yes"                   -> "Come back, when you have enough money."
+Topic=38                         -> "Hmm, but next time."

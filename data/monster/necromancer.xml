@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="necromancer" nameDescription="a necromancer" race="blood" experience="580" speed="54" manacost="0">
+	<health now="580" max="580" />
+	<look type="9" head="0" body="0" legs="0" feet="0" corpse="4240" />
+	<targetchange interval="1000" chance="50" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="4" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="40" skill="30" poison="90">
+		<attack name="lifedrain" min="-60" max="-100" range="1" chance="5">
+			<attribute key="areaEffect" value="redspark" />
+		</attack>
+		<attack name="poison" min="-35" max="-95" range="7" chance="6">
+			<attribute key="shootEffect" value="poison" />
+			<attribute key="areaEffect" value="poison" />
+		</attack>
+	</attacks>
+	<defenses armor="50" defense="40">
+		<defense name="healing" min="42" max="68" chance="4">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity outfit="1" />
+		<immunity lifedrain="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<summons maxSummons="4">
+		<summon name="ghoul" chance="6" max="2" />
+		<summon name="ghost" chance="7" max="1" />
+		<summon name="mummy" chance="8" max="1" />
+	</summons>
+	<voices>
+		<voice sentence="Your corpse will be mine!" />
+		<voice sentence="Taste the sweetness of death!" />
+	</voices>
+	<loot>
+		<item id="3079" countmax="1" chance="2" /> <!-- boots of haste -->
+		<item id="3311" countmax="1" chance="10" /> <!-- a clerical mace -->
+		<item id="3031" countmax="90" chance="300" /> <!-- a gold coin -->
+		<item id="3732" countmax="1" chance="15" /> <!-- a green mushroom -->
+		<item id="3574" countmax="1" chance="5" /> <!-- a mystic turban -->
+		<item id="3377" countmax="1" chance="100" /> <!-- a scale armor -->
+		<item id="3294" countmax="1" chance="150" /> <!-- a short sword -->
+		<item id="3324" countmax="1" chance="1" /> <!-- a skull staff -->
+	</loot>
+</monster>

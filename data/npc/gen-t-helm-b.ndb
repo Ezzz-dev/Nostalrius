@@ -1,0 +1,28 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gen-t-helm-b.ndb:  Datenbank für generischen Helmeinkauf
+
+"sell","leather","helmet" -> Type=3355, Amount=1, Price=4,   "Do you want to sell a leather helmet for %P gold?", Topic=50
+"sell","chain","helmet"   -> Type=3352, Amount=1, Price=17,  "Do you want to sell a chain helmet for %P gold?", Topic=50
+"sell","steel","helmet"   -> Type=3351, Amount=1, Price=190, "Do you want to sell a steel helmet for %P gold?", Topic=50
+"sell","brass","helmet"   -> Type=3354, Amount=1, Price=30,  "Do you want to sell a brass helmet for %P gold?", Topic=50
+"sell","viking","helmet"  -> Type=3367, Amount=1, Price=66,  "Do you want to sell a viking helmet for %P gold?", Topic=50
+"sell","iron","helmet"    -> Type=3353, Amount=1, Price=145, "You want sell a iron helmet for %P gold?", Topic=50
+"sell","devil","helmet"   -> Type=3356, Amount=1, Price=450, "You want sell a devil's helmet for %P gold?", Topic=50
+"sell","warrior","helmet" -> Type=3369, Amount=1, Price=696, "You want sell a warrior helmet for %P gold?", Topic=50
+
+"sell",%1,1<%1,"leather","helm" -> Type=3355, Amount=%1, Price=4*%1,   "Do you want to sell %A leather helmets for %P gold?", Topic=50
+"sell",%1,1<%1,"chain","helm"   -> Type=3352, Amount=%1, Price=17*%1,  "Do you want to sell %A chain helmets for %P gold?", Topic=50
+"sell",%1,1<%1,"steel","helm"   -> Type=3351, Amount=%1, Price=190*%1, "Do you want to sell %A steel helmets for %P gold?", Topic=50
+"sell",%1,1<%1,"brass","helm"   -> Type=3354, Amount=%1, Price=30*%1,  "Do you want to sell %A brass helmets for %P gold?", Topic=50
+"sell",%1,1<%1,"viking","helm"  -> Type=3367, Amount=%1, Price=66*%1,  "Do you want to sell %A viking helmets for %P gold?", Topic=50
+"sell",%1,1<%1,"iron","helmet"  -> Type=3353, Amount=%1, Price=145*%1, "You want sell %A iron helmets for %P gold?", Topic=50
+"sell",%1,1<%1,"devil","helmet" -> Type=3356, Amount=%1, Price=450*%1, "You want sell %A devil's helmets for %P gold?", Topic=50
+"sell",%1,1<%1,"warrior","helmet" -> Type=3369, Amount=%1, Price=696*%1, "You want sell %A warrior helmets for %P gold?", Topic=50
+
+
+
+Topic=50,"yes",Count(Type)>=Amount -> "Ok. Here is your money.", Delete(Type), CreateMoney
+Topic=50,"yes"                             -> "Sorry, you do not have one."
+Topic=50,"yes",Amount>1                    -> "Sorry, you do not have so much."
+Topic=50                                   -> "Maybe next time."
+

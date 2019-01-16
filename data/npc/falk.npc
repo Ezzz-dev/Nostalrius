@@ -1,0 +1,58 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# falk.npc: Datenbank für den Wachmann/Fremdenführer Falk
+
+Name = "Falk"
+Outfit = (131,76-11-11-76)
+Home = [33190,31777,7]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$",! -> "LONG LIVE KING TIBIANUS! Welcome to the isle of Edron!"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Can't you see I am busy?!."
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "What a lack of manners!"
+
+"bye"            -> "LONG LIVE THE KING!", Idle
+"news"           -> "Sorry, that's confidential."
+"how","are","you"-> "I'm well prepared for my duty."
+"sell"           -> "Visit the shopkeepers to buy their fine wares."
+"king"           -> "LONG LIVE THE KING!"
+"leader"         -> *
+"name"           -> "I'm Lieutenant Falk."
+"job"            -> "I'm the Edron harbour guard. I protect Edron castle and inform visitors about this building and Edron itself."
+"army"           -> "The local army consists only of the Knights of Banor's Blood."
+"guard"          -> *
+"battlegroup"    -> "There are the Dogs of War, the Red Guards, and the Silver Guards."
+"castle"         -> "The Edron castle is the home of many shops, a tavern, a bank, a depot, a post office and the temple of Banor's blood."
+"subject"        -> "We all live under the benevolent guidance of our king."
+"shop"           -> "The shops are on the eastern side of the castle. Upstairs you'll find a tailor, a blacksmith, and an equipment store."
+"tavern"         -> "The tavern is called the Horn of Plenty, and it's located upstairs in the southwest corner of the castle."
+"bank"           -> "You'll find the bank in the southwest of the castle. Look for Ebenizer, you can't miss him."
+"post"           -> "The post office, run by the lovely Chrystal is in the southwest corner of the castle, near the Royal Bank."
+"temple"         -> "The temple can be found underground, in the southeast corner of the castle. There you can become a citizen of Edron"
+"citizen"        -> *
+"Edron"          -> "The mysterious isle has many secrets and sights outside the castle. The areas of interest are in the west, the southwest, the north, and the northwest."
+"southwest"      -> "There are rumours of orc buildings in the southeast. They say some daring fellows found a passage to this area in an old cavern beneath the Edron flats."
+"northwest"      -> "Don't even think about going there. Renegade Knights of Banor's Blood went there to unearth forbidden secrets in an ancient ruin."
+"north"          -> "In the north, there is an ancient city of cyclopses, called the cyclopolis. They are wary of us, but trade with servants of evil from any known race."
+"west"           -> "There are rumours of two tribes of minor monsters who battle each other for dominance over the area. Not worth to crawl the sewers to get there."
+"city"           -> "In the city there is a furniture store and a jeweller. The Noodles Academy and the cemetary are outside."
+"academy"        -> "The Noodles Academy of the magic arts is in the east of Edron city."
+"cemetary"       -> "The cemetary is north of the hamlet of Stonehome, which is at the east coast, northeast of Edron city. The cemetary is rumoured to be haunted."
+"work"           -> "Explore the isle and destroy any enemy forces encountered. The honor shall be your reward."
+"mission"        -> *
+"quest"          -> *
+
+"fuck"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"idiot"          -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"asshole"        -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"ass$"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"fag$"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"stupid"         -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"tyrant"         -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"shit"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"lunatic"        -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+}

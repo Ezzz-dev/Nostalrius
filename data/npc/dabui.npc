@@ -1,0 +1,11 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# dabui.npc: Datenbank für die Stadtwache Dabui in Darashia
+
+Name = "Dabui"
+Outfit = (129,95-10-26-76)
+Home = [33229,32409,7]
+Radius = 1
+
+Behaviour = {
+@"guards-darama.ndb"
+}

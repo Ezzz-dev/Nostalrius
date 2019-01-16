@@ -1,0 +1,87 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# don.npc: Datenbank fuer den Bauern Donald McRonald
+
+Name = "Donald McRonald"
+Outfit = (128,41-94-79-76)
+Home = [32391,32229,7]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$",Druid,! -> "Hello, Druid %N!"
+ADDRESS,"hi$",Druid,!    -> *
+ADDRESS,"hello$",!       -> "Hmmm, well, hello %N."
+ADDRESS,"hi$",!          -> *
+ADDRESS,!                -> Idle
+BUSY,"hello$",!          -> "Hmm, I'm busy %N."
+BUSY,"hi$",!             -> *
+BUSY,!                   -> NOP
+VANISH,!                 -> "?"
+
+"bye",Druid    -> "May Crunor bless you, Druid %N!", Idle
+"farewell",Druid-> *
+"job",Druid    -> "My wife and I run this farm as good as we can."
+"wife",Druid   -> "Sherry is my beloved wife."
+"donald",Druid -> "I was named Donald, like my grandfather."
+"farm",Druid   -> "It's a hard but rewarding task to run this farm."
+"name",Druid   -> "My name is Donald McRonald, noble druid."
+"time",Druid   -> "Unfortunately I can't help you with that, noble druid."
+
+"bye"     -> "Yes, bye!", Idle
+"farewell"-> "Yes, farewell!", Idle
+"job"     -> "I run a farm, what else?!"
+"wife"    -> "Sherry is my wife."
+"donald"  -> "I am Donald."
+"farm"    -> "It is my farm, yes."
+"name"    -> "Donald McRonald."
+"time"    -> "Who cares?"
+"weather" -> "Weather is good enough to work on the fields."
+"crops"   -> "It is hard to grow but worth the effort."
+"field"   -> "My fields are enchanted by the druids and the wheat grows very quickly."
+
+"city"             -> "The city is to the north."
+"crops"            -> "I take care of our crops"
+"mill"             -> "I somtimes have to bring the wheat there."
+"spooked"          -> "I dont know."
+"king"             -> "King Tibianus is our king."
+"frodo"            -> "Frodo? He is a friend of mine."
+"oswald"           -> "He ignores us and we ignore him."
+"bloodblade"       -> "A general in the army."
+"muriel", sorcerer -> "I dont trust sorcerers like you."
+"muriel"           -> "I dont trust sorcerers."
+"elane"            -> "Too noble to care about us."
+"gregor"           -> "Knights always feel superior to us farmers."
+"gregor", knight   -> "Knights like you always feel superior to us farmers."
+"marvik"           -> "Druids are a great help for us, they know much about nature."
+"marvik", druid    -> "Druids like you are a great help for us, they know much about nature."
+"gorn"             -> "Hardly know him."
+"sam"              -> "A blacksmith, eh?"
+"quentin"          -> "A generous person."
+"lynda"            -> "She has a good soul."
+"spider"           -> Type=3988, Amount=1, Price=2, "I will give you %P gold for every spider you bring me. But not a rotten spider that was already dead for some time. Do you have any with you?", Topic=2
+
+"buy"             -> "I can offer you wheat, cheese, carrots, and corncobs."
+"do","you","sell" -> *
+"do","you","have" -> *
+"food"            -> "Are you looking for food? I have wheat, cheese, carrots, and corn to sell. If you want to sell bread, talk to my wife, Sherry."
+"bread"           -> "If you want to sell bread, talk to my wife, Sherry."
+
+"wheat"   -> Type=3605, Amount=1, Price=1, "Do you want to buy wheat for %P gold?", Topic=1
+"cheese"  -> Type=3607, Amount=1, Price=5, "Do you want to buy cheese for %P gold?", Topic=1
+"carrot"  -> Type=3595, Amount=1, Price=3, "Do you want to buy a carrot for %P gold?", Topic=1
+"corncob" -> Type=3597, Amount=1, Price=3, "Do you want to buy a corncob for %P gold?", Topic=1
+
+
+%1,1<%1,"wheat"   -> Type=3605, Amount=%1, Price=1*%1, "Do you want to buy %A wheat for %P gold?", Topic=1
+%1,1<%1,"cheese"  -> Type=3607, Amount=%1, Price=5*%1, "Do you want to buy %A cheeses for %P gold?", Topic=1
+%1,1<%1,"carrot"  -> Type=3595, Amount=%1, Price=3*%1, "Do you want to buy %A carrots for %P gold?", Topic=1
+%1,1<%1,"corncob" -> Type=3597, Amount=%1, Price=3*%1, "Do you want to buy %A corncobs for %P gold?", Topic=1
+
+
+Topic=1,"yes",CountMoney>=Price -> "Here it is.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "I am sorry, but you do not have enough gold."
+Topic=1                         -> "Maybe later."
+
+Topic=2,"yes",Count(Type)>=Amount -> "Here you are.", Delete(Type), CreateMoney
+Topic=2,"yes"                             -> "You have no spider that died recently."
+Topic=2                                   -> "Hmpf."
+}

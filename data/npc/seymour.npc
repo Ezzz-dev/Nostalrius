@@ -1,0 +1,87 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# seymour.npc: Datenbank fuer den Schulleiter Seymour
+
+Name = "Seymour"
+Outfit = (128,115-69-87-116)
+Home = [32103,32195,7]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello",!        -> "Hello, %N. What do you need?"
+ADDRESS,"hi",!           -> *
+ADDRESS,!                -> Idle
+BUSY,"hi$",!             -> "%N, I am already talking to somebody else! Please wait until it is your turn.", Queue
+BUSY,"hello$",!          -> *
+BUSY,!                   -> NOP
+VANISH,!                 -> "Good bye! And remember: No running up and down in the academy!"
+
+"bye"               -> "Good bye! And remember: No running up and down in the academy!", Idle
+"farewell"          -> *
+"how","are","you"   -> "Well, the king doesn't send troops anymore, the academy is dreadfully low on money, and the end of the world is pretty nigh. Apart from that I am reasonably fine, I suppose."
+"sell"              -> "I sell the Key to Adventure for 5 gold! If you are interested, tell me that you want to buy the key."
+"job"               -> "I am the master of this fine academy."
+"academy"           -> "Our academy has a library, a training center in the cellars and the oracle upstairs." 
+"library"           -> "Go and read our books. Ignorance may mean death, so be careful." 
+"train"             -> "You can try some basic things down there, but don't challenge the monsters in our arena if you are inexperienced."
+"center"            -> *
+"cellar"            -> *
+"oracle"             -> "You will find the oracle upstairs. Talk to the oracle as soon as you have made level 8. Choose a vocation and a new home town, and you will be sent off to the continent."
+"vocation"          -> *
+
+"key"                     -> Type=2969, Data=4600, Amount=1, Price=5, "Do you want to buy the Key to Adventure for %P gold coins?", Topic=1
+Topic=1,"no"                    -> "As you wish." 
+Topic=1,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "You don't have enough money."
+Topic=1                         -> "Only nonsense on your mind, eh?"
+
+"rookgaard"       -> "Here on Rookgaard we have some people, a temple, some shops, a farm and an academy."
+"name"            -> "My name is Seymour, but to you I am 'Sir' Seymour."
+"seymour"         -> * 
+"sir"             -> "At least you know how to address a man of my importance." 
+"time"            -> "It is %T, so you are late. Hurry!"
+"help"            -> "I can assist you with my advice."
+"hint"            -> *
+"people"      -> "Well, there's me, Cipfried, Willie, Obi, Amber, Dallheim, Al Dee, Norma, and Hyacinth."
+"advice"          -> "Read the blackboard for some hints and visit the training center in the cellar."
+"monster"         -> "You can learn about Tibia's monsters in our library."
+"dungeon",level<3 -> "There are some dungeons on this isle, but almost all of them are too dangerous for you at the moment."
+"dungeon",level>2 -> "There are some dungeons on this isle. You should be strong enough to explore them now, but make sure to take a rope with you."
+"sewer"           -> "Our sewers are overrun with rats. If you own some equipment you could go down a sewer grate and fight the vermin."
+"god"             -> "You can learn much about Tibia's gods in our library."
+"gamemaster"      -> "If you have serious problems with the game or with other people who are harassing you, contact a counsellor or a gamemaster using CTRL+R."
+"counsellor"      -> *
+"king"            -> "Hail to King Tibianus! Long live our king! Not that he cares for an old veteran who is stuck on this godforsaken island..."
+"obi"             -> "A cousin of Thais' smith Sam. He has a shop here where you can buy most stuff an adventurer needs."
+"cipfried"        -> "A humble monk with healing powers, and a pupil of the great Quentin himself."
+"amber"           -> "A traveller from the main land. I wonder what brought her here, since no one comes here of his own free will."
+"willie"          -> "Willie is a fine farmer, although he has short temper." 
+"hyacinth"        -> "A mysterious druid who lives somewhere in the wilderness. He sells precious life fluids."
+"dallheim"        -> "Oh good Dallheim! What a fighter he is! Without him we would be doomed."
+"al","dee"        -> "He is a shop owner in the northwestern part of the village."
+"quentin"         -> "He is responsible for the temple in Thais."
+"life","fluid"    -> "A rare magic potion that restores health."
+"fuck",male       -> "For this remark I will wash your mouth with soap, young man!", EffectOpp(8)
+"fuck",female     -> "For this remark I will wash your mouth with soap, young lady!", EffectOpp(8)
+"bug"             -> "Nasty little creatures, but once you have a suitable weapon and perhaps a shield they will be no match for you."
+"weapon"          -> "You need fine weapons to fight the tougher beasts. Unfortunately only the most basic weapons and armor are available here. You will have to fight some monsters to get a better weapon."
+"magic"           -> "The only magic-user on this isle is old Hyacinth."
+"tibia"           -> "Oh, how I miss the crowded streets of Thais. I know one day I will get promoted and get a job at the castle... I must get out of here! The faster the better! It is people like you who are driving me mad." 
+"castle"          -> "The castle of Thais is the greatest achievement in Tibian history."
+
+"mission",level<4 -> "You are pretty inexperienced. I think killing rats is a suitable challenge for you. For each fresh rat I will give you two shiny coins of gold."
+"quest",level<4   -> *
+"mission",level>3 -> "Well I would like to send our king a little present, but I do not have a suitable box. If you find a nice box, please bring it to me." 
+"quest",level>3   -> *
+
+"rat"                                     -> Type=3994, Amount=1,  Price=2,    "Have you brought a dead rat to me to pick up your reward?", Topic=2
+%1,1<%1,"rat"                             -> Type=3994, Amount=%1, Price=2*%1, "Have you brought %A dead rats to me to pick up your reward?", Topic=2
+Topic=2,"yes",Count(Type)>=Amount -> "Thank you! Here is your reward.", Delete(Type), CreateMoney
+Topic=2,"yes"                             -> "HEY! You don't have one! Stop playing tricks on fooling me or I will give you some extra work!"
+Topic=2,"yes",Amount>1                    -> "HEY! You do not have so many!"
+Topic=2                                   -> "Go and find some rats to kill!"
+
+"box"                                     -> Type=2856, Amount=1, "Do you have a suitable present box for me?", Topic=3
+Topic=3,"yes",Count(Type)>=Amount -> "THANK YOU! Here is a helmet that will serve you well.", Delete(Type), Create(3374) 
+Topic=3,"yes"                             -> "HEY! You don't have one! Stop playing tricks on me or I will give some extra work!"
+Topic=3                                   -> *
+}

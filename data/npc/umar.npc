@@ -1,0 +1,134 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# umar.npc: Datenbank für den Maridpförtner Umar
+
+Name = "Umar"
+Outfit = (80,0-0-0-0)
+Home = [33102,32531,6]
+Radius = 1
+
+Behaviour = {
+
+ADDRESS,"hello$",QuestValue(278)=2,!      -> "%N! How's it going these days?"
+ADDRESS,"hi$",QuestValue(278)=2,!         -> *
+ADDRESS,"greetings$",QuestValue(278)=2,!  -> *
+ADDRESS,"djanni'hah$",QuestValue(278)=2,! -> *
+ADDRESS,"hello$",QuestValue(278)>0,!      -> "Whoa! A human! This is no place for you, %N. ...",
+                                             "Go and play somewhere else.", Idle
+ADDRESS,"hi$",QuestValue(278)>0,!         -> *
+ADDRESS,"greetings$",QuestValue(278)>0,!  -> *
+ADDRESS,"hello$",!                        -> *
+ADDRESS,"hi$",!                           -> *
+ADDRESS,"greetings$",!                    -> *
+ADDRESS,"djanni'hah$",QuestValue(278)>0,! -> "Whoa? You know the word! Amazing, %N! ...",
+                                             "I should go and tell Fa'hradin. ...",
+                                             "Well. Why are you here anyway, %N?"
+ADDRESS,"djanni'hah$",!                   -> "Hahahaha! ...",
+                                             "%N, that almost sounded like the word of greeting. Humans - cute they are!", Idle
+ADDRESS,!                                 -> Idle
+
+BUSY,"hello$",QuestValue(278)=2,!         -> "Hey %N! Please wait a second!", Queue
+BUSY,"hi$",QuestValue(278)=2,!            -> *
+BUSY,"greetings$",QuestValue(278)=2,!     -> *
+BUSY,"djanni'hah$",QuestValue(278)=2,!    -> *
+BUSY,"hello$",QuestValue(278)>0,!         -> "Another human! This is no place for you, %N. ...",
+                                             "Go and play somewhere else."
+BUSY,"hi$",QuestValue(278)>0,!            -> *
+BUSY,"greetings$",QuestValue(278)>0,!     -> *
+BUSY,"hello$",!                           -> *
+BUSY,"hi$",!                              -> *
+BUSY,"greetings$",!                       -> *
+BUSY,"djanni'hah$",QuestValue(278)>0,!    -> "Yikes! Another human? Where did you come from? Well, ehm - if you could please wait a second, %N?", Queue
+BUSY,"djanni'hah$",!                      -> "That almost sounded like the word of greeting, %N. Humans - cute they are!"
+BUSY,!                                    -> NOP
+
+VANISH,!                                  -> "Back to work."
+
+"bye"         -> "<salutes>Aaaa -tention!.", Idle
+"farewell"    -> *
+"name"        -> "I am Umar. Pleased to meet you!"
+"job"         -> "I am the gatekeeper of Ashta'daramai. That's what Gabel told me to do. You know - keeping the courtyard clean, getting rid of salesmen, keeping Efreet scum out... that kind of thing. But in my spare time I work as a part-time philosopher."
+"philosopher" -> "Yes. Comes with the job. You see - here I am, sitting on the same chair all day and staring at the same blank wall. So what happens is that my mind starts wandering. And, you know, I start thinking. You know - about all kinds of things."
+"things"      -> "Yes. About the world and the gods and all that. And about girls. Yes, about girls, mostly."
+"girls"       -> "You did not know there are female djinns, did you? That's because they are quite rare. They are the greatest treasures of our race, and we guard them jealously."
+
+"gate"        -> "On the orders of king Gabel, who technically is no real king, only Marid may enter Ashta'daramai."
+"pass"        -> "If you want to enter our fortress you have to become one of us and fight the Efreet. ...",
+                 "So, are you willing to do so?", Topic=1 
+"door"        -> *
+"enter"       -> *
+"join"        -> *
+"follow"      -> *
+
+"gate",QuestValue(278)=2,!        -> "You allready have the permission to enter Ashta'daramai."
+"pass",QuestValue(278)=2,!        -> *
+"door",QuestValue(278)=2,!        -> *
+"enter",QuestValue(278)=2,!       -> *
+"join",QuestValue(278)=2,!        -> *
+"follow",QuestValue(278)=2,!      -> *
+
+
+Topic=1,"yes",QuestValue(278)=3,! -> "I don't believe you! You better go now.", Idle
+Topic=1,"yes",! -> "Are you sure? You pledge loyalty to king Gabel, who is... you know. And you are willing to never ever set foot on Efreets' territory, unless you want to kill them? Yes?", Topic=2
+Topic=2,"yes",! -> "Oh. Ok. Welcome then. You may pass. ...",
+                   "And don't forget to kill some Efreets, now and then.", SetQuestValue(278,2)
+Topic=1,!       -> "This isn't your war anyway, human."
+Topic=2,!       -> *
+
+"gabel"			  -> "He is our king and leader. Well, he isn't a king, you know. I mean, from a technical point of view he is, but he does not wear a crown or anything, and he says he isn't one, so even though he is one he isn't. Right?"
+"king"        -> "Okay, let's do this again. Gabel says he isn't a king, but he acts like one, which makes him one anyway - right? ...",
+                 "But you know, he does not really act like one, either. I mean, he does give us orders and all that, and we obey sure enough, but it's not that we have to, I mean, technically speaking. ...",
+                 "I mean - I don't know what would happen if anybody would not follow his orders for a change. After all he is no longer a king, right? ...",
+                 "But then I don't want to be the first one to find out what happens if you disobey, so I always do as I'm told. ...",
+                 "Which means I do not really know whether or not he is king. <sighs> Things were so much easier when Gabel still said he was king. Matters were so much clearer then." 
+"djinn"       -> "Well, I am a djinn, but only as far as my physical aspect is concerned. As far as my way of thinking is concerned I think I might actually be somebody else. You now - not even a djinn. In fact, I think I might be a dwarf." 
+"dwarf"       -> "Yes. Consider this: Dwarves live in the mountains. So do I. And just like dwarves I really like gold. But most of all, dwarves like beer. ...",
+                 "Isn't that amazing? I think that is more than a coincidence. You know - perhaps I am a reincarnated dwarf or something. You never know." 
+"human"       -> "See. That's another problem. In the past, it was us against you - djinn against humans. But one day this guy came along, and all of a sudden things were so much more complicated. ...",
+                 "All of a sudden there was good djinn and evil djinn, and good humans and evil humans. Everything got so damn complicated. ...",
+                 "All of a sudden we did not know who to trust and who to fight. Should we join the evil djnn and battle all humans? ...",
+                 "Or was it smarter to ally with the good humans and to battle the bad djinn? ...",
+                 "Perhaps we should join nobody and fight the bad humans? So many choices."
+"efreet"      -> "I have thought long and hard about this and I have come to the conclusion that all Efreet are scum."
+"ashta'daramai" -> "This place is the Marids' safe haven. No enemy has ever managed to take this fortress by assault, and we will see to it that it stays this way."
+"mal'ouquah"  -> "That is the Efreets fortress. I have never seen it, but I'm sure it can't compare to this place."
+"marid"		    -> "That's us. I suppose we are the good guys in this war. Although good is relative, of course. So let's say, we are relatively good. Depends on the point of view, really."
+"war"         -> "We had thought the war was over for good when Malor was finally imprisoned. That little creep is as obstinate as... as... well, as a really obstinate djinn."
+"malor"			  -> "Malor is evil. I mean - really evil. Things used to be much better when he was still locked away in that lamp."
+"tibia"       -> "Tibia is a beautiful world. Not that I see much of it, staring at this wall night and day."
+"world"       -> *
+"gods"        -> "I have not made my mind up what to think about the gods yet. I am still struggling with Daraman's teachings."
+"daraman"	    -> "Daraman has changed our lives. I mean, we were not stupid or anything before he came, but still it was different. Fa'hradin says that while Zathroth made us intelligent, Daraman made us think." 
+"zathroth"    -> "Zathroth is not very popular among the djinn because it is said that he abandoned us even though he was our creator. Legend has it that we failed to meet his expectations. ...",
+                 "Fa'hradin once said that all djinn are oedipally traumatised because of this, but I have no idea what he is talking about."
+
+"darashia"    -> "They say Darashia is a beautiful human city somewhere to the north. I would really love to see it, but I can't abandon my post."
+"edron"       -> "I understand the humans have founded some beautiful cities. I would like to see them, but as long as I have to stay here that won't happen. Which means I will not go anywhere as long as the war goes on."
+"thais"       -> *
+"venore"      -> *
+"kazordoon"   -> *
+"carlin"      -> *
+"ab'dendriel" -> *
+"ankrahmun"   -> "I was there, long ago. We had a garrison based in Ankrahmun during the early phases of the war. That was before the whole plains of the Kha'labal were set on fire."
+
+"scarab"      -> "I don't care whether or not they are special animals. None of that creeping vermin will enter Ashta'daramai as long as I am here!"
+"pharaoh"     -> "They say the new pharaoh is mad!"
+"palace"      -> "I remember the palace. It was a beautiful place. Ah... those were happy days."
+"temple"	    -> "In these heretic times the priests at Ankrahmun's temple are devoted to the teachings of that pompous pharaoh."
+"ascension"   -> "Apparently that is what the followers of the pharaoh are striving for. It has to do with that pharaoh's teachings."
+"rah"         -> "That's just some heretic drivel. Don't ask me about it."
+"uthun"			  -> *
+"akh"				  -> *
+
+"kha'zeel"		-> "When I look up from my wall, what do I see? Huge, forbidding mountains! No wonder I feel claustrophobic."
+"kha'labal"	  -> "Ah yes - the desert. I still remember how beautiful that land was back in the days before the war. ...",
+                 "A land full of song and bliss it was - a veritable paradise. Fa'hradin once said its destruction was a supreme example of the transitoriness of all things mortal. ...",
+                 "I am not sure I agree because I don't know what 'transitoriness' means." 
+                 
+"djema"       -> "You know her? She's a human like you. I like her lots because she often comes down here for a chat. Nobody else around here does that." 
+"bo'ques"     -> "That fat old cook. I like his food, but I find him a bit boring. Food and cooking is all he ever talks about."
+"alesar"      -> "Ah. That guy. He was one of us, a Marid, but he left long ago. I have no idea why. Rumours and hearsay is all I ever get."
+"fa'hradin"   -> "Fa'hradin is a powerful wizard and the smartest djinn I know. I love talking to him because there is so much he can teach me, but he rarely has time for me."
+"lamp"        -> "Djinns sleep in lamps. I don't know what is so special about that." 
+"melchior"    -> "That name rings a bell. A trader from Ankrahmun... or was it Darashia? I remember him and his mule. He used to come up here quite often to do business with Haroun. ...",
+                 "Lately I haven't seen him around, though. I think last time he came here was about 20 years ago."
+}

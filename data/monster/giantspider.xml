@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="giant spider" nameDescription="a giant spider" race="venom" experience="900" speed="80" manacost="0">
+	<health now="1300" max="1300" />
+	<look type="38" head="0" body="0" legs="0" feet="0" corpse="4038" />
+	<targetchange interval="1000" chance="10" />
+	<targetstrategy nearest="70" weakest="20" mostdamage="0" random="10" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="65" skill="80" poison="150">
+		<attack name="poisonfield" range="7" radius="1" target="1" chance="6">
+			<attribute key="shootEffect" value="poison" />
+		</attack>
+	</attacks>
+	<defenses armor="30" defense="40">
+		<defense name="speed" speedchange="65" variation="5" duration="20000" chance="18">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity fire="1" />
+		<immunity outfit="1" />
+		<immunity lifedrain="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<summons maxSummons="2">
+		<summon name="poison spider" chance="10" max="2" />
+	</summons>
+	<loot>
+		<item id="3372" countmax="1" chance="80" /> <!-- brass legs -->
+		<item id="3031" countmax="55" chance="333" /> <!-- a gold coin -->
+		<item id="3031" countmax="33" chance="666" /> <!-- a gold coin -->
+		<item id="3031" countmax="11" chance="999" /> <!-- a gold coin -->
+		<item id="3370" countmax="1" chance="3" /> <!-- a knight armor -->
+		<item id="3371" countmax="1" chance="3" /> <!-- knight legs -->
+		<item id="3357" countmax="1" chance="100" /> <!-- a plate armor -->
+		<item id="3055" countmax="1" chance="1" /> <!-- a platinum amulet -->
+		<item id="3351" countmax="1" chance="50" /> <!-- a steel helmet -->
+		<item id="3053" countmax="1" chance="7" /> <!-- a time ring -->
+	</loot>
+</monster>

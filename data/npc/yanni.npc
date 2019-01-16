@@ -1,0 +1,92 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# yanni.npc: Datenbank für den Waffenhändler Yanni
+
+Name = "Yanni"
+Outfit = (131,22-22-22-57)
+Home = [32909,32111,6]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Salutations, %N. Welcome to the Ironhouse, warehouse of Abran Ironeye."
+ADDRESS,"hi$",!    -> *
+ADDRESS,"hello$",! -> *
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle 
+BUSY,"hello$",!    -> "One moment please, %N.", Queue 
+BUSY,"hi$",!       -> * 
+BUSY,!             -> NOP 
+VANISH,!           -> "How rude..." 
+ 
+"bye"             -> "Thanks for doing business with us, traveller!", Idle 
+"farewell"        -> *
+"job"             -> "I work for Abran Ironeye in the armor department." 
+"shop"            -> "This shop belongs to Abran Ironeye."
+"market"          -> *
+"ironhouse"       -> *
+"name"            -> "My name is Yanni." 
+"time"            -> "It is %T." 
+"Abran","Ironeye" -> "A very hard boss, but if you ever talk to him, tell him I said he's a great man."
+"excalibug"       -> "I don't believe in the excalibug myth." 
+"news"            -> "I know nothing of interest." 
+"help"            -> "If you'd like to help, then buy something, because I'm paid on a commisioned basis."
+"commision"       -> "Commison is when you get paid only when you sell something. If I don't make some sales soon, my kids will get hungry!"
+"monster"         -> "Monsters? Where! I'm horrified of monsters." 
+"thanks"          -> "You're welcome." 
+"thank","you"     -> * 
+"news"            -> "Don't buy from Xed. He is a thief. He steals my business all the time!"
+"offer"           -> "I sell armor, legs, helmets, and shields." 
+"do","you","sell" -> * 
+"do","you","have" -> * 
+"helmet"          -> "I am selling chain helmets. Do you want to buy any?"
+"armor"           -> "I am selling chain and brass armor. What do you need?"
+"shield"          -> "I am selling wooden shields and steel shields. What do you want?"
+"trousers"        -> "I am selling chain legs. Do you want to buy any?"
+"legs"            -> *
+
+"chain","armor"   -> Type=3358, Amount=1, Price=200, "Do you want to buy a chain armor for %P gold?", Topic=1
+"brass","armor"   -> Type=3359, Amount=1, Price=450, "Do you want to buy a brass armor for %P gold?", Topic=1
+"chain","helmet"  -> Type=3352, Amount=1, Price=52,  "Do you want to buy a chain helmet for %P gold?", Topic=1
+"steel","shield"  -> Type=3409, Amount=1, Price=240, "Do you want to buy a steel shield for %P gold?", Topic=1
+"wooden","shield" -> Type=3412, Amount=1, Price=15,  "Do you want to buy a wooden shield for %P gold?", Topic=1
+"chain","legs"    -> Type=3558, Amount=1, Price=80,  "Do you want to buy chain legs for %P gold?", Topic=1
+
+%1,1<%1,"chain","armor"   -> Type=3358, Amount=%1, Price=200*%1, "Do you want to buy %A chain armors for %P gold?", Topic=1
+%1,1<%1,"brass","armor"   -> Type=3359, Amount=%1, Price=450*%1, "Do you want to buy %A brass armors for %P gold?", Topic=1
+%1,1<%1,"chain","helmet"  -> Type=3352, Amount=%1, Price=52*%1,  "Do you want to buy %A chain helmets for %P gold?", Topic=1
+%1,1<%1,"steel","shield"  -> Type=3409, Amount=%1, Price=240*%1, "Do you want to buy %A steel shields for %P gold?", Topic=1
+%1,1<%1,"wooden","shield" -> Type=3412, Amount=%1, Price=15*%1,  "Do you want to buy %A wooden shields for %P gold?", Topic=1
+%1,1<%1,"chain","legs"    -> Type=3558, Amount=%1, Price=80*%1,  "Do you want to buy %A chain legs for %P gold?", Topic=1
+
+"sell","leather","armor"      -> Type=3361, Amount=1, Price=12,  "Do you want to sell a leather armor for %P gold?", Topic=2
+"sell","chain","armor"        -> Type=3358, Amount=1, Price=70,  "Do you want to sell a chain armor for %P gold?", Topic=2
+"sell","brass","armor"        -> Type=3359, Amount=1, Price=150, "Do you want to sell a brass armor for %P gold?", Topic=2
+"sell","plate","armor"        -> Type=3357, Amount=1, Price=400, "Do you want to sell a plate armor for %P gold?", Topic=2
+"sell","chain","legs"         -> Type=3558, Amount=1, Price=25,  "Do you want to sell chain legs for %P gold?", Topic=2
+"sell","leather","helmet"     -> Type=3355, Amount=1, Price=4,   "Do you want to sell a leather helmet for %P gold?", Topic=2
+"sell","chain","helmet"       -> Type=3352, Amount=1, Price=17,  "Do you want to sell a chain helmet for %P gold?", Topic=2
+"sell","steel","helmet"       -> Type=3351, Amount=1, Price=190, "Do you want to sell a steel helmet for %P gold?", Topic=2
+"sell","wooden","shield"      -> Type=3412, Amount=1, Price=5,   "Do you want to sell a wooden shield for %P gold?", Topic=2
+"sell","battle","shield"      -> Type=3413, Amount=1, Price=95,  "Do you want to sell a battle shield for %P gold?", Topic=2
+"sell","steel","shield"       -> Type=3409, Amount=1, Price=80,  "Do you want to sell a steel shield for %P gold?", Topic=2
+ 
+"sell",%1,1<%1,"leather","armor"      -> Type=3361, Amount=%1, Price=12*%1,  "Do you want to sell %A leather armors for %P gold?", Topic=2
+"sell",%1,1<%1,"chain","armor"        -> Type=3358, Amount=%1, Price=70*%1,  "Do you want to sell %A chain armors for %P gold?", Topic=2
+"sell",%1,1<%1,"brass","armor"        -> Type=3359, Amount=%1, Price=150*%1, "Do you want to sell %A brass armors for %P gold?", Topic=2
+"sell",%1,1<%1,"plate","armor"        -> Type=3357, Amount=%1, Price=400*%1, "Do you want to sell %A plate armors for %P gold?", Topic=2
+"sell",%1,1<%1,"chain","legs"         -> Type=3558, Amount=%1, Price=25*%1,  "Do you want to sell %A chain legs for %P gold?", Topic=2
+"sell",%1,1<%1,"leather","helmet"     -> Type=3355, Amount=%1, Price=4*%1,   "Do you want to sell %A leather helmets for %P gold?", Topic=2
+"sell",%1,1<%1,"chain","helmet"       -> Type=3352, Amount=%1, Price=17*%1,  "Do you want to sell %A chain helmets for %P gold?", Topic=2
+"sell",%1,1<%1,"steel","helmet"       -> Type=3351, Amount=%1, Price=190*%1, "Do you want to sell %A steel helmets for %P gold?", Topic=2
+"sell",%1,1<%1,"wooden","shield"      -> Type=3412, Amount=%1, Price=5*%1,   "Do you want to sell %A wooden shields for %P gold?", Topic=2
+"sell",%1,1<%1,"battle","shield"      -> Type=3413, Amount=%1, Price=95*%1,  "Do you want to sell %A battle shields for %P gold?", Topic=2
+"sell",%1,1<%1,"steel","shield"       -> Type=3409, Amount=%1, Price=80*%1,  "Do you want to sell %A steel shields for %P gold?", Topic=2
+
+Topic=1,"yes",CountMoney>=Price -> "Thank you. Here it is.", DeleteMoney, Create(Type) 
+Topic=1,"yes"                   -> "Sorry, you do not have enough gold." 
+Topic=1                         -> "Maybe you will buy it another time." 
+ 
+Topic=2,"yes",Count(Type)>=Amount -> "Ok. Here is your money.", Delete(Type), CreateMoney 
+Topic=2,"yes"                             -> "Sorry, you do not have one." 
+Topic=2,"yes",Amount>1                    -> "Sorry, you do not have so much." 
+Topic=2                                   -> "Maybe next time." 
+}

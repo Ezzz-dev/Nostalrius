@@ -1,0 +1,121 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# tesha.npc: Datenbank für die pyramidenhändlerin Tesha
+
+Name = "Tesha"
+Outfit = (140,77-32-81-93)
+Home = [33135,32821,6]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Be mourned pilgrim in flesh."
+ADDRESS,"hi$",!    -> "Be mourned pilgrim in flesh."
+ADDRESS,"be","mourned","pilgrim","flesh",!    -> "Be mourned pilgrim in flesh."
+ADDRESS,!          -> Idle
+
+BUSY,"hello$",!    -> "Mourned %N, know that I am busy.", Queue
+BUSY,"hi$",!       -> *
+BUSY,"be","mourned","pilgrim","flesh",!    -> *
+BUSY,!             -> NOP
+VANISH,!           -> "May enlightenment be your path."
+
+"bye"      -> "May enlightenment be your path.", Idle
+"farewell" -> *
+"job"      -> "I sell and buy gems and jewelry."
+"name"     -> "I am the mourned Tesha."
+"time"     -> "Time is yet another burden that lies heavy on our mortal bodies."
+"temple"   -> "The temple can offer us guidance and solace in our mortal existence."
+"pharaoh"    -> "He is the benevolent father of this nation. Blessed be our saviour."
+"oldpharaoh" -> "This poor man could not comprehend his son's wisdom. Perhaps he has spelled his own eternal doom."
+"scarab"    -> "The priests say they are sacred beings, although ... <whispers>I find them scary!"
+"chosen"    -> "I can only hope my humble work for our community and for the temple will make me worthy one day to be elevated to the rank of a chosen one. One to whom the path of ascension is opened up through undeath."
+
+"tibia"    -> "The world is so huge, and I have seen so little. Perhaps if I am chosen one day I will travel and see it all." 
+"carlin"   -> "Those citites are so far away. So far that the enlightened preachings of our divine pharaoh cannot reach those poor misguided souls."
+"thais"    -> *
+"edron"    -> *
+"venore"   -> * 
+"kazordoon" -> "Dwarves have a strong Akh. This makes them arrogant and deaf to the true creed."
+"dwarves"   -> *
+"dwarfes"   -> *
+"ab'dendriel" -> "Most elves lack the sincerity to strive for ascension. At least that's what the priests are telling us."
+"elves"       -> *
+"elfes"       -> *
+"darama"      -> "In the desert the lines of life and death are clearly drawn. Because of this it is easier for us, its children, to focus on them. In the jungle those lines are fuzzy and blurred, and people easily fall victim to temptation."
+"darashia"    -> "Those poor souls there might still be saved if only they listened."
+"daraman"    -> "He was a great man. If he had left his mortal existence behind he might have become one of the greatest prophets of the true faith, second only to the pharaoh himself." 
+"Ankrahmun" -> "This city is both a refuge and centre of learning for the believers of the true faith taught by his divine majesty the pharaoh." 
+
+"pharaoh"        -> "The pharaoh has such amazing patience with us puny mortals. He is truly a caring father of this nation."
+"mortality"     -> "Mortality can be overcome. It is a sickness, but it can be cured through undeath."
+"false", "gods" -> "These greedy beings are trying to devour us all. May the pharaoh thwart their evil plans and free us from their reign of terror!"
+"ascension"         -> "Oh, I am not asking for much, you know. I mean, I really don't have to be a god or something. All I wish for is a bit of the wisdom that comes with ascension."
+"Akh'rah","Uthun"   -> "I don't really understand this concept, but from what I know it is the three components that make up every being."
+"Akh"               -> "Our body. The only physical part of the Akh'rah Uthun."
+
+"undead"            -> "Undeath is the reward for a life of faith and service."
+"undeath"           -> *
+"Rah"               -> "The Rah is our essence. The spiritual bond that keep the other parts of the Akh'rah Uthun together."
+"uthun"             -> "The Uthun is all we learned in life."
+"mourn"             -> "The dead mourn our tempted existence, and we mourn ourselves."
+"arena"        -> "Look for it in the eastern part of the city."
+"palace"       -> "Isn't the palace magnificent to behold? It is so impressive!"
+
+"offer"           -> "I can offer you various gems, pearls or some wonderful jewels. I also change money."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+
+"gem"             -> "You can buy and sell small diamonds, small sapphires, small rubies, small emeralds, and small amethysts."
+"pearl"           -> "There are white and black pearls you can buy or sell."
+"jewel"           -> "Currently you can purchase wedding rings, golden amulets, and ruby necklaces."
+"talon"           -> "I don't trade or work with these magic gems. It's better you ask a mage about this."
+
+"wedding","ring"   -> Type=3004, Amount=1, Price=990,  "Do you want to buy a wedding ring for %P gold?", Topic=1
+"golden","amulet"  -> Type=3013, Amount=1, Price=6600, "Do you want to buy a golden amulet for %P gold?", Topic=1
+"ruby","necklace"  -> Type=3016, Amount=1, Price=3560, "Do you want to buy a ruby necklace for %P gold?", Topic=1
+"white","pearl"    -> Type=3026, Amount=1, Price=320, "Do you want to buy a white pearl for %P gold?", Topic=1
+"black","pearl"    -> Type=3027, Amount=1, Price=560, "Do you want to buy a black pearl for %P gold?", Topic=1
+"small","diamond"  -> Type=3028, Amount=1, Price=600, "Do you want to buy a small diamond for %P gold?", Topic=1
+"small","sapphire" -> Type=3029, Amount=1, Price=500, "Do you want to buy a small sapphire for %P gold?", Topic=1
+"small","ruby"     -> Type=3030, Amount=1, Price=500, "Do you want to buy a small ruby for %P gold?", Topic=1
+"small","emerald"  -> Type=3032, Amount=1, Price=500, "Do you want to buy a small emerald for %P gold?", Topic=1
+"small","amethyst" -> Type=3033, Amount=1, Price=400, "Do you want to buy a small amethyst for %P gold?", Topic=1
+
+%1,1<%1,"wedding","ring"   -> Type=3004, Amount=%1, Price=990*%1,  "Do you want to buy %A wedding rings for %P gold?", Topic=1
+%1,1<%1,"golden","amulet"  -> Type=3013, Amount=%1, Price=6600*%1, "Do you want to buy %A golden amulets for %P gold?", Topic=1
+%1,1<%1,"ruby","necklace"  -> Type=3016, Amount=%1, Price=3560*%1, "Do you want to buy %A ruby necklaces for %P gold?", Topic=1
+%1,1<%1,"white","pearl"    -> Type=3026, Amount=%1, Price=320*%1, "Do you want to buy %A white pearls for %P gold?", Topic=1
+%1,1<%1,"black","pearl"    -> Type=3027, Amount=%1, Price=560*%1, "Do you want to buy %A black pearls for %P gold?", Topic=1
+%1,1<%1,"small","diamond"  -> Type=3028, Amount=%1, Price=600*%1, "Do you want to buy %A small diamonds for %P gold?", Topic=1
+%1,1<%1,"small","sapphire" -> Type=3029, Amount=%1, Price=500*%1, "Do you want to buy %A small sapphires for %P gold?", Topic=1
+%1,1<%1,"small","rub"     -> Type=3030, Amount=%1, Price=500*%1, "Do you want to buy %A small rubies for %P gold?", Topic=1
+%1,1<%1,"small","emerald"  -> Type=3032, Amount=%1, Price=500*%1, "Do you want to buy %A small emeralds for %P gold?", Topic=1
+%1,1<%1,"small","amethyst" -> Type=3033, Amount=%1, Price=400*%1, "Do you want to buy %A small amethysts for %P gold?", Topic=1
+
+"sell","white","pearl"    -> Type=3026, Amount=1, Price=160, "Do you want to sell a white pearl for %P gold?", Topic=2
+"sell","black","pearl"    -> Type=3027, Amount=1, Price=280, "Do you want to sell a black pearl for %P gold?", Topic=2
+"sell","small","diamond"  -> Type=3028, Amount=1, Price=300, "Do you want to sell a small diamond for %P gold?", Topic=2
+"sell","small","sapphire" -> Type=3029, Amount=1, Price=250, "Do you want to sell a small sapphire for %P gold?", Topic=2
+"sell","small","ruby"     -> Type=3030, Amount=1, Price=250, "Do you want to sell a small ruby for %P gold?", Topic=2
+"sell","small","emerald"  -> Type=3032, Amount=1, Price=250, "Do you want to sell a small emerald for %P gold?", Topic=2
+"sell","small","amethyst" -> Type=3033, Amount=1, Price=200, "Do you want to sell a small amethyst for %P gold?", Topic=2
+
+"sell",%1,1<%1,"white","pearl"    -> Type=3026, Amount=%1, Price=160*%1, "Do you want to sell %A white pearls for %P gold?", Topic=2
+"sell",%1,1<%1,"black","pearl"    -> Type=3027, Amount=%1, Price=280*%1, "Do you want to sell %A black pearls for %P gold?", Topic=2
+"sell",%1,1<%1,"small","diamond"  -> Type=3028, Amount=%1, Price=300*%1, "Do you want to sell %A small diamonds for %P gold?", Topic=2
+"sell",%1,1<%1,"small","sapphire" -> Type=3029, Amount=%1, Price=250*%1, "Do you want to sell %A small sapphires for %P gold?", Topic=2
+"sell",%1,1<%1,"small","rub"     -> Type=3030, Amount=%1, Price=250*%1, "Do you want to sell %A small rubies for %P gold?", Topic=2
+"sell",%1,1<%1,"small","emerald"  -> Type=3032, Amount=%1, Price=250*%1, "Do you want to sell %A small emeralds for %P gold?", Topic=2
+"sell",%1,1<%1,"small","amethyst" -> Type=3033, Amount=%1, Price=200*%1, "Do you want to sell %A small amethysts for %P gold?", Topic=2
+
+Topic=1,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Come back, when you have enough money."
+Topic=1                         -> "Hmm, but next time."
+
+Topic=2,"yes",Count(Type)>=Amount -> "Ok. Here is your money.", Delete(Type), CreateMoney
+Topic=2,"yes"                             -> "Sorry, you do not have one."
+Topic=2,"yes",Amount>1                    -> "Sorry, you do not have that many."
+Topic=2                                   -> "Maybe next time."
+
+@"gen-bank.ndb"
+}

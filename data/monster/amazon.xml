@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="amazon" nameDescription="an amazon" race="blood" experience="60" speed="46" manacost="390">
+	<health now="110" max="110" />
+	<look type="137" head="113" body="120" legs="95" feet="115" corpse="4247" />
+	<targetchange interval="1000" chance="50" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="4" />
+		<flag runonhealth="10" />
+	</flags>
+	<attacks attack="16" skill="24">
+		<attack name="physical" min="-20" max="-30" range="7" chance="10">
+			<attribute key="shootEffect" value="throwingknife" />
+		</attack>
+	</attacks>
+	<defenses armor="11" defense="11">
+	</defenses>
+	<voices>
+		<voice sentence="Yeeee ha!" />
+		<voice sentence="Your head will be mine!" />
+	</voices>
+	<loot>
+		<item id="3602" countmax="1" chance="300" /> <!-- a brown bread -->
+		<item id="3008" countmax="1" chance="2" /> <!-- a crystal necklace -->
+		<item id="3267" countmax="1" chance="800" /> <!-- a dagger -->
+		<item id="3031" countmax="10" chance="400" /> <!-- a gold coin -->
+		<item id="3361" countmax="1" chance="500" /> <!-- a leather armor -->
+		<item id="3273" countmax="1" chance="230" /> <!-- a sabre -->
+		<item id="3114" countmax="2" chance="800" /> <!-- a skull -->
+		<item id="3030" countmax="1" chance="1" /> <!-- a small ruby -->
+		<item id="3426" countmax="1" chance="50" /> <!-- a studded shield -->
+		<item id="2920" countmax="1" chance="50" /> <!-- a torch -->
+	</loot>
+</monster>

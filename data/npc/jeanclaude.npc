@@ -1,0 +1,11 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# jeanclaude.npc: Datenbank für eine Stadtwache in Venore
+
+Name = "Jean Claude"
+Outfit = (131,113-113-113-115)
+Home = [33006,32053,6]
+Radius = 5
+
+Behaviour = {
+@"guards-venore.ndb"
+}

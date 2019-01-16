@@ -1,0 +1,64 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# Nelliem.npc: Datenbank für den Gartenbedarfhändler Nelliem
+
+Name = "Nelliem"
+Outfit = (160,115-100-105-76)
+Home = [32883,32086,6]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Greetings, %N, traveller from afar..."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Hold on, %N, I am busy. Just stand in the line.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Go...! Learn the secret to green thumbs and may Crunor be good to you..."
+
+"bye"             -> "Go...! Learn the secret to green thumbs and may Crunor be good to you...", Idle
+"farewell"        -> *
+"job"             -> "To keep my thumbs green and to sell our garden equipment, as you can see on that shelves."
+"crunor"          -> "May he bless all plants."
+"name"            -> "I am Nelliem."
+"time"            -> "It's a good time to sow some seeds."
+
+"equipment"       -> "I sell shovels, picks, scythes, machetes, ropes, pitchforks, rakes, hoes, brooms, fishing rods, sixpacks of worms and brandnew crowbars from Kazordoon."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"offer"           -> *
+
+"shovel"       -> Type=3457, Amount=1,  Price=20,  "Do you want to buy a shovel for %P gold?", Topic=1
+"scythe"       -> Type=3453, Amount=1,  Price=25,  "Do you want to buy a scythe for %P gold?", Topic=1
+"pick"         -> Type=3456, Amount=1,  Price=50,  "Do you want to buy a pick for %P gold?", Topic=1
+"rope"         -> Type=3003, Amount=1,  Price=50,  "Do you want to buy a rope for %P gold?", Topic=1
+"rod"          -> Type=3483, Amount=1,  Price=150, "Do you want to buy a fishing rod for %P gold?", Topic=1
+"crowbar"      -> Type=3304, Amount=1,  Price=260, "Do you want to buy a dwarfensteel crowbar for %P gold?", Topic=1
+"machete"      -> Type=3308, Amount=1,  Price=35,  "Do you want to buy a machete for %P gold?", Topic=1
+"pitchfork"    -> Type=3451, Amount=1,  Price=25,  "Do you want to buy a pitchfork for %P gold?", Topic=1
+"rake"         -> Type=3452, Amount=1,  Price=20,  "Do you want to buy a rake for %P gold?", Topic=1
+"hoe"          -> Type=3455, Amount=1,  Price=15,  "Do you want to buy a hoe for %P gold?", Topic=1
+"broom"        -> Type=3454, Amount=1,  Price=12,  "Do you want to buy a broom for %P gold?", Topic=1
+
+%1,1<%1,"shovel"       -> Type=3457, Amount=%1,  Price=20*%1,  "Do you want to buy %A shovels for %P gold?", Topic=1
+%1,1<%1,"scythe"       -> Type=3453, Amount=%1,  Price=25*%1,  "Do you want to buy %A scythes for %P gold?", Topic=1
+%1,1<%1,"pick"         -> Type=3456, Amount=%1,  Price=50*%1,  "Do you want to buy %A picks for %P gold?", Topic=1
+%1,1<%1,"rope"         -> Type=3003, Amount=%1,  Price=50*%1,  "Do you want to buy %A ropes for %P gold?", Topic=1
+%1,1<%1,"rod"          -> Type=3483, Amount=%1,  Price=150*%1, "Do you want to buy %A fishing rods for %P gold?", Topic=1
+%1,1<%1,"crowbar"      -> Type=3304, Amount=%1,  Price=260*%1, "Do you want to buy %A dwarfensteel crowbars for %P gold?", Topic=1
+%1,1<%1,"machete"      -> Type=3308, Amount=%1,  Price=35*%1,  "Do you want to buy %A machetes for %P gold?", Topic=1
+%1,1<%1,"pitchfork"    -> Type=3451, Amount=%1,  Price=25*%1,  "Do you want to buy %A pitchforks for %P gold?", Topic=1
+%1,1<%1,"rake"         -> Type=3452, Amount=%1,  Price=20*%1,  "Do you want to buy %A rakes for %P gold?", Topic=1
+%1,1<%1,"hoe"          -> Type=3455, Amount=%1,  Price=15*%1,  "Do you want to buy %A hoes for %P gold?", Topic=1
+%1,1<%1,"broom"        -> Type=3454, Amount=%1,  Price=12*%1,  "Do you want to buy %A brooms for %P gold?", Topic=1
+
+"worm"          -> "I sell worms only in sixpacks for 5 gold each, how many sixpacks of worms do you want to buy?"
+"worms"         -> *
+%1,"worms"      -> Type=3492, Amount=%1*6, Price=5*%1,   "So you want to buy some of my sixpacks with altogether %A worms for %P gold?", Topic=1
+%1,"six","pack" -> *
+
+
+Topic=1,"yes",CountMoney>=Price -> "Here!", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "No money, no deal!"
+Topic=1                         -> "Then not."
+}

@@ -1,0 +1,65 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# lubo.npc: Datenbank fuer Lubo, den Haendler im Abenteurer-Laden
+
+Name = "Lubo"
+Outfit = (129,38-39-96-114)
+Home = [32488,32119,7]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Welcome to my adventurer shop, %N! What do you need?"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Sorry %N, I am already talking to a customer. Please wait for your turn.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Good bye."
+
+"bye"       -> "Good bye.", Idle
+"farewell"  -> *
+"job"       -> "I am selling equipment for adventurers. Do you need anything?"
+"name"      -> "I am Lubo, the owner of this shop."
+"time"      -> "It is exactly %T."
+"mountain"  -> "It is said that once there lived a great magician on the top of this mountain."
+"magician"  -> "I don't remember his name, but it's said that his banner was the black eye."
+"food"      -> "I sell the best apples in Tibia."
+"map"       -> "Oh! I'm sorry, I sold the last one just five minutes ago."
+"magic"     -> "There's a lot of magic flowing in the mountain to the north."
+"weapon"    -> "If you want to buy weapons, you'll have to go to a town or city."
+"dog"       -> "This is Ruffy my dog, please don't do him any harm."
+"pet"       -> "There are some strange stories about a magicians pet names. Ask Hoggle about it."
+"finger"    -> "Oh, you sure mean this old story about the mage Dago, who lost two fingers when he conjured a dragon."
+
+"inn"              -> "Frodo runs a nice inn in the near town Thais."
+"crunor","cottage" -> "Ah yes, I remember my grandfather talking about that name. This house used to be an inn a long time ago. My family bought it from some of these flower guys."
+"flower","guy"     -> "Oh, I mean druids of course. They sold the cottage to my family after some of them died in an accident or something like that."
+"accident"         -> "As far as I can remember the story, a pet escaped its stable behind the inn. It got somehow involved with powerfull magic at a ritual and was transformed in some way."
+"stable",QuestValue(211)=3  -> "My grandpa told me, in the old days there were some behind this cottage. Nothing big though, just small ones, for chicken or rabbits.",SetQuestValue(211,4)
+"stable",QuestValue(211)<3   -> "Sorry speak louder I can't hear you."
+
+"equipment"       -> "I sell torches, fishing rods, sixpacks of worms, ropes, water hoses, backpacks, apples, and maps."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"offer"           -> *
+
+"torch"         -> Type=2920, Amount=1,  Price=3,    "Do you want to buy a torch for %P gold?", Topic=1
+"rope"          -> Type=3003, Amount=1,  Price=60,   "Do you want to buy a rope for %P gold?", Topic=1
+"water","hose"  -> Type=2901, Amount=1,  Price=10, Data=1, "Do you want to buy a water hose for %P gold?", Topic=1
+"backpack"      -> Type=2854, Amount=1,  Price=25,   "Do you want to buy a backpack for %P gold?", Topic=1
+"fishing","rod" -> Type=3483, Amount=1,  Price=175,  "Do you want to buy a fishing rod for %P gold?", Topic=1
+"crowbar"       -> Type=3304, Amount=1,  Price=260,  "Do you want to buy a crowbar for %P gold? I know its rather expensive, but I must protect people from thieves.", Topic=1
+"apple"         -> Type=3585, Amount=1,  Price=3,    "Do you want to buy an apple for %P gold?", Topic=1
+%1,"torch"      -> Type=2920, Amount=%1, Price=3*%1, "Do you want to buy %A torches for %P gold?", Topic=1
+%1,"apple"      -> Type=3585, Amount=%1, Price=3*%1, "Do you want to buy %A apples for %P gold?", Topic=1
+
+"worm"          -> "I sell worms only in sixpacks for 5 gold each, how many sixpacks of worms do you want to buy?"
+"worms"         -> *
+%1,"worms"      -> Type=3492, Amount=%1*6, Price=5*%1,   "So you want to buy some of my sixpacks with altogether %A worms for %P gold?", Topic=1
+%1,"six","pack" -> *
+
+
+Topic=1,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Come back, when you have enough money."
+Topic=1                         -> "Hmm, but next time."
+}

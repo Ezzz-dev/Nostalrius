@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="scarab" nameDescription="a scarab" race="venom" experience="120" speed="40" manacost="395">
+	<health now="320" max="320" />
+	<look type="83" head="0" body="0" legs="0" feet="0" corpse="4194" />
+	<targetchange interval="1000" chance="0" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag runonhealth="80" />
+	</flags>
+	<attacks attack="25" skill="42">
+		<attack name="poisonfield" radius="1" target="0" chance="5">
+			<attribute key="areaEffect" value="poff" />
+		</attack>
+		<attack name="poison" min="-15" max="-25" range="1" radius="1" target="1" chance="6">
+			<attribute key="areaEffect" value="poison" />
+		</attack>
+	</attacks>
+	<defenses armor="21" defense="26">
+		<defense name="speed" speedchange="45" variation="5" duration="4000" chance="20">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity paralyze="1" />
+		<immunity poison="1" />
+	</immunities>
+	<loot>
+		<item id="3447" countmax="3" chance="50" /> <!-- an arrow -->
+		<item id="3327" countmax="1" chance="3" /> <!-- a daramanian mace -->
+		<item id="3031" countmax="12" chance="705" /> <!-- a gold coin -->
+		<item id="3031" countmax="40" chance="445" /> <!-- a gold coin -->
+		<item id="3330" countmax="1" chance="5" /> <!-- a heavy machete -->
+		<item id="3577" countmax="2" chance="540" /> <!-- meat -->
+		<item id="3042" countmax="1" chance="10" /> <!-- a scarab coin -->
+		<item id="3042" countmax="1" chance="1" /> <!-- a scarab coin -->
+		<item id="3033" countmax="1" chance="5" /> <!-- a small amethyst -->
+		<item id="3032" countmax="1" chance="3" /> <!-- a small emerald -->
+	</loot>
+</monster>

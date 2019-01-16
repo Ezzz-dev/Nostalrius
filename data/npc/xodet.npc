@@ -1,0 +1,58 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# xodet.npc: Datenbank für den Magieladen-Besitzer Xodet
+
+Name = "Xodet"
+Outfit = (130,19-86-87-95)
+Home = [32399,32222,7]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Oh, please come in, %N. What do you need?"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Sorry %N, I am already talking to a customer. Wait a minute, please.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Good bye."
+
+"bye"      -> "Good bye and come again.", Idle
+"farewell" -> *
+"name"     -> "I'm Xodet, the owner of this shop."
+"job"      -> "I'm sorcerer and trade with all kinds of magic items."
+"sorcerer" -> "There is a sorcerer guild in Thais. Just go in the east of the town, it is easly to find."
+
+"offer"           -> "I'm selling life and mana fluids, runes, wands, rods and spellbooks."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+
+"rune"         -> "I sell blank runes and spell runes."
+"life","fluid" -> Type=2874, Data=11, Amount=1, Price=60, "Do you want to buy life fluid for %P gold?", Topic=2
+"mana","fluid" -> Type=2874, Data=10, Amount=1, Price=55, "Do you want to buy mana fluid for %P gold?", Topic=2
+"blank","rune" -> Type=3147, Amount=1, Price=10, "Do you want to buy a blank rune for %P gold?", Topic=1
+"spellbook"    -> Type=3059, Amount=1, Price=150, "Do you want to buy a spellbook for %P gold?", Topic=1
+
+%1,1<%1,"life","fluid" -> Type=2874, Data=11, Amount=%1, Price=60*%1, "Do you want to buy %A potions of life fluid for %P gold?", Topic=2
+%1,1<%1,"mana","fluid" -> Type=2874, Data=10, Amount=%1, Price=55*%1, "Do you want to buy %A potions of mana fluid for %P gold?", Topic=2
+%1,1<%1,"blank","rune" -> Type=3147, Amount=%1, Price=10*%1,   "Do you want to buy %A blank runes for %P gold?", Topic=1
+%1,1<%1,"spellbook"    -> Type=3059, Amount=%1, Price=150*%1, "Do you want to buy %A spellbooks for %P gold?", Topic=1
+
+"deposit"                   -> "I will pay you 5 gold for every empty vial. Ok?", Data=0, Topic=3
+"vial"                      -> *
+"flask"                     -> *
+
+Topic=1,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Come back, when you have enough money."
+Topic=1                         -> "Hmm, but next time."
+
+Topic=2,"yes",CountMoney>=Price -> "Here you are. There is a deposit of 5 gold on the vial.", DeleteMoney, Create(Type)
+Topic=2,"yes"                   -> "Come back, when you have enough money."
+Topic=2                         -> "Hmm, but next time."
+
+Topic=3,"yes",Count(2874)>0 -> Amount=Count(2874), Price=Amount*5, "Here you are ... %P gold.", Delete(2874), CreateMoney
+Topic=3,"yes"               -> "You don't have any empty vials."
+Topic=3                     -> "Hmm, but please keep Tibia litter free."
+
+@"gen-t-runes-free-s.ndb"
+@"gen-t-wands-free-s.ndb"
+}

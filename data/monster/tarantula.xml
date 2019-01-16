@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="tarantula" nameDescription="a tarantula" race="venom" experience="120" speed="67" manacost="485">
+	<health now="225" max="225" />
+	<look type="219" head="0" body="0" legs="0" feet="0" corpse="4385" />
+	<targetchange interval="1000" chance="5" />
+	<targetstrategy nearest="70" weakest="0" mostdamage="30" random="0" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="38" skill="40" poison="30">
+		<attack name="poisonfield" range="1" chance="5">
+			<attribute key="shootEffect" value="poison" />
+			<attribute key="areaEffect" value="poff" />
+		</attack>
+	</attacks>
+	<defenses armor="20" defense="20">
+		<defense name="speed" speedchange="95" variation="15" duration="2000" chance="8">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity poison="1" />
+	</immunities>
+	<loot>
+		<item id="3372" countmax="1" chance="30" /> <!-- brass legs -->
+		<item id="3031" countmax="10" chance="700" /> <!-- a gold coin -->
+		<item id="3031" countmax="30" chance="300" /> <!-- a gold coin -->
+		<item id="3410" countmax="1" chance="20" /> <!-- a plate shield -->
+		<item id="3351" countmax="1" chance="10" /> <!-- a steel helmet -->
+		<item id="3053" countmax="1" chance="1" /> <!-- a time ring -->
+	</loot>
+</monster>

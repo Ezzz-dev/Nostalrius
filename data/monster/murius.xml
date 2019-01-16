@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="General Murius" nameDescription="General Murius" race="blood" experience="300" speed="85" manacost="0">
+	<health now="550" max="550" />
+	<look type="207" head="0" body="0" legs="0" feet="0" corpse="4057" />
+	<targetchange interval="1000" chance="5" />
+	<targetstrategy nearest="70" weakest="10" mostdamage="20" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="55" skill="70">
+		<attack name="physical" min="-50" max="-120" range="7" chance="9">
+			<attribute key="shootEffect" value="bolt" />
+		</attack>
+		<attack name="physical" min="-50" max="-80" radius="3" target="0" chance="10">
+			<attribute key="areaEffect" value="blackspark" />
+		</attack>
+	</attacks>
+	<defenses armor="26" defense="52">
+		<defense name="healing" min="50" max="100" chance="7">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity outfit="1" />
+		<immunity lifedrain="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<summons maxSummons="4">
+		<summon name="minotaur archer" chance="7" max="2" />
+		<summon name="minotaur guard" chance="9" max="2" />
+	</summons>
+	<voices>
+		<voice sentence="Feel the power of the Mooh'Tah!" />
+		<voice sentence="You will get what you deserve!" />
+		<voice sentence="For the king!" />
+		<voice sentence="Guards!" />
+	</voices>
+	<loot>
+		<item id="3413" countmax="1" chance="180" /> <!-- a battle shield -->
+		<item id="3359" countmax="1" chance="280" /> <!-- a brass armor -->
+		<item id="3558" countmax="1" chance="350" /> <!-- chain legs -->
+		<item id="3275" countmax="1" chance="75" /> <!-- a double axe -->
+		<item id="3483" countmax="1" chance="50" /> <!-- a fishing rod -->
+		<item id="3031" countmax="50" chance="600" /> <!-- a gold coin -->
+		<item id="3577" countmax="1" chance="100" /> <!-- meat -->
+	</loot>
+</monster>

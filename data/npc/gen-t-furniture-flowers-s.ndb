@@ -1,0 +1,23 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gen-t-furniture-flowers-s.ndb: Datenbank für generischen Möbelverkauf - Pflanzen und Blumen
+# Verwendete Topics: 81
+
+#"offer"           -> "I sell statues, tables, chairs, flowers, pillows, pottery, instruments, decoration, tapestries and containers."
+#"furniture"       -> *
+#"goods"           -> *
+#"do","you","sell" -> *
+#"do","you","have" -> *
+
+"flower"          -> "I offer indoor plants, flower bowls, god flowers, honey flowers and potted flowers. What do you need?"
+"plant"           -> *
+"god","flower"    -> Type=2981, Amount=1, Price=5,  "Do you want to buy god flowers for %P gold?", Topic=81
+"indoor","plant"  -> Type=2811, Amount=1, Price=8,  "Do you want to buy an indoor plant for %P gold?", Topic=81
+"flower","bowl"   -> Type=2983, Amount=1, Price=6,  "Do you want to buy a flower bowl for %P gold?", Topic=81
+"honey","flower"  -> Type=2984, Amount=1, Price=5,  "Do you want to buy a honey flower for %P gold?", Topic=81
+"potted","flower" -> Type=2985, Amount=1, Price=5,  "Do you want to buy a potted flower for %P gold?", Topic=81
+# "christmas","tree" -> Type=2812, Amount=1, Price=50, "A christmas tree is a very nice decoration for your house. Unfortunately it passes off in some weeks! Do you want to buy one for %P gold?", Topic=81
+
+Topic=81,"yes",Premium,CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=81,"yes",CountMoney>=Price         -> "I'm sorry, but you need a premium account if you want to buy furniture."
+Topic=81,"yes"                           -> "Come back, when you have enough money."
+Topic=81                                 -> "Hmm, but I'm sure, it would fit nicely into your house."

@@ -1,0 +1,59 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# ulrik.npc: Datenbank für den Schmied Ulrik in Greenshore
+
+Name = "Ulrik"
+Outfit = (131,60-70-97-95)
+Home = [32282,32056,7]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Hello %N. What can I do for you?"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "One moment please, %N.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Good bye for now."
+
+"bye"         -> "Good bye for now.", Idle
+"job"         -> "I am a smith. Do you need anything I make?"
+"shop"        -> *
+"name"        -> "My name is Ulrik."
+"time"        -> "It is %T."
+"king"        -> "What can a simple man as me say about a king?"
+"tibianus"    -> *
+"ferumbras"   -> "Oh, I only heard frigthening tales about him."
+"excalibug"   -> "Every now and then an adventurer like you comes here looking for it."
+"news"        -> "We live too far away from Thais to hear anything that truly is 'new'."
+"help"        -> "Sorry, I have no clue how to help you."
+"monster"     -> "Most monsters live far away, so you can feel safe here in Greenshore."
+"dungeon"     -> "They say north of Thais is a deep dungeon."
+"thanks"      -> "You are welcome."
+"thank","you" -> *
+
+"buy"             -> "What do you need? I sell weapons and armor."
+"do","you","sell" -> *
+"do","you","have" -> *
+"offer"           -> "My offers are weapons and armor."
+"weapon"          -> "I have longswords, battle hammers, and battle axes. What do you want?"
+"armor"           -> "I have scale armor, soldier helmets, and steel shields. What do you want?"
+"sell"            -> "I'm sorry, but I don't buy used equipment."
+
+"longsword"       -> Type=3285, Amount=1, Price=160, "Do you want to buy a longsword for %P gold?", Topic=1
+"battle","hammer" -> Type=3305, Amount=1, Price=350, "Do you want to buy a battle hammer for %P gold?", Topic=1
+"battle","axe"    -> Type=3266, Amount=1, Price=235, "Do you want to buy a battle axe for %P gold?", Topic=1
+"scale","armor"   -> Type=3377, Amount=1, Price=260, "Do you want to buy a scale armor for %P gold?", Topic=1
+"soldier","helmet"-> Type=3375, Amount=1, Price=110,  "Do you want to buy a soldier helmet for %P gold?", Topic=1
+"steel","shield"  -> Type=3409, Amount=1, Price=240, "Do you want to buy a steel shield for %P gold?", Topic=1
+
+%1,1<%1,"longsword"       -> Type=3285, Amount=%1, Price=160*%1, "Do you want to buy %A longswords for %P gold?", Topic=1
+%1,1<%1,"battle","hammer" -> Type=3305, Amount=%1, Price=350*%1, "Do you want to buy %A battle hammers for %P gold?", Topic=1
+%1,1<%1,"battle","axe"    -> Type=3266, Amount=%1, Price=235*%1, "Do you want to buy %A battle axes for %P gold?", Topic=1
+%1,1<%1,"scale","armor"   -> Type=3377, Amount=%1, Price=260*%1, "Do you want to buy %A scale armors for %P gold?", Topic=1
+%1,1<%1,"soldier","helmet"-> Type=3375, Amount=%1, Price=110*%1,  "Do you want to buy %A soldier helmets for %P gold?", Topic=1
+%1,1<%1,"steel","shield"  -> Type=3409, Amount=%1, Price=240*%1, "Do you want to buy %A steel shields for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Thank you. Here it is.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Sorry, you do not have enough gold."
+Topic=1                         -> "Maybe you will buy it another time."
+}

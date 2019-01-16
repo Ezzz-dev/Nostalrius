@@ -1,0 +1,45 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# iwar.npc: Möbelverkäufer Iwar in Kazordoon
+
+Name = "Iwar"
+Outfit = (160,58-108-63-76)
+Home = [32618,31917,8]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Hiho %N! Welcome to Kazordoon Furniture Store."
+ADDRESS,"hi$",!    -> *
+ADDRESS,"hiho$",!  -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "One moment, %N, me busy.", Queue
+BUSY,"hi$",!       -> *
+BUSY,"hiho$",!     -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Guut bye."
+
+"bye"      -> "Guut bye.", Idle
+"farewell" -> *
+"name"     -> "Me is Iwar Woodpecker, son of Earth, from the Savage Axes. Me run this store."
+"job"      -> "You moving to new home? Me specialist for equipping it."
+"time"     -> "Time is %T. You needing clock for your house?"
+"news"     -> "You meaning my specials, eh?"
+
+"offer"           -> "Me selling statues, tables, chairs, flowers, pillows, pottery, instruments, decoration, tapestries and containers."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"furniture"       -> *
+"equipment"       -> *
+"special"         -> "My offers permanently extraordinary cheap."
+
+@"gen-t-furniture-statues-s.ndb"
+@"gen-t-furniture-tables-s.ndb"
+@"gen-t-furniture-chairs-s.ndb"
+@"gen-t-furniture-flowers-s.ndb"
+@"gen-t-furniture-pillows-s.ndb"
+@"gen-t-furniture-pottery-s.ndb"
+@"gen-t-furniture-instruments-s.ndb"
+@"gen-t-furniture-decoration-s.ndb"
+@"gen-t-furniture-tapestries-s.ndb"
+@"gen-t-furniture-containers-s.ndb"
+}

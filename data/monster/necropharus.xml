@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="Necropharus" nameDescription="Necropharus" race="blood" experience="700" speed="60" manacost="0">
+	<health now="750" max="750" />
+	<look type="209" head="0" body="0" legs="0" feet="0" corpse="4240" />
+	<targetchange interval="1000" chance="50" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="4" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="45" skill="35" poison="95">
+		<attack name="lifedrain" min="-80" max="-120" range="1" chance="5">
+			<attribute key="areaEffect" value="redspark" />
+		</attack>
+		<attack name="poison" min="-50" max="-140" range="7" chance="6">
+			<attribute key="shootEffect" value="poison" />
+			<attribute key="areaEffect" value="poison" />
+		</attack>
+	</attacks>
+	<defenses armor="55" defense="45">
+		<defense name="healing" min="60" max="90" chance="4">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity outfit="1" />
+		<immunity lifedrain="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<summons maxSummons="4">
+		<summon name="ghoul" chance="5" max="2" />
+		<summon name="ghost" chance="6" max="1" />
+		<summon name="mummy" chance="7" max="1" />
+	</summons>
+	<voices>
+		<voice sentence="You will rise as my servant!" />
+		<voice sentence="Praise to my master Urgith!" />
+	</voices>
+	<loot>
+		<item id="3116" countmax="1" chance="60" /> <!-- a big bone -->
+		<item id="3115" countmax="1" chance="300" /> <!-- a bone -->
+		<item id="3337" countmax="1" chance="199" /> <!-- a bone club -->
+		<item id="3441" countmax="1" chance="75" /> <!-- a bone shield -->
+		<item id="3079" countmax="1" chance="2" /> <!-- boots of haste -->
+		<item id="3311" countmax="1" chance="57" /> <!-- a clerical mace -->
+		<item id="3070" countmax="1" chance="5" /> <!-- a moonlight rod -->
+		<item id="3031" countmax="99" chance="673" /> <!-- a gold coin -->
+		<item id="3732" countmax="1" chance="225" /> <!-- a green mushroom -->
+		<item id="3574" countmax="1" chance="18" /> <!-- a mystic turban -->
+		<item id="3377" countmax="1" chance="85" /> <!-- a scale armor -->
+		<item id="3294" countmax="1" chance="86" /> <!-- a short sword -->
+		<item id="3114" countmax="1" chance="160" /> <!-- a skull -->
+		<item id="3324" countmax="1" chance="4" /> <!-- a skull staff -->
+	</loot>
+</monster>

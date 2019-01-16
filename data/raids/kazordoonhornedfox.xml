@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="0" type="event" message="The horned fox is in his lair."/>
+	<areaspawn delay="0" lifetime="7200000" radius="2" centerx="32462" centery="31954" centerz="4">
+		<monster name="The Horned Fox" minamount="1" maxamount="1"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="7200000" radius="3" centerx="32462" centery="31954" centerz="4">
+		<monster name="minotaur guard" minamount="2" maxamount="2"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="7200000" radius="3" centerx="32462" centery="31954" centerz="4">
+		<monster name="minotaur archer" minamount="2" maxamount="2"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="7200000" radius="3" centerx="32462" centery="31954" centerz="4">
+		<monster name="minotaur mage" minamount="1" maxamount="1"/>
+	</areaspawn>
+</raid>

@@ -1,0 +1,176 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# leedelle.npc: Datenbank für die Händlerin Le'Delle (Newbie)
+
+Name = "Lee'Delle"
+Outfit = (136,78-76-72-96)
+Home = [32024,32196,7]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",premium,! -> "Hello, hello, %N! Please come in, look, and buy!"
+ADDRESS,"hi$",premium,!    -> *
+ADDRESS,"hello$",!         -> "I'm sorry %N, but I only serve premium account customers.", Idle
+ADDRESS,"hi$",!            -> *
+ADDRESS,!                  -> Idle
+BUSY,"hello$",premium,!    -> "Not now, not now, sorry %N. Please wait a moment.", Queue
+BUSY,"hi$",premium,!       -> *
+BUSY,"hello$",!            -> "I'm sorry %N, but I only serve premium account customers."
+BUSY,"hi$",!               -> *
+BUSY,!                     -> NOP
+VANISH,!                   -> "Bye, bye."
+
+"bye"             -> "Bye, bye.", Idle
+"farewell"        -> *
+"how","are","you" -> "I am fine. I'm delighted to welcome you as customer."
+"sell"            -> "I sell much. Have a look at the blackboards for my wares or just ask."
+"job"             -> "I am a merchant, so what can I do for you?"
+"name"            -> "My name is Lee'Delle. Do you want to buy something?"
+"time"            -> "It is about %T. I am so sorry, I have no watches to sell. Do you want to buy something else?"
+"help"            -> "I am already helping you by selling stuff."
+"monster"         -> "There are plenty of them. Buy here the equipment to kill them and sell their loot afterwards!"
+"dungeon"         -> "be carefull down there. Make sure you bought enough torches and a rope or you might get lost."
+"sewer"           -> "The sewers are full of rats. They are quite a challenge for inexperienced adventurers."
+"king"            -> "The king supports our little village very much!"
+"dallheim"        -> "He is a great warrior and our protector." 
+"bug"             -> "There are several bugs in the wildernes."
+"stuff"           -> "I sell equipment of all kinds. Just ask me about the type of wares you are interested in."
+"tibia"           -> "The continent is even more exciting than this isle!"
+"thais"           -> "Thais is the capital of the thaian empire."
+
+"mission"         -> "I really love flowers. Sadly my favourites, honey flowers are very rare on this isle. If you can find me one, I'll give you a little reward."
+"quest"           -> *
+"reward"          -> *
+
+"honey", "flower", Count(2984)>=1 -> "Oh, thank you so much! Please take this piece of armor as reward.",Amount=1, Delete(2984), Create(3362)
+"honey", "flower" -> "Honey flowers are my favourites <sigh>."
+
+"wares"           -> "I sell weapons, shields, armor, helmets, and equipment. For what do you want to ask?"
+"offer"           -> *
+"weapon"          -> "I sell spears, rapiers, sabres, daggers, hand axes, axes, and short swords. Just tell me what you want to buy."
+"armor"           -> "I sell jackets, coats, doublets, leather armor, and leather legs. Just tell me what you want to buy."
+"helmet"          -> "I sell leather helmets, studded helmets, and chain helmets. Just tell me what you want to buy."
+"shield"          -> "I sell wooden shields and studded shields. Just tell me what you want to buy."
+"equipment"       -> "I sell torches, bags, scrolls, shovels, picks, backpacks, sickles, scythes, ropes, fishing rods and sixpacks of worms. Just tell me what you want to buy."
+"do","you","sell" -> "What do you need? I sell weapons, armor, helmets, shields, and equipment."
+"do","you","have" -> *
+
+"spear"              -> Type=3277, Amount=1, Price=10,  "Do you want to buy a spear for %P gold?", Topic=1
+"rapier"             -> Type=3272, Amount=1, Price=15,  "Do you want to buy a rapier for %P gold?", Topic=1
+"sabre"              -> Type=3273, Amount=1, Price=25,  "Do you want to buy a sabre for %P gold?", Topic=1
+"dagger"             -> Type=3267, Amount=1, Price=5,   "Do you want to buy a dagger for %P gold?", Topic=1
+"sickle"             -> Type=3293, Amount=1, Price=8,   "Do you want to buy a sickle for %P gold?", Topic=1               
+"hand","axe"         -> Type=3268, Amount=1, Price=8,   "Do you want to buy a hand axe for %P gold?", Topic=1
+"axe"                -> Type=3274, Amount=1, Price=20,  "Do you want to buy an axe for %P gold?", Topic=1
+"short","sword"      -> Type=3294, Amount=1, Price=30,  "Do you want to buy a short sword for %P gold?", Topic=1
+"jacket"             -> Type=3561, Amount=1, Price=10,  "Do you want to buy a jacket for %P gold?", Topic=1
+"coat"               -> Type=3562, Amount=1, Price=8,   "Do you want to buy a coat for %P gold?", Topic=1
+"doublet"            -> Type=3379, Amount=1, Price=16,  "Do you want to buy a doublet for %P gold?", Topic=1 
+"leather","armor"    -> Type=3361, Amount=1, Price=25,  "Do you want to buy a leather armor for %P gold?", Topic=1
+"leather","legs"     -> Type=3559, Amount=1, Price=10,  "Do you want to buy leather legs for %P gold?", Topic=1
+"leather","helmet"   -> Type=3355, Amount=1, Price=12,  "Do you want to buy a leather helmet for %P gold?", Topic=1
+"studded","helmet"   -> Type=3376, Amount=1, Price=63,  "Do you want to buy a studded helmet for %P gold?", Topic=1
+"chain","helmet"     -> Type=3352, Amount=1, Price=52,  "Do you want to buy a chain helmet for %P gold?", Topic=1
+"wooden","shield"    -> Type=3412, Amount=1, Price=15,  "Do you want to buy a wooden shield for %P gold?", Topic=1
+"studded","shield"   -> Type=3426, Amount=1, Price=50,  "Do you want to buy a studded shield for %P gold?", Topic=1
+"torch"              -> Type=2920, Amount=1, Price=2,   "Do you want to buy a torch for %P gold?", Topic=1
+"bag"                -> Type=2853, Amount=1, Price=4,   "Do you want to buy a bag for %P gold?", Topic=1
+"scroll"             -> Type=2815, Amount=1, Price=5,   "Do you want to buy a scroll for %P gold?", Topic=1
+"shovel"             -> Type=3457, Amount=1, Price=10,  "Do you want to buy a shovel for %P gold?", Topic=1
+"pick"               -> "Sorry I fear the only picks left on this isle are in the posession of Al Dee."
+"backpack"           -> Type=2854, Amount=1, Price=10,  "Do you want to buy a backpack for %P gold?", Topic=1
+"scythe"             -> Type=3453, Amount=1, Price=12,  "Do you want to buy a scythe for %P gold?", Topic=1
+"rope"               -> Type=3003, Amount=1, Price=50,  "Do you want to buy a rope for %P gold?", Topic=1
+"rod"                -> Type=3483, Amount=1, Price=150, "Do you want to buy a fishing rod for %P gold?", Topic=1
+
+%1,1<%1,"spear"              -> Type=3277, Amount=%1, Price=10*%1,  "Do you want to buy %A spears for %P gold?", Topic=1
+%1,1<%1,"rapier"             -> Type=3272, Amount=%1, Price=15*%1,  "Do you want to buy %A rapiers for %P gold?", Topic=1
+%1,1<%1,"sabre"              -> Type=3273, Amount=%1, Price=25*%1,  "Do you want to buy %A sabres for %P gold?", Topic=1
+%1,1<%1,"dagger"             -> Type=3267, Amount=%1, Price=5*%1,   "Do you want to buy %A daggers for %P gold?", Topic=1
+%1,1<%1,"sickle"             -> Type=3293, Amount=%1, Price=8*%1,   "Do you want to buy %A sickles for %P gold?", Topic=1               
+%1,1<%1,"hand","axe"         -> Type=3268, Amount=%1, Price=8*%1,   "Do you want to buy %A hand axes for %P gold?", Topic=1
+%1,1<%1,"axe"                -> Type=3274, Amount=%1, Price=20*%1,  "Do you want to buy %A axes for %P gold?", Topic=1
+%1,1<%1,"short","sword"      -> Type=3294, Amount=%1, Price=30*%1,  "Do you want to buy %A short swords for %P gold?", Topic=1
+%1,1<%1,"jacket"             -> Type=3561, Amount=%1, Price=10*%1,  "Do you want to buy %A jackets for %P gold?", Topic=1
+%1,1<%1,"coat"               -> Type=3562, Amount=%1, Price=8*%1,   "Do you want to buy %A coats for %P gold?", Topic=1
+%1,1<%1,"doublet"            -> Type=3379, Amount=%1, Price=16*%1,  "Do you want to buy %A dublets for %P gold?", Topic=1 
+%1,1<%1,"leather","armor"    -> Type=3361, Amount=%1, Price=25*%1,  "Do you want to buy %A leather armors for %P gold?", Topic=1
+%1,1<%1,"leather","legs"     -> Type=3559, Amount=%1, Price=10*%1,  "Do you want to buy %A leather legs for %P gold?", Topic=1
+%1,1<%1,"leather","helmet"   -> Type=3355, Amount=%1, Price=12*%1,  "Do you want to buy %A leather helmets for %P gold?", Topic=1
+%1,1<%1,"studded","helmet"   -> Type=3376, Amount=%1, Price=63*%1,  "Do you want to buy %A studded helmets for %P gold?", Topic=1
+%1,1<%1,"chain","helmet"     -> Type=3352, Amount=%1, Price=52*%1,  "Do you want to buy %A chain helmets for %P gold?", Topic=1
+%1,1<%1,"wooden","shield"    -> Type=3412, Amount=%1, Price=15*%1,  "Do you want to buy %A wooden shields for %P gold?", Topic=1
+%1,1<%1,"studded","shield"   -> Type=3426, Amount=%1, Price=50*%1,  "Do you want to buy %A studded shields for %P gold?", Topic=1
+%1,1<%1,"torch"              -> Type=2920, Amount=%1, Price=2*%1,   "Do you want to buy %A torches for %P gold?", Topic=1
+%1,1<%1,"bag"                -> Type=2853, Amount=%1, Price=4*%1,   "Do you want to buy %A bags for %P gold?", Topic=1
+%1,1<%1,"scroll"             -> Type=2815, Amount=%1, Price=5*%1,   "Do you want to buy %A scrolls for %P gold?", Topic=1
+%1,1<%1,"shovel"             -> Type=3457, Amount=%1, Price=10*%1,  "Do you want to buy %A shovels for %P gold?", Topic=1
+%1,1<%1,"backpack"           -> Type=2854, Amount=%1, Price=10*%1,  "Do you want to buy %A backpacks for %P gold?", Topic=1
+%1,1<%1,"scythe"             -> Type=3453, Amount=%1, Price=12*%1,  "Do you want to buy %A scythes for %P gold?", Topic=1
+%1,1<%1,"rope"               -> Type=3003, Amount=%1, Price=50*%1,  "Do you want to buy %A ropes for %P gold?", Topic=1
+%1,1<%1,"rod"                -> Type=3483, Amount=%1, Price=150*%1, "Do you want to buy %A fishing rods for %P gold?", Topic=1
+
+"worm"          -> "I sell worms only in sixpacks for 5 gold each, how many sixpacks of worms do you want to buy?"
+"worms"         -> *
+%1,"worms"      -> Type=3492, Amount=%1*6, Price=5*%1,   "So you want to buy some of my sixpacks with altogether %A worms for %P gold?", Topic=1
+%1,"six","pack" -> *
+
+"sell","club"             -> "I don't buy this garbage!"
+"sell","dagger"           -> Type=3267, Amount=1, Price=2,   "Do you want to sell this garbage? I give you %P gold, ok?", Topic=2
+"sell","spear"            -> Type=3277, Amount=1, Price=3,   "Do you want to sell this garbage? I give you %P gold, ok?", Topic=2
+"sell","hand","axe"       -> Type=3268, Amount=1, Price=4,   "Do you want to sell a hand axe for %P gold?", Topic=2
+"sell","rapier"           -> Type=3272, Amount=1, Price=5,   "Do you want to sell a rapier for %P gold?", Topic=2
+"sell","axe"              -> Type=3274, Amount=1, Price=7,   "Do you want to sell an axe for %P gold?", Topic=2
+"sell","hatchet"          -> Type=3276, Amount=1, Price=25,  "Do you want to sell a hatchet for %P gold?", Topic=2
+"sell","sabre"            -> Type=3273, Amount=1, Price=12,  "Do you want to sell a sabre for %P gold?", Topic=2
+"sell","sword"            -> Type=3264, Amount=1, Price=25,  "Do you want to sell a sword for %P gold?", Topic=2
+"sell","mace"             -> Type=3286, Amount=1, Price=30,  "Do you want to sell a mace for %P gold?", Topic=2
+"sell","short","sword"    -> Type=3294, Amount=1, Price=10,  "Do you want to sell a short sword for %P gold?", Topic=2
+"sell","doublet"          -> Type=3379, Amount=1, Price=3,   "Do you want to sell a doublet for %P gold?", Topic=2
+"sell","leather","armor"  -> Type=3361, Amount=1, Price=5,   "Do you want to sell a leather armor for %P gold?", Topic=2
+"sell","chain","armor"    -> Type=3358, Amount=1, Price=40,  "Do you want to sell a chain armor for %P gold?", Topic=2
+"sell","studded","armor"  -> Type=3378, Amount=1, Price=25,  "Do you want to sell a studded armor for %P gold?", Topic=2
+"sell","leather","helmet" -> Type=3355, Amount=1, Price=3,   "Do you want to sell a leather helmet for %P gold?", Topic=2
+"sell","chain","helmet"   -> Type=3352, Amount=1, Price=12,  "Do you want to sell a chain helmet for %P gold?", Topic=2
+"sell","studded","helmet" -> Type=3376, Amount=1, Price=20,  "Do you want to sell a studded helmet for %P gold?", Topic=2
+"sell","wooden","shield"  -> Type=3412, Amount=1, Price=3,   "Do you want to sell a wooden shield for %P gold?", Topic=2
+"sell","studded","shield" -> Type=3426, Amount=1, Price=16,  "Do you want to sell a studded shield for %P gold?", Topic=2
+"sell","brass","shield"   -> Type=3411, Amount=1, Price=25,  "Do you want to sell a brass shield for %P gold?", Topic=2
+"sell","plate","shield"   -> Type=3410, Amount=1, Price=40,  "Do you want to sell a plate shield for %P gold?", Topic=2
+"sell","copper","shield"  -> Type=3430, Amount=1, Price=50,  "Do you want to sell a copper shield for %P gold?", Topic=2
+"sell","leather","boots"  -> Type=3552, Amount=1, Price=2,   "Do you want to sell a pair of leather boots for %P gold?", Topic=2
+"sell","rope"             -> Type=3003, Amount=1, Price=8,   "Do you want to sell a rope for %P gold?", Topic=2
+
+"sell",%1,1<%1,"dagger"           -> Type=3267, Amount=%1, Price=2*%1,   "Do you want to sell %A daggers for %P gold?", Topic=2
+"sell",%1,1<%1,"spear"            -> Type=3277, Amount=%1, Price=3*%1,   "Do you want to sell %A spears for %P gold?", Topic=2
+"sell",%1,1<%1,"hand","axe"       -> Type=3268, Amount=%1, Price=4*%1,   "Do you want to sell %A hand axes for %P gold?", Topic=2
+"sell",%1,1<%1,"rapier"           -> Type=3272, Amount=%1, Price=5*%1,   "Do you want to sell %A rapiers for %P gold?", Topic=2
+"sell",%1,1<%1,"axe"              -> Type=3274, Amount=%1, Price=7*%1,   "Do you want to sell %A axes for %P gold?", Topic=2
+"sell",%1,1<%1,"hatchet"          -> Type=3276, Amount=%1, Price=25*%1,  "Do you want to sell %A hatchets for %P gold?", Topic=2
+"sell",%1,1<%1,"sabre"            -> Type=3273, Amount=%1, Price=12*%1,  "Do you want to sell %A sabres for %P gold?", Topic=2
+"sell",%1,1<%1,"sword"            -> Type=3264, Amount=%1, Price=25*%1,  "Do you want to sell %A swords for %P gold?", Topic=2
+"sell",%1,1<%1,"mace"             -> Type=3286, Amount=%1, Price=30*%1,  "Do you want to sell %A maces for %P gold?", Topic=2
+"sell",%1,1<%1,"short","sword"    -> Type=3294, Amount=%1, Price=10*%1,  "Do you want to sell %A short swords for %P gold?", Topic=2
+"sell",%1,1<%1,"doublet"          -> Type=3379, Amount=%1, Price=3*%1,   "Do you want to sell %A doublets for %P gold?", Topic=2
+"sell",%1,1<%1,"leather","armor"  -> Type=3361, Amount=%1, Price=5*%1,   "Do you want to sell %A leather armors for %P gold?", Topic=2
+"sell",%1,1<%1,"chain","armor"    -> Type=3358, Amount=%1, Price=40*%1,  "Do you want to sell %A chain armors for %P gold?", Topic=2
+"sell",%1,1<%1,"studded","armor"  -> Type=3378, Amount=%1, Price=25*%1,  "Do you want to sell %A studded armors for %P gold?", Topic=2
+"sell",%1,1<%1,"leather","helmet" -> Type=3355, Amount=%1, Price=3*%1,   "Do you want to sell %A leather helmets for %P gold?", Topic=2
+"sell",%1,1<%1,"chain","helmet"   -> Type=3352, Amount=%1, Price=12*%1,  "Do you want to sell %A chain helmets for %P gold?", Topic=2
+"sell",%1,1<%1,"studded","helmet" -> Type=3376, Amount=%1, Price=20*%1,  "Do you want to sell %A studded helmets for %P gold?", Topic=2
+"sell",%1,1<%1,"wooden","shield"  -> Type=3412, Amount=%1, Price=3*%1,   "Do you want to sell %A wooden shields for %P gold?", Topic=2
+"sell",%1,1<%1,"studded","shield" -> Type=3426, Amount=%1, Price=16*%1,  "Do you want to sell %A studded shields for %P gold?", Topic=2
+"sell",%1,1<%1,"brass","shield"   -> Type=3411, Amount=%1, Price=25*%1,  "Do you want to sell %A brass shields for %P gold?", Topic=2
+"sell",%1,1<%1,"plate","shield"   -> Type=3410, Amount=%1, Price=40*%1,  "Do you want to sell %A plate shields for %P gold?", Topic=2
+"sell",%1,1<%1,"copper","shield"  -> Type=3430, Amount=%1, Price=50*%1,  "Do you want to sell %A copper shields for %P gold?", Topic=2
+"sell",%1,1<%1,"leather","boots"  -> Type=3552, Amount=%1, Price=2*%1,   "Do you want to sell %A pairs of leather boots for %P gold?", Topic=2
+"sell",%1,1<%1,"rope"             -> Type=3003, Amount=%1, Price=8*%1,   "Do you want to sell %A ropes for %P gold?", Topic=2
+
+Topic=1,"yes",CountMoney>=Price -> "Thank you. Here it is.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Sorry, you do not have enough gold."
+Topic=1                         -> "Maybe you will buy it another time."
+
+Topic=2,"yes",Count(Type)>=Amount -> "Ok. Here is your money.", Delete(Type), CreateMoney
+Topic=2,"yes"                             -> "Sorry, you do not have one."
+Topic=2,"yes",Amount>1					  -> "Sorry, you do not have that many."
+Topic=2                                   -> "Maybe next time."
+}

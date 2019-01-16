@@ -1,0 +1,71 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# urkalio.npc: Datenbank für den Wirt Urkalio
+
+Name = "Urkalio"
+Outfit = (128,39-40-118-76)
+Home = [32913,32081,10]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Welcome to the pits of the Hard Rock Tavern, %N."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Hey, some patience, %N. You'll be served soon enough.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "We're some hasty one, aren't we?"
+
+"bye"          -> "Have a good fight, %N.", Idle
+"job"          -> "I am responsible for the Hard Rock Pits Tavern."
+"tavern"       -> *
+"upper","part" -> "If you can't stand some blood and battlecrys, just go upstairs."
+"pits"         -> "Choose your enemies with care."
+"asrak"        -> "He's the best. To be the man, you'll have to beat the minotaur, so to say. Not that you could provoke him to a fight at all."
+"name"         -> "I am Urkalio."
+"maria"        -> "She's kind of my boss."
+"time"         -> "No clue, it's equally dark down here at any time."
+"king"         -> "Down here everyone is king as far as where his weapons reach."
+"tibianus"     -> *
+"army"         -> "A shame they don't visit our pits for some training."
+"ferumbras"    -> "THAT would be some attraction down here."
+"excalibug"    -> "I would love to see that weapon in a fight."
+"thais"        -> "Such a boring city. I wonder why anyone would live there."
+"tibia"        -> "Sooner or later everyone comes here, so why bother to travel."
+"carlin"       -> "I don't care about their 'independence war'."
+"amazon"       -> "Some came here to challenge the local champions. I can't say I was impressed by their skills. However, they took a few heads as trophies."
+"news"         -> "I bet you want to hear about those swampelves from Shadowthorn."
+"rumors"       -> *
+"swampelves"   -> "If they want a fight that bad, why don't they just come here and fight in the pits?"
+
+"buy"             -> "I sell food and drinks for the hungry and thirsty."
+"do","you","sell" -> *
+"do","you","have" -> *
+"food"            -> "I have cookies, bread, cheese, ham, and meat."
+"drink"           -> "So do you want beer, wine, lemonade, or ... uhm ... water?"
+
+"bread"    -> Type=3600, Amount=1, Price=4, "Do you want to buy a bread for %P gold?", Topic=1
+"cheese"   -> Type=3607, Amount=1, Price=6, "Do you want to buy cheese for %P gold?", Topic=1
+"meat"     -> Type=3577, Amount=1, Price=5, "Do you want to buy meat for %P gold?", Topic=1
+"ham"      -> Type=3582, Amount=1, Price=8, "Do you want to buy a ham for %P gold?", Topic=1
+"cookie"   -> Type=3598, Amount=1, Price=5, "Do you want to buy a cookie for %P gold?", Topic=1
+
+"lemonade" -> Type=2880, Data=12, Amount=1, Price=2, "Do you want to buy a mug of lemonade for %P gold?", Topic=1
+"beer"     -> Type=2880, Data=3,  Amount=1, Price=2, "Do you want to buy a mug of beer for %P gold?", Topic=1
+"wine"     -> Type=2880, Data=2,  Amount=1, Price=3, "Do you want to buy a mug of wine for %P gold?", Topic=1
+"water"    -> Type=2880, Data=1,  Amount=1, Price=1, "<cough chuckle cough> So you want to buy a mug of ... water for %P gold?", Topic=1
+
+%1,1<%1,"bread"    -> Type=3600, Amount=%1, Price=4*%1, "Do you want to buy %A breads for %P gold?", Topic=1
+%1,1<%1,"cheese"   -> Type=3607, Amount=%1, Price=6*%1, "Do you want to buy %A cheese for %P gold?", Topic=1
+%1,1<%1,"meat"     -> Type=3577, Amount=%1, Price=5*%1, "Do you want to buy %A meat for %P gold?", Topic=1
+%1,1<%1,"ham"      -> Type=3582, Amount=%1, Price=8*%1, "Do you want to buy %A ham for %P gold?", Topic=1
+%1,1<%1,"cookie"   -> Type=3598, Amount=%1, Price=5*%1, "Do you want to buy %A cookies for %P gold?", Topic=1
+
+%1,1<%1,"lemonade" -> Type=2880, Data=12, Amount=%1, Price=2*%1, "Do you want to buy %A mugs of lemonade for %P gold?", Topic=1
+%1,1<%1,"beer"     -> Type=2880, Data=3,  Amount=%1, Price=2*%1, "Do you want to buy %A mugs of beer for %P gold?", Topic=1
+%1,1<%1,"wine"     -> Type=2880, Data=2,  Amount=%1, Price=3*%1, "Do you want to buy %A mugs of wine for %P gold?", Topic=1
+%1,1<%1,"water"    -> Type=2880, Data=1,  Amount=%1, Price=1*%1, "<cough chuckle cough> So you want to buy %A mugs of ... water for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "I guess you run out of money. Leave before I run out of patience.", Idle
+Topic=1                         -> "Don't waste my time, kid."
+}

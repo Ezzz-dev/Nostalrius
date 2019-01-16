@@ -1,0 +1,98 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# billy.npc: Datenbank fuer den Farmer Billy
+
+Name = "Billy"
+Outfit = (128,58-63-58-115)
+Home = [32037,32205,7]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$",premium,! -> "Howdy %N."
+ADDRESS,"hi$",premium,!    -> *
+ADDRESS,"hello$",! -> "You did not pay your tax. Get lost!", Idle
+ADDRESS,"hi$",!    -> *
+
+ADDRESS,!          -> Idle
+BUSY,"hello$",premium,!    -> "Can't you see i am talking? Wait!", Queue
+BUSY,"hi$",premium,!       -> *
+BUSY,"hello$",!    -> "You did not pay your tax. Get lost!"
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "YOU RUDE $§&$"
+
+"bye"             -> "Bye.", Idle
+"farewell"        -> "Farewell.", Idle
+"how","are","you" -> "I think, I'm fine."
+"job"             -> "I am farmer and a cook."
+"cook"            -> "I am the best cook around. You can sell me most types of food."
+"willie"          -> "Don't listen to that old wannabe, I'm the best cook around."
+"recipe"          -> "I would love to try a pancake. But I lack a decent pan. If you get me one, I will reward you."
+"name"            -> "Billy."
+"time"            -> "I came here to have some peace and leisure so leave me alone with 'time'."
+"help"            -> "Can't help you, sorry. I'm a cook, not a priest."
+"monster"         -> "Don't be afraid, in the town you should be save."
+"dungeon"         -> "You'll find a lot of dungeons if you look around."
+"sewer"           -> "The local sewers are invested by rats, fresh rats give a good stew, you can sell them to me."
+"god"             -> "I am the god of cooking, indeed!"
+"king"            -> "The king and his tax collectors are far away. You'll meet them soon enough."
+"obi"             -> "I like him, we usualy have a drink or two once a week and share storys about Willie."
+"seymour"         -> "I don't like his headmaster behaviour. Then again, he IS a headmaster after all."
+"dallheim"        -> "One of the kings best men, here to protect us." 
+"cipfried"        -> "He never leaves this temple and only has time to care about those new arivals."
+"amber"           -> "Shes pretty indeed! I wonder if she likes bearded men." 
+"weapon"          -> "Ask one of the shopkeepers. They make a fortune here with all those wannabe heroes."
+"magic"           -> "I can spell but know no spell."
+"spell"           -> *
+"tibia"           -> "There is so much to be explored! Better hurry to get to the continent!"
+
+"offer"  -> "I can offer you bread, cheese, ham, or meat."
+"food"   -> "Are you looking for food? I have bread, cheese, ham, and meat."
+
+"bread"  -> Type=3600, Amount=1, Price=3, "Do you want to buy a bread for %P gold?", Topic=1
+"cheese" -> Type=3607, Amount=1, Price=5, "Do you want to buy a cheese for %P gold?", Topic=1
+"meat"   -> Type=3577, Amount=1, Price=5, "Do you want to buy meat for %P gold?", Topic=1
+"ham"    -> Type=3582, Amount=1, Price=8, "Do you want to buy a ham for %P gold?", Topic=1
+
+%1,1<%1,"bread"  -> Type=3600, Amount=%1, Price=3*%1, "Do you want to buy %A breads for %P gold?", Topic=1
+%1,1<%1,"cheese" -> Type=3607, Amount=%1, Price=5*%1, "Do you want to buy %A cheese for %P gold?", Topic=1
+%1,1<%1,"meat"   -> Type=3577, Amount=%1, Price=5*%1, "Do you want to buy %A meat for %P gold?", Topic=1
+%1,1<%1,"ham"    -> Type=3582, Amount=%1, Price=8*%1, "Do you want to buy %A hams for %P gold?", Topic=1
+
+"sell","bread"     -> Type=3600, Amount=1,  Price=1,  "So, you want to sell a bread? Hmm, I give you %P gold, ok?", Topic=2
+"sell","cheese"    -> Type=3607, Amount=1,  Price=2,  "So, you want to sell a cheese? Hmm, I give you %P gold, ok?", Topic=2
+"sell","meat"      -> Type=3577, Amount=1,  Price=2,  "So, you want to sell meat? Hmm, I give you %P gold, ok?", Topic=2
+"sell","ham"       -> Type=3582, Amount=1,  Price=4,  "So, you want to sell a ham? Hmm, I give you %P gold, ok?", Topic=2
+"sell","salmon"    -> Type=3579, Amount=1,  Price=2,  "So, you want to sell a salmon? Hmm, I give you %P gold, ok?", Topic=2
+"sell","fish"      -> "Go away with this stinking &*#@@!"
+"sell","cherry"    -> Type=3590, Amount=1,  Price=1,  "So, you want to sell a cherry? Hmm, I give you %P gold, ok?", Topic=2
+
+"sell",%1,1<%1,"bread"     -> Type=3600, Amount=%1,  Price=1*%1,  "So, you want to sell %A breads? Hmm, I give you %P gold, ok?", Topic=2
+"sell",%1,1<%1,"cheese"    -> Type=3607, Amount=%1,  Price=2*%1,  "So, you want to sell %A cheese? Hmm, I give you %P gold, ok?", Topic=2
+"sell",%1,1<%1,"meat"      -> Type=3577, Amount=%1,  Price=2*%1,  "So, you want to sell %A meat? Hmm, I give you %P gold, ok?", Topic=2
+"sell",%1,1<%1,"ham"       -> Type=3582, Amount=%1,  Price=4*%1,  "So, you want to sell %A hams? Hmm, I give you %P gold, ok?", Topic=2
+"sell",%1,1<%1,"salmon"    -> Type=3579, Amount=%1,  Price=2*%1,  "So, you want to sell %A salmon? Hmm, I give you %P gold, ok?", Topic=2
+"sell",%1,1<%1,"fish"      -> "Go away with this stinking &*#@@!"
+"sell",%1,1<%1,"cherr"    -> Type=3590, Amount=%1,  Price=1*%1,  "So, you want to sell %A cherries? Hmm, I give you %P gold, ok?", Topic=2
+
+"rat"              -> "So you bring me a fresh rat for my famous stew?", Type=3994, Amount=1,  Price=2, Topic=2
+"sell","rat"       -> "So you bring me a fresh rat for my famous stew?", Type=3994, Amount=1,  Price=2, Topic=2
+%1,1<%1,"rat"      -> Type=3994, Amount=%1, Price=2*%1, "So you bring me %A fresh rats for my famous stew?", Topic=2
+
+"sell"            -> "I sell various kinds of food."
+"buy"             -> "I buy food of most kind. Since I am a great cook I need much of it."
+
+Topic=1,"yes",CountMoney>=Price -> "Here it is.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "I am sorry, but you do not have enough gold."
+Topic=1                         -> "Maybe later."
+
+Topic=2,"yes",Count(Type)>=Amount -> "Here you are.", Delete(Type), CreateMoney
+Topic=2,"yes"                             -> "You don't have one."
+Topic=2,"yes",Amount>1                    -> "Sorry, you do not have so many."
+Topic=2,"no"                              -> "Then not."
+
+"pan"                                  -> Type=3466, Amount=1, "Have you found a pan for me?", Topic=3
+Topic=3,"yes",Count(Type)>=Amount -> "A pan! At last! Take this in case you eat something my cousin has cooked.", Delete(Type),Amount=1, Data=1, Create(3153)
+Topic=3,"yes"                             -> "Hey! You don't have it!"
+Topic=3,"no"                              -> "$&*@!"
+Topic=3                                   -> *
+}

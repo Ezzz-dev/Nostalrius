@@ -1,0 +1,124 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gabel.npc: Datenbank für den Djinnkönig Gabel
+
+Name = "Gabel"
+Outfit = (80,0-0-0-0)
+Home = [33102,32520,1]
+Radius = 1 
+
+Behaviour = {
+
+ADDRESS,"hello$",QuestValue(278)=2,!      -> "Welcome, human %N, to our humble abode."
+ADDRESS,"hi$",QuestValue(278)=2,!         -> *
+ADDRESS,"greetings$",QuestValue(278)=2,!  -> *
+ADDRESS,"djanni'hah$",QuestValue(278)=2,! -> *
+ADDRESS,!                                 -> Idle
+BUSY,"hello$",QuestValue(278)=2,!         -> "Have patience, %N. In this world every grain of sand has its place and its time. You may have found the place you have been looking for, but it is not yet your time.", Queue
+BUSY,"hi$",QuestValue(278)=2,!            -> *
+BUSY,"greetings$",QuestValue(278)=2,!     -> *
+BUSY,"djanni'hah$",QuestValue(278)=2,!    -> *
+BUSY,!                                    -> NOP
+VANISH                                    -> "Farewell, stranger. May Uman open your minds and your hearts to Daraman's wisdom!"
+
+"bye"           -> "Farewell, stranger. May Uman open your minds and your hearts to Daraman's wisdom!", Idle
+"farewell"      -> *
+"name"          -> "I am known as Gabel. I have borne this name for as long as I remember, and believe me - that is quite some time."
+"gabel"			    -> "I have often thought about changing this name because... Ah well <sighs>. Let us talk about more cheerful things."
+"job"           -> "I am the true leader of all djinn, both in worldly and in spiritual matters.<sighs> Unfortunately, there are those among my kind who disagree."
+"djinn"         -> "Once we were a mighty race. I like to think that one day we will return to our former glory, but as long as this tragic war is not won that is not likely to happen."
+"war"           -> "We had thought the war was over for good when Malor was finally imprisoned. And now he is free again! How could it ever come so far. ...",
+                   "But well - nothing is lost. I have no illusions about Malor's intentions, but I'm not afraid. We have beaten him once and we can beat him again!"
+"malor"			    -> "The accursed usurper is free! I can't believe it! To think that power-hungry cockroach is once again roaming the world! ...",
+                   "I could forgive him his evil schemes if he had not led my people into this tragic fratricidal war!"
+"king"          -> "Some call me a king, even though I do not like the title. Daraman has taught us to think little of worldly matters such as power or station in life."
+"leader"        -> *
+"daraman"	      -> "Daraman may have been just a human, but he bore in him the spark of the divine. We have paid a heavy price for following his teachings, but I have never felt any regret for my decision."
+"ashta'daramai" -> "This place is a gift of Daraman to the djinn people. Oh, he did not build it himself, of course. It was us Marid who did it. We erected it on the place where once stood my old palace. ...",
+                   "Its serene majesty is a visual expression of the inner peace and light that are bestowed by the great Daraman's teachings."
+"abode"         -> *
+"marid"		      -> "We, the Marid, are the true inheritors of the djinn legacy. Those errant fools who call themselves the Efreet are nothing but usurpers."
+"efreet"		    -> "Our fallen brethren claim they are different, but I have not given up hope yet that all djinn will be reunited one day! If only they saw the light!"
+
+"mal'ouquah"    -> "The Mal'ouquah is the Efreets' fortress. Malor built it when it was clear that the djinns had definitely split in two fractions. I will personally raze it to the ground once we have finally won this disastrous war!"
+"kha'zeel"		  -> "These majestic mountains were chosen by the gods as a vantage point from which they watched their creation."
+"kha'labal"	    -> "Ah yes - that horrid desert. I still recall how beautiful it was back in the times before the struggle it began. It was a land full of song and bliss - a veritable paradise. But look at it now. <sighs> It is such a shame."
+"orc","king"    -> "The power hungry fool released Malor from his prison, and now the evil is upon us once again! He should have known better than to believe Malor's sugar covered lies. ...",
+                   "But what can you expect from a power-crazed, stupid-as-a-brick orc. Nothing but blockheads the lot of them"
+"human"         -> "For a long time we have despised and oppressed your kind. I still feel ashamed for the things we have done in those dark days. The gods be praised that they sent Daraman to open our eyes. ...",
+                   "I know that one day djinn and humans will live in peaceful co-existence."
+"zathroth"      -> "The name brings up painful memories. I'd rather not talk about this subject."
+"gods"          -> "For a long time I found it difficult to love them. But Daraman has opened my eyes."
+"tibia"         -> "The world of Tibia is like a gemstone carved by the greatest of all craftsmen. It is sad that it took a human to make me realise its perfection."
+
+"darashia"      -> "Darashia was nothing but a forlorn pool of mud last time I passed there. I hear it has now risen to great wealth and glory. Perhaps the Caliph is more open to the true creed than that dangerous fool, the pharaoh of Ankrahmun."
+"scarab"        -> "The scarabs are ancient beings, as ancient as ourselves. We djinns feel a lot of respect for them."
+"edron"         -> "I have often heard of the splendid cities the humans have erected on the continent. I would like to visit them one day and send them a message of peace and friendship in the name of my people."
+"thais"         -> *
+"venore"        -> *
+"kazordoon"     -> *
+"carlin"        -> *
+"ab'dendriel"   -> *
+"ankrahmun"     -> "I haven't seen the venerable city in a long time. I would like to visit it again, but I can't help the feeling that I would not be welcome these days."
+
+"pharaoh"       -> "The new pharaoh seems to hold some very eccentric ideas about life and death. I have a feeling that his so-called teachings are nothing but an ignorant perversion of the true creed."
+"palace"        -> "Stay clear of that place. I have heard bad things about it."
+"temple"	      -> "In these heretic times the temple is devoted to the teachings of that pompous pharaoh. I haven't been there for a long time."
+"ascension"     -> "Apparently that is what the followers of the pharaoh are striving for. It has to do with his heretical teachings."
+"rah"           -> "That's just some heretic drivel. Don't ask me about it."
+"uthun"			    -> *
+"akh"				    -> *
+
+"djema"         -> "Poor thing. She's an orphan you know. We took her to us when she was a child, and we have never regretted it. So fresh and lively - she has really brought some life to this place. ...",
+                   "In a way it was an experiment, you know. A human living among djinn. I suppose it worked well, but perhaps too well. ...",
+                   "Now she has grown on me, and I'm loath to let her go. <sighs> Sometimes I wonder if it was right to make her live in this place after all."
+"bo'ques"       -> "My good old cook. Of all worldly temptations his food is the greatest."
+"baa'leal"      -> "He is Malor's lieutenant and the commander-in-chief of all his minions. He is nothing without his master. Never stirred while Malor was gone." 
+"alesar"        -> "Alesar... Alesar. You know, it pains me to even hear this name. When he left I lost both my best smith and a personal friend. I don't know what is worse. ...",
+                   "And the worst is, to this day I have never managed to figure out why he left. I refuse to believe that Malor could bribe him in any way. If only I knew."
+"fa'hradin"     -> "He is my trusted counsellor and friend. If you would like to help us you should talk to him. ...",
+                   "By the way - don't worry if his behaviour appears a bit odd sometimes. He is incurably eccentric. Always has been. I think it is a job hazard of being a wizard."
+"lamp"          -> "We djinn use them to sleep. Well, you may find it is a funny notion to sleep in a lamp, but then, for us it seems just as silly to sleep in a longish wooden construction with a fluffy mattress on top."
+"fa'hradin","lamp" -> "Ah yes. This lamp was his masterpiece. It was so satisfying to see that dirty little schemer fall for a ploy himself. If only he'd never come back!"
+"rata'mari"     -> "So you know about him. Hm. Since nobody else knows about him Fa'Hradin must have told you. ...",
+                   "I suppose he had his reasons, but I would appreciate it if you did not tell anybody about him. If Malor found about him, he would start a little rat hunt I guess." 
+
+"permission",QuestValue(283)<3 -> "I am not yet convinced, that we can trust you, %N. Only trusted people are allowed to trade with Haroun and Nah'Bob."
+"permission",QuestValue(283)=3 -> "You are welcome to trade with Haroun and Nah'bob whenever you want to, %N!"
+
+"work",QuestValue(281)<2      -> "So you would like to fight for us, don't you. Hmm. ...",
+                                 "That is a noble resolution you have made there, human, but I'm afraid I cannot accept your generous offer at this point of time. ...", 
+                                 "Do not get me wrong, but I am not the kind of guy to send an inexperienced soldier into certain death! So you might ask around here for a more suitable mission."
+"mission",QuestValue(281)<2   -> *
+
+"report",QuestValue(281)=2,QuestValue(283)=0   -> "Sooo. Fa'hradin has told me about your extraordinary exploit, and I must say I am impressed. ...",
+                                                  "Your fragile human form belies your courage and your fighting spirit. ...",
+                                                  "I hardly dare to ask you because you have already done so much for us, but there is a task to be done, and I cannot think of anybody else who would be better suited to fulfill it than you. ...",
+                                                  "Think carefully, human, for this mission will bring you into real danger. Are you prepared to do us that final favour?", Topic=1
+"spyreport",QuestValue(281)=2,QuestValue(283)=0 -> *
+"work",QuestValue(281)=2,QuestValue(283)=0      -> *
+"mission",QuestValue(281)=2,QuestValue(283)=0   -> *
+
+"report",QuestValue(283)=1    -> "You haven't finished your final mission yet. Shall I explain it again to you?", Topic=1
+"spyreport",QuestValue(283)=1 -> *
+"work",QuestValue(283)=1      -> *
+"mission",QuestValue(283)=1   -> *
+"lamp",QuestValue(283)=1      -> *
+
+Topic=1,"yes"                 -> "All right. Listen! Thanks to Rata'mari's report we now know what Malor is up to: he wants to do to me what I have done to him - he wants to imprison me in Fa'hradin's lamp! ...",
+                                 "Of course, that won't happen. Now, we know his plans. ...",
+                                 "But I am aiming at something different. We have learnt one important thing: At this point of time, Malor does not have the lamp yet, which means it is still where he left it. We need that lamp! If we get it back we can imprison him again! ...",
+                                 "From all we know the lamp is still in the Orc King's possession! Therefore I want to ask you to enter the well guarded halls over at Ulderek's Rock and find the lamp. ...",
+                                 "Once you have acquired the lamp you must enter Mal'ouquah again. Sneak into Malor's personal chambers and exchange his sleeping lamp with Fa'hradin's lamp! ...",
+                                 "If you succeed, the war could be over one night later! I and all djinn will be in your debt forever! May Daraman watch over you!", SetQuestValue(283,1)
+Topic=1                       -> "As you wish."
+
+"report",QuestValue(283)=2    -> "Have you found Fa'hradin's lamp and placed it in Malor's personal chambers? ", Topic=2
+"spyreport",QuestValue(283)=2 -> *
+"work",QuestValue(283)=2      -> *
+"mission",QuestValue(283)=2   -> *
+"lamp",QuestValue(283)=2      -> *
+
+Topic=2,"yes"                 -> "Daraman shall bless you and all humans! You have done us all a huge service! Soon, this awful war will be over! ...",
+                                 "Know, that from now on you are considered one of us and are welcome to trade with Haroun and Nah'bob whenever you want to!", SetQuestValue(283,3)
+Topic=2                       -> "Don't give up! May Daraman watch over you!"
+}

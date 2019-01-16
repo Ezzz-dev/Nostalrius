@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="ghost" nameDescription="a ghost" race="undead" experience="120" speed="40" manacost="0">
+	<health now="150" max="150" />
+	<look type="48" head="0" body="0" legs="0" feet="0" corpse="4094" />
+	<targetchange interval="1000" chance="0" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="28" skill="45">
+		<attack name="lifedrain" min="-25" max="-45" range="1" chance="7" />
+	</attacks>
+	<defenses armor="10" defense="20">
+	</defenses>
+	<immunities>
+		<immunity physical="1" />
+		<immunity lifedrain="1" />
+		<immunity paralyze="1" />
+		<immunity poison="1" />
+	</immunities>
+	<voices>
+		<voice sentence="Huh!" />
+		<voice sentence="Shhhhhh" />
+		<voice sentence="Buuuuuh" />
+	</voices>
+	<loot>
+		<item id="3432" countmax="1" chance="8" /> <!-- an ancient shield -->
+		<item id="2843" countmax="1" chance="15" /> <!-- a book -->
+		<item id="3565" countmax="1" chance="90" /> <!-- a cape -->
+		<item id="3292" countmax="1" chance="70" /> <!-- a combat knife -->
+		<item id="3282" countmax="1" chance="110" /> <!-- a morning star -->
+		<item id="3551" countmax="1" chance="200" /> <!-- sandals -->
+		<item id="3740" countmax="1" chance="150" /> <!-- a shadow herb -->
+		<item id="3049" countmax="1" chance="2" /> <!-- a stealth ring -->
+	</loot>
+</monster>

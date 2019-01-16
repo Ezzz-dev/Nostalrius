@@ -1,0 +1,95 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# Halif.npc: Datenbank für den Händler Halif
+
+Name = "Halif"
+Outfit = (128,95-2-10-131)
+Home = [33217,32423,7]
+Radius = 0
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Greetings %N, you child of wealth and generousity. What wise decision to buy my wares."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Sorry %N, please could you wait a moment until I finish this deal.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Good bye, may Daraman bless your travels."
+
+"bye"       -> "Good bye, may Daraman bless your travels.", Idle
+"job"       -> "Oh, I guess your cleverness already made the profession of the humble equipment tradesman obvious to you."
+"light"     -> "I sell torches, candlesticks, candelabras, and oil, o seeker of enlightment."
+"name"      -> "I am Halif Ibn Onor, known as Halif the honest."
+"time"      -> "I would love to tell you the time, but I can not make the watchmaker's kids starve as a gazelle in the heart of the desert."
+"food"      -> "I am deeply sorry but you have to look for that elsewhere."
+
+"equipment"       -> "I sell shovels, picks, scythes, bags, ropes, backpacks, plates, cups, scrolls, documents, parchments, watches, fishing rods and sixpacks of worms. Of course, I sell lightsources, too."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"offer"           -> *
+
+"torch"           -> Type=2920, Amount=1,  Price=2,    "Do you want to buy a torch for %P gold?", Topic=1
+"candelabr"       -> Type=2911, Amount=1,  Price=8,    "Do you want to buy a candelabrum for %P gold?", Topic=1
+"candlestick"     -> Type=2917, Amount=1,  Price=2,    "Do you want to buy a candlestick for %P gold?", Topic=1
+"bag"             -> Type=2858, Amount=1,  Price=4,    "Do you want to buy a bag for %P gold?", Topic=1
+"scroll"          -> Type=2815, Amount=1,  Price=5,    "Do you want to buy a scroll for %P gold?", Topic=1
+"document"        -> Type=2834, Amount=1,  Price=12,   "Do you want to buy a document for %P gold?", Topic=1
+"parchment"       -> Type=2835, Amount=1,  Price=8,    "Do you want to buy a parchment for %P gold?", Topic=1
+"shovel"          -> Type=3457, Amount=1,  Price=10,   "Do you want to buy a shovel for %P gold?", Topic=1
+"backpack"        -> Type=2866, Amount=1,  Price=10,   "Do you want to buy a backpack for %P gold?", Topic=1
+"scythe"          -> Type=3453, Amount=1,  Price=50,   "Do you want to buy a scythe for %P gold?", Topic=1
+"pick"            -> Type=3456, Amount=1,  Price=50,   "Do you want to buy a pick for %P gold?", Topic=1
+"watch"           -> Type=2906, Amount=1,  Price=20,   "Do you want to buy one of my high quality watches for %P gold?", Topic=1
+"rope"            -> Type=3003, Amount=1,  Price=50,   "Do you want to buy a rope for %P gold?", Topic=1
+"rod"             -> Type=3483, Amount=1,  Price=150,  "Do you want to buy a fishing rod for %P gold?", Topic=1
+"crowbar"         -> Type=3304, Amount=1,  Price=260,  "Do you want to buy a crowbar for %P gold?", Topic=1
+"present"         -> Type=2856, Amount=1,  Price=10,   "Do you want to buy a present for %P gold?", Topic=1
+"bucket"          -> Type=2873, Amount=1,  Price=4,    "Do you want to buy a bucket for %P gold?", Topic=1
+"cup"             -> Type=2881, Amount=1,  Price=2,    "Do you want to buy a cup for %P gold?", Topic=1
+"plate"           -> Type=2905, Amount=1,  Price=6,    "Do you want to buy a plate for %P gold?", Topic=1
+"bottle"          -> Type=2875, Amount=1,  Price=3,    "Do you want to buy a bottle for %P gold?", Topic=1
+"oil"             -> Type=2874, Data=7,  Amount=1, Price=20, "Do you want to buy oil for %P gold?", Topic=1
+"water","hose"    -> Type=2901, Data=1,  Amount=1, Price=40, "Do you want to buy a water hose for %P gold?", Topic=1
+
+%1,1<%1,"torch"           -> Type=2920, Amount=%1,  Price=2*%1,    "Do you want to buy %A torches for %P gold?", Topic=1
+%1,1<%1,"candelabr"       -> Type=2911, Amount=%1,  Price=8*%1,    "Do you want to buy %A candelabra for %P gold?", Topic=1
+%1,1<%1,"candlestick"     -> Type=2917, Amount=%1,  Price=2*%1,    "Do you want to buy %A candlesticks for %P gold?", Topic=1
+%1,1<%1,"bag"             -> Type=2858, Amount=%1,  Price=4*%1,    "Do you want to buy %A bags for %P gold?", Topic=1
+%1,1<%1,"scroll"          -> Type=2815, Amount=%1,  Price=5*%1,    "Do you want to buy %A scrolls for %P gold?", Topic=1
+%1,1<%1,"document"        -> Type=2834, Amount=%1,  Price=12*%1,   "Do you want to buy %A documents for %P gold?", Topic=1
+%1,1<%1,"parchment"       -> Type=2835, Amount=%1,  Price=8*%1,    "Do you want to buy %A parchments for %P gold?", Topic=1
+%1,1<%1,"shovel"          -> Type=3457, Amount=%1,  Price=10*%1,   "Do you want to buy %A shovels for %P gold?", Topic=1
+%1,1<%1,"backpack"        -> Type=2866, Amount=%1,  Price=10*%1,   "Do you want to buy %A backpacks for %P gold?", Topic=1
+%1,1<%1,"scythe"          -> Type=3453, Amount=%1,  Price=50*%1,   "Do you want to buy %A scythes for %P gold?", Topic=1
+%1,1<%1,"pick"            -> Type=3456, Amount=%1,  Price=50*%1,   "Do you want to buy %A picks for %P gold?", Topic=1
+%1,1<%1,"watch"           -> Type=2906, Amount=%1,  Price=20*%1,   "Do you want to buy %A of my high quality watches for %P gold?", Topic=1
+%1,1<%1,"rope"            -> Type=3003, Amount=%1,  Price=50*%1,   "Do you want to buy %A ropes for %P gold?", Topic=1
+%1,1<%1,"rod"             -> Type=3483, Amount=%1,  Price=150*%1,  "Do you want to buy %A fishing rods for %P gold?", Topic=1
+%1,1<%1,"crowbar"         -> Type=3304, Amount=%1,  Price=260*%1,  "Do you want to buy %A crowbars for %P gold?", Topic=1
+%1,1<%1,"present"         -> Type=2856, Amount=%1,  Price=10*%1,   "Do you want to buy %A presents for %P gold?", Topic=1
+%1,1<%1,"bucket"          -> Type=2873, Amount=%1,  Price=4*%1,    "Do you want to buy %A buckets for %P gold?", Topic=1
+%1,1<%1,"bottle"          -> Type=2875, Amount=%1,  Price=3*%1,    "Do you want to buy %A bottles for %P gold?", Topic=1
+%1,1<%1,"cup"             -> Type=2881, Amount=%1,  Price=2*%1,    "Do you want to buy %A cups for %P gold?", Topic=1
+%1,1<%1,"plate"           -> Type=2905, Amount=%1,  Price=6*%1,    "Do you want to buy %A plates for %P gold?", Topic=1
+%1,1<%1,"oil"             -> Type=2874, Data=7,  Amount=%1, Price=20*%1, "Do you want to buy %A vials of oil for %P gold?", Topic=1
+%1,1<%1,"water","hose"    -> Type=2901, Data=1,  Amount=%1, Price=40*%1, "Do you want to buy %A water hoses for %P gold?", Topic=1
+
+"worm"          -> "I sell worms only in sixpacks for 5 gold each, how many sixpacks of worms do you want to buy?"
+"worms"         -> *
+%1,"worms"      -> Type=3492, Amount=%1*6, Price=5*%1,   "So you want to buy some of my sixpacks with altogether %A worms for %P gold?", Topic=1
+%1,"six","pack" -> *
+
+
+"sell","rope"     -> Type=3003, Amount=1,   Price=8,    "Do you want to sell a rope for %P gold?", Topic=3
+
+"sell",%1,1<%1,"rope"     -> Type=3003, Amount=%1,   Price=8*%1,    "Do you want to sell %A ropes for %P gold?", Topic=3
+
+Topic=1,"yes",CountMoney>=Price -> "I hope it will serve you well, my prized customer.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "My twelve starving children don't allow me to sell it for less, o grandmaster of haggling."
+Topic=1                         -> "What a pity."
+
+Topic=3,"yes",Count(Type)>=Amount -> "I hardly can explain my wife I gave you that much money.", Delete(Type), CreateMoney
+Topic=3,"yes"                             -> "Sorry, you own none."
+Topic=3,"yes",Amount>1					  -> "Sorry, you do not have that many."
+Topic=3                                   -> "Maybe next time."
+}

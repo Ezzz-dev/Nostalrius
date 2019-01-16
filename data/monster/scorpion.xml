@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="scorpion" nameDescription="a scorpion" race="venom" experience="45" speed="35" manacost="310">
+	<health now="45" max="45" />
+	<look type="43" head="0" body="0" legs="0" feet="0" corpse="4078" />
+	<targetchange interval="1000" chance="10" />
+	<targetstrategy nearest="60" weakest="0" mostdamage="0" random="40" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="1" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag runonhealth="5" />
+	</flags>
+	<attacks attack="21" skill="35" poison="350">
+	</attacks>
+	<defenses armor="14" defense="5">
+	</defenses>
+	<immunities>
+		<immunity poison="1" />
+	</immunities>
+</monster>

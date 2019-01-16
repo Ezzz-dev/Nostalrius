@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="yellow butterfly" nameDescription="a yellow butterfly" race="venom" experience="0" speed="180" manacost="0">
+	<health now="2" max="2" />
+	<look type="10" head="0" body="0" legs="0" feet="0" corpse="5013" />
+	<targetchange interval="1000" chance="10" />
+	<targetstrategy nearest="60" weakest="0" mostdamage="0" random="40" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="0" />
+		<flag illusionable="1" />
+		<flag convinceable="0" />
+		<flag pushable="1" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag runonhealth="2" />
+	</flags>
+	<attacks attack="0" skill="5">
+	</attacks>
+	<defenses armor="0" defense="14">
+	</defenses>
+</monster>

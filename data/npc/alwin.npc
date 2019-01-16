@@ -1,0 +1,11 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# alwin.npc: Datenbank für eine Stadtwache in Venore
+
+Name = "Alwin"
+Outfit = (131,113-113-113-115)
+Home = [32875,32125,6]
+Radius = 10
+
+Behaviour = {
+@"guards-venore.ndb"
+}

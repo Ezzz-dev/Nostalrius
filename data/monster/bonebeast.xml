@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="bonebeast" nameDescription="a bonebeast" race="undead" experience="580" speed="69" manacost="0">
+	<health now="515" max="515" />
+	<look type="101" head="0" body="0" legs="0" feet="0" corpse="4212" />
+	<targetchange interval="1000" chance="20" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="47" skill="75" poison="110">
+		<attack name="poison" min="-25" max="-65" range="7" chance="10">
+			<attribute key="shootEffect" value="poison" />
+			<attribute key="areaEffect" value="poison" />
+		</attack>
+		<attack name="lifedrain" min="-30" max="-50" radius="3" target="0" chance="7">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+		<attack name="poisoncondition" count="70" radius="3" target="0" chance="8">
+			<attribute key="areaEffect" value="poison" />
+		</attack>
+	</attacks>
+	<defenses armor="40" defense="45">
+		<defense name="healing" min="30" max="60" chance="9">
+			<attribute key="areaEffect" value="greenspark" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity outfit="1" />
+		<immunity lifedrain="1" />
+		<immunity paralyze="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<voices>
+		<voice sentence="Cccchhhhhhhhh!" />
+		<voice sentence="Knooorrrrr!" />
+	</voices>
+	<loot>
+		<item id="3116" countmax="1" chance="100" /> <!-- a big bone -->
+		<item id="3115" countmax="1" chance="500" /> <!-- a bone -->
+		<item id="3337" countmax="1" chance="50" /> <!-- a bone club -->
+		<item id="3441" countmax="1" chance="20" /> <!-- a bone shield -->
+		<item id="3031" countmax="90" chance="300" /> <!-- a gold coin -->
+		<item id="3732" countmax="1" chance="15" /> <!-- a green mushroom -->
+		<item id="3357" countmax="1" chance="80" /> <!-- a plate armor -->
+		<item id="3114" countmax="1" chance="200" /> <!-- a skull -->
+	</loot>
+</monster>

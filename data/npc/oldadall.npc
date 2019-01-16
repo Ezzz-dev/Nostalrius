@@ -1,0 +1,91 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# oldadall.npc: Datenbank für den Fährman old adall
+
+Name = "Old Adall"
+Outfit = (130,95-26-115-76)
+Home = [32628,32772,7]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Hi, %N."
+ADDRESS,"hi$",!    -> *
+ADDRESS,"hiho$",!    -> *
+ADDRESS,!          -> Idle
+
+BUSY,"hello$",!    -> "Wait please.", Queue
+BUSY,"hi$",!       -> *
+BUSY,"hiho$",!    -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Bye."
+
+"bye"      -> "Bye.", Idle
+"farewell" -> *
+"job"      -> "I am a ferryman now, in my youth I was a sailor though. If you want to travel to one of the ends of the town, just ask me for a passage."
+"sailor"   -> "Aye, matey. I was a sailor and have seen much of this world."
+"name"     -> "My name is Adall but everyone is calling me old Adall."
+"time"     -> "Hehe, old men have no need for watches. Watches are mocking you, you know?"
+"mocking"  -> "Watches seem to tell you that not much time is left and how much time you have already lost. They only remind you of everything that is already gone and all the things you will never achieve."
+"watch"    -> *
+"king"     -> "I saw the king and even his father. Thais used the be my home port in the old times."
+"venore"   -> "Those newcomers have quite an attitude and it is growing worse with the years. Ambition, ambition. It's all about ambition."
+"thais"    -> "It used to be a lovely town but over the years it has become crowded and noisy."
+"carlin"   -> "Hehe, it's not such a bad town for a visit, as long as you have your own alcohol on board and are not catched drunk in the city. I had to learn it the hard way and was arrested twice in my youth."
+"edron"    -> "Edron is not the lovely little isle people tend to think it is. There are secrets and ancient evil beneath the ground. Things that had better been left burried, have been unearthed."
+"jungle"   -> "The challenge the jungle is providing is something for the young and daring. I am not going to leave the security of the town, I'll just stay here and watch how things turn out."
+
+"tibia"    -> "The world offers much to discover. Whether you find your fortune or your doom, it is a private thing between you and fate though."
+
+"kazordoon" -> "I have never seen this inland town on my own."
+"dwarves"   -> "Some dwarves joined the colony. They are looking for treasures and minerals in the jungle." 
+"dwarfs"   -> *
+"ab'dendriel" -> "A curious town of curious people but I have seen odder things during my travels."
+"elves"       -> "Elves are somewhat strange but most get along well with humans."
+"elfs"       -> *
+"darama"      -> "One might think it's a strange place for an old man to settle down but I never had a child and I like to see this settlement grow and come of age in my last days ."
+"darashia"    -> "The people of Darashia are friendly. Still there is nothing exciting that would justify a voyage there."
+"ankrahmun"   -> "That city has given me the creeps for as long as I have known about it. Whenever we sailed there, I had a bad feeling of impending doom." 
+"ferumbras"   -> "I wonder if he's the Thaian version of the boogey man."
+"boogey","man" -> "The boogey man is only a myth to scare the children and keep them away from the jungle."
+"excalibug"   -> "I heard about that weapon in each and every harbour I have visited. Never heard more than rumours though."
+"apes"        -> "The apes are for Port Hope what the the orcs are for Thais."
+"lizard"     -> "I think they are suspicious and just because they are far away does not mean they are nice neighbours."
+"dworcs"      -> "They are horrible little creatures. I have seen my share of various orc breeds during my travels and those dworcs are the worst of all." 
+
+"trip"         -> "I can bring you either to the east end of Port Hope or to the west end of the town, where would you like to go?"
+"route"        -> *
+"passage"      -> *
+"destination"  -> *
+"sail"         -> *
+"go"           -> *
+
+"east"       -> Price=7, "Do you seek a passage to the east end of Port Hope for %P gold?", Topic=1
+"west"       -> Price=7, "Do you seek a passage to the west end of Port Hope for %P gold?", Topic=2
+
+
+Topic=1,"yes",PZBlock,! -> "First get rid of those blood stains! You are not going to ruin my vehicle!"
+Topic=2,"yes",PZBlock,! -> "First get rid of those blood stains! You are not going to ruin my vehicle!"
+
+Topic=1,"yes",Premium,CountMoney>=Price   -> "Here we go!", DeleteMoney, Idle, EffectOpp(11), Teleport(32679,32777,7), EffectOpp(11)
+Topic=1,"yes",CountMoney<Price            -> "Sorry, you do not have enough gold."
+Topic=2,"yes",Premium,CountMoney>=Price   -> "Here we go!", DeleteMoney, Idle, EffectOpp(11), Teleport(32558,32780,7), EffectOpp(11)
+Topic=2,"yes",CountMoney<Price            -> "Sorry, you do not have enough gold."
+Topic>0                                   -> "Maybe another time."
+
+
+#"trip"         -> Price=7, "Would you like to travel to the east end of Port Hope or to the west end of the town for 7 gold?", Topic=1
+#"route"        -> *
+#"passage"      -> *
+#"town"         -> *
+#"destination"  -> *
+#"sail"         -> *
+#"go"           -> *
+#Topic=1,"east",PZBlock,! -> "First get rid of those blood stains! You are not going to ruin my vehicle!"
+#Topic=1,"west",PZBlock,! -> "First get rid of those blood stains! You are not going to ruin my vehicle!"
+
+#Topic=1,"east",Premium,CountMoney>=Price -> "Here we go!", DeleteMoney, Idle, EffectOpp(11), Teleport(32679,32777,7), EffectOpp(11)
+#Topic=1,"east",CountMoney<Price            -> "Sorry, you do not have enough gold."
+#Topic=1,"west",Premium,CountMoney>=Price -> "Here we go!", DeleteMoney, Idle, EffectOpp(11), Teleport(32558,32780,7), EffectOpp(11)
+#Topic=1,"west",CountMoney<Price            -> "Sorry, you do not have enough gold."
+#Topic=1,"yes"                              -> "Fine you fool, considering I was asking you WHERE you want to travel 'yes' is a very smart answer!"
+
+}

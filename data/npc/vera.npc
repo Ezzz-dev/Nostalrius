@@ -1,0 +1,43 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# vera.npc: Möbelverkäuferin Vera auf Senja
+
+Name = "Vera"
+Outfit = (136,59-96-115-95)
+Home = [32138,31672,7]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Hello %N! Do you need some equipment for your house?"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "One moment please, %N.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Good bye."
+
+"bye"      -> "Good bye.", Idle
+"farewell" -> *
+"name"     -> "My name is Vera. I sell furniture and equipment."
+"job"      -> "Have you moved to a new home? I'm the specialist for equipping it."
+"time"     -> "It is %T. Do you need a clock for your house?"
+"news"     -> "You mean my specials, don't you?"
+
+"offer"           -> "I sell statues, tables, chairs, flowers, pillows, pottery, instruments, decoration, tapestries and containers."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"furniture"       -> *
+"equipment"       -> *
+"special"         -> "My offers are permanently extraordinarily cheap."
+
+@"gen-t-furniture-statues-s.ndb"
+@"gen-t-furniture-tables-s.ndb"
+@"gen-t-furniture-chairs-s.ndb"
+@"gen-t-furniture-flowers-s.ndb"
+@"gen-t-furniture-pillows-s.ndb"
+@"gen-t-furniture-pottery-s.ndb"
+@"gen-t-furniture-instruments-s.ndb"
+@"gen-t-furniture-decoration-s.ndb"
+@"gen-t-furniture-tapestries-s.ndb"
+@"gen-t-furniture-containers-s.ndb"
+}

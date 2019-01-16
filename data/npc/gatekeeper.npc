@@ -1,0 +1,55 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gatekeeper.npc: Datenbank fuer das Premium Orakel auf Rookgaard
+
+Name = "The Gatekeeper"
+Outfit = (0,2031)
+Home = [32035,32183,6]
+Radius = 0
+
+Behaviour = {
+ADDRESS,"hello$",Level>=8,premium,! -> "%N, ARE YOU PREPARED TO FACE YOUR DESTINY?"
+ADDRESS,"hi$",Level>=8,premium,!    -> *
+ADDRESS,"greet",Level>=8,premium,!  -> *
+
+ADDRESS,"hello$",!          -> "CHILD! COME BACK WHEN YOU HAVE GROWN UP!", Idle
+ADDRESS,"hi$",!             -> *
+ADDRESS,"greet",!           -> *
+ADDRESS,!                   -> Idle
+BUSY,"hello$",Level>=8,premium,!    -> "WAIT UNTIL IT IS YOUR TURN!", Queue
+BUSY,"hi$",Level>=8,premium,!       -> *
+BUSY,"greet",Level>=8,premium,!     -> *
+BUSY,"hello$",!             -> "CHILD! COME BACK WHEN YOU HAVE GROWN UP!"
+BUSY,"hi$",!                -> *
+BUSY,"greet",!              -> *
+BUSY,!                      -> NOP
+VANISH,!                    -> "COME BACK WHEN YOU ARE PREPARED TO FACE YOUR DESTINY!"
+
+"yes",premium -> "IN WHICH TOWN DO YOU WANT TO LIVE: AB'DENDRIEL, KAZORDOON, ANKRAHMUN, PORT HOPE OR DARASHIA?", Topic=1
+"yes"   -> "YOU ARE NOT WORTHY!", Idle
+"bye",! -> "COME BACK WHEN YOU ARE PREPARED TO FACE YOUR DESTINY!", Idle
+        -> *
+
+Topic=1,"Ab'Dendriel"     -> Data=1, "IN AB'DENDRIEL! AND WHAT PROFESSION HAVE YOU CHOSEN: KNIGHT, PALADIN, SORCERER, OR DRUID?", Topic=2
+Topic=1,"kazordoon"       -> Data=2, "IN KAZORDOON! AND WHAT PROFESSION HAVE YOU CHOSEN: KNIGHT, PALADIN, SORCERER, OR DRUID?", Topic=2
+Topic=1,"darashia"        -> Data=3, "IN DARASHIA! AND WHAT PROFESSION HAVE YOU CHOSEN: KNIGHT, PALADIN, SORCERER, OR DRUID?", Topic=2
+Topic=1,"ankrahmun"       -> Data=4, "IN ANKRAHMUN! AND WHAT PROFESSION HAVE YOU CHOSEN: KNIGHT, PALADIN, SORCERER, OR DRUID?", Topic=2
+Topic=1,"port","hope"     -> Data=5, "IN PORT HOPE! AND WHAT PROFESSION HAVE YOU CHOSEN: KNIGHT, PALADIN, SORCERER, OR DRUID?", Topic=2
+
+
+Topic=1,premium         -> "AB'DENDRIEL, KAZORDOON, ANKRAHMUN, PORT HOPE OR DARASHIA?", Topic=1
+ 
+
+Topic=2,"knight"   -> Type=4, "A KNIGHT! ARE YOU SURE? THIS DECISION IS IRREVERSIBLE!", Topic=3
+Topic=2,"paladin"  -> Type=3, "A PALADIN! ARE YOU SURE? THIS DECISION IS IRREVERSIBLE!", Topic=3
+Topic=2,"sorcerer" -> Type=1, "A SORCERER! ARE YOU SURE? THIS DECISION IS IRREVERSIBLE!", Topic=3
+Topic=2,"druid"    -> Type=2, "A DRUID! ARE YOU SURE? THIS DECISION IS IRREVERSIBLE!", Topic=3
+Topic=2            -> "KNIGHT, PALADIN, SORCERER, OR DRUID?", Topic=2
+
+Topic=3,Data=1,"yes" -> "SO BE IT!", Profession(Type), Town(4), Idle, EffectOpp(11), Teleport(32732,31634,7), EffectOpp(11)
+Topic=3,Data=2,"yes" -> "SO BE IT!", Profession(Type), Town(3), Idle, EffectOpp(11), Teleport(32649,31925,11), EffectOpp(11)
+Topic=3,Data=3,"yes" -> "SO BE IT!", Profession(Type), Town(6), Idle, EffectOpp(11), Teleport(33213,32454,1), EffectOpp(11)
+Topic=3,Data=4,"yes" -> "SO BE IT!", Profession(Type), Town(8), Idle, EffectOpp(11), Teleport(33194,32853,8), EffectOpp(11)
+Topic=3,Data=5,"yes" -> "SO BE IT!", Profession(Type), Town(9), Idle, EffectOpp(11), Teleport(32595,32744,6), EffectOpp(11)
+
+
+}

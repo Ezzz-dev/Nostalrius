@@ -1,0 +1,47 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# petros.npc: Fährmann Petros bei Darashia
+
+Name = "Petros"
+Outfit = (128,79-10-127-127)
+Home = [33289,32481,6]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",!        -> "Greetings, %N. I can take you to Venore, Port Hope or Ankrahmun if you like."
+ADDRESS,"hi$",!           -> *
+ADDRESS,!                 -> Idle
+BUSY,"hello$",!           -> "One moment please, %N.", Queue
+BUSY,"hi$",!              -> *
+BUSY,!                    -> NOP
+VANISH,!                  -> "Good bye!"
+
+"bye"          -> "Good bye!", Idle
+"farewell"     -> *
+"name"         -> "My name is Petros."
+"job"          -> "I take along people to Venore, Port Hope and Ankrahmun."
+"ghost"        -> "Oh, I don't believe in ghosts."
+
+"ship"         -> "My boat is ready to bring you to Venore, Port Hope or Ankrahmun."
+"boat"         -> *
+"passage"      -> *
+"venore"       -> Price=60, "Do you want to get to Venore for %P gold?", Topic=1
+"ankrahmun"    -> Price=100, "Do you want to get to Ankrahmun for %P gold?", Topic=2
+"port","hope"  -> Price=180, "Do you seek a passage to Port Hope for %P gold?", Topic=8
+
+
+"venore",QuestValue(250)>2       -> Price=50, "Do you want to get to Venore for %P gold?", Topic=1
+"ankrahmun",QuestValue(250)>2    -> Price=90, "Do you want to get to Ankrahmun for %P gold?", Topic=2
+"port","hope",QuestValue(250)>2  -> Price=170, "Do you seek a passage to Port Hope for %P gold?", Topic=8
+
+Topic>0,Topic<9,"yes",PZBlock,! -> "First get rid of those blood stains! You are not going to ruin my vehicle!"
+
+#Topic=1,"yes",PZBlock,! -> "First get rid of those blood stains! You are not going to ruin my vehicle!"
+#Topic=2,"yes",PZBlock,! -> *
+
+Topic=1,"yes",CountMoney>=Price -> "Here we go!", DeleteMoney, Idle, EffectOpp(11), Teleport(32954,32023,6), EffectOpp(11)
+Topic=2,"yes",CountMoney>=Price -> "Here we go!", DeleteMoney, Idle, EffectOpp(11), Teleport(33091,32883,6), EffectOpp(11)
+Topic=8,"yes",Premium,CountMoney>=Price -> "Set the sails!", DeleteMoney, Idle, EffectOpp(11), Teleport(32530,32784,6), EffectOpp(11)
+
+Topic>0,"yes"                   -> "You don't have enough money."
+Topic>0                         -> "Maybe later."
+}

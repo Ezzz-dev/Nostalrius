@@ -1,0 +1,165 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# edowir.npc: Datenbank fuer den Weisen Edowir
+
+Name = "Edowir"
+Outfit = (130,0-58-96-95)
+Home = [32343,32363,7]
+Radius = 5
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Oh, hello %N! How nice of you to visit an old man like me."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hi$",!       -> "Be patient %N. Learn to listen, listen to learn.", Queue
+BUSY,"hello$",!    -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Come back whenever you're in need of wisdom."
+
+"bye"              -> "Come back whenever you're in need of wisdom.", Idle
+"farewell"         -> *
+"how","are","you"  -> "I am fine, thank you."
+"sell"             -> "I sell nothing, but I share my wisdom now and then."
+"job"              -> "I gather wisdom and knowledge. I am also an astrologer."
+"name"             -> "I am Edowir, but don't worry about remembering my name. I will forget your name as well."
+"edowir"           -> "That's me, but don't worry about remembering my name. I will forget your name as well."
+"time"             -> "Time is a pillar and our lives wind around it like vine."
+"help"             -> "I would like to help you. What is your problem?"
+"monster"          -> "Man or monster, the difference is often just a matter of hides and scales."
+"dungeon"          -> "Dungeons are a place of danger, not of joy. Keep that in mind on your travels."
+"sewer"            -> "Sewers are sometimes the safer ways to get where you want to."
+"god"              -> "Learn about the gods to learn from the gods."
+"king"             -> "Kings are children adorned with crowns."
+"bozo"             -> "Who laughs last, thinks slowest."
+"joke"             -> *
+"jester"           -> *
+"rumour"           -> "Rumours are an unsafe path to follow."
+"gossip"           -> *
+"fuck"             -> "If that's all you can think about...", Idle
+"weapon"           -> "Those who live by the sword get shot by those who don't."
+"magic"            -> "I believe that true love is stronger than all magic, don't you agree?"
+"old"              -> "Growing old is mandatory, growing up is optional."
+"age"              -> *
+"tibia"            -> "If Tibia is a fallen god, does that makes us the maggots crawling on it?"
+"castle"           -> "A strong wall may protect from an assault, but what will protect you from the enemy within?"
+"muriel"           -> "Mages claim to be be wise, but how wise can it be to sacrifice your life to books and scrolls and not for the people?"
+"sorcerer"         -> *
+"elane"            -> "A paladin is more than just a knight armed with a bow and some spells, though most seem to be unaware of that fact."
+"paladin"          -> *
+"marvik"           -> "Druids seek enlightenment in nature, but they often just find what they brought with them."
+"druid"            -> *
+"gregor"           -> "Knights could be artists, but tend to become sellswords."
+"knight"           -> *
+"necromant","nectar" -> "There is no such thing, believe me. The dead don't care for taste."
+"goshnar"          -> "The Necromant King. He is dead forever, and that is the nicest thing I can say about him. May he rot in his tomb."
+"necromant"        -> "How could they try to understand death, if they don't care to understand life?"
+"nightmare","knight" -> "The Nightmare Knights were an ancient order dedicated to fight evil. They were  guided by prophetic dreams. The order ceased to exist after their war against the Brotherhood of Bones."
+"brotherhood","bone" -> "This brotherhood was an secret society of necromancers and followers of purest evil. They were vanquished long ago by their arch-enemies, the Nightmare Knights."
+"pits","inferno"   -> "An infernal place in which the nightmare knights created a base to fight the minions of evil. It was lost when the Ruthless Seven conquered it."
+"ruthless","seven" -> "They are more than a myth, they are a horrible reality. It is possible that they still reside in the pits of inferno."
+"sternum"          -> "Behind the mountain lies a land of great danger."
+"mintwallin"       -> "The underground city of the minotaurs can be reached through a dangerous passage from the old temple."
+"old","temple"     -> "In the old days the underground temple was built for the glory of Banor after a victory over the orcish hordes. It is now an abandoned and dreary place overrun by rotworms."
+
+"carlin"           -> "A city in the far north. It separated from the Thaian kingdom about 100 years ago. Now it is ruled by a dynasty of queens."
+"thais"            -> "Thais is the capital of an ancient human kingdom. Once its rule was more or less undisputed. In the years the strength of the thaian kingdom eroded by different events."
+"ab'dendriel"      -> "Although lovely, the city of the elves lacks the grace and the vibrance of the elven cities of old. The elves are still working on improvement of their settlement." 
+"Shadowthorn"      -> "The elves of shadowthorn are hosile to intruders. Their Kuridai leaders practise some sinister cults and the other castes are more their minions then their equals." 
+"castes"           -> "The elven society is divdided into certain cates, the cenath, the kuridai, the deaisim, the abdaisim and the legendary theshial."
+"cenath"    -> "The cenath favour magic above all other. They are the keeper of elven lore and wisdom. They are resposible for the astounding feats of druidic magic the elves are capable of."
+"kuridai"   -> "The Kuridai are the craftsmen and warriors of elvenkind. They are allways moving, allways sheming. They are the most agressive elves and distrust outsiders. An utsider might be each non-Kuridai to them."
+"deraisim"  -> "One could call the Deraisim the scouts and rangers of elvenkind. Although all elves are formidable in that area, the Deraisim excell them all."
+"abdaisim"  -> "The Abdaisim are what humans would call 'independent elves'. They take shelter wherever they might find it, are wanderers and explorers. They only keep loose contact with the elven society." 
+"teshial"   -> "Its said that those elves were the masters of the dreams. Which many consider as a special brand of magic. However they seem to have vanished from the face of tibia ages ago and their fate is unknown." 
+"kazordoon" -> "The ancient fortrescity of the dwarf was carved into the mountain known as 'the big old one'. Its quite hidden and heavily guarded to withstand any assault."
+"dwarf"     -> "The small but strong dwarves are tireless workers and fierce warriors. They are familiar with several crafts and mastered most of them. In our days their smithing skills are rivaled only by those of the cyclopses." 
+"dwarv"     -> * 
+"cyclops"   -> "Cyclopses are seen as the smithes of blog, whom they call 'the ragehammer' or 'ragehammerer'. Indeed their skills create mostly crude and nasty looking weapons and armor which are incredicle effective nontheles."
+"blog"      -> "Blog is the god of rage and fierce battle. Hes also the patron of power, although a power to opress and bully others around. He is the son of Zathroth and one of the tibian suns."
+"zathroth"  -> "Zathroth is the dark twin of Uman. They are one and they are two seperate entities. We mortals can't realy grasp this concept. He is the patron of dark magic and even darker secrets, the lust for dominance
+through cunning, and manipulation."
+"zathroth"  -> "Uman is the light twin of Zathroth. Their unity and seperatuion at once is a concept we cannot hope to grasp. He is the patron of light magic, the knowledge that beniefits all and brings progress to the society."
+"venore"    -> "Venore is a center of commerce and trade. Its ambitous trade-barons are nominaly subjects of the thaian kingdom."
+
+"paradox", "tower" -> "The paradox Tower was home of a mighty but mad wizard. Its said that only the cunning and mad can brave the tests of that tower to gain its treasures."
+"ridler"           -> "As far as I can tell this creature is not fond of cheaters and wont allow them to pass his tests."
+
+"magic","metal"   -> "There are sevral kinds of magic metals in our world, the best known are called Mesh Kaha Rogh, Za'Kalortith, Uth'Byth, Uth'Morc, Uth'Amon, Uth'Maer, Uth'Doon, and Zatragil."
+
+"Mesh","Kaha","Rogh" -> "The so called singing steel causes a constant humming while its forged. It's said its a sign that it absorbs magic powers in the process and its probably easy to enchant it. However the secret where to mine or how to creat this ore is lost in time."
+"Za'Kalortith"       -> "This is the metal of 'evil'. The hell forged iron no ordinary flames can melt. Its rumored to be harvestet in hell from iron rocks in which damned souls were imprisoned."
+"Uth'Byth"           -> "This steel absorbs magic, its of inferior quality compared to ordinary steel but its absorbing qualities make it important though."
+"Uth'Morc"           -> "What makes this black steel special is its lightness and special property of lacking the common steel 'noise'. Its also called silent steel or thiefs steel for that reason."
+"Uth'Amon"           -> "The luminescent brightsteel is used for artwork mainly. In ancient times items of great magic power were created using the brightsteel. Those secrets were lost with the races which hold them as their secrets."
+"Uth'Maer"           -> "The dwarfs call it heartiron and claim its part of the heart of the big old one. Therefore is sacred and its use is limited and regulated."
+"Uth'Doon"           -> "The dwarfen high steel is relatively common but expensive and still hard to come by. The elite dwarfen weaponary and armors are made of Uth'Doon."
+"Zatragil"           -> "The so called dreamsilver is a legendary metal. Almost everything we know about it are rumours only."
+
+
+"plains","havoc"   -> "Somewhere in the Plains of Havoc, where the Necromant King was defeated lies the secret entrance to the pits of inferno."
+"excalibug"        -> "The ancient dwarfen kings forged it using magic metal , which they took from cyclopses who found it in the heart of a fallen star."
+"venore"           -> "The swamp city is a center of commerce and known for it riches and its merchant barons. It is part of the Thaian kingdom."
+"rookgaard"        -> "It was on rookgaard where the soul vortex appeared. The Thaian kingdom holds an outpost there to protect the vortex and to guide the newly arrived souls."
+"soul","vortex"    -> "The gods created the vortex to guide powerful souls to our world so they might join the battle for creation."
+"magic","items"           -> "Magic items are numerous. If you would like some details, please ask me about a specific item."
+"bronze","amulet"         -> "Some creatures are able to attack your magic power rather than your lifeforce. This amulet bestows some protection on you against those attacks."
+"silver","amulet"         -> "This amulet purifies your blood. It will reduce the damage caused by poison."
+"platinum","amulet"       -> "These powerful amulets are usually blessed by some god. They offer additional armour and protection."
+"strange","talisman"      -> "These amulets protect you from harm taken by energy attacks and magic fields."
+"amulet","life"           -> "These amulets were created and enchanted by powerful magicians and priests. They protect both body and soul from the losses caused by the trauma of death."
+"stone","skin","amulet"   -> "Though they possess only a few charges, stone skin amulets are sought after because they offer complete protection from physical damage."
+"dragon","necklace"       -> "The core piece of these amulets is a little dragon scale. It protects against fire damage to some extent."
+"garlic","necklace"       -> "This charm, feared and despised by the undead, protects your lifeforce from lifedraining powers."
+"elven","amulet"          -> "These ancient elven artifacts are highly enchanted and grant some protection against any each form of damage."
+"shielding","amulet"      -> "These amulets are a more powerful version of the elven amulets. They were created by a race long gone from this plane and offer significant protection against every kind of damage."
+
+"mightring"          -> "This ring will give you limited protection against any kind of damage."
+"swordring"          -> "This ring will increase your skill when wielding swords."
+"axering"            -> "This ring will increase your skill when wielding any kind of axe."
+"clubring"           -> "This ring will increase your skill when wielding a club weapon."
+"powerring"          -> "This kind of ring will increase your skill when fighting with bare hands."
+"timering"           -> "These rings warp the fabric of time, greatly enhancing your running speed."
+"lifering"           -> "These rings improve your regenerative powers, accelerating the recovery of both your mana and your lifeforce."
+"ring","healing"     -> "This ring increases the rate with which you heal your physical wounds."
+"stealthring"        -> "These rings were created by an ancient, long forgotten race. It is said they valued secrecy above all. They used these magic rings to make themselves invisible."
+"dwarvenring"        -> "Actually rings of this kind are not created by dwarves. However, if you wear one you can drink as though you were a dwarf. They give you partial immunity against drunkenness."
+"energyring"         -> "These rings were created by the sorcerers' guilds of old. They temporarily provide their wielders with a shield of magic."
+
+"ghostlands"         -> "The ancient structures that were found deep beneath the ghostlands were built by an unkown race for an unknown purpose. Its quite certain that, whatever they were once used for, they now cause madness and ghost sightings in the sourounding area."
+"banshee"            -> "The banshees were creatures that grief and despair turned into vengefull spirits after their deaths. Their wail is deadly and they draw new strength from the pain and fear of others."
+"banshee","queen"    -> "The legendary banshee queen is incerdibly old and likely next to invincible. Shes rumored to have her lair in the deepest caverns of the ghotlands. She seems to be more likely to talk then her sisters but is for sure even more evil then them."
+"queen","banshee"    -> *
+
+"hugo"             -> "I think you are referring to the beast Hugo that is said to still haunt the Plains of Havoc. The legends which tell of this creature are ancient and almost forgotten."
+"legend"           -> "As far as we know, once a terrible beast roamed the lands we now call the Plains of Havoc. It was so fierce that no one dared to even dream about killing it. Finally it was tricked by the knight Endulos."
+"endulos"          -> "Endulos was not a great warrior, but a man of wit and genius. After many of his brethren of the Nightmare Knights had fallen prey to the beast, he came up with a cunning plan to end that threat."
+"plan"             -> "He lured Hugo into a trap. Bound by roots and stones charged with powerful magic he could not move anymore. Now, the beast lies trapped in a hidden cave for eternity."
+"cave"             -> "The legends tell us that the Nightmare Knights trapped it beneath one of their fortresses, or rather that they built a fortress on top of his eternal prison."
+"ghostland"        -> "The Ghostlands are haunted by their past. In bygone days some ancient race lived there. Deep beneath the earth some of their structures are still intact and defile the surrounding lands."
+"defile"        -> "Whatever the original meaning of that underground complex was, it is now like an open wound in the nearby lands, spreading madness and attracting all kinds of ghosts and apparitions."
+"edron"            -> "Edron is the latest colony of the Thaian kingdom. However, structures of an earlier colonisation have been found. We cannot tell if those inhabitants were human or of any other known race."
+"daraman"         -> "Daraman was a sage with ambition, that is for sure. His philosophy centered around the idea that by controlling yourself you could improve yourself. The closer you are coming to perfection, the closer you are to ascension to divinity."
+"darama"           -> "The desert lands of Darama are harsh and unforgiving. Therefore Daraman led his people there to found a new community based upon his teachings."
+"darashia"         -> "The town of Darashia is built around one of the few sweet water supplies of Darama. It is famous for its sand wasp honey and its sandworm stew."
+"drefia"           -> "The dreaded town of Drefia was once a haven for heretics, necromancers and demon worshipper. Its was destroyed in the war of the Djinn."
+"war", "djinn"     -> "Although some priests claim that war was fought on behalf of the gods, it seems more likely that this was kind of a civil war between the Djinn of good and the Djinn of evil."
+"djinn"            -> "Legend has it that the Djinn were created by Zathroth by using the stolen chalice of life. They roamed the world for Aeons causing strife and despair until Gabel, one of their lords met a very special human."
+"gabel"            -> "Gabel was the most powerful among the Djinn lords. He was cruel and merciless, until one day his minions brought a certain human to him whom they had captured and tortured."
+"certain","human"  -> "This human showed no fear and did not yield under torture. They could bend him, but they never managed to break him. Impressed by this mortal,  Gabel talked to him and learned about his philosophy."
+"philosophy"       -> "The human whom the Djinn had caught was none other but Daraman. The mighty Gabel was intrigued by his philosophy an changed his ways according to Daramans teachings."
+"teachings"       -> "The teachings of asceticism, inner peace and ascension appealed to the Djinn, although in the beginning this was probably only because of his vanity and his greed for divinity. However, Malor and his followers opposed him."
+"malor"            -> "Malor was second in power only to Gabel and his followers among the Djinn were many. It was not easy for the evil Djinn to change their ways, and many preferred to follow Malor instead of Gabel. In the end a civil war erupted."
+"civil","war"      -> "In the war of the Djinn citys were levelled, lands were cursed and islands sunk. Finally, Malor was caught and imprisoned in an enchanted bottle. His followers fled this plane, while the good djinn laid to rest to recover their strength."
+"chalice","life"   -> "This chalice was a tool of the gods which they created to make their task to create life easier. Zathroth who lacked the knowledge of creation stole that chalice and used it to spawn his evil minions."
+"minion","evil"    -> "The Djinn were the result of his first attempts. They were powerful and quite evil, but not as evil as Zathroth wished and quite independent in their thinking. Finally he discarded them and decided his second try would become his masterpiece."
+"masterpiece"      -> "Zathroth channeled all the hatred and foulness he could muster. He added the burning rage of his son Blog and mixed it with fire. The energy that was released destroyed the chalice, but Zathroth had succeeded in creating the first demon."
+"demon"            -> "Demons are the servants of evil. More or less devoted servers of Zathroth they cause strife and havoc wherever they appear. Their masters are known as Demonlords, Demon Overlords and Archdemons."
+"demonlords"       -> "Demonlords are the generals of their kind. They are more cunning than ordinary demons, and they can channel their hatred more effectively than their lesser brethren, making them even more formidable opponents."
+"demon","overlords"   -> "The overlords of the demonkind are more powerful than even demonlords are. They are nearly indestructible. Armoured with layers of impenetrable hide and endowed with awesome magical power, demon overlords are true incarnation of death."
+"archdemons"       -> "The archdemons are few, and they are extremely rare. And a good thing, too, for they are the rulers of the demonrace. They are vain and powerhungry creatures who tend to form only small cabals and fight each other instead of allying up against creation."
+"cabals"           -> "There are at least five demonic cabals of archdemons. The ruthless seven are the most prominent and powerful."
+}
+
+
+
+
+

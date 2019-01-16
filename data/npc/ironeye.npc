@@ -1,0 +1,42 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# ironeye.npc: Datenbank für den Waffen und Rüstungshandelsfürsten Abran Ironeye
+
+Name = "Abran Ironeye"
+Outfit = (73,0-0-0-0)
+Home = [32907,32116,5]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Hail, %N!"
+ADDRESS,"hi$",!    -> *
+ADDRESS,"hail$",!  -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Stand still and wait!"
+BUSY,"hi$",!       -> *
+BUSY,"hail$",!     -> *
+BUSY,!             -> NOP
+VANISH,!           -> "HEY! I did not dismiss you!"
+
+"bye"       -> "You are dismissed.", Idle
+"name"      -> "I am Abran Ironeye."
+"job"       -> "I am a busy man. I run the Ironhouse."
+"ironhouse" -> "What do you think? Here weapons and armor are forged, repaired, and sold."
+"time"      -> "You should know that on your own!"
+"king"      -> "I would like to see a true warrior-king in Thais... like in the old days. But who knows, perhaps one day the tides of fate will bring such a man to power. Who knows..."
+"tibianus"  -> *
+"army"      -> "Such a great tool wasted for garrison duties, a shame."
+"ferumbras" -> "Quite a challenge, but his bets for power were made without the finesse of a true warrior."
+"finesse"   -> "I won't give away my tricks, learn your own."
+"excalibug" -> "If someone would bring me that weapon I could reshape the realm... and reward this hero beyond his dreams."
+"ironeye"   -> "I don't care if you like it or not. Stop staring at it!"
+"teddy"     -> "I don't know anything about a teddy... and if you are smart you shouldn't either..."
+"thais"     -> "Thais has outlived its usefulness since years. Its star is sinking."
+"tibia"     -> "The world is ready for a significant change."
+"warehouse" -> "My Ironhouse is more than a warehouse."
+"carlin"    -> "Their independence is a proof for the weakness of Thais."
+"news"      -> "In Venore nothing comes for free and you could not afford my 'news'."
+"tax"       -> "The taxing keeps the Thaian kingdom alive, but it also might break its neck one day."
+"banor"     -> "As a man that grows up needs no mommy, a warrior has to outgrow his need for gods."
+"privilege" -> "Venore's privileges are hard earned."
+"gambling"  -> "I trust only in skill, not luck."
+}

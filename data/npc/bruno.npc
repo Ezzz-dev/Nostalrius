@@ -1,0 +1,35 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# bruno.npc: Der Fischverkäufer Bruno (Fields)
+
+Name = "Bruno"
+Outfit = (128,113-10-95-95)
+Home = [32486,31604,7]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",!         -> "Ahoi, %N. You want to buy some fresh fish?"
+ADDRESS,"hi$",!            -> *
+ADDRESS,!                  -> Idle
+BUSY,"hello$",!            -> "One moment please %N.", Queue
+BUSY,"hi$",!               -> *
+BUSY,!                     -> NOP
+VANISH,!                   -> "Good bye and come again!"
+
+"bye"        -> "Good bye and come again!", Idle
+"farewell"   -> *
+"name"       -> "My name is Bruno."
+"job"        -> "My job is to catch fish and to sell them here."
+"graubart"   -> "I like this old salt. I learned much from him. Whatever. You like some fish? *grin*"
+"marlene"    -> "Ah yes, my lovely wife. God forgive her, but she can't stop talking. So my work is a great rest for my poor ears. *laughs loudly*"
+"aneus"      -> "Hmm, I don't know him very well. But he has a very nice story to tell."
+
+"do","you","sell" -> "Well, I sell freshly caught fish. You like some? Of course, you can buy more than one at once. *grin*"
+"offer"           -> *
+
+"fish"            -> Type=3578, Amount=1,  Price=5,    "Do you want to buy a fresh fish for %P gold?", Topic=1
+%1,1<%1,"fish"    -> Type=3578, Amount=%1, Price=5*%1, "Do you want to buy %A fresh fishes for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Come back when you have enough money."
+Topic=1                         -> "*grumble* Maybe next time."
+}

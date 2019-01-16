@@ -1,0 +1,74 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# isimov.npc: Datenbank für den Zwergenmönch Isimov (Zwergenstadt)
+
+Name = "Isimov"
+Outfit = (160,115-0-19-95)
+Home = [32653,31925,11]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Hiho %N and greetings my child!"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Please be patient, %N. I'll be with you in moment.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "No patience, no manners."
+
+"bye"             -> "Take care, %N!", Idle
+"farewell"        -> *
+"job"             -> "I am the master of the hall of the ancients."
+"name"            -> "My name is Isimov Dustbearer, Son of Fire and Earth, from the Molten Rock."
+"hall","ancients" -> "The burial chamber of our ancestors. All of the firstborn of our race are there .. all but Durin." 
+"tibia"           -> "A world of dangers, a world of wonders."
+"kazordoon"       -> "The last haven for dwarfenkind. Our last hope for our survival." 
+"big","old"       -> "This mountain is as old as the world. The first dwarfs were born here."
+"elves"           -> "Bah, squirrels, hedgehogs, rabbits, elves ... who cares."
+"humans"          -> "A young and greedy race, though more noble. They remind me of orcs sometimes."
+"orcs"            -> "The greenskins are after all of us. Beware! Beware!" 
+"minotaurs"       -> "They leave us alone, we leave them alone, that's the way of our people." 
+"pyromancer"      -> "They whorship the elemental forces of fire." 
+"geomancer"       -> "They whorship the elemental forces of earth." 
+"technomancer"    -> "Strange, are they still around? Well, give them one or two hundred years and they are gone again, jawoll."
+"god"             -> "The gods abandoned us, we abandoned the gods. That's it, no big deal I tell ya, jawoll."
+"keeper"          -> *
+"shepherd"        -> *
+"fire"            -> "It's warm, it's useful, we use it. We decide when or how, jawoll."
+"earth"           -> "Gives us food and shelter, quite useful isn't it?"
+"durin"           -> "Ah yes, the first born. He became a higher entity to protect us. His mortal remains were buried at a remote spot where only pilgrims disturb their peace now and then." 
+"life"            -> "Life is easy to understand, you have birth, you have death. Simple stuff, even elves could grasp the concept."
+"plant"           -> "Don't know much about this stuff. Find them in a soup sometimes."
+"citizen"         -> "You can become citizen of Kazordoon by the power of our ancestors."
+"kroox"           -> "What a hasty fellow. Can't be healthy to live in such a hurry, jawoll."
+"jimbin"          -> "Isn't that the kid that took over the Jolly Axeman tavern? Far too young for such a job, but did anyone ask me? No!"
+"maryza"          -> "How could she marry this Jimbin? I mean, they are kids! Know nothing about life and stuff. Couldn't they wait at least hundred years or so?"
+"bezil"           -> "Bezil and Nezil are typical profiteers. Fine new breed of dwarfs we raised, pah."
+"nezil"           -> *
+"uzgod"           -> "Has hardly a beard and already forgotten the traditions of his ancestors. Modern techniques ... almost like one of these technomancers."
+"etzel"           -> "Etzel, good old Etzel. I was his tutor long ago. Now he's running a guild ... they grow so fast ... so fast, jawoll."
+"gregor"          -> "Never heared that word. What's a gregor?"
+"duria"           -> "Could become a great warrior one day. Still needs to learn so much."
+"emperor"         -> "The emperor resides far above us in the upper caves. Sometimes I wonder if it's good that the emperor is that much away from the temples."
+"kruzak"          -> *
+"motos"           -> "Must admit there were worse generals in the years before, jawoll." 
+"general"         -> *
+"army"            -> "<sigh> A bunch of kids playing war. May the elements help us."
+"ferumbras"       -> "I have seen many of his type coming and going. He will fall and anotherone will take his place."
+"excalibug"       -> "Ahhh! Whan I was a little dwarf I was on a quest to find it. I was almost literally digging up the ghostlands for it and now only one thing is sure: It must be elsewere, jawoll."
+"news"            -> "News? I heard there's a new human settlement in the south, called Thai...something."
+"monster"         -> "Only another nuisance."
+"help"            -> "Can't you kids do anything on your own?"
+"quest"           -> "You are too young for quests, jawoll."
+"task"            -> *
+"what","do"       -> *
+"gold"            -> "Greed for gold could blind your sight for the important."
+"money"           -> *
+"equipment"       -> "Go and buy some."
+"fight"           -> "The life ot a dwarf is an eternal struggle. It hardens us and makes us the fine race we are, jawoll."
+
+"heal$",Burning>0 -> "You are burning. I will help you.", Burning(0,0), EffectOpp(14)
+"heal$",Poison>0  -> "You are poisoned. I will help you.", Poison(0,0), EffectOpp(14)
+"heal$",HP<40     -> "Let me see what I can do, kid.", HP=40, EffectOpp(13)
+"heal$"           -> "Stop the whining, kid, that are only some scratches. Dwarfenheart knows no pain."
+"time"           -> "I think it's the fourth age of the yellow flame, isn't it?"
+}

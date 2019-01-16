@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<areaspawn delay="0" lifetime="28800000" radius="1" centerx="32809" centery="31611" centerz="14">
+		<monster name="The Evil Eye" minamount="1" maxamount="1"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="28800000" radius="3" centerx="32807" centery="31615" centerz="14">
+		<monster name="elder beholder" minamount="2" maxamount="4"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="28800000" radius="3" centerx="32805" centery="31613" centerz="14">
+		<monster name="beholder" minamount="3" maxamount="6"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="28800000" radius="3" centerx="32783" centery="31636" centerz="14">
+		<monster name="elder beholder" minamount="2" maxamount="4"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="28800000" radius="3" centerx="32785" centery="31640" centerz="14">
+		<monster name="beholder" minamount="3" maxamount="6"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="28800000" radius="3" centerx="32802" centery="31678" centerz="14">
+		<monster name="elder beholder" minamount="2" maxamount="4"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="28800000" radius="3" centerx="32798" centery="31675" centerz="14">
+		<monster name="beholder" minamount="3" maxamount="6"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="28800000" radius="3" centerx="32712" centery="31673" centerz="14">
+		<monster name="elder beholder" minamount="2" maxamount="4"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="28800000" radius="3" centerx="32714" centery="31678" centerz="14">
+		<monster name="beholder" minamount="3" maxamount="6"/>
+	</areaspawn>
+</raid>

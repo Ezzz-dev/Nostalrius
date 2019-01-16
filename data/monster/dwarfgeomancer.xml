@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="dwarf geomancer" nameDescription="a dwarf geomancer" race="blood" experience="245" speed="60" manacost="0">
+	<health now="380" max="380" />
+	<look type="66" head="0" body="0" legs="0" feet="0" corpse="4168" />
+	<targetchange interval="1000" chance="50" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="4" />
+		<flag runonhealth="150" />
+	</flags>
+	<attacks attack="30" skill="50">
+		<attack name="physical" min="-55" max="-105" range="7" chance="3">
+			<attribute key="shootEffect" value="largerock" />
+		</attack>
+		<attack name="manadrain" min="-50" max="-80" range="7" chance="4" />
+	</attacks>
+	<defenses armor="15" defense="35">
+		<defense name="healing" min="75" max="125" chance="2">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity fire="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<voices>
+		<voice sentence="Hail Durin!" />
+		<voice sentence="Earth is the strongest element." />
+		<voice sentence="Dust to dust." />
+	</voices>
+	<loot>
+		<item id="2853" countmax="1" chance="500" /> <!-- a bag -->
+		<item id="3147" countmax="1" chance="100" /> <!-- a blank rune -->
+		<item id="3311" countmax="1" chance="10" /> <!-- a clerical mace -->
+		<item id="3097" countmax="1" chance="3" /> <!-- a dwarven ring -->
+		<item id="3031" countmax="30" chance="700" /> <!-- a gold coin -->
+		<item id="3552" countmax="1" chance="400" /> <!-- leather boots -->
+		<item id="3046" countmax="1" chance="120" /> <!-- a magic light wand -->
+		<item id="3584" countmax="2" chance="180" /> <!-- a pear -->
+		<item id="3029" countmax="1" chance="1" /> <!-- a small sapphire -->
+		<item id="3375" countmax="1" chance="80" /> <!-- a soldier helmet -->
+		<item id="3059" countmax="1" chance="4" /> <!-- a spellbook -->
+		<item id="3362" countmax="1" chance="200" /> <!-- studded legs -->
+		<item id="3723" countmax="2" chance="600" /> <!-- a white mushroom -->
+	</loot>
+</monster>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="dwarf guard" nameDescription="a dwarf guard" race="blood" experience="165" speed="63" manacost="650">
+	<health now="245" max="245" />
+	<look type="70" head="0" body="0" legs="0" feet="0" corpse="4164" />
+	<targetchange interval="1000" chance="5" />
+	<targetstrategy nearest="70" weakest="0" mostdamage="20" random="10" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="39" skill="55">
+	</attacks>
+	<defenses armor="15" defense="37">
+	</defenses>
+	<immunities>
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<voices>
+		<voice sentence="Hail Durin!" />
+	</voices>
+	<loot>
+		<item id="3092" countmax="1" chance="2" /> <!-- an axe ring -->
+		<item id="3305" countmax="1" chance="40" /> <!-- a battle hammer -->
+		<item id="3413" countmax="1" chance="75" /> <!-- a battle shield -->
+		<item id="3275" countmax="1" chance="6" /> <!-- a double axe -->
+		<item id="3031" countmax="30" chance="500" /> <!-- a gold coin -->
+		<item id="3552" countmax="1" chance="400" /> <!-- leather boots -->
+		<item id="3377" countmax="1" chance="100" /> <!-- a scale armor -->
+		<item id="3033" countmax="1" chance="1" /> <!-- a small amethyst -->
+		<item id="3351" countmax="1" chance="20" /> <!-- a steel helmet -->
+		<item id="3723" countmax="2" chance="550" /> <!-- a white mushroom -->
+	</loot>
+</monster>

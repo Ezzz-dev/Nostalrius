@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="0" type="event" message="Renegade drunken dwarfs are attacking cormaya."/>
+	<areaspawn delay="0" radius="44" centerx="33315" centery="32007" centerz="7">
+		<monster name="dwarf soldier" minamount="20" maxamount="40"/>
+	</areaspawn>
+	<areaspawn delay="0" radius="16" centerx="33317" centery="31954" centerz="7">
+		<monster name="dwarf soldier" minamount="7" maxamount="14"/>
+	</areaspawn>
+</raid>

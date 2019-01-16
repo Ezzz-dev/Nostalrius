@@ -1,0 +1,71 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# dove.npc: Datenbank für die Postbeamtin Dove
+
+Name = "Dove"
+Outfit = (136,59-86-106-115)
+Home = [32919,32075,7]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Be greeted, noble %N."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Please wait a moment, %N.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Come back soon, noble %N."
+
+"bye"        -> "Come back soon, noble %N.", Idle
+"farewell"   -> *
+
+"kevin"                 -> "Mr. Postner is one of the most honorable men I know."
+"postner"               -> *
+"postmasters","guild"   -> "As long as everyone lives up to our standarts our guild will be fine."
+"join"                  -> "We are always looking able recruits. Just speak to Mr.Postner in our headquarter." 
+"headquarter"           -> "Its easy to be found. Its on the road from Thais to Kazordoon and Ab'dendriel."
+
+
+"measurements",QuestValue(234)>0,QuestValue(238)<1  -> "Oh no! I knew that day would come! I am slightly above the allowed weight and if you can't supply me with some grapes to slim down I will get fired. Do you happen to have some grapes with you?",Type=3592, Amount=1,Topic=5
+
+"grapes",QuestValue(234)>0,QuestValue(238)<1 -> "Do you happen to have some grapes with you?",Type=3592, Amount=1,Topic=5
+
+Topic=5,"yes",Count(Type)>=Amount -> "Oh thank you! Thank you so much! So listen ... <whispers her measurements>", Delete(Type),SetQuestValue(234,QuestValue(234)+1),SetQuestValue(238,1)
+Topic=5,"yes"                            -> "Don't tease me! You don't have any."
+Topic=5                                   -> "Oh, no! I might loose my job."
+ 
+
+"job"        -> "I am responsible for this post office. If you have questions about the mail system or the depots, just ask me."
+"name"       -> "My name is Dove."
+"dove"       -> "Yes, like the bird. <giggles>"
+"time"       -> "Now it's %T."
+#"mail"       -> "The Tibian mail system is unique! And everyone can use it. Do you want to know more about it?", Topic=1
+#"depot"      -> "The depots are very easy to use. Just step in front of them and you will find your items in them. They are free for all Tibian citizens."
+"king"       -> "Even the king can be reached by the mailsystem."
+"tibianus"   -> *
+"army"       -> "The soldiers get a lot of letters and parcels from Thais each week."
+"ferumbras"  -> "Try to contact him by mail."
+"general"    -> *
+"sam"        -> "Ham? No thanks, I ate fish already."
+"excalibug"  -> "If i find it in an undeliverable parcel, I will contact you."
+"news"       -> "Well, there are rumours about the swampelves and the amazons, as usual."
+"thais"      -> "All cities are covered by our mail system."
+"carlin"     -> *
+"swampelves" -> "They live somewhere in the swamp and usually stay out of our city. Only now and then some of them dare to interfere with us."
+"amazon"     -> "These women are renegades from Carlin, and one of their hidden villages or hideouts might be in the swamp."
+
+@"gen-post.ndb"
+
+#"letter" -> Amount=1, Price=5,  "Do you want to buy a letter for %P gold?", Topic=2
+#"parcel" -> Amount=1, Price=10, "Do you want to buy a parcel for %P gold?", Topic=3
+
+#Topic=1,"yes" -> "The Tibia Mail System enables you to send and receive letters and parcels. You can buy them here if you want."
+#Topic=1       -> "Is there anything else I can do for you?"
+
+#Topic=2,"yes",CountMoney>=Price -> "Here it is. Don't forget to write the name of the receiver in the first line and the address in the second one before you put the letter in a mailbox.", DeleteMoney, Create(3505)
+#Topic=2,"yes"                   -> "Oh, you have not enough gold to buy a letter."
+#Topic=2                         -> "Ok."
+
+#Topic=3,"yes",CountMoney>=Price -> "Here you are. Don't forget to write the name and the address of the receiver on the label. The label has to be in the parcel before you put the parcel in a mailbox.", DeleteMoney, Create(3503), Create(3507)
+#Topic=3,"yes"                   -> "Oh, you have not enough gold to buy a parcel."
+#Topic=3                         -> "Ok."
+}

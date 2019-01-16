@@ -1,0 +1,78 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# rachel.npc: Datenbank für die Magierin Rachel
+
+Name = "Rachel"
+Outfit = (136,58-84-86-114)
+Home = [32343,31828,7]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",Sorcerer,male,!   -> "Welcome back, brother %N!", Topic=1
+ADDRESS,"hello$",Sorcerer,female,! -> "Welcome back, sister %N! Isn't your name %N?", Topic=1
+ADDRESS,"hi$",Sorcerer,male,!      -> "Welcome back, brother %N! Wasn't your name %N?", Topic=1
+ADDRESS,"hi$",Sorcerer,female,!    -> "Welcome back, sister %N! Wasn't your name %N?", Topic=1
+ADDRESS,"hi$",!                    -> "Welcome %N! Whats your need?"
+ADDRESS,"hello$",!                 -> "Welcome %N! Whats your need?"
+ADDRESS,!                          -> Idle
+BUSY,"hello$",!                    -> "Wait, %N! One after the other.", Queue
+BUSY,"hi$",!                       -> *
+BUSY,!                             -> NOP
+VANISH,!                           -> "These impatient young brats!"
+
+"bye"              -> "Good bye, %N", Idle
+"farewell"         -> *
+"job"              -> "I am the head alchemist of Carlin. I keep the secret recipies of our ancestors. Besides, I am selling mana and life fluids, spellbooks, wands, rods and runes."
+"name"             -> "I am the illusterous Rachel, of course."
+"time"             -> "Time is of no meaning to us sorcerers."
+"wisdom"           -> "Wisdom arises from patience."
+"patience"         -> "You have to free yourself from unpatience to learn the deeper secrets of magic."
+"ancestor"         -> "We are a guild of old traditions and even older secrets."
+"sorcerer"         -> "Spells are the minor parts that make a sorcerer. To be one is a state of mind, not of a full spellbook."
+"power"            -> "Power is important, but it is just the way, not the ultimate goal."
+"goal"             -> "This secrect will be taught you by life, not by me."
+"vocation"         -> "Your vocation is your profession. There are four vocations in Tibia: Sorcerers, paladins, knights, and druids."
+"spell$"           -> "I am too busy to teach you, ask in your guild about that."
+"spells"           -> *
+
+"rune"             -> "I sell blank runes and spell runes."
+"spellbook"        -> Type=3059, Amount=1,  Price=150,   "A spellbook is a nice tool for beginners. Do you want to buy one for %P gold?",Topic=2
+"blank","rune"     -> Type=3147, Amount=1,  Price=10,    "Do you want to buy one for %P gold?", Topic=2
+"mana","fluid"     -> Type=2874, Data=10, Amount=1,  Price=55,    "Do you want to buy mana fluid for %P gold?", Topic=3
+"life","fluid"     -> Type=2874, Data=11, Amount=1,  Price=60,     "Do you want to buy life fluid for %P gold?", Topic=3
+
+%1,1<%1,"spellbook"     -> Type=3059, Amount=%1, Price=150*%1, "Do you want to buy %A spellbooks for %P gold?",Topic=2
+%1,1<%1,"blank","rune"  -> Type=3147, Amount=%1, Price=10*%1,  "Do you want to buy %A runes for %P gold?", Topic=2
+%1,1<%1,"mana","fluid"  -> Type=2874, Data=10, Amount=%1, Price=55*%1, "Do you want to buy %A potions of mana fluid for %P gold?", Topic=3
+%1,1<%1,"life","fluid"  -> Type=2874, Data=11, Amount=%1, Price=60*%1,  "Do you want to buy %A potions of life fluid for %P gold?", Topic=3
+
+"sell","talon"          -> Type=3034, Amount=1, Price=320, "Do you want to sell one of the magic gems called talon for %P gold?", Topic=6
+"sell",%1,1<%1,"talon"  -> Type=3034, Amount=%1, Price=320*%1, "Do you want to sell %A magic gems called talon for %P gold?", Topic=6
+
+Topic=1,"yes"                   -> "I thought so, what do you want?"
+Topic=1,"no"                    -> "First lesson: DON'T LIE TO RACHEL!", Burning(10,4), EffectMe(15), EffectOpp(16)
+Topic=1,sorcerer                -> "I thought only intelligent persons are allowed to become sorcerers."
+Topic=1                         -> "I am glad that only intelligent persons are allowed to become sorcerers."
+
+Topic=2,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=2,"yes"                   -> "Come back when you have enough money."
+Topic=2                         -> "Hmm, maybe next time."
+
+Topic=3,"yes",CountMoney>=Price -> "Here you are. There is a deposit of 5 gold for an empty vial.", DeleteMoney, Create(Type)
+Topic=3,"yes"                   -> "Come back, when you have enough money."
+Topic=3                         -> "Hmm, but next time."
+
+"deposit"                   -> "I will pay you 5 gold for every empty vial. Ok?", Data=0, Topic=5
+"vial"                      -> *
+"flask"                     -> *
+Topic=5,"yes",Count(2874)>0 -> Amount=Count(2874), Price=Amount*5, "Here you are ... %P gold.", Delete(2874), CreateMoney
+Topic=5,"yes"               -> "You don't have any empty vials."
+Topic=5                     -> "Hmm, but please keep Tibia litter free."
+
+Topic=6,"yes",Count(Type)>=Amount -> "Ok. Here is your money.", Delete(Type), CreateMoney
+Topic=6,"yes"                             -> "Sorry, you do not have one."
+Topic=6,"yes", Amount>1                   -> "Sorry, you do not have so many."
+Topic=6                                   -> "Maybe next time."
+
+@"gen-t-runes-free-s.ndb"
+@"gen-t-wands-free-s.ndb"
+}

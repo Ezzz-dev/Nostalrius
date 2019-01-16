@@ -1,0 +1,11 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# christoph.npc: Datenbank für eine Stadtwache in Venore
+
+Name = "Christoph"
+Outfit = (131,113-113-113-115)
+Home = [32885,32031,6]
+Radius = 10
+
+Behaviour = {
+@"guards-venore.ndb"
+}

@@ -1,0 +1,158 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# lynda.npc: Datenbank für die Priesterin Lynda
+
+Name = "Lynda"
+Outfit = (138,79-83-86-114)
+Home = [32333,32200,7]
+Radius = 4
+
+Behaviour = {
+ADDRESS,male,"my","heart","belongs","to",!   -> "I ask thee, %N, will you honor your bride and stay at her side even in the darkest hours life could bring upon you?", Topic=9
+ADDRESS,female,"my","heart","belongs","to",! -> "I ask thee, %N, will you honor your groom and stay at his side even in the darkest hours life could bring upon you?", Topic=9
+ADDRESS,"hello$","lynda",! -> "Welcome in the name of the gods, pilgrim %N!"
+ADDRESS,"hi$","lynda",!    -> *
+ADDRESS,"hello$",!         -> *
+ADDRESS,"hi$",!            -> *
+ADDRESS,!                  -> Idle
+BUSY,"hello$",!            -> "%N! Please be patient, my child.", Queue
+BUSY,"hi$",!               -> *
+BUSY,!                     -> NOP
+VANISH,!                   -> "May the gods be with you!"
+
+"bye"            -> "Good bye, %N. May the gods guard you, my child!", Idle
+"farewell"       -> *
+"job"            -> "I am a priest of the great pantheon."
+"news"           -> "Sorry, I had no enlightening visions lately."
+"name"           -> "My name is Lynda. And the spirits tell me that you are %N."
+"tibia"          -> "The world of Tibia is the creation of the gods."
+"how","are","you"-> "Thank you, I'm fine, the gods are with me."
+"sell"           -> "The grace of the gods must be earned, not bought!"
+"sin$"           -> "Do you whish to confess your sins?", Topic=3
+"sins$"          -> "Do you whish to confess your sins?", Topic=3
+"god$"           -> "The gods of good guard us and guide us, the gods of evil want to destroy us and steal our souls!", Topic=2
+"gods$"          -> *
+"life"           -> "Life is a gift of the gods, honor life and don't destroy it."
+"citizen"        -> "The things I know about our citizens are confidential."
+"lugri"          -> "He is a follower of evil. May the gods punish him."
+"king"           -> "King Tibianus is our benevolent sovereign."
+"monster"        -> "They are creatures of the gods of evil!"
+"quest"          -> "It is my mission to spread knowledge about the gods."
+"mission"        -> *
+"gold"           -> Price=15, "Do you want to make a donation?", Topic=1
+"money"          -> *
+"donation"       -> *
+"fight"          -> "It is MY mission to teach, it is YOUR mission to fight!"
+"slay"           -> *
+
+"help",HP<40,!     -> "You are hurt, my child. I will heal your wounds.", HP=40, EffectOpp(13)
+"help",Poison>0,!  -> "You are poisoned, my child. I will help you.", Poison(0,0), EffectOpp(14)
+"help",Burning>0,! -> "You are burning, my child. I will help you.", Burning(0,0), EffectOpp(15)
+
+"heal$",Burning>0 -> "You are burning, my child. I will help you.", Burning(0,0), EffectOpp(15)
+"heal$",Poison>0  -> "You are poisoned, my child. I will help you.", Poison(0,0), EffectOpp(14)
+"heal$",HP<40     -> "You are hurt, my child. I will heal your wounds.", HP=40, EffectOpp(13)
+
+"heal$",PvPEnforced -> "You aren't looking that bad."
+"heal$"               -> "You aren't looking that bad. Sorry, I can't help you. But if you are looking for additional protection you should go on the pilgrimage of ashes."
+
+
+"blessing",PvPEnforced,!  -> "The lifeforce of this world is waning. There are no more blessings avaliable on this world."
+"pilgrimage",PvPEnforced,! -> *
+"ashes",PvPEnforced,! -> *
+
+"spiritual",PvPEnforced,! -> *
+"shielding",PvPEnforced,! -> *
+"sacred","places",PvPEnforced,! -> *
+"spark",PvPEnforced,! -> *
+"phoenix",PvPEnforced,! -> *
+"embrace",PvPEnforced,! -> *
+"fire",PvPEnforced,! -> *
+"suns",PvPEnforced,! -> *
+"wisdom",PvPEnforced,! -> *
+"solitude",PvPEnforced,! -> *
+
+
+"pilgrimage"     -> "Whenever you receive a lethal wound your lifeforce is damaged. With every single of the five blessings you have this damage will be reduced."
+"ashes"          -> *
+"blessing"  -> "There are five different blessings available in five sacred places. These blessings are: the spiritual shielding, the spark of the phoenix, the embrace of tibia, the fire of the suns and the wisdom of solitude." 
+"sacred","places"  -> "Just ask in which of the five blessings you are interested in."
+
+"spiritual", QuestValue(104) > 0 -> "I see you received the spiritual shielding in the whiteflower temple south of Thais."
+"shielding", QuestValue(104) > 0 -> *
+"spiritual" -> "You can receive the spiritual shielding in the whiteflower temple south of Thais."
+"shielding" -> *
+
+"spark", QuestValue(102) > 0 -> "I an sense that the spark of the phoenix already was given to you by the dwarven priests of earth and fire in Kazordoon."
+"phoenix", QuestValue(102) > 0 -> *
+"spark" -> "The spark of the phoenix is given by the dwarven priests of earth and fire in Kazordoon."
+"phoenix" -> *
+
+"embrace", QuestValue(105) > 0 -> "I can sense the druids north of Carlin provided you with the embrace of tibia."
+"embrace" -> "The druids north of Carlin can provide you with the embrace of tibia."
+
+"fire","suns", QuestValue(103) > 0     -> "I can see you recieved the blessing of the two suns in the suntower near Ab'Dendriel ."
+"suns", QuestValue(103) > 0  -> *
+"fire","suns"     -> "Ask for the blessing of the two suns in the suntower near Ab'Dendriel ."
+"suns"  -> *
+
+
+"wisdom", QuestValue(101) > 0 -> "I can sense you already talked to the hermit Eremo on the isle of Cormaya and recieved this blessing." 
+"solitude", QuestValue(101) > 0 -> *
+"wisdom" -> "Talk to the hermit Eremo on the isle of Cormaya about this blessing." 
+"solitude" -> *
+
+
+"ferumbras"      -> "He is a favourite of the gods of evil and one of the champions of evil."
+"time"           -> "Now, it is %T."
+"excalibug"      -> "This fabled weapon was lost in ancient times. If someone found it, this person would be nearly invincible."
+
+Topic=2,"good"   -> "The gods we call the good ones are Fardos, Uman, the Elements, Suon, Crunor, Nornur, Bastesh, Kirok, Toth, and Banor."
+"fardos"         -> "Fardos is the creator, the great obsever. He is our caretaker."
+"uman"           -> "Uman is the positive aspect of magic. He brings us the secrets of the arcane arts." 
+"suon"           -> "Suon is the lifebringing sun. He observes the creation with love."
+"crunor"         -> "Crunor, the great tree, is the father of all plantlife. He is a prominent god for many druids."
+"nornur"         -> "Nornur is the mysterious god of fate. Who knows if he is its creator or just a chronist?"
+"bastesh"        -> "Bastesh, the deep one, is the goddess of the sea and its creatures."
+"kirok"          -> "Kirok, the mad one, is the god of scientists and jesters." 
+"toth"           -> "Toth, lord of death, is the keeper of the souls, the guardian of the afterlife."
+"banor"          -> "Banor, the heavenly warrior, is the patron of all fighters against evil. He is the gift of the gods to inspire humanity."
+"tibiasula"      -> "Tibiasula lost her life, but out of her essence the world was created." 
+
+Topic=2,"tibia"  -> "Tibia is the essence of the elemental power of earth." 
+"sula"           -> "Sula is the essence of the elemental power of water."
+"air"            -> "Air is one of the primal elemental forces, sometimes worshipped by tribal shamans."
+"fire"           -> "Fire is one of the primal elemental forces, sometimes worshipped by tribal shamans."
+
+Topic=2, "evil"  -> "The gods we call the evil ones are Zathroth, Fafnar, Brog, Urgith, and the Archdemons!"
+"zathroth"       -> "Zathroth is the destructive aspect of magic. He is the deceiver and the thief of souls."
+"fafnar"         -> "Fafnar is the scorching sun. She observes the creation with hate and jealousy."
+"brog"           -> "Brog, the raging one, is the great destroyer. The berserk of darkness."
+"urgith"         -> "The bonemaster Urgith is the lord of the undead and keeper of the damned souls."
+"archdemons"     -> "The demons are followers of Zathroth. The cruelest are known as the ruthless seven."
+"ruthless", "seven" -> "I dont want to talk about that subject!"
+
+Topic=1,"no"     -> "As you wish."
+Topic=1,"yes",CountMoney>=Price -> "May the gods bless you!", DeleteMoney, EffectOpp(15)
+Topic=1,"yes",CountMoney<Price -> "Dont be ashamed, but you lack the gold."
+
+Topic=3,"yes"    -> "So tell me what shadows your soul, my child.", Topic=4
+Topic=3          -> "As you wish."
+Topic=4          -> "Meditate on that and pray for your soul."
+
+"marriage"                               -> "You want me to initiate a marriage ceremony?", Topic=5
+"ceremony"                               -> *
+Topic=5,"yes"                            -> "In the Name of the Gods of good, I ask thee, if both of you are prepared and ready!", Topic=6
+Topic=5,"i$","will$"                     -> *
+Topic=5                                  -> "Perhaps another time. Marriage isn't a step one should consider without love in the heart."
+Topic=6,"yes"                            -> "Silence please! I hereby invoke the attention of the eternal powers looking over our souls and lives. May the gods bless us!", EffectMe(13), Topic=7
+Topic=6,"i$","will$"                     -> *
+Topic=7,male,"may","gods","bless","us"   -> "I ask thee, %N, will you honor your bride and stay at her side even in the darkest hours life could bring upon you?", Topic=8
+Topic=7,female,"may","gods","bless","us" -> "I ask thee, %N, will you honor your groom and stay at his side even in the darkest hours life could bring upon you?", Topic=8
+Topic=8,male,"yes"                       -> "So by the powers of the gods your soul is now bound to your bride. Bride, step forward and tell me to whom your heart belongs!", EffectOpp(14), Idle
+Topic=8,male,"i$","will$"                -> *
+Topic=8,female,"yes"                     -> "So by the powers of the gods your soul is now bound to your groom. Groom, step forward and tell me to whom your heart belongs!", EffectOpp(14), Idle
+Topic=8,"i$","will$"                     -> *
+Topic=9,"yes"                            -> "So by the powers of the gods your souls are now bound together for eternity. May the gods watch with grace over your further life as a married couple. Go now and celebrate your marriage!", EffectOpp(14), EffectMe(13), Idle
+Topic=9,"i$","will$"                     -> *
+Topic=9,"no"                             -> "Your neglection of love hurts my heart. Leave now!", Idle
+}

@@ -1,0 +1,86 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# djema.npc: Datenbank für die Bibliothekarin Djema
+
+Name = "Djema"
+Outfit = (136,77-9-86-131)
+Home = [33101,32520,3]
+Radius = 2 
+
+Behaviour = {
+
+ADDRESS,"hello$",QuestValue(278)=2,!        -> "Wow! A human? Here? Hey? Where do you come from, %N? Oh, I'm so excited!"
+ADDRESS,"hi$",QuestValue(278)=2,!           -> *
+ADDRESS,"greetings$",QuestValue(278)=2,!    -> *
+ADDRESS,"djanni'hah$",QuestValue(278)=2,!   -> *
+ADDRESS,!                                   -> Idle
+BUSY,"hello$",QuestValue(278)=2,!           -> "Another human?! Please don't go away! Stay! Please wait a minute, %N!", Queue
+BUSY,"hi$",QuestValue(278)=2,!              -> *
+BUSY,"greetings$",QuestValue(278)=2,!       -> *
+BUSY,"djanni'hah$",QuestValue(278)=2,!      -> *
+BUSY,!                                      -> NOP
+VANISH,!                                    -> "Please don't go!"
+
+"bye"       -> "Aww - you really have to leave so soon? You must come and visit me again. Please - promise me!", Idle
+"farewell"  -> *
+"name"      -> "My name is Djema. Daddy says it means 'Moonflower' in the old language."
+"djem"      -> "That is my name. I do not like it much, though. Everybody around here calls me Djem."
+"job"       -> "I am the librarian in this place. I don't like the work too much because we do not really have that many books, and most of them are written by people who have died thousands of years ago. ...",
+               "If dad wanted me to have a job to keep me entertained that was a real non-starter."
+"librarian" -> "Yes. I administrate the library. You know - registering new books, sorting them in alphabetical order etc. ...",
+               "To be honest I am not very good in this. Thank goodness daddy gave that magical blackboard to me. It is quite useful."
+"gabel"			-> "Gabel is my father. He runs this place. Of course, he is not my real daddy. But he adopted me, you know. Or rather, all the Marid adopted me."
+"father"    -> *
+"dad"       -> *
+"parents"   -> "I can't remember them. I... They have both died a long time. At least that is what I have been told. Listen, can we talk about something else?"
+"marid"     -> "The djinn you have met call themselves the Marid. They are generally very nice. Nice, but boring."
+"djinn"     -> "The djinn are a curious race. They are nice, but they are always so serious. Oh, don't get me wrong, there is not a single djinn around here I do not like, but, you know, they are not much fun. ...",
+               "I guess that is because they are all such devout followers of Daraman, but perhaps it is just because of all the bad things that have happened."
+"daraman"	  -> "Daraman was a human, but he must have been something very special - he was a holy man. To this day daddy and all the other djinn around here look up to Daraman as a true prophet."
+
+"king"             -> "Officially there is no king of the djinn. Daddy used to hold the title, but he has chosen to put if off. Of course, he is still the undisputed leader of the Marid. He simply dislikes the title."
+"efreet"           -> "Apparently the greenskins are different from the Marid who have raised me. I don't know. Perhaps the Efreet would be more fun than the djinn around here, but then daddy says they are really evil."
+"malor"	           -> "Malor is the leader of the Efreet. I have never seen him, but they say he is really nasty. Daddy always gets upset when this name is pronounced."
+"mal'ouquah"       -> "Oh, that place. They say it is pure evil. But I don't think it looks that evil. I have seen the dark fortress once, you know?!"
+"dark", "fortress" -> "One night I went there. I wanted to see it for myself. Don't tell daddy, though. He would freak out if he heard I was there."
+"ashta'daramai"    -> "That's what this place is called. Sure, it is beautiful, but it is as also boring and sometimes downright depressing. Sometimes I feel like I am bound to this place by golden chains."
+"human"            -> "I have lived here for as long as I can remember, but I know I don't belong here. I belong to them! I am a human! One day I will leave this place, and I will never come back."
+"zathroth"         -> "Yes, I have heard his name before. Let's see... Yes, I have read his name in a book! It was a book about gods and creation. Pretty weird stuff."
+"tibia"            -> "Daddy has often told me about how huge and mysterious this world is. <Sighs> How much I would like to see it all. But he won't let me go. ...",
+                      "I have read books about the northern continent inhabited by thousands and thousands of people. Ordinary humans just like you and me! Imagine that!"
+"darashia"         -> "Darashia is a beautiful city to the north. I have been there! One day Daddy disguised himself, and he took me there. It was awesome. ...",
+                      "There was so much life and colour and excitement... <Sighs> I suppose he did it because he knew how much I yearned to go there. Bless him - he only wanted to help. But after that I felt worse than ever."
+"edron"            -> "I have read all about the northern cities. It is almost as if I had been there myself."
+"thais"            -> *
+"venore"           -> *
+"kazordoon"        -> *
+"carlin"           -> *
+"ab'dendriel"      -> *
+"ankrahmun"        -> "If there is one city I don't want to see it is Ankrahmun. I have heard all kinds of stories about the pharaoh and his cult of weirdos!"
+"scarab"           -> "Ah, those nasty critters. They give me the creeps!"
+
+"pharaoh"          -> "Apparently he is an undead! Yuk - how disgusting!" 
+"palace"           -> "I do not care just how beautiful the pharaoh's palace is. I will never go there. The minute I would see some undead pile of flesh I would dash for the door screaming."
+"ascension"        -> "I have heard that term before. Has to do with the pharaoh's cult, I think, but I do not know for sure, and I'm not particularly eager to learn more about it."
+"akh'rah"			     -> "Hm. No - doesn't ring a bell."
+"uthun"            -> *
+"akh"              -> *
+
+"kha'zeel"		     -> "I don't know whether I should hate or love these mountains. I mean, they are so beautiful. If only you saw those peaks in the evening, when the sun is setting. It is like a thousand fires that set the horizon aglow. ...",
+                      "But... ah, I don't know. I think I would give it all away if I could live somewhere among my own kind."
+"kha'labal"	       -> "That is the huge desert to the east. You can see it from here if you look in the direction of the rising sun. It seems huge... endless... It makes my heart sink whenever I watch it."
+"war"              -> "Daddy and all the other djinn around here are so restive lately. I know they try not to show it, but I can sense that they are tense and perhaps even a bit afraid. ...",
+                      "To be honest I am sick of being patronised. I am a grown-up woman now, and I don't need anybody else's protection anymore!"
+"melchior"         -> "Hm. I think I have heard that name before. A human, wasn't it? I think he used to drop quite often when I was much younger, but I have no clear memory of him. ...",
+                      "I think he has not visited Ashta'Daramai for a long time."
+"alesar"           -> "I have never known this djinn, but apparently there is some sad story behind this. Daddy is very sad that Alesar left us. Of course, he tries not to show, but as usual he does a bad job about it."
+"lamp"             -> "When I was still a kid I could not understand how it could be that I was not able to sleep in a lamp. ...",
+                      "That was when I wanted nothing more than to be like the people around me. <Sighs> I may see things a bit more clearly now, but the feeling of yearning remains."
+"fa'hradin"        -> "Uncle Fad is a weird guy. He is incredibly intelligent, but he is also totally inept in worldly matters. Sometimes I feel he is not quite at home in this world."
+"fa'hradin","lamp" -> "I have heard many a story about this artifact. It was used to trap that Malor guy. Clever idea of good old uncle Fa'hradin."
+"book"             -> "The books around here are not exactly what I would call a riveting read. Most of them are technical documents written by uncle Fad at some point or other. Now and then he turns up and brings new files. Not that anybody would ever read them. ...",
+                      "It is my job to make sure they are filed and registered."
+#"blackboard"       -> "Yes! All books we have are listed in it! The whole library! And the best thing is that whenever a new book is added or one is removed the list is updated by magic. Isn't that great! Take a look!"
+#"magical","blackboard" -> *
+#"spy" -> "Yes! There was a spy! I have seen him! He was over there, right next to the door. When I came in he just slipped out. It was an Efreet! His green skin gave him away!"
+#"fr 0457", QuestValue (###)=### -> "fr 0457? Missing? Let me see? Hey, you are right. It is not on the list. Could it be?","Daraman have mercy! You're right! The file is gone! The spy must have stolen it. Oh dear. What am I to do now?","Quick! Go and tell uncle Fa'hradin. He will know what to do!", SetQuestValue (###)=###
+}

@@ -1,0 +1,164 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# kevin.npc: Datenbank für Kevin Postner den Anführer der Postlergilde
+
+Name = "Kevin"
+Outfit = (128,76-43-38-76)
+Home = [32569,32018,6]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Greetings %N, what brings you here?"
+ADDRESS,"hi$",!    -> *
+
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Please wait a moment."
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "How rude!"
+
+# TOPICS BIS EINSCHL. 25 BENUTZT
+
+"bye"             -> "Good bye.", Idle
+"farewell"      -> *
+
+"name"            -> "My name is Kevin. Kevin Postner, that is."
+"job"             -> "I am the head of the Tibian Postmaster's Guild."
+"guild" -> "We are a powerful organisation that is vital part of Tibian society. It's a honour and a privilege to be a member."
+"postmaster" -> *
+"academy"        -> "Ah, yes! One day I will found a postofficers academy. Perhaps with the help of our most able members. But rhats a task for another day."
+"wally"          -> "Wally is my right hand, so to say. He is the head to our guilds office branch."
+"branch"         -> "Well, thers the depot branch, the office brance, the delivery branch and some officers for special operations." 
+"special","operations",QuestValue(250)<4 -> "Sorry but I won't talk about this matter with someone of your rank." 
+"special","operations",QuestValue(250)>3 -> "We have a secret branch, called 'the stamps of the gods'. They secretly supervise our members reliability and have an eye on certain groups of interest that want to gain influence over our guild." 
+
+"member",QuestValue(227)<1         -> "We have high standards for our members. To rise in our guild is a difficult but rewarding task. Why do you ask? Are you interested in joining?",Topic=1
+"member",QuestValue(227)>0         -> "You are already a member, %N."
+"mission",QuestValue(227)<1      -> "You are not a member of our guild yet! We have high standards for our members. To rise in our guild is a difficult but rewarding task. Are you interested in joining?",Topic=1
+
+"advancement",QuestValue(250)<QuestValue(249) -> "You are worthy indeed. Do you want to advance in our guild?",Topic=23
+"advancement",QuestValue(250)>=QuestValue(249) -> "Sorry, but you are not yet ready for advancement."
+"yes",Topic=23,QuestValue(249)=2 -> "I grant you the title of postman. You are now a full member of our guild. Here have your own officers hat and wear it with pride.",SetQuestValue(250,2), Amount=1, Create(3576)
+"yes",Topic=23,QuestValue(249)=3 -> "From now on it shall be known that you are a grand postman. You are now a privileged member until the end of days. Most captains around the world have an agreement with our guild to transport our privileged members, like you, for less gold.",SetQuestValue(250,3)
+"yes",Topic=23,QuestValue(249)=4 -> "From now on you are a grand postman for special operations. You are an honoured member of our guild and earned the privilege of your own post horn. Here, take it.",SetQuestValue(250,4), Amount=1, Create(2957)
+"yes",Topic=23,QuestValue(249)=5 -> "I grant you the title of archpostman. You are a legend in our guild. As privilege of your newly aquired status you are allowed to make use of certain mailboxes in dangerous areas. Just look out for them and you'll see.",SetQuestValue(250,5)
+
+"mission",QuestValue(248)=1,QuestValue(250)<QuestValue(249) -> "Your eagerness is a virtue, young one, but first lets talk about advancement."
+
+"mission",QuestValue(248)=1  -> "You have mastered all our current missions. There's nothing left to be done ... for now."
+
+"mission",QuestValue(245)=1  -> "You are not done with your current mission. Deliver that letter to king Markwin. Please report back when you are ready."
+"mission",QuestValue(245)=2  -> "You have delivered that letter? You are a true postofficer. All over the land bards shall praise your name. There are no missions for you left right now.",SetQuestValue(248,1),SetQuestValue(249,5)
+
+"mission",QuestValue(244)=1  -> "You are not done with your current mission. Deliver those letters to Santa. Please report back when you are ready."
+"mission",QuestValue(244)=2  -> "You did it? I hope you did not catch a flu in the cold! However theres another mission for you. Are you interested?",topic=21
+Topic=21,"yes"     -> "Excellent. Here is a letter for you to deliver. Well, to be honest, no one else volunteered. It's a letter from the mother of Markwin, the king of Mintwallin. Deliver that letter to him, but note that you will not be welcome there.",SetQuestValue(245,1), Amount=1, Create(3220)
+Topic=21           -> "Too bad, perhaps another time then."
+
+"mission",QuestValue(246)=1,QuestValue(244)=0  -> "So are you ready for another Mission?", Topic=20
+
+"mission",QuestValue(243)=0,QuestValue(242)=1  -> "You are not done with your current mission. Search for the whereabout of Postofficer Waldo. Please report back when you are ready."
+"mission",QuestValue(243)=1  -> "So Waldo is dead? This is grave news indeed. Did you recover his posthorn?",topic=19,Type=3219, Amount=1
+Topic=19,"yes",Count(Type)>=Amount     -> "Thank you. We will honour this. Your next mission will be a very special one. Good thing you are a special person as well. Are you ready?",Delete(Type),SetQuestValue(246,1),SetQuestValue(249,4),Topic=20
+Topic=19,"yes"     -> "Hm, no, you don't have it. Too bad, go and look for it."
+Topic=19           -> "Too bad, go and look for it."
+
+Topic=20,"yes",QuestValue(250)<QuestValue(249)    -> "Your eagerness is a virtue, young one, but first lets talk about advancement."
+Topic=20,"yes"     -> "So listen well. Behind the lower left door you will find a bag. The letters in the bag are for none other than Santa Claus! Deliver them to his house on the isle of Vega, USE the bag on his mailbox and report back here.",SetQuestValue(244,1)
+Topic=20           -> "Too bad, perhaps another time then."
+
+"mission",QuestValue(234)>0,QuestValue(234)<7  -> "You are not done with your current mission. We still need the measurements of several postofficers. Please report back when you are ready."
+"mission",QuestValue(234)=7  -> "Once more you have impressed me! Are you willing to do another job?",topic=17
+Topic=17,"yes"     -> "Ok but your next assignment might be dangerous. Our Courier Waldo has been missing for a while. I must assume he is dead. Can you follow me so far?", topic=18
+Topic=17           -> "Too bad, perhaps another time then."
+
+Topic=18,"yes"     -> "Find out about his whereabouts and retrieve him or at least his posthorn. He was looking for a new underground passage that is rumoured to be found underneath the troll-infested Mountain east of Thais.",SetQuestValue(242,1)
+Topic=18           -> "Too bad, perhaps you will try some other time then."
+
+"mission",QuestValue(233)>0,QuestValue(233)<10  -> "You are not done with your current mission. Make sure Hugo chief is tailoring our new uniforms. Please report back when you are ready."
+"mission",QuestValue(233)=10  -> "Excellent! Another job well done! Would you accept another mission?",SetQuestValue(249,3),topic=16
+
+Topic=16,"yes",QuestValue(250)<QuestValue(249)    -> "Your eagerness is a virtue, young one, but first let's talk about advancement."
+Topic=16,"yes"     -> "Good, so listen. Hugo Chief informed me that he needs the measurements of our postofficers. Go and bring me the measurements of Ben, Lokur, Dove, Liane, Chrystal and Olrik.",SetQuestValue(234,1)
+Topic=16           -> "Too bad, perhaps another time then."
+
+"dress","pattern",QuestValue(233)=8  -> "Fine, fine. I think that should do it. Tell Hugo that we order those uniforms. The completed dress pattern will soon arrive in Venore. Report to me when you have talked to him.",SetQuestValue(233,9) 
+
+"dress","pattern",QuestValue(233)=6  -> "The queen has sent me the samples we needed. The next part is tricky. We need the uniforms to emanate some odor that dogs hate.The dog with the best 'taste' in that field is Noodles, the dog of King Tibianus. Do you understand so far?",Topic=15,Amount=Random(1,3) 
+"uniform",QuestValue(232)=6          -> *
+Topic=15,"yes"     -> "Good. Go there and find out what taste he dislikes most: moldy cheese, a piece of fur or a bananaskin. Tell him to SNIFF, then the object. Show him the object and ask 'Do you like that?'. DONT let the guards know what you are doing.",SetQuestValue(233,7),SetQuestValue(251,Amount)
+Topic=15           -> "Too bad, perhaps you can try doing it some other time then."
+
+"dress","pattern",QuestValue(233)=2  -> "Oh yes, where did we get that from ...? Let's see, first ask the great technomancer in Kazordoon for the technical details. Return here afterwards.",SetQuestvalue(233,3)
+
+"dress","pattern",QuestValue(233)=4  -> "The mail with Talphion's instructions just arrived. I remember we asked Queen Eloise of Carlin for the perfect colours. Go there, ask her about the UNIFORMS and report back here.",SetQuestvalue(233,5)
+
+"mission",QuestValue(231)=1  -> "You are not done with your current mission. Deliver that present to Fibula. Please report back when you are ready."
+"mission",QuestValue(231)=2  -> "Splendid, I knew we could trust you. I would like to ask for your help in another matter. Are you interested?",topic=14
+Topic=14,"yes"     -> "Ok. We need a new set of uniforms, and only the best will do for us. Please travel to Venore and negotiate with Hugo Chief a contract for new uniforms.",SetQuestValue(233,1)
+Topic=14           -> "Too bad, perhaps another time then."
+
+# BEFÖRDERUNG 2 
+Topic=13,"yes",QuestValue(250)<QuestValue(249)    -> "Your eagerness is a virtue, young one, but first lets talk about advancement."
+Topic=13,"yes"    -> "Since I am convinced I can trust you, this time you must deliver a valuable present to Dermot on Fibula. Do NOT open it!!! You will find the present behind the door here on the lower right side of this room.",SetQuestValue(231,1)
+
+Topic=13           -> "Too bad, perhaps another time then."
+
+"mission",QuestValue(230)=1  -> Type=3115, Amount=1,"Do you bring ONE bone for our officers' safety fund or ALL bones at once?",topic=24
+"mission",QuestValue(230)>1,QuestValue(230)<20  -> Type=3115, Amount=1,"Do you bring a bone for our officers' safety fund?",topic=12
+"mission",QuestValue(230)>1,QuestValue(230)=20  -> Type=3115, Amount=1,"Do you bring a bone for our officers' safety fund?",topic=22
+"mission",QuestValue(230)>20  -> "You have made it! We have enough bones for the fund! You remind me of myself when I was young! Interested in another mission?",Topic=13
+
+Topic=12,"yes",Count(Type)>=Amount     -> Delete(Type),SetQuestValue(230,QuestValue(230)+1),Amount=QuestValue(230)-1, "Excellent! You have collected %A bones. Just report about your mission again if you find  more."
+Topic=12           -> "You have no suitable bone with you. Too bad, but you surely will find some more."
+Topic=22,"yes",Count(Type)>=Amount     -> Delete(Type),SetQuestValue(230,QuestValue(230)+1),Amount=QuestValue(230)-1, "You have collected all the %A bones needed. Excellent! Now let's talk about further missions if you are interested.",SetQuestValue(249,2)
+Topic=22           -> "You have no suitable bone with you. Too bad, but you surely will find some more."
+
+Topic=24,"one",Count(Type)>=Amount     -> Delete(Type),SetQuestValue(230,QuestValue(230)+1),Amount=QuestValue(230)-1, "Excellent! You have collected %A bones. Just report about your mission again if you find more."
+Topic=24,"all"     -> Type=3115, Amount=20,"Are you sure you have collected all the 20 bones needed?",topic=25
+
+Topic=25,"yes",Count(Type)>=Amount   ->  Delete(Type),SetQuestValue(230,21),"You have collected all the 20 bones needed. Excellent! Now let's talk about further missions if you are interested.",SetQuestValue(249,2)
+Topic=25           -> "You have not enough bones with you. Too bad, but you surely will find some more."
+
+"mission",QuestValue(229)>0,QuestValue(229)<3  -> "You are not done with your current mission. Find David Brassacres and hand him that bill. Report when you are ready."
+"mission",QuestValue(229)=3  -> "You truly got him? Quite impressive. You are a very prommising candidate! I think I have another mission for you. Are you interested?",Topic=11
+
+"mission",QuestValue(228)=1  -> "You are not done with your current mission. The mailbox is still not fixed. Report if you are ready."
+"mission",QuestValue(228)=2  -> "Excellent, you got it fixed! This will teach this mailbox a lesson indeed! Are you interested in another assignment?",Topic=9
+
+"mission",QuestValue(227)<5  -> "You are not done with your current mission. Make sure all the passages are secure. Report if you are ready."
+"mission",QuestValue(227)=5  -> "So you have finally made it! I did not think that you would have it in you ... However: are you ready for another assignment?",Topic=8
+
+Topic=11,"yes"     -> "Ok, listen: we have some serious trouble with agressive dogs lately. We have accumulated some bones as a sort of pacifier but we need more. Collect 20 Bones like the one in my room to the left and report here.",SetQuestValue(230,1)
+Topic=11           -> "Too bad, perhaps another time then."
+
+Topic=9,"yes"     -> "For your noble deeds I grant you the title Assistant Postofficer. All Postofficers will charge you less money from now on. After every second mission ask me for an ADVANCEMENT. Your next task will be a bit more challenging. Do you feel ready for it?",SetQuestValue(250,1),SetQuestValue(249,1),Topic=10
+Topic=9           -> "Too bad, perhaps another time then."
+
+Topic=10,"yes"     -> "I need you to deliver a bill to the stage magician David Brassacres. He's hiding from his creditors somewhere in Venore. It's likely you will have to trick him somehow to reveal his identity. Report back when you delivered this bill.",Amount=1,Create(3216),SetQuestValue(229,1)
+Topic=10           -> "Too bad, perhaps another time then."
+
+# Topic=8,"yes"     -> "I am glad to hear that. One of our mailboxes was reported to be jammed. It is located on the so called 'mountain' on the isle Folda. Get a crowbar and fix the mailbox. Report about your mission when you have done so.",Topic=9,SetQuestValue(228,1)
+Topic=8,"yes"     -> "I am glad to hear that. One of our mailboxes was reported to be jammed. It is located on the so called 'mountain' on the isle Folda. Get a crowbar and fix the mailbox. Report about your mission when you have done so.",SetQuestValue(228,1)
+Topic=8           -> "I thought so. The mail service is not for just anyone."
+
+Topic=1,"yes"     -> "Hm, I might consider your proposal, but first you will have to prove your worth by doing some tasks for us. Are you willing to do that?",Topic=2
+Topic=1           -> "I thought so. The mail service is not for just anyone."
+
+Topic=2,"yes"     -> "Excellent! Your first task will be quite simple. But you should better write my instructions down anyways. You can read and write?",Topic=3
+Topic=2           -> "I thought so. The mail service is not for just anyone."
+
+Topic=3,"yes"     -> "So listen, you will check certain tours our members have to take to see if there is some trouble. First travel with Captain Bluebear's ship from Thais to Carlin, understood?",Topic=4
+Topic=3           -> "I am sorry, but being illiterate disqualifies you from joining."
+
+Topic=4,"yes"     -> "Excellent! Once you have done that you will travel with Uzon to Edron. You will find him in the Femor Hills. Understood?",Topic=5
+Topic=4           -> "I thought so. The mail service is not for just anyone."
+
+Topic=5,"yes"     -> "Fine, fine! Next, travel with Captain Seahorse to the city of Venore. Understood?",Topic=6
+Topic=5           -> "I thought so. The mail service is not for just anyone."
+
+Topic=6,"yes"     -> "Good! Finally, find the technomancer Brodrosch and travel with him to the Isle of Cormaya. After this passage report back to me here. Understood?",Topic=7
+Topic=6           -> "I thought so. The mail service is not for just anyyone."
+
+Topic=7,"yes"     -> "Ok, remember: the Tibian mail service puts trust in you! Don't fail and report back soon. Just tell me about your MISSION.",SetQuestValue(227,1)
+Topic=7           -> "I thought so. The mail service is not for just anyone."
+}

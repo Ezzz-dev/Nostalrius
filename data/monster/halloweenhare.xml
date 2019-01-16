@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="The Halloween Hare" nameDescription="The Halloween Hare" race="blood" experience="0" speed="120" manacost="0">
+	<health now="2000" max="2000" />
+	<look type="74" head="0" body="0" legs="0" feet="0" corpse="4173" />
+	<targetchange interval="1000" chance="95" />
+	<targetstrategy nearest="0" weakest="0" mostdamage="0" random="100" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="0" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="4" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="0" skill="0">
+		<attack name="outfit" monster="witch" duration="6000000" range="5" radius="4" target="1" chance="60">
+			<attribute key="shootEffect" value="death" />
+			<attribute key="areaEffect" value="poff" />
+		</attack>
+		<attack name="outfit" monster="ghost" duration="6000000" range="5" radius="4" target="1" chance="60">
+			<attribute key="shootEffect" value="death" />
+			<attribute key="areaEffect" value="poff" />
+		</attack>
+		<attack name="outfit" item="2978" duration="6000000" range="5" radius="4" target="1" chance="60">
+			<attribute key="shootEffect" value="death" />
+			<attribute key="areaEffect" value="poff" />
+		</attack>
+		<attack name="outfit" monster="skeleton" duration="6000000" range="5" radius="4" target="1" chance="60">
+			<attribute key="shootEffect" value="death" />
+			<attribute key="areaEffect" value="poff" />
+		</attack>
+		<attack name="outfit" monster="vampire" duration="6000000" range="5" radius="4" target="1" chance="60">
+			<attribute key="shootEffect" value="death" />
+			<attribute key="areaEffect" value="poff" />
+		</attack>
+		<attack name="outfit" monster="mummy" duration="6000000" range="5" radius="4" target="1" chance="60">
+			<attribute key="shootEffect" value="death" />
+			<attribute key="areaEffect" value="poff" />
+		</attack>
+	</attacks>
+	<defenses armor="999" defense="999">
+		<defense name="outfit" monster="rabbit" duration="60000" chance="1" />
+	</defenses>
+	<immunities>
+		<immunity fire="1" />
+		<immunity energy="1" />
+		<immunity physical="1" />
+		<immunity outfit="1" />
+		<immunity lifedrain="1" />
+		<immunity paralyze="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+</monster>

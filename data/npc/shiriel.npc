@@ -1,0 +1,71 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# shiriel.npc: Datenbank für die Magiehändlerin Shiriel (Elfenstadt)
+
+Name = "Shiriel"
+Outfit = (144,2-103-0-95)
+Home = [32670,31657,6]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",!       -> "Ashari %N."
+ADDRESS,"hi$",!          -> *
+ADDRESS,"ashari$",!      -> *
+ADDRESS,!                -> Idle
+BUSY,"hello$",!          -> "Wait, %N.", Queue
+BUSY,"hi$",!             -> *
+BUSY,"ashari$",!         -> *
+BUSY,!                   -> NOP
+VANISH,!                 -> "Asha Thrazi."
+
+"bye"           -> "Asha Thrazi.", Idle
+"asha","thrazi" -> *
+"farewell"      -> *
+"job"           -> "I sell mystic runes, spellbooks, wands, rods and fluids of life or mana."
+"name"          -> "I am Shiriel Sharaziel."
+"time"          -> "Time was mastered by my people long ago."
+
+"elves"         -> "Our noble race has knowledge of secrets beyond your comprehension."
+"dwarfs"        -> "Not worth to bother about."
+"humans"        -> "Cursed with a short livespan and not worth to be remembered." 
+"troll"         -> "We should eradicate them all." 
+"cenath"        -> "We are the teachers to the other castes."
+"kuridai"       -> "Their knowledge is limited."
+"deraisim"      -> "They lack the patience that suits a race with our lifespan."
+"abdaisim"      -> "I think they are lost forever." 
+"teshial"       -> "They were not prepared for what they encountered in their quest for knowledge. WE will be prepared."
+"ferumbras"     -> "A humanbreed abnomination."
+"crunor"        -> "I have no time for superstition." 
+"excalibug"     -> "I would love to analyse it one day."
+"news"          -> "News are secrets and you are not worthy of my secrets."
+"magic"         -> "I could teach you some spells ... but I won't."
+
+"rune"          -> "I sell blank runes and spell runes."
+"life","fluid"  -> Type=2874, Data=11, Amount=1, Price=60, "Do you want to buy life fluid for %P gold?", Topic=2
+"mana","fluid"  -> Type=2874, Data=10, Amount=1, Price=55, "Do you want to buy mana fluid for %P gold?", Topic=2
+"blank","rune"  -> Type=3147, Amount=1, Price=10, "Do you want to buy a blank rune for %P gold?", Topic=1
+"spellbook"     -> Type=3059, Amount=1, Price=150, "Do you want to buy a spellbook for %P gold?", Topic=1
+
+%1,1<%1,"life","fluid" -> Type=2874, Data=11, Amount=%1, Price=60*%1, "Do you want to buy %A potions of life fluid for %P gold?", Topic=2
+%1,1<%1,"mana","fluid" -> Type=2874, Data=10, Amount=%1, Price=55*%1, "Do you want to buy %A potions of mana fluid for %P gold?", Topic=2
+%1,1<%1,"blank","rune" -> Type=3147, Amount=%1, Price=10*%1, "Do you want to buy %A blank runes for %P gold?", Topic=1
+%1,1<%1,"spellbook"    -> Type=3059, Amount=%1, Price=150*%1, "Do you want to buy %A spellbooks for %P gold?", Topic=1
+
+"deposit"              -> "I will pay you 5 gold for every empty vial, ok?", Data=0, Topic=3
+"vial"                 -> *
+"flask"                -> *
+
+Topic=1,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Come back, when you have enough money."
+Topic=1                         -> "Hmm, but next time."
+
+Topic=2,"yes",CountMoney>=Price -> "Here you are. There is a deposit of 5 gold on the vial.", DeleteMoney, Create(Type)
+Topic=2,"yes"                   -> "Come back, when you have enough money."
+Topic=2                         -> "Hmm, but next time."
+
+Topic=3,"yes",Count(2874)>0     -> Amount=Count(2874), Price=Amount*5, "Here you are ... %P gold.", Delete(2874), CreateMoney
+Topic=3,"yes"                   -> "You don't have any empty vials."
+Topic=3                         -> "Hmm, but please keep Tibia litter free."
+
+@"gen-t-runes-free-s.ndb"
+@"gen-t-wands-free-s.ndb"
+}

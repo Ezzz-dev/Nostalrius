@@ -1,0 +1,40 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# carina.npc: Datenbank für die Juwelierin Carina
+
+Name = "Carina"
+Outfit = (138,97-70-94-76)
+Home = [33015,32048,6]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Welcome, %N. I am looking forward to trade with you."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Please, %N, give me another minute with our other customer first.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Good bye."
+
+"bye"             -> "Good bye.", Idle
+"farewell"        -> *
+"job"             -> "I sell some of the most beautiful jewels of the lands."
+"name"            -> "I am Carina Carlson."
+"time"            -> "It's %T."
+"offer"           -> "I am selling jewels, just have a look."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"jewel"           -> "We offer wedding rings, golden amulets, and ruby necklaces."
+
+"wedding","ring"  -> Type=3004, Amount=1, Price=990,  "Do you want to buy a wedding ring for %P gold?", Topic=1
+"golden","amulet" -> Type=3013, Amount=1, Price=6600, "Do you want to buy a golden amulet for %P gold?", Topic=1
+"ruby","necklace" -> Type=3016, Amount=1, Price=3560, "Do you want to buy a ruby necklace for %P gold?", Topic=1
+
+%1,1<%1,"wedding","ring"  -> Type=3004, Amount=%1, Price=990*%1,  "Do you want to buy %A wedding rings for %P gold?", Topic=1
+%1,1<%1,"golden","amulet" -> Type=3013, Amount=%1, Price=6600*%1, "Do you want to buy %A golden amulets for %P gold?", Topic=1
+%1,1<%1,"ruby","necklace" -> Type=3016, Amount=%1, Price=3560*%1, "Do you want to buy %A ruby necklaces for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Sorry, make sure to come back, as soon as you have enough money."
+Topic=1                         -> "Perhaps next time."
+}

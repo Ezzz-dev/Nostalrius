@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="spider" nameDescription="a spider" race="venom" experience="12" speed="36" manacost="210">
+	<health now="20" max="20" />
+	<look type="30" head="0" body="0" legs="0" feet="0" corpse="3988" />
+	<targetchange interval="1000" chance="0" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="1" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag runonhealth="6" />
+	</flags>
+	<attacks attack="7" skill="19">
+	</attacks>
+	<defenses armor="2" defense="2">
+	</defenses>
+	<loot>
+		<item id="3031" countmax="5" chance="350" /> <!-- a gold coin -->
+	</loot>
+</monster>

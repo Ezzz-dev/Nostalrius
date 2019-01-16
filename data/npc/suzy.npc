@@ -1,0 +1,25 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# suzy.npc: Datenbank für die Bankangestellte Suzy
+
+Name = "Suzy"
+Outfit = (136,78-10-96-95)
+Home = [32320,32258,7]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Welcome %N! What can I do for you?"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Sorry %N, I am already talking to a customer. Please wait.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Good bye."
+
+"bye"       -> "Good bye.", Idle
+"farewell"  -> *
+"job"       -> "I work in this bank. I can change money for you."
+"name"      -> "I am Suzy."
+"time"      -> "It is exactly %T."
+
+@"gen-bank.ndb"
+}

@@ -1,0 +1,101 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# yberius.npc: Datenbank für den Mönch Yberius
+
+Name = "Yberius"
+Outfit = (57,0-0-0-0)
+Home = [32961,32076,7]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",!      -> "Welcome, young %N! If you are new in Tibia, ask me for help."
+ADDRESS,"hi$",!         -> *
+ADDRESS,!               -> Idle
+BUSY,"hello$",!         -> "Please wait a moment, %N.", Queue
+BUSY,"hi$",!            -> *
+BUSY,"heal$",Burning>0 -> "You are burning, %N. I will help you.", Burning(0,0), EffectOpp(15)
+BUSY,"heal$",Poison>0  -> "You are poisoned, %N. I will help you.", Poison(0,0), EffectOpp(14)
+BUSY,"heal$",HP<40     -> "You are looking really bad, %N. Let me heal your wounds.", HP=40, EffectOpp(13)
+BUSY,"heal$"           -> "You aren't looking really bad, %N. Sorry, I can't help you."
+BUSY,!                  -> NOP
+VANISH,!                -> "Remember: If you are heavily wounded or poisoned, I can heal you for free."
+
+"bye"            -> "May the gods bless you, %N!", Idle
+"farewell"       -> *
+"job"            -> "I have no job. I just live for the gods of Tibia."
+"name"           -> "I am Brother Yberius."
+"tibia"          -> "It's the world of Tibia."
+"god"            -> "They are the creators of Tibia and all life on it."
+"life"           -> "There are the plants, the citizens, and the monsters."
+"plant"          -> "Crunor, the god of plants and fertility, watches over all plants, small and big."
+"citizen"        -> "Just walk around and meet them. Chat and learn about them."
+"monster"        -> "Even they have their part in the bigger scheme. Even if it eludes us mere mortals."
+"king"           -> "The king resides in the far away city of Thais."
+"tibianus"       -> *
+"army"           -> "The royal army is here to protect us."
+"ferumbras"      -> "The gods only know what this spawn of darkness might be up to."
+"excalibug"      -> "This blasphemous weapon has to be destroyed."
+"news"           -> "I won't take part in idle gossip."
+"help"           -> "Earn some gold and upgrade your equipment."
+"quest"          -> *
+"task"           -> *
+"what","do"      -> *
+"gold"           -> "If you need money, you have to slay monsters and take their gold. Look for swamptrolls in the swamps. But be careful. They use poisoned weapons."
+"money"          -> *
+"equipment"      -> "First you should buy a machete. You will need it in the swamps. And better don't explore without a shovel and a rope."
+"eat"            -> "If you want to heal your wounds, buy somthething to eat or hunt some small game. If you are very weak just ask me to heal you."
+"food"           -> *
+"heal$",Burning>0 -> "You are burning. I will help you.", Burning(0,0), EffectOpp(15)
+"heal$",Poison>0  -> "You are poisoned. I will help you.", Poison(0,0), EffectOpp(14)
+"heal$",HP<40     -> "You are looking really bad. Let me heal your wounds.", HP=40, EffectOpp(13)
+
+"heal$",PvPEnforced -> "You aren't looking that bad."
+"heal$"               -> "You aren't looking that bad. Sorry, I can't help you. But if you are looking for additional protection you should go on the pilgrimage of ashes."
+
+"blessing",PvPEnforced,!  -> "The lifeforce of this world is waning. There are no more blessings avaliable on this world."
+"pilgrimage",PvPEnforced,! -> *
+"ashes",PvPEnforced,! -> *
+
+"spiritual",PvPEnforced,! -> *
+"shielding",PvPEnforced,! -> *
+"sacred","places",PvPEnforced,! -> *
+"spark",PvPEnforced,! -> *
+"phoenix",PvPEnforced,! -> *
+"embrace",PvPEnforced,! -> *
+"fire",PvPEnforced,! -> *
+"suns",PvPEnforced,! -> *
+"wisdom",PvPEnforced,! -> *
+"solitude",PvPEnforced,! -> *
+
+
+"pilgrimage"     -> "Whenever you receive a lethal wound your lifeforce is damaged. With every single of the five blessings you have this damage will be reduced."
+"ashes"          -> *
+
+"blessing"  -> "There are five different blessings available in five sacred places. These blessings are: the spiritual shielding, the spark of the phoenix, the embrace of tibia, the fire of the suns and the wisdom of solitude." 
+"sacred","places"  -> "Just ask in which of the five blessings you are interested in."
+
+"spiritual", QuestValue(104) > 0 -> "I see you received the spiritual shielding in the whiteflower temple south of Thais."
+"shielding", QuestValue(104) > 0 -> *
+"spiritual" -> "You can receive the spiritual shielding in the whiteflower temple south of Thais."
+"shielding" -> *
+
+"spark", QuestValue(102) > 0 -> "I an sense that the spark of the phoenix already was given to you by the dwarven priests of earth and fire in Kazordoon."
+"phoenix", QuestValue(102) > 0 -> *
+"spark" -> "The spark of the phoenix is given by the dwarven priests of earth and fire in Kazordoon."
+"phoenix" -> *
+
+"embrace", QuestValue(105) > 0 -> "I can sense the druids north of Carlin provided you with the embrace of tibia."
+"embrace" -> "The druids north of Carlin can provide you with the embrace of tibia."
+
+"fire","suns", QuestValue(103) > 0     -> "I can see you recieved the blessing of the two suns in the suntower near Ab'Dendriel ."
+"suns", QuestValue(103) > 0  -> *
+"fire","suns"     -> "Ask for the blessing of the two suns in the suntower near Ab'Dendriel ."
+"suns"  -> *
+
+
+"wisdom", QuestValue(101) > 0 -> "I can sense you already talked to the hermit Eremo on the isle of Cormaya and recieved this blessing." 
+"solitude", QuestValue(101) > 0 -> *
+"wisdom" -> "Talk to the hermit Eremo on the isle of Cormaya about this blessing." 
+"solitude" -> *
+
+"time"           -> "Now, it is %T. Ask Shiantis for a watch, if you need one."
+}

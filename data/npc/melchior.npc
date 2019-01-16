@@ -1,0 +1,110 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# melchior.npc: Datenbank für den blinden Bettler Melchior
+
+Name = "Melchior"
+Outfit = (130,0-25-59-115)
+Home = [33143,32828,7]
+Radius = 60
+
+Behaviour = {
+
+ADDRESS,"hello$",male,!        -> "Greetings, %N. I do not see your face, but I can read a thousand things in your voice!"
+ADDRESS,"hi$",male,!           -> *
+ADDRESS,"greetings$",male,!    -> *
+ADDRESS,"hello$",female,!      -> "Welcome, %N! The lovely sound of your voice shines like a beam of light through my solitary darkness!"
+ADDRESS,"hi$",female,!         -> *
+ADDRESS,"greetings$",female,!  -> *
+ADDRESS,!                      -> Idle
+BUSY,"hello$",!                -> "Only one minute more, %N. I shall talk to you at once.", Queue
+BUSY,"hi$",!                   -> *
+BUSY,"greetings$",!            -> *
+BUSY,!                         -> NOP
+VANISH,!                       -> "May the light be with you."
+
+"bye"       -> "Farewell, stranger. May Uman the Wise guide your steps in this treacherous land.", Idle
+"farewell"  -> *
+"name"      -> "My late father, may he rest in peace, chose to call me Melchior."
+"melchior"  -> "That is my name."
+"job"       -> "I am a poor beggar. I try to make a meagre living here since a cruel fate has left me a blind man."
+"blind" 	  -> "Yes, I am. I was not born that way, but a cruel fate caused me to lose my eyesight."
+"fate" 		  -> "Fate played a cruel trick on old Melchior. If you want me to, I can tell you my story - talking about one's grievances does help to ease the pain. So - would you like to hear my story?", Topic=1
+"story"     -> *
+
+Topic=1,"yes"  -> "While my eyes were still of use to me I worked as a trader. I was not too successful, so I started looking for alternatives. Remembering some old nomad legends I went to explore the Kha'zeel. If only I'd never done that! ...",
+                  "After many days I met a weird creature - it was humanoid, but it was also much larger than any man, and it seemed to be only half-solid in a way. ...",
+                  "I was scared, but I remembered my grandfather's stories and I hailed the creature using the traditional djinn word of greeting. ...",
+                  "It worked. I managed to engage the djinn - for it was one sure enough - in a conversation. In fact, I even managed to come to an agreement with it. The djinns living there needed supplies, and I promised I would bring them some. ...",
+                  "A highly profitable business relationship ensued. Unfortunately, my greed grew every day, and it clouded my sense of judgement. ...",
+                  "Hearing that there was a second djinn fortress I travelled there. Those djinn, who called themselves the Marid, were friendly enough, and soon I traded with them as well. ...",
+                  "Unfortunately, it did not take the other djinn tribe, the Efreet, long to find out what I was up to. ...",
+                  "The Efreets' punishment was cruel: They blinded me and left me in the Kha'labal to die of thirst and exhaustion as food for the scarabs. But that was a favour I could not do them. ...",
+                  "I desperately struggled on and finally I was picked up by a caravan. They took me here, and now I am sort of stuck here in this city of the half-dead."
+Topic=1        -> "As you wish, stranger."
+
+"djinn"                -> "The djinns are a wondrous race. Swift and strong they are and larger, much larger than any man. ...",
+                          "And yet, djinns fit into tiny lamps, for they are but half solid creatures who can change into mist whenever they want to! It is as though they lived between the worlds, travelling hither and thither as they please. ...",
+                          "Little is known about their origin, but legend has it Zathroth himself, the dark master of magic, created them to some unknown evil purpose. ...",
+                          "But they are not evil, and perhaps that is why Zathroth eventually abandoned them! Djinns have independent minds and souls just like humans, and just like us they are forlorn creatures struggling to find their place in creation. ...",
+                          "They have fought a bitter, bitter war between themselves over this, a cataclysmic war that led them to the brink of self-destruction. ...",
+                          "Today they are few and far between, but they are still divided into two warring fractions, the gentle Marid and the cruel Efreet, and neither side will rest until the other is utterly defeated. ...",
+                          "If you ever meet a djinn make sure to say the word of greeting immediately. Otherwise he will simply ignore you or worse - if it is an Efreet he will kill you outright. ...",
+                          "And remember, once you decided to follow one group of djinns you can never switch sides, so choose well. No Efreet will ever deal with a follower of the Marid and vice versa."
+"greeting",QuestValue(278)<2 -> "The djinns have an ancient code of honour. This code includes a special concept of hospitality. Anybody who utters the word of greeting must not be attacked even if he is an enemy. Well, at least that is what the code says. ...",
+                          "I have found out, though, that this does not work at all times. There is no point to say the word of greeting to an enraged djinn. ...",
+                          "I can tell you the word of greeting if you're interested. It is DJANNI'HAH. Remember this word well, stranger. It might save your life one day. ...",
+                          "And keep in mind that you must choose sides in this conflict. You can only follow the Efreet or the Marid - once you have made your choice there is no way back. I know from experience that djinn do not tolerate double-crossing.", SetQuestValue(278,1)
+"word",QuestValue(278)<2 -> *
+"djanni'hah",QuestValue(278)<2 -> "You know the traditional djinn word of greeting DJANNI'HAH. Use it wisely!", SetQuestValue(278,1)
+"efreet"               -> "Beware the Efreet, stranger! They hate all humans, and if they had their way all of us would be killed. If you meet one be sure to say the word of greeting immediately because otherwise you will be killed in a heartbeat. ...",
+                          "And do not approach them if you are a follower of the Marid - they are impossible to fool!"
+"marid"                -> "The Marid are gentle, kind-hearted djinn, or at least that is how they act towards humans. However, they are quite reclusive, too. They will not talk to human unless he says the word of greeting first. ...",
+                          "And do not approach them if you are a follower of the Efreet - they are impossible to fool!"
+
+"kha'zeel"             -> "That is the name of the huge mountain range to the west of the great desert, the Kha'labal. That's where you will find the djinns' fortresses Ashta'daramai and Mal'ouquah. ...",
+                          "They say it was created by the gods as a vantage point from which they used watch their creation. I think it is true. I used to travel there often, and I swear I often felt the presence of something special, something... divine."
+"kha'labal"	           -> "Aaaah... The great desert. Legend has it that in ancient times it was a beautiful garden. I don't know if that is true, but I must admit I love it just the way it is. ...",
+                          "Travelling through that endless stretch of barren land always gave me a very special peace of mind."
+"mal'ouquah"           -> "That is the Efreet's gloomy fortress, home of Malor, hidden high up in the Kha'zeel mountains. I used to go there often. Don't make the same mistake, stranger! I would love to think there is somebody who profited from the lesson I had to learn!"
+"ashta'daramai"        -> "Aah yes - the Marids' fortress. Perched high on the Kha'zeel, it is a marvel to behold. They say Gabel built it on the ruins of his original palace." 
+"gabel"                -> "He is the leader of the Marid! I have never met him myself, but everybody was full of praise for him back at Ashta'daramai. The legend has it that it was him who introduced the djinns to wise Daraman's teachings." 
+"malor"                -> "Malor is the Efreets' leader. He is perhaps not the strongest of all efreet, but his treachery and cruelty are certainly unrivalled. He was defeated a long, long time ago, but he was not killed. ...",
+                          "I don't know why... I have a strange feeling of foreboding whenever I hear his name."
+"scarab"               -> "Those damn scavengers! I detest them. When I was stumbling through the desert, all blind and desperate, they followed me around. ...",
+                          "They watched my every step, waiting for me to give up and die. But I never did. Damn vermin! You'll have to eat somebody else!"
+
+"alesar"               -> "I know that name. He is a Marid. This djinn is one of the best smiths ever to live. You should see the scimitars he makes - hard as titanium yet light as a desert breeze. ...",
+                          "I kept on trying to get the Marid to sell one to me, but they never did. Too bad - I could have made a fortune." 
+"fa'hradin"            -> "I know that name. He is a Marid, right? I have met him once. He seemed pretty important."
+"baa'leal"             -> "Cursed be that djinn! It was him who blinded me, and I bet casting me out into the Kha'labal was his idea, too. Believe me, I would try to kill him if only I could." 
+"haroun"               -> "A Marid trader. I have often had dealings with him. He drove me mad because he never accepted any haggling, but then he never ever tried to trick me. He was not really a trader at heart, I suppose. He was more of a monk or maybe a preacher."
+"bas'saam"             -> "Yes, I know him. He is an Efreet trader. I met him often during my travels, and even though there was no real sympathy we had a certain mutual respect for each other. But all that changed when he found out I had dealings with the Marid." 
+"bo'ques"              -> "He is a cook - a djinn cook. A weird guy. Always used to ask me to procure some strange kind of ingredient or other for him. ...",
+                          "He made me laugh. Can you imagine what that looks like - a djinn wearing an enormous chef hat?"
+
+"tibia"                -> "Tibia is such a beautiful place. I would give it all if I could see it again."
+"daraman"	             -> "Daraman was a holy man, a true prophet. He showed us how we can master grief and affliction through dignity and brotherliness. It is a shame I only came to fully appreciate his teachings when fate had cast me into darkness."
+"darashia"             -> "<Sighs> Aah yes... Darashia. I would give anything if I could see it again."
+"edron"                -> "I have never been to cities on other continents. And I suppose now I never will. I would be glad enough to leave this place."
+"thais"                -> *
+"venore"               -> *
+"kazordoon"            -> *
+"carlin"               -> *
+"ab'dendriel"          -> *
+"ankrahmun"            -> "I hate this city. Period. I would never have come here, but I haven't had much of a choice. The caravan that picked me up in the Kha'zeel was headed for this place, and I was glad enough they brought me here. ...",
+                          "But now I really wish I could leave. <whispers> These people and their ruler give me the creeps!"
+
+"pharaoh"              -> "The pharaoh? He is always in the palace, so I have heard only rumors about him. But I know one thing for sure - he is mad. End of story."
+"ruler"                -> *
+"old","pharaoh"        -> "The old pharaoh? I keep on hearing rumours about him, but I do not know if they are true.", Topic=2
+Topic=2,"rumour"       -> "<whispers> It is said his son, the present pharaoh, killed him and turned him into some ghastly undead!" 
+Topic=2,"rumor"        -> *
+"palace"               -> "The palace lies to the south of the arena and to the west of the temple. Better stay clear of that place. If but half the things I have heard about it are true this palace is not a place for the living anymore."
+"arena"                -> "Ah yes, the arena. I do not really know what's going on there, because I have never seen it myself. However, I often hear strange noises from there, cheers and jeers and sometimes pityful screams."
+"temple"               -> "That temple is very old, and for centuries it used to be a place of worship and of contemplation. Now that the priests there are fanatic followers of the pharaoh this is no longer a holy place."
+
+"ascension"            -> "The concept of ascension is central to the pharaoh's creed. I am not sure I really understand it, but apparently it has to do with transformation to undeath. Nice, isn't it?"
+"rah"                  -> "Ah yes - I recognise that. According to the pharaoh that is a living being's soul."
+"uthun"                -> "According to the pharaoh's teachings this is the total of a living being's memories and personal experiences."
+"akh"                  -> "In the pharaoh's creed, this is what the physical body is called."
+"mourn"                -> "Spare me that inane twaddle, will you? I am glad enough to be alive, thank you."
+}

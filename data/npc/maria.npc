@@ -1,0 +1,75 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# maria.npc: Datenbank für die Wirtin Maria
+
+Name = "Maria"
+Outfit = (136,77-79-61-131)
+Home = [32912,32082,9]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",! -> "The Hard Rock Tavern greets you, %N."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "You're served soon, %N.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Visit us again."
+
+"bye"          -> "Good bye, %N. Tell your friends about us and visit us again.", Idle
+"job"          -> "I am running this upper part of the Hard Rock Tavern."
+"tavern"       -> *
+
+"strange","fellow" -> "I don't know him. He seems very nervous and hes always fumbling around with this suspicious hat."
+"david"            -> "I am sorry but I don't know him personaly. I heared he entertained people here long before I moved to Venore."
+"brassacres"       -> *
+
+"upper","part" -> "Yes, that's here. Below is the Pit Tavern for those fighters that use the pits."
+"pits"         -> "Well, they do a lot of fighting down there."
+"name"         -> "I am Maria."
+"maria"        -> "Yes, I am Maria, Maria Corona."
+"time"         -> "Don't be that hasty."
+"king"         -> "In Venore, everyone is a king ... until he runs out of luck or money."
+"tibianus"     -> *
+"army"         -> "Good fighters need good entertainment. That's what they get here."
+"ferumbras"    -> "I think he's more a Thaian problem."
+"excalibug"    -> "I'd rather have a stainless steel cooking pan than such a knife."
+"thais"        -> "It's a shame that this lousy city is the heart of the kingdom."
+"tibia"        -> "In the long run it's money that rules everything in Tibia."
+"carlin"       -> "As far as the merchants say it's economically unimportant."
+"amazon"       -> "I can only hope those wild women don't scare away more customers than come here in order to fight against them."
+"news"         -> "Bah, only the usual swampelves stories."
+"rumors"       -> *
+"swampelves"   -> "Well there's a hidden city called Shadowthorn of those warlike elves in the swamps. They are not amused of civilisation at their doorsteps and have been plotting against Venore for years."
+
+"buy"             -> "Food and drinks as much as you can pay for."
+"do","you","sell" -> *
+"do","you","have" -> *
+"food"            -> "We offer cookies, bread, cheese, ham, and meat, as well as eggs and tomatoes."
+"drink"           -> "Do you want beer, wine, lemonade, or water?"
+
+"bread"    -> Type=3600, Amount=1, Price=4, "Do you want to buy a bread for %P gold?", Topic=1
+"cheese"   -> Type=3607, Amount=1, Price=6, "Do you want to buy cheese for %P gold?", Topic=1
+"meat"     -> Type=3577, Amount=1, Price=5, "Do you want to buy meat for %P gold?", Topic=1
+"ham"      -> Type=3582, Amount=1, Price=8, "Do you want to buy a ham for %P gold?", Topic=1
+"cookie"   -> Type=3598, Amount=1, Price=5, "Do you want to buy a cookie for %P gold?", Topic=1
+"egg"      -> Type=3606, Amount=1, Price=2, "Do you want to buy an egg for %P gold?", Topic=1
+"tomato"   -> Type=3596, Amount=1, Price=5,  "Do you want to buy a tomato for %P gold?", Topic=1
+
+%1,1<%1,"bread"         -> Type=3600, Amount=%1, Price=4*%1, "Do you wanna buy %A breads for %P gold?", Topic=1
+%1,1<%1,"cheese"        -> Type=3607, Amount=%1, Price=6*%1, "Do you wanna buy %A cheese for %P gold?", Topic=1
+%1,1<%1,"meat"          -> Type=3577, Amount=%1, Price=5*%1, "Do you wanna buy %A meat for %P gold?", Topic=1
+%1,1<%1,"ham"           -> Type=3582, Amount=%1, Price=8*%1, "Do you wanna buy %A ham for %P gold?", Topic=1
+%1,1<%1,"cookie"        -> Type=3598, Amount=%1, Price=5*%1, "Do you wanna buy %A cookies for %P gold?", Topic=1
+%1,1<%1,"egg"      -> Type=3606, Amount=%1, Price=2*%1, "Do you want to buy %A eggs for %P gold?", Topic=1
+%1,1<%1,"tomato"   -> Type=3596, Amount=%1, Price=5*%1, "Do you want to buy %A tomatoes for %P gold?", Topic=1
+
+
+"lemonade" -> Type=2880, Data=12, Amount=1, Price=2, "Do you want to buy a mug of lemonade for %P gold?", Topic=1
+"beer"     -> Type=2880, Data=3,  Amount=1, Price=2, "Do you want to buy a mug of beer for %P gold?", Topic=1
+"wine"     -> Type=2880, Data=2,  Amount=1, Price=3, "Do you want to buy a mug of wine for %P gold?", Topic=1
+"water"    -> Type=2880, Data=1,  Amount=1, Price=1, "Do you want to buy a mug of water for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "And here is what you ordered.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "You penniless beggar! Get out of here!", Idle
+Topic=1                         -> "Hrmpf!"
+}

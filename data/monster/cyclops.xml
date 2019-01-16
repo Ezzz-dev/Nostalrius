@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="cyclops" nameDescription="a cyclops" race="blood" experience="150" speed="55" manacost="490">
+	<health now="260" max="260" />
+	<look type="22" head="0" body="0" legs="0" feet="0" corpse="3989" />
+	<targetchange interval="1000" chance="5" />
+	<targetstrategy nearest="70" weakest="0" mostdamage="30" random="0" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="30" skill="50">
+	</attacks>
+	<defenses armor="17" defense="24">
+	</defenses>
+	<voices>
+		<voice sentence="Il lorstok human!" />
+		<voice sentence="Toks utat." />
+		<voice sentence="Human, uh whil dyh!" />
+		<voice sentence="Youh ah trak!" />
+		<voice sentence="Let da mashing begin!" />
+	</voices>
+	<loot>
+		<item id="3413" countmax="1" chance="15" /> <!-- a battle shield -->
+		<item id="3093" countmax="1" chance="1" /> <!-- a club ring -->
+		<item id="3384" countmax="1" chance="2" /> <!-- a dark helmet -->
+		<item id="3031" countmax="10" chance="700" /> <!-- a gold coin -->
+		<item id="3031" countmax="20" chance="400" /> <!-- a gold coin -->
+		<item id="3269" countmax="1" chance="7" /> <!-- a halberd -->
+		<item id="3582" countmax="2" chance="200" /> <!-- ham -->
+		<item id="3577" countmax="1" chance="500" /> <!-- meat -->
+		<item id="3410" countmax="1" chance="20" /> <!-- a plate shield -->
+		<item id="3294" countmax="1" chance="80" /> <!-- a short sword -->
+		<item id="3012" countmax="1" chance="2" /> <!-- a wolf tooth chain -->
+	</loot>
+</monster>

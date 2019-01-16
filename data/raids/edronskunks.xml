@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="0" type="event" message="Skunkplague in Edron!"/>
+	<areaspawn delay="0" lifetime="3600000" radius="10" centerx="33203" centery="31867" centerz="7">
+		<monster name="skunk" minamount="20" maxamount="30"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="3600000" radius="10" centerx="33240" centery="31839" centerz="7">
+		<monster name="skunk" minamount="20" maxamount="30"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="3600000" radius="10" centerx="33316" centery="31758" centerz="7">
+		<monster name="skunk" minamount="20" maxamount="30"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="3600000" radius="10" centerx="33158" centery="31809" centerz="7">
+		<monster name="skunk" minamount="20" maxamount="30"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="3600000" radius="10" centerx="33213" centery="31901" centerz="7">
+		<monster name="skunk" minamount="20" maxamount="30"/>
+	</areaspawn>
+	<areaspawn delay="0" lifetime="3600000" radius="10" centerx="33280" centery="31742" centerz="7">
+		<monster name="skunk" minamount="20" maxamount="30"/>
+	</areaspawn>
+</raid>

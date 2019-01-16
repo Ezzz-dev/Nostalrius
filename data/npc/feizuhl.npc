@@ -1,0 +1,70 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# feizuhl.npc: Möbelverkäufer Feizuhl in Ankrahmun
+
+Name = "Feizuhl"
+Outfit = (133,98-116-43-95)
+Home = [33066,32886,7]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",!     -> "Be mourned pilgrim in flesh."
+ADDRESS,"hi$",!        -> *
+ADDRESS,"greetings$",! -> *
+ADDRESS,!              -> Idle
+BUSY,"hello$",!        -> "Please wait a moment, mourned %N.", Queue
+BUSY,"hi$",!           -> *
+BUSY,"greetings$",!    -> *
+BUSY,!                 -> NOP
+VANISH,!               -> "Good bye."
+
+"bye"           -> "Good bye.", Idle
+"farewell"      -> *
+"job"           -> "I sell furniture both to the mourned and the enlightened."
+"shop"          -> *
+"name"          -> "I'm the mourned Feizuhl, pilgrim."
+"time"          -> "It is %T right now."
+"thanks"        -> "It was a pleasure, pilgrim."
+"thank","you"   -> *
+
+"darama"      -> "This is the continent of my birth, my death and also of my ascension, if I learn enough in my mortal days."
+"darashia"    -> "If they would only see the light and follow the way of ascension. Thrice mourned be they."
+"daraman"     -> "The false prophet lead his people into damnation. Mourned shall he be." 
+"ankrahmun"   -> "Our city is old. Older even then our beloved pharaoh." 
+"city"        -> *
+
+"pharaoh"        -> "Our pharaoh holds the key to our ascension. Praised be our pharaoh."
+"arkhothep"     -> *
+"mortality"     -> "Only if we leave mortality behind will we attain ascension."
+
+"ascension"         -> "The ascension to salvation and perhaps even to divine status."
+"Akh'rah","Uthun"   -> "The Akh'rah Uthun is the union of the three parts that were never meant to be bound together."
+"Akh"               -> "The Akh is our vulnerable, ageing flesh."
+
+"undead"            -> "Undeath is an important step towards ascension."
+"undeath"           -> *
+"Rah"               -> "The Rah is our spiritual essence."
+"uthun"             -> "The Uthun is our memory. Call it personality if you like."
+"mourn"             -> "We are mortals and thus to be mourned, for while we are trapped in this frail form we are excluded from enlightenment and ascension."
+
+"arena"        -> "Look for the arena in the heart of our city."
+"palace"       -> "The palace is located in the centre of our city, south of the arena."
+"temple"       -> "Look for the temple in the south-eastern section of Ankrahmun."
+
+"offer"           -> "I sell statues, tables, chairs, flowers, pillows, pottery, instruments, decoration, tapestries and containers."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"furniture"       -> *
+"equipment"       -> *
+
+@"gen-t-furniture-statues-s.ndb"
+@"gen-t-furniture-tables-s.ndb"
+@"gen-t-furniture-chairs-s.ndb"
+@"gen-t-furniture-flowers-s.ndb"
+@"gen-t-furniture-pillows-s.ndb"
+@"gen-t-furniture-pottery-s.ndb"
+@"gen-t-furniture-instruments-s.ndb"
+@"gen-t-furniture-decoration-s.ndb"
+@"gen-t-furniture-tapestries-s.ndb"
+@"gen-t-furniture-containers-s.ndb"
+}

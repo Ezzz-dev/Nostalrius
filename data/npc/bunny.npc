@@ -1,0 +1,91 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# bunny.npc: Datenbank für die Generalin Bunny Bonecrusher
+
+Name = "Bunny Bonecrusher"
+Outfit = (139,96-3-79-115)
+Home = [32315,31756,6]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hail","general",!         -> "Salutations, commoner %N!"
+ADDRESS,"salutations","general",!  -> "Salutations, commoner %N!"
+ADDRESS,"hello",!                  -> "Address me properly %N!", Idle
+ADDRESS,"hi",!                     -> "Address me properly %N!", Idle
+ADDRESS,"hail",!                   -> "Address me with my title, commoner %N!", Idle
+ADDRESS,"salutations",!            -> "Address me with my title, commoner %N!", Idle
+ADDRESS,!                          -> Idle
+BUSY,"hello$",!                    -> "SILENCE! I am busy!"
+BUSY,"hi$",!                       -> "SILENCE! I am busy!"
+BUSY,"hail$",!                     -> "SILENCE! I am busy!"
+BUSY,"salutations$",!              -> "SILENCE! I am busy!"
+BUSY,!                             -> NOP
+VANISH,!                           -> NOP
+
+"bye"               -> "LONG LIVE THE QUEEN!", Idle
+"farewell"          -> *
+"news"              -> "Our reports are only for internal use."
+"report"            -> *
+"queen"             -> "HAIL TO QUEEN ELOISE, OUR NOBLE LEADER!"
+"leader"            -> "Queen Eloise is a fine leader for our fair town, indeed!"
+"job",female        -> "I am the general of the queen's army! You really should consider to join, sister."
+"job",male          -> "I am the general of the queen's army and have not the time to explain this concept to you."
+"how","are","you"   -> "We are in constant training and in perfect health."
+"sell"              -> "Are you suggesting I am corruptible?", Topic=2
+"army"              -> "The army protects the defenceless males of our city. Our elite forces are the Green Ferrets."
+"guard"             -> *
+"green","ferrets"   -> "Our elite forces are trained by rangers and druids. In the woods they are only second to some elves."
+"castle"            -> "The castle is not meant for defence but as a residence for the royal family."
+"subject"           -> "Our citizens have the luck to live under the wise rule of our beloved queen!"
+"dogs","of","war"   -> "They are a men's club, mainly concerned about bragging and drinking alcohol."
+"knights","of","noodles" -> "They are rumoured to be skilled fighters. Then again, in the land of the blind..."
+"druid"             -> "They are our main magic support and play a major role in our battletactics."
+"battletactics"     -> "Our tactic is to kiss."
+"tactics"           -> *
+"kiss"              -> "K.I.S.S.! Keep It Simple, Stupid! Complicated tactics are to easy to be crushed by a twist of fate."
+"bloodblade"        -> "Old man. I can't tell what's worse for the shape of Thais' army."
+"thais"             -> "It's just a rotten hideout for drunks and men too lazy to do some serious work."
+"city"              -> "Our city blends in with the nature surrounding it. Our druids take care of that."
+"bonecrusher"       -> "Our family serves in the Carlin army since uncounted generations!"
+"sister"            -> *
+"bambi"             -> "She is one of my beloved sisters and serves Carlin as a town guard."
+"blossom"           -> *
+"busty"             -> *
+"family"            -> *
+"fenbala"           -> "She is one of our Green Ferrets and one of the queen's bodyguards."
+"barbara"           -> *
+"cornelia"          -> "Cornelia forges the armor necessary for our troops."
+"armor"             -> *
+"rowenna"           -> "Rowenna is responsible for our troops' supply with weapons."
+"weapon"            -> *
+"legola"            -> "She is a distant cousin of mine and my sisters."
+"ferumbras"         -> "Believe it or not. I killed him two times with my own bow, but some unholy forces rise him again and again."
+"join"              -> "Join what?"
+"join","army"       -> "Sorry, we dont recruit foreigners. Perhaps you can join by doing a quest for the queen."
+"quest",female      -> "Sometimes the queen calls for heroines. Keep eyes and ears open!"
+"mission",female    -> *
+"quest",male        -> "Yeah. Entrusting a male with an important quest. Get serious!"
+"mission",male      -> *
+"god"               -> "I whorship Banor, the first warrior!"
+"banor"             -> "He is the idol for all fighting women and a reminder of what a man could become, if he could jump over his own shadow!"
+"zathroth"          -> "Don't mention the dark one in the city of life!"
+"monster"           -> "We cleared the woods around Carlin from most of them. But lately more and more showed up again."
+"excalibug"         -> "I am sure only a woman could muster the courage and strength to wield this weapon of myth."
+"graveyard"         -> "Bah! Just men's tales! Who believes in such bullshit? Perhaps we should put some men there over night and see what happens. Hehehe!"
+"cemetary"          -> *
+"crypt"             -> *
+
+"fuck"    -> "Take this!", Burning(10,1), EffectOpp(15), EffectMe(5)
+"idiot"   -> "Take this!", Burning(10,1), EffectOpp(15), EffectMe(5)
+"asshole" -> "Take this!", Burning(10,1), EffectOpp(15), EffectMe(5)
+"ass$"    -> "Take this!", Burning(10,1), EffectOpp(15), EffectMe(5)
+"fag$"    -> "Take this!", Burning(10,1), EffectOpp(15), EffectMe(5)
+"stupid"  -> "Take this!", Burning(10,1), EffectOpp(15), EffectMe(5)
+"tyrant"  -> "Take this!", Burning(10,1), EffectOpp(15), EffectMe(5)
+"shit"    -> "Take this!", Burning(10,1), EffectOpp(15), EffectMe(5)
+"lunatic" -> "Take this!", Burning(10,1), EffectOpp(15), EffectMe(5)
+
+Topic=2,"yes" -> "Take this!", Burning(10,1), EffectOpp(15), EffectMe(5)
+Topic=2       -> "You should be careful with your words!"
+
+-> "Your words don't make any sense to me."
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="minotaur guard" nameDescription="a minotaur guard" race="blood" experience="160" speed="55" manacost="550">
+	<health now="185" max="185" />
+	<look type="29" head="0" body="0" legs="0" feet="0" corpse="4057" />
+	<targetchange interval="1000" chance="5" />
+	<targetstrategy nearest="70" weakest="10" mostdamage="20" random="0" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="35" skill="50">
+	</attacks>
+	<defenses armor="15" defense="32">
+	</defenses>
+	<voices>
+		<voice sentence="Kirll Karrrl!" />
+		<voice sentence="Kaplar!" />
+	</voices>
+	<loot>
+		<item id="3413" countmax="1" chance="20" /> <!-- a battle shield -->
+		<item id="3359" countmax="1" chance="40" /> <!-- a brass armor -->
+		<item id="3358" countmax="1" chance="30" /> <!-- a chain armor -->
+		<item id="3558" countmax="1" chance="10" /> <!-- chain legs -->
+		<item id="3275" countmax="1" chance="4" /> <!-- a double axe -->
+		<item id="3483" countmax="1" chance="50" /> <!-- a fishing rod -->
+		<item id="3031" countmax="20" chance="600" /> <!-- a gold coin -->
+		<item id="3276" countmax="1" chance="100" /> <!-- a hatchet -->
+		<item id="3559" countmax="1" chance="150" /> <!-- leather legs -->
+		<item id="3577" countmax="1" chance="100" /> <!-- meat -->
+	</loot>
+</monster>

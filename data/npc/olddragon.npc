@@ -1,0 +1,16 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# olddragon.npc: Datenbank für den alten Drachenlord
+
+Name = "An Old Dragonlord"
+Outfit = (39,0-0-0-0)
+Home = [32796,31557,2]
+Radius = 3
+
+Behaviour = {
+ADDRESS,"hello$",Count(3723)>=1,QuestValue(66)<1,! -> "AHHH MUSHRRROOOMSSS! NOW MY PAIN WILL BE EASSSED FOR A WHILE! TAKE THISS AND LEAVE THE DRAGONSSS' CEMETERY AT ONCE!", Amount=1, Delete(3723), Create(3206), SetQuestValue(66,1), Idle
+ADDRESS,"hi$",Count(3723)>=1,QuestValue(66)<1,!    -> *
+ADDRESS,QuestValue(66)=1,!  -> "LEAVE THE DRAGONS' CEMETERY AT ONCE!", Idle
+
+ADDRESS                            -> "AHHHH THE PAIN OF AGESSS! I NEED MUSSSSHRROOOMSSS TO EASSSE MY PAIN! BRRRING ME MUSHRRROOOMSSS!", Idle
+ADDRESS                            -> *
+}

@@ -1,0 +1,150 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# uzgod.npc: Datenbank fuer den Waffenhaendler Uzgod
+
+Name = "Uzgod"
+Outfit = (160,77-79-56-115)
+Home = [32664,31894,9]
+Radius = 1 
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Hiho %N! Wanna weapon, eh?"
+ADDRESS,"hi$",!    -> *
+ADDRESS,"hiho$",!  -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Silence %N, Me busy! Wait!", Queue
+BUSY,"hi$",!       -> *
+BUSY,"hiho$",!     -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Guut bye. Coming back soon."
+
+"bye"           -> "Guut bye. Coming back soon.", Idle
+"farewell"      -> *
+"job"           -> "Me a blacksmith is, an' weapons me sell. You want buy weapons?"
+"shop"          -> *
+"name"          -> "Me is Uzgod Hammerslammer, son of Fire, from the Savage Axes. You can say you to me."
+"time"          -> "Time is %T now."
+"help"          -> "You can buy the weapons me maked or sell weapons you have, jawoll."
+"monster"       -> "Me make often hunt on big nasties. Me small, but very big muscles me have, jawoll."
+"dungeon"       -> "We no dungeon need. We prison isle have."
+"prison"        -> "Bad ones locked up there. Never come out again there, jawoll." 
+"mines"         -> "Me hacking and smashing rocks as me was little dwarf, jawoll."
+"excalibug"     -> "You want sell me excalibug for 1000 platinum coins and an enchanted armor?", Topic=3
+"thanks"        -> "Me enjoy doing that."
+"thank","you"   -> *
+
+"spear"                -> Type=3277, Amount=1, Price=10,  "You will buy a spear for %P gold?", Topic=1
+"rapier"               -> Type=3272, Amount=1, Price=15,  "You will buy a rapier for %P gold?", Topic=1
+"sabre"                -> Type=3273, Amount=1, Price=35,  "You will buy a sabre for %P gold?", Topic=1
+"sword"                -> Type=3264, Amount=1, Price=85,  "You will buy a sword for %P gold?", Topic=1
+"battle","axe"         -> Type=3266, Amount=1, Price=235, "You will buy a battle axe for %P gold?", Topic=1
+"axe"                  -> Type=3274, Amount=1, Price=20,  "You will buy an axe for %P gold?", Topic=1
+"battle","hammer"      -> Type=3305, Amount=1, Price=350, "You will buy a battle hammer for %P gold?", Topic=1
+"morning","star"       -> Type=3282, Amount=1, Price=430, "You will buy a morning star for %P gold?", Topic=1
+"two","handed","sword" -> Type=3265, Amount=1, Price=950, "You will buy a two handed sword for %P gold?", Topic=1
+"club"                 -> Type=3270, Amount=1, Price=5,   "You will buy a club for %P gold?", Topic=1
+"dagger"               -> Type=3267, Amount=1, Price=5,   "You will buy a dagger for %P gold?", Topic=1
+"mace"                 -> Type=3286, Amount=1, Price=90,  "You will buy a mace for %P gold?", Topic=1
+"throwing","knife"     -> Type=3298, Amount=1, Price=25,   "Do you want to buy a throwing knife for %P gold?", Topic=1
+
+%1,1<%1,"spear"                -> Type=3277, Amount=%1, Price=10*%1,  "You will buy %A spears for %P gold?", Topic=1
+%1,1<%1,"rapier"               -> Type=3272, Amount=%1, Price=15*%1,  "You will buy %A rapiers for %P gold?", Topic=1
+%1,1<%1,"sabre"                -> Type=3273, Amount=%1, Price=35*%1,  "You will buy %A sabres for %P gold?", Topic=1
+%1,1<%1,"sword"                -> Type=3264, Amount=%1, Price=85*%1,  "You will buy %A swords for %P gold?", Topic=1
+%1,1<%1,"battle","axe"         -> Type=3266, Amount=%1, Price=235*%1, "You will buy %A battle axes for %P gold?", Topic=1
+%1,1<%1,"axe"                  -> Type=3274, Amount=%1, Price=20*%1,  "You will buy %A axes for %P gold?", Topic=1
+%1,1<%1,"battle","hammer"      -> Type=3305, Amount=%1, Price=350*%1, "You will buy %A battle hammers for %P gold?", Topic=1
+%1,1<%1,"morning","star"       -> Type=3282, Amount=%1, Price=430*%1, "You will buy %A morning stars for %P gold?", Topic=1
+%1,1<%1,"two","handed","sword" -> Type=3265, Amount=%1, Price=950*%1, "You will buy %A two handed swords for %P gold?", Topic=1
+%1,1<%1,"club"                 -> Type=3270, Amount=%1, Price=5*%1,   "You will buy %A clubs for %P gold?", Topic=1
+%1,1<%1,"dagger"               -> Type=3267, Amount=%1, Price=5*%1,   "You will buy %A daggers for %P gold?", Topic=1
+%1,1<%1,"mace"                 -> Type=3286, Amount=%1, Price=90*%1,  "You will buy %A maces for %P gold?", Topic=1
+%1,1<%1,"throwing","kni"       -> Type=3298, Amount=%1, Price=25*%1,  "Do you want to buy %A throwing knives for %P gold?", Topic=1
+
+"sell","mace"                 -> Type=3286, Amount=1, Price=23,   "You want sell me a mace for %P gold?", Topic=2
+"sell","dagger"               -> Type=3267, Amount=1, Price=1,    "You want sell me a dagger for %P gold?", Topic=2
+"sell","carlin","sword"       -> Type=3283, Amount=1, Price=118,  "You want sell me a carlin sword for %P gold?", Topic=2
+"sell","club"                 -> Type=3270, Amount=1, Price=1,    "Hoho, you me given wood for fireplace? Giving you %P gold, ok?", Topic=2
+"sell","spear"                -> Type=3277, Amount=1, Price=1,    "Hoho, you me given wood for fireplace? Giving you %P gold, ok?", Topic=2
+"sell","rapier"               -> Type=3272, Amount=1, Price=3,    "You want sell me a rapier for %P gold?", Topic=2
+"sell","sabre"                -> Type=3273, Amount=1, Price=5,    "You want sell me a sabre for %P gold?", Topic=2
+"sell","sword"                -> Type=3264, Amount=1, Price=15,   "You want sell me a sword for %P gold?", Topic=2
+"sell","battle","axe"         -> Type=3266, Amount=1, Price=75,   "You want sell me a battle axe for %P gold?", Topic=2
+"sell","battle","hammer"      -> Type=3305, Amount=1, Price=50,   "You want sell me a battle hammer for %P gold?", Topic=2
+"sell","morning","star"       -> Type=3282, Amount=1, Price=100,  "You want sell me a morning star for %P gold?", Topic=2
+"sell","two","handed","sword" -> Type=3265, Amount=1, Price=190,  "You want sell me a two handed sword for %P gold?", Topic=2
+"sell","halberd"              -> Type=3269, Amount=1, Price=310,  "You want sell me a halberd for %P gold?", Topic=2
+"sell","double","axe"         -> Type=3275, Amount=1, Price=260,  "You want sell me a double axe for %P gold?", Topic=2
+"sell","war","hammer"         -> Type=3279, Amount=1, Price=470,  "You want sell me a war hammer for %P gold?", Topic=2
+"sell","longsword"            -> Type=3285, Amount=1, Price=51,   "You want sell me a longsword for %P gold?", Topic=2
+"sell","spike","sword"        -> Type=3271, Amount=1, Price=225,  "You want sell me a spike sword for %P gold?", Topic=2
+"sell","fire","sword"         -> Type=3280, Amount=1, Price=1000, "You want sell me a fire sword for %P gold?", Topic=2
+
+"sell",%1,1<%1,"mace"                 -> Type=3286, Amount=%1, Price=23*%1,   "You want sell me %A maces for %P gold?", Topic=2
+"sell",%1,1<%1,"dagger"               -> Type=3267, Amount=%1, Price=1*%1,    "You want sell me %A daggers for %P gold?", Topic=2
+"sell",%1,1<%1,"carlin","sword"       -> Type=3283, Amount=%1, Price=118*%1,  "You want sell me %A carlin swords for %P gold?", Topic=2
+"sell",%1,1<%1,"club"                 -> Type=3270, Amount=%1, Price=1*%1,    "Hoho, you me given wood for fireplace? Giving you %P gold, ok?", Topic=2
+"sell",%1,1<%1,"spear"                -> Type=3277, Amount=%1, Price=1*%1,    "Hoho, you me given wood for fireplace? Giving you %P gold, ok?", Topic=2
+"sell",%1,1<%1,"rapier"               -> Type=3272, Amount=%1, Price=3*%1,    "You want sell me %A rapiers for %P gold?", Topic=2
+"sell",%1,1<%1,"sabre"                -> Type=3273, Amount=%1, Price=5*%1,    "You want sell me %A sabres for %P gold?", Topic=2
+"sell",%1,1<%1,"sword"                -> Type=3264, Amount=%1, Price=15*%1,   "You want sell me %A swords for %P gold?", Topic=2
+"sell",%1,1<%1,"battle","axe"         -> Type=3266, Amount=%1, Price=75*%1,   "You want sell me %A battle axes for %P gold?", Topic=2
+"sell",%1,1<%1,"battle","hammer"      -> Type=3305, Amount=%1, Price=50*%1,   "You want sell me %A battle hammers for %P gold?", Topic=2
+"sell",%1,1<%1,"morning","star"       -> Type=3282, Amount=%1, Price=100*%1,  "You want sell me %A morning stars for %P gold?", Topic=2
+"sell",%1,1<%1,"two","handed","sword" -> Type=3265, Amount=%1, Price=190*%1,  "You want sell me %A two handed swords for %P gold?", Topic=2
+"sell",%1,1<%1,"halberd"              -> Type=3269, Amount=%1, Price=310*%1,  "You want sell me %A halberds for %P gold?", Topic=2
+"sell",%1,1<%1,"double","axe"         -> Type=3275, Amount=%1, Price=260*%1,  "You want sell me %A double axes for %P gold?", Topic=2
+"sell",%1,1<%1,"war","hammer"         -> Type=3279, Amount=%1, Price=470*%1,  "You want sell me %A war hammers for %P gold?", Topic=2
+"sell",%1,1<%1,"longsword"            -> Type=3285, Amount=%1, Price=51*%1,   "You want sell me %A longswords for %P gold?", Topic=2
+"sell",%1,1<%1,"spike","sword"        -> Type=3271, Amount=%1, Price=225*%1,  "You want sell me %A spike swords for %P gold?", Topic=2
+"sell",%1,1<%1,"fire","sword"         -> Type=3280, Amount=%1, Price=1000*%1, "You want sell me %A fire swords for %P gold?", Topic=2
+
+Topic=1,"yes",CountMoney>=Price -> "Me thank you. Here is your stuff.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "No gold, no deal, jawoll."
+Topic=1                         -> "I sorry you not buy."
+
+Topic=2,"yes",Count(Type)>=Amount -> "Here is your money.", Delete(Type), CreateMoney
+Topic=2,"yes"                             -> "You not have it."
+Topic=2,"yes",Amount>1                    -> "You not have so many."
+Topic=2                                   -> "You my sorry not to sell."
+
+topic=3,"yes"   -> "Stop make fun of old dwarf, you not having it!"
+topic=3,"no"    -> "Me wouldn't sell it, too." 
+topic=3         -> "You joke with me!" 
+
+"do","you","sell" -> "What you need? Me just the weapons sell."
+"do","you","have" -> *
+"light"           -> "Me having clubs, daggers, spears, axes, swords, maces, rapiers, and sabres. What is your choice?"
+"heavy"           -> "Me having the best two handed swords in tibia. I also sell battle hammers. What is your choice?"
+"offer"           -> "Me offer you light an' heavy weapons."
+"weapon"          -> *
+"helmet"          -> "Me just sell weapons."
+"armor"           -> *
+"shield"          -> *
+
+"pickaxe",QuestValue(325)=2,QuestValue(326)=0  -> "Get me brooch and me get you pickaxe. Look for keys that bringing you to dwarven prison and get brooch."
+"pickaxe",QuestValue(325)=1     -> "True dwarven pickaxes having to be maded by true weaponsmith! You wanting to get pickaxe for explorer society?", topic=4
+"pickaxe"                       -> "True dwarven pickaxes having to be maded by true weaponsmith! Me order book full though."
+
+topic=4,"yes"   -> "Me order book quite full is. But telling you what: You getting me something me lost and Uzgod seeing that your pickaxe comes first. Jawoll! You interested?", topic=5
+topic=4,"no"    -> "Stop make fun of old dwarf." 
+topic=4         -> "You joke with me!" 
+
+topic=5,"yes"   -> "Good good. You listening: Me was stolen valuable heirloom. Brooch from my family. Good thing is criminal was caught. Bad thing is, criminal now in dwarven prison of dwacatra is and must have taken brooch with him ...","To get into dwacatra you having to get several keys. Each key opening way to other key until you get key to dwarven prison ...","Last key should be in the generals quarter near armory. Only General might have key to enter there too. But me not knowing how to enter Generals private room at barracks. You looking on your own ...","When got key, then you going down to dwarven prison and getting me that brooch. Tell me that you got brooch when having it.",SetQuestValue(325,2)
+topic=5         -> "Then you trying again in five years or so. Maybe pickaxe ready then." 
+"pickaxe",QuestValue(325)=2,QuestValue(326)=1   -> Type=4834, Amount=1,"You got me brooch?",topic=6
+"brooch",QuestValue(325)=2,QuestValue(326)=1   -> *
+
+topic=6,"yes",Count(Type)>=Amount   -> "Thanking you for brooch. Me guessing you now want your pickaxe?", Delete(Type),Type=4845, Amount=1,SetQuestValue(325,3), topic=7
+topic=6,"yes",Count(Type)<Amount    -> "Stop make fun of old dwarf." 
+topic=6,"no"    -> "Stop make fun of old dwarf." 
+topic=6         -> "You joke with me!"
+
+"pickaxe",QuestValue(325)=3,QuestValue(326)=1   -> Type=4845, Amount=1,"You want you pickaxe?",topic=7
+
+
+topic=7,"yes"   -> "Here you have it.", Create(Type),SetQuestValue(325,4)
+topic=7,"no"    -> "Stop make fun of old dwarf." 
+topic=7         -> "You joke with me!"
+
+
+}

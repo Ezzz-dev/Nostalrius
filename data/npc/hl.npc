@@ -1,0 +1,352 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# hl.npc: Datenbank für den Aufkäufer im Kriminellencamp
+
+Name = "H.L."
+Outfit = (131,12-76-0-95)
+Home = [32643,32212,7]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",male,!    -> "Hmmm. I buy weapons, armor, and other stuff. What do you want, %N?", Data=3303
+ADDRESS,"hi$",male,!       -> *
+ADDRESS,"hello$",female,!  -> "I don't serve brats. Sod off!", Idle
+ADDRESS,"hi$",!            -> *
+ADDRESS,!                  -> Idle
+BUSY,"hello$",male,!       -> "HEY! Wait in the queue, %N.", Queue
+BUSY,"hi$",male,!          -> *
+BUSY,"hello$",female,!     -> "I don't serve brats. Sod off!"
+BUSY,"hi$",female,!        -> *
+BUSY,!                     -> NOP
+VANISH,!                   -> "Bye"
+
+"bye",female       -> "Get lost, stinky dragon.", Idle
+"bye",male         -> "Bye.", Idle
+"job"              -> "I buy all kinds of armory and weapons."
+"name"             -> "Won't tell you."
+"h.l."             -> "That's me."
+"snake","eye"      -> "Boss of the tavern. He's alright."
+"boss"             -> "Snake Eye isn't my boss."
+"tavern"           -> "Drink and eat there. What else do you do in a tavern!"
+"brat"             -> "Bah. Women are not good for fighting. I don't need them. And I don't like them."
+"women"            -> *
+"woman"            -> *
+
+"god"              -> "Forget the gods"
+"gods"             -> *
+"durin"            -> "Forget Durin. He's the worst anyway."
+"steve"            -> "Forget Steve."
+"guido"            -> "Forget Guido."
+"stephan"          -> "Forget Stephan."
+"cip"              -> "Forget about Cip."
+
+"tibia"            -> "Tibia. At least there's one good place in Tibia. Here!"
+"thais"            -> "Ha! Thais. I lived there. You know, I was in the royal army. But it's all wrong. I deserted."
+"royal","army"     -> "Good fighter training. But for the wrong cause."
+"training"         -> "Yes. Good training."
+"cause"            -> "Don't want to talk about it."
+"talk"             -> "I said, I do not want to talk about it", Topic=1
+Topic=1,"talk"     -> "Ok. Get lost!", Idle
+
+"kazordoon"        -> "Dwarfs are good people. I like them."
+"dwarfs"           -> "I like them."
+"ab'dendriel"      -> "Elves. Hate them."
+"edron"            -> "Might be a good place to live. But I'm afraid that the people are Thais friendly."
+"king"             -> "The king should be dead."
+"ruler"            -> "Tibia doesn't need a ruler."
+"tibianus"         -> "Hang him."
+
+"wild","warrior"   -> "Yeah. I'm a wild warrior. Well, to be honest, I left them. They became too aggressive. Attacking everyone is not good."
+"camp"             -> "Most people in the camp are no wild warriors."
+"hid"              -> "Wild warriors have always something to hide."
+"key"              -> "What key? Show me!"
+"key",Count(2970)>0 -> "Oh. that's a new key. Hmmm. Must be for the new hideout."
+"hideout"          -> "I left the wild warriors, while we - well - they planned a new hideout."
+"new"              -> "It's somewhere in the woods, of course. I don't know where."
+"woods"            -> "The woods are good to hide."
+"building"         -> "You mean our old building in the southwest?", Topic=2
+Topic=2,"yes"      -> "That's the old hideout. It's interesting down there. Lots of security mechanics and traps. But it collapsed partly."
+Topic=2,"no"       -> "Sorry."
+
+"mechanics"        -> "Yes. Security doors driven by POWERFUL machines. But I have no idea how it works.", Topic=7
+"machines"         -> *
+"traps"            -> "Be careful out there."
+"collapsed"        -> "Yes. That's why we - well - they planned a new hideout. But I think they left the vault in the old hideout."
+"vault"            -> "Good stuff in there, I think."
+"stuff"            -> "Ahm. I don't know what it is. Sorry."
+Topic=7, "broken"  -> "Hmmm. Let me think. I think, you need something big. And steel reinforced. A barrel, maybe."
+Topic=7, "damaged" -> *
+Topic=7, "repair"  -> *
+
+"sell"             -> "I buy nearly everything. Just ask."
+
+# Ankauf von Waffen, Nummern 0-57
+"sell","sword"                    -> Type=3264, Amount=1, Price=7  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","two","handed","sword"     -> Type=3265, Amount=1, Price=60 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","battle","axe"             -> Type=3266, Amount=1, Price=40 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","dagger"                   -> Type=3267, Amount=1, Price=1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell","hand","axe"               -> Type=3268, Amount=1, Price=5  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","halberd"                  -> Type=3269, Amount=1, Price=50 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","club"                     -> Type=3270, Amount=1, Price=1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell","spike","sword"            -> Type=3271, Amount=1, Price=25 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","rapier"                   -> Type=3272, Amount=1, Price=5  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","sabre"                    -> Type=3273, Amount=1, Price=6  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","axe"                      -> Type=3274, Amount=1, Price=6  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","double","axe"             -> Type=3275, Amount=1, Price=70 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","hatchet"                  -> Type=3276, Amount=1, Price=7  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","spear"                    -> Type=3277, Amount=1, Price=2  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","magic","longsword"        -> Type=3278, Amount=1, Price=460,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell","war","hammer"             -> Type=3279, Amount=1, Price=90 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","fire","sword"             -> Type=3280, Amount=1, Price=335,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell","giant","sword"            -> Type=3281, Amount=1, Price=100,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","morning","star"           -> Type=3282, Amount=1, Price=50 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","carlin","sword"           -> Type=3283, Amount=1, Price=5  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","ice","rapier"             -> Type=3284, Amount=1, Price=250,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell","longsword"                -> Type=3285, Amount=1, Price=8  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","mace"                     -> Type=3286, Amount=1, Price=8  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","throwing","star"          -> Type=3287, Amount=1, Price=2  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","magic","sword"            -> Type=3288, Amount=1, Price=350,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell","staff"                    -> Type=3289, Amount=1, Price=1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell","silver","dagger"          -> Type=3290, Amount=1, Price=1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell","knife"                    -> Type=3291, Amount=1, Price=1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell","combat","knife"           -> Type=3292, Amount=1, Price=1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell","sickle"                   -> Type=3293, Amount=1, Price=1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell","short","sword"            -> Type=3294, Amount=1, Price=3  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","bright","sword"           -> Type=3295, Amount=1, Price=280,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell","warlord","sword"          -> Type=3296, Amount=1, Price=360,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell","serpent","sword"          -> Type=3297, Amount=1, Price=15 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","throwing","knife"         -> Type=3298, Amount=1, Price=2  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell","poison","dagger"          -> Type=3299, Amount=1, Price=5  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","katana"                   -> Type=3300, Amount=1, Price=8  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","broadsword"               -> Type=3301, Amount=1, Price=10 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","dragon","lance"           -> Type=3302, Amount=1, Price=90 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","great","axe"              -> Type=3303, Amount=1, Price=300,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell","crowbar"                  -> Type=3304, Amount=1, Price=1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell","battle","hammer"          -> Type=3305, Amount=1, Price=40 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","golden","sickle"          -> Type=3306, Amount=1, Price=10 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","scimitar"                 -> Type=3307, Amount=1, Price=10 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","machete"                  -> Type=3308, Amount=1, Price=6  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","thunder","hammer"         -> Type=3309, Amount=1, Price=450,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell","iron","hammer"            -> Type=3310, Amount=1, Price=9  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","clerical","mace"          -> Type=3311, Amount=1, Price=30 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","silver","mace"            -> Type=3312, Amount=1, Price=270,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell","obsidian","lance"         -> Type=3313, Amount=1, Price=50 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","naginata"                 -> Type=3314, Amount=1, Price=80 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","guardian","halberd"       -> Type=3315, Amount=1, Price=120,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","orcish","axe"             -> Type=3316, Amount=1, Price=12 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","barbarian","axe"          -> Type=3317, Amount=1, Price=30 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","knight","axe"             -> Type=3318, Amount=1, Price=50 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","stonecutter","axe"        -> Type=3319, Amount=1, Price=320,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell","fire","axe"               -> Type=3320, Amount=1, Price=280,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+
+"sell",%1,1<%1,"sword"                    -> Type=3264, Amount=%1, Price=7*%1  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"two","handed","sword"     -> Type=3265, Amount=%1, Price=60*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"battle","axe"             -> Type=3266, Amount=%1, Price=40*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"dagger"                   -> Type=3267, Amount=%1, Price=1*%1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell",%1,1<%1,"hand","axe"               -> Type=3268, Amount=%1, Price=5*%1  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"halberd"                  -> Type=3269, Amount=%1, Price=50*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"club"                     -> Type=3270, Amount=%1, Price=1*%1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell",%1,1<%1,"spike","sword"            -> Type=3271, Amount=%1, Price=25*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"rapier"                   -> Type=3272, Amount=%1, Price=5*%1  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"sabre"                    -> Type=3273, Amount=%1, Price=6*%1  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"axe"                      -> Type=3274, Amount=%1, Price=6*%1  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"double","axe"             -> Type=3275, Amount=%1, Price=70*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"hatchet"                  -> Type=3276, Amount=%1, Price=7*%1  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"spear"                    -> Type=3277, Amount=%1, Price=2*%1  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"magic","longsword"        -> Type=3278, Amount=%1, Price=460*%1,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell",%1,1<%1,"war","hammer"             -> Type=3279, Amount=%1, Price=90*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"fire","sword"             -> Type=3280, Amount=%1, Price=335*%1,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell",%1,1<%1,"giant","sword"            -> Type=3281, Amount=%1, Price=100*%1,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"morning","star"           -> Type=3282, Amount=%1, Price=50*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"carlin","sword"           -> Type=3283, Amount=%1, Price=5*%1  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"ice","rapier"             -> Type=3284, Amount=%1, Price=250*%1,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell",%1,1<%1,"longsword"                -> Type=3285, Amount=%1, Price=8*%1  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"mace"                     -> Type=3286, Amount=%1, Price=8*%1  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"throwing","star"          -> Type=3287, Amount=%1, Price=2*%1  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"magic","sword"            -> Type=3288, Amount=%1, Price=350*%1,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell",%1,1<%1,"staff"                    -> Type=3289, Amount=%1, Price=1*%1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell",%1,1<%1,"silver","dagger"          -> Type=3290, Amount=%1, Price=1*%1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell",%1,1<%1,"knife"                    -> Type=3291, Amount=%1, Price=1*%1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell",%1,1<%1,"combat","knife"           -> Type=3292, Amount=%1, Price=1*%1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell",%1,1<%1,"knives"                    -> Type=3291, Amount=%1, Price=1*%1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell",%1,1<%1,"combat","knives"           -> Type=3292, Amount=%1, Price=1*%1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell",%1,1<%1,"sickle"                   -> Type=3293, Amount=%1, Price=1*%1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell",%1,1<%1,"short","sword"            -> Type=3294, Amount=%1, Price=3*%1  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"bright","sword"           -> Type=3295, Amount=%1, Price=280*%1,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell",%1,1<%1,"warlord","sword"          -> Type=3296, Amount=%1, Price=360*%1,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell",%1,1<%1,"serpent","sword"          -> Type=3297, Amount=%1, Price=15*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"throwing","knife"         -> Type=3298, Amount=%1, Price=2*%1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell",%1,1<%1,"throwing","knives"         -> Type=3298, Amount=%1, Price=2*%1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell",%1,1<%1,"poison","dagger"          -> Type=3299, Amount=%1, Price=5*%1  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"katana"                   -> Type=3300, Amount=%1, Price=8*%1  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"broadsword"               -> Type=3301, Amount=%1, Price=10*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"dragon","lance"           -> Type=3302, Amount=%1, Price=90*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"great","axe"              -> Type=3303, Amount=%1, Price=300*%1,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell",%1,1<%1,"crowbar"                  -> Type=3304, Amount=%1, Price=1*%1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell",%1,1<%1,"battle","hammer"          -> Type=3305, Amount=%1, Price=40*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"golden","sickle"          -> Type=3306, Amount=%1, Price=10*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"scimitar"                 -> Type=3307, Amount=%1, Price=10*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"machete"                  -> Type=3308, Amount=%1, Price=6*%1  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"thunder","hammer"         -> Type=3309, Amount=%1, Price=450*%1,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell",%1,1<%1,"iron","hammer"            -> Type=3310, Amount=%1, Price=9*%1  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"clerical","mace"          -> Type=3311, Amount=%1, Price=30*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"silver","mace"            -> Type=3312, Amount=%1, Price=270*%1,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell",%1,1<%1,"obsidian","lance"         -> Type=3313, Amount=%1, Price=50*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"naginata"                 -> Type=3314, Amount=%1, Price=80*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"guardian","halberd"       -> Type=3315, Amount=%1, Price=120*%1,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"orcish","axe"             -> Type=3316, Amount=%1, Price=12*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"barbarian","axe"          -> Type=3317, Amount=%1, Price=30*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"knight","axe"             -> Type=3318, Amount=%1, Price=50*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"stonecutter","axe"        -> Type=3319, Amount=%1, Price=320*%1,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell",%1,1<%1,"fire","axe"               -> Type=3320, Amount=%1, Price=280*%1,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+
+# Ankauf von Waffen (Bows), Nummern 1-2
+"sell","crossbow"                 -> Type=3349, Amount=1, Price=20 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","bow"                      -> Type=3350, Amount=1, Price=15 ,  "I buy this for %P gold. Is that ok?", Topic=6
+
+"sell",%1,1<%1,"crossbow"                 -> Type=3349, Amount=%1, Price=20*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"bow"                      -> Type=3350, Amount=%1, Price=15*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+
+# Ankauf von Ruestung, Nummern 0-39
+"sell","steel","helmet"           -> Type=3351, Amount=1, Price=60 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","chain","helmet"           -> Type=3352, Amount=1, Price=4  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","iron","helmet"            -> Type=3353, Amount=1, Price=30 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","brass","helmet"           -> Type=3354, Amount=1, Price=8  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","leather","helmet"         -> Type=3355, Amount=1, Price=1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell","devil","helmet"           -> Type=3356, Amount=1, Price=80 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","plate","armor"            -> Type=3357, Amount=1, Price=110,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","chain","armor"            -> Type=3358, Amount=1, Price=30 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","brass","armor"            -> Type=3359, Amount=1, Price=50 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","golden","armor"           -> Type=3360, Amount=1, Price=580,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell","leather","armor"          -> Type=3361, Amount=1, Price=2  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell","studded","legs"           -> Type=3362, Amount=1, Price=15 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","dragon","scale","legs"    -> Type=3363, Amount=1, Price=180,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","golden","legs"            -> Type=3364, Amount=1, Price=120,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","golden","helmet"          -> Type=3365, Amount=1, Price=420,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell","magic","plate","armor"    -> Type=3366, Amount=1, Price=720,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell","viking","helmet"          -> Type=3367, Amount=1, Price=12 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","winged","helmet"          -> Type=3368, Amount=1, Price=320,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell","warrior","helmet"         -> Type=3369, Amount=1, Price=75 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","knight","armor"           -> Type=3370, Amount=1, Price=140,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","knight","legs"            -> Type=3371, Amount=1, Price=130,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","brass","legs"             -> Type=3372, Amount=1, Price=15 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","strange","helmet"         -> Type=3373, Amount=1, Price=55 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","legion","helmet"          -> Type=3374, Amount=1, Price=8  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","soldier","helmet"         -> Type=3375, Amount=1, Price=16 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","studded","helmet"         -> Type=3376, Amount=1, Price=2  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","scale","armor"            -> Type=3377, Amount=1, Price=75 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","studded","armor"          -> Type=3378, Amount=1, Price=18 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","doublet"                  -> Type=3379, Amount=1, Price=1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell","rose","armor"             -> Type=3380, Amount=1, Price=140,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","crown","armor"            -> Type=3381, Amount=1, Price=210,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","crown","legs"             -> Type=3382, Amount=1, Price=60 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","dark","armor"             -> Type=3383, Amount=1, Price=130,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","dark","helmet"            -> Type=3384, Amount=1, Price=40 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","crown","helmet"           -> Type=3385, Amount=1, Price=70 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","dragon","scale","mail"    -> Type=3386, Amount=1, Price=280,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","demon","helmet"           -> Type=3387, Amount=1, Price=95 ,  "Not bad. A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell","demon","armor"            -> Type=3388, Amount=1, Price=195,  "Not bad. A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell","demon","legs"             -> Type=3389, Amount=1, Price=84 ,  "Not bad. A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell","horned","helmet"          -> Type=3390, Amount=1, Price=155,  "I buy this for %P gold. Is that ok?", Topic=6
+
+"sell",%1,1<%1,"steel","helmet"           -> Type=3351, Amount=%1, Price=60*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"chain","helmet"           -> Type=3352, Amount=%1, Price=4*%1  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"iron","helmet"            -> Type=3353, Amount=%1, Price=30*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"brass","helmet"           -> Type=3354, Amount=%1, Price=8*%1  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"leather","helmet"         -> Type=3355, Amount=%1, Price=1*%1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell",%1,1<%1,"devil","helmet"           -> Type=3356, Amount=%1, Price=80*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"plate","armor"            -> Type=3357, Amount=%1, Price=110*%1,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"chain","armor"            -> Type=3358, Amount=%1, Price=30*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"brass","armor"            -> Type=3359, Amount=%1, Price=50*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"golden","armor"           -> Type=3360, Amount=%1, Price=580*%1,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell",%1,1<%1,"leather","armor"          -> Type=3361, Amount=%1, Price=2*%1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell",%1,1<%1,"studded","legs"           -> Type=3362, Amount=%1, Price=15*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"dragon","scale","legs"    -> Type=3363, Amount=%1, Price=180*%1,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"golden","legs"            -> Type=3364, Amount=%1, Price=120*%1,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"golden","helmet"          -> Type=3365, Amount=%1, Price=420*%1,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell",%1,1<%1,"magic","plate","armor"    -> Type=3366, Amount=%1, Price=720*%1,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell",%1,1<%1,"viking","helmet"          -> Type=3367, Amount=%1, Price=12*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"winged","helmet"          -> Type=3368, Amount=%1, Price=320*%1,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell",%1,1<%1,"warrior","helmet"         -> Type=3369, Amount=%1, Price=75*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"knight","armor"           -> Type=3370, Amount=%1, Price=140*%1,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"knight","legs"            -> Type=3371, Amount=%1, Price=130*%1,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"brass","legs"             -> Type=3372, Amount=%1, Price=15*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"strange","helmet"         -> Type=3373, Amount=%1, Price=55*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"legion","helmet"          -> Type=3374, Amount=%1, Price=8*%1  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"soldier","helmet"         -> Type=3375, Amount=%1, Price=16*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"studded","helmet"         -> Type=3376, Amount=%1, Price=2*%1  ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"scale","armor"            -> Type=3377, Amount=%1, Price=75*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"studded","armor"          -> Type=3378, Amount=%1, Price=18*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"doublet"                  -> Type=3379, Amount=%1, Price=1*%1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell",%1,1<%1,"rose","armor"             -> Type=3380, Amount=%1, Price=140*%1,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"crown","armor"            -> Type=3381, Amount=%1, Price=210*%1,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"crown","legs"             -> Type=3382, Amount=%1, Price=60*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"dark","armor"             -> Type=3383, Amount=%1, Price=130*%1,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"dark","helmet"            -> Type=3384, Amount=%1, Price=40*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"crown","helmet"           -> Type=3385, Amount=%1, Price=70*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"dragon","scale","mail"    -> Type=3386, Amount=%1, Price=280*%1,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"demon","helmet"           -> Type=3387, Amount=%1, Price=95*%1 ,  "Not bad. A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell",%1,1<%1,"demon","armor"            -> Type=3388, Amount=%1, Price=195*%1,  "Not bad. A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell",%1,1<%1,"demon","legs"             -> Type=3389, Amount=%1, Price=84*%1 ,  "Not bad. A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell",%1,1<%1,"horned","helmet"          -> Type=3390, Amount=%1, Price=155*%1,  "I buy this for %P gold. Is that ok?", Topic=6
+
+# Ankauf von Schilden, Nummern 0-25
+"sell","steel","shield"           -> Type=3409, Amount=1, Price=30 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","plate","shield"           -> Type=3410, Amount=1, Price=25 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","brass","shield"           -> Type=3411, Amount=1, Price=15 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","wooden","shield"          -> Type=3412, Amount=1, Price=1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell","battle","shield"          -> Type=3413, Amount=1, Price=50 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","mastermind","shield"      -> Type=3414, Amount=1, Price=550,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell","guardian","shield"        -> Type=3415, Amount=1, Price=150,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","dragon","shield"          -> Type=3416, Amount=1, Price=115,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","unholy","shield"          -> Type=3417, Amount=1, Price=520,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell","beholder","shield"        -> Type=3418, Amount=1, Price=79 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","crown","shield"           -> Type=3419, Amount=1, Price=109,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","demon","shield"           -> Type=3420, Amount=1, Price=130,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","dark","shield"            -> Type=3421, Amount=1, Price=60 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","great","shield"           -> Type=3422, Amount=1, Price=480,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell","blessed","shield"         -> Type=3423, Amount=1, Price=650,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell","ornamented","shield"      -> Type=3424, Amount=1, Price=45 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","dwarven","shield"         -> Type=3425, Amount=1, Price=55 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","studded","shield"         -> Type=3426, Amount=1, Price=2  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell","rose","shield"            -> Type=3427, Amount=1, Price=49 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","tower","shield"           -> Type=3428, Amount=1, Price=90 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","black","shield"           -> Type=3429, Amount=1, Price=5  ,  "Bah. That's disgusting. But I take it for %P gold. Ok?", Topic=6
+"sell","copper","shield"          -> Type=3430, Amount=1, Price=10 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","viking","shield"          -> Type=3431, Amount=1, Price=35 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","ancient","shield"         -> Type=3432, Amount=1, Price=49 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","griffin","shield"         -> Type=3433, Amount=1, Price=59 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell","vampire","shield"         -> Type=3434, Amount=1, Price=119,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+
+"sell",%1,1<%1,"steel","shield"           -> Type=3409, Amount=%1, Price=30*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"plate","shield"           -> Type=3410, Amount=%1, Price=25*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"brass","shield"           -> Type=3411, Amount=%1, Price=15*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"wooden","shield"          -> Type=3412, Amount=%1, Price=1*%1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell",%1,1<%1,"battle","shield"          -> Type=3413, Amount=%1, Price=50*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"mastermind","shield"      -> Type=3414, Amount=%1, Price=550*%1,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell",%1,1<%1,"guardian","shield"        -> Type=3415, Amount=%1, Price=150*%1,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"dragon","shield"          -> Type=3416, Amount=%1, Price=115*%1,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"unholy","shield"          -> Type=3417, Amount=%1, Price=520*%1,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell",%1,1<%1,"beholder","shield"        -> Type=3418, Amount=%1, Price=79*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"crown","shield"           -> Type=3419, Amount=%1, Price=109*%1,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"demon","shield"           -> Type=3420, Amount=%1, Price=130*%1,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"dark","shield"            -> Type=3421, Amount=%1, Price=60*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"great","shield"           -> Type=3422, Amount=%1, Price=480*%1,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell",%1,1<%1,"blessed","shield"         -> Type=3423, Amount=%1, Price=650*%1,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+"sell",%1,1<%1,"ornamented","shield"      -> Type=3424, Amount=%1, Price=45*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"dwarven","shield"         -> Type=3425, Amount=%1, Price=55*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"studded","shield"         -> Type=3426, Amount=%1, Price=2*%1  ,  "I give you %P gold for this garbage. Ok?", Topic=6
+"sell",%1,1<%1,"rose","shield"            -> Type=3427, Amount=%1, Price=49*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"tower","shield"           -> Type=3428, Amount=%1, Price=90*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"black","shield"           -> Type=3429, Amount=%1, Price=5*%1  ,  "Bah. That's disgusting. But I take it for %P gold. Ok?", Topic=6
+"sell",%1,1<%1,"copper","shield"          -> Type=3430, Amount=%1, Price=10*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"viking","shield"          -> Type=3431, Amount=%1, Price=35*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"ancient","shield"         -> Type=3432, Amount=%1, Price=49*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"griffin","shield"         -> Type=3433, Amount=%1, Price=59*%1 ,  "I buy this for %P gold. Is that ok?", Topic=6
+"sell",%1,1<%1,"vampire","shield"         -> Type=3434, Amount=%1, Price=119*%1,  "A rare item. But I can give you only %P gold. Ok?", Topic=6
+
+#Ankauf
+Topic=6,"yes",Count(Type)>=Amount  -> "Ok. Your money.", Delete(Type), CreateMoney
+Topic=6,"yes"                              -> "Sorry, you don't have one."
+Topic=6,"yes",Amount>1                    -> "Sorry, you do not have so many."
+Topic=6                                    -> "Ok, then not."
+}

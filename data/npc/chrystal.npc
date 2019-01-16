@@ -1,0 +1,58 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# chyrstal.npc: Datenbank für die Postfrau Chrystal
+
+Name = "Chrystal"
+Outfit = (136,116-79-117-76)
+Home = [33174,31811,7]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "At your service %N."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Please be patient %N. I'll be with you in moment.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Who is next?"
+
+"bye"         -> "Who is next?", Idle
+"name"        -> "My name is Chrystal."
+"job"         -> "I am responsible for this post office."
+
+"kevin"                 -> "Mr. Postner is the leader of our guild and the most prominent postofficer in the whole land."
+"postner"               -> *
+"postmasters","guild"   -> "Yes, our guild is the lifeblood of the tibia cominity so to say."
+"join"                  -> "You can apply to join only at our headquarter." 
+"headquarter"           -> "You can find it on the road from Thais to Kazordoon."
+
+
+"measurements",QuestValue(234)>0,QuestValue(241)<1  -> "If its necessary ... <tells you her measurements>",SetQuestValue(234,QuestValue(234)+1),SetQuestValue(241,1) 
+
+"time"        -> "It is %T right now."
+"king"        -> "Hail to the king!"
+"tibianus"    -> *
+"army"        -> "The army ensures the safety of the traderoutes and of our mail system."
+"ferumbras"   -> "I bet he never gets any letters."
+"excalibug"   -> "Better ask knights about that."
+"tibia"       -> "Our post system spans the entire known world."
+"thais"       -> "We deliver letters and parcels even there."
+"carlin"      -> *
+"kazordoon"   -> *
+"ab'dendriel" -> *
+"edron"       -> "Our post system even delivers letters and parcels to and from this isle."
+"news"        -> "Sorry, that's postal secret."
+"rumors"      -> *
+
+@"gen-post.ndb"
+
+#"letter" -> Amount=1, Price=5,  "Do you want to buy a letter for %P gold?", Topic=2
+#"parcel" -> Amount=1, Price=10, "Do you want to buy a parcel for %P gold?", Topic=3
+
+#Topic=2,"yes",CountMoney>=Price -> "Here it is. Don't forget to write the name of the receiver in the first line and the address in the second one before you put the letter in a mailbox.", DeleteMoney, Create(110,8)
+#Topic=2,"yes"                   -> "Oh, you have not enough gold to buy a letter."
+#Topic=2                         -> "Ok."
+
+#Topic=3,"yes",CountMoney>=Price -> "Here you are. Don't forget to write the name and the address of the receiver on the label. The label has to be in the parcel before you put the parcel in a mailbox.", DeleteMoney, Create(110,6), Create(110,10)
+#Topic=3,"yes"                   -> "Oh, you have not enough gold to buy a parcel."
+#Topic=3                         -> "Ok."
+}

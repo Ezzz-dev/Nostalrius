@@ -1,0 +1,43 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# basilisk.npc: Datenbank für den Basilisken
+
+Name = "Basilisk"
+Outfit = (28,0-0-0-0)
+Home = [32641,31943,15]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"a",! -> EffectMe(9), Idle
+ADDRESS,"b",! -> *
+ADDRESS,"c",! -> *
+ADDRESS,"d",! -> *
+ADDRESS,"e",! -> *
+
+ADDRESS,"f",! -> EffectMe(13), Idle
+ADDRESS,"g",! -> *
+ADDRESS,"h",! -> *
+
+ADDRESS,"i",! -> EffectMe(14), Idle
+ADDRESS,"j",! -> *
+ADDRESS,"k",! -> *
+ADDRESS,"l",! -> *
+ADDRESS,"m",! -> *
+
+ADDRESS,"n",! -> EffectMe(15), Idle
+ADDRESS,"o",! -> *
+ADDRESS,"p",! -> *
+ADDRESS,"r",! -> *
+ADDRESS,"s",! -> *
+
+ADDRESS,"t",! -> EffectMe(17), Idle
+ADDRESS,"u",! -> *
+ADDRESS,"v",! -> *
+ADDRESS,"w",! -> *
+ADDRESS,"y",! -> *
+
+ADDRESS,!     -> Idle
+
+BUSY,!        -> NOP
+
+VANISH,!      -> NOP
+}

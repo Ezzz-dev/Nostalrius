@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="swamp troll" nameDescription="a swamp troll" race="blood" experience="25" speed="24" manacost="320">
+	<health now="55" max="55" />
+	<look type="76" head="0" body="0" legs="0" feet="0" corpse="4176" />
+	<targetchange interval="1000" chance="0" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="1" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag runonhealth="15" />
+	</flags>
+	<attacks attack="12" skill="20" poison="10">
+	</attacks>
+	<defenses armor="6" defense="10">
+	</defenses>
+	<voices>
+		<voice sentence="Grrrr" />
+		<voice sentence="Groar!" />
+		<voice sentence="Me strong! Me ate spinach!" />
+	</voices>
+	<loot>
+		<item id="3267" countmax="1" chance="300" /> <!-- a dagger -->
+		<item id="3578" countmax="1" chance="600" /> <!-- a fish -->
+		<item id="3483" countmax="1" chance="1" /> <!-- a fishing rod -->
+		<item id="3031" countmax="5" chance="500" /> <!-- a gold coin -->
+		<item id="3552" countmax="1" chance="100" /> <!-- leather boots -->
+		<item id="2920" countmax="1" chance="150" /> <!-- a torch -->
+	</loot>
+</monster>

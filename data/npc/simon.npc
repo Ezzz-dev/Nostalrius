@@ -1,0 +1,59 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# simon.npc: Datenbank für den Bettler Simon auf der Insel Fibula
+
+Name = "Simon the Beggar"
+Outfit = (128,116-123-32-40)
+Home = [32186,32468,7]
+Radius = 4
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Hello %N. I am a poor man. Please help me."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Please wait, %N.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Have a nice day."
+
+"bye"      -> "Have a nice day.", Idle
+"farewell" -> *
+"job"      -> "I have no job. I am a beggar."
+"beggar"   -> "I have no gold and no job, so I am a beggar."
+"gold"     -> "I need gold. I love gold. I need help."
+"name"     -> "My name is Simon. I am a very poor man."
+"simon"    -> "I am Simon. The poorest human all over the continent."
+
+"help"   -> Price=100, "I need gold. Can you spend me %P gold pieces?", Topic=1
+Topic=1,"yes",CountMoney>=Price -> DeleteMoney, Price=500, "Thank you very much. Can you spend me %P more gold pieces? I will give you a nice hint.", Topic=2
+Topic=1,"yes"                   -> "You've not enough money for me."
+Topic=1                         -> "Hmm, maybe next time."
+Topic=2,"yes",CountMoney>=Price -> DeleteMoney, Price=200, "That's great! I have stolen something from Dermot. You can buy it for %P gold. Do you want to buy it?", Topic=3
+Topic=2,"yes"                   -> "Sorry, that's not enough."
+Topic=2                         -> "It was your decision."
+Topic=3,"yes",CountMoney>=Price -> DeleteMoney, "Now you own the hot key.", Data=3940, Create(2968)
+Topic=3,"yes"                   -> "Pah! I said 200 gold. You don't have so much."
+Topic=3                         -> "Ok. No problem. I'll find another buyer."
+
+"dermot"   -> "The magistrate of the village. I heard he is selling something for the Fibula Dungeon."
+"village"  -> "To the north is the village Fibula. A very small village."
+"key"      -> "Key? There are a lot of keys. Please change the topic."
+"dungeon"  -> "I heard a lot about the Fibula Dungeon. But I never was there."
+"fibula"   -> "I hate Fibula. Too many wolves are here."
+"timur"    -> "I hate Timur. He is too expensive. But sometimes I find maces and hatchets. Timur is buying these items."
+"wolf"     -> "Please kill them ... ALL."
+"flute"    -> "Har, har. The stupid Dermot lost his flute. I know that some minotaurs have it in their treasure room."
+"minotaurs"-> "Very rich monsters. But they are too strong for me. However, there are even stronger monsters."
+"minos"    -> *
+"treasure" -> "I know there are two rooms. And I know you can pass only the first door. The second door can't be opened."
+"giant","spider" -> "I know that terrible monster. It killed the fishers on the isle to the north."
+"monster"  -> "The strongest monster I know is the giant spider."
+"jetty"    -> "I hate this jetty. I have never seen a ship here."
+"ship"     -> "There is a large sea-monster outside. I think there is no gritty captain to sail in this quarter."
+"tibia"    -> "Hehe, do you have a shovel? I can sell you a shovel if you want to return to Tibia."
+
+"shovel"   -> Type=3457, Amount=1, Price=50, "Do you want to buy a shovel for %P gold?", Topic=4
+
+Topic=4,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=4,"yes"                   -> "Come back, when you have enough money."
+Topic=4                         -> "Hmm, but next time."
+}

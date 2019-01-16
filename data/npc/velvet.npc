@@ -1,0 +1,34 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# velvet.npc: Möbelverkäuferin Velvet in Venore
+
+Name = "Velvet"
+Outfit = (136,59-96-115-95)
+Home = [32943,32104,6]
+Radius = 1
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Welcome to our shop, %N!"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Just a moment please, %N.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Good bye."
+
+"bye"         -> "Good bye.", Idle
+"farewell"    -> *
+"name"        -> "I am Velvet. How can I help you?"
+"job"         -> "I'm working here in this shop. Are you interested in any of our goods?"
+"time",male   -> "It's %T, sire."
+"time",female -> "It's %T, my lady."
+
+"offer"           -> "I sell pillows and tapestries."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"furniture"       -> *
+"equipment"       -> *
+
+@"gen-t-furniture-pillows-s.ndb"
+@"gen-t-furniture-tapestries-s.ndb"
+}

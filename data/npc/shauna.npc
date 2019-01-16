@@ -1,0 +1,79 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# shauna.npc: Datenbank für den Sheriff von Carlin Shauna
+
+Name = "Shauna"
+Outfit = (139,78-95-38-58)
+Home = [32384,31778,7]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hail$",!        -> "Howdy!"
+ADDRESS,"salutations$",! -> *
+ADDRESS,"hello$",!       -> *
+ADDRESS,"hi$",!          -> *
+ADDRESS,!                -> Idle
+BUSY,"hello$",!          -> "Shut up!"
+BUSY,"hi$",!             -> *
+BUSY,"hail$",!           -> *
+BUSY,"salutations$",!    -> *
+BUSY,!                   -> NOP
+VANISH,!                 -> "LONG LIVE THE QUEEN!"
+
+"bye"            -> "LONG LIVE THE QUEEN!", Idle
+"news"           -> "No news are good news."
+"queen"          -> "HAIL TO QUEEN ELOISE!"
+"leader"         -> *
+"job"            -> "What do you think? I am the sheriff of Carlin."
+"how","are","you"-> "Just fine."
+
+"sell"           -> "Would you like to buy the general key to the town?", Topic=1
+Topic=1,"yes"    -> "Yeah, I bet you'd like to do that! HO, HO, HO!"
+
+"army"           -> "If they make trouble, I'll put them behind bars like all others."
+"guard"          -> *
+"general"        -> "The Bonecrusher family is ideally suited for military jobs."
+"bonecrusher"    -> *
+"enemies"        -> "If you have a crime to report and clues, then do it, but dont waste my time."
+"enemy"          -> *
+"criminal"       -> *
+"murderer"       -> *
+"castle"         -> "The castle is one of the safest places in Carlin."
+"subject"        -> "Our people are fine and peaceful."
+"tbi$"           -> "I bet they spy on us... not my business, however."
+"todd$"          -> "I scared this bigmouth so much that he left the town by night. HO, HO, HO!"
+"city"           -> "The city is is a peacful place, and it's up to me to keep it this way." 
+"hain$"          -> "He is the guy responsible to keep the sewers working. Someone has to do such kind of jobs. I can't handle all the garbage of the city myself."
+"rowenna$"       -> "Rowenna is one of our local smiths. When you look for weapons, look for Rowenna."
+"weapon"         -> *
+"Cornelia"       -> "Cornelia is one of our local smiths. When you look for armor, look for Rowenna."
+"armor"          -> *
+"legola"         -> "She has the sharpest eye in the region, I'd say."
+"padreia"        -> "Her peacefulness is sometimes near stupidity."
+"god"            -> "I worship Banor of course."
+"banor"          -> "For me, he's the god of justice."
+"zathroth"       -> "His cult is forbidden in our town."
+"brog"           -> "Wouldn't wonder if some males worship him secretly. HO, HO, HO!"
+"monster"        -> "I deal more with the human mosters, you know? HO, HO, HO!"
+"excalibug"      -> "Would certainly make a good butterknife. HO, HO, HO!"
+"rebellion"      -> "The only thing that rebels here now and then is the stomach of a male after trying to make illegal alcohol. HO, HO, HO!"
+"alcohol"        -> "For obvious reasons it's forbidden in our city."
+
+"waterpipe"      -> "Oh, there's a waterpipe in one of my cells? ...",
+                    "I guess my last prisoner forgot it there."
+"pipe"           -> *
+"prisoner"       -> "My last prisoner? Hmm. ...",
+                    "I think he was some guy from Darama. Can't remember his name. ...",
+                    "He was here just for one night, because he got drunk and annoyed our citizens. ...",
+                    "Obviously he wasn't pleased with this place, because he headed for Thais the next day. ...",
+                    "Something tells me that he won't stay out of trouble for too long."
+
+"fuck"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"idiot"          -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"asshole"        -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"ass$"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"fag$"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"stupid"         -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"tyrant"         -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"shit"           -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+"lunatic"        -> "Take this!", Burning(10,1), EffectOpp(5), EffectMe(8)
+}

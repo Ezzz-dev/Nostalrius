@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="assassin" nameDescription="an assassin" race="blood" experience="105" speed="72" manacost="450">
+	<health now="175" max="175" />
+	<look type="129" head="95" body="95" legs="95" feet="95" corpse="4240" />
+	<targetchange interval="1000" chance="5" />
+	<targetstrategy nearest="70" weakest="20" mostdamage="10" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="45" skill="45">
+		<attack name="physical" min="-28" max="-38" range="7" chance="8">
+			<attribute key="shootEffect" value="throwingstar" />
+		</attack>
+		<attack name="drunk" duration="3000" range="6" chance="11">
+			<attribute key="shootEffect" value="poison" />
+			<attribute key="areaEffect" value="poison" />
+		</attack>
+	</attacks>
+	<defenses armor="17" defense="40">
+		<defense name="speed" speedchange="60" variation="5" duration="3000" chance="12">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+		<defense name="invisible" duration="2000" chance="12">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity invisible="1" />
+	</immunities>
+	<voices>
+		<voice sentence="Die!" />
+		<voice sentence="Feel the hand of death!" />
+		<voice sentence="You are on my deathlist!" />
+	</voices>
+	<loot>
+		<item id="3413" countmax="1" chance="15" /> <!-- a battle shield -->
+		<item id="3292" countmax="1" chance="40" /> <!-- a combat knife -->
+		<item id="3031" countmax="40" chance="800" /> <!-- a gold coin -->
+		<item id="3031" countmax="10" chance="150" /> <!-- a gold coin -->
+		<item id="3405" countmax="1" chance="2" /> <!-- a horseman helmet -->
+		<item id="3291" countmax="1" chance="100" /> <!-- a knife -->
+		<item id="3404" countmax="1" chance="5" /> <!-- a leopard armor -->
+		<item id="3410" countmax="1" chance="20" /> <!-- a plate shield -->
+		<item id="3028" countmax="1" chance="2" /> <!-- a small diamond -->
+		<item id="3351" countmax="1" chance="30" /> <!-- a steel helmet -->
+		<item id="3409" countmax="1" chance="10" /> <!-- a steel shield -->
+		<item id="2920" countmax="2" chance="300" /> <!-- a torch -->
+	</loot>
+</monster>

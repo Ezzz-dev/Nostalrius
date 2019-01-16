@@ -1,0 +1,18 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gen-t-furniture-instruments-s.ndb: Datenbank für generischen Möbelverkauf - Instrumente
+# Verwendete Topics: 81
+
+#"offer"           -> "I sell statues, tables, chairs, flowers, pillows, pottery, instruments, decoration, tapestries and containers."
+#"furniture"       -> *
+#"goods"           -> *
+#"do","you","sell" -> *
+#"do","you","have" -> *
+
+"instruments"        -> "I can offer you a piano or a harp. What would you like?"
+"piano"              ->  Type=2807, Amount=1, Price=200, "You want to buy a piano for %P gold?", Topic=81
+"harp"               ->  Type=2808, Amount=1, Price=50, "You want to buy a harp for %P gold?", Topic=81
+
+Topic=81,"yes",Premium,CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=81,"yes",CountMoney>=Price         -> "I'm sorry, but you need a premium account if you want to buy furniture."
+Topic=81,"yes"                           -> "Come back, when you have enough money."
+Topic=81                                 -> "Hmm, but I'm sure, it would fit nicely into your house."

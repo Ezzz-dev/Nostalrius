@@ -1,0 +1,70 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# guards-thais.ndb: Datenbank für die Stadtwachen von Thais
+
+ADDRESS,"hello$",! -> "LONG LIVE THE KING!"
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$"      -> "I am busy right now!."
+BUSY,"hi$"         -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Hrmpf!"
+
+"bye"            -> "LONG LIVE THE KING!", Idle
+"farewell"       -> *
+"news"           -> "I am busy. Please ask the citizens for news."
+"how","are","you"-> "I am healthy and vigilant."
+"sell"           -> "Visit Tibia's shopkeepers to buy their fine wares."
+"tibianus"       -> "Tibianus III is our beloved king!"
+"king"           -> *
+"leader"         -> *
+"job"            -> "It's my duty to protect the city."
+"army"           -> "Of course we guards are members of the army."
+"guard"          -> "I am a guard and proud of it."
+"battlegroups"   -> "Ask higher officials about that, please." 
+"castle"         -> "The castle is at the west of the city."
+"dogs", "of", "war" -> "Brave warriors, indeed."
+"knights", "of", "noodles" -> "Every guard dreams of becoming one of them one day."
+"red", "guard"   -> "We of the red guard are the special forces." 
+"secret", "police" -> "Ask a higher offical about that."
+"silver", "guard" -> "Only the best of the best serve as silver guards."
+"city"           -> "Behave while in the city or we get you! Do you want to know where to find a shop or a guild?"
+"shop"           -> "There's a smith, a provisioner, and a tavern."
+"guild"          -> "In the city you will find the guildhouses of the knights, paladins, druids, and sorcerers."
+"scum"           -> "We will get rid of all scum."  
+"stutch"         -> "He is a soldier in the silver guard."
+"harsky"         -> *
+"baxter"         -> "He is a role model for us."
+"bozo"           -> "The royal jester."
+"harkath$"       -> "The royal general. A warrior worth Banor's blessings."
+"bloodblade$"    -> *
+"general$"       -> *
+"banor"          -> "Praise Banor! May the great warrior be with us!"
+"sam"            -> "Sam is our blacksmith. You'll find him north of the main crossroads. His shop is to the left."
+"smith"          -> *
+"weapon"         -> *
+"armor"          -> *
+"gorn"           -> "Gorn is our provisioner. You'll find him north of the main crossroads. His shop is to the right."
+"provision"      -> *
+"frodo"          -> "Frodo runs the local tavern. You'll find it at the main crossroads to the north-west."
+"tavern"         -> *
+"benjamin"       -> "Benjamin was a brave fighter. He runs the post office in the west of the city."
+"post"           -> *
+"depot"          -> "The depot is at the post office in the west of the city."
+"muriel"         -> "Muriel is the head of the local sorcerers' guild. You'll find it in the south-west of the city" 
+"sorcerer"       -> *
+"elane"          -> "Elane is responsible for the local paladins' guild. It's in the west of the town, directly south of the post office."
+"paladin"        -> *
+"marvik"         -> "Marvik is the great druid of the local guild. You'll find him by climbing up the citywalls at the east."
+"druid"          -> *
+"gregor"         -> "The high knight of the knights' guild. It is in north-east of the town."
+"knight"         -> *
+
+"fuck"           -> "Take this!", Burning(5,1), EffectOpp(5), EffectMe(8)
+"idiot"          -> "Take this!", Burning(5,1), EffectOpp(5), EffectMe(8)
+"asshole"        -> "Take this!", Burning(5,1), EffectOpp(5), EffectMe(8)
+"ass$"           -> "Take this!", Burning(5,1), EffectOpp(5), EffectMe(8)
+"fag$"           -> "Take this!", Burning(5,1), EffectOpp(5), EffectMe(8)
+"stupid"         -> "Take this!", Burning(5,1), EffectOpp(5), EffectMe(8)
+"tyrant"         -> "Take this!", Burning(5,1), EffectOpp(5), EffectMe(8)
+"shit"           -> "Take this!", Burning(5,1), EffectOpp(5), EffectMe(8)
+"lunatic"        -> "Take this!", Burning(5,1), EffectOpp(5), EffectMe(8)

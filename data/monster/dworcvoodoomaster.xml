@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="dworc voodoomaster" nameDescription="a dworc voodoomaster" race="blood" experience="50" speed="35" manacost="300">
+	<health now="80" max="80" />
+	<look type="214" head="0" body="0" legs="0" feet="0" corpse="4369" />
+	<targetchange interval="1000" chance="0" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="1" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="4" />
+		<flag runonhealth="15" />
+	</flags>
+	<attacks attack="13" skill="22">
+		<attack name="lifedrain" min="-1" max="-39" range="1" chance="18" />
+		<attack name="speed" speedchange="-90" variation="20" duration="5000" range="7" chance="14">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+		<attack name="drunk" duration="6000" range="7" chance="11">
+			<attribute key="shootEffect" value="energy" />
+			<attribute key="areaEffect" value="teleport" />
+		</attack>
+		<attack name="outfit" monster="chicken" duration="5000" range="7" chance="12">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</attack>
+		<attack name="poison" min="-6" max="-18" radius="6" target="0" chance="5">
+			<attribute key="areaEffect" value="greenbubble" />
+		</attack>
+		<attack name="poisonfield" range="7" radius="1" target="1" chance="8">
+			<attribute key="shootEffect" value="poison" />
+		</attack>
+	</attacks>
+	<defenses armor="3" defense="8">
+		<defense name="healing" min="3" max="9" chance="10">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+		<defense name="speed" speedchange="185" variation="15" duration="4000" chance="13">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+		<defense name="invisible" duration="3000" chance="22">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity poison="1" />
+	</immunities>
+	<voices>
+		<voice sentence="Grak brrretz!" />
+		<voice sentence="Grow truk grrrrr." />
+		<voice sentence="Prek tars, dekklep zurk." />
+	</voices>
+	<loot>
+		<item id="3116" countmax="1" chance="70" /> <!-- a big bone -->
+		<item id="3115" countmax="1" chance="100" /> <!-- a bone -->
+		<item id="3031" countmax="10" chance="800" /> <!-- a gold coin -->
+		<item id="3361" countmax="1" chance="100" /> <!-- a leather armor -->
+		<item id="3299" countmax="1" chance="10" /> <!-- a poison dagger -->
+		<item id="3114" countmax="3" chance="30" /> <!-- a skull -->
+		<item id="3058" countmax="1" chance="5" /> <!-- a strange symbol -->
+		<item id="2920" countmax="1" chance="55" /> <!-- a torch -->
+		<item id="3403" countmax="1" chance="5" /> <!-- a tribal mask -->
+		<item id="3002" countmax="1" chance="1" /> <!-- a voodoo doll -->
+	</loot>
+</monster>

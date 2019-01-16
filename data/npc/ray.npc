@@ -1,0 +1,49 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# ray.npc: Datenbank für den Postbeamten Ray
+
+Name = "Ray"
+Outfit = (128,10-96-106-115)
+Home = [32621,32747,6]
+Radius = 0
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Greetings, %N."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "Please wait a moment, %N.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "I hope to see you back soon."
+
+"bye"        -> "I hope to see you back soon.", Idle
+"farewell"   -> *
+
+"kevin"                 -> "Ah, yes we stay in touch via mail of course."
+"postner"               -> *
+"postmasters","guild"   -> "The guild is far away, but the mail keeps us close to each other somehow."
+"join"                  -> "The guild is always looking for competent recruits. You can submit your application to our headquarters." 
+"headquarters"           -> "It can be found easily. It's on the road from Thais to Kazordoon and Ab'Dendriel."
+
+
+
+"job"        -> "I am responsible for this post office. If you have questions about the mail system or the depots, just ask me."
+"name"       -> "My name is Ray."
+"ray"        -> "Yes, that's me."
+"time"       -> "Now it's %T."
+"king"       -> "The king lives far away in the lovely city of Thais, but even he can be reached by our mailing system."
+"tibianus"   -> *
+"army"       -> "We got not the best men of the Thaian army to guard this colony. Given the number of difficulties this colony faces, this is quite a problem."
+"ferumbras"  -> "I hope this colony is too remote and meaningless to him to care for a visit."
+"excalibug"  -> "There are rumours about some hidden stone tablets mentioning that weapon. Adventurers claim to have seen those tablets in the ancient lizard city."
+"news"       -> "There are so many news that I cannot retell them all. Talk to the colonists and keep your ears open."
+"thais"      -> "All cities are covered by our mailing system."
+"carlin"     -> *
+"apes"       -> "They are a pest. A quite dangerous pest as far as I can tell."
+"lizard"    -> "The lizards give me shivers. They are so alien, even more than the minotaurs or orcs we know from the surroundings of Thais."
+"dworcs"     -> "Those bloodthirsty headhunters live in the south. I heard only horrible stories about them and I believe they are not exaggerated." 
+"jungle"     -> "The jungle is a dangerous place. Many got lost there and never returned."
+
+
+@"gen-post.ndb"
+
+}

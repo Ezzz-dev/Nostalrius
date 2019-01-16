@@ -1,0 +1,108 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# jezzara.npc: Datenbank für die pyramidenhändlerin Jezzara
+
+Name = "Jezzara"
+Outfit = (138,3-43-91-97)
+Home = [33126,32821,6]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Be mourned pilgrim in flesh."
+ADDRESS,"hi$",!    -> "Be mourned pilgrim in flesh."
+ADDRESS,"be","mourned","pilgrim","flesh",!    -> "Be mourned pilgrim in flesh."
+ADDRESS,!          -> Idle
+
+BUSY,"hello$",!    -> "Mourned %N, know that I am busy.", Queue
+BUSY,"hi$",!       -> *
+BUSY,"be","mourned","pilgrim","flesh",!    -> *
+BUSY,!             -> NOP
+VANISH,!           -> "May enlightenment be your path."
+
+"bye"      -> "May enlightenment be your path.", Idle
+"farewell" -> *
+"job"      -> "I sell food of various kinds."
+"name"     -> "I am the mourned Jezzara."
+"time"     -> "You can buy watches here in the markethall."
+"temple"   -> "The temple can be found in the northeast of the city."
+"pharaoh"    -> "The pharaoh is our godking and the founder of our religion."
+"oldpharaoh" -> "He was entombed in undead state. It is said that this will finally teach him to to strive for ascension."
+"scarab"    -> "I am not afraid of something that attacks only my physical form. But they stay away from the city anyway."
+"chosen"    -> "The chosen are those who are granted undeath after a life of service to the pharaoh."
+"tibia"    -> "The world can be a dangerous place for the whole of the Akh'rah Uthun." 
+"carlin"   -> "The cities of the Tibian continent have little contact with us."
+"thais"    -> *
+"edron"    -> *
+"venore"   -> * 
+"kazordoon" -> "Dwarves are not really fond of the endless sands of the desert. I must say I can't blame them for it."
+"dwarves"   -> *
+"dwarfes"   -> *
+"ab'dendriel" -> "Elves don't like this land too much so we have little contact with them."
+"elves"       -> *
+"elfes"       -> *
+"darama"      -> "This continent is very diverse. There are deserts and mountains as well as a large jungle region."
+"darashia"    -> "We are usually not allowed to travel that far without explicit permission, so we know this city mostly from the tales of travellers."
+"daraman"    -> "I know little of his teachings. The priests say his conclusions were inconsequent." 
+"ankrahmun" -> "This city is a safe haven that gives shelter from the dangers of the desert." 
+
+"mortality"     -> "The priests teach that mortality is a curse. I find it hard to understand but the priests will know best."
+"false", "gods" -> "As far as I understand the gods worshipped by other nations are nothing but imposters."
+
+"ascension"         -> "Ascension is difficult to achive. Too difficult to achieve as long as you are still alive."
+"Akh'rah","Uthun"   -> "Well its just the Akh, the Rah and the Unthun."
+"Akh"               -> "That is the body."
+
+"undead"            -> "Those who follow the pharaoh might become undead one day."
+"undeath"           -> *
+"Rah"               -> "The Rah is the spiritual part of a being."
+"uthun"             -> "The Uthun is the sentient part of all living things."
+"mourn"             -> "The priests say we are to be mourned while we are still alive."
+
+"arena"        -> "Sometimes spectacular battles are fought in the local arena."
+"palace"       -> "The palace is where the mighty pharaoh resides."
+
+
+"buy"             -> "I can offer you meat, ham, salmon, fish, fruits and vegetables."
+"do","you","sell" -> *
+"do","you","have" -> *
+"offer"           -> *
+"food"            -> *
+"fruit"           -> "I have oranges, bananas, grapes, pumpkins and melons. What do you want?"
+"vegetable"       -> "I have carrots and tomatoes. What do you want?"
+
+"dragon","ham" -> Type=3583, Amount=1, Price=25, "Do you want to buy a dragon ham for %P gold?", Topic=1
+"meat"   -> Type=3577, Amount=1, Price=10,  "Do you want to buy meat for %P gold?", Topic=1
+"ham"    -> Type=3582, Amount=1, Price=15, "Do you want to buy a ham for %P gold?", Topic=1
+"salmon" -> Type=3579, Amount=1, Price=7,  "Do you want to buy a salmon for %P gold?", Topic=1
+"fish"   -> Type=3578, Amount=1, Price=6,  "Do you want to buy a fish for %P gold?", Topic=1
+
+
+%1,1<%1,"dragon","ham"  -> Type=3583, Amount=%1, Price=25*%1, "Do you wanna buy %A dragon ham for %P gold?", Topic=1
+%1,1<%1,"meat"          -> Type=3577, Amount=%1, Price=10*%1, "Do you wanna buy %A meat for %P gold?", Topic=1
+%1,1<%1,"ham"           -> Type=3582, Amount=%1, Price=15*%1, "Do you wanna buy %A ham for %P gold?", Topic=1
+%1,1<%1,"salmon"        -> Type=3579, Amount=%1, Price=7*%1,  "Do you want to buy %A salmon for %P gold?", Topic=1
+%1,1<%1,"fish"          -> Type=3578, Amount=%1, Price=6*%1,  "Do you want to buy %A fish for %P gold?", Topic=1
+"fruit"           -> "I have oranges, bananas, grapes, and melons. What do you want?"
+"vegetable"       -> "I have carrots and tomatoes. What do you want?"
+
+"orange" -> Type=3586, Amount=1, Price=9,  "Do you want to buy an orange for %P gold?", Topic=1
+"banana" -> Type=3587, Amount=1, Price=5,  "Do you want to buy a banana for %P gold?", Topic=1
+"grape"  -> Type=3592, Amount=1, Price=8,  "Do you want to buy grapes for %P gold?", Topic=1
+"melon"  -> Type=3593, Amount=1, Price=13, "Do you want to buy a melon for %P gold?", Topic=1
+"carrot" -> Type=3595, Amount=1, Price=8,  "Do you want to buy a carrot for %P gold?", Topic=1
+"tomato" -> Type=3596, Amount=1, Price=10,  "Do you want to buy a tomato for %P gold?", Topic=1
+"pumpkin" -> Type=3594, Amount=1, Price=10, "Do you want to buy a pumpkin for %P gold?", Topic=1
+
+
+%1,1<%1,"orange" -> Type=3586, Amount=%1, Price=9*%1,  "Do you want to buy %A oranges for %P gold?", Topic=1
+%1,1<%1,"banana" -> Type=3587, Amount=%1, Price=5*%1,  "Do you want to buy %A bananas for %P gold?", Topic=1
+%1,1<%1,"grape"  -> Type=3592, Amount=%1, Price=8*%1,  "Do you want to buy %A grapes for %P gold?", Topic=1
+%1,1<%1,"melon"  -> Type=3593, Amount=%1, Price=13*%1, "Do you want to buy %A melons for %P gold?", Topic=1
+%1,1<%1,"carrot" -> Type=3595, Amount=%1, Price=8*%1,  "Do you want to buy %A carrots for %P gold?", Topic=1
+%1,1<%1,"tomato" -> Type=3596, Amount=%1, Price=10*%1, "Do you want to buy %A tomatoes for %P gold?", Topic=1
+%1,1<%1,"pumpkin" -> Type=3594, Amount=%1, Price=10*%1, "Do you want to buy %A pumpkins for %P gold?", Topic=1
+
+Topic=1,"yes",CountMoney>=Price -> "Here you are.", DeleteMoney, Create(Type)
+Topic=1,"yes"                   -> "Come back, when you have enough money."
+Topic=1                         -> "Hmm, but next time."
+
+}
