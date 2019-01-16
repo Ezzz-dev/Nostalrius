@@ -9,4 +9,7 @@ Nostalrius is a 7.7 clone project that has been in development for a long time, 
   - Alejandro Mujica (Ezzz in otland) - I'm the main developer and programmer of this game server
   - Kevin Luiz (long time friendship, also helped get everything fixed and stable)
   - Zakaria Ziady (compromised myself into getting the true formulas of the game server)
-You can also:
+
+# Map Editor
+
+  - https://github.com/TwistedScorpio/Map-Editor
