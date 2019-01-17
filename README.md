@@ -13,3 +13,8 @@ Nostalrius is a 7.7 clone project that has been in development for a long time, 
 # Map Editor
 
   - https://github.com/TwistedScorpio/Map-Editor
+
+# Donations
+
+  - If you would like to support my work and also to continue to keep me motivated in updating missing details, please, consider donating
+  - kenshin2565@hotmail.com
