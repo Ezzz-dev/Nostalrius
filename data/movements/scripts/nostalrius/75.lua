@@ -3,7 +3,7 @@ function onStepIn(creature, item, position, fromPosition)
 		doRelocate(item:getPosition(),{x = 33349, y = 32830, z = 14})
 		item:getPosition():sendMagicEffect(11)
 		Game.sendMagicEffect({x = 33349, y = 32830, z = 14}, 11)
-		player:removeItem(3238, 1)
+		creature:getPlayer():removeItem(3238, 1)
 	else
 		doRelocate(item:getPosition(),{x = 33280, y = 32740, z = 10})
 		item:getPosition():sendMagicEffect(11)
