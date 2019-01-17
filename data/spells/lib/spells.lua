@@ -1,15 +1,25 @@
-function healingFormula(level, maglevel, base, variation)
-	local value = 2 * level + (3 * maglevel)
-	local min = value - math.random(variation) + base / 100
-	local max = value + math.random(variation) + base / 100
+function healingFormula(level, maglevel, base, variation, value_min, value_max)
+	local value = 3 * maglevel + (2 * level)
+	
+	if value_min ~= nil and value <= value_min then
+		value = value_min
+	end
+	
+	if value_max ~= nil and value >= value_max then
+		value = value_max
+	end
+	
+	local min = value * (base - variation) / 100
+	local max = value * (base + variation) / 100
 	return min, max
 end
 
 function damageFormula(level, maglevel, base, variation)
-	local value = 2 * level + (3 * maglevel)
-	local min = value - math.random(variation) + base / 100
-	local max = value + math.random(variation) + base / 100
-	return -min, -max
+	local value = 3 * maglevel + (2 * level)
+
+	local min = value * (base - variation) / 100
+	local max = value * (base + variation) / 100
+	return min, max
 end
 
 function computeFormula(level, maglevel, base, variation)
@@ -20,7 +30,7 @@ function computeFormula(level, maglevel, base, variation)
 	
 	local level_formula = 2 * level
 	local magic_formula = 3 * maglevel + level_formula 
-	
+
 	return magic_formula * damage / 100
 end
 

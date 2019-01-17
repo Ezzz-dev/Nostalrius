@@ -6,14 +6,7 @@ combat:setParameter(COMBAT_PARAM_TARGETCASTERORTOPMOST, true)
 combat:setParameter(COMBAT_PARAM_AGGRESSIVE, false)
 
 function onGetFormulaValues(player, level, maglevel)
-	local base = 250
-	local variation = 0
-	
-	local formula = 3 * maglevel + (2 * level)
-	
-	local min = (formula * (base - variation)) / 100
-	local max = (formula * (base + variation)) / 100
-	return min, max
+	return healingFormula(level, maglevel, 250, 0, 100)
 end
 
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")

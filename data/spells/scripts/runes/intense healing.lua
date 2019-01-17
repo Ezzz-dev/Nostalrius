@@ -5,14 +5,7 @@ combat:setParameter(COMBAT_PARAM_DISPEL, CONDITION_PARALYZE)
 combat:setParameter(COMBAT_PARAM_AGGRESSIVE, false)
 
 function onGetFormulaValues(player, level, maglevel)
-	local base = 70
-	local variation = 30
-	
-	local formula = 3 * maglevel + (2 * level)
-	
-	local min = (formula * (base - variation)) / 100
-	local max = (formula * (base + variation)) / 100
-	return min, max
+	return healingFormula(level, maglevel, 70, 30, 100)
 end
 
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")
