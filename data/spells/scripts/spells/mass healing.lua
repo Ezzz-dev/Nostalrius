@@ -21,6 +21,9 @@ function onTargetCreature(creature, target)
 	
 	local value = math.random(-variation, variation) + base
 	local formula = 3 * player:getMagicLevel() + (2 * player:getLevel())
+	if formula >= 101 then
+		formula = 100
+	end
 	local total = formula * value / 100
 
 	doTargetCombatHealth(0, target, COMBAT_HEALING, total, total, CONST_ME_NONE)
