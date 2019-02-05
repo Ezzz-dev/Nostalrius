@@ -2,12 +2,7 @@ local drunk = Condition(CONDITION_DRUNK)
 drunk:setParameter(CONDITION_PARAM_TICKS, 60000)
 
 local poison = Condition(CONDITION_POISON)
-poison:setParameter(CONDITION_PARAM_DELAYED, true)
-poison:setParameter(CONDITION_PARAM_MINVALUE, -50)
-poison:setParameter(CONDITION_PARAM_MAXVALUE, -120)
-poison:setParameter(CONDITION_PARAM_STARTVALUE, -5)
-poison:setParameter(CONDITION_PARAM_TICKINTERVAL, 5000)
-poison:setParameter(CONDITION_PARAM_FORCEUPDATE, true)
+poison:setTiming(100)
 
 local messages = {
 	[FLUID_WATER] = "Gulp.",
@@ -38,7 +33,7 @@ function onUse(player, item, fromPosition, target, toPosition)
 		end
 	end
 	
-	if target:isCreature() then
+	if target:isCreature() and target:getPlayer() ~= nil then
 		if item:getFluidType() == FLUID_NONE then
 			player:sendCancelMessage("It is empty.")
 		else
