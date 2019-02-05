@@ -285,12 +285,12 @@ class Combat
 		static int32_t getTotalDamage(int32_t attackSkill, int32_t attackValue, fightMode_t fightMode);
 
 		static bool attack(Creature* attacker, Creature* target);
-		static bool closeAttack(Creature* attacker, Creature* target, fightMode_t fightMode);
+		static bool closeAttack(Creature* attacker, Creature* target, fightMode_t fightMode, bool fist = false);
 		static bool rangeAttack(Creature* attacker, Creature* target, fightMode_t fightMode);
 
 		static void circleShapeSpell(Creature* attacker, const Position& toPos, int32_t range, int32_t animation, int32_t radius, DamageImpact* impact, int32_t effect);
 
-		static void getAttackValue(Creature* creature, uint32_t& attackValue, uint32_t& skillValue, uint8_t& skill);
+		static void getAttackValue(Creature* creature, uint32_t& attackValue, uint32_t& skillValue, uint8_t& skill, bool fist = false);
 
 		static bool doCombatHealth(Creature* caster, Creature* target, CombatDamage& damage, const CombatParams& params);
 		static void doCombatHealth(Creature* caster, const Position& position, const AreaCombat* area, CombatDamage& damage, const CombatParams& params);
