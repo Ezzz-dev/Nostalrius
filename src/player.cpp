@@ -2297,11 +2297,13 @@ Cylinder* Player::queryDestination(int32_t& index, const Thing& thing, Item** de
 					n--;
 				}
 
-				/*for (Item* tmpContainerItem : tmpContainer->getItemList()) {
-					if (Container* subContainer = tmpContainerItem->getContainer()) {
-						containers.push_back(subContainer);
+				if (g_config.getBoolean(ConfigManager::QUERY_PLAYER_CONTAINERS)) {
+					for (Item* tmpContainerItem : tmpContainer->getItemList()) {
+						if (Container* subContainer = tmpContainerItem->getContainer()) {
+							containers.push_back(subContainer);
+						}
 					}
-				}*/
+				}
 
 				continue;
 			}
@@ -2324,9 +2326,11 @@ Cylinder* Player::queryDestination(int32_t& index, const Thing& thing, Item** de
 					return tmpContainer;
 				}
 
-				/*if (Container* subContainer = tmpItem->getContainer()) {
-					containers.push_back(subContainer);
-				}*/
+				if (g_config.getBoolean(ConfigManager::QUERY_PLAYER_CONTAINERS)) {
+					if (Container* subContainer = tmpItem->getContainer()) {
+						containers.push_back(subContainer);
+					}
+				}
 
 				n++;
 			}

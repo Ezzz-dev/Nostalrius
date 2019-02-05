@@ -40,6 +40,7 @@ class ConfigManager
 			CONVERT_UNSAFE_SCRIPTS,
 			TELEPORT_NEWBIES,
 			STACK_CUMULATIVES,
+			QUERY_PLAYER_CONTAINERS,
 
 			LAST_BOOLEAN_CONFIG /* this must be the last one */
 		};
