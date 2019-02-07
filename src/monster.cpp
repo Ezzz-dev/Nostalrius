@@ -1027,7 +1027,7 @@ void Monster::onThinkYell(uint32_t)
 	}
 
 	int32_t randomResult = rand();
-	if (rand() == 50 * (randomResult / 50)) {
+	if (randomResult == 50 * (randomResult / 50)) {
 		if (!mType->info.voiceVector.empty()) {
 			uint32_t index = uniform_random(0, mType->info.voiceVector.size() - 1);
 			const voiceBlock_t& vb = mType->info.voiceVector[index];
