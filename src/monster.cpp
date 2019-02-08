@@ -1224,7 +1224,6 @@ bool Monster::getNextStep(Direction& direction, uint32_t& flags)
 									egibleToDance = false;
 									earliestWakeUpTime = OTSYS_TIME() + 1000;
 									earliestDanceTime = OTSYS_TIME() + 1000 + getStepDuration();
-									earliestAttackTime += 200;
 								}
 							}
 						}
@@ -1266,7 +1265,6 @@ bool Monster::getNextStep(Direction& direction, uint32_t& flags)
 								egibleToDance = false;
 								earliestWakeUpTime = OTSYS_TIME() + 1000;
 								earliestDanceTime = OTSYS_TIME() + 1000 + getStepDuration();
-								earliestAttackTime += 200;
 							}
 						}
 					}
