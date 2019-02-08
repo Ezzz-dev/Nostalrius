@@ -16158,7 +16158,7 @@ Attributes  = {Weight=500}
 TypeID      = 3549
 Name        = "soft boots"
 Flags       = {Take,Expire,ShowDetail}
-Attributes  = {Weight=800,SlotType=FEET,ExpireTarget=6530,DeEquipTarget=6529,TotalExpireTime=14400,HealthGain=1,HealthTicks=2000,ManaGain=2,ManaTicks=1000}
+Attributes  = {Weight=800,SlotType=FEET,ExpireTarget=0,TotalExpireTime=14400,HealthGain=1,HealthTicks=2000,ManaGain=2,ManaTicks=1000}
 
 TypeID      = 3550
 Name        = "patched boots"
