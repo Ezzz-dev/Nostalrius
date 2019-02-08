@@ -263,6 +263,8 @@ int32_t Player::getDefense()
 			default:
 				break;
 		}
+
+		defenseSkill = getSkillLevel(defenseSkill);
 	}
 
 	if (shield) {
