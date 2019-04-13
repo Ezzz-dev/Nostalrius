@@ -876,7 +876,7 @@ void Monster::doAttacking(uint32_t)
 
 	for (spellBlock_t& spellBlock : mType->info.attackSpells) {
 		if (spellBlock.range != 0 && std::max<uint32_t>(Position::getDistanceX(myPos, targetPos), Position::getDistanceY(myPos, targetPos)) <= spellBlock.range) {
-			if (normal_random(0, spellBlock.chance) == 0 && (master || health > mType->info.runAwayHealth || normal_random(1, 3) == 1)) {
+			if (uniform_random(0, spellBlock.chance) == 0 && (master || health > mType->info.runAwayHealth || uniform_random(1, 3) == 1)) {
 				updateLookDirection();
 
 				minCombatValue = spellBlock.minCombatValue;
@@ -977,7 +977,7 @@ void Monster::onThinkTarget(uint32_t interval)
 void Monster::onThinkDefense(uint32_t)
 {
 	for (const spellBlock_t& spellBlock : mType->info.defenseSpells) {
-		if (normal_random(0, spellBlock.chance) == 0 && (master || health > mType->info.runAwayHealth || normal_random(1, 3) == 1)) {
+		if (uniform_random(0, spellBlock.chance) == 0 && (master || health > mType->info.runAwayHealth || uniform_random(1, 3) == 1)) {
 			minCombatValue = spellBlock.minCombatValue;
 			maxCombatValue = spellBlock.maxCombatValue;
 			spellBlock.spell->castSpell(this, this);
@@ -1001,7 +1001,7 @@ void Monster::onThinkDefense(uint32_t)
 				continue;
 			}
 
-			if (normal_random(0, summonBlock.chance) == 0 && (health > mType->info.runAwayHealth || normal_random(1, 3) == 1)) {
+			if (uniform_random(0, summonBlock.chance) == 0 && (health > mType->info.runAwayHealth || uniform_random(1, 3) == 1)) {
 				Monster* summon = Monster::createMonster(summonBlock.name);
 				if (summon) {
 					const Position& summonPos = getPosition();

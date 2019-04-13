@@ -9,7 +9,7 @@ function Game.removeItemsOnMap(position)
 	local i = 0
 	while i < tileCount do
 		local tileItem = tile:getThing(i)
-		if tileItem and tileItem:getType():isMovable() then
+		if tileItem and not tileItem:isCreature() and ItemType(tileItem:getId()):isMovable() then
 			tileItem:remove()
 		else
 			i = i + 1
@@ -24,8 +24,10 @@ function Game.transformItemOnMap(position, itemId, toItemId, subtype)
 
 	local tile = Tile(position)
 	local item = tile:getItemById(itemId)
-	item:transform(toItemId, subtype)
-	item:decay()
+	if item ~= nil then
+		item:transform(toItemId, subtype)
+		item:decay()
+	end
 	return item
 end
 
