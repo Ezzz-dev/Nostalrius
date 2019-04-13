@@ -744,21 +744,20 @@ void Monster::setIdle(bool idle)
 
 void Monster::updateIdleStatus()
 {
-	bool idle = false;
+	bool idle = true;
 
 	if (!isSummon()) {
-		if (conditions.empty() && targetList.empty()) {
-			idle = true;
-		} else if (!conditions.empty()) {
-			bool hasAggressiveCondition = false;
+		if (!targetList.empty()) {
+			// visible target
+			idle = false;
+		} else {
 			for (Condition* condition : conditions) {
 				if (condition->getType() >= CONDITION_ENERGY && condition->getType() <= CONDITION_ENERGY) {
-					hasAggressiveCondition = true;
+					// monsters with aggressive conditions never become idle
+					idle = false;
 					break;
 				}
 			}
-
-			idle = !hasAggressiveCondition;
 		}
 	}
 

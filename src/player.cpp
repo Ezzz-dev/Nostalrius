@@ -549,6 +549,7 @@ bool Player::canSeeCreature(const Creature* creature) const
 	if (!creature->getPlayer() && !canSeeInvisibility() && creature->isInvisible()) {
 		return false;
 	}
+
 	return true;
 }
 
