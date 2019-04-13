@@ -175,7 +175,11 @@ ReturnValue Combat::canDoCombat(Creature* caster, Tile* tile, bool aggressive)
 		return RETURNVALUE_NOTENOUGHROOM;
 	}
 
-	if (tile->hasProperty(CONST_PROP_IMMOVABLEBLOCKSOLID) && tile->hasProperty(CONST_PROP_UNLAY)) {
+	/*if (tile->hasProperty(CONST_PROP_IMMOVABLEBLOCKSOLID) && tile->hasProperty(CONST_PROP_UNLAY)) {
+		return RETURNVALUE_NOTENOUGHROOM;
+	}*/
+
+	if (tile->hasProperty(CONST_PROP_IMMOVABLEBLOCKPATH)) {
 		return RETURNVALUE_NOTENOUGHROOM;
 	}
 
