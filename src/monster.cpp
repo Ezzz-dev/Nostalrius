@@ -759,6 +759,8 @@ void Monster::updateIdleStatus()
 				}
 			}
 		}
+	} else {
+		idle = false;
 	}
 
 	setIdle(idle);
