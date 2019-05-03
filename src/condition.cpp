@@ -877,7 +877,9 @@ bool ConditionDamage::executeCondition(Creature* creature, int32_t)
 			if (count <= 0) {
 				count = max_count;
 				cycle = r_cycle + 2 * (r_cycle <= 0) - 1;
-				doDamage(creature, -10);
+				if (!doDamage(creature, -10)) {
+					return false;
+				}
 			} else {
 				--count;
 			}
@@ -895,7 +897,9 @@ bool ConditionDamage::executeCondition(Creature* creature, int32_t)
 				}
 
 				cycle = r_cycle - f;
-				doDamage(creature, -f);
+				if (!doDamage(creature, -f)) {
+					return false;
+				}
 			} else {
 				--count;
 			}
@@ -908,7 +912,9 @@ bool ConditionDamage::executeCondition(Creature* creature, int32_t)
 			if (count <= 0) {
 				count = max_count;
 				cycle = r_cycle + 2 * (r_cycle <= 0) - 1;
-				doDamage(creature, -25);
+				if (!doDamage(creature, -25)) {
+					return false;
+				}
 			} else {
 				--count;
 			}
