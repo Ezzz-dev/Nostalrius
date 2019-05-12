@@ -1786,7 +1786,7 @@ void ProtocolGame::AddCreature(NetworkMessage& msg, const Creature* creature, bo
 	msg.addByte(std::ceil((static_cast<double>(creature->getHealth()) / std::max<int32_t>(creature->getMaxHealth(), 1)) * 100));
 	msg.addByte(creature->getDirection());
 
-	if (!creature->isInvisible() || !otherPlayer && player->canSeeInvisibility()) {
+	if ((!creature->isInvisible()) || (!otherPlayer && player->canSeeInvisibility())) {
 		AddOutfit(msg, creature->getCurrentOutfit());
 	} else {
 		static Outfit_t outfit;
