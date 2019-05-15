@@ -23,6 +23,7 @@
 
 #include "house.h"
 #include "iologindata.h"
+#include "iomapserialize.h"
 #include "game.h"
 #include "configmanager.h"
 #include "bed.h"
@@ -638,93 +639,136 @@ bool Houses::loadHousesXML(const std::string& filename)
 
 void Houses::payHouses(RentPeriod_t rentPeriod) const
 {
-	if (rentPeriod == RENTPERIOD_NEVER) {
-		return;
-	}
 
-	time_t currentTime = time(nullptr);
 	for (const auto& it : houseMap) {
 		House* house = it.second;
-		if (house->getOwner() == 0) {
-			continue;
-		}
 
-		const uint32_t rent = house->getRent();
-		if (rent == 0 || house->getPaidUntil() > currentTime) {
-			continue;
-		}
-
-		const uint32_t ownerId = house->getOwner();
 		Town* town = g_game.map.towns.getTown(house->getTownId());
-		if (!town) {
-			continue;
+			if (!town) {
+				continue;
+			}
+
+		time_t currentTime = time(nullptr);
+		time_t paidUntil = currentTime;
+
+		switch (rentPeriod) {
+			case RENTPERIOD_DAILY:
+				paidUntil += 24 * 60 * 60;
+				break;
+			case RENTPERIOD_WEEKLY:
+				paidUntil += 24 * 60 * 60 * 7;
+				break;
+			case RENTPERIOD_MONTHLY:
+				paidUntil += 24 * 60 * 60 * 30;
+				break;
+			case RENTPERIOD_YEARLY:
+				paidUntil += 24 * 60 * 60 * 365;
+				break;
+			default:
+				break;
 		}
 
 		Player player(nullptr);
-		if (!IOLoginData::loadPlayerById(&player, ownerId)) {
-			// Player doesn't exist, reset house owner
-			house->setOwner(0);
-			continue;
-		}
 
-		if (g_game.removeMoney(player.getDepotLocker(house->getTownId(), true), house->getRent(), FLAG_NOLIMIT)) {
-			time_t paidUntil = currentTime;
-			switch (rentPeriod) {
-				case RENTPERIOD_DAILY:
-					paidUntil += 24 * 60 * 60;
-					break;
-				case RENTPERIOD_WEEKLY:
-					paidUntil += 24 * 60 * 60 * 7;
-					break;
-				case RENTPERIOD_MONTHLY:
-					paidUntil += 24 * 60 * 60 * 30;
-					break;
-				case RENTPERIOD_YEARLY:
-					paidUntil += 24 * 60 * 60 * 365;
-					break;
-				default:
-					break;
-			}
 
-			house->setPaidUntil(paidUntil);
-		} else {
-			if (house->getPayRentWarnings() < 7) {
-				int32_t daysLeft = 7 - house->getPayRentWarnings();
+		//If no owner then check if auction has ended
+		if (house->getOwner() == 0) {
+			
+			if (house->getBidEnd() < currentTime && house->getHighestBidder() != 0){
+				const uint32_t highestBidderId = house->getHighestBidder();
+				const uint64_t toPay = house->getRent() + house->getLastBid();
 
-				Item* letter = Item::CreateItem(ITEM_LETTER_STAMPED);
-				std::string period;
-
-				switch (rentPeriod) {
-					case RENTPERIOD_DAILY:
-						period = "daily";
-						break;
-
-					case RENTPERIOD_WEEKLY:
-						period = "weekly";
-						break;
-
-					case RENTPERIOD_MONTHLY:
-						period = "monthly";
-						break;
-
-					case RENTPERIOD_YEARLY:
-						period = "annual";
-						break;
-
-					default:
-						break;
+				if (!IOLoginData::loadPlayerById(&player, highestBidderId)) {
+					// Player doesn't exist, reset house owner
+					house->setOwner(0);
+					continue;
 				}
 
-				std::ostringstream ss;
-				ss << "Warning! \nThe " << period << " rent of " << house->getRent() << " gold for your house \"" << house->getName() << "\" is payable. Have it within " << daysLeft << " days or you will lose this house.";
-				letter->setText(ss.str());
-				g_game.internalAddItem(player.getDepotLocker(house->getTownId(), true), letter, INDEX_WHEREEVER, FLAG_NOLIMIT);
-				house->setPayRentWarnings(house->getPayRentWarnings() + 1);
-			} else {
-				house->setOwner(0, true, &player);
+				//Try to draw money from player depot
+				if (g_game.removeMoney(player.getDepotLocker(house->getTownId(), true), toPay, FLAG_NOLIMIT)){
+					house->setOwner(highestBidderId);
+					house->setPaidUntil(paidUntil);
+				}else{
+					house->setOwner(0);
+					house->setBid(0);
+					house->setLastBid(0);
+					house->setBidEnd(0);
+					house->setHighestBidder(0);
+					house->setPayRentWarnings(0);
+					house->setPaidUntil(0);
+					IOMapSerialize::updateHouseAuctionInfo(house);
+				}
+
+				//Save updates to player
+				IOLoginData::savePlayer(&player);
 			}
 		}
+		//House has owner, check if pay rent is needed
+		else{
 
-		IOLoginData::savePlayer(&player);
+			if (rentPeriod == RENTPERIOD_NEVER) {
+				continue;
+			}
+
+			const uint32_t rent = house->getRent();
+			if (rent == 0 || house->getPaidUntil() > currentTime) {
+				continue;
+			}
+
+			const uint32_t ownerId = house->getOwner();
+
+			if (!IOLoginData::loadPlayerById(&player, ownerId)) {
+				// Player doesn't exist, reset house owner
+				house->setOwner(0);
+				continue;
+			}
+
+			if (g_game.removeMoney(player.getDepotLocker(house->getTownId(), true), house->getRent(), FLAG_NOLIMIT)) {
+				house->setPaidUntil(paidUntil);
+			} else {
+				if (house->getPayRentWarnings() < 7) {
+					int32_t daysLeft = 7 - house->getPayRentWarnings();
+
+					Item* letter = Item::CreateItem(ITEM_LETTER_STAMPED);
+					std::string period;
+
+					switch (rentPeriod) {
+						case RENTPERIOD_DAILY:
+							period = "daily";
+							break;
+
+						case RENTPERIOD_WEEKLY:
+							period = "weekly";
+							break;
+
+						case RENTPERIOD_MONTHLY:
+							period = "monthly";
+							break;
+
+						case RENTPERIOD_YEARLY:
+							period = "annual";
+							break;
+
+						default:
+							break;
+					}
+
+					std::ostringstream ss;
+					ss << "Warning! \nThe " << period << " rent of " << house->getRent() << " gold for your house \"" << house->getName() << "\" is payable. Have it within " << daysLeft << " days or you will lose this house.";
+					letter->setText(ss.str());
+					g_game.internalAddItem(player.getDepotLocker(house->getTownId(), true), letter, INDEX_WHEREEVER, FLAG_NOLIMIT);
+					house->setPayRentWarnings(house->getPayRentWarnings() + 1);
+				} else {
+					house->setOwner(0, true, &player);
+				}
+			}
+
+			IOLoginData::savePlayer(&player);
+		}
+
+		
 	}
+
+	//Finally save changes to database
+	IOMapSerialize::saveHouseInfo();
 }
