@@ -1,7 +1,3 @@
-function canJoin(player)
-	return player:getVocation():getId() ~= VOCATION_NONE or player:getAccountType() >= ACCOUNT_TYPE_SENIORTUTOR
-end
-
 local CHANNEL_TRADE = 6
 
 local muted = Condition(CONDITION_CHANNELMUTEDTICKS, CONDITIONID_DEFAULT)
