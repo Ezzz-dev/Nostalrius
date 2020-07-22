@@ -9,6 +9,10 @@ Nostalrius is a 7.7 clone project that has been in development for a long time, 
   - Alejandro Mujica (Ezzz in otland) - I'm the main developer and programmer of this game server
   - Kevin Luiz (long time friendship, also helped get everything fixed and stable)
   - Zakaria Ziady (compromised myself into getting the true formulas of the game server)
+  
+# Tools
+
+  - EZItem Editor for Nostalrius https://otland.net/threads/ezitem-editor-for-nostalrius-engine-x64.271823/
 
 # Map Editor
 
