@@ -756,7 +756,7 @@ bool ConditionSoul::setParam(ConditionParam_t param, int32_t value)
 
 bool ConditionDamage::setParam(ConditionParam_t param, int32_t value)
 {
-	bool ret = Condition::setParam(param, value);
+	Condition::setParam(param, value);
 
 	switch (param) {
 		case CONDITION_PARAM_OWNER:

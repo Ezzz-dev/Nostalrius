@@ -57,6 +57,7 @@ static constexpr auto CLIENT_VERSION_STR = "7.72";
 #pragma warning(disable:4267) // 'var' : conversion from 'size_t' to 'type', possible loss of data
 #pragma warning(disable:4351) // new behavior: elements of array will be default initialized
 #pragma warning(disable:4458) // declaration hides class member
+#pragma warning(disable:4018) // signed/unsigned mismatch
 #endif
 
 #define strcasecmp _stricmp
