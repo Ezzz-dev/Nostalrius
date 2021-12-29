@@ -2,7 +2,7 @@
 Nostalrius is a 7.7 clone project that has been in development for a long time, it is based on TheForgottenServer 1.2 fork.
 
   - You can find here the most complete 7.72 Tibia replica that has ever been made
-  - Formulas, monsters behavior, the map, everything!
+  - Nostalrius is by 2021, deprecated, and it is far from being a clone to Tibia, only The Violet Project is a true clone.
 
 # Credits
 
