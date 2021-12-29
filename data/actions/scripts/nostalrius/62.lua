@@ -9,5 +9,6 @@ function onUse(player, item, fromPosition, target, toPosition)
 		doRelocate({x = 32094, y = 32149, z = 10},{x = 32094, y = 32150, z = 10})
 		Game.createItem(1282, 1, {x = 32094, y = 32149, z = 10})
 	end
+	
 	return true
 end
