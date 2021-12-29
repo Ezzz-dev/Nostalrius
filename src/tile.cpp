@@ -725,6 +725,8 @@ void Tile::addThing(int32_t, Thing* thing)
 		} else if (itemType.alwaysOnTop) {
 			if (itemType.isSplash() && items) {
 				//remove old splash if exists
+				SpectatorVec spectators;
+				g_game.map.getSpectators(spectators, getPosition(), true, true);
 				for (ItemVector::const_iterator it = items->getBeginTopItem(), end = items->getEndTopItem(); it != end; ++it) {
 					Item* oldSplash = *it;
 					if (!Item::items[oldSplash->getID()].isSplash()) {
@@ -735,6 +737,7 @@ void Tile::addThing(int32_t, Thing* thing)
 					oldSplash->setParent(nullptr);
 					g_game.ReleaseItem(oldSplash);
 					postRemoveNotification(oldSplash, nullptr, 0);
+					onUpdateTile(spectators);
 					break;
 				}
 			}

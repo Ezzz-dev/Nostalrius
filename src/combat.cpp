@@ -790,12 +790,54 @@ int32_t Combat::computeDamage(Creature* creature, int32_t strength, int32_t vari
 
 	if (creature) {
 		if (Player* player = creature->getPlayer()) {
-			int32_t formula = 3 * player->getMagicLevel() + 2 * player->getLevel();
+			int32_t formulaMin = 3.5 * player->getMagicLevel() + 2 * player->getLevel();
+			int32_t formulaMax = formulaMin * 2;			
+			int32_t formula = rand() % formulaMax;
 			damage = formula * damage / 100;
 		}
 	}
 
 	return damage;
+}
+
+int32_t Combat::getKnightTotalDamage(int32_t attackSkill, int32_t attackValue, fightMode_t fightMode)
+{
+	int32_t damage = attackValue;
+
+	switch (fightMode) {
+		case FIGHTMODE_ATTACK:
+			damage += 2 * damage / 10;
+			break;
+		case FIGHTMODE_DEFENSE:
+			damage -= 4 * damage / 10;
+			break;
+		default: break;
+	}
+
+	int32_t formula = (5 * (attackSkill * 1.3) + 60) * (damage * 1);
+	int32_t randresult = rand() % 100 + (attackSkill / 2);
+	int32_t totalDamage = -(ceil(formula * ((rand() % 100 + randresult) / 2) / 10000.));
+	return totalDamage;
+}
+
+int32_t Combat::getPaladinTotalDamage(int32_t attackSkill, int32_t attackValue, fightMode_t fightMode)
+{
+	int32_t damage = attackValue;
+
+	switch (fightMode) {
+		case FIGHTMODE_ATTACK:
+			damage += 2 * damage / 10;
+			break;
+		case FIGHTMODE_DEFENSE:
+			damage -= 4 * damage / 10;
+			break;
+		default: break;
+	}
+
+	int32_t formula = (5 * (attackSkill * 1.3) + 60) * damage;
+	int32_t randresult = rand() % 100 + (attackSkill / 2.5);
+	int32_t totalDamage = -(ceil(formula * ((rand() % 100 + randresult) / 2) / 10000.));
+	return totalDamage;
 }
 
 int32_t Combat::getTotalDamage(int32_t attackSkill, int32_t attackValue, fightMode_t fightMode)
@@ -874,7 +916,14 @@ bool Combat::closeAttack(Creature* attacker, Creature* target, fightMode_t fight
 	
 	CombatDamage combatDamage;
 	combatDamage.type = combatParams.combatType;
-	int32_t totalDamage = Combat::getTotalDamage(skillValue, attackValue, fightMode);
+	int32_t totalDamage = 0;
+	if (Player* player = attacker->getPlayer()) {
+		totalDamage = Combat::getKnightTotalDamage(skillValue, attackValue, fightMode);
+	} else {
+		totalDamage = Combat::getTotalDamage(skillValue, attackValue, fightMode);
+	}
+	
+	
 	combatDamage.value = totalDamage;
 
 	bool hit = Combat::doCombatHealth(attacker, target, combatDamage, combatParams);
@@ -990,7 +1039,15 @@ bool Combat::rangeAttack(Creature* attacker, Creature* target, fightMode_t fight
 
 		CombatDamage combatDamage;
 		combatDamage.type = combatParams.combatType;
-		combatDamage.value = Combat::getTotalDamage(skillValue, attackValue, fightMode);
+		int32_t totalDamage = 0;
+		if (Player* player = attacker->getPlayer()) {
+			totalDamage = Combat::getPaladinTotalDamage(skillValue, attackValue, fightMode);
+		} else {
+			totalDamage = Combat::getTotalDamage(skillValue, attackValue, fightMode);
+		}
+	
+	
+		combatDamage.value = totalDamage;
 
 		if (weapon) {
 			hitChance = 75; // throwables and such
@@ -1185,13 +1242,13 @@ void Combat::circleShapeSpell(Creature* attacker, const Position& toPos, int32_t
 void Combat::getAttackValue(Creature* creature, uint32_t& attackValue, uint32_t& skillValue, uint8_t& skill, bool fist)
 {
 	skill = SKILL_FIST;
-
+	
 	if (Player* player = creature->getPlayer()) {
 		Item* weapon = player->getWeapon();
 		if (weapon && !fist) {
 			switch (weapon->getWeaponType()) {
 			case WEAPON_AXE: {
-				skill = SKILL_AXE;
+				skill = SKILL_AXE;				
 				attackValue = weapon->getAttack();
 				break;
 			}
@@ -1221,8 +1278,24 @@ void Combat::getAttackValue(Creature* creature, uint32_t& attackValue, uint32_t&
 				attackValue = 7;
 				break;
 			}
-
+			
 			skillValue = player->getSkillLevel(skill);
+			// initialValue = 0;
+			// if (skillValue >= 100) {
+			// 	initialValue = 6;
+			// } else if (skillValue >= 90)  {
+			// 	initialValue = 5;
+			// } else if (skillValue >= 80) {
+			// 	initialValue = 4;
+			// } else if (skillValue >= 70) {
+			// 	initialValue = 3;
+			// } else if (skillValue >= 60) {
+			// 	initialValue = 2;
+			// } else if (skillValue >= 40) {
+			// 	initialValue = 1;
+			// }
+			// int32_t  randPlusAttack = (skillValue / 2) ;
+			//attackValue = 5 + (attackValue * 0.021) * pow(skillValue, (5/4));
 		} else {
 			attackValue = 7;
 			skillValue = player->getSkillLevel(skill);

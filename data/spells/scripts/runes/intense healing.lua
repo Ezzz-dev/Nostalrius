@@ -11,5 +11,6 @@ end
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")
 
 function onCastSpell(creature, variant)
+	doRemoveCondition(creature, CONDITION_PARALYZE
 	return combat:execute(creature, variant)
 end

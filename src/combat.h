@@ -283,6 +283,8 @@ class Combat
 
 		static int32_t computeDamage(Creature* creature, int32_t strength, int32_t variation);
 		static int32_t getTotalDamage(int32_t attackSkill, int32_t attackValue, fightMode_t fightMode);
+		static int32_t getKnightTotalDamage(int32_t attackSkill, int32_t attackValue, fightMode_t fightMode);
+		static int32_t getPaladinTotalDamage(int32_t attackSkill, int32_t attackValue, fightMode_t fightMode);
 
 		static bool attack(Creature* attacker, Creature* target);
 		static bool closeAttack(Creature* attacker, Creature* target, fightMode_t fightMode, bool fist = false);

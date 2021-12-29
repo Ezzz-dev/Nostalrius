@@ -7,15 +7,10 @@ combat:setParameter(COMBAT_PARAM_AGGRESSIVE, false)
 function onGetFormulaValues(player, level, maglevel)
 	local base = 120
 	local variation = 40
-	
-	local formula = 3 * maglevel + (2 * level)
-	
-	if formula >= 101 then
-		formula = 100
-	end
-	
-	local min = (formula * (base - variation)) / 100
-	local max = (formula * (base + variation)) / 100
+
+	local min = math.max((base - variation), ((3 * maglevel + 2 * level) * (base - variation) / 100))
+	local max = math.max((base + variation), ((3 * maglevel + 2 * level) * (base + variation) / 100))
+
 	return min, max
 end
 
