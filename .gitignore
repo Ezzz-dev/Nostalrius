@@ -14,3 +14,4 @@ vc14/theforgottenserver.vcxproj.user
 vc14/.vs/
 *.pdb
 *.dll
+build

@@ -22,6 +22,7 @@
 #include "iomapserialize.h"
 #include "game.h"
 #include "bed.h"
+#include "house.h"
 
 extern Game g_game;
 
@@ -272,7 +273,7 @@ bool IOMapSerialize::loadHouseInfo()
 {
 	Database* db = Database::getInstance();
 
-	DBResult_ptr result = db->storeQuery("SELECT `id`, `owner`, `paid`, `warnings` FROM `houses`");
+	DBResult_ptr result = db->storeQuery("SELECT `id`, `owner`, `paid`, `warnings`, `bid`, `bid_end`, `last_bid`, `highest_bidder` FROM `houses`");
 	if (!result) {
 		return false;
 	}
@@ -283,6 +284,10 @@ bool IOMapSerialize::loadHouseInfo()
 			house->setOwner(result->getNumber<uint32_t>("owner"), false);
 			house->setPaidUntil(result->getNumber<time_t>("paid"));
 			house->setPayRentWarnings(result->getNumber<uint32_t>("warnings"));
+			house->setBid(result->getNumber<uint32_t>("bid"));
+			house->setBidEnd(result->getNumber<uint32_t>("bid_end"));
+			house->setLastBid(result->getNumber<uint32_t>("last_bid"));
+			house->setHighestBidder(result->getNumber<uint32_t>("highest_bidder"));
 		}
 	} while (result->next());
 
@@ -369,4 +374,19 @@ bool IOMapSerialize::saveHouseInfo()
 	}
 
 	return transaction.commit();
+}
+
+bool IOMapSerialize::updateHouseAuctionInfo(House * house){
+	Database* db = Database::getInstance();
+	std::ostringstream query;
+	query << "SELECT `id` FROM `houses` WHERE `id` = " << house->getId();
+	DBResult_ptr result = db->storeQuery(query.str());
+
+	if(result){
+		query.str(std::string());
+		query << "UPDATE `houses` SET `owner` = " << house->getOwner() << ", `paid` = " << house->getPaidUntil() << ", `warnings` = " << house->getPayRentWarnings() << ", `bid` = " << house->getBid() << ", `bid_end` = "  << house->getBidEnd() << ", `last_bid` = " << house->getLastBid() << ", `highest_bidder` = " << house->getHighestBidder() << " WHERE `id` = " << house->getId();
+		return db->executeQuery(query.str());
+	}else{
+		return false;
+	}
 }

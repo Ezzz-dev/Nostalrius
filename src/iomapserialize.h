@@ -22,6 +22,7 @@
 
 #include "database.h"
 #include "map.h"
+#include "house.h"
 
 class IOMapSerialize
 {
@@ -30,6 +31,7 @@ class IOMapSerialize
 		static bool saveHouseItems();
 		static bool loadHouseInfo();
 		static bool saveHouseInfo();
+		static bool updateHouseAuctionInfo(House * house);
 
 	protected:
 		static void saveItem(PropWriteStream& stream, const Item* item);

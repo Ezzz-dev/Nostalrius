@@ -181,6 +181,38 @@ class House
 			return rent;
 		}
 
+		void setBid(uint32_t bid){
+			this->bid = bid;
+		}
+
+		uint32_t getBid() const {
+			return bid;
+		}
+
+		void setLastBid(uint32_t bid){
+			this->lastBid = bid;
+		}
+
+		uint32_t getLastBid() const {
+			return lastBid;
+		}
+
+		void setHighestBidder(uint32_t highestBidder){
+			this->highestBidder = highestBidder;
+		}
+
+		uint32_t getHighestBidder() const {
+			return highestBidder;
+		}
+
+		void setBidEnd(uint32_t timestamp){
+			this->bidEnd = timestamp;
+		}
+
+		uint32_t getBidEnd() const {
+			return bidEnd;
+		}
+
 		void setPayRentWarnings(uint32_t warnings) {
 			rentWarnings = warnings;
 		}
@@ -249,6 +281,10 @@ class House
 		uint32_t rentWarnings = 0;
 		uint32_t rent = 0;
 		uint32_t townId = 0;
+		uint32_t bid = 0;
+		uint32_t bidEnd = 0;
+		uint32_t highestBidder = 0;
+		uint32_t lastBid = 0;
 
 		Position posEntry = {};
 
